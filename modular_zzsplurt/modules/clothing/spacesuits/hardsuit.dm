@@ -7,6 +7,9 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding."
 	icon_state = "hardsuit0-engineering"
 	inhand_icon_state = "eng_helm"
+	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/hats.dmi'
+	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head.dmi'
+	worn_icon_muzzled = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head_muzzled.dmi'
 	max_integrity = 300
 	armor_type = /datum/armor/hardsuit
 	light_system = OVERLAY_LIGHT_DIRECTIONAL
@@ -68,6 +71,9 @@
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding."
 	icon_state = "hardsuit-engineering"
 	inhand_icon_state = "eng_hardsuit"
+	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
+	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	max_integrity = 300
 	armor_type = /datum/armor/hardsuit
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/t_scanner, /obj/item/construction/rcd, /obj/item/pipe_dispenser)
