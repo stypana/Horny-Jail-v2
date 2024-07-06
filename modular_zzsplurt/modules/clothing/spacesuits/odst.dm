@@ -24,7 +24,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	slowdown = 0
-	cell = /obj/item/stock_parts/cell/bluespace
+	cell = /obj/item/stock_parts/power_store/cell/bluespace
 
 /datum/armor/odst_hardsuit
 	melee = 65

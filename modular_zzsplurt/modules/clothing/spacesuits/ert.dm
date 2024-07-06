@@ -32,7 +32,7 @@ Contains:
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/deathsquad
 	dog_fashion = /datum/dog_fashion/back/deathsquad
-	cell = /obj/item/stock_parts/cell/bluespace
+	cell = /obj/item/stock_parts/power_store/cell/bluespace
 
 	//Emergency Response Team suits
 /obj/item/clothing/head/helmet/space/hardsuit/ert
@@ -63,7 +63,7 @@ Contains:
 	strip_delay = 130
 	resistance_flags = FIRE_PROOF
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	cell = /obj/item/stock_parts/cell/bluespace
+	cell = /obj/item/stock_parts/power_store/cell/bluespace
 
 // ERT suit's gets EMP Protection
 /obj/item/clothing/suit/space/hardsuit/ert/Initialize(mapload)

@@ -262,7 +262,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/engine/elite
 	jetpack = /obj/item/tank/jetpack/suit
-	cell = /obj/item/stock_parts/cell/super
+	cell = /obj/item/stock_parts/power_store/cell/super
 
 	//Mining hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/mining
@@ -427,7 +427,7 @@
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi
 	jetpack = /obj/item/tank/jetpack/suit
-	cell = /obj/item/stock_parts/cell/hyper
+	cell = /obj/item/stock_parts/power_store/cell/hyper
 
 //Elite Syndie suit
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/elite
@@ -456,14 +456,14 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	cell = /obj/item/stock_parts/cell/bluespace
+	cell = /obj/item/stock_parts/power_store/cell/bluespace
 
 /obj/item/clothing/suit/space/hardsuit/syndi/elite/debug //the hardsuit to end all other hardsuits
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/elite/debug
 	name = "Bluespace Tech Hardsuit"
 	slowdown = 0
 	armor_type = /datum/armor/hardsuit/syndi/elite/debug
-	cell = /obj/item/stock_parts/cell/infinite
+	cell = /obj/item/stock_parts/power_store/cell/infinite
 	clothing_traits = list(TRAIT_BRAWLING_KNOCKDOWN_BLOCKED)
 	strip_delay = 1000
 	equip_delay_other = 1000
@@ -513,7 +513,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS //Uncomment to enable firesuit protection
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/wizard
-	cell = /obj/item/stock_parts/cell/hyper
+	cell = /obj/item/stock_parts/power_store/cell/hyper
 	slowdown = 0 //you're spending 2 wizard points on this thing, the least it could do is not make you a sitting duck
 
 /obj/item/clothing/suit/space/hardsuit/wizard/Initialize(mapload)
@@ -594,7 +594,7 @@
 	/obj/item/hand_tele, /obj/item/aicard)
 	armor_type = /datum/armor/hardsuit/rd
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/rd
-	cell = /obj/item/stock_parts/cell/super
+	cell = /obj/item/stock_parts/power_store/cell/super
 
 	//Security hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/security
@@ -634,7 +634,7 @@
 	armor_type = /datum/armor/hardsuit/security/hos
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security/hos
 	jetpack = /obj/item/tank/jetpack/suit
-	cell = /obj/item/stock_parts/cell/super
+	cell = /obj/item/stock_parts/power_store/cell/super
 
 	//SWAT MKII
 /obj/item/clothing/head/helmet/space/hardsuit/swat
@@ -680,7 +680,7 @@
 	icon_state = "caparmor"
 	inhand_icon_state = "capspacesuit"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/swat/captain
-	cell = /obj/item/stock_parts/cell/super
+	cell = /obj/item/stock_parts/power_store/cell/super
 
 	//Clown
 /obj/item/clothing/head/helmet/space/hardsuit/clown
