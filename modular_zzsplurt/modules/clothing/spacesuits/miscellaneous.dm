@@ -3,7 +3,7 @@
 	name = "endemic combat medic helmet"
 	desc = "The integrated helmet of the combat medic hardsuit, this has a bright, glowing facemask."
 	icon_state = "hardsuit0-combatmedic"
-	inhand_icon_state = "hardsuit0-combatmedic"
+	inhand_icon_state = "medical_helm"
 	armor_type = /datum/armor/combatmedic_hardsuit
 	hardsuit_type = "combatmedic"
 
@@ -22,7 +22,7 @@
 	name = "endemic combat medic hardsuit"
 	desc = "The standard issue hardsuit of infectious disease officers, before the formation of ERT teams. This model is labeled 'Veradux'."
 	icon_state = "combatmedic"
-	inhand_icon_state = "combatmedic"
+	inhand_icon_state = "medical_hardsuit"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/combatmedic
 	armor_type = /datum/armor/combatmedic_hardsuit
 	allowed = list(/obj/item/gun, /obj/item/melee/baton, /obj/item/circular_saw, /obj/item/tank/internals, /obj/item/storage/box/pillbottles,\
