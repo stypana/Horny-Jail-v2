@@ -10,6 +10,8 @@
 	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/hats.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head.dmi'
 	worn_icon_muzzled = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head_muzzled.dmi'
+	lefthand_file = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/hardsuits_lefthand.dmi'
+	righthand_file = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/hardsuits_righthand.dmi'
 	max_integrity = 300
 	armor_type = /datum/armor/hardsuit
 	light_system = OVERLAY_LIGHT_DIRECTIONAL
@@ -74,6 +76,8 @@
 	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
+	lefthand_file = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/hardsuits_lefthand.dmi'
+	righthand_file = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/hardsuits_righthand.dmi'
 	max_integrity = 300
 	armor_type = /datum/armor/hardsuit
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/t_scanner, /obj/item/construction/rcd, /obj/item/pipe_dispenser)

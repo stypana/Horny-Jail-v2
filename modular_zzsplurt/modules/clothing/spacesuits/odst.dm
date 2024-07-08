@@ -1,8 +1,9 @@
 /obj/item/clothing/head/helmet/space/hardsuit/odst
 	name = "Orbital Drop Shock Trooper Helmet"
 	desc = "The helmet of a shocktrooper's hardsuit. It's sturdy and reinforced."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/hats.dmi'
+	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head.dmi'
+	worn_icon_muzzled = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head_muzzled.dmi'
 	icon_state = "hardsuit0-odst"
 	hardsuit_type = "odst"
 	armor_type = /datum/armor/odst_hardsuit
@@ -11,9 +12,10 @@
 	name = "Orbital Drop Shock Trooper Hardsuit"
 	desc = "The hardsuit of a shocktrooper. It's lightweight, yet sturdy and reinforced. "
 	alt_desc = "The hardsuit of a shocktrooper. It's lightweight, yet sturdy and reinforced. "
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
+	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "ert_odst"
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_state = "ert_odst"
 	inhand_icon_state = "ert_security"
 	hardsuit_type = "odst"
