@@ -5,6 +5,8 @@
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head.dmi'
 	worn_icon_muzzled = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/head_muzzled.dmi'
 	icon_state = "hardsuit0-odst"
+	worn_icon_state = "ert_odst"
+	inhand_icon_state = "sec_helm"
 	hardsuit_type = "odst"
 	armor_type = /datum/armor/odst_hardsuit
 
@@ -17,7 +19,7 @@
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "ert_odst"
 	worn_icon_state = "ert_odst"
-	inhand_icon_state = "ert_security"
+	inhand_icon_state = "sec_hardsuit"
 	hardsuit_type = "odst"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/odst
 	allowed = list(/obj/item/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/tank/internals)
