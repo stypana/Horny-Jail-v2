@@ -33,7 +33,7 @@
 	name = "carp helmet"
 	desc = "Spaceworthy and it looks like a space carp's head, smells like one too."
 	icon_state = "carp_helm"
-	inhand_icon_state = "syndicate"
+	inhand_icon_state = "syndie_helm"
 	armor_type = /datum/armor/carp_hardsuit
 	light_system = NO_LIGHT_SUPPORT
 	light_range = 0 //luminosity when on

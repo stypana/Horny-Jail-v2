@@ -14,5 +14,5 @@
 	worn_icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "ert_traumateam"
-	inhand_icon_state = "ert_command"
+	inhand_icon_state = "sec_hardsuit"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/traumateam

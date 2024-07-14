@@ -725,7 +725,7 @@
 	name = "prototype RIG hardsuit"
 	desc = "Prototype powered RIG hardsuit. Provides excellent protection from the elements of space while being comfortable to move around in, thanks to the powered locomotives. Remains very bulky however."
 	icon_state = "hardsuit-ancient"
-	inhand_icon_state = "rig_hardsuit"
+	inhand_icon_state = "rig_suit"
 	armor_type = /datum/armor/hardsuit/engine/ancient
 	slowdown = 3
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ancient
