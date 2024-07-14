@@ -73,7 +73,7 @@
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding."
 	icon_state = "hardsuit-engineering"
 	inhand_icon_state = "eng_hardsuit"
-	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	lefthand_file = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/hardsuits_lefthand.dmi'

@@ -10,7 +10,7 @@
 /obj/item/clothing/suit/space/hardsuit/ert/traumateam
 	name = "emergency trauma team response hardsuit"
 	desc = "The standard issue hardsuit-hybrid fit for a trauma team specialist."
-	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "ert_traumateam"

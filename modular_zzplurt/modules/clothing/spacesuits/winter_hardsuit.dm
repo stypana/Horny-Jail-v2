@@ -2,7 +2,7 @@
 	name = "winterized Syndicate hardsuit helmet"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in combat mode. Property of Gorlex Marauders."
-	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "hardsuit1-syndi-winter"
@@ -13,7 +13,7 @@
 	name = "winterized Syndicate hardsuit"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in combat mode. Property of Gorlex Marauders."
-	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "hardsuit1-syndi-winter"
@@ -26,7 +26,7 @@
 	name = "winterized Syndicate hardsuit helmet"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in combat mode. Property of Gorlex Marauders."
-	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "hardsuit1-syndi-wintertas"
@@ -37,7 +37,7 @@
 	name = "winterized Syndicate hardsuit"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor; this version does not have tassets, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor; this version does not have tassets, it is in combat mode. Property of Gorlex Marauders."
-	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "hardsuit1-syndi-wintertas"

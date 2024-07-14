@@ -14,7 +14,7 @@
 	name = "Orbital Drop Shock Trooper Hardsuit"
 	desc = "The hardsuit of a shocktrooper. It's lightweight, yet sturdy and reinforced. "
 	alt_desc = "The hardsuit of a shocktrooper. It's lightweight, yet sturdy and reinforced. "
-	icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
+	icon = 'modular_zzplurt/modules/clothing/spacesuits/icons/obj/suits.dmi'
 	worn_icon = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit.dmi'
 	worn_icon_digi = 'modular_zzsplurt/modules/clothing/spacesuits/icons/mob/suit_digi.dmi'
 	icon_state = "ert_odst"
