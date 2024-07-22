@@ -137,16 +137,14 @@
 		return
 
 	var/message = ""
-	var/targeted_somewhere
-	if(!lit)
-		to_chat(user, span_danger("[src] needs to be lit to produce wax!"))
-		return
 	if(!attacked.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("It looks like [attacked] don't want you to do that."))
 		return
+	if(!lit)
+		to_chat(user, span_danger("[src] needs to be lit to produce wax!"))
+		return
 	switch(user.zone_selected) //to let code know what part of body we gonna wax
 		if(BODY_ZONE_PRECISE_GROIN)
-			targeted_somewhere = TRUE
 			var/obj/item/organ/external/genital/penis = attacked.get_organ_slot(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/external/genital/vagina = attacked.get_organ_slot(ORGAN_SLOT_VAGINA)
 			if((vagina && penis) && (attacked.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW && penis.visibility_preference == GENITAL_ALWAYS_SHOW))
@@ -179,7 +177,6 @@
 				return
 
 		if(BODY_ZONE_CHEST)
-			targeted_somewhere = TRUE
 			var/obj/item/organ/external/genital/breasts = attacked.get_organ_slot(ORGAN_SLOT_BREASTS)
 			if(attacked.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW)
 				var/breasts_or_nipples = breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES
@@ -189,9 +186,8 @@
 			else
 				to_chat(user, span_danger("Looks like [attacked]'s chest is covered!"))
 				return
-
-	if(!targeted_somewhere)
-		return
+		else
+			return
 	if(attacked.stat != DEAD)
 		attacked.do_jitter_animation()
 		if(prob(50))
