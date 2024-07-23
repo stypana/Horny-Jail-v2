@@ -63,7 +63,7 @@
 
 	var/obj/item/organ/external/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
 	if(!penis?.is_exposed())
-		to_chat(user, span_danger("[target]'s groin is covered or [target.p_they()] don't have a penis!"))
+		to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 		return
 
 	var/message = (user == target) ? pick("moans in ecstasy as [target.p_they()] fuck the [src]",

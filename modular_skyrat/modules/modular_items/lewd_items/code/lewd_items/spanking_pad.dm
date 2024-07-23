@@ -57,6 +57,8 @@
 
 /obj/item/spanking_pad/attack(mob/living/target, mob/living/user)
 	. = ..()
+	if(target.stat == DEAD)
+		return
 	var/mob/living/carbon/human/carbon_target = target
 	if(!carbon_target && !iscyborg(target))
 		return
@@ -78,8 +80,6 @@
 			"slaps [target]'s thighs with [src]")
 	user.visible_message(span_purple("[user] [message]!"))
 	play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
-	if(target.stat == DEAD)
-		return
 	if(prob(40))
 		target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
 	if(prob(10))

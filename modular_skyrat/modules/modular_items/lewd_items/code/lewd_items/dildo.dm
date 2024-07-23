@@ -91,9 +91,9 @@
 
 /obj/item/clothing/sextoy/dildo/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()
-	if(!ishuman(target)) //Don't.
-		return
 	if(target.stat == DEAD)
+		return
+	if(!ishuman(target)) //Don't.
 		return
 
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
@@ -109,12 +109,12 @@
 		if(BODY_ZONE_PRECISE_GROIN)
 			var/obj/item/organ/external/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
 			if(!vagina?.is_exposed())
-				to_chat(user, span_danger("[target]'s groin is covered or [target.p_they()] don't have a vagina!"))
+				to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 				return FALSE
 
 			message = (user == target) ? pick("rubs [target.p_their()] vagina with [src]",
 					"gently jams [target.p_their()] pussy with [src]",
-					"fucks [target.p_their()] vagina with a [src]") \
+					"fucks [target.p_their()] vagina with [src]") \
 				: pick("delicately rubs [target]'s vagina with [src]",
 					"shoves [src] deep into [target]'s vagina",
 					"jams [src] into [target]'s pussy",
@@ -134,8 +134,8 @@
 					target.adjust_pain(2)
 
 			if(side_double)
-				user.adjust_arousal(6)
-				user.adjust_pleasure(8)
+				arousal_adjustment += 6
+				pleasure_adjustment += 8
 
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 			if(target.is_mouth_covered())
@@ -156,7 +156,7 @@
 		else
 			var/obj/item/organ/external/genital/anus = target.get_organ_slot(ORGAN_SLOT_ANUS)
 			if(!anus?.is_exposed())
-				to_chat(user, span_danger("[target]'s anus is covered!"))
+				to_chat(user, span_danger("Looks like [target]'s anus is covered!"))
 				return FALSE
 
 			message = (user == target) ? pick("puts [src] into [target.p_their()] anus",

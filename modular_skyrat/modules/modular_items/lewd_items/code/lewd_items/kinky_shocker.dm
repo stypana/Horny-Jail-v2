@@ -111,6 +111,8 @@
 	var/mob/living/carbon/human/carbon_target = target
 	if(!carbon_target && !iscyborg(target))
 		return
+	if(target.stat == DEAD)
+		return
 
 	if(!shocker_on)
 		to_chat(user, span_danger("[src] must be enabled before use!"))
@@ -129,7 +131,8 @@
 					"shocks [target.p_their()] penis with [src]") \
 				: pick("uses [src] to shock [target]'s penis",
 					"shocks [target]'s penis with [src]",
-					"leans [src] against [target]'s penis, turning shocker on")
+					"leans [src] against [target]'s penis, turning it on")
+
 			var/vagina_message = (user == target) ? pick("leans [src] against [target.p_their()] vagina, letting it shock [target.p_them()]. Ouch...",
 					"shocks [target.p_their()] pussy with [src]") \
 				: pick("uses [src] to shock [target]'s vagina",
@@ -149,13 +152,13 @@
 						"shocks [target]'s tummy with [src]",
 						"leans [src] against [target]'s belly, turning it on")
 			else if(iscyborg(target))
-				message = (user == target) ? pick("leans [src] against [target.p_their()] synthetic genitals, letting it shock them. Ouch...",
+				message = (user == target) ? pick("leans [src] against [target.p_their()] synthetic genitals, letting it shock [target.p_them()]. Ouch...",
 						"shocks [target.p_their()] tummy with [src]") \
 					: pick("uses [src] to shock [target]'s synthetic genitals",
 						"shocks [target]'s tummy with [src]",
 						"leans [src] against [target]'s synthetic genitals, turning it on")
 			else
-				to_chat(user, span_danger("You can't shock [target] there!"))
+				to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 				return
 
 		if(BODY_ZONE_CHEST)
@@ -173,15 +176,15 @@
 						"shocks [target]'s nipples with [src]",
 						"leans [src] against [target]'s chest, turning it on")
 			else
-				to_chat(user, span_danger("You can't shock [target] there!"))
+				to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
 				return
 
 		if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
 			if(!carbon_target?.has_arms())
-				to_chat(user, span_danger("[target] doesn't have any arms!"))
+				to_chat(user, span_danger("Looks like [target] doesn't have any arms!"))
 				return
 			if(!carbon_target?.is_hands_uncovered())
-				to_chat(user, span_danger("[target]'s arms are covered!"))
+				to_chat(user, span_danger("Looks like [target]'s arms are covered!"))
 				return
 			var/arm = user.zone_selected == BODY_ZONE_L_ARM ? "left arm" : "right arm"
 			message = (user == target) ? pick("leans [src] against [target.p_their()] [arm], letting it shock [target.p_them()].",
@@ -192,7 +195,7 @@
 
 		if(BODY_ZONE_HEAD)
 			if(!carbon_target?.is_head_uncovered())
-				to_chat(user, span_danger("[target]'s head is covered!"))
+				to_chat(user, span_danger("Looks like [target]'s head is covered!"))
 				return
 			message = (user == target) ? pick("leans [src] against [target.p_their()] head, letting it shock [target.p_them()]. Ouch! Why would [target.p_they()] do that?!",
 					"shocks [target.p_their()] head with [src]") \
@@ -202,10 +205,10 @@
 
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			if(!carbon_target?.has_feet())
-				to_chat(user, span_danger("[target] doesn't have any legs!"))
+				to_chat(user, span_danger("Looks like [target] doesn't have any legs!"))
 				return
 			if(!carbon_target?.is_barefoot())
-				to_chat(user, span_danger("[target]'s toes are covered!"))
+				to_chat(user, span_danger("Looks like [target]'s toes are covered!"))
 				return
 			var/leg = user.zone_selected == BODY_ZONE_L_LEG ? "left leg" : "right leg"
 			message = (user == target) ? pick("leans [src] against [target.p_their()] [leg], letting it shock [target.p_them()].",
@@ -214,13 +217,12 @@
 					"shocks [target]'s [user.zone_selected == BODY_ZONE_L_LEG ? "left foot" : "right foot"] with [src]",
 					"leans [src] against [target]'s [leg], turning it on")
 		else
+			to_chat(user, span_danger("You can't shock [target] there!"))
 			return
 
 	user.visible_message(span_purple("[user] [message]!"))
 	play_lewd_sound(loc, 'sound/weapons/taserhit.ogg', 70, 1, -1)
 	deductcharge(cell_hit_cost)
-	if(target.stat == DEAD)
-		return
 	if(prob(80))
 		target.try_lewd_autoemote(pick("twitch", "twitch_s", "shiver", "scream"))
 	target.do_jitter_animation()

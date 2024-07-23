@@ -96,6 +96,8 @@
 
 /obj/item/clothing/sextoy/magic_wand/attack(mob/living/target, mob/living/user)
 	. = ..()
+	if(target.stat == DEAD)
+		return
 	var/mob/living/carbon/human/carbon_target = target
 	if(!carbon_target && !iscyborg(target))
 		return FALSE
@@ -177,7 +179,7 @@
 			else
 				message = (user == target) ? pick("massages their touch sensors with the [src]",
 						"[first_adjective] teases their touch sensors with [src]") \
-					: pick("[second_adjective] teases [target]'s bodily touch sensors with [src]",
+					: pick("[second_adjective] teases [target]'s touch sensors with [src]",
 						"uses [src] to [vibration_mode == MAGIC_WAND_MODE_LOW ? "slowly" : ""] massage [target]'s touch sensors",
 						"uses [src] to tease [target]'s touch sensors")
 

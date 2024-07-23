@@ -109,6 +109,8 @@
 //SHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODE
 /obj/item/clothing/sextoy/vibrator/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()
+	if(target.stat == DEAD)
+		return
 	if(!istype(target))
 		return
 
@@ -131,43 +133,29 @@
 		if(BODY_ZONE_PRECISE_GROIN)
 			var/obj/item/organ/external/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/external/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
-			if(vagina?.is_exposed() && penis?.is_exposed())
-				message = (user == target) ? pick("massages their vagina with the [src]",
-						"[vibration_adj] teases their pussy with [src]",
-						"massages their penis with the [src]",
-						"[vibration_adj] teases their penis with [src]") \
-					: pick("[vibration_adj] massages [target]'s vagina with [src]",
-						"uses [src] to [vibration_adj] massage [target]'s crotch",
-						"leans the massager against [target]'s pussy",
-						"[vibration_adj] massages [target]'s penis with [src]",
-						"uses [src] to [vibration_adj] massage [target]'s penis",
-						"leans the massager against [target]'s penis")
-				target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
-				target.adjust_pleasure(DEFAULT_PLEASURE_INCREASE)
-
-			else if(vagina?.is_exposed())
-				message = (user == target) ? pick("massages their vagina with the [src]",
+			var/penis_message = (user == target) ? pick("massages their penis with the [src]",
+					"[vibration_adj] teases their penis with [src]") \
+				: pick("[vibration_adj] massages [target]'s penis with [src]",
+					"uses [src] to [vibration_adj] massage [target]'s penis",
+					"leans the massager against [target]'s penis")
+			var/vagina_message = (user == target) ? pick("massages their vagina with the [src]",
 						"[vibration_adj] teases their pussy with [src]") \
 					: pick("[vibration_adj] massages [target]'s vagina with [src]",
 						"uses [src] to [vibration_adj] massage [target]'s crotch",
 						"leans the massager against [target]'s pussy")
-				target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
-				target.adjust_pleasure(DEFAULT_PLEASURE_INCREASE)
-
+			if(vagina?.is_exposed() && penis?.is_exposed())
+				message = pick(penis_message, vagina_message)
+			else if(vagina?.is_exposed())
+				message = vagina_message
 			else if(penis?.is_exposed())
-				message = (user == target) ? pick("massages their penis with the [src]",
-						"[vibration_adj] teases their penis with [src]") \
-					: pick("[vibration_adj] massages [target]'s penis with [src]",
-						"uses [src] to [vibration_adj] massage [target]'s penis",
-						"leans the massager against [target]'s penis")
-				target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
-				target.adjust_pleasure(DEFAULT_PLEASURE_INCREASE)
-
+				message = penis_message
 			else
 				to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 				return
 
-			if(prob(50) && (target.stat != DEAD))
+			target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
+			target.adjust_pleasure(DEFAULT_PLEASURE_INCREASE)
+			if(prob(50))
 				target.try_lewd_autoemote(pick("twitch_s", "moan", "blush"))
 
 		if(BODY_ZONE_CHEST)
@@ -180,14 +168,14 @@
 						"uses [src] to [vibration_adj] massage [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES]",
 						"uses [src] to tease [target]'s [breasts ? "boobs" : ORGAN_SLOT_NIPPLES]",
 						"rubs [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES] with [src]")
-				target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
-				target.adjust_pleasure(DEFAULT_PLEASURE_INCREASE * 0.5)
-				if(prob(30) && (target.stat != DEAD))
-					target.try_lewd_autoemote(pick("twitch_s", "moan"))
-
 			else
 				to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
 				return
+
+			target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
+			target.adjust_pleasure(DEFAULT_PLEASURE_INCREASE * 0.5)
+			if(prob(30))
+				target.try_lewd_autoemote(pick("twitch_s", "moan"))
 		else
 			return
 	user.visible_message(span_purple("[user] [message]!"))

@@ -20,7 +20,7 @@
 	switch(user.zone_selected) //to let code know what part of body we gonna tickle
 		if(BODY_ZONE_PRECISE_GROIN)
 			if(!carbon_target?.is_bottomless())
-				to_chat(user, span_danger("[target]'s groin is covered!"))
+				to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 				return
 
 			message = (user == target) ? pick("tickles [target.p_them()]self with [src]",
@@ -32,7 +32,7 @@
 			if(carbon_target)
 				var/obj/item/organ/external/genital/badonkers = carbon_target.get_organ_slot(ORGAN_SLOT_BREASTS)
 				if(!badonkers?.is_exposed())
-					to_chat(user, span_danger("[target]'s chest is covered or [target.p_they()] don't have breasts!"))
+					to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
 					return
 
 				message = (user == target) ? pick("tickles [target.p_them()]self with [src]",
@@ -46,7 +46,7 @@
 					: pick("teases [target]'s touch sensors with [src]")
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			if(!carbon_target?.has_feet(REQUIRE_GENITAL_EXPOSED))
-				to_chat(user, span_danger("[target] either doesn't have feets or [target.p_their()] feets aren't exposed!"))
+				to_chat(user, span_danger("Looks like [target]'s feets are covered!"))
 				return
 
 			message = (user == target) ? pick("tickles [target.p_them()]self with [src]",
@@ -56,7 +56,7 @@
 					"uses [src] to tickle [target]'s toes")
 		if(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 			if(!carbon_target?.is_topless())
-				to_chat(user, span_danger("[target]'s armpits are covered!"))
+				to_chat(user, span_danger("Looks like [target]'s armpits are covered!"))
 				return
 
 			message = (user == target) ? pick("tickles [target.p_them()]self with [src]",
@@ -72,8 +72,7 @@
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(4)
 	target.add_mood_event("tickled", /datum/mood_event/tickled)
-	if(carbon_target)
-		carbon_target.adjust_arousal(3)
+	carbon_target?.adjust_arousal(3)
 	user.visible_message(span_purple("[user] [message]!"))
 	play_lewd_sound(loc, \
 		pick(
