@@ -2,10 +2,12 @@
 	name = "Default Belly"
 	desc = "It's very bland!"
 
+	// Internal state
 	var/datum/component/vore/owner
 	var/datum/digest_mode/digest_mode
 	var/noise_cooldown = 0
 
+	// Settings
 	var/can_taste = TRUE
 	var/insert_verb = "ingest"
 	var/release_verb = "expels"
@@ -25,6 +27,7 @@
 	var/fancy_sounds = TRUE
 	var/insert_sound = "Gulp"
 	var/release_sound = "Splatter"
+
 
 /obj/vore_belly/Initialize(mapload, datum/component/vore/new_owner)
 	. = ..()
@@ -76,6 +79,7 @@
 			"name" = A.name,
 			"ref" = REF(A),
 			"appearance" = REF(A.appearance),
+			"absorbed" = HAS_TRAIT_FROM(A, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE),
 		))
 	data["contents"] = contents_data
 
@@ -98,6 +102,27 @@
 	data["fancy_sounds"] = fancy_sounds
 	data["insert_sound"] = insert_sound
 	data["release_sound"] = release_sound
+
+	// Messages
+	data["messages"] = list(
+		"digest_messages_pred" = digest_messages_pred || GLOB.digest_messages_pred,
+		"digest_messages_prey" = digest_messages_prey || GLOB.digest_messages_prey,
+		"absorb_messages_owner" = absorb_messages_owner || GLOB.absorb_messages_owner,
+		"absorb_messages_prey" = absorb_messages_prey || GLOB.absorb_messages_prey,
+		"unabsorb_messages_owner" = unabsorb_messages_owner || GLOB.unabsorb_messages_owner,
+		"unabsorb_messages_prey" = unabsorb_messages_prey || GLOB.unabsorb_messages_prey,
+		"struggle_messages_outside" = struggle_messages_outside || GLOB.struggle_messages_outside,
+		"struggle_messages_inside" = struggle_messages_inside || GLOB.struggle_messages_inside,
+		"absorbed_struggle_messages_outside" = absorbed_struggle_messages_outside || GLOB.absorbed_struggle_messages_outside,
+		"absorbed_struggle_messages_inside" = absorbed_struggle_messages_inside || GLOB.absorbed_struggle_messages_inside,
+		"escape_attempt_messages_owner" = escape_attempt_messages_owner || GLOB.escape_attempt_messages_owner,
+		"escape_attempt_messages_prey" = escape_attempt_messages_prey || GLOB.escape_attempt_messages_prey,
+		"escape_messages_owner" = escape_messages_owner || GLOB.escape_messages_owner,
+		"escape_messages_prey" = escape_messages_prey || GLOB.escape_messages_prey,
+		"escape_messages_outside" = escape_messages_outside || GLOB.escape_messages_outside,
+		"escape_fail_messages_owner" = escape_fail_messages_owner || GLOB.escape_fail_messages_owner,
+		"escape_fail_messages_prey" = escape_fail_messages_prey || GLOB.escape_fail_messages_prey,
+	)
 
 	return data
 
@@ -157,6 +182,41 @@
 			var/new_sound = tgui_input_list(usr, "Pick an release sound", "Release Sound", sounds_to_pick_from, release_sound)
 			if(new_sound)
 				release_sound = new_sound
+		// Messages
+		if("digest_messages_pred")
+			set_messages("digest_messages_pred", value)
+		if("digest_messages_prey")
+			set_messages("digest_messages_prey", value)
+		if("absorb_messages_owner")
+			set_messages("absorb_messages_owner", value)
+		if("absorb_messages_prey")
+			set_messages("absorb_messages_prey", value)
+		if("unabsorb_messages_owner")
+			set_messages("unabsorb_messages_owner", value)
+		if("unabsorb_messages_prey")
+			set_messages("unabsorb_messages_prey", value)
+		if("struggle_messages_outside")
+			set_messages("struggle_messages_outside", value)
+		if("struggle_messages_inside")
+			set_messages("struggle_messages_inside", value)
+		if("absorbed_struggle_messages_outside")
+			set_messages("absorbed_struggle_messages_outside", value)
+		if("absorbed_struggle_messages_inside")
+			set_messages("absorbed_struggle_messages_inside", value)
+		if("escape_attempt_messages_owner")
+			set_messages("escape_attempt_messages_owner", value)
+		if("escape_attempt_messages_prey")
+			set_messages("escape_attempt_messages_prey", value)
+		if("escape_messages_owner")
+			set_messages("escape_messages_owner", value)
+		if("escape_messages_prey")
+			set_messages("escape_messages_prey", value)
+		if("escape_messages_outside")
+			set_messages("escape_messages_outside", value)
+		if("escape_fail_messages_owner")
+			set_messages("escape_fail_messages_owner", value)
+		if("escape_fail_messages_prey")
+			set_messages("escape_fail_messages_prey", value)
 
 // Disables assume_air
 /obj/vore_belly/assume_air(datum/gas_mixture/giver)
@@ -230,7 +290,7 @@
 		RegisterSignal(M, COMSIG_MOVABLE_USING_RADIO, PROC_REF(try_deny_radio))
 		ADD_TRAIT(M, TRAIT_SOFTSPOKEN, TRAIT_SOURCE_VORE)
 		deep_search_prey(M)
-		to_chat(M, examine_block("You slide into [span_notice("[owner.parent]")]'s [span_green(lowertext(name))]!\n[format_message(desc, M)]"))
+		to_chat(M, examine_block("You slide into [span_notice("[owner.parent]")]'s [span_green(lowertext(name))]!\n[EXAMINE_SECTION_BREAK][format_message(desc, M)]"))
 		// Add the appearance_holder to prey so they can see fellow prey
 		if(can_taste && iscarbon(M))
 			var/mob/living/carbon/H = M
@@ -256,7 +316,7 @@
 		#if DISABLES_SENSORS
 		if(istype(AM, /obj/item/clothing/under))
 			var/obj/item/clothing/under/sensor_clothing = AM
-			sensor_clothing.sensor_mode = NO_SENSORS
+			sensor_clothing.sensor_mode = SENSOR_OFF
 			if(ishuman(arrived))
 				var/mob/living/carbon/human/H = arrived
 				if(H.w_uniform == sensor_clothing)
@@ -277,6 +337,10 @@
 		var/mob/M = gone
 		UnregisterSignal(M, COMSIG_MOVABLE_USING_RADIO)
 		REMOVE_TRAIT(M, TRAIT_SOFTSPOKEN, TRAIT_SOURCE_VORE)
+		// Unabsorb if they leave by any method
+		REMOVE_TRAIT(M, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE)
+		REMOVE_TRAIT(M, TRAIT_STASIS, TRAIT_SOURCE_VORE)
+		// Absorb control handles deleting itself with binding to COMSIG_MOVABLE_MOVED
 		if(!istype(M.loc, /obj/vore_belly))
 			M.stop_sound_channel(CHANNEL_PREYLOOP)
 		// We added it so let's take it away
@@ -289,10 +353,12 @@
 	return container_resist_act(user)
 
 /obj/vore_belly/proc/escapable(mob/living/user)
+	// Cannot escape on their own if absorbed
+	if(HAS_TRAIT_FROM(user, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
+		return FALSE
 	var/mob/living/living_parent = owner.parent
 	if(!escape_chance && !living_parent.stat)
 		return FALSE
-	// TODO: absorbed
 	return TRUE
 
 /obj/vore_belly/container_resist_act(mob/living/user)
@@ -303,10 +369,10 @@
 
 	var/mob/living/living_parent = owner.parent
 
-	var/escape_attempt_prey_message = span_warning(format_message(pick(GLOB.escape_attempt_messages_prey), user))
-	var/escape_attempt_owner_message = span_warning(format_message(pick(GLOB.escape_attempt_messages_owner), user))
-	var/escape_fail_prey_message = span_warning(format_message(pick(GLOB.escape_fail_messages_prey), user))
-	var/escape_fail_owner_message = span_notice(format_message(pick(GLOB.escape_fail_messages_owner), user))
+	var/escape_attempt_prey_message = span_warning(get_escape_attempt_messages_prey(user))
+	var/escape_attempt_owner_message = span_warning(get_escape_attempt_messages_owner(user))
+	var/escape_fail_prey_message = span_warning(get_escape_fail_messages_prey(user))
+	var/escape_fail_owner_message = span_notice(get_escape_fail_messages_owner(user))
 
 	if(living_parent.stat) // If owner is dead, we can actually escape
 		to_chat(user, escape_attempt_prey_message)
@@ -322,8 +388,11 @@
 				to_chat(living_parent, escape_fail_owner_message)
 			return
 
-	var/struggle_outer_message = span_warning(format_message(pick(GLOB.struggle_messages_outside), user))
-	var/struggle_user_message = span_warning(format_message(pick(GLOB.struggle_messages_inside), user))
+	var/struggle_outer_message = span_warning(get_struggle_messages_outside(user))
+	var/struggle_user_message = span_warning(get_struggle_messages_inside(user))
+	if(HAS_TRAIT_FROM(user, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
+		struggle_outer_message = span_warning(get_absorbed_struggle_messages_outside(user))
+		struggle_user_message = span_warning(get_absorbed_struggle_messages_inside(user))
 
 	// Only show the owner the outside message
 	to_chat(living_parent, struggle_outer_message)
@@ -342,8 +411,8 @@
 				if(user.loc != src) // ignore if they're not in the belly
 					return
 				else if(escapable(user)) // Still escapable
-					var/escape_owner_message = span_warning(format_message(pick(GLOB.escape_messages_owner), user))
-					var/escape_prey_message = span_warning(format_message(pick(GLOB.escape_messages_prey), user))
+					var/escape_owner_message = span_warning(get_escape_messages_owner(user))
+					var/escape_prey_message = span_warning(get_escape_messages_prey(user))
 
 					to_chat(living_parent, escape_owner_message)
 					to_chat(user, escape_prey_message)
@@ -358,129 +427,12 @@
 
 	to_chat(user, struggle_user_message)
 
-
 /// Do NOT do cleanup in here, clean up in /Exited
 /// This is just a helper proc for showing a message
 /obj/vore_belly/proc/release(atom/movable/AM)
 	var/mob/living/living_parent = owner.parent
 	AM.forceMove(living_parent.loc)
 	AM.visible_message(span_warning("[living_parent] [lowertext(release_verb)] [AM] from their [lowertext(name)]."), pref_to_check = /datum/preference/toggle/erp/vore_enable)
-
-/// Formats a vore message
-/obj/vore_belly/proc/format_message(message, mob/prey)
-	message = replacetext(message, "%pred", owner.parent)
-	message = replacetext(message, "%prey", prey)
-	message = replacetext(message, "%belly", src)
-	message = replacetext(message, "%count", LAZYLEN(contents))
-	return message
-
-
-/// Serializes this belly to store in savefile data.
-/obj/vore_belly/proc/serialize()
-	return list(
-		VORE_BELLY_KEY = VORE_BELLY_VERSION,
-		"name" = name,
-		"desc" = desc,
-		"digest_mode" = digest_mode?.name,
-		"can_taste" = can_taste,
-		"insert_verb" = insert_verb,
-		"release_verb" = release_verb,
-		"brute_damage" = brute_damage,
-		"burn_damage" = burn_damage,
-		"muffles_radio" = muffles_radio,
-		"escape_chance" = escape_chance,
-		"escape_time" = escape_time,
-		"is_wet" = is_wet,
-		"wet_loop" = wet_loop,
-		"fancy_sounds" = fancy_sounds,
-		"insert_sound" = insert_sound,
-		"release_sound" = release_sound,
-	)
-
-// Called when a savefile passed to us does not match our expected version
-/obj/vore_belly/proc/apply_migrations(list/data)
-	data[VORE_BELLY_KEY] = VORE_BELLY_VERSION
-
-/// Deserializes this belly from savefile data
-/obj/vore_belly/proc/deserialize(list/data)
-	if(!(VORE_BELLY_KEY in data)) // We've been passed invalid data, probably VRDB
-		var/maybe_name = data["name"]
-		if(maybe_name)
-			deserialize_vrdb(data)
-		else
-			to_chat(usr, span_warning("Unable to load belly, missing '[VORE_BELLY_KEY]' signature and cannot detect VRBD"))
-		return
-	if(data[VORE_BELLY_KEY] != VORE_BELLY_VERSION)
-		apply_migrations(data)
-	name = permissive_sanitize_name(data["name"]) || "(Bad Name)"
-	desc = STRIP_HTML_SIMPLE(data["desc"], MAX_FLAVOR_LEN) || "(Bad Desc)"
-	digest_mode = GLOB.digest_modes[sanitize_text(data["digest_mode"])] || GLOB.digest_modes[DIGEST_MODE_SAFE]
-
-	can_taste = sanitize_integer(data["can_taste"], FALSE, TRUE, TRUE)
-	insert_verb = STRIP_HTML_SIMPLE(data["insert_verb"], MAX_VERB_LENGTH) || "ingest"
-	release_verb = STRIP_HTML_SIMPLE(data["release_verb"], MAX_VERB_LENGTH) || "expels"
-
-	brute_damage = sanitize_integer(data["brute_damage"], 0, MAX_BRUTE_DAMAGE, 0)
-	burn_damage = sanitize_integer(data["burn_damage"], 0, MAX_BURN_DAMAGE, 1)
-
-	muffles_radio = isnum(data["muffles_radio"]) ? !!data["muffles_radio"] : TRUE // make false by default
-	escape_chance = sanitize_integer(data["escape_chance"], 0, 100, 100)
-	escape_time = sanitize_integer(data["escape_time"], MIN_ESCAPE_TIME, MAX_ESCAPE_TIME, DEFAULT_ESCAPE_TIME)
-
-	is_wet = sanitize_integer(data["is_wet"], FALSE, TRUE, TRUE) // make true by default
-	wet_loop = sanitize_integer(data["wet_loop"], FALSE, TRUE, TRUE) // make true by default
-	fancy_sounds = sanitize_integer(data["fancy_sounds"], FALSE, TRUE, TRUE) // if there's no data, make it true by default
-
-	if(istext(data["insert_sound"]))
-		var/new_insert_sound = trim(sanitize(data["insert_sound"]), MAX_MESSAGE_LEN)
-		if(new_insert_sound)
-			if(fancy_sounds && (new_insert_sound in GLOB.vore_sounds_insert_fancy))
-				insert_sound = new_insert_sound
-			if(!fancy_sounds && (new_insert_sound in GLOB.vore_sounds_insert_classic))
-				insert_sound = new_insert_sound
-
-	if(istext(data["release_sound"]))
-		var/new_release_sound = trim(sanitize(data["release_sound"]), MAX_MESSAGE_LEN)
-		if(new_release_sound)
-			if(fancy_sounds && (new_release_sound in GLOB.vore_sounds_release_fancy))
-				release_sound = new_release_sound
-			if(!fancy_sounds && (new_release_sound in GLOB.vore_sounds_release_classic))
-				release_sound = new_release_sound
-
-/// Special handler that tries to deserialize as much of a VRDB save as it can
-/obj/vore_belly/proc/deserialize_vrdb(list/data)
-	var/maybe_name = data["name"]
-	to_chat(usr, span_warning("Attempting to load VRDB belly '[maybe_name]'..."))
-	name = permissive_sanitize_name(maybe_name) || "(Bad Name)"
-	desc = STRIP_HTML_SIMPLE(data["desc"], MAX_FLAVOR_LEN) || "(Bad Desc)"
-	digest_mode = GLOB.digest_modes[sanitize_text(data["mode"])] || GLOB.digest_modes[DIGEST_MODE_SAFE]
-
-	can_taste = sanitize_integer(data["can_taste"], FALSE, TRUE, TRUE)
-	insert_verb = STRIP_HTML_SIMPLE(data["vore_verb"], MAX_VERB_LENGTH) || "ingest"
-	release_verb = STRIP_HTML_SIMPLE(data["release_verb"], MAX_VERB_LENGTH) || "expels"
-
-	escape_chance = sanitize_integer(data["escapechance"], 0, 100, 100)
-	escape_time = sanitize_integer(data["escapetime"], MIN_ESCAPE_TIME, MAX_ESCAPE_TIME, DEFAULT_ESCAPE_TIME)
-
-	is_wet = sanitize_integer(data["is_wet"], FALSE, TRUE, TRUE) // make true by default
-	wet_loop = sanitize_integer(data["wet_loop"], FALSE, TRUE, TRUE) // make true by default
-	fancy_sounds = sanitize_integer(data["fancy_vore"], FALSE, TRUE, TRUE) // if there's no data, make it true by default
-
-	if(istext(data["vore_sound"]))
-		var/new_insert_sound = trim(sanitize(data["vore_sound"]), MAX_MESSAGE_LEN)
-		if(new_insert_sound)
-			if(fancy_sounds && (new_insert_sound in GLOB.vore_sounds_insert_fancy))
-				insert_sound = new_insert_sound
-			if(!fancy_sounds && (new_insert_sound in GLOB.vore_sounds_insert_classic))
-				insert_sound = new_insert_sound
-
-	if(istext(data["release_sound"]))
-		var/new_release_sound = trim(sanitize(data["release_sound"]), MAX_MESSAGE_LEN)
-		if(new_release_sound)
-			if(fancy_sounds && (new_release_sound in GLOB.vore_sounds_release_fancy))
-				release_sound = new_release_sound
-			if(!fancy_sounds && (new_release_sound in GLOB.vore_sounds_release_classic))
-				release_sound = new_release_sound
 
 /// Plays sound just to pred and prey in this stomach
 /obj/vore_belly/proc/play_vore_sound_preypred(preysound, predsound, volume = VORE_SOUND_VOLUME, range = 2, vary = FALSE, pref = /datum/vore_pref/toggle/eating_noises)
@@ -520,3 +472,18 @@
 		sound_to_use = pred_sound,
 		max_distance = range,
 	)
+
+// Driven by /datum/digest_mode but put here for reusablity
+/obj/vore_belly/proc/try_play_gurgle_sound()
+	if(COOLDOWN_FINISHED(src, noise_cooldown))
+		if(LAZYLEN(contents) && prob(50))
+			var/prey_sound = null
+			var/pred_sound = null
+			if(fancy_sounds)
+				prey_sound = "vore_sounds_digestion_fancy_prey"
+				pred_sound = "vore_sounds_digestion_fancy"
+			else
+				prey_sound = "vore_sounds_digestion_classic"
+				pred_sound = "vore_sounds_digestion_classic"
+			play_vore_sound_preypred(prey_sound, pred_sound, pref = /datum/vore_pref/toggle/digestion_noises)
+			COOLDOWN_START(src, noise_cooldown, DIGESTION_NOISE_COOLDOWN)
