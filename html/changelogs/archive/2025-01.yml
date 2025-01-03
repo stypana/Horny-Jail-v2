@@ -1,4 +1,8 @@
 2025-01-01:
+  Arturlang:
+  - balance: Roundstart slimepeople no longer get 50% burn damage type resist on limbs
+  DimWhat (original sprites), ArrisFairburne (edited sprites):
+  - rscadd: Added an alternate recolorable bunnysuit to the "suits" loadout screen.
   MosleyTheMalO:
   - refactor: Refactored the interaction system to support our custom interactions
   - rscadd: Added specific handling for different types of climaxing and climax text
@@ -14,10 +18,6 @@
   - rscadd: Added ERP status preferences and multipliers
   - sound: Added multiple new interaction sound effects
   - code_imp: Added helper procs for checking genital states
-  Arturlang:
-  - balance: Roundstart slimepeople no longer get 50% burn damage type resist on limbs
-  DimWhat (original sprites), ArrisFairburne (edited sprites):
-  - rscadd: Added an alternate recolorable bunnysuit to the "suits" loadout screen.
   TealSeer:
   - map: Moonstation's bar jukebox is no longer access locked.
   Virryi:
@@ -41,3 +41,6 @@
       it (previously in med)
   - qol: Persistence engineering APC is now wired outside so you can run wires willy
       nilly through the bay.
+2025-01-02:
+  rintherat:
+  - bugfix: fixes the cafeborg shakers
