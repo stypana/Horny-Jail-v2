@@ -13,7 +13,7 @@
 				overflow: hidden;
 				font-family: "StardewValleyRegular", sans-serif;
 				text-align: center;
-				background-color: #000000; /* Черный задний фон */
+				background-color: #000000; /* Black background */
 				padding-top: 5vmin;
 				-ms-user-select: none;
 				cursor: default;
@@ -53,11 +53,12 @@
 				text-decoration: none;
 				width: 100%;
 				text-align: left;
-				color: #ff4ff0; /* Неоново-розовый текст */
-				text-shadow: 1px 1px #ffb6c1; /* Мягкая обводка для текста */
+				color: #ff4ff0; /* Neon pink text */
+				text-shadow: 2px 2px 4px rgba(255, 79, 240, 0.5); /* Soft glow for text */
 				margin-right: 0;
 				margin-top: 0;
 				font-size: 2.2vmin;
+				letter-spacing: 1px;
 			}
 
 			.container_progress {
@@ -67,10 +68,10 @@
 				left: calc(50% - 450px);
 				height: 60px;
 				width: 900px;
-				border: 3px solid #ffb6c1; /* Пастельно-розовая окантовка */
+				border: 3px solid #ffb6c1; /* Pastel pink border */
 				border-radius: 8px;
 				padding: 3px;
-				background-color: #fff0f5; /* Очень светлый розовый фон */
+				background-color: #fff0f5; /* Very light pink background */
 				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 			}
 
@@ -103,10 +104,10 @@
 				left: 50%;
 				transform: translate(-50%, -50%);
 				z-index: 1;
-				border: 2px solid #ffb6c1; /* Пастельно-розовая окантовка */
+				border: 2px solid #ffb6c1; /* Pastel pink border */
 				border-radius: 10px;
 				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-				background: #ffe4e1; /* Пастельно-розовый фон для меню */
+				background: #ffe4e1; /* Pastel pink background for menu */
 				opacity: 0.95;
 				padding: 1.5em;
 			}
@@ -126,11 +127,11 @@
 				font-weight: lighter;
 				text-decoration: none;
 				font-size: 3.5vmin;
-				text-shadow: 1px 1px #ffb6c1; /* Мягкая обводка для текста */
+				text-shadow: 1px 1px #ffb6c1; /* Soft text outline */
 				line-height: 4vmin;
 				width: 100%;
 				text-align: left;
-				color: #ff4ff0; /* Неоново-розовый текст */
+				color: #ff4ff0; /* Neon pink text */
 				height: 4vmin;
 				padding-left: 5vmin;
 				letter-spacing: 1px;
@@ -142,9 +143,9 @@
 			}
 
 			.menu_button:hover {
-				transform: translateX(10px); /* Сдвиг вправо на 10px */
-				color: #ff4ff0; /* Сохраняем неоново-розовый при наведении */
-				background-color: #ffe4e1; /* Светло-розовый фон при наведении */
+				transform: translateX(10px); /* Shift right by 10px */
+				color: #ff4ff0; /* Keep neon pink on hover */
+				background-color: #ffe4e1; /* Light pink background on hover */
 			}
 
 			.menu_button:active {
@@ -153,7 +154,7 @@
 			}
 
 			.menu_button:hover::before {
-				content: "🍸"; /* Обнимашки вместо пальца или звезды */
+				content: "🍸"; /* Cocktail emoji instead of finger or star */
 				text-align: center;
 				width: 5vmin;
 				display: inline-block;
@@ -211,12 +212,13 @@
 				text-decoration: none;
 				width: 100%;
 				text-align: left;
-				color: #ff4ff0; /* Неоново-розовый текст */
-				text-shadow: 1px 1px #ffb6c1; /* Мягкая обводка для текста */
+				color: #ff4ff0; /* Neon pink text */
+				text-shadow: 2px 2px 4px rgba(255, 79, 240, 0.5); /* Soft glow */
 				margin-right: 0;
 				margin-top: 0;
 				font-size: 3vmin;
 				line-height: 2vmin;
+				letter-spacing: 1px;
 			}
 
 			.unchecked {
