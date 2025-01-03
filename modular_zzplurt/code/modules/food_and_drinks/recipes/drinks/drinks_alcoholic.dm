@@ -1,5 +1,5 @@
 /datum/chemical_reaction/drink/panty_dropper //https://ifunny.co/video/uyksuxGK8?s=cl
-	results = list(/datum/reagent/consumable/ethanol/panty_dropper = 8, /datum/reagent/drug/aphrodisiacplus = 2)
+	results = list(/datum/reagent/consumable/ethanol/panty_dropper = 8, /datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 2)
 	required_reagents = list(/datum/reagent/consumable/ethanol/screwdrivercocktail = 1, /datum/reagent/consumable/ethanol/gin = 1, /datum/reagent/consumable/ethanol/creme_de_coconut = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/berryjuice = 1) //Can't have the legendary 1:1 ratio or original recipe cuz of recipe clashes :(
 	mix_message = "A very tvvisted combination begins to bubble..."
 
@@ -31,7 +31,7 @@
 /datum/chemical_reaction/drink/isloation_cell/morphine
 	results = list(/datum/reagent/consumable/ethanol/isloation_cell/morphine = 5)
 	required_reagents = list(
-		/datum/reagent/drug/aphrodisiac = 1,
+		/datum/reagent/drug/aphrodisiac/crocin = 1,
 		/datum/reagent/medicine/morphine = 2,
 		/datum/reagent/consumable/ethanol/hippies_delight = 2
 	)
@@ -39,9 +39,9 @@
 /datum/chemical_reaction/drink/chemical_ex
 	results = list(/datum/reagent/consumable/ethanol/chemical_ex = 5)
 	required_reagents = list(
-		/datum/reagent/drug/aphrodisiacplus = 1,
+		/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 1,
 		/datum/reagent/medicine/morphine = 2,
-		/datum/reagent/fermi/enthrall = 2
+		/datum/reagent/mkultra = 2
 	)
 
 /datum/chemical_reaction/drink/heart_of_gold
@@ -55,8 +55,7 @@
 /datum/chemical_reaction/drink/moth_in_chief
 	results = list(/datum/reagent/consumable/ethanol/moth_in_chief = 4)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/commander_and_chief = 1,
-		/datum/reagent/mutationtoxin/insect = 1,
+		/datum/reagent/mutationtoxin/moth = 1,
 		/datum/reagent/drug/copium = 1,
 		/datum/reagent/medicine/stimulants = 1
 	)
@@ -148,7 +147,7 @@
 		/datum/reagent/consumable/ethanol/bastion_bourbon = 2
 	)
 	mix_message = "The lights flicker for a moment..."
-	mix_sound = 'sound/weapons/taser.ogg'
+	mix_sound = 'sound/items/weapons/taser.ogg'
 
 /datum/chemical_reaction/drink/twinkjuice
 	results = list(/datum/reagent/consumable/ethanol/twinkjuice = 6)
@@ -158,7 +157,7 @@
 		/datum/reagent/lube = 1
 	)
 	mix_message = "Oooo you like kissing booooys"
-	mix_sound = 'modular_splurt/sound/voice/waa.ogg'
+	mix_sound = 'modular_zzplurt/sound/voice/waa.ogg'
 
 /datum/chemical_reaction/drink/midnight_tears
 	results = list(/datum/reagent/consumable/ethanol/midnight_tears = 20)
@@ -170,21 +169,68 @@
 	)
 
 /datum/chemical_reaction/drink/midnight_sky
-	results = list(/datum/reagent/consumable/ethanol/midnight_sky = 25)
+	results = list(/datum/reagent/consumable/ethanol/midnight_sky = 10)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/navy_rum = 3,
-		/datum/reagent/consumable/ethanol/curacao = 2,
-		/datum/reagent/consumable/sugar = 2,
-		/datum/reagent/consumable/space_cola = 15,
-		/datum/reagent/consumable/ice = 2
+		/datum/reagent/consumable/ethanol/absinthe = 3,
+		/datum/reagent/consumable/ethanol/rum = 2,
+		/datum/reagent/consumable/ethanol/vermouth = 2,
+		/datum/reagent/consumable/ethanol/kahlua = 3
 	)
+	mix_message = "The mixture darkens into a deep night sky color..."
 
 /datum/chemical_reaction/drink/midnight_joy
-	results = list(/datum/reagent/consumable/ethanol/midnight_joy = 25)
+	results = list(/datum/reagent/consumable/ethanol/midnight_joy = 10)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/rum = 3,
-		/datum/reagent/consumable/pineapplejuice = 5,
-		/datum/reagent/consumable/sugar = 1,
-		/datum/reagent/consumable/sodawater = 15
+		/datum/reagent/consumable/ethanol/midnight_sky = 5,
+		/datum/reagent/consumable/sugar = 2,
+		/datum/reagent/consumable/cream = 3
 	)
+	mix_message = "The mixture lightens and becomes joyful..."
+
+/datum/chemical_reaction/drink/heart_of_gold
+	results = list(/datum/reagent/consumable/ethanol/heart_of_gold = 10)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/champagne = 3,
+		/datum/reagent/consumable/ethanol/vermouth = 3,
+		/datum/reagent/consumable/ethanol/applejack = 2,
+		/datum/reagent/consumable/pineapplejuice = 2
+	)
+	mix_message = "The mixture shimmers with a golden hue..."
+
+/datum/chemical_reaction/drink/moth_in_chief
+	results = list(/datum/reagent/consumable/ethanol/moth_in_chief = 10)
+	required_reagents = list(
+		/datum/reagent/medicine/stimulants = 2,
+		/datum/reagent/medicine/regen_jelly = 3
+	)
+	mix_message = "The mixture glows with a comforting warmth..."
+
+/datum/chemical_reaction/drink/chemical_ex
+	results = list(/datum/reagent/consumable/ethanol/chemical_ex = 10)
+	required_reagents = list(
+		/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 2,
+		/datum/reagent/medicine/morphine = 4,
+		/datum/reagent/mkultra = 1,
+		/datum/reagent/consumable/ethanol/manhattan = 3
+	)
+	mix_message = "The mixture gives off a concerning aroma..."
+
+/datum/chemical_reaction/drink/isolation_cell
+	results = list(/datum/reagent/consumable/ethanol/isloation_cell = 10)
+	required_reagents = list(
+		/datum/reagent/consumable/ice = 3,
+		/datum/reagent/drug/aphrodisiac = 2,
+		/datum/reagent/consumable/ethanol/vodka = 3,
+		/datum/reagent/consumable/ethanol/gin = 2
+	)
+	mix_message = "The mixture chills to an unsettling temperature..."
+
+/datum/chemical_reaction/drink/isolation_cell_morphine
+	results = list(/datum/reagent/consumable/ethanol/isloation_cell/morphine = 10)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/isloation_cell = 5,
+		/datum/reagent/medicine/morphine = 2,
+		/datum/reagent/consumable/ethanol/hippies_delight = 3
+	)
+	mix_message = "The mixture takes on a sour aroma..."
 

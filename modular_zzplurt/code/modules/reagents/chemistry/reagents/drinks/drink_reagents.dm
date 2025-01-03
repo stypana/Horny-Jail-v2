@@ -41,13 +41,14 @@
 		holder.remove_reagent(/datum/reagent/toxin/mindbreaker, 5)
 	//applies horny effect
 	var/mob/living/carbon/human/H = M
-	var/list/genits = H.adjust_arousal(35, "hexacrocin")//check for aphrosidiacs preferences
+	H.adjust_arousal(35)
 	/* Not supported yet
 	for(var/g in genits)
 		var/obj/item/organ/external/genital/G = g
 		to_chat(M, span_userlove("[G.arousal_verb]!"))*/
 
 	..()
+
 // ~( Ported from TG )~
 /datum/reagent/consumable/toechtauese_juice
 	name = "Töchtaüse Juice"
