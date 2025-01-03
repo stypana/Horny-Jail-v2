@@ -160,6 +160,8 @@
 			set_combat_indicator(TRUE)
 		else
 			set_combat_indicator(FALSE)
+	//SPLURT EDIT START
+	/*
 	face_mouse = (client?.prefs?.read_preference(/datum/preference/toggle/face_cursor_combat_mode) && combat_mode) ? TRUE : FALSE
 	//SKYRAT EDIT ADDITION END
 
@@ -169,6 +171,8 @@
 		SEND_SOUND(src, sound('sound/misc/ui_togglecombat.ogg', volume = 25)) //Sound from interbay!
 	else
 		SEND_SOUND(src, sound('sound/misc/ui_toggleoffcombat.ogg', volume = 25)) //Slightly modified version of the above
+	*/
+	//SPLURT EDIT END
 
 /mob/living/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
 	if(!isitem(AM))
@@ -178,7 +182,7 @@
 			skipcatch = TRUE
 			blocked = TRUE
 		else
-			playsound(loc, 'sound/weapons/genhit.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
+			playsound(loc, 'sound/items/weapons/genhit.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
 			if(!isvendor(AM) && !iscarbon(AM)) //Vendors have special interactions, while carbon mobs already generate visible messages!
 				visible_message(span_danger("[src] is hit by [AM]!"), \
 							span_userdanger("You're hit by [AM]!"))
@@ -280,13 +284,14 @@
 		return FALSE
 
 	grippedby(user)
+	update_incapacitated()
 
 //proc to upgrade a simple pull into a more aggressive grab.
 /mob/living/proc/grippedby(mob/living/user, instant = FALSE)
 	if(user.grab_state >= user.max_grab)
 		return
 	user.changeNext_move(CLICK_CD_GRABBING)
-	var/sound_to_play = 'sound/weapons/thudswoosh.ogg'
+	var/sound_to_play = 'sound/items/weapons/thudswoosh.ogg'
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.dna.species.grab_sound)
@@ -433,7 +438,7 @@
 	user.do_attack_animation(src, ATTACK_EFFECT_BITE)
 	if (HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) || prob(75))
 		log_combat(user, src, "attacked")
-		playsound(loc, 'sound/weapons/bite.ogg', 50, TRUE, -1)
+		playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
 		visible_message(span_danger("[user.name] bites [src]!"), \
 						span_userdanger("[user.name] bites you!"), span_hear("You hear a chomp!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("You bite [src]!"))
@@ -460,7 +465,7 @@
 			visible_message(span_danger("[L.name] bites [src]!"), \
 							span_userdanger("[L.name] bites you!"), span_hear("You hear a chomp!"), COMBAT_MESSAGE_RANGE, L)
 			to_chat(L, span_danger("You bite [src]!"))
-			playsound(loc, 'sound/weapons/bite.ogg', 50, TRUE, -1)
+			playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
 			return TRUE
 		else
 			visible_message(span_danger("[L.name]'s bite misses [src]!"), \
@@ -549,7 +554,7 @@
 	return 20
 
 /mob/living/narsie_act()
-	if(status_flags & GODMODE || QDELETED(src))
+	if(HAS_TRAIT(src, TRAIT_GODMODE) || QDELETED(src))
 		return
 
 	if(GLOB.cult_narsie && GLOB.cult_narsie.souls_needed[src])
@@ -557,7 +562,7 @@
 		GLOB.cult_narsie.souls += 1
 		if((GLOB.cult_narsie.souls == GLOB.cult_narsie.soul_goal) && (GLOB.cult_narsie.resolved == FALSE))
 			GLOB.cult_narsie.resolved = TRUE
-			sound_to_playing_players('sound/machines/alarm.ogg')
+			sound_to_playing_players('sound/announcer/alarm/nuke_alarm.ogg', 70)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cult_ending_helper), CULT_VICTORY_MASS_CONVERSION), 12 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ending_helper)), 27 SECONDS)
 	if(client)
@@ -668,10 +673,10 @@
 	var/shove_flags = target.get_shove_flags(src, weapon)
 	if(weapon)
 		do_attack_animation(target, used_item = weapon)
-		playsound(target, 'sound/effects/glassbash.ogg', 50, TRUE, -1)
+		playsound(target, 'sound/effects/glass/glassbash.ogg', 50, TRUE, -1)
 	else
 		do_attack_animation(target, ATTACK_EFFECT_DISARM)
-		playsound(target, 'sound/weapons/shove.ogg', 50, TRUE, -1)
+		playsound(target, 'sound/items/weapons/shove.ogg', 50, TRUE, -1)
 	if (ishuman(target) && isnull(weapon))
 		var/mob/living/carbon/human/human_target = target
 		human_target.w_uniform?.add_fingerprint(src)

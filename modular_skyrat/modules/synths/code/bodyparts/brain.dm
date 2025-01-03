@@ -1,7 +1,7 @@
 /obj/item/organ/internal/brain/synth
 	name = "compact positronic brain"
 	slot = ORGAN_SLOT_BRAIN
-	zone = BODY_ZONE_HEAD
+	zone = BODY_ZONE_CHEST
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
@@ -38,7 +38,7 @@
 			to_chat(owner, span_warning("Alert: Electromagnetic damage taken in central processing unit. Error Code: 401-YT"))
 			apply_organ_damage(SYNTH_ORGAN_LIGHT_EMP_DAMAGE, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM, required_organ_flag = ORGAN_ROBOTIC)
 
-/obj/item/organ/internal/brain/synth/apply_organ_damage(damage_amount, maximumm, required_organ_flag)
+/obj/item/organ/internal/brain/synth/apply_organ_damage(damage_amount, maximum = maxHealth, required_organ_flag = NONE)
 	. = ..()
 
 	if(owner && damage > 0 && (world.time - last_message_time) > SYNTH_BRAIN_DAMAGE_MESSAGE_INTERVAL)

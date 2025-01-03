@@ -271,14 +271,11 @@ const SpeciesPageInner = (props: {
           <Stack.Item>
             <Box height="calc(100vh - 170px)" overflowY="auto" pr={3}>
               {species.map(([speciesKey, species]) => {
-                // SKYRAT EDIT START - Veteran-only species
+                // BUBBER EDIT START - Species selction
                 let speciesPage = (
                   <Button
                     key={speciesKey}
                     onClick={() => {
-                      if (species.veteran_only && !data.is_veteran) {
-                        return;
-                      }
                       setSpecies(speciesKey);
                     }}
                     selected={
@@ -297,16 +294,9 @@ const SpeciesPageInner = (props: {
                     />
                   </Button>
                 );
-                if (species.veteran_only && !data.is_veteran) {
-                  let tooltipContent =
-                    species.name +
-                    ' - You need to be a veteran to select this race, apply today!';
-                  speciesPage = (
-                    <Tooltip content={tooltipContent}>{speciesPage}</Tooltip>
-                  );
-                }
+
                 return speciesPage;
-                // SKYRAT EDIT END
+                // BUBBER EDIT END
               })}
             </Box>
           </Stack.Item>
@@ -368,17 +358,7 @@ const SpeciesPageInner = (props: {
                     maxHeight="45vh"
                     mr={-1} /* SKYRAT EDIT END */
                   >
-                    {currentSpecies.lore.map((text, index) => (
-                      <Box key={index} maxWidth="100%">
-                        {text}
-                        {index !== currentSpecies.lore.length - 1 && (
-                          <>
-                            <br />
-                            <br />
-                          </>
-                        )}
-                      </Box>
-                    ))}
+                    {currentSpecies.desc}
                   </BlockQuote>
                 </Section>
               </Box>

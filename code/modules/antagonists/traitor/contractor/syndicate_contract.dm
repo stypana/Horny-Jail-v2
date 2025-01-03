@@ -102,14 +102,31 @@
 		if(traitor_data.uplink_handler.contractor_hub.current_contract == src)
 			traitor_data.uplink_handler.contractor_hub.current_contract = null
 
-	for(var/obj/item/person_contents as anything in person_sent.gather_belongings())
+	for(var/obj/item/person_contents as anything in person_sent.gather_belongings(FALSE, FALSE))
 		if(ishuman(person_sent))
 			var/mob/living/carbon/human/human_sent = person_sent
 			if(person_contents == human_sent.w_uniform)
 				continue //So all they're left with are shoes and uniform.
 			if(person_contents == human_sent.shoes)
 				continue
-		person_sent.transferItemToLoc(person_contents)
+
+			// SPLURT EDIT - Extra inventory - and underwear
+			if(person_contents == human_sent.w_underwear)
+				continue
+			if(person_contents == human_sent.w_socks)
+				continue
+			if(person_contents == human_sent.w_shirt)
+				continue
+			if(person_contents == human_sent.w_bra)
+				continue
+			if(person_contents == human_sent.wrists) // once wrists actually have a danger item, you have my blessing to remove
+				continue
+			// SPLURT EDIT END
+
+		var/unequipped = person_sent.temporarilyRemoveItemFromInventory(person_contents)
+		if (!unequipped)
+			continue
+		person_contents.moveToNullspace()
 		victim_belongings.Add(WEAKREF(person_contents))
 
 	var/obj/structure/closet/supplypod/extractionpod/pod = source
@@ -242,6 +259,19 @@
 				continue
 			if(belonging == human_victim.shoes)
 				continue
+
+			// SPLURT EDIT - Extra inventory - and underwear
+			if(belonging == human_victim.w_underwear)
+				continue
+			if(belonging == human_victim.w_socks)
+				continue
+			if(belonging == human_victim.w_shirt)
+				continue
+			if(belonging == human_victim.w_bra)
+				continue
+			if(belonging == human_victim.wrists) // once wrists actually have a danger item, you have my blessing to remove
+				continue
+			// SPLURT EDIT END
 		belonging.forceMove(dropoff_location)
 
 	for(var/obj/item/item in victim_belongings)

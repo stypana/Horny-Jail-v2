@@ -27,7 +27,7 @@
 			return belt
 		if(ITEM_SLOT_ID)
 			return wear_id
-		if(ITEM_SLOT_EARS)
+		if(ITEM_SLOT_EARS_LEFT) // SPLURT EDIT - Extra inventory
 			return ears
 		if(ITEM_SLOT_EYES)
 			return glasses
@@ -45,23 +45,30 @@
 			return r_store
 		if(ITEM_SLOT_SUITSTORE)
 			return s_store
+
 	return ..()
 
 /mob/living/carbon/human/get_slot_by_item(obj/item/looking_for)
 	if(looking_for == belt)
 		return ITEM_SLOT_BELT
 
+	if(belt && (looking_for in belt))
+		return ITEM_SLOT_BELTPACK
+
 	if(looking_for == wear_id)
 		return ITEM_SLOT_ID
 
 	if(looking_for == ears)
-		return ITEM_SLOT_EARS
+		return ITEM_SLOT_EARS_LEFT // SPLURT EDIT - Extra inventory
 
 	if(looking_for == glasses)
 		return ITEM_SLOT_EYES
 
 	if(looking_for == gloves)
 		return ITEM_SLOT_GLOVES
+
+	if(looking_for == wrists)
+		return ITEM_SLOT_WRISTS
 
 	if(looking_for == head)
 		return ITEM_SLOT_HEAD
@@ -94,6 +101,7 @@
 		legcuffed,
 		wear_suit,
 		gloves,
+		wrists,
 		shoes,
 		belt,
 		wear_id,
@@ -108,7 +116,7 @@
 		wear_mask,
 		wear_neck,
 		glasses,
-		ears,
+		ears
 		)
 
 /mob/living/carbon/human/proc/get_storage_slots()
@@ -146,11 +154,18 @@
 			wear_id = equipping
 			sec_hud_set_ID()
 			update_worn_id()
-		if(ITEM_SLOT_EARS)
+		if(ITEM_SLOT_EARS_LEFT) // SPLURT EDIT - Extra inventory
 			if(ears)
 				return
 			ears = equipping
 			update_worn_ears()
+		// SPLURT EDIT - Extra inventory
+		if(ITEM_SLOT_EARS_RIGHT)
+			if(ears_extra)
+				return
+			ears_extra = equipping
+			update_worn_ears_extra()
+		//
 		if(ITEM_SLOT_EYES)
 			if(glasses)
 				return
@@ -170,6 +185,13 @@
 				update_mob_action_buttons()
 			//SKYRAT EDIT ADDITION END
 			update_worn_gloves()
+		// SPLURT EDIT - Extra inventory
+		if(ITEM_SLOT_WRISTS)
+			if(wrists)
+				return
+			wrists = equipping
+			update_worn_wrists()
+		//
 		if(ITEM_SLOT_FEET)
 			if(shoes)
 				return
@@ -192,6 +214,28 @@
 			w_uniform = equipping
 			update_suit_sensors()
 			update_worn_undersuit()
+		// SPLURT EDIT - Extra inventory
+		if(ITEM_SLOT_UNDERWEAR)
+			if(w_underwear)
+				return
+			w_underwear = equipping
+			update_worn_underwear()
+		if(ITEM_SLOT_SHIRT)
+			if(w_shirt)
+				return
+			w_shirt = equipping
+			update_worn_shirt()
+		if(ITEM_SLOT_BRA)
+			if(w_bra)
+				return
+			w_bra = equipping
+			update_worn_bra()
+		if(ITEM_SLOT_SOCKS)
+			if(w_socks)
+				return
+			w_socks = equipping
+			update_worn_socks()
+		//
 		if(ITEM_SLOT_LPOCKET)
 			l_store = equipping
 			update_pockets()
@@ -203,13 +247,16 @@
 				return
 			s_store = equipping
 			update_suit_storage()
-
+		if(ITEM_SLOT_BELTPACK)
+			if(!belt || !belt.atom_storage?.attempt_insert(equipping, src, override = TRUE, force = indirect_action ? STORAGE_SOFT_LOCKED : STORAGE_NOT_LOCKED))
+				not_handled = TRUE
 		else
 			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
 	if(!not_handled)
 		has_equipped(equipping, slot, initial)
+		hud_used?.update_locked_slots()
 
 		// Send a signal for when we equip an item that used to cover our feet/shoes. Used for bloody feet
 		if(equipping.body_parts_covered & FEET || (equipping.flags_inv | equipping.transparent_protection) & HIDESHOES)
@@ -249,6 +296,28 @@
 				dropItemToGround(wear_id)
 			if(belt && !can_equip(belt, ITEM_SLOT_BELT, TRUE, ignore_equipped = TRUE))
 				dropItemToGround(belt)
+	// SPLURT EDIT - Extra inventory
+	else if(I == w_underwear)
+		w_underwear = null
+		if(!QDELETED(src))
+			update_worn_underwear()
+	else if(I == w_socks)
+		w_socks = null
+		if(!QDELETED(src))
+			update_worn_socks()
+	else if(I == w_shirt)
+		w_shirt = null
+		if(!QDELETED(src))
+			update_worn_shirt()
+	else if(I == w_bra)
+		w_bra = null
+		if(!QDELETED(src))
+			update_worn_bra()
+	else if(I == wrists)
+		wrists = null
+		if(!QDELETED(src))
+			update_worn_wrists()
+	//
 	else if(I == gloves)
 		//SKYRAT EDIT ADDITION - ERP UPDATE
 		if(gloves.breakouttime) //when unequipping a straightjacket
@@ -270,6 +339,12 @@
 		ears = null
 		if(!QDELETED(src))
 			update_worn_ears()
+	// SPLURT EDIT - Extra inventory
+	else if(I == ears_extra)
+		ears_extra = null
+		if(!QDELETED(src))
+			update_worn_ears_extra()
+	//
 	else if(I == shoes)
 		shoes = null
 		if(!QDELETED(src))
@@ -307,6 +382,7 @@
 
 	update_equipment_speed_mods()
 	update_obscured_slots(I.flags_inv)
+	hud_used?.update_locked_slots()
 
 /mob/living/carbon/human/toggle_internals(obj/item/tank, is_external = FALSE)
 	// Just close the tank if it's the one the mob already has open.
@@ -381,7 +457,7 @@
 /// take the most recent item out of a slot or place held item in a slot
 
 /mob/living/carbon/human/proc/smart_equip_targeted(slot_type = ITEM_SLOT_BELT, slot_item_name = "belt")
-	if(incapacitated())
+	if(incapacitated)
 		return
 	var/obj/item/thing = get_active_held_item()
 	var/obj/item/equipped_item = get_item_by_slot(slot_type)

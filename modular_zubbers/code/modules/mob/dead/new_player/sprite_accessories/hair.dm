@@ -23,3 +23,46 @@
 	name = "Nose Lick"
 	icon = 'modular_zubbers/icons/customization/facial_hair.dmi'
 	icon_state = "noselick"
+
+/datum/sprite_accessory/facial_hair/fullstub
+	name = "Full Stub"
+	icon = 'modular_zubbers/icons/customization/facial_hair.dmi'
+	icon_state = "facial_fullstub_s"
+	natural_spawn = FALSE //Only works with the full face snout.
+
+/datum/sprite_accessory/hair/twistedlong
+	icon = 'modular_zubbers/icons/customization/hair.dmi'
+	name = "Twisted Long"
+	icon_state = "hair_twistedlong"
+
+/datum/sprite_accessory/hair/twisted
+	icon = 'modular_zubbers/icons/customization/hair.dmi'
+	name = "Twisted"
+	icon_state = "hair_twisted"
+
+/datum/sprite_accessory/hair/wicked
+	icon = 'modular_zubbers/icons/customization/hair.dmi'
+	name = "Wicked"
+	icon_state = "hair_wicked"
+
+//-->Inari sprites ported from Coyote Bayou
+/datum/sprite_accessory/hair/inari
+	icon = 'modular_zubbers/icons/customization/hair.dmi'
+	name = "Inari"
+	icon_state = "hair_inari"
+
+// short_side and ponytails_berly sprites by Cepha
+/datum/sprite_accessory/hair/short_side
+	icon = 'modular_zubbers/icons/customization/hair.dmi'
+	name = "Short (Side)"
+	icon_state = "hair_short_side"
+
+/datum/sprite_accessory/hair/ponytails_berly
+	icon = 'modular_zubbers/icons/customization/hair.dmi'
+	name = "Ponytails (Berly)"
+	icon_state = "hair_tails_berly"
+
+/datum/sprite_accessory/hair/edgerunner
+    icon = 'modular_zubbers/icons/customization/hair_big.dmi'
+    name = "Edgerunner"
+    icon_state = "edgerunner"

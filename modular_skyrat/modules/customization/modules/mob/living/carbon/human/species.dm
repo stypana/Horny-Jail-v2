@@ -21,8 +21,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/markings_alpha = 255
 	///If a species can always be picked in prefs for the purposes of customizing it for ghost roles or events
 	var/always_customizable = FALSE
-	/// If a species requires the player to be a Veteran to be able to pick it.
-	var/veteran_only = FALSE
 	///Flavor text of the species displayed on character creation screeen
 	var/flavor_text = "No description."
 	///Path to BODYSHAPE_CUSTOM species worn icons. An assoc list of ITEM_SLOT_X => /icon
@@ -139,6 +137,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += eye_organ.generate_body_overlay(species_human)
 
 	//Underwear, Undershirts & Socks
+	//SPLURT EDIT REMOVAL - Extra Inventory - Moved to modular
+	/*
 	if(!HAS_TRAIT(species_human, TRAIT_NO_UNDERWEAR))
 		if(species_human.underwear && !(species_human.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
 			var/datum/sprite_accessory/underwear/underwear = SSaccessories.underwear_list[species_human.underwear]
@@ -191,6 +191,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				if(!socks.use_static)
 					socks_overlay.color = species_human.socks_color
 				standing += socks_overlay
+	*/
+	//SPLURT EDIT END
+	//SPLURT ADDITION START - Nails
+	if(species_human.nail_style)
+		var/mutable_appearance/nail_overlay = mutable_appearance('modular_zzplurt/icons/mobs/nails.dmi', "nails", -BODY_LAYER)
+		nail_overlay.color = species_human.nail_color
+		standing += nail_overlay
+	//SPLURT ADDITION END - Nails
 
 	if(standing.len)
 		species_human.overlays_standing[BODY_LAYER] = standing

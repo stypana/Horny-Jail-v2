@@ -2,7 +2,7 @@
 	max_slots = 2
 	max_specific_storage = WEIGHT_CLASS_SMALL
 	max_total_storage = 50
-	rustle_sound = FALSE
+	do_rustle = FALSE
 
 /datum/storage/pockets/attempt_insert(obj/item/to_insert, mob/user, override, force, messages)
 	. = ..()
@@ -184,6 +184,7 @@
 		/obj/item/lipstick,
 		/obj/item/flashlight/pen,
 		/obj/item/lipstick,
+		/obj/item/reagent_containers/cup/rag, //BUBBER EDIT ADDITION: A POCKET PROTECTOR CAN CARRY A RAG
 	))
 
 /datum/storage/pockets/helmet

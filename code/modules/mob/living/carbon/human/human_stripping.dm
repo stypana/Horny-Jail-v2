@@ -21,6 +21,15 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	/datum/strippable_item/hand/right,
 	/datum/strippable_item/mob_item_slot/handcuffs,
 	/datum/strippable_item/mob_item_slot/legcuffs,
+
+	// SPLURT EDIT - Extra inventory
+	/datum/strippable_item/mob_item_slot/ears_extra,
+	/datum/strippable_item/mob_item_slot/wrists,
+	/datum/strippable_item/mob_item_slot/socks,
+	/datum/strippable_item/mob_item_slot/underwear,
+	/datum/strippable_item/mob_item_slot/undershirt,
+	/datum/strippable_item/mob_item_slot/bra,
+	// SPLURT EDIT END
 )))
 
 /mob/living/carbon/human/proc/should_strip(mob/user)
@@ -39,7 +48,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/ears
 	key = STRIPPABLE_ITEM_EARS
-	item_slot = ITEM_SLOT_EARS
+	item_slot = ITEM_SLOT_EARS_LEFT //SPLURT EDIT - Extra inventory
 
 /datum/strippable_item/mob_item_slot/jumpsuit
 	key = STRIPPABLE_ITEM_JUMPSUIT
@@ -218,7 +227,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 	to_chat(user, span_notice("You try to empty [source]'s [pocket_side] pocket."))
 
-	user.log_message("is pickpocketing [key_name(source)] of [item] ([pocket_side])", LOG_ATTACK, color="red", redacted_copy = "is pickpocketing [source] of [item] ([pocket_side])") // BUBBER EDIT - PUBLIC LOGS
+	user.log_message("is pickpocketing [key_name(source)] of [item] ([pocket_side])", LOG_ATTACK, color="red")
 	source.log_message("is being pickpocketed of [item] by [key_name(user)] ([pocket_side])", LOG_VICTIM, color="orange", log_globally=FALSE)
 	item.add_fingerprint(src)
 

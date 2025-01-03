@@ -32,7 +32,7 @@
 /// Glasses slot
 #define ITEM_SLOT_EYES (1<<3)
 /// Ear slot (radios, earmuffs)
-#define ITEM_SLOT_EARS (1<<4)
+#define ITEM_SLOT_EARS_LEFT (1<<4) //SPLURT EDIT
 /// Mask slot
 #define ITEM_SLOT_MASK (1<<5)
 /// Head slot (helmets, hats, etc.)
@@ -63,9 +63,11 @@
 #define ITEM_SLOT_HANDCUFFED (1<<18)
 /// Legcuff slot (bolas, beartraps)
 #define ITEM_SLOT_LEGCUFFED (1<<19)
+/// Inside of a character's BELT.........
+#define ITEM_SLOT_BELTPACK (1<<20)
 
 /// Total amount of slots
-#define SLOTS_AMT 20 // Keep this up to date!
+#define SLOTS_AMT 26 // Keep this up to date!
 
 ///Inventory slots that can be blacklisted by a species from being equipped into
 DEFINE_BITFIELD(no_equip_flags, list(
@@ -73,7 +75,7 @@ DEFINE_BITFIELD(no_equip_flags, list(
 	"JUMPSUIT" = ITEM_SLOT_ICLOTHING,
 	"GLOVES" = ITEM_SLOT_GLOVES,
 	"GLASSES" = ITEM_SLOT_EYES,
-	"EARPIECES" = ITEM_SLOT_EARS,
+	"EARPIECES" = ITEM_SLOT_EARS_LEFT,
 	"MASKS" = ITEM_SLOT_MASK,
 	"HATS" = ITEM_SLOT_HEAD,
 	"SHOES" = ITEM_SLOT_FEET,
@@ -83,6 +85,10 @@ DEFINE_BITFIELD(no_equip_flags, list(
 
 //SLOT GROUP HELPERS
 #define ITEM_SLOT_POCKETS (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET)
+
+// SPLURT EDIT - EARS HELPER
+#define ITEM_SLOT_EARS (ITEM_SLOT_EARS_LEFT|ITEM_SLOT_EARS_RIGHT)
+
 /// Slots that are physically on you
 #define ITEM_SLOT_ON_BODY (ITEM_SLOT_ICLOTHING | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_EYES | ITEM_SLOT_EARS | \
 	ITEM_SLOT_MASK | ITEM_SLOT_HEAD | ITEM_SLOT_FEET | ITEM_SLOT_ID | ITEM_SLOT_BELT | ITEM_SLOT_BACK | ITEM_SLOT_NECK )
@@ -108,19 +114,28 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define HIDEMUTWINGS (1<<13)
 ///hides belts and riggings
 #define HIDEBELT (1<<14)
+///hides antennae
+#define HIDEANTENNAE (1<<15)
 
 //SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING -
 /// Manually set this on items you want anthro ears to show on!
-#define SHOWSPRITEEARS (1<<14)
+#define SHOWSPRITEEARS (1<<16)
 /// Does this sprite hide the tail?
-#define HIDETAIL (1<<15)
+#define HIDETAIL (1<<17)
 /// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
-#define HIDESPINE (1<<16)
+#define HIDESPINE (1<<18)
 /// Does this sprite hide devious devices?
-#define HIDESEXTOY (1<<17)
+#define HIDESEXTOY (1<<19)
 /// If this has our taur variant, do we hide our taur part?
-#define HIDETAUR (1<<18)
+#define HIDETAUR (1<<20)
 //SKYRAT EDIT ADDITION END
+
+//SPLURT EDIT
+/// hides underwear, socks and shirt
+#define HIDEUNDERWEAR	(1<<19)
+/// hides wrists
+#define HIDEWRISTS		(1<<20)
+// SPLURT EDIT END
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
@@ -165,14 +180,15 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define DIGITIGRADE_STYLE 2
 
 //Flags (actual flags, fucker ^) for /obj/item/var/supports_variations_flags
-///No alternative sprites based on bodytype
+/// No alternative sprites or handling based on bodytype
 #define CLOTHING_NO_VARIATION (1<<0)
-///Has a sprite for digitigrade legs specifically.
+/// Has a sprite for digitigrade legs specifically.
 #define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
-///The sprite works fine for digitigrade legs as-is.
+/// The sprite works fine for digitigrade legs as-is.
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
-///has a sprite for monkeys
-#define CLOTHING_MONKEY_VARIATION (1<<3)
+/// Auto-generates the leg portion of the sprite with GAGS
+/// Suggested that you set [/obj/item/var/digitigrade_greyscale_config_worn] when using this flag
+#define CLOTHING_DIGITIGRADE_MASK (1<<3)
 // SKYRAT EDIT ADDITION START
 /// The sprite works fine for snouts.
 #define CLOTHING_SNOUTED_VARIATION (1<<4)
@@ -187,6 +203,8 @@ DEFINE_BITFIELD(no_equip_flags, list(
 /// The sprite works fine for vox snouts as is.
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
 // SKYRAT EDIT ADDITION END
+/// All variation flags which render "correctly" on a digitigrade leg setup
+#define DIGITIGRADE_VARIATIONS (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON|CLOTHING_DIGITIGRADE_MASK)
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)

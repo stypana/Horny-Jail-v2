@@ -1,4 +1,4 @@
-## SPLURT Station
+## SPLURT Station (Bubberstation Downstream)
 
 [![CI Suite](https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/actions/workflows/ci_suite.yml/badge.svg)](https://github.com/SPLURT-Station/S.P.L.U.R.T-tg/actions/workflows/ci_suite.yml)
 
@@ -14,7 +14,7 @@
 | Codedocs                  | [https://skyrat-ss13.github.io/Skyrat-tg/](https://skyrat-ss13.github.io/Skyrat-tg/) |
 | S.P.L.U.R.T Station Discord     | [https://discord.gg/wynHVMzHzC](https://discord.gg/wynHVMzHzC) |
 
-This is S.P.L.U.R.T Station's downstream fork of bubberstation, which is in turn a fork of skyrat, which is in turn a fork of tgstation.
+This is S.P.L.U.R.T Station's downstream fork of bubberstation, which is in turn a fork of TG (formerly skyrat).
 
 **Please note that this repository contains sexually explicit content and is not suitable for those under the age of 18.**
 
@@ -23,13 +23,12 @@ Space Station 13 is a paranoia-laden round-based roleplaying game set against th
 ## Contribution Rules and Guidelines
 
 **1. Do Not Be A Dick**
-- The S.P.L.U.R.T. main repository is run by and contributed by volunteers. You are not entitled to our time and energy. We reserve the right to permanently remove anyone who does not show both our contributor's and maintainer's common decency.
+- The S.P.L.U.R.T. main repository is run by and contributed by volunteers and hobbiests. Please be considerate with the people who help maintain our codebase. We reserve the right to permanently remove anyone who does not show both our contributors and maintainers common decency.
+- S.P.L.U.R.T. does not operate a strict "goodboy" points system or have defined goals, and anyone is welcome to contribute to this project. That being said, the maintainers of this project are free to curate comments as seen fit to uphold a respectful environment.
 
 **2. Modularization Standards Will be Upheld**
 - This codebase is a active downstream to Bubberstation with frequent upstream merges.
-- Modularization must be strictly upheld for code stability. (Ask a maintainer if you have any questions!)
-- Basically, **try to edit Modular Splurt files first** Then ``//SPLURT EDIT`` comments on any core files (TG, Skyrat, or Bubberstation) for trackability.
-- This is a place for when more concrete guidelines are created.
+- Modularization is key to attain code stability, please read our [modularization guide](./modular_zzplurt/readme.md) for more information, or ask any of our maintainers in our discord.
 
 **3. The Licensing is Non-negotiable**
 - You are free to take, redistribute, modify, and readapt any code or commit found on this repository.
@@ -42,9 +41,13 @@ Space Station 13 is a paranoia-laden round-based roleplaying game set against th
 - You are entitled to credit yourself with comments and you are entitled to waive the attribution requirement choosing not to be identified as the creator if you wish.
 - If you do not like how your assets were modified or used, it is required that the other person [remove the attribution information upon request](https://wiki.creativecommons.org/wiki/License_Versions#Licensors_may_request_removal_of_attribution).
 - Modifications or adaptions must disclose the source, the author, and [any changes you've made](https://wiki.creativecommons.org/wiki/License_Versions#Modifications_and_adaptations_must_be_indicated).
-- Goonstation code is incompatible with this codebase and will not be accepted.
+- Goonstation code is incompatible with this codebase due to its licensing.
 
 *Credit: [Goonstation contribution guidelines](https://hackmd.io/@goonstation/docs/%2F%40goonstation%2Fcontribute#What-if-I-change-my-mind-about-my-contributions-being-published)*
+
+## Modularization and codedocs note
+
+As of our recent split from Skyrat, a lot of codedocs/modularization guides need to be rewritten. Until it is done expect some wait time with larger refactors. You are also free to edit any Skyrat files
 
 ## Important note - TEST YOUR PULL REQUESTS
 
@@ -56,6 +59,7 @@ You are responsible for the testing of your content. You should not mark a pull 
 
 [Running on the server](.github/guides/RUNNING_A_SERVER.md)
 
+[Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 [Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 
 ## Compilation
@@ -80,6 +84,7 @@ All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 a
 
 See LICENSE and GPLv3.txt for more details.
 
+The TGS DMAPI is licensed as a subproject under the MIT license.
 The TGS DMAPI is licensed as a subproject under the MIT license.
 
 See the footer of [code/__DEFINES/tgs.dm](./code/__DEFINES/tgs.dm) and [code/modules/tgs/LICENSE](./code/modules/tgs/LICENSE) for the MIT license.

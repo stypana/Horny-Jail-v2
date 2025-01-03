@@ -36,6 +36,7 @@
 /mob/living/carbon/human/proc/is_head_uncovered()
 	return (head?.body_parts_covered & HEAD)
 
+/* SPLURT EDIT REMOVAL - Interactions - Refractored in modular
 /// Returns true if the human has an accessible penis for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_PENIS)
@@ -117,6 +118,7 @@
 			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
 		else
 			return TRUE
+*/ //SPLURT EDIT END
 
 /// Returns true if the human has a accessible feet for the parameter, returning the number of feet the human has if they do. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_arms(required_state = REQUIRE_GENITAL_ANY)
@@ -187,9 +189,9 @@
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
 		if(REQUIRE_GENITAL_EXPOSED)
-			return !get_item_by_slot(ITEM_SLOT_EARS)
+			return !get_item_by_slot(ITEM_SLOT_EARS_LEFT) // SPLURT EDIT - Extra Inventory
 		if(REQUIRE_GENITAL_UNEXPOSED)
-			return get_item_by_slot(ITEM_SLOT_EARS)
+			return get_item_by_slot(ITEM_SLOT_EARS_LEFT) // SPLURT EDIT - Extra Inventory
 		else
 			return TRUE
 

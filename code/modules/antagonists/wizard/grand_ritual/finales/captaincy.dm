@@ -9,7 +9,7 @@
 	message_admins("[key_name(invoker)] has replaced the Captain")
 	var/list/former_captains = list()
 	var/list/other_crew = list()
-	SEND_SOUND(world, sound('sound/magic/timeparadox2.ogg'))
+	SEND_SOUND(world, sound('sound/effects/magic/timeparadox2.ogg'))
 
 	for (var/mob/living/carbon/human/crewmate as anything in GLOB.human_list)
 		if (!crewmate.mind)
@@ -76,7 +76,7 @@
 	// Won't be needing these
 	var/obj/id = invoker.get_item_by_slot(ITEM_SLOT_ID)
 	QDEL_NULL(id)
-	var/obj/headset = invoker.get_item_by_slot(ITEM_SLOT_EARS)
+	var/obj/headset = invoker.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || invoker.get_item_by_slot(ITEM_SLOT_EARS_RIGHT) //SPLURT EDIT - Extra Inventory
 	QDEL_NULL(headset)
 	// We're about to take off your pants so those are going to fall out
 	var/obj/item/pocket_L = invoker.get_item_by_slot(ITEM_SLOT_LPOCKET)

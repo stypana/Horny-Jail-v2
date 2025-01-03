@@ -487,16 +487,23 @@
 	var/slot_priority = W.slot_equipment_priority
 
 	if(!slot_priority)
+		// SPLURT EDIT - Extra inventory
 		slot_priority = list( \
 			ITEM_SLOT_BACK, ITEM_SLOT_ID,\
+			ITEM_SLOT_UNDERWEAR,\
+			ITEM_SLOT_SOCKS,\
+			ITEM_SLOT_SHIRT,\
+			ITEM_SLOT_BRA,\
 			ITEM_SLOT_ICLOTHING, ITEM_SLOT_OCLOTHING,\
 			ITEM_SLOT_MASK, ITEM_SLOT_HEAD, ITEM_SLOT_NECK,\
-			ITEM_SLOT_FEET, ITEM_SLOT_GLOVES,\
-			ITEM_SLOT_EARS, ITEM_SLOT_EYES,\
+			ITEM_SLOT_FEET, ITEM_SLOT_WRISTS, ITEM_SLOT_GLOVES,\
+			ITEM_SLOT_EARS_LEFT, ITEM_SLOT_EARS_RIGHT, \
+			ITEM_SLOT_EYES,\
 			ITEM_SLOT_BELT, ITEM_SLOT_SUITSTORE,\
 			ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,\
 			ITEM_SLOT_DEX_STORAGE\
 		)
+		//
 
 	// SKYRAT EDIT ADDITION START - CUSTOMIZATION
 	if (blacklist)
@@ -504,7 +511,7 @@
 	// SKYRAT EDIT ADDITION END
 
 	for(var/slot in slot_priority)
-		if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, initial = initial, indirect_action = indirect_action)) // SKYRAT EDIT CHANGE - ORIGINAL: if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action))
+		if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action, initial = initial)) // SKYRAT EDIT CHANGE - ORIGINAL: if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action))
 			return TRUE
 
 	if(qdel_on_fail)
@@ -575,8 +582,6 @@
 /mob/proc/getBeltSlot()
 	return ITEM_SLOT_BELT
 
-
-
 //Inventory.dm is -kind of- an ok place for this I guess
 
 //This is NOT for dismemberment, as the user still technically has 2 "hands"
@@ -593,19 +598,19 @@
 		hud_used.build_hand_slots()
 
 //GetAllContents that is reasonable and not stupid
-/mob/living/proc/get_all_gear()
-	var/list/processing_list = get_equipped_items(INCLUDE_POCKETS | INCLUDE_ACCESSORIES | INCLUDE_HELD)
+/mob/living/proc/get_all_gear(accessories = TRUE, recursive = TRUE)
+	var/list/processing_list = get_equipped_items(INCLUDE_POCKETS | INCLUDE_HELD | (accessories ? INCLUDE_ACCESSORIES : NONE))
 	list_clear_nulls(processing_list) // handles empty hands
 	var/i = 0
 	while(i < length(processing_list))
 		var/atom/A = processing_list[++i]
-		if(A.atom_storage)
+		if(A.atom_storage && recursive)
 			processing_list += A.atom_storage.return_inv()
 	return processing_list
 
 /// Returns a list of things that the provided mob has, including any storage-capable implants.
-/mob/living/proc/gather_belongings()
-	var/list/belongings = get_all_gear()
+/mob/living/proc/gather_belongings(accessories = TRUE, recursive = TRUE)
+	var/list/belongings = get_all_gear(accessories, recursive)
 	for (var/obj/item/implant/storage/internal_bag in implants)
 		belongings += internal_bag.contents
 	return belongings

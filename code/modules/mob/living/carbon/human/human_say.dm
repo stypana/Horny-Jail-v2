@@ -72,24 +72,28 @@
 	var/area/our_area = get_area(src)
 	if(our_area.area_flags & BINARY_JAMMING)
 		return FALSE
-	return dongle.translate_binary
+	return (dongle.special_channels & RADIO_SPECIAL_BINARY)
 
 /mob/living/carbon/human/radio(message, list/message_mods = list(), list/spans, language) //Poly has a copy of this, lazy bastard
 	. = ..()
 	if(.)
 		return
 
+	//SPLURT EDIT - Extra inventory
 	if(message_mods[MODE_HEADSET])
-		if(ears)
-			ears.talk_into(src, message, , spans, language, message_mods)
-		return ITALICS | REDUCE_RANGE
+		if(ears && ears.talk_into(src, message, , spans, language, message_mods))
+			return ITALICS | REDUCE_RANGE
+		if(ears_extra && ears_extra.talk_into(src, message, , spans, language, message_mods))
+			return ITALICS | REDUCE_RANGE
 	else if(message_mods[RADIO_EXTENSION] == MODE_DEPARTMENT)
-		if(ears)
-			ears.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
-		return ITALICS | REDUCE_RANGE
+		if(ears && ears.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods))
+			return ITALICS | REDUCE_RANGE
+		if(ears_extra && ears_extra.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods))
+			return ITALICS | REDUCE_RANGE
 	else if(GLOB.radiochannels[message_mods[RADIO_EXTENSION]])
-		if(ears)
-			ears.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
+		if(ears && ears.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods))
+			return ITALICS | REDUCE_RANGE
+		if(ears_extra && ears_extra.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods))
 			return ITALICS | REDUCE_RANGE
 
 	return FALSE

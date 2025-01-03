@@ -32,6 +32,38 @@
 		"ci-toolset-alien",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+/datum/techweb_node/android_chassis
+	id = TECHWEB_NODE_ANDROID_CHASSIS
+	starting_node = TRUE
+	display_name = "Android Technology"
+	description = "Shiny parts for your shiny friends!"
+	prereq_ids = list(TECHWEB_NODE_ROBOTICS)
+	design_ids = list(
+		"synth_head",
+		"synth_chest",
+		"synth_l_arm",
+		"synth_r_arm",
+		"synth_l_leg",
+		"synth_r_leg",
+		"synth_l_d_leg",
+		"synth_r_d_leg",
+	)
+
+/datum/techweb_node/android_organs
+	id = TECHWEB_NODE_ANDROID_ORGANS
+	starting_node = TRUE
+	display_name = "Android Organs"
+	description = "Internal Mechanisms for Synthetics and IPC's."
+	prereq_ids = list(TECHWEB_NODE_ROBOTICS)
+	design_ids = list(
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
+	)
 
 // MODULAR ADDITIONS AND REMOVALS
 
@@ -80,18 +112,6 @@
 		"hospital_gown",
 		"anesthetic_machine",
 		"smartdartgun",
-	)
-	return ..()
-
-/datum/techweb_node/augmentation/New()
-	design_ids += list(
-		"synth_eyes",
-		"synth_tongue",
-		"synth_liver",
-		"synth_lungs",
-		"synth_stomach",
-		"synth_ears",
-		"synth_heart",
 	)
 	return ..()
 
@@ -172,6 +192,12 @@
 	)
 	return ..()
 
+/datum/techweb_node/chem_synthesis/New()
+	design_ids += list(
+		"plumbing_eng",
+	)
+	return ..()
+
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
 /datum/techweb_node/cyber/cyber_organs_adv/New()
 	design_ids -= list(
@@ -198,17 +224,6 @@
 
 /////////////////////////weaponry tech/////////////////////////
 
-/datum/techweb_node/basic_arms/New()
-	design_ids += list(
-		"ammoworkbench_disk_lethal",
-	)
-	return ..()
-
-/datum/techweb_node/riot_supression/New()
-	design_ids += list(
-		"ammo_workbench",
-	)
-	return ..()
 
 /datum/techweb_node/electric_weapons/New()
 	design_ids += list(
@@ -238,12 +253,6 @@
 /datum/techweb_node/exp_tools/New()
 	design_ids += list(
 		"multi_cell_charger",
-	)
-	return ..()
-
-/datum/techweb_node/plumbing/New()
-	design_ids += list(
-		"plumbing_eng",
 	)
 	return ..()
 

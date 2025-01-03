@@ -15,7 +15,7 @@
 //Blood levels
 #define BLOOD_VOLUME_MAX_LETHAL 2150
 #define BLOOD_VOLUME_EXCESS 2100
-#define BLOOD_VOLUME_MAXIMUM 1000 // SKYRAT EDIT - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL VALUE: 2000
+#define BLOOD_VOLUME_MAXIMUM 2000
 #define BLOOD_VOLUME_SLIME_SPLIT 1120
 #define BLOOD_VOLUME_NORMAL 560
 #define BLOOD_VOLUME_SAFE (BLOOD_VOLUME_NORMAL * (1 - 0.15)) // Latter number is percentage of blood lost, for readability!
@@ -43,6 +43,10 @@
 #define VENTCRAWLER_NONE 0
 #define VENTCRAWLER_NUDE 1
 #define VENTCRAWLER_ALWAYS 2
+
+// Flags for the mob_flags var on /mob
+/// May override the names used in screentips of OTHER OBJECTS hovered over.
+#define MOB_HAS_SCREENTIPS_NAME_OVERRIDE (1 << 0)
 
 //Mob bio-types flags
 ///The mob is organic, can heal from medical sutures.
@@ -318,7 +322,7 @@
 
 #define BRUTE_DAMAGE_REQUIRED_TO_STOP_CRYSTALIZATION 30
 
-#define CRYSTALIZE_STAGE_ENGULFING 100 //Cant use second defines
+#define CRYSTALIZE_STAGE_ENGULFING 100 //Can't use second defines
 #define CRYSTALIZE_STAGE_ENCROACHING 300 //In switches
 #define CRYSTALIZE_STAGE_SMALL 600 //Because they're not static
 
@@ -526,7 +530,7 @@
 #define WABBAJACK_HUMAN "humanoid"
 #define WABBAJACK_ANIMAL "animal"
 
-// Reasons a defibrilation might fail
+// Reasons a defibrillation might fail
 #define DEFIB_POSSIBLE (1<<0)
 #define DEFIB_FAIL_SUICIDE (1<<1)
 #define DEFIB_FAIL_HUSK (1<<2)
@@ -691,48 +695,58 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 41 // SKYRAT EDIT CHANGE - ORIGINAL: 35
+#define TOTAL_LAYERS 47 // SKYRAT EDIT CHANGE - ORIGINAL: 35
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 41 // SKYRAT EDIT CHANGE - ORIGINAL: 35
+#define MUTATIONS_LAYER 47 // SKYRAT EDIT CHANGE - ORIGINAL: 35
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 40 // SKYRAT EDIT CHANGE - ORIGINAL: 34
+#define BODY_BEHIND_LAYER 46 // SKYRAT EDIT CHANGE - ORIGINAL: 34
 /// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
-#define BODYPARTS_LOW_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
+#define BODYPARTS_LOW_LAYER 45 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
-#define BODYPARTS_LAYER 38 // SKYRAT EDIT CHANGE - ORIGINAL: 32
+#define BODYPARTS_LAYER 44 // SKYRAT EDIT CHANGE - ORIGINAL: 32
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 37 // SKYRAT EDIT CHANGE - ORIGINAL: 31
+#define BODY_ADJ_LAYER 43 // SKYRAT EDIT CHANGE - ORIGINAL: 31
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 36 // SKYRAT EDIT CHANGE - ORIGINAL: 30
+#define BODY_LAYER 42 // SKYRAT EDIT CHANGE - ORIGINAL: 30
+// SPLURT EDIT undies
+#define UNDERWEAR_LAYER			41
+#define SOCKS_LAYER				40
+#define BRA_LAYER				39
+#define SHIRT_LAYER				38
+// SPLURT EDIT END
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 35 // SKYRAT EDIT CHANGE - ORIGINAL: 29
+#define FRONT_MUTATIONS_LAYER 37 // SKYRAT EDIT CHANGE - ORIGINAL: 29
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 34 // SKYRAT EDIT CHANGE - ORIGINAL: 28
+#define DAMAGE_LAYER 36 // SKYRAT EDIT CHANGE - ORIGINAL: 28
 // SKYRAT EDIT ADDITION START
 /// This layer is used for things that shouldn't be over clothes, but should be over mutations
-#define BODY_FRONT_UNDER_CLOTHES 33
+#define BODY_FRONT_UNDER_CLOTHES 35
 // SKYRAT EDIT ADDITION END
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 32 // SKYRAT EDIT CHANGE - ORIGINAL: 27
+#define UNIFORM_LAYER 34 // SKYRAT EDIT CHANGE - ORIGINAL: 27 //SPLURT EDIT undies
 // SKYRAT EDIT ADDITION BEGIN - cursed layers under clothing
-#define ANUS_LAYER 31
-#define VAGINA_LAYER 30
-#define PENIS_LAYER 29
-#define NIPPLES_LAYER 28
-#define BANDAGE_LAYER 27
+#define ANUS_LAYER 33
+#define VAGINA_LAYER 32
+#define PENIS_LAYER 31
+#define NIPPLES_LAYER 30
+#define BANDAGE_LAYER 29
 //SKYRAT EDIT ADDITION END
 /// ID card layer
-#define ID_LAYER 26
+#define ID_LAYER 28
 /// ID card layer (might be deprecated)
-#define ID_CARD_LAYER 25
+#define ID_CARD_LAYER 27
 /// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
-#define BODYPARTS_HIGH_LAYER 24
+#define BODYPARTS_HIGH_LAYER 26
 /// Gloves layer
-#define GLOVES_LAYER 23
+#define GLOVES_LAYER 25
+/// Wrists layer
+#define WRISTS_LAYER 24
 /// Shoes layer
-#define SHOES_LAYER 22
+#define SHOES_LAYER 23
 /// Layer for masks that are worn below ears and eyes (like Balaclavas) (layers below hair, use flagsinv=HIDEHAIR as needed)
-#define LOW_FACEMASK_LAYER 21
+#define LOW_FACEMASK_LAYER 22
+/// SPLURT EDIT - Extra ears layer
+#define EARS_EXTRA_LAYER 21
 /// Ears layer (Spessmen have ears? Wow)
 #define EARS_LAYER 20
 /// Layer for neck apperal that should appear below the suit slot (like neckties)
@@ -742,7 +756,7 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Glasses layer
 #define GLASSES_LAYER 17
 /// Belt layer
-#define BELT_LAYER 16 //Possible make this an overlay of somethign required to wear a belt?
+#define BELT_LAYER 16 //Possible make this an overlay of something required to wear a belt?
 /// Suit storage layer (tucking a gun or baton underneath your armor)
 #define SUIT_STORE_LAYER 15
 /// Neck layer (for wearing capes and bedsheets)
@@ -881,7 +895,7 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define NEED_VENTCRAWL (1<<8)
 /// Skips adjacency checks
 #define BYPASS_ADJACENCY (1<<9)
-/// Skips reccursive loc checks
+/// Skips recursive loc checks
 #define NOT_INSIDE_TARGET (1<<10)
 /// Checks for base adjacency, but silences the error
 #define SILENT_ADJACENCY (1<<11)
@@ -915,6 +929,8 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 
 /// Possible value of [/atom/movable/buckle_lying]. If set to a different (positive-or-zero) value than this, the buckling thing will force a lying angle on the buckled.
 #define NO_BUCKLE_LYING -1
+/// Possible value of [/atom/movable/buckle_dir]. If set to a different (positive-or-zero) value than this, the buckling thing will force a dir on the buckled.
+#define BUCKLE_MATCH_DIR -1
 
 // Flags for fully_heal().
 
@@ -1011,6 +1027,8 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 
 /// The duration of the flip emote animation
 #define FLIP_EMOTE_DURATION 0.7 SECONDS
+///The duration of a taunt emote, so how long they can deflect projectiles
+#define TAUNT_EMOTE_DURATION 0.9 SECONDS
 
 // Sprites for photocopying butts
 #define BUTT_SPRITE_HUMAN_MALE "human_male"
@@ -1025,3 +1043,7 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define BUTT_SPRITE_PLASMA "plasma"
 #define BUTT_SPRITE_FUZZY "fuzzy"
 #define BUTT_SPRITE_SLIME "slime"
+
+/// Distance which you can see someone's ID card
+/// Short enough that you can inspect over tables (bartender checking age)
+#define ID_EXAMINE_DISTANCE 3
