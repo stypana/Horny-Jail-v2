@@ -47,3 +47,6 @@
 2025-01-03:
   MosleyTheMalO:
   - bugfix: makes clients not crash when seeing an inflatable object (temporary fix)
+2025-01-04:
+  MosleyTheMalO:
+  - rscadd: adds a batch of our custom drinks (modular_splurt)
