@@ -49,63 +49,6 @@
 
 	..()
 
-// ~( Ported from TG )~
-/datum/reagent/consumable/toechtauese_juice
-	name = "Töchtaüse Juice"
-	description = "An unpleasant juice made from töchtaüse berries. Best made into a syrup, unless you enjoy pain."
-	color = "#554862"
-	nutriment_factor = 0
-	taste_description = "fiery itchy pain"
-
-/datum/reagent/consumable/toechtauese_syrup
-	name = "Töchtaüse Syrup"
-	description = "A harsh spicy and bitter syrup, made from töchtaüse berries. Useful as an ingredient, both for food and cocktails."
-	color = "#554862"
-	nutriment_factor = 0
-	taste_description = "sugar, spice, and nothing nice"
-
-/datum/reagent/consumable/milkshake_base
-	name = "Milkshake"
-	description = "A basic milkshake. Could use something else?"
-	color = "#FFFDD0"
-	nutriment_factor = 1
-	taste_description = "thick, creamy, and sweet"
-
-/datum/reagent/consumable/milkshake_cola
-	name = "Cola Milkshake"
-	description = "Sweet milkshake mixed with cola"
-	color = "#3c3024"
-	nutriment_factor = 1
-	taste_description = "cola and milkshake"
-
-/datum/reagent/consumable/milkshake_gibb
-	name = "Dr. Gibb Milkshake"
-	description = "Sweet milkshake mixed with Dr. Gibb"
-	color = "#5e312b"
-	nutriment_factor = 1
-	taste_description = "cola and milkshake"
-
-/datum/reagent/consumable/milkshake_peach
-	name = "Peach Milkshake"
-	description = "A tasty Peach Milkshake"
-	color = "#5e312b"
-	nutriment_factor = 1
-	taste_description = "peaches and cream"
-
-/datum/reagent/consumable/milkshake_pineapple
-	name = "Pineapple Milkshake"
-	description = "A tangy Pineapple Milkshake"
-	color = "#feea63"
-	nutriment_factor = 1
-	taste_description = "citrus and cream"
-
-/datum/reagent/consumable/milkshake_melon
-	name = "Watermelon Milkshake"
-	description = "Delicous Watermelon Milkshake"
-	color = "#E37383"
-	nutriment_factor = 1
-	taste_description = "warm sun and sweet cream"
-
 // Reagent add: Breast Milk
 /datum/reagent/consumable/breast_milk/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()

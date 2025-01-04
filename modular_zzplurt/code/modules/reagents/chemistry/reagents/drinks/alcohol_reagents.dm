@@ -53,6 +53,7 @@
 	taste_description = "smooth cream"
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
+	name = "CUM in the Hot Tub"
 	boozepwr = 65
 	taste_description = "viscous cream"
 	description = "The name is probably exactly what it is."
@@ -78,6 +79,7 @@
 		drinker.reagents.add_reagent(/datum/reagent/drug/aphrodisiac, 2)
 
 /datum/reagent/consumable/ethanol/isloation_cell/morphine
+	name = "Isolation Cell...?"
 	description = "It has a distinct, sour smell, much like morphine."
 	taste_description = "cloth dissolved in sulphuric acid. Something feels off about it."
 

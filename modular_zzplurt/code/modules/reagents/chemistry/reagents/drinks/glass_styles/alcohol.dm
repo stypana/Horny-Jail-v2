@@ -3,7 +3,7 @@
 	name = "Liquid Panty Dropper"
 	desc = "You feel it's not named like that for no reason."
 	icon = 'modular_zzplurt/icons/obj/drinks/drinks.dmi'
-	icon_state = "panty_dropper"
+	icon_state = "orangecreamsicle"
 
 /datum/glass_style/drinking_glass/lean
 	required_drink_type = /datum/reagent/consumable/ethanol/lean
@@ -21,6 +21,7 @@
 
 /datum/glass_style/shot_glass/cum_in_a_hot_tub
 	required_drink_type = /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
+	icon = 'modular_zzplurt/icons/obj/drinks/drinks.dmi'
 	icon_state = "cum_shot"
 	name = "Cum in the Hot Tub"
 	desc = "Doesn't really leave it to the imagination, eh?"
@@ -34,6 +35,7 @@
 
 /datum/glass_style/shot_glass/cum_in_a_hot_tub/semen
 	required_drink_type = /datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
+	icon = 'modular_zzplurt/icons/obj/drinks/drinks.dmi'
 	icon_state = "cum_shot"
 	name = "Cum in the Hot Tub"
 	desc = "The name is probably exactly what it is."
