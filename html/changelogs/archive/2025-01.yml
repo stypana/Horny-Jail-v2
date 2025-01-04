@@ -44,3 +44,6 @@
 2025-01-02:
   rintherat:
   - bugfix: fixes the cafeborg shakers
+2025-01-03:
+  MosleyTheMalO:
+  - bugfix: makes clients not crash when seeing an inflatable object (temporary fix)

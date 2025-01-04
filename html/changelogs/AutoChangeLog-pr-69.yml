@@ -1,4 +1,0 @@
-author: "MosleyTheMalO"
-delete-after: True
-changes:
-  - bugfix: "makes clients not crash when seeing an inflatable object (temporary fix)"
