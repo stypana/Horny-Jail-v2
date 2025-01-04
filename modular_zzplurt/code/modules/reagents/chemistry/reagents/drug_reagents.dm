@@ -29,4 +29,3 @@
 		H.adjust_disgust(20)
 		to_chat(H, "<span class='warning'>I can't stand it anymore!</span>")
 	..()
-

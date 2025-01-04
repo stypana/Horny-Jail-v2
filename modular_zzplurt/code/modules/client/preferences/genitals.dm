@@ -160,3 +160,67 @@
 	type_to_check = /datum/preference/choiced/genital/belly
 	skin_color_type = /datum/preference/toggle/genital_skin_color/belly
 //SPLURT EDIT END
+
+// Genital fluid preferences base type
+/datum/preference/choiced/genital_fluid
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	abstract_type = /datum/preference/choiced/genital_fluid
+	var/datum/preference/choiced/genital/genital_pref
+	var/feature_key // The key used in dna.features to store the fluid type
+
+/datum/preference/choiced/genital_fluid/init_possible_values()
+	var/list/values = list()
+
+	// Add default value first
+	var/default_path = create_default_value()
+	var/datum/reagent/default_reagent = default_path
+	values[initial(default_reagent.name)] = default_path
+
+	// Add rest of the values
+	for(var/path in SSinteractions.genital_fluids_paths)
+		var/datum/reagent/R = path
+		values[initial(R.name)] = path
+	return values
+
+/datum/preference/choiced/genital_fluid/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
+	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(genital_pref))
+	return erp_allowed && part_enabled && (passed_initial_check || allowed)
+
+/datum/preference/choiced/genital_fluid/apply_to_human(mob/living/carbon/human/target, value)
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		return FALSE
+	target.dna.features[feature_key] = value
+
+// Testicles fluid preference
+/datum/preference/choiced/genital_fluid/testicles
+	savefile_key = "testicles_fluid"
+	relevant_mutant_bodypart = ORGAN_SLOT_TESTICLES
+	genital_pref = /datum/preference/choiced/genital/testicles
+	feature_key = "testicles_fluid"
+
+/datum/preference/choiced/genital_fluid/testicles/create_default_value()
+	return /datum/reagent/consumable/cum
+
+// Breasts fluid preference
+/datum/preference/choiced/genital_fluid/breasts
+	savefile_key = "breasts_fluid"
+	relevant_mutant_bodypart = ORGAN_SLOT_BREASTS
+	genital_pref = /datum/preference/choiced/genital/breasts
+	feature_key = "breasts_fluid"
+
+/datum/preference/choiced/genital_fluid/breasts/create_default_value()
+	return /datum/reagent/consumable/milk
+
+// Vagina fluid preference
+/datum/preference/choiced/genital_fluid/vagina
+	savefile_key = "vagina_fluid"
+	relevant_mutant_bodypart = ORGAN_SLOT_VAGINA
+	genital_pref = /datum/preference/choiced/genital/vagina
+	feature_key = "vagina_fluid"
+
+/datum/preference/choiced/genital_fluid/vagina/create_default_value()
+	return /datum/reagent/consumable/femcum

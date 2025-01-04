@@ -28,17 +28,17 @@
 		var/datum/interaction/interaction = SSinteractions.interactions[iterating_interaction_id]
 	//SPLURT EDIT END
 		if(interaction.lewd)
-			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp) && self.client)
 				continue
 			// SPLURT EDIT ADDITION - Interaction preferences
 			if(interaction.unsafe_types & INTERACTION_EXTREME)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) == "No")
+				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) == "No" && self.client)
 					continue
 			if(interaction.unsafe_types & INTERACTION_HARMFUL)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No")
+				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No" && self.client)
 					continue
 			if(interaction.unsafe_types & INTERACTION_UNHOLY)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) == "No")
+				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) == "No" && self.client)
 					continue
 			// SPLURT EDIT END
 			/*
@@ -68,7 +68,7 @@
 /datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
 	if(!interaction.allow_act(target, self))
 		return FALSE
-	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp) && target.client)
 		return FALSE
 	if(!interaction.distance_allowed && !target.Adjacent(self))
 		return FALSE
