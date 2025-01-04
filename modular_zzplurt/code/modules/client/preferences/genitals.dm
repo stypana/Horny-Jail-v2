@@ -170,6 +170,8 @@
 	var/feature_key // The key used in dna.features to store the fluid type
 
 /datum/preference/choiced/genital_fluid/init_possible_values()
+	if(!SSinteractions.genital_fluids_paths)
+		SSinteractions.prepare_genital_fluids()
 	return sort_list(SSinteractions.genital_fluids_paths)
 
 /datum/preference/choiced/genital_fluid/is_accessible(datum/preferences/preferences)
