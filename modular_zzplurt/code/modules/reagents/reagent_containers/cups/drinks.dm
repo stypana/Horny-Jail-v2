@@ -4,14 +4,14 @@
 	desc = "A pink can with the image of a Mal0 on the front. Very seductive eyes."
 	icon = 'modular_zzplurt/icons/obj/drinks/drinks.dmi'
 	icon_state = "carbonatedcum"
-	list_reagents = list(/datum/reagent/consumable/semen = 30)
+	list_reagents = list(/datum/reagent/consumable/cum = 30)
 
 /obj/item/reagent_containers/cup/soda_cans/carbonatedfemcum
 	name = "Mosley's Special Carbonated Femcum"
 	desc = "A purple can with the image of a Mal0 on the front. Very seductive eyes."
 	icon = 'modular_zzplurt/icons/obj/drinks/drinks.dmi'
 	icon_state = "carbonatedfemcum"
-	list_reagents = list(/datum/reagent/consumable/semen/femcum = 30)
+	list_reagents = list(/datum/reagent/consumable/femcum = 30)
 
 /obj/item/reagent_containers/cup/soda_cans/blood
 	name = "Stoker's Reserve"

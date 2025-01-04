@@ -8,7 +8,7 @@
 	volume = 100
 	list_reagents = list(
 		/datum/reagent/consumable/ethanol/navy_rum = 40,
-		/datum/reagent/consumable/semen = 60
+		/datum/reagent/consumable/cum = 60
 	)
 
 /obj/item/reagent_containers/cup/glass/bottle/femcum_whiskey
@@ -19,7 +19,7 @@
 	volume = 100
 	list_reagents = list(
 		/datum/reagent/consumable/ethanol/whiskey = 40,
-		/datum/reagent/consumable/semen/femcum = 60
+		/datum/reagent/consumable/femcum = 60
 	)
 
 /obj/item/reagent_containers/cup/glass/bottle/bloodwine
