@@ -170,30 +170,24 @@
 	var/feature_key // The key used in dna.features to store the fluid type
 
 /datum/preference/choiced/genital_fluid/init_possible_values()
-	var/list/values = list()
-
-	// Add default value first
-	var/default_path = create_default_value()
-	var/datum/reagent/default_reagent = default_path
-	values[initial(default_reagent.name)] = default_path
-
-	// Add rest of the values
-	for(var/path in SSinteractions.genital_fluids_paths)
-		var/datum/reagent/R = path
-		values[initial(R.name)] = path
-	return values
+	return sort_list(SSinteractions.genital_fluids_paths)
 
 /datum/preference/choiced/genital_fluid/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
+	var/erp_allowed = !CONFIG_GET(flag/disable_erp_preferences) && preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(genital_pref))
-	return erp_allowed && part_enabled && (passed_initial_check || allowed)
+	return erp_allowed && part_enabled && (passed_initial_check || allowed) && preferences.read_preference(/datum/preference/toggle/erp/custom_genital_fluids)
+
+/datum/preference/choiced/genital_fluid/deserialize(input, datum/preferences/preferences)
+	if(!is_accessible(preferences))
+		return create_default_value()
+	. = ..()
 
 /datum/preference/choiced/genital_fluid/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
 		return FALSE
-	target.dna.features[feature_key] = value
+	target.dna.features[feature_key] = SSinteractions.genital_fluids_paths[value]
 
 // Testicles fluid preference
 /datum/preference/choiced/genital_fluid/testicles
@@ -203,7 +197,7 @@
 	feature_key = "testicles_fluid"
 
 /datum/preference/choiced/genital_fluid/testicles/create_default_value()
-	return /datum/reagent/consumable/cum
+	return /datum/reagent/consumable/cum::name
 
 // Breasts fluid preference
 /datum/preference/choiced/genital_fluid/breasts
@@ -213,7 +207,7 @@
 	feature_key = "breasts_fluid"
 
 /datum/preference/choiced/genital_fluid/breasts/create_default_value()
-	return /datum/reagent/consumable/milk
+	return /datum/reagent/consumable/milk::name
 
 // Vagina fluid preference
 /datum/preference/choiced/genital_fluid/vagina
@@ -223,4 +217,4 @@
 	feature_key = "vagina_fluid"
 
 /datum/preference/choiced/genital_fluid/vagina/create_default_value()
-	return /datum/reagent/consumable/femcum
+	return /datum/reagent/consumable/femcum::name

@@ -199,4 +199,10 @@ SUBSYSTEM_DEF(interactions)
 		LAZYADD(reagent_list_paths, reagent)
 
 	// Store paths list
-	genital_fluids_paths = reagent_list_paths
+	var/list/fluid_paths = list()
+
+	for(var/reagent_path in reagent_list_paths)
+		var/datum/reagent/R = reagent_path
+		fluid_paths[initial(R.name)] = reagent_path
+
+	genital_fluids_paths = fluid_paths
