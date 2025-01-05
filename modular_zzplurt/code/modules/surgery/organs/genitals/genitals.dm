@@ -1,3 +1,7 @@
+/obj/item/organ/external/genital/build_from_dna(datum/dna/DNA, associated_key)
+	. = ..()
+	internal_fluid_maximum = internal_fluid_maximum * (DNA.features["body_size"] || 1)
+
 /datum/bodypart_overlay/mutant/genital
 	var/layer_offset = 0
 
