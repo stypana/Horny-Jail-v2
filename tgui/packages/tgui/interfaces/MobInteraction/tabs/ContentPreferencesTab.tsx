@@ -64,7 +64,6 @@ export const ContentPreferencesTab = () => {
         <Button
           fluid
           mb={-0.7}
-          content="Allow lewd verbs"
           icon={verb_consent ? 'toggle-on' : 'toggle-off'}
           selected={verb_consent}
           onClick={() =>
@@ -72,13 +71,14 @@ export const ContentPreferencesTab = () => {
               pref: 'verb_consent',
             })
           }
-        />
+        >
+          Allow lewd verbs
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Lewd verb sounds"
           icon={lewd_verb_sounds ? 'volume-up' : 'volume-mute'}
           selected={lewd_verb_sounds}
           onClick={() =>
@@ -86,13 +86,14 @@ export const ContentPreferencesTab = () => {
               pref: 'lewd_verb_sounds',
             })
           }
-        />
+        >
+          Lewd verb sounds
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Arousal"
           icon={arousable ? 'toggle-on' : 'toggle-off'}
           selected={arousable}
           onClick={() =>
@@ -100,13 +101,14 @@ export const ContentPreferencesTab = () => {
               pref: 'arousable',
             })
           }
-        />
+        >
+          Arousal
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Genital examine text"
           icon={genital_examine ? 'toggle-on' : 'toggle-off'}
           selected={genital_examine}
           onClick={() =>
@@ -114,13 +116,14 @@ export const ContentPreferencesTab = () => {
               pref: 'genital_examine',
             })
           }
-        />
+        >
+          Genital examine text
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Vore examine text"
           icon={vore_examine ? 'toggle-on' : 'toggle-off'}
           selected={vore_examine}
           onClick={() =>
@@ -128,13 +131,14 @@ export const ContentPreferencesTab = () => {
               pref: 'vore_examine',
             })
           }
-        />
+        >
+          Vore examine text
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Voracious Medihound sleepers"
           icon={medihound_sleeper ? 'toggle-on' : 'toggle-off'}
           selected={medihound_sleeper}
           onClick={() =>
@@ -142,13 +146,14 @@ export const ContentPreferencesTab = () => {
               pref: 'medihound_sleeper',
             })
           }
-        />
+        >
+          Voracious Medihound sleepers
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Hear vore sounds"
           icon={eating_noises ? 'volume-up' : 'volume-mute'}
           selected={eating_noises}
           onClick={() =>
@@ -156,13 +161,14 @@ export const ContentPreferencesTab = () => {
               pref: 'eating_noises',
             })
           }
-        />
+        >
+          Hear vore sounds
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Hear vore digestion sounds"
           icon={digestion_noises ? 'volume-up' : 'volume-mute'}
           selected={digestion_noises}
           onClick={() =>
@@ -170,13 +176,14 @@ export const ContentPreferencesTab = () => {
               pref: 'digestion_noises',
             })
           }
-        />
+        >
+          Hear vore digestion sounds
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Allow trash forcefeeding (requires Trashcan quirk)"
           icon={trash_forcefeed ? 'toggle-on' : 'toggle-off'}
           selected={trash_forcefeed}
           onClick={() =>
@@ -184,13 +191,14 @@ export const ContentPreferencesTab = () => {
               pref: 'trash_forcefeed',
             })
           }
-        />
+        >
+          Allow trash forcefeeding (requires Trashcan quirk)
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Forced feminization"
           icon={forced_fem ? 'toggle-on' : 'toggle-off'}
           selected={forced_fem}
           onClick={() =>
@@ -198,13 +206,14 @@ export const ContentPreferencesTab = () => {
               pref: 'forced_fem',
             })
           }
-        />
+        >
+          Forced feminization
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Forced Masculinization"
           icon={forced_masc ? 'toggle-on' : 'toggle-off'}
           selected={forced_masc}
           onClick={() =>
@@ -212,13 +221,14 @@ export const ContentPreferencesTab = () => {
               pref: 'forced_masc',
             })
           }
-        />
+        >
+          Forced Masculinization
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Lewd hypno"
           icon={hypno ? 'toggle-on' : 'toggle-off'}
           selected={hypno}
           onClick={() =>
@@ -226,13 +236,14 @@ export const ContentPreferencesTab = () => {
               pref: 'hypno',
             })
           }
-        />
+        >
+          Lewd hypno
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Bimbofication"
           icon={bimbofication ? 'toggle-on' : 'toggle-off'}
           selected={bimbofication}
           onClick={() =>
@@ -240,13 +251,14 @@ export const ContentPreferencesTab = () => {
               pref: 'bimbofication',
             })
           }
-        />
+        >
+          Bimbofication
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Breast enlargement"
           icon={breast_enlargement ? 'toggle-on' : 'toggle-off'}
           selected={breast_enlargement}
           onClick={() =>
@@ -254,13 +266,14 @@ export const ContentPreferencesTab = () => {
               pref: 'breast_enlargement',
             })
           }
-        />
+        >
+          Breast enlargement
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Penis enlargement"
           icon={penis_enlargement ? 'toggle-on' : 'toggle-off'}
           selected={penis_enlargement}
           onClick={() =>
@@ -268,13 +281,14 @@ export const ContentPreferencesTab = () => {
               pref: 'penis_enlargement',
             })
           }
-        />
+        >
+          Penis enlargement
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Butt enlargement"
           icon={butt_enlargement ? 'toggle-on' : 'toggle-off'}
           selected={butt_enlargement}
           onClick={() =>
@@ -282,13 +296,14 @@ export const ContentPreferencesTab = () => {
               pref: 'butt_enlargement',
             })
           }
-        />
+        >
+          Butt enlargement
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Belly inflation"
           icon={belly_inflation ? 'toggle-on' : 'toggle-off'}
           selected={belly_inflation}
           onClick={() =>
@@ -296,13 +311,14 @@ export const ContentPreferencesTab = () => {
               pref: 'belly_inflation',
             })
           }
-        />
+        >
+          Belly inflation
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Never hypno"
           icon={never_hypno ? 'toggle-on' : 'toggle-off'}
           selected={never_hypno}
           onClick={() =>
@@ -310,13 +326,14 @@ export const ContentPreferencesTab = () => {
               pref: 'never_hypno',
             })
           }
-        />
+        >
+          Never hypno
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="No aphrodisiacs"
           icon={no_aphro ? 'toggle-on' : 'toggle-off'}
           selected={no_aphro}
           onClick={() =>
@@ -324,13 +341,14 @@ export const ContentPreferencesTab = () => {
               pref: 'no_aphro',
             })
           }
-        />
+        >
+          No aphrodisiacs
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="No ass slapping"
           icon={no_ass_slap ? 'toggle-on' : 'toggle-off'}
           selected={no_ass_slap}
           onClick={() =>
@@ -338,13 +356,14 @@ export const ContentPreferencesTab = () => {
               pref: 'no_ass_slap',
             })
           }
-        />
+        >
+          No ass slapping
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="No automatic wagging"
           icon={no_auto_wag ? 'toggle-on' : 'toggle-off'}
           selected={no_auto_wag}
           onClick={() =>
@@ -352,13 +371,14 @@ export const ContentPreferencesTab = () => {
               pref: 'no_auto_wag',
             })
           }
-        />
+        >
+          No automatic wagging
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Allow chastity"
           icon={chastity_pref ? 'toggle-on' : 'toggle-off'}
           selected={chastity_pref}
           onClick={() =>
@@ -366,13 +386,14 @@ export const ContentPreferencesTab = () => {
               pref: 'chastity_pref',
             })
           }
-        />
+        >
+          Allow chastity
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Allow stimulation"
           icon={stimulation_pref ? 'toggle-on' : 'toggle-off'}
           selected={stimulation_pref}
           onClick={() =>
@@ -380,13 +401,14 @@ export const ContentPreferencesTab = () => {
               pref: 'stimulation_pref',
             })
           }
-        />
+        >
+          Allow stimulation
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Allow edging"
           icon={edging_pref ? 'toggle-on' : 'toggle-off'}
           selected={edging_pref}
           onClick={() =>
@@ -394,13 +416,14 @@ export const ContentPreferencesTab = () => {
               pref: 'edging_pref',
             })
           }
-        />
+        >
+          Allow edging
+        </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           fluid
           mb={-0.7}
-          content="Allow being cummed on"
           icon={cum_onto_pref ? 'toggle-on' : 'toggle-off'}
           selected={cum_onto_pref}
           onClick={() =>
@@ -408,7 +431,9 @@ export const ContentPreferencesTab = () => {
               pref: 'cum_onto_pref',
             })
           }
-        />
+        >
+          Allow being cummed on
+        </Button>
       </Stack.Item>
     </Stack>
   );
