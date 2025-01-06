@@ -1,8 +1,9 @@
 /datum/sprite_accessory/wings/splurt
 	icon = 'modular_zzplurt/icons/mob/sprite_accessories/wings.dmi'
+	color_src = FALSE
 
 /datum/sprite_accessory/wings/splurt/colorable
-	color_src = USE_MATRIXED_COLORS
+	color_src = USE_ONE_COLOR
 
 /*
 Colorable Wings
