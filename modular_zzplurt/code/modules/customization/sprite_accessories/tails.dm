@@ -58,14 +58,6 @@ Tails
 	name = "Eastern Dragon (Splurt)"
 	icon_state = "easternd"
 
-/datum/sprite_accessory/tails/splurt/shadekin
-	name = "Shadekin (Splurt)"
-	icon_state = "shadekin"
-
-/datum/sprite_accessory/tails/splurt/shadekinshort
-	name = "Shadekin Short (Splurt)"
-	icon_state = "shadekinshort"
-
 /datum/sprite_accessory/tails/splurt/succubus
 	name = "Succubus (Splurt)"
 	icon_state = "succubus"

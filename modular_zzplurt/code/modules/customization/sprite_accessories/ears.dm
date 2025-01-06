@@ -54,10 +54,6 @@ Ears
 	name = "Chemlight"
 	icon_state = "chemlight"
 
-/datum/sprite_accessory/ears/splurt/shadekin
-	name = "Shadekin"
-	icon_state = "shadekin"
-
 /datum/sprite_accessory/ears/splurt/catnormal
 	name = "Cat Normal"
 	icon_state = "catnormal"

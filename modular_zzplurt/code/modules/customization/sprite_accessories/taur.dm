@@ -18,14 +18,6 @@ Taurus Bodies
 	name = "Chemnaga (Splurt)"
 	icon_state = "chemnaga"
 
-/datum/sprite_accessory/taur/splurt/shadekinbig
-	name = "Shadekin Big (Splurt)"
-	icon_state = "shadekinbig"
-
-/datum/sprite_accessory/taur/splurt/shadekinlong
-	name = "Shadekin Long (Splurt)"
-	icon_state = "shadekinlong"
-
 /datum/sprite_accessory/taur/splurt/leopardseal
 	name = "Leopard Seal (Splurt)"
 	icon_state = "leopardseal"
