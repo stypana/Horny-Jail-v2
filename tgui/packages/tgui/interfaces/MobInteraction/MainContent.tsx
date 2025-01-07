@@ -5,6 +5,7 @@ import {
   ContentPreferencesTab,
   GenitalTab,
   InteractionsTab,
+  LewdItemsTab,
 } from './tabs';
 
 export const MainContent = () => {
@@ -38,7 +39,10 @@ export const MainContent = () => {
               Character Prefs
             </Tabs.Tab>
             <Tabs.Tab selected={tabIndex === 3} onClick={() => setTabIndex(3)}>
-              Preferences
+              Content Prefs
+            </Tabs.Tab>
+            <Tabs.Tab selected={tabIndex === 4} onClick={() => setTabIndex(4)}>
+              Lewd Items
             </Tabs.Tab>
           </Tabs>
         </Stack.Item>
@@ -55,7 +59,11 @@ export const MainContent = () => {
                     ? 'Search for an interaction'
                     : tabIndex === 1
                       ? 'Search for a genital'
-                      : 'Searching is unavailable for this tab'
+                      : tabIndex === 3
+                        ? 'Search for a content preference'
+                        : tabIndex === 4
+                          ? 'Search for an item'
+                          : 'Searching is unavailable for this tab'
                 }
                 onInput={(e, value) => setSearchText(value)}
               />
@@ -72,6 +80,8 @@ export const MainContent = () => {
                   return <CharacterPrefsTab />;
                 case 3:
                   return <ContentPreferencesTab />;
+                case 4:
+                  return <LewdItemsTab />;
                 default:
                   return <InteractionsTab />;
               }

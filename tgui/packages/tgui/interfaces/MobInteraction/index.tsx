@@ -5,13 +5,13 @@ import { MainContent } from './MainContent';
 
 export const MobInteraction = () => {
   return (
-    <Window width={430} height={700} title="Mob Interaction">
+    <Window width={500} height={700} title="Mob Interaction">
       <Window.Content>
         <Stack vertical fill>
-          <Stack.Item grow basis={5}>
+          <Stack.Item grow basis={15}>
             <InfoSection />
           </Stack.Item>
-          <Stack.Item grow basis={40}>
+          <Stack.Item grow basis={30}>
             <MainContent />
           </Stack.Item>
         </Stack>
