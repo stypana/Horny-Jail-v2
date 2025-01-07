@@ -102,8 +102,16 @@ export const InteractionsTab = () => {
                         </Stack.Item>
                         <Stack.Item>
                           <Button
-                            icon={favorite_interactions.includes(interaction) ? 'star' : 'star-o'}
-                            color={favorite_interactions.includes(interaction) ? 'yellow' : 'default'}
+                            icon={
+                              favorite_interactions.includes(interaction)
+                                ? 'star'
+                                : 'star-o'
+                            }
+                            color={
+                              favorite_interactions.includes(interaction)
+                                ? 'yellow'
+                                : 'default'
+                            }
                             tooltip={`${
                               favorite_interactions.includes(interaction)
                                 ? 'Remove from'
