@@ -1,3 +1,4 @@
+//SPLURT EDIT ADDITION BEGIN - INTERACTION MENU PREFERENCES - Adding global list of interaction menu preferences
 GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	/datum/preference/toggle/master_erp_preferences,
 	/datum/preference/toggle/erp,
@@ -8,6 +9,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	/datum/preference/choiced/erp_status_unholy,
 	/datum/preference/choiced/erp_status_extmharm,
 )))
+//SPLURT EDIT ADDITION END
 
 /datum/component/interactable
 	/// A hard reference to the parent
@@ -33,12 +35,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 /datum/component/interactable/proc/build_interactions_list()
 	interactions = list()
-	//SPLURT EDIT - Interactions subsystem
+	//SPLURT EDIT CHANGE BEGIN - INTERACTIONS SUBSYSTEM - Changed to use SSinteractions
 	if(!SSinteractions)
 		return // Can't continue, no subsystem
 	for(var/iterating_interaction_id in SSinteractions.interactions)
 		var/datum/interaction/interaction = SSinteractions.interactions[iterating_interaction_id]
-	//SPLURT EDIT END
+	//SPLURT EDIT CHANGE END
 		if(interaction.lewd)
 			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp) && self.client)
 				continue
@@ -94,7 +96,10 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 /datum/component/interactable/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		//SPLURT EDIT CHANGE BEGIN - UI INTERFACE - Changed UI interface name
+		//ui = new(user, src, "Interactions") - SPLURT EDIT - ORIGINAL
 		ui = new(user, src, "MobInteraction")
+		//SPLURT EDIT CHANGE END
 		ui.open()
 
 /datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
@@ -170,6 +175,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	return attributes
 
 /datum/component/interactable/ui_data(mob/user)
+	//SPLURT EDIT CHANGE BEGIN - ENHANCED UI DATA - Expanded UI data with additional information
 	var/list/data = list()
 	var/list/descriptions = list()
 	var/list/categories = list()
@@ -341,6 +347,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		modified_preferences.Cut()
 
 /datum/component/interactable/ui_act(action, list/params)
+	//SPLURT EDIT CHANGE BEGIN - ENHANCED UI ACTIONS - Expanded UI action handling
 	. = ..()
 	if(.)
 		return
