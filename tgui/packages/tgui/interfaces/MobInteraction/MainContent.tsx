@@ -1,4 +1,5 @@
-import { useLocalState } from '../../backend';
+import { useState } from 'react';
+
 import { Button, Icon, Input, Section, Stack, Tabs } from '../../components';
 import {
   CharacterPrefsTab,
@@ -9,9 +10,9 @@ import {
 } from './tabs';
 
 export const MainContent = () => {
-  const [searchText, setSearchText] = useLocalState('searchText', '');
-  const [tabIndex, setTabIndex] = useLocalState('tabIndex', 0);
-  const [inFavorites, setInFavorites] = useLocalState('inFavorites', false);
+  const [searchText, setSearchText] = useState('');
+  const [tabIndex, setTabIndex] = useState(0);
+  const [inFavorites, setInFavorites] = useState(false);
 
   return (
     <Section fill>
@@ -75,15 +76,20 @@ export const MainContent = () => {
             {(() => {
               switch (tabIndex) {
                 case 1:
-                  return <GenitalTab />;
+                  return <GenitalTab searchText={searchText} />;
                 case 2:
                   return <CharacterPrefsTab />;
                 case 3:
-                  return <ContentPreferencesTab />;
+                  return <ContentPreferencesTab searchText={searchText} />;
                 case 4:
-                  return <LewdItemsTab />;
+                  return <LewdItemsTab searchText={searchText} />;
                 default:
-                  return <InteractionsTab />;
+                  return (
+                    <InteractionsTab
+                      searchText={searchText}
+                      inFavorites={inFavorites}
+                    />
+                  );
               }
             })()}
           </Section>

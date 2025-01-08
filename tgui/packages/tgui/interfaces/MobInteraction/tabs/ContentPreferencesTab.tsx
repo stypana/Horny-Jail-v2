@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../../../backend';
+import { useBackend } from '../../../backend';
 import { Button, Stack } from '../../../components';
 
 type ContentPrefsInfo = {
@@ -34,7 +34,13 @@ type ContentPrefsInfo = {
   vore_overlay_options: boolean;
 };
 
-export const ContentPreferencesTab = () => {
+type ContentPreferencesTabProps = {
+  searchText: string;
+};
+
+export const ContentPreferencesTab = ({
+  searchText,
+}: ContentPreferencesTabProps) => {
   const { act, data } = useBackend<ContentPrefsInfo>();
   const {
     // Master ERP pref
@@ -68,8 +74,6 @@ export const ContentPreferencesTab = () => {
     vore_overlays,
     vore_overlay_options,
   } = data;
-
-  const [searchText] = useLocalState('searchText', '');
 
   const renderToggle = (
     key: string,

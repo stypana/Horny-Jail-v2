@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../../../backend';
+import { useBackend } from '../../../backend';
 import { Button, Icon, Stack } from '../../../components';
 
 type LewdItemsInfo = {
@@ -11,11 +11,13 @@ type LewdItemsInfo = {
   ref_self: string;
 };
 
-export const LewdItemsTab = () => {
+type LewdItemsTabProps = {
+  searchText: string;
+};
+
+export const LewdItemsTab = ({ searchText }: LewdItemsTabProps) => {
   const { act, data } = useBackend<LewdItemsInfo>();
   const { lewd_slots = [], ref_user, ref_self } = data;
-
-  const [searchText] = useLocalState('searchText', '');
 
   const filteredSlots = lewd_slots.filter((slot) => {
     const searchLower = searchText.toLowerCase();

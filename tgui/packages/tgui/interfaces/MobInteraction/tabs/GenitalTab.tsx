@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../../../backend';
+import { useBackend } from '../../../backend';
 import { Button, LabeledList, Section, Stack } from '../../../components';
 
 type GenitalInfo = {
@@ -20,11 +20,13 @@ const AROUSAL_NONE = 1;
 const AROUSAL_PARTIAL = 2;
 const AROUSAL_FULL = 3;
 
-export const GenitalTab = () => {
+type GenitalTabProps = {
+  searchText: string;
+};
+
+export const GenitalTab = ({ searchText }: GenitalTabProps) => {
   const { act, data } = useBackend<GenitalInfo>();
   const { genitals = [] } = data;
-
-  const [searchText] = useLocalState('searchText', '');
 
   const filteredGenitals = genitals.filter((genital) =>
     genital.name.toLowerCase().includes(searchText.toLowerCase()),

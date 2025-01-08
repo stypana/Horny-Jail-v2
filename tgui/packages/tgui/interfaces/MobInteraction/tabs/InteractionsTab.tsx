@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../../../backend';
+import { useBackend } from '../../../backend';
 import {
   Box,
   Button,
@@ -20,7 +20,15 @@ type InteractionsInfo = {
   self: string;
 };
 
-export const InteractionsTab = () => {
+type InteractionsTabProps = {
+  searchText: string;
+  inFavorites: boolean;
+};
+
+export const InteractionsTab = ({
+  searchText,
+  inFavorites,
+}: InteractionsTabProps) => {
   const { act, data } = useBackend<InteractionsInfo>();
   const {
     categories = [],
@@ -33,9 +41,6 @@ export const InteractionsTab = () => {
     ref_self,
     self,
   } = data;
-
-  const [searchText] = useLocalState('searchText', '');
-  const [inFavorites] = useLocalState('inFavorites', false);
 
   // Filter interactions based on search text and favorites
   const filterInteractions = (category: string) => {
