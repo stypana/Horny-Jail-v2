@@ -1,0 +1,6 @@
+author: "Phoenix4O4"
+delete-after: True
+changes:
+  - rscadd: "Custom loading animation with Splurt icon."
+  - rscadd: "Our logo displayed in the main client window."
+  - bugfix: "Disabled all relays to the official server."
