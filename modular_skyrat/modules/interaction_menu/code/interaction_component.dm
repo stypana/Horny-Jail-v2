@@ -20,6 +20,46 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	var/interact_next = 0
 	/// List of preferences that have been modified and need to be saved
 	var/list/modified_preferences = list()
+	/// List of preference paths mapped to their toggle types
+	var/static/list/preference_paths = list(
+		"master_erp_pref" = /datum/preference/toggle/master_erp_preferences,
+		"base_erp_pref" = /datum/preference/toggle/erp,
+		// Core ERP prefs
+		"erp_sounds_pref" = /datum/preference/toggle/erp/sounds,
+		"sextoy_pref" = /datum/preference/toggle/erp/sex_toy,
+		"sextoy_sounds_pref" = /datum/preference/toggle/erp/sex_toy_sounds,
+		"bimbofication_pref" = /datum/preference/toggle/erp/bimbofication,
+		"aphro_pref" = /datum/preference/toggle/erp/aphro,
+		"breast_enlargement_pref" = /datum/preference/toggle/erp/breast_enlargement,
+		"breast_shrinkage_pref" = /datum/preference/toggle/erp/breast_shrinkage,
+		"penis_enlargement_pref" = /datum/preference/toggle/erp/penis_enlargement,
+		"penis_shrinkage_pref" = /datum/preference/toggle/erp/penis_shrinkage,
+		"gender_change_pref" = /datum/preference/toggle/erp/gender_change,
+		"autocum_pref" = /datum/preference/toggle/erp/autocum,
+		"autoemote_pref" = /datum/preference/toggle/erp/autoemote,
+		"genitalia_removal_pref" = /datum/preference/toggle/erp/genitalia_removal,
+		"new_genitalia_growth_pref" = /datum/preference/toggle/erp/new_genitalia_growth,
+		// SPLURT additions
+		"butt_enlargement_pref" = /datum/preference/toggle/erp/butt_enlargement,
+		"butt_shrinkage_pref" = /datum/preference/toggle/erp/butt_shrinkage,
+		"belly_enlargement_pref" = /datum/preference/toggle/erp/belly_enlargement,
+		"belly_shrinkage_pref" = /datum/preference/toggle/erp/belly_shrinkage,
+		"forced_neverboner_pref" = /datum/preference/toggle/erp/forced_neverboner,
+		"custom_genital_fluids_pref" = /datum/preference/toggle/erp/custom_genital_fluids,
+		// Vore prefs
+		"vore_enable_pref" = /datum/preference/toggle/erp/vore_enable,
+		"vore_overlays" = /datum/preference/toggle/erp/vore_overlays,
+		"vore_overlay_options" = /datum/preference/toggle/erp/vore_overlay_options
+	)
+	/// List of character preference paths mapped to their types
+	var/static/list/character_preference_paths = list(
+		"erp_pref" = /datum/preference/choiced/erp_status,
+		"noncon_pref" = /datum/preference/choiced/erp_status_nc,
+		"vore_pref" = /datum/preference/choiced/erp_status_v,
+		"extreme_pref" = /datum/preference/choiced/erp_status_extm,
+		"extreme_harm" = /datum/preference/choiced/erp_status_extmharm,
+		"unholy_pref" = /datum/preference/choiced/erp_status_unholy
+	)
 
 /datum/component/interactable/Initialize(...)
 	if(QDELETED(parent))
@@ -175,12 +215,16 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	return attributes
 
 /datum/component/interactable/ui_data(mob/user)
-	//SPLURT EDIT CHANGE BEGIN - ENHANCED UI DATA - Expanded UI data with additional information
 	var/list/data = list()
 	var/list/descriptions = list()
 	var/list/categories = list()
 	var/list/display_categories = list()
 	var/list/colors = list()
+
+	var/mob/living/carbon/human/human_user = null
+	if(ishuman(user))
+		human_user = user
+
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
 			continue
@@ -200,33 +244,44 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	data["categories"] = sort_list(display_categories)
 	data["interactions"] = categories
 	data["block_interact"] = interact_next >= world.time
+
+	// User is always the one interacting, self is the target
 	data["favorite_interactions"] = user.client?.prefs?.read_preference(/datum/preference/blob/favorite_interactions) || list()
 	data["ref_user"] = REF(user)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
 
-	// Character info
+	// Character info - Reoriented to show from user's perspective
 	data["isTargetSelf"] = (user == self)
-	data["interactingWith"] = user != self ? "Interacting with \the [user]..." : "Interacting with yourself..."
-	data["pleasure"] = self.pleasure || 0
-	data["maxPleasure"] = AROUSAL_LIMIT * (self.dna.features["lust_tolerance"] || 1)
-	data["arousal"] = self.arousal || 0
-	data["maxArousal"] = AROUSAL_LIMIT
-	data["pain"] = self.pain || 0
-	data["maxPain"] = AROUSAL_LIMIT
+	data["interactingWith"] = user == self ? "Interacting with yourself..." : "Interacting with \the [self]..."
 
-	// Get attributes using our new proc
-	data["selfAttributes"] = get_interaction_attributes(self)
+	// Primary attributes (user's stats) - Only if user is human
+	if(human_user)
+		data["pleasure"] = human_user.pleasure || 0
+		data["maxPleasure"] = AROUSAL_LIMIT * (human_user.dna?.features["lust_tolerance"] || 1)
+		data["arousal"] = human_user.arousal || 0
+		data["maxArousal"] = AROUSAL_LIMIT
+		data["pain"] = human_user.pain || 0
+		data["maxPain"] = AROUSAL_LIMIT
+		data["selfAttributes"] = get_interaction_attributes(human_user)
+	else
+		data["pleasure"] = 0
+		data["maxPleasure"] = AROUSAL_LIMIT
+		data["arousal"] = 0
+		data["maxArousal"] = AROUSAL_LIMIT
+		data["pain"] = 0
+		data["maxPain"] = AROUSAL_LIMIT
+		data["selfAttributes"] = list()
+
+	// Target attributes (self's stats) only if not self-targeting
 	if(user != self)
-		var/mob/living/carbon/human/user_human = user
-		if(!istype(user_human))
-			data["theirAttributes"] = get_interaction_attributes(user_human)
-			data["theirPleasure"] = user_human.pleasure || 0
-			data["theirMaxPleasure"] = AROUSAL_LIMIT * (user_human.dna.features["lust_tolerance"] || 1)
-			data["theirArousal"] = user_human.arousal || 0
-			data["theirMaxArousal"] = AROUSAL_LIMIT
-			data["theirPain"] = user_human.pain || 0
-			data["theirMaxPain"] = AROUSAL_LIMIT
+		data["theirAttributes"] = get_interaction_attributes(self)
+		data["theirPleasure"] = self.pleasure || 0
+		data["theirMaxPleasure"] = AROUSAL_LIMIT * (self.dna.features["lust_tolerance"] || 1)
+		data["theirArousal"] = self.arousal || 0
+		data["theirMaxArousal"] = AROUSAL_LIMIT
+		data["theirPain"] = self.pain || 0
+		data["theirMaxPain"] = AROUSAL_LIMIT
 	else
 		data["theirAttributes"] = list()
 		data["theirPleasure"] = null
@@ -236,12 +291,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		data["theirPain"] = null
 		data["theirMaxPain"] = null
 
-	// Content preferences
-	if(self.client?.prefs)
+	// Content preferences - Always use user's preferences
+	if(user.client?.prefs)
 		// Master ERP pref
-		data["master_erp_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences)
+		data["master_erp_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences)
 		// Base ERP toggle
-		data["base_erp_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp)
+		data["base_erp_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp)
 
 		// Character ERP prefs (status prefs)
 		var/datum/preference/choiced/erp_status/erp_pref = GLOB.preference_entries[/datum/preference/choiced/erp_status]
@@ -251,48 +306,65 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		var/datum/preference/choiced/erp_status_unholy/unholy_pref = GLOB.preference_entries[/datum/preference/choiced/erp_status_unholy]
 		var/datum/preference/choiced/erp_status_extmharm/extreme_harm_pref = GLOB.preference_entries[/datum/preference/choiced/erp_status_extmharm]
 
-		data["erp_pref"] = self.client.prefs.read_preference(erp_pref.type)
+		data["erp_pref"] = user.client.prefs.read_preference(erp_pref.type)
 		data["erp_pref_values"] = erp_pref.init_possible_values()
-		data["noncon_pref"] = self.client.prefs.read_preference(noncon_pref.type)
+		data["noncon_pref"] = user.client.prefs.read_preference(noncon_pref.type)
 		data["noncon_pref_values"] = noncon_pref.init_possible_values()
-		data["vore_pref"] = self.client.prefs.read_preference(vore_pref.type)
+		data["vore_pref"] = user.client.prefs.read_preference(vore_pref.type)
 		data["vore_pref_values"] = vore_pref.init_possible_values()
-		data["extreme_pref"] = self.client.prefs.read_preference(extreme_pref.type)
+		data["extreme_pref"] = user.client.prefs.read_preference(extreme_pref.type)
 		data["extreme_pref_values"] = extreme_pref.init_possible_values()
-		data["unholy_pref"] = self.client.prefs.read_preference(unholy_pref.type)
+		data["unholy_pref"] = user.client.prefs.read_preference(unholy_pref.type)
 		data["unholy_pref_values"] = unholy_pref.init_possible_values()
-		data["extreme_harm"] = self.client.prefs.read_preference(extreme_harm_pref.type)
+		data["extreme_harm"] = user.client.prefs.read_preference(extreme_harm_pref.type)
 		data["extreme_harm_values"] = extreme_harm_pref.init_possible_values()
 
 		// Content toggle prefs
-		data["erp_sounds_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/sounds)
-		data["sextoy_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)
-		data["sextoy_sounds_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy_sounds)
-		data["bimbofication_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/bimbofication)
-		data["aphro_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)
-		data["breast_enlargement_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement)
-		data["breast_shrinkage_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/breast_shrinkage)
-		data["penis_enlargement_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)
-		data["penis_shrinkage_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage)
-		data["gender_change_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/gender_change)
-		data["autocum_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/autocum)
-		data["autoemote_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/autoemote)
-		data["genitalia_removal_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/genitalia_removal)
-		data["new_genitalia_growth_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth)
+		data["erp_sounds_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/sounds)
+		data["sextoy_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)
+		data["sextoy_sounds_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy_sounds)
+		data["bimbofication_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/bimbofication)
+		data["aphro_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)
+		data["breast_enlargement_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement)
+		data["breast_shrinkage_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/breast_shrinkage)
+		data["penis_enlargement_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)
+		data["penis_shrinkage_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage)
+		data["gender_change_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/gender_change)
+		data["autocum_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/autocum)
+		data["autoemote_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/autoemote)
+		data["genitalia_removal_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/genitalia_removal)
+		data["new_genitalia_growth_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth)
 
 		// SPLURT additions
-		data["butt_enlargement_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/butt_enlargement)
-		data["butt_shrinkage_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/butt_shrinkage)
-		data["belly_enlargement_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/belly_enlargement)
-		data["belly_shrinkage_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/belly_shrinkage)
-		data["forced_neverboner_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/forced_neverboner)
-		data["custom_genital_fluids_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/custom_genital_fluids)
+		data["butt_enlargement_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/butt_enlargement)
+		data["butt_shrinkage_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/butt_shrinkage)
+		data["belly_enlargement_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/belly_enlargement)
+		data["belly_shrinkage_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/belly_shrinkage)
+		data["forced_neverboner_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/forced_neverboner)
+		data["custom_genital_fluids_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/custom_genital_fluids)
 
 		// Vore prefs
-		data["vore_enable_pref"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable)
-		data["vore_overlays"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/vore_overlays)
-		data["vore_overlay_options"] = self.client.prefs.read_preference(/datum/preference/toggle/erp/vore_overlay_options)
+		data["vore_enable_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable)
+		data["vore_overlays"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_overlays)
+		data["vore_overlay_options"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_overlay_options)
 
+	// Genital data - Only if user is human
+	var/list/genital_list = list()
+	if(human_user)
+		for(var/obj/item/organ/external/genital/genital in human_user.organs)
+			if(!genital.visibility_preference == GENITAL_SKIP_VISIBILITY)
+				var/list/genital_data = list(
+					"name" = genital.name,
+					"slot" = genital.slot,
+					"visibility" = genital.visibility_preference,
+					"aroused" = genital.aroused,
+					"can_arouse" = (genital.aroused != AROUSAL_CANT),
+					"always_accessible" = genital.always_accessible
+				)
+				genital_list += list(genital_data)
+	data["genitals"] = genital_list
+
+	// Lewd items - Show target's (self's) lewd slots for user to interact with
 	var/list/parts = list()
 	if(ishuman(user) && can_lewd_strip(user, self))
 		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
@@ -305,21 +377,6 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, self.nipples))
 
 	data["lewd_slots"] = parts
-
-	// Genital data
-	var/list/genital_list = list()
-	for(var/obj/item/organ/external/genital/genital in self.organs)
-		if(!genital.visibility_preference == GENITAL_SKIP_VISIBILITY)
-			var/list/genital_data = list(
-				"name" = genital.name,
-				"slot" = genital.slot,
-				"visibility" = genital.visibility_preference,
-				"aroused" = genital.aroused,
-				"can_arouse" = (genital.aroused != AROUSAL_CANT),
-				"always_accessible" = genital.always_accessible
-			)
-			genital_list += list(genital_data)
-	data["genitals"] = genital_list
 
 	return data
 
@@ -347,7 +404,6 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		modified_preferences.Cut()
 
 /datum/component/interactable/ui_act(action, list/params)
-	//SPLURT EDIT CHANGE BEGIN - ENHANCED UI ACTIONS - Expanded UI action handling
 	. = ..()
 	if(.)
 		return
@@ -402,72 +458,16 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 				favorite_interactions -= interaction_id
 			else
 				favorite_interactions += interaction_id
-			user.client.prefs.update_preference(/datum/preference/blob/favorite_interactions, favorite_interactions)
+			prefs.update_preference(/datum/preference/blob/favorite_interactions, favorite_interactions)
 			modified_preferences |= "favorite_interactions"
 			return TRUE
 
 		if("pref")
 			if(!prefs)
 				return
-			var/pref_path
-			switch(params["pref"])
-				if("master_erp_pref")
-					pref_path = /datum/preference/toggle/master_erp_preferences
-				if("base_erp_pref")
-					pref_path = /datum/preference/toggle/erp
-				// Core ERP prefs
-				if("erp_sounds_pref")
-					pref_path = /datum/preference/toggle/erp/sounds
-				if("sextoy_pref")
-					pref_path = /datum/preference/toggle/erp/sex_toy
-				if("sextoy_sounds_pref")
-					pref_path = /datum/preference/toggle/erp/sex_toy_sounds
-				if("bimbofication_pref")
-					pref_path = /datum/preference/toggle/erp/bimbofication
-				if("aphro_pref")
-					pref_path = /datum/preference/toggle/erp/aphro
-				if("breast_enlargement_pref")
-					pref_path = /datum/preference/toggle/erp/breast_enlargement
-				if("breast_shrinkage_pref")
-					pref_path = /datum/preference/toggle/erp/breast_shrinkage
-				if("penis_enlargement_pref")
-					pref_path = /datum/preference/toggle/erp/penis_enlargement
-				if("penis_shrinkage_pref")
-					pref_path = /datum/preference/toggle/erp/penis_shrinkage
-				if("gender_change_pref")
-					pref_path = /datum/preference/toggle/erp/gender_change
-				if("autocum_pref")
-					pref_path = /datum/preference/toggle/erp/autocum
-				if("autoemote_pref")
-					pref_path = /datum/preference/toggle/erp/autoemote
-				if("genitalia_removal_pref")
-					pref_path = /datum/preference/toggle/erp/genitalia_removal
-				if("new_genitalia_growth_pref")
-					pref_path = /datum/preference/toggle/erp/new_genitalia_growth
-
-				// SPLURT additions
-				if("butt_enlargement_pref")
-					pref_path = /datum/preference/toggle/erp/butt_enlargement
-				if("butt_shrinkage_pref")
-					pref_path = /datum/preference/toggle/erp/butt_shrinkage
-				if("belly_enlargement_pref")
-					pref_path = /datum/preference/toggle/erp/belly_enlargement
-				if("belly_shrinkage_pref")
-					pref_path = /datum/preference/toggle/erp/belly_shrinkage
-				if("forced_neverboner_pref")
-					pref_path = /datum/preference/toggle/erp/forced_neverboner
-				if("custom_genital_fluids_pref")
-					pref_path = /datum/preference/toggle/erp/custom_genital_fluids
-
-				// Vore prefs
-				if("vore_enable_pref")
-					pref_path = /datum/preference/toggle/erp/vore_enable
-				if("vore_overlays")
-					pref_path = /datum/preference/toggle/erp/vore_overlays
-				if("vore_overlay_options")
-					pref_path = /datum/preference/toggle/erp/vore_overlay_options
-				else
-					return
+			var/pref_path = LAZYACCESS(preference_paths, params["pref"])
+			if(!pref_path)
+				return
 
 			if(params["amount"])
 				prefs.update_preference(GLOB.preference_entries[pref_path], params["amount"])
@@ -479,24 +479,11 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		if("char_pref")
 			if(!prefs)
 				return
-			var/pref_path
-			var/value = params["value"]
-			switch(params["char_pref"])
-				if("erp_pref")
-					pref_path = /datum/preference/choiced/erp_status
-				if("noncon_pref")
-					pref_path = /datum/preference/choiced/erp_status_nc
-				if("vore_pref")
-					pref_path = /datum/preference/choiced/erp_status_v
-				if("extreme_pref")
-					pref_path = /datum/preference/choiced/erp_status_extm
-				if("extreme_harm")
-					pref_path = /datum/preference/choiced/erp_status_extmharm
-				if("unholy_pref")
-					pref_path = /datum/preference/choiced/erp_status_unholy
-				else
-					return
+			var/pref_path = LAZYACCESS(character_preference_paths, params["char_pref"])
+			if(!pref_path)
+				return
 
+			var/value = params["value"]
 			var/datum/preference/choiced/pref_type = GLOB.preference_entries[pref_path]
 			// Validate that the value is one of the allowed options
 			var/list/valid_values = pref_type.init_possible_values()
@@ -569,7 +556,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 				return FALSE
 
 			genital.visibility_preference = visibility
-			self.update_body()
+			user.update_body()
 			return TRUE
 
 		if("toggle_genital_arousal")
@@ -583,7 +570,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 			genital.aroused = arousal
 			genital.update_sprite_suffix()
-			self.update_body()
+			user.update_body()
 			return TRUE
 
 		if("toggle_genital_accessibility")

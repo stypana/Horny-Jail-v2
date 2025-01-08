@@ -59,20 +59,20 @@ export const GenitalTab = () => {
                   <Stack>
                     <Stack.Item>
                       <Button
-                        icon="eye-slash"
-                        selected={genital.visibility === GENITAL_NEVER_SHOW}
-                        tooltip="Never show"
+                        icon="eye"
+                        selected={genital.visibility === GENITAL_ALWAYS_SHOW}
+                        tooltip="Always show"
                         onClick={() =>
                           act('toggle_genital_visibility', {
                             genital: genital.slot,
-                            visibility: GENITAL_NEVER_SHOW,
+                            visibility: GENITAL_ALWAYS_SHOW,
                           })
                         }
                       />
                     </Stack.Item>
                     <Stack.Item>
                       <Button
-                        icon="eye"
+                        icon="eye-low-vision"
                         selected={
                           genital.visibility === GENITAL_HIDDEN_BY_CLOTHES
                         }
@@ -87,13 +87,13 @@ export const GenitalTab = () => {
                     </Stack.Item>
                     <Stack.Item>
                       <Button
-                        icon="eye-low-vision"
-                        selected={genital.visibility === GENITAL_ALWAYS_SHOW}
-                        tooltip="Always show"
+                        icon="eye-slash"
+                        selected={genital.visibility === GENITAL_NEVER_SHOW}
+                        tooltip="Never show"
                         onClick={() =>
                           act('toggle_genital_visibility', {
                             genital: genital.slot,
-                            visibility: GENITAL_ALWAYS_SHOW,
+                            visibility: GENITAL_NEVER_SHOW,
                           })
                         }
                       />

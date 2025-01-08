@@ -116,7 +116,7 @@ export const ContentPreferencesTab = () => {
         'Master toggle for all ERP content',
       )}
 
-      {master_erp_pref && (
+      {!!master_erp_pref && (
         <>
           {/* Base ERP Toggle */}
           {renderToggle(
@@ -212,7 +212,7 @@ export const ContentPreferencesTab = () => {
 
           {/* Vore Preferences */}
           {renderToggle('vore_enable_pref', vore_enable_pref, 'Enable Vore')}
-          {vore_enable_pref && (
+          {!!vore_enable_pref && (
             <>
               {renderToggle('vore_overlays', vore_overlays, 'Vore Overlays')}
               {renderToggle(

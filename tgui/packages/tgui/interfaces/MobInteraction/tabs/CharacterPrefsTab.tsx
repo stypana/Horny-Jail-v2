@@ -119,31 +119,13 @@ export const CharacterPrefsTab = () => {
           extreme_pref,
           extreme_pref_values,
         )}
-        {extreme_pref !== 'No' && (
-          <LabeledList.Item
-            label="Extreme Harm"
-            color={getPrefColor(extreme_harm)}
-            buttons={
-              <Button
-                icon={getPrefIcon(extreme_harm)}
-                color={getPrefColor(extreme_harm)}
-                disabled
-              />
-            }
-          >
-            <Dropdown
-              width="200px"
-              selected={extreme_harm}
-              options={extreme_harm_values}
-              onSelected={(value) =>
-                act('char_pref', {
-                  char_pref: 'extreme_harm',
-                  value: value,
-                })
-              }
-            />
-          </LabeledList.Item>
-        )}
+        {extreme_pref !== 'No' &&
+          renderPrefDropdown(
+            'Extreme Harm',
+            'extreme_harm',
+            extreme_harm,
+            extreme_harm_values,
+          )}
       </LabeledList>
     </Flex>
   );
