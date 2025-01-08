@@ -11,5 +11,3 @@
 		return FALSE
 
 	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
-
-

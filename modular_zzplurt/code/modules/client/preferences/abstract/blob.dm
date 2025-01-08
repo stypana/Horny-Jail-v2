@@ -15,5 +15,3 @@
 
 /datum/preference/blob/apply_to_human(mob/living/carbon/human/target, value)
 	return
-
-
