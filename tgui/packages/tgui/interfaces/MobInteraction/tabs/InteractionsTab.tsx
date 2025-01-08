@@ -93,7 +93,6 @@ export const InteractionsTab = ({
                             color={
                               block_interact ? 'grey' : colors[interaction]
                             }
-                            content={interaction}
                             tooltip={descriptions[interaction]}
                             disabled={block_interact}
                             onClick={() =>
@@ -103,7 +102,9 @@ export const InteractionsTab = ({
                                 userref: ref_user,
                               })
                             }
-                          />
+                          >
+                            {interaction}
+                          </Button>
                         </Stack.Item>
                         <Stack.Item>
                           <Button
