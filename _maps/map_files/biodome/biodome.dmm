@@ -4042,6 +4042,17 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/circuit/green,
 /area/station/engineering/storage/tech)
+"bsv" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_mode = 1;
+	transport_linked_id = "biodome_medbay_lift"
+	},
+/turf/open/floor/plating,
+/area/station/medical/medbay/central)
 "bsw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -8451,6 +8462,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"cTc" = (
+/obj/effect/landmark/start/medical_doctor,
+/obj/structure/disposalpipe/junction/flip{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/station/medical/treatment_center)
 "cTq" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
@@ -13275,6 +13294,11 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
 /area/station/engineering/main)
+"eDP" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron/white,
+/area/station/medical/treatment_center)
 "eDX" = (
 /obj/machinery/light/small/directional/south,
 /obj/machinery/camera/directional/east{
@@ -14400,16 +14424,6 @@
 	},
 /turf/open/floor/wood/large,
 /area/station/service/library)
-"eTW" = (
-/obj/machinery/duct,
-/obj/machinery/button/elevator/directional/east{
-	id = "biodome_engie_lift"
-	},
-/obj/machinery/lift_indicator/directional/east{
-	linked_elevator_id = "biodome_engie_lift"
-	},
-/turf/open/floor/iron/terracotta,
-/area/station/hallway/secondary/construction/engineering)
 "eUt" = (
 /obj/structure/dresser,
 /turf/open/floor/glass/reinforced,
@@ -16978,14 +16992,6 @@
 /obj/effect/landmark/start/prisoner,
 /turf/open/floor/carpet/black,
 /area/station/security/prison)
-"fPr" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/iron/stairs/medium{
-	dir = 8
-	},
-/area/station/hallway/secondary/construction/engineering)
 "fPs" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -20513,6 +20519,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
+"haZ" = (
+/obj/structure/stairs/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron/stairs/medium{
+	dir = 8
+	},
+/area/station/hallway/secondary/construction/engineering)
 "hbd" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -21546,6 +21559,17 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
+"hui" = (
+/obj/effect/turf_decal/loading_area/red{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/west{
+	transport_linked_id = "biodome_brig_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/security/brig)
 "huj" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Air to Port"
@@ -22008,25 +22032,6 @@
 	},
 /turf/open/floor/iron/herringbone,
 /area/station/service/chapel/office)
-"hEN" = (
-/obj/machinery/button/elevator/directional/north{
-	id = "biodome_engie_lift"
-	},
-/obj/machinery/lift_indicator/directional/north{
-	linked_elevator_id = "biodome_engie_lift"
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 8
-	},
-/obj/machinery/door/window/elevator/left/directional/west{
-	transport_linked_id = "biodome_engie_lift";
-	elevator_mode = 1
-	},
-/turf/open/floor/iron/terracotta,
-/area/station/hallway/primary/aft)
 "hER" = (
 /turf/open/misc/beach/coast/corner{
 	dir = 1
@@ -22441,6 +22446,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"hNl" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/stone,
+/area/station/biodome/aft)
 "hNy" = (
 /turf/closed/mineral/random/stationside/asteroid/porus,
 /area/station/asteroid)
@@ -22527,6 +22539,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
+"hPf" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron/stairs/medium{
+	dir = 8
+	},
+/area/station/hallway/secondary/construction/engineering)
 "hPl" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -27774,17 +27792,6 @@
 "jJi" = (
 /turf/closed/wall,
 /area/station/maintenance/department/crew_quarters/dorms)
-"jJj" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/machinery/airalarm/directional/west,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/treatment_center)
 "jJr" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -32070,13 +32077,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
-"ldK" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/stone,
-/area/station/biodome/aft)
 "ldP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -33934,15 +33934,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
-"lHj" = (
-/obj/structure/stairs/east,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/iron/stairs/medium{
-	dir = 8
-	},
-/area/station/hallway/secondary/construction/engineering)
 "lHl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/directional/east,
@@ -34025,6 +34016,15 @@
 /obj/item/picket_sign,
 /turf/open/misc/asteroid,
 /area/station/maintenance/port/central)
+"lJd" = (
+/obj/effect/turf_decal/loading_area/red,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/north{
+	transport_linked_id = "biodome_brig_lift"
+	},
+/obj/effect/turf_decal/trimline/red/filled/warning,
+/turf/open/floor/iron/smooth_half,
+/area/station/security/brig)
 "lJh" = (
 /obj/effect/turf_decal/arrows/white{
 	dir = 1
@@ -34079,6 +34079,25 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /turf/open/floor/plating/airless,
 /area/station/asteroid)
+"lJI" = (
+/obj/machinery/button/elevator/directional/north{
+	id = "biodome_engie_lift"
+	},
+/obj/machinery/lift_indicator/directional/north{
+	linked_elevator_id = "biodome_engie_lift"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 8
+	},
+/obj/machinery/door/window/elevator/right/directional/west{
+	elevator_mode = 1;
+	transport_linked_id = "biodome_engie_lift"
+	},
+/turf/open/floor/iron/terracotta,
+/area/station/hallway/primary/aft)
 "lJT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -36352,10 +36371,6 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron/dark/smooth_edge,
 /area/station/commons/fitness)
-"mxq" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron/white,
-/area/station/medical/treatment_center)
 "mxA" = (
 /obj/effect/landmark/blobstart,
 /turf/open/floor/iron/kitchen,
@@ -37385,13 +37400,6 @@
 /obj/effect/landmark/start/cargo_technician,
 /turf/open/floor/wood,
 /area/station/cargo/office)
-"mPX" = (
-/obj/item/kirbyplants/random,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/treatment_center)
 "mQb" = (
 /obj/effect/spawner/random/entertainment/arcade,
 /turf/open/floor/wood,
@@ -39283,14 +39291,6 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
-"nxA" = (
-/obj/effect/landmark/start/medical_doctor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/white,
-/area/station/medical/treatment_center)
 "nxG" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/wood/large,
@@ -41878,6 +41878,19 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
 /area/station/hallway/primary/central)
+"oon" = (
+/obj/effect/turf_decal/loading_area/white,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/window/elevator/right/directional/north{
+	elevator_mode = 1;
+	transport_linked_id = "biodome_science_lift"
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/research)
 "ooL" = (
 /obj/machinery/camera/directional/west{
 	c_tag = "Engineering - Atmos Starboard"
@@ -42807,6 +42820,14 @@
 	},
 /turf/open/floor/stone,
 /area/station/hallway/primary/starboard)
+"oEX" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/iron/white,
+/area/station/medical/treatment_center)
 "oFj" = (
 /obj/structure/table,
 /obj/item/stack/cable_coil{
@@ -43406,6 +43427,20 @@
 "oPo" = (
 /turf/open/openspace,
 /area/station/command/heads_quarters/captain)
+"oPr" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_mode = 1;
+	transport_linked_id = "biodome_medbay_lift"
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
 "oPs" = (
 /obj/item/radio/intercom/directional/south,
 /obj/machinery/holopad,
@@ -48092,6 +48127,20 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark/smooth_half,
 /area/station/security/brig)
+"qyr" = (
+/obj/effect/turf_decal/loading_area/white,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/door/window/elevator/right/directional/north{
+	elevator_mode = 1;
+	transport_linked_id = "biodome_science_lift"
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/research)
 "qyt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -48742,19 +48791,6 @@
 	},
 /turf/open/floor/wood/large,
 /area/station/service/library)
-"qKh" = (
-/obj/effect/turf_decal/loading_area/white,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/window/elevator/left/directional/north{
-	elevator_mode = 1;
-	transport_linked_id = "biodome_science_lift"
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/research)
 "qKk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -52523,6 +52559,13 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/central/greater)
+"rVm" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/treatment_center)
 "rVt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54018,6 +54061,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/brig)
+"sxs" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/station/medical/treatment_center)
 "sxx" = (
 /obj/structure/transit_tube/crossing/horizontal,
 /obj/structure/lattice/catwalk,
@@ -56036,15 +56088,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
-"thM" = (
-/obj/structure/disposalpipe/junction{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/white,
-/area/station/medical/treatment_center)
 "thN" = (
 /obj/structure/weightmachine/weightlifter,
 /obj/effect/turf_decal/bot,
@@ -57854,20 +57897,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
-"tMz" = (
-/obj/effect/turf_decal/loading_area/white,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/door/window/elevator/left/directional/north{
-	elevator_mode = 1;
-	transport_linked_id = "biodome_science_lift"
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/research)
 "tMG" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/preopen{
@@ -65170,6 +65199,17 @@
 	},
 /turf/open/floor/carpet/black,
 /area/station/service/chapel/funeral)
+"wqx" = (
+/obj/machinery/duct,
+/obj/machinery/button/elevator/directional/east{
+	id = "biodome_engie_lift"
+	},
+/obj/machinery/lift_indicator/directional/east{
+	linked_elevator_id = "biodome_engie_lift"
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron/terracotta,
+/area/station/hallway/secondary/construction/engineering)
 "wqN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/engine,
@@ -68236,6 +68276,10 @@
 /obj/item/electropack,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
+"xtV" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/openspace,
+/area/station/hallway/primary/aft)
 "xtX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
@@ -94384,7 +94428,7 @@ tSJ
 wSI
 wSI
 tlP
-sKq
+bsv
 bRw
 agt
 oAe
@@ -102277,7 +102321,7 @@ gbs
 jlt
 exQ
 bQR
-tMz
+qyr
 jlt
 jlt
 jlt
@@ -104155,7 +104199,7 @@ sil
 kjb
 lcF
 hgT
-eTW
+wqx
 qmS
 lxd
 lxd
@@ -104414,7 +104458,7 @@ pJa
 pJa
 nIY
 uaO
-fPr
+hPf
 ctv
 irC
 jZC
@@ -104671,7 +104715,7 @@ wUs
 qHb
 nIY
 kvo
-lHj
+haZ
 nEi
 syj
 jZC
@@ -107738,8 +107782,8 @@ ota
 ota
 mBX
 enR
-ldK
-ldK
+hNl
+hNl
 xFA
 xFA
 xFA
@@ -113939,7 +113983,7 @@ mSo
 sxr
 kHf
 kHf
-uMW
+hui
 uMW
 kHf
 jBl
@@ -158109,7 +158153,7 @@ mhM
 sZX
 uCM
 phg
-jJj
+rVm
 aEg
 njP
 njP
@@ -158366,7 +158410,7 @@ lqX
 cTX
 kTT
 kLh
-thM
+sxs
 dkK
 edq
 puo
@@ -158878,9 +158922,9 @@ hRM
 tMs
 xcC
 cTX
-mPX
-mxq
-nxA
+oEX
+eDP
+cTc
 lPt
 weT
 gMF
@@ -159920,7 +159964,7 @@ oqe
 eQf
 kBw
 ebY
-pEE
+oPr
 bwV
 bwV
 jHc
@@ -167813,7 +167857,7 @@ sJJ
 dJN
 vUU
 vUU
-qKh
+oon
 czJ
 kPB
 wLa
@@ -169950,7 +169994,7 @@ xCb
 xXi
 nPx
 jVT
-jVT
+xtV
 rLL
 aLA
 xXi
@@ -170207,7 +170251,7 @@ mmT
 wYg
 nPx
 cfo
-jVT
+xtV
 rLL
 aLA
 rSn
@@ -170463,7 +170507,7 @@ oeq
 tkZ
 xXi
 nPx
-hEN
+lJI
 nNh
 hhx
 osa
@@ -179220,7 +179264,7 @@ uEl
 kHf
 rWr
 rWr
-odq
+lJd
 dUY
 dUY
 taA
