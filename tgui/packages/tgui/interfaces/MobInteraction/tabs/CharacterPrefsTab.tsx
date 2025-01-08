@@ -67,7 +67,6 @@ export const CharacterPrefsTab = () => {
           <Button
             icon={getPrefIcon(current_value)}
             color={getPrefColor(current_value)}
-            disabled
           />
         }
       >
