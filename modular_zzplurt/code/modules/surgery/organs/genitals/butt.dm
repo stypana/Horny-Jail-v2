@@ -6,6 +6,7 @@
 	slot = ORGAN_SLOT_BUTT
 	zone = BODY_ZONE_PRECISE_GROIN
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/butt
+	aroused = AROUSAL_CANT
 
 	mutantpart_key = ORGAN_SLOT_BUTT
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))

@@ -8,6 +8,7 @@
 	zone = BODY_ZONE_CHEST
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/belly
 	genital_location = CHEST
+	aroused = AROUSAL_CANT
 
 	mutantpart_key = ORGAN_SLOT_BELLY
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Belly", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
