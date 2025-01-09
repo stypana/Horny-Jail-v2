@@ -71,6 +71,8 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 	self = parent
 
+	add_verb(self, /mob/living/carbon/human/proc/interact_with)
+
 	build_interactions_list()
 
 /datum/component/interactable/proc/build_interactions_list()
@@ -625,3 +627,16 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			return item.lewd_slot_flags & LEWD_SLOT_NIPPLES
 		else
 			return FALSE
+
+/mob/living/carbon/human/proc/interact_with()
+	set name = "Interact With"
+	set desc = "Perform an interaction with someone."
+	set category = "IC"
+	set src in view(usr.client)
+
+	var/datum/component/interactable/menu = GetComponent(/datum/component/interactable)
+	if(!menu)
+		to_chat(src, span_warning("You must have done something really bad to not have an interaction component."))
+		return
+
+	menu.open_interaction_menu(src, usr)
