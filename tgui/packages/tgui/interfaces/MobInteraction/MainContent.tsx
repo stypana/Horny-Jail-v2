@@ -13,6 +13,7 @@ export const MainContent = () => {
   const [searchText, setSearchText] = useState('');
   const [tabIndex, setTabIndex] = useState(0);
   const [inFavorites, setInFavorites] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
 
   return (
     <Section fill>
@@ -69,6 +70,18 @@ export const MainContent = () => {
                 onInput={(e, value) => setSearchText(value)}
               />
             </Stack.Item>
+            {tabIndex === 0 && (
+              <Stack.Item>
+                <Button
+                  icon={showCategories ? 'folder' : 'list'}
+                  color="green"
+                  tooltip={
+                    showCategories ? 'Hide Categories' : 'Show Categories'
+                  }
+                  onClick={() => setShowCategories(!showCategories)}
+                />
+              </Stack.Item>
+            )}
           </Stack>
         </Stack.Item>
         <Stack.Item grow basis={0} mb={-2.3}>
@@ -88,6 +101,7 @@ export const MainContent = () => {
                     <InteractionsTab
                       searchText={searchText}
                       inFavorites={inFavorites}
+                      showCategories={showCategories}
                     />
                   );
               }

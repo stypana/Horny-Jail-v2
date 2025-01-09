@@ -111,8 +111,6 @@
 
 
 /datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(!user.client || !target.client)
-		return TRUE
 	if(target == user && usage == INTERACTION_OTHER)
 		return FALSE
 

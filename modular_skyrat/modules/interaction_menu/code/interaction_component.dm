@@ -84,17 +84,17 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		var/datum/interaction/interaction = SSinteractions.interactions[iterating_interaction_id]
 	//SPLURT EDIT CHANGE END
 		if(interaction.lewd)
-			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp) && self.client)
+			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 				continue
 			// SPLURT EDIT ADDITION - Interaction preferences
 			if(interaction.unsafe_types & INTERACTION_EXTREME)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) == "No" && self.client)
+				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) == "No")
 					continue
 			if(interaction.unsafe_types & INTERACTION_HARMFUL)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No" && self.client)
+				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No")
 					continue
 			if(interaction.unsafe_types & INTERACTION_UNHOLY)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) == "No" && self.client)
+				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) == "No")
 					continue
 			// SPLURT EDIT END
 			/*
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 /datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
 	if(!interaction.allow_act(target, self))
 		return FALSE
-	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp) && target.client)
+	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		return FALSE
 	if(!interaction.distance_allowed && !target.Adjacent(self))
 		return FALSE
@@ -460,7 +460,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 				favorite_interactions -= interaction_id
 			else
 				favorite_interactions += interaction_id
-			prefs.update_preference(/datum/preference/blob/favorite_interactions, favorite_interactions)
+			prefs.update_preference(GLOB.preference_entries[/datum/preference/blob/favorite_interactions], favorite_interactions)
 			modified_preferences |= "favorite_interactions"
 			return TRUE
 
