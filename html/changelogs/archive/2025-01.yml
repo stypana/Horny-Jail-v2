@@ -70,3 +70,8 @@
   rintherat:
   - rscadd: Added prescription toolbox for making new prescription glasses, it can
       be bought from cargo
+2025-01-08:
+  Phoenix4O4:
+  - rscadd: Custom loading animation with Splurt icon.
+  - rscadd: Our logo displayed in the main client window.
+  - bugfix: Disabled all relays to the official server.
