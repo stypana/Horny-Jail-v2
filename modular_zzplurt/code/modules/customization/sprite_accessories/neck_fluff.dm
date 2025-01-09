@@ -8,20 +8,20 @@ Neck Fluff
 
 /datum/sprite_accessory/fluff/moth/splurt/hyena
 	name = "Hyena (Splurt)"
-	icon_state = "insect_fluff_hyena"
+	icon_state = "hyena"
 
 /datum/sprite_accessory/fluff/moth/splurt/hyenastripes
 	name = "Hyena Stripes (Splurt)"
-	icon_state = "insect_fluff_hyenastripes"
+	icon_state = "hyenastripes"
 
 /datum/sprite_accessory/fluff/moth/splurt/soft
 	name = "Soft (Splurt)"
-	icon_state = "insect_fluff_soft"
+	icon_state = "soft"
 
 /datum/sprite_accessory/fluff/moth/splurt/flat
 	name = "Flat (Splurt)"
-	icon_state = "insect_fluff_flat"
+	icon_state = "flat"
 
 /datum/sprite_accessory/fluff/moth/splurt/renamon
 	name = "Renamon (Splurt)"
-	icon_state = "insect_fluff_renamon"
+	icon_state = "renamon"

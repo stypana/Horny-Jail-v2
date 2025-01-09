@@ -30,6 +30,7 @@ GLOBAL_DATUM_INIT(saliith_plushie, /obj/item/toy/plush/lizard_plushie/saliith, n
 
 	AddComponent(/datum/component/stationloving)
 	normal_desc = "[p_they()] look[p_s()] like [p_they()] need[p_s()] a friend."
+	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 
 /obj/item/toy/plush/lizard_plushie/saliith/Destroy()
 	SSpoints_of_interest.remove_point_of_interest(src)
@@ -165,7 +166,8 @@ GLOBAL_DATUM_INIT(saliith_plushie, /obj/item/toy/plush/lizard_plushie/saliith, n
 /obj/item/choice_beacon/box/plushie/proc/remove_bad_plushies(list/plushies)
 	plushies -= list(
 		/obj/item/toy/plush/narplush,
-		/obj/item/toy/plush/awakenedplushie
+		/obj/item/toy/plush/awakenedplushie,
+		/obj/item/toy/plush/lizard_plushie/saliith
 		)
 	return plushies
 

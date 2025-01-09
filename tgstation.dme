@@ -9612,6 +9612,7 @@
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\64x32wings.dm"
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\ears.dm"
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\frills.dm"
+#include "modular_zzplurt\code\modules\customization\sprite_accessories\hair_head.dm"
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\horns.dm"
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\ipc_antennas.dm"
 #include "modular_zzplurt\code\modules\customization\sprite_accessories\markings.dm"

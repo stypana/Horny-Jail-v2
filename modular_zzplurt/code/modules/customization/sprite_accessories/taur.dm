@@ -10,9 +10,9 @@ Taurus Bodies
 	name = "Chemlight (Splurt)"
 	icon_state = "chemlight"
 
-/datum/sprite_accessory/taur/splurt/altchemlight
-	name = "Alt Chemlight (Splurt)"
-	icon_state = "altchemlight"
+// /datum/sprite_accessory/taur/splurt/altchemlight // Not enough sprites. Fix that, if you are a sprite artist.
+// 	name = "Alt Chemlight (Splurt)"
+// 	icon_state = "altchemlight"
 
 /datum/sprite_accessory/taur/splurt/chemnaga
 	name = "Chemnaga (Splurt)"
