@@ -17,7 +17,6 @@
 		to_chat(H, "<span class='notice'>You feel like you can cope!</span>")
 		H.adjust_disgust(-10)
 		affected_mob.add_mood_event("opium", /datum/mood_event/cope, name)
-	. = 1
 
 /datum/reagent/drug/copium/overdose_start(mob/living/carbon/affected_mob)
 	to_chat(affected_mob, "<span class='userdanger'>What the fuck.</span>")
@@ -28,5 +27,4 @@
 	if (prob(5))
 		H.adjust_disgust(20)
 		to_chat(H, "<span class='warning'>I can't stand it anymore!</span>")
-	..()
-
+	. = ..()
