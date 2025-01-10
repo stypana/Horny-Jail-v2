@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 	.["mob_name"] = targetMob.real_name
 	.["mob_type"] = targetMob.type
 	.["admin_mob_type"] = user.client?.mob.type
-	.["godmode"] = targetMob.status_flags & GODMODE
+	.["godmode"] = HAS_TRAIT(user, TRAIT_GODMODE)
 
 	var/mob/living/L = targetMob
 	if (istype(L))
@@ -93,8 +93,10 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			player_ranks += "Donator"
 		if(SSplayer_ranks.is_mentor(targetClient, admin_bypass = FALSE))
 			player_ranks += "Mentor"
-		if(SSplayer_ranks.is_veteran(targetClient, admin_bypass = FALSE))
-			player_ranks += "Veteran"
+		// SPLURT EDIT: Remove Veteran. Veteran cut from the Bubberstation build.
+		// if(SSplayer_ranks.is_veteran(targetClient, admin_bypass = FALSE))
+		//	player_ranks += "Veteran"
+		//
 		if(SSplayer_ranks.is_vetted(targetClient, admin_bypass = FALSE))
 			player_ranks |= "Vetted"
 		.["ranks"] = length(player_ranks) ? player_ranks.Join(", ") : null
@@ -406,7 +408,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 					if (!L)
 						continue
 					L.dismember()
-					playsound(H, 'sound/effects/cartoon_pop.ogg', 70)
+					playsound(H, 'sound/effects/cartoon_sfx/cartoon_pop.ogg', 70)
 				else
 					H.regenerate_limb(limb)
 

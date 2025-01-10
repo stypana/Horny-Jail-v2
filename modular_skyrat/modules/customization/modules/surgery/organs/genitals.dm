@@ -209,6 +209,8 @@
 	if(measured_size < 1)
 		measured_size = 1
 	switch(measured_size)
+	//SPLURT EDIT START
+	/*
 		if(1 to 8)
 			size_affix = "1"
 		if(9 to 15)
@@ -217,6 +219,18 @@
 			size_affix = "3"
 		else
 			size_affix = "4"
+	*/
+		if(1 to 6)
+			size_affix = "1"
+		if(7 to 11)
+			size_affix = "2"
+		if(12 to 36)
+			size_affix = "3"
+		if(37 to 48)
+			size_affix = "4"
+		else
+			size_affix = "5"
+	//SPLURT EDIT END
 	var/passed_string = "[genital_type]_[size_affix]_[is_erect]"
 	if(uses_skintones)
 		passed_string += "_s"
@@ -441,7 +455,7 @@
 	returned_string += size_description
 	if(aroused == AROUSAL_FULL)
 		if(lactates)
-			returned_string += " The nipples seem hard, perky and are leaking milk."
+			returned_string += " The nipples seem hard, perky and are leaking [find_reagent_object_from_type(internal_fluid_datum)]." //SPLURT EDIT - Adds fluid name to examine text
 		else
 			returned_string += " Their nipples look hard and perky."
 	return returned_string
@@ -459,6 +473,8 @@
 	icon_state = passed_string
 
 /obj/item/organ/external/genital/breasts/get_sprite_size_string()
+	//SPLURT EDIT START
+	/*
 	var/max_size = 5
 	if(genital_type == "pair")
 		max_size = 16
@@ -467,6 +483,9 @@
 		current_size = 0
 	else if (current_size > max_size)
 		current_size = max_size
+	*/
+	var/current_size = clamp(floor(genital_size), 0, 19)
+	//SPLURT EDIT END
 	var/passed_string = "[genital_type]_[current_size]"
 	if(uses_skintones)
 		passed_string += "_s"
