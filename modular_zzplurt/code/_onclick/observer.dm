@@ -27,10 +27,8 @@
 
 		return
 
-	/*
 	if(!HAS_TRAIT(src, TRAIT_PERMABONER))
-		H.dna.species.stop_wagging_tail(src)
-	*/
+		unwag_tail()
 
 	// Play slap sound
 	conditional_pref_sound(src.loc, 'sound/items/weapons/slap.ogg', 50, 1, -1)
