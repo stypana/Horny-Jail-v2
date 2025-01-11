@@ -27,7 +27,7 @@
 
 		return
 
-	if(!HAS_TRAIT(src, TRAIT_PERMABONER))
+	if(!HAS_TRAIT(src, TRAIT_BIMBO))
 		unwag_tail()
 
 	// Play slap sound
