@@ -46,7 +46,7 @@
 		target.adjustOrganLoss(ORGAN_SLOT_EARS, rand(3,7))
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(3,7))
 
-/datum/interaction/lewd/extreme/harmful/earsocketfuck
+/datum/interaction/lewd/extreme/earsocketfuck
 	name = "Earsocketfuck"
 	description = "Fuck their earsocket."
 	user_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
@@ -84,7 +84,7 @@
 	target_arousal = 0
 	target_pain = 15
 
-/datum/interaction/lewd/extreme/harmful/earsocketfuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/extreme/earsocketfuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
 	if(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No")
 		return
