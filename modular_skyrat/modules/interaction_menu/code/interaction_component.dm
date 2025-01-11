@@ -211,6 +211,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	var/list/categories = list()
 	var/list/display_categories = list()
 	var/list/colors = list()
+	var/list/additional_details = list()
 
 	var/mob/living/carbon/human/human_user = null
 	if(ishuman(user))
@@ -227,9 +228,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			categories[interaction.category] = sorted_category
 		descriptions[interaction.name] = interaction.description
 		colors[interaction.name] = interaction.color
+		if(length(interaction.additional_details))
+			additional_details[interaction.name] = interaction.additional_details
 
 	data["descriptions"] = descriptions
 	data["colors"] = colors
+	data["additional_details"] = additional_details
 	for(var/category in categories)
 		display_categories += category
 	data["categories"] = sort_list(display_categories)
