@@ -19,7 +19,7 @@
 	owner.reagents.add_reagent(/datum/reagent/drug/aphrodisiac/dopamine, 0.5)
 	owner.adjustStaminaLoss(STAMINA_REMOVAL_AMOUNT_EXTERNAL)
 	affected_mob.adjust_arousal(AROUSAL_REMOVAL_AMOUNT)
-	affected_mob.adjust_pleasure(AROUSAL_REMOVAL_AMOUNT)
+	affected_mob.adjust_pleasure(AROUSAL_REMOVAL_AMOUNT * (affected_mob.dna.features["lust_tolerance"] || 1)) // SPLURT EDIT - Lust tolerance
 
 // Likely ready to be deprecated code that could be removed, due to nymphomaniac not existing anymore.
 /datum/status_effect/masturbation_climax

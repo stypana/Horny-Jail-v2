@@ -1,4 +1,4 @@
-/datum/interaction/lewd/extreme/harmful/earfuck
+/datum/interaction/lewd/extreme/earfuck
 	name = "Earfuck"
 	description = "Fuck their ear."
 	user_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
@@ -36,8 +36,10 @@
 	target_arousal = 0
 	target_pain = 15
 
-/datum/interaction/lewd/extreme/harmful/earfuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/lewd/extreme/earfuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No")
+		return
 	if(prob(15))
 		target.bleed(2)
 	if(prob(25))
@@ -84,6 +86,8 @@
 
 /datum/interaction/lewd/extreme/harmful/earsocketfuck/post_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(target.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No")
+		return
 	if(prob(15))
 		target.bleed(2)
 	if(prob(25))
