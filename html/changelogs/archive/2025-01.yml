@@ -116,3 +116,14 @@
   - balance: The strength of the radiation received is also now based on the radius
       of the radiation. Higher radius radiation spikes equals stronger radiation penetrations.
       Caps the range of the RBMK's radiation from 20 to 10.
+2025-01-12:
+  MosleyTheMalO:
+  - bugfix: Fixes restorative metabolism so it processes correctly
+  - bugfix: Fixes Vacuum resistance by adding the missing trait to it
+  - bugfix: Fixes a lot of the lewd content using the sound pref instead of default
+      erp pref
+  - bugfix: Fixes condoms
+  - bugfix: Fixes ghost ass slapping to check for the config well
+  - bugfix: toggle subtypes no longer reset arousal related variables
+  - sound: adds more interaction sounds
+  - rscadd: adds the interaction details
