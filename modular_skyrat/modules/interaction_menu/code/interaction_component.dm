@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 /datum/component/interactable
 	/// A hard reference to the parent
-	var/mob/living/carbon/human/self = null
+	var/mob/living/self = null 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	/// A list of interactions that the user can engage in.
 	var/list/datum/interaction/interactions
 	var/interact_last = 0
@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 	self = parent
 
-	add_verb(self, /mob/living/carbon/human/proc/interact_with)
+	add_verb(self, /mob/living/proc/interact_with) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 
 	build_interactions_list()
 
@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	build_interactions_list()
 	ui_interact(user)
 
-/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
+/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/target) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	if(!interaction.allow_act(target, self))
 		return FALSE
 	if(interaction.lewd && !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
@@ -151,7 +151,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
 
 /// Returns a list of interaction-relevant attributes for the given mob
-/datum/component/interactable/proc/get_interaction_attributes(mob/living/carbon/human/target)
+/datum/component/interactable/proc/get_interaction_attributes(mob/living/target) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	if(!istype(target))
 		return list()
 
@@ -223,9 +223,13 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	var/list/display_categories = list()
 	var/list/colors = list()
 
-	var/mob/living/carbon/human/human_user = null
+	// SPLURT EDIT START - INTERACTIONS - Basic mobs have no DNA, so they'll get a default lust tolerance of 1
+	var/lust_tolerance = 1
 	if(ishuman(user))
-		human_user = user
+		var/mob/living/carbon/human/human_user = user
+		lust_tolerance = human_user.dna?.features["lust_tolerance"] || 1
+	var/mob/living/user = null
+	// SPLURT EDIT END
 
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
@@ -257,15 +261,17 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	data["isTargetSelf"] = (user == self)
 	data["interactingWith"] = user == self ? "Interacting with yourself..." : "Interacting with \the [self]..."
 
-	// Primary attributes (user's stats) - Only if user is human
-	if(human_user)
-		data["pleasure"] = human_user.pleasure || 0
-		data["maxPleasure"] = AROUSAL_LIMIT * (human_user.dna?.features["lust_tolerance"] || 1)
-		data["arousal"] = human_user.arousal || 0
+	// SPLURT EDIT START - INTERACTIONS - Any living mob should be interactable
+	// Primary attributes (user's stats)
+	if(user)
+		data["pleasure"] = user.pleasure || 0
+		data["maxPleasure"] = AROUSAL_LIMIT * (lust_tolerance)
+		data["arousal"] = user.arousal || 0
 		data["maxArousal"] = AROUSAL_LIMIT
-		data["pain"] = human_user.pain || 0
+		data["pain"] = user.pain || 0
 		data["maxPain"] = AROUSAL_LIMIT
-		data["selfAttributes"] = get_interaction_attributes(human_user)
+		data["selfAttributes"] = get_interaction_attributes(user)
+	// SPLURT EDIT END
 	else
 		data["pleasure"] = 0
 		data["maxPleasure"] = AROUSAL_LIMIT
@@ -279,7 +285,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	if(user != self)
 		data["theirAttributes"] = get_interaction_attributes(self)
 		data["theirPleasure"] = self.pleasure || 0
-		data["theirMaxPleasure"] = AROUSAL_LIMIT * (self.dna.features["lust_tolerance"] || 1)
+		data["theirMaxPleasure"] = AROUSAL_LIMIT * (lust_tolerance)	// SPLURT EDIT - INTERACTIONS - Some mobs may have no dna affecting this
 		data["theirArousal"] = self.arousal || 0
 		data["theirMaxArousal"] = AROUSAL_LIMIT
 		data["theirPain"] = self.pain || 0
@@ -352,7 +358,10 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 	// Genital data - Only if user is human
 	var/list/genital_list = list()
-	if(human_user)
+	// SPLURT EDIT START - INTERACTIONS - Currently only humans may have genitalia
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+	// SPLURT EDIT END
 		for(var/obj/item/organ/external/genital/genital in human_user.organs)
 			if(!genital.visibility_preference == GENITAL_SKIP_VISIBILITY)
 				var/list/genital_data = list(
@@ -628,7 +637,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		else
 			return FALSE
 
-/mob/living/carbon/human/proc/interact_with()
+/mob/living/proc/interact_with() 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	set name = "Interact With"
 	set desc = "Perform an interaction with someone."
 	set category = "IC"

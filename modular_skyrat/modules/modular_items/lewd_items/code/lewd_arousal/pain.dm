@@ -2,10 +2,7 @@
 
 /// Adds or removes pain, this should be used instead of the modifying the var, due to quirk logic.
 /// Makes the human scream and shiver when pain hits the soft limit, provided autoemote is enabled.
-/mob/living/proc/adjust_pain(change_amount = 0)
-	return
-
-/mob/living/carbon/human/adjust_pain(change_amount = 0, mob/living/carbon/human/partner, datum/interaction/interaction, position)
+/mob/living/proc/adjust_pain(change_amount = 0, mob/living/partner, datum/interaction/interaction, position) // SPLURT EDIT - INTERACTIONS - Simple mobs should also be able to handle pain
 	if(stat >= DEAD || !client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		return
 
