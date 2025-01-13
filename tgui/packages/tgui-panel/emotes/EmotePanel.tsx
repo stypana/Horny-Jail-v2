@@ -3,13 +3,20 @@ import { Button, Flex, Section } from 'tgui/components';
 
 import { useEmotes } from './hooks';
 
-export const EmotePanel = (props: any, context: any) => {
-  const emotes = useEmotes(context);
+interface EmoteEntry {
+  key: string;
+  name: string;
+}
 
-  const emoteList = Object.entries(emotes.list || {}).map(([key, name]) => ({
-    key,
-    name,
-  }));
+export const EmotePanel = () => {
+  const emotes = useEmotes();
+
+  const emoteList = Object.entries(emotes.list || {}).map(
+    ([key, name]): EmoteEntry => ({
+      key,
+      name: String(name),
+    }),
+  );
 
   const emoteCreate = () =>
     sendMessage({

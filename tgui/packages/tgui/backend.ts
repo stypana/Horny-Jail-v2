@@ -235,6 +235,12 @@ export const backendMiddleware = (store) => {
 /**
  * Sends a message to /datum/tgui_window.
  */
+// Declare window.__windowId__ as a string property
+interface CustomWindow extends Window {
+  __windowId__: string;
+}
+declare const window: CustomWindow;
+
 export const sendMessage = (message: any = {}) => {
   const { payload, ...rest } = message;
   const data: any = {
