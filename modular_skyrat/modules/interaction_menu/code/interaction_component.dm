@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 	return attributes
 
-/datum/component/interactable/ui_data(mob/user)
+/datum/component/interactable/ui_data(mob/living/user)
 	var/list/data = list()
 	var/list/descriptions = list()
 	var/list/categories = list()
@@ -228,7 +228,6 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		lust_tolerance = human_user.dna?.features["lust_tolerance"] || 1
-	var/mob/living/user = null
 	// SPLURT EDIT END
 
 	for(var/datum/interaction/interaction in interactions)

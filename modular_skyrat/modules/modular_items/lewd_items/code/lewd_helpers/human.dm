@@ -20,15 +20,15 @@
 */
 
 /// Are we wearing something that covers our chest?
-/mob/living/carbon/human/proc/is_topless()
+/mob/living/carbon/human/is_topless()	// SPLURT EDIT - INTERACTIONS - Now is a continuation of the same proc in modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return (!(wear_suit) || !(wear_suit.body_parts_covered & CHEST)) && (!(w_uniform) || !(w_uniform.body_parts_covered & CHEST))
 
 /// Are we wearing something that covers our groin?
-/mob/living/carbon/human/proc/is_bottomless()
+/mob/living/carbon/human/is_bottomless()	// SPLURT EDIT - INTERACTIONS - Now is a continuation of the same proc in modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return (!(wear_suit) || !(wear_suit.body_parts_covered & GROIN)) && (!(w_uniform) || !(w_uniform.body_parts_covered & GROIN))
 
 /// Are we wearing something that covers our shoes?
-/mob/living/carbon/human/proc/is_barefoot()
+/mob/living/carbon/human/is_barefoot()	// SPLURT EDIT - INTERACTIONS - Now is a continuation of the same proc in modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return (!(wear_suit) || !(wear_suit.body_parts_covered & GROIN)) && (!(shoes) || !(shoes.body_parts_covered & FEET))
 
 /mob/living/carbon/human/proc/is_hands_uncovered()
@@ -152,7 +152,7 @@
 			return hand_count
 
 /// Returns true if the human has a accessible feet for the parameter, returning the number of feet the human has if they do. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_feet(required_state = REQUIRE_GENITAL_ANY)
+/mob/living/carbon/human/has_feet(required_state = REQUIRE_GENITAL_ANY) // SPLURT EDIT - INTERACTIONS - Now is a continuation of the same proc in modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	var/feet_count = 0
 
 	for(var/obj/item/bodypart/leg/left/left_leg in bodyparts)
@@ -177,7 +177,7 @@
 			return feet_count
 
 /// Gets the number of feet the human has.
-/mob/living/carbon/human/proc/get_num_feet()
+/mob/living/carbon/human/get_num_feet() // SPLURT EDIT - INTERACTIONS - Now is a continuation of the same proc in modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	return has_feet(REQUIRE_GENITAL_ANY)
 
 /// Returns true if the human has a accessible ears for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
@@ -369,7 +369,7 @@
 		..()
 
 /// Checks if the human is wearing a condom, and also hasn't broken it.
-/mob/living/carbon/human/proc/is_wearing_condom()
+/mob/living/carbon/human/is_wearing_condom() // SPLURT EDIT - INTERACTIONS - Now is a continuation of the same proc in modular_zzplurt\code\modules\mob\living\living_lewd.dm
 	if(!penis || !istype(penis, /obj/item/clothing/sextoy/condom))
 		return FALSE
 

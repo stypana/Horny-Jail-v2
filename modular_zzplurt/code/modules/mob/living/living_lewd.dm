@@ -405,10 +405,6 @@
 /mob/living/proc/update_pleasure_hud()
 	return // Stub proc that should be overridden by human
 
-/mob/living/proc/adjust_arousal(amount)
-	arousal = clamp(arousal + amount, AROUSAL_MINIMUM, AROUSAL_LIMIT)
-	update_arousal_hud()
-
 /mob/living/proc/set_arousal(amount)
 	arousal = clamp(amount, AROUSAL_MINIMUM, AROUSAL_LIMIT)
 	update_arousal_hud()

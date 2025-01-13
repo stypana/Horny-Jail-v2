@@ -1,5 +1,5 @@
 ///Adjusts the parent human's arousal value based off the value assigned to `arous.`
-/mob/living/carbon/human/proc/adjust_arousal(arous = 0)
+/mob/living/proc/adjust_arousal(arous = 0) // SPLURT EDIT - INTERACTIONS - Is now a property of the base living mob
 	if(stat >= DEAD || !client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		return FALSE
 
