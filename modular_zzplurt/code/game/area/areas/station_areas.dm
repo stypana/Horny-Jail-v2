@@ -58,17 +58,17 @@
 
 /area/station/maintenance/central/brothel
 	name = "Slave Brothel"
-	icon = 'modular_splurt/icons/turf/areas.dmi'
+	icon = 'modular_zzplurt/icons/turf/areas.dmi'
 	icon_state = "brothel"
 
 /area/station/maintenance/central/zoo
 	name = "Sapience Zoo"
-	icon = 'modular_splurt/icons/turf/areas.dmi'
+	icon = 'modular_zzplurt/icons/turf/areas.dmi'
 	icon_state = "zoo"
 
 /area/station/maintenance/central/porn
 	name = "Porn Studio"
-	icon = 'modular_splurt/icons/turf/areas.dmi'
+	icon = 'modular_zzplurt/icons/turf/areas.dmi'
 	icon_state = "porn"
 
 /area/station/hallway/secondary/service/secondary
