@@ -231,6 +231,27 @@ export const backendMiddleware = (store) => {
   };
 };
 
+// SPLURT EDIT START:  CUSTOM EMOTE PANEL
+/**
+ * Sends a message to /datum/tgui_window.
+ */
+export const sendMessage = (message: any = {}) => {
+  const { payload, ...rest } = message;
+  const data: any = {
+    // Message identifying header
+    tgui: 1,
+    window_id: window.__windowId__,
+    // Message body
+    ...rest,
+  };
+  // JSON-encode the payload
+  if (payload !== null && payload !== undefined) {
+    data.payload = JSON.stringify(payload);
+  }
+  Byond.topic(data);
+};
+// SPLURT EDIT END:  CUSTOM EMOTE PANEL
+
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.

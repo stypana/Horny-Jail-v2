@@ -328,6 +328,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks), augments)// SKYRAT EDIT - AUGMENTS+
 	validate_quirks()
 
+	// SPLURT EDIT START: CUSTOM EMOTE PANEL
+	custom_emote_panel = save_data?["custom_emote_panel"] || list()
+	custom_emote_panel = SANITIZE_LIST(custom_emote_panel)
+	// SPLURT EDIT END: CUSTOM EMOTE PANEL
+
 	return TRUE
 
 /datum/preferences/proc/save_character(update) // Skyrat edit - Choose when to update (This is stupid)
@@ -365,6 +370,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Write prefs
 	save_data["job_preferences"] = job_preferences
 
+	// SPLURT EDIT START: CUSTOM EMOTE PANEL
+	save_data["custom_emote_panel"] = custom_emote_panel
+	// SPLURT EDIT END: CUSTOM EMOTE PANEL
+
 	//Quirks
 	save_data["all_quirks"] = all_quirks
 	save_character_skyrat(save_data, update) // SKYRAT EDIT ADDITION
@@ -382,6 +391,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		preference_middleware.on_new_character(usr)
 
 	character_preview_view.update_body()
+
+	// SPLURT EDIT START: CUSTOM EMOTE PANEL
+	if(usr.client?.prefs)
+		usr.client.tgui_panel?.emotes_send_list()
+	// SPLURT EDIT END: CUSTOM EMOTE PANEL
 
 /datum/preferences/proc/remove_current_slot()
 	PRIVATE_PROC(TRUE)

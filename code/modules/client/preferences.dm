@@ -88,6 +88,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// If set to TRUE, will update character_profiles on the next ui_data tick.
 	var/tainted_character_profiles = FALSE
 
+	var/list/custom_emote_panel = list() // SPLURT EDIT:  CUSTOM EMOTE PANEL
+
 /datum/preferences/Destroy(force)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
@@ -244,6 +246,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			// SKYRAT EDIT END
 			// SAFETY: `switch_to_slot` performs sanitization on the slot number
 			switch_to_slot(params["slot"])
+			// SPLURT EDIT START:  CUSTOM EMOTE PANEL
+			if(usr.client?.prefs) //custom emote panel is attached to the character
+				usr.client.tgui_panel?.emotes_send_list() //Используем существующую функцию для обновления
+			// SPLURT EDIT END:  CUSTOM EMOTE PANEL
 			return TRUE
 		if ("remove_current_slot")
 			remove_current_slot()
