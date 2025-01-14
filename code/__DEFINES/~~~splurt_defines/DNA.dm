@@ -3,8 +3,8 @@
 #undef BODY_SIZE_MAX
 #undef BODY_SIZE_MIN
 
-#define BODY_SIZE_MAX 0.1
-#define BODY_SIZE_MIN 2.0
+#define BODY_SIZE_MAX 2.0
+#define BODY_SIZE_MIN 0.1
 
 //sex
 #define ORGAN_SLOT_BUTT "butt"
