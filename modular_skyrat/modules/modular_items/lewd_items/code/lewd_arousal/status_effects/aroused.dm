@@ -47,7 +47,11 @@
 		//moan x2
 
 	affected_mob.adjust_arousal(temp_arousal)
-	affected_mob.adjust_pleasure(temp_pleasure)
+	if(istype(affected_mob, /mob/living/carbon/human))
+		var/mob/living/carbon/human/target_human = affected_mob
+		target_human.adjust_pleasure(temp_pleasure * (target_human.dna.features["lust_tolerance"] || 1))
+	else
+		affected_mob.adjust_pleasure(temp_pleasure)
 	affected_mob.adjust_pain(temp_pain)
 
 #undef AUTO_EMOTE_CHANCE
