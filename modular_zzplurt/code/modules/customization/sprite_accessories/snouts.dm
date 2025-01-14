@@ -187,20 +187,12 @@ Snouts
 	icon_state = "renamon"
 
 /datum/sprite_accessory/snouts/splurt/extra_haydeemedical
-	name = "Extra Haydee Medical (Splurt)"
+	name = "Haydee (Splurt)"
 	icon_state = "extra_haydeemedical"
-
-/datum/sprite_accessory/snouts/splurt/haydeemedical
-	name = "Haydee Medical (Splurt)"
-	icon_state = "haydeemedical"
 
 /datum/sprite_accessory/snouts/splurt/rodentthick
 	name = "Rodent Thick (Splurt)"
 	icon_state = "rodentthick"
-
-/datum/sprite_accessory/snouts/splurt/gator
-	name = "Gator (Splurt)"
-	icon_state = "gator"
 
 /*
 Synthliz
@@ -208,16 +200,16 @@ Synthliz
 
 /datum/sprite_accessory/snouts/splurt/synthliz
 	name = "Synthliz (Splurt)"
-	icon_state = "synthliz"
+	icon_state = "synthliz_over"
 	icon = 'modular_zzplurt/icons/mob/sprite_accessories/synthliz_snouts.dmi'
 
 /datum/sprite_accessory/snouts/splurt/synthliz/alt
 	name = "Synthliz (Splurt (Alt))"
-	icon_state = "synthlizalt"
+	icon_state = "synthlizalt_basic"
 
 /datum/sprite_accessory/snouts/splurt/synthliz/barlessalt
 	name = "Synthliz (Splurt (Barless Alt))"
-	icon_state = "synthlizbarlessalt"
+	icon_state = "synthlizbarlessalt_basic"
 
 /datum/sprite_accessory/snouts/splurt/synthliz/axon
 	name = "Synthliz (Splurt (Axon))"

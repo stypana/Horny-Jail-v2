@@ -162,8 +162,10 @@ Hairs
 //Teshari face things
 /datum/sprite_accessory/facial_hair/teshari
 	name = "Teshari Beard"
+	icon = 'modular_zzplurt/icons/mob/sprite_accessories/hair.dmi'
 	icon_state = "teshari_chin"
 	gender = NEUTER
+	recommended_species = list(SPECIES_TESHARI)
 
 /datum/sprite_accessory/facial_hair/teshari/scraggly
 	name = "Teshari Scraggly"
