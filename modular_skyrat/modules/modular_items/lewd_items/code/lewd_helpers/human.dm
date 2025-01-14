@@ -397,12 +397,6 @@
 	if(pleasure >= AROUSAL_AUTO_CLIMAX_THRESHOLD * (dna?.features["lust_tolerance"] || 1))
 		climax(manual = FALSE, partner = partner, climax_interaction = interaction, interaction_position = position)
 
-// Since only humans have DNA that would affect the arousal amount we're redefining the proc here
-/mob/living/carbon/human/adjust_arousal(amount)
-	..()
-	arousal = clamp(arousal + amount, AROUSAL_MINIMUM, AROUSAL_LIMIT * (dna?.features["lust_tolerance"] || 1))
-	update_arousal_hud()
-
 // Since only humans have DNA that would affect the pain amount we're redefining the proc here
 /mob/living/carbon/human/adjust_pain(amount)
 	..()
