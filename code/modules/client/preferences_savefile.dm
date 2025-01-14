@@ -370,9 +370,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Write prefs
 	save_data["job_preferences"] = job_preferences
 
-	// SPLURT EDIT START: CUSTOM EMOTE PANEL
-	save_data["custom_emote_panel"] = custom_emote_panel
-	// SPLURT EDIT END: CUSTOM EMOTE PANEL
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks

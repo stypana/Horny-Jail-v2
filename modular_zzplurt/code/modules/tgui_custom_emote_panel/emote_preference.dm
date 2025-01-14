@@ -1,16 +1,3 @@
-/**
- * Custom emote panel preference handler
- */
-/datum/preference/choiced/custom_emote_panel
-	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
-	savefile_key = "custom_emote_panel"
-	savefile_identifier = PREFERENCE_CHARACTER
-
-/**
- * Creates default empty list for new characters
- */
-/datum/preference/choiced/custom_emote_panel/create_default_value()
-	return list()
 
 /**
  * Saves custom emotes to character slot
