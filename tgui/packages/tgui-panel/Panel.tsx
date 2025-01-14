@@ -9,7 +9,7 @@ import { Pane } from 'tgui/layouts';
 
 import { NowPlayingWidget, useAudio } from './audio';
 import { ChatPanel, ChatTabs } from './chat';
-import { EmotePanel, useEmotes } from './emotes'; // SPLURT EDIT:  CUSTOM EMOTE PANEL
+import { EmotesToolbar, useEmotes } from './emotes'; // SPLURT EDIT:  CUSTOM EMOTE PANEL
 import { useGame } from './game';
 import { Notifications } from './Notifications';
 import { PingIndicator } from './ping';
@@ -81,7 +81,7 @@ export const Panel = (props) => {
         {emotes.visible && (
           <Stack.Item>
             <Section>
-              <EmotePanel />
+              <EmotesToolbar />
             </Section>
           </Stack.Item>
         )}

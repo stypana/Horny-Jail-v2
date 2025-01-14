@@ -1,4 +1,4 @@
-import { sendMessage } from 'tgui/backend';
+import { useState } from 'react';
 import { Button, Flex, Section } from 'tgui/components';
 
 import { useEmotes } from './hooks';
@@ -8,8 +8,11 @@ interface EmoteEntry {
   name: string;
 }
 
-export const EmotePanel = () => {
+const COOLDOWN_DURATION = 1000; // 1 second
+
+export const EmotesToolbar = () => {
   const emotes = useEmotes();
+  const [cooldowns, setCooldowns] = useState<Record<string, boolean>>({});
 
   const emoteList = Object.entries(emotes.list || {}).map(
     ([key, name]): EmoteEntry => ({
@@ -18,21 +21,26 @@ export const EmotePanel = () => {
     }),
   );
 
-  const emoteCreate = () =>
-    sendMessage({
-      type: 'emotes/create',
+  const emoteCreate = () => Byond.sendMessage('emotes/create');
+
+  const emoteExecute = (key: string) => {
+    if (cooldowns[key]) {
+      return;
+    }
+
+    Byond.sendMessage('emotes/execute', {
+      key: key,
     });
 
-  const emoteExecute = (key: string) =>
-    sendMessage({
-      type: 'emotes/execute',
-      payload: { key },
-    });
+    setCooldowns((prev) => ({ ...prev, [key]: true }));
+    setTimeout(() => {
+      setCooldowns((prev) => ({ ...prev, [key]: false }));
+    }, COOLDOWN_DURATION);
+  };
 
   const emoteContextAction = (key: string) =>
-    sendMessage({
-      type: 'emotes/contextAction',
-      payload: { key },
+    Byond.sendMessage('emotes/contextAction', {
+      key: key,
     });
 
   return (
@@ -50,6 +58,7 @@ export const EmotePanel = () => {
                   emoteContextAction(emote.key);
                 }}
                 tooltip={`*${emote.key}`}
+                disabled={cooldowns[emote.key]}
               />
             </Flex.Item>
           ))}
