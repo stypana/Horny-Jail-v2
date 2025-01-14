@@ -127,3 +127,6 @@
   - bugfix: toggle subtypes no longer reset arousal related variables
   - sound: adds more interaction sounds
   - rscadd: adds the interaction details
+2025-01-13:
+  prototypemeat:
+  - balance: Buffed Razor Claws and their upgraded variants, happy killing
