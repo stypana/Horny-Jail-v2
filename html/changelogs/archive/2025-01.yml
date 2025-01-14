@@ -198,3 +198,5 @@
   - bugfix: makes toggling off sex toys actually remove the sex toys from your inventory.
   StrangeWeirdKitten:
   - bugfix: Subtler will now filter out clientless mobs
+  prototypemeat:
+  - balance: Buffed Razor Claws and their upgraded variants, happy killing
