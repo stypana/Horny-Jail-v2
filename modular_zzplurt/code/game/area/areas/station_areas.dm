@@ -120,3 +120,6 @@
 /area/ruin/unpowered/ylvaturf
 	name = "Ylva Outskirts"
 	icon_state = "spacecontent26"
+
+/area/station/service/chapel/main
+	name = "Chapel"
