@@ -84,3 +84,4 @@
 
 /mob/living
 	var/datum/dna/dna = null // this is now here just in case we'll create some kind of a horny monster. no impact otherwise - as far as I can tell
+
