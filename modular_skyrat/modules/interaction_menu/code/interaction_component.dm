@@ -66,8 +66,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		qdel(src)
 		return
 
-	if(!ishuman(parent))
-		return COMPONENT_INCOMPATIBLE
+// SPLURT EDIT REMOVAL - INTERACTIONS - All mobs are now interactable, no need to check for human
 
 	self = parent
 

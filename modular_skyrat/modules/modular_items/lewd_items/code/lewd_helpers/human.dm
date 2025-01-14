@@ -386,7 +386,7 @@
 /obj/item/organ/external/tail/proc/is_exposed()
 	return TRUE // your tail is always exposed, dummy! why are you checking this
 
-/// SPLURT EDIT START - Moving lewd procs to /mob/living, see modular_zzplurt/code/modules/mob/living/living_lewd.dm
+// SPLURT EDIT START - Moving lewd procs to /mob/living, see modular_zzplurt/code/modules/mob/living/living_lewd.dm
 // Since only humans have DNA that would affect the pleasure amount we're redefining the proc here
 /mob/living/carbon/human/adjust_pleasure(amount, mob/living/partner, datum/interaction/interaction, position)
 	if(stat >= DEAD || !client?.prefs?.read_preference(/datum/preference/toggle/erp))
@@ -399,11 +399,13 @@
 
 // Since only humans have DNA that would affect the arousal amount we're redefining the proc here
 /mob/living/carbon/human/adjust_arousal(amount)
+	..()
 	arousal = clamp(arousal + amount, AROUSAL_MINIMUM, AROUSAL_LIMIT * (dna?.features["lust_tolerance"] || 1))
 	update_arousal_hud()
 
 // Since only humans have DNA that would affect the pain amount we're redefining the proc here
 /mob/living/carbon/human/adjust_pain(amount)
+	..()
 	pain = clamp(pain + amount, 0, pain_limit * (dna?.features["lust_tolerance"] || 1))
 	update_pain_hud()
-/// SPLURT EDIT END
+// SPLURT EDIT END

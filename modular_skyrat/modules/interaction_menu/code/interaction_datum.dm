@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	return TRUE
 */ //SPLURT EDIT END
 
-/datum/interaction/proc/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/interaction/proc/act(mob/living/user, mob/living/target) // SPLURT EDIT - INTERACTIONS - Any mob can initiate an interaction
 	if(!allow_act(user, target))
 		return
 	if(!message)
@@ -129,14 +129,22 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		conditional_pref_sound(user, sound_cache, 80, TRUE, falloff_distance = sound_range, pref_to_check = /datum/preference/toggle/erp/sounds)
 		//SPLURT EDIT END
 	if(lewd)
-		user.adjust_pleasure(user_pleasure * (target.dna.features["sexual_potency"] || 1), target, src, CLIMAX_POSITION_USER) //SPLURT EDIT - Interactions
+		// SPLURT EDIT - INTERACTIONS - Base mobs have no DNA
+		var/sexual_potency = 1
+		var/mob/living/carbon/human/user_human = user
+		if (user_human.dna.features["sexual_potency"])
+			sexual_potency = user_human.dna.features["sexual_potency"]
+		user.adjust_pleasure(user_pleasure * sexual_potency, target, src, CLIMAX_POSITION_USER) //SPLURT EDIT - Interactions
 		user.adjust_arousal(user_arousal)
 		user.adjust_pain(user_pain, target, src, CLIMAX_POSITION_USER) //SPLURT EDIT - Interactions
 		if(usage == INTERACTION_OTHER) //SPLURT EDIT - Interactions
-			target.adjust_pleasure(target_pleasure * (user.dna.features["sexual_potency"] || 1), user, src, CLIMAX_POSITION_TARGET) //SPLURT EDIT - Interactions
+			var/mob/living/carbon/human/target_human = target
+			if (target_human.dna.features["sexual_potency"])
+				sexual_potency = target_human.dna.features["sexual_potency"]
+			target.adjust_pleasure(target_pleasure * sexual_potency , user, src, CLIMAX_POSITION_TARGET) //SPLURT EDIT - Interactions
 			target.adjust_arousal(target_arousal)
 			target.adjust_pain(target_pain, user, src, CLIMAX_POSITION_TARGET) //SPLURT EDIT - Interactions
-
+		// SPLURT EDIT END
 	post_interaction(user, target) //SPLURT EDIT - Interactions
 	return TRUE
 
@@ -207,7 +215,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	WRITE_FILE(file, json_encode(json))
 	return TRUE
 
-/mob/living/carbon/human/Initialize(mapload)
+/mob/living/Initialize(mapload) // SPLURT EDIT - INTERACTIONS -
 	. = ..()
 	AddComponent(/datum/component/interactable)
 

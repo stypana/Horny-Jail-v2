@@ -21,7 +21,7 @@
 	var/obj/item/nipples = null
 	var/obj/item/penis = null
 
-/mob/living/proc/adjust_pleasure(amount, mob/living/partner, datum/interaction/interaction, position)
+/mob/living/proc/adjust_pleasure(amount = 0, mob/living/partner, datum/interaction/interaction, position)
 	if(stat >= DEAD || !client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		return
 
