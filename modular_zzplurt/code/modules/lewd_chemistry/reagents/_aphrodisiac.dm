@@ -193,11 +193,3 @@
 				shrink_belly(exposed_mob, suppress_chat)
 			if(GENITAL_BUTT)
 				shrink_butt(exposed_mob, suppress_chat)
-
-// SPLURT ADD START - INTERACTIONS - All mobs should be able to metabolize aphrodisiac
-/datum/reagent/drug/aphrodisiac/on_mob_life(mob/living/M)
-	. = ..()
-	if(istype(M))
-		M.adjust_pleasure(2)
-		M.adjust_arousal(3)
-// SPLURT ADD END

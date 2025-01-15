@@ -1,18 +1,18 @@
 /mob/living/carbon/human
-// SPLURT EDIT REMOVAL - Moving lewd variables to /mob/living, see modular_zzplurt/code/modules/mob/living/living_lewd.dm
+	// SPLURT EDIT REMOVAL - Moving lewd variables to /mob/living, see modular_zzplurt/code/modules/mob/living/living_lewd.dm
 	// var/arousal = 0
 	// var/pleasure = 0
 	// var/pain = 0
 
 	// var/pain_limit = 0
 	// var/arousal_status = AROUSAL_NONE
+	// SPLURT EDIT END
 
-	// // Add variables for slots to the human class
-	// var/obj/item/vagina = null
-	// var/obj/item/anus = null
-	// var/obj/item/nipples = null
-	// var/obj/item/penis = null
-// SPLURT EDIT END
+	// Add variables for slots to the human class
+	var/obj/item/vagina = null
+	var/obj/item/anus = null
+	var/obj/item/nipples = null
+	var/obj/item/penis = null
 
 /*
 *	This code needed to determine if the human is naked in that part of body or not

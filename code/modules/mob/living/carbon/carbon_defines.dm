@@ -47,7 +47,7 @@
 	var/obj/item/clothing/ears = null
 
 	/// Carbon, you should really only be accessing this through has_dna() but it's your life
-	// var/datum/dna/dna = null // SPLURT EDIT - INTERACTIONS - Redefined in modular_zzplurt\code\modules\mob\living\living.dm
+	var/datum/dna/dna = null
 	///last mind to control this mob, for blood-based cloning
 	var/datum/mind/last_mind = null
 

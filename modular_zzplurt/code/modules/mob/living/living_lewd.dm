@@ -11,22 +11,24 @@
 	var/climax_cooldown = 0
 	var/obj/item/organ/external/genital/last_climax_source = null
 
-	// Add variables for slots
-	var/obj/item/vagina = null
-	var/obj/item/anus = null
-	var/obj/item/nipples = null
-	var/obj/item/penis = null
-
 	var/refractory_period
 
-/mob/living/proc/adjust_pleasure(amount = 0, mob/living/partner, datum/interaction/interaction, position)
-	if(stat >= DEAD || !client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		return
+	var/list/simulated_genitals = list(
+		ORGAN_SLOT_PENIS = TRUE,
+		ORGAN_SLOT_VAGINA = TRUE,
+		ORGAN_SLOT_BREASTS = TRUE,
+		ORGAN_SLOT_ANUS = TRUE,
+		ORGAN_SLOT_BUTT = TRUE,
+		ORGAN_SLOT_BELLY = TRUE
+	)
 
-	pleasure = clamp(pleasure + amount, AROUSAL_MINIMUM, AROUSAL_LIMIT)
-
-	if(pleasure >= AROUSAL_AUTO_CLIMAX_THRESHOLD)
-		climax(manual = FALSE, partner = partner, climax_interaction = interaction, interaction_position = position)
+	var/list/simulated_interaction_requirements = list(
+		INTERACTION_REQUIRE_SELF_HAND = TRUE,
+		INTERACTION_REQUIRE_SELF_MOUTH = TRUE,
+		INTERACTION_REQUIRE_SELF_TOPLESS = TRUE,
+		INTERACTION_REQUIRE_SELF_BOTTOMLESS = TRUE,
+		INTERACTION_REQUIRE_SELF_FEET = 2,
+	)
 
 /mob/living/proc/set_pleasure(amount)
 	pleasure = clamp(amount, 0, 100)
@@ -34,76 +36,26 @@
 
 /// Returns true if the mob has an accessible penis for the parameter
 /mob/living/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_PENIS)
-	if(!genital)
-		return FALSE
-
-	switch(required_state)
-		if(REQUIRE_GENITAL_ANY)
-			return TRUE
-		if(REQUIRE_GENITAL_EXPOSED)
-			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
-		if(REQUIRE_GENITAL_UNEXPOSED)
-			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
-		else
-			return TRUE
+	return simulated_genitals[ORGAN_SLOT_PENIS]
 
 /// Returns true if the mob has an accessible vagina for the parameter
 /mob/living/proc/has_vagina(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_VAGINA)
-	if(!genital)
-		return FALSE
-
-	switch(required_state)
-		if(REQUIRE_GENITAL_ANY)
-			return TRUE
-		if(REQUIRE_GENITAL_EXPOSED)
-			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
-		if(REQUIRE_GENITAL_UNEXPOSED)
-			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
-		else
-			return TRUE
+	return simulated_genitals[ORGAN_SLOT_VAGINA]
 
 /// Returns true if the mob has accessible breasts for the parameter
 /mob/living/proc/has_breasts(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_BREASTS)
-	if(!genital)
-		return FALSE
-
-	switch(required_state)
-		if(REQUIRE_GENITAL_ANY)
-			return TRUE
-		if(REQUIRE_GENITAL_EXPOSED)
-			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_topless()
-		if(REQUIRE_GENITAL_UNEXPOSED)
-			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_topless()
-		else
-			return TRUE
+	return simulated_genitals[ORGAN_SLOT_BREASTS]
 
 /// Returns true if the mob has an accessible anus for the parameter
 /mob/living/proc/has_anus(required_state = REQUIRE_GENITAL_ANY)
-	if(issilicon(src))
-		return TRUE
-	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_ANUS)
-	if(!genital)
-		return FALSE
-
-	switch(required_state)
-		if(REQUIRE_GENITAL_ANY)
-			return TRUE
-		if(REQUIRE_GENITAL_EXPOSED)
-			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
-		if(REQUIRE_GENITAL_UNEXPOSED)
-			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
-		else
-			return TRUE
+	return simulated_genitals[ORGAN_SLOT_ANUS]
 
 /// These are stub procs that should be overridden by human
 /mob/living/proc/is_topless()
-	return TRUE
+	return simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_TOPLESS]
 
 /mob/living/proc/is_bottomless()
-	return TRUE
+	return simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_BOTTOMLESS]
 
 /mob/living/proc/is_barefoot()
 	return TRUE
@@ -127,13 +79,13 @@
 // I'm unsure if mobs should get checked for these, but I'm adding them for now
 
 /mob/living/proc/has_feet(required_state = REQUIRE_GENITAL_ANY)
-	return FALSE
+	return simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_FEET]
 
 /mob/living/proc/has_balls(required_state = REQUIRE_GENITAL_ANY)
-	return FALSE
+	return simulated_genitals[ORGAN_SLOT_PENIS]
 
 /mob/living/proc/has_belly(required_state = REQUIRE_GENITAL_ANY)
-	return FALSE
+	return simulated_genitals[ORGAN_SLOT_BELLY]
 
 /mob/living/proc/get_num_feet()
-	return 0
+	return simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_FEET]
