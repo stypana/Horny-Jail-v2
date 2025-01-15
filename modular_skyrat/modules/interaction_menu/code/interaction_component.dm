@@ -85,17 +85,6 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		if(interaction.lewd)
 			if(!self.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 				continue
-			// SPLURT EDIT ADDITION - Interaction preferences
-			if(interaction.unsafe_types & INTERACTION_EXTREME)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extm) == "No")
-					continue
-			if(interaction.unsafe_types & INTERACTION_HARMFUL)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_extmharm) == "No")
-					continue
-			if(interaction.unsafe_types & INTERACTION_UNHOLY)
-				if(self.client?.prefs?.read_preference(/datum/preference/choiced/erp_status_unholy) == "No")
-					continue
-			// SPLURT EDIT END
 			/*
 			SPLURT EDIT REMOVAL - Interactions
 			if(interaction.sexuality != "" && interaction.sexuality != self.client?.prefs?.read_preference(/datum/preference/choiced/erp_sexuality))
@@ -221,6 +210,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	var/list/categories = list()
 	var/list/display_categories = list()
 	var/list/colors = list()
+	var/list/additional_details = list()
 
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
@@ -233,9 +223,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			categories[interaction.category] = sorted_category
 		descriptions[interaction.name] = interaction.description
 		colors[interaction.name] = interaction.color
+		if(length(interaction.additional_details))
+			additional_details[interaction.name] = interaction.additional_details
 
 	data["descriptions"] = descriptions
 	data["colors"] = colors
+	data["additional_details"] = additional_details
 	for(var/category in categories)
 		display_categories += category
 	data["categories"] = sort_list(display_categories)

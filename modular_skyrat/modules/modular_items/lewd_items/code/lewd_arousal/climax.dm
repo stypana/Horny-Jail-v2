@@ -33,7 +33,8 @@
 		climax_choice = tgui_alert(src, "You are climaxing, choose which genitalia to climax with.", "Genitalia Preference!", genitals)
 	else if(istype(climax_interaction, /datum/interaction) && climax_interaction.cum_genital?.len && climax_interaction.cum_genital[interaction_position])
 		climax_choice = climax_interaction.cum_genital[interaction_position]
-
+	conditional_pref_sound(get_turf(src), 'modular_zzplurt/sound/interactions/end.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds)
+	//SPLURT EDIT ADDITION END
 	switch(gender)
 		if(MALE)
 			conditional_pref_sound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
@@ -132,15 +133,17 @@
 						create_cum_decal = TRUE
 						visible_message(span_userlove("[src] shoots their sticky load onto the floor!"), \
 							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+						conditional_pref_sound(get_turf(src), 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
 					else if(climax_into_choice == "On [target_mob_them]")
 						create_cum_decal = TRUE
 						visible_message(span_userlove("[src] shoots their sticky load onto [target_mob]!"), \
 							span_userlove("You shoot string after string of hot cum onto [target_mob]!"))
+						conditional_pref_sound(get_turf(src), 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
 					else
 						visible_message(span_userlove("[src] hilts [self_their] cock into [target_mob]'s [climax_into_choice], shooting cum into [target_mob_them]!"), \
 							span_userlove("You hilt your cock into [target_mob]'s [climax_into_choice], shooting cum into [target_mob_them]!"))
 						to_chat(target_mob, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [self_their] load into it."))
-
+						conditional_pref_sound(get_turf(target_mob), climax_into_choice == "mouth" ? pick('modular_zzplurt/sound/interactions/mouthend (1).ogg', 'modular_zzplurt/sound/interactions/mouthend (2).ogg') : 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
 			var/obj/item/organ/external/genital/testicles/testicles = get_organ_slot(ORGAN_SLOT_TESTICLES)
 			//SPLURT EDIT CHANGE BEGIN - Interactions
 			if(!(climax_interaction?.interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER))
@@ -259,15 +262,17 @@
 						create_cum_decal = TRUE
 						visible_message(span_userlove("[src] squirts on the floor!"), \
 							span_userlove("You squirt on the floor!"))
+						conditional_pref_sound(get_turf(src), 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
 					else if(climax_into_choice == "On [target_mob_them]")
 						create_cum_decal = TRUE
 						visible_message(span_userlove("[src] squirts all over [target_mob]!"), \
 							span_userlove("You squirt all over [target_mob]!"))
+						conditional_pref_sound(get_turf(src), 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
 					else
 						visible_message(span_userlove("[src] squirts into [target_mob]'s [climax_into_choice]!"), \
 							span_userlove("You squirt into [target_mob]'s [climax_into_choice]!"))
 						to_chat(target_mob, span_userlove("Your [climax_into_choice] fills with [src]'s fluids."))
-
+						conditional_pref_sound(get_turf(target_mob), climax_into_choice == "mouth" ? pick('modular_zzplurt/sound/interactions/mouthend (1).ogg', 'modular_zzplurt/sound/interactions/mouthend (2).ogg') : 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
 			if(!(climax_interaction?.interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER))
 				if(create_cum_decal)
 					if(HAS_TRAIT(src, TRAIT_MESSY))
