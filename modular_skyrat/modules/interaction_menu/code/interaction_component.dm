@@ -215,19 +215,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 
 	return attributes
 
-/datum/component/interactable/ui_data(mob/living/user)
+/datum/component/interactable/ui_data(mob/living/user)  	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	var/list/data = list()
 	var/list/descriptions = list()
 	var/list/categories = list()
 	var/list/display_categories = list()
 	var/list/colors = list()
-
-	// SPLURT EDIT START - INTERACTIONS - Basic mobs have no DNA, so they'll get a default lust tolerance of 1
-	var/lust_tolerance = 1
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		lust_tolerance = human_user.dna?.features["lust_tolerance"] || 1
-	// SPLURT EDIT END
 
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
@@ -263,7 +256,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	// Primary attributes (user's stats)
 	if(user)
 		data["pleasure"] = user.pleasure || 0
-		data["maxPleasure"] = AROUSAL_LIMIT * (lust_tolerance)
+		data["maxPleasure"] = AROUSAL_LIMIT * (self.dna.features["lust_tolerance"] || 1)
 		data["arousal"] = user.arousal || 0
 		data["maxArousal"] = AROUSAL_LIMIT
 		data["pain"] = user.pain || 0
@@ -283,7 +276,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	if(user != self)
 		data["theirAttributes"] = get_interaction_attributes(self)
 		data["theirPleasure"] = self.pleasure || 0
-		data["theirMaxPleasure"] = AROUSAL_LIMIT * (lust_tolerance)	// SPLURT EDIT - INTERACTIONS - Some mobs may have no dna affecting this
+		data["theirMaxPleasure"] = AROUSAL_LIMIT * (self.dna.features["lust_tolerance"] || 1)
 		data["theirArousal"] = self.arousal || 0
 		data["theirMaxArousal"] = AROUSAL_LIMIT
 		data["theirPain"] = self.pain || 0

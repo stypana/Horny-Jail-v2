@@ -22,4 +22,4 @@
 			adjust_arousal(change_amount)
 		adjust_pleasure(change_amount / 2, partner, interaction, position)
 
-	pain = clamp(pain + change_amount, AROUSAL_MINIMUM, AROUSAL_LIMIT)
+	pain = clamp(pain + change_amount, 0, pain_limit * (dna?.features["lust_tolerance"] || 1))

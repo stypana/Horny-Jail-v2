@@ -385,11 +385,3 @@
 /// Checks if the tail is exposed.
 /obj/item/organ/external/tail/proc/is_exposed()
 	return TRUE // your tail is always exposed, dummy! why are you checking this
-
-// SPLURT EDIT START - Moving lewd procs to /mob/living, see modular_zzplurt/code/modules/mob/living/living_lewd.dm
-// Since only humans have DNA that would affect the pain amount we're redefining the proc here
-/mob/living/carbon/human/adjust_pain(amount)
-	..()
-	pain = clamp(pain + amount, 0, pain_limit * (dna?.features["lust_tolerance"] || 1))
-	update_pain_hud()
-// SPLURT EDIT END
