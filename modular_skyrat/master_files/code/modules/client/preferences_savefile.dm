@@ -284,8 +284,9 @@
 	save_data["alt_job_titles"] = alt_job_titles
 	save_data["languages"] = languages
 	save_data["food_preferences"] = food_preferences
-	if(updated)
-		save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
+	//if(updated) // SPLURT EDIT - This is bullshit, results in newly created characters getting invalid data. Load character should forcefully migrate it, so we can safely assume its up to date
+	//	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
+	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
 
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
