@@ -92,10 +92,7 @@
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
 /mob/living/silicon/robot/CtrlShiftClickOn(atom/target) // Procs overriden in modular_skyrat/modules/Silicon_QoL
-	if(istype(target, /mob/living))
-		base_click_ctrl_shift(target)
-	else
-		target.BorgCtrlShiftClick(src)
+	target.BorgCtrlShiftClick(src)
 
 /mob/living/silicon/robot/ShiftClickOn(atom/target)
 	target.BorgShiftClick(src)
