@@ -343,7 +343,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
 
-		if (!(preference.type in recently_updated_keys))
+		if (!update && !(preference.type in recently_updated_keys)) // SPLURT EDIT
 			continue
 
 		recently_updated_keys -= preference.type
@@ -376,7 +376,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (!load_character(new_slot))
 		tainted_character_profiles = TRUE
 		randomise_appearance_prefs()
-		save_character()
+		save_character(TRUE) // SPLURT EDIT
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.on_new_character(usr)
