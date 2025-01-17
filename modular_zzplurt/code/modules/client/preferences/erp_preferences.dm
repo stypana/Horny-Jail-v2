@@ -154,3 +154,6 @@
 /datum/preference/toggle/erp/custom_genital_fluids
 	savefile_key = "custom_genital_fluids_pref"
 	default_value = TRUE
+
+/datum/preference/toggle/erp/cumflation
+	savefile_key = "cumflation_pref"
