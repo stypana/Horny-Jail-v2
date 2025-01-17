@@ -1,11 +1,11 @@
 import { useBackend } from '../../backend';
 import {
   BlockQuote,
+  Grid,
   Icon,
   ProgressBar,
   Section,
   Stack,
-  Grid,
 } from '../../components';
 
 type HeaderInfo = {
