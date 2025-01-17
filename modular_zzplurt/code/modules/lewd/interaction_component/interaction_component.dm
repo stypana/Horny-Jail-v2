@@ -9,6 +9,9 @@
 	if(!ishuman(partner) || !ishuman(self))
 		return
 
+	if(!partner.client?.prefs.read_preference(/datum/preference/toggle/erp/cumflates_partners) || !self.client?.prefs.read_preference(/datum/preference/toggle/erp/cumflation))
+		return
+
 	var/mob/living/carbon/human/human_self = self // Necessary for the soon to be merged refactor
 	var/list/obj/item/organ/external/genital/to_update = list()
 
