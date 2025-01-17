@@ -153,7 +153,7 @@
 							span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into [target_human_them]!"))
 						to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [self_their] load into it."))
 						conditional_pref_sound(get_turf(target_human), climax_into_choice == "mouth" ? pick('modular_zzplurt/sound/interactions/mouthend (1).ogg', 'modular_zzplurt/sound/interactions/mouthend (2).ogg') : 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
-						//SPLURT EDIT ADDITION BEGIN - Interactions
+						//SPLURT EDIT ADDITION BEGIN - Genital Inflation
 						var/datum/component/interactable/interactable = target_human.GetComponent(/datum/component/interactable)
 						if(interactable)
 							interactable.climax_inflate_genital(src, "testicles", climax_into_choice)
@@ -284,7 +284,7 @@
 							span_userlove("You squirt into [target_human]'s [climax_into_choice]!"))
 						to_chat(target_human, span_userlove("Your [climax_into_choice] fills with [src]'s fluids."))
 						conditional_pref_sound(get_turf(target_human), climax_into_choice == "mouth" ? pick('modular_zzplurt/sound/interactions/mouthend (1).ogg', 'modular_zzplurt/sound/interactions/mouthend (2).ogg') : 'modular_zzplurt/sound/interactions/endout.ogg', 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds) //SPLURT EDIT CHANGE - Interactions
-						//SPLURT EDIT ADDITION BEGIN - Interactions
+						//SPLURT EDIT ADDITION BEGIN - Genital Inflation
 						var/datum/component/interactable/interactable = target_human.GetComponent(/datum/component/interactable)
 						if(interactable)
 							interactable.climax_inflate_genital(src, "vagina", climax_into_choice)
