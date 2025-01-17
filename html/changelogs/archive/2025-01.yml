@@ -221,3 +221,10 @@
 2025-01-16:
   SmArtKar:
   - bugfix: Fixed wallets not showing their ID
+2025-01-17:
+  ICE-IS-NICE(original), SuhEugene, Phoenix404 (port):
+  - rscadd: Added custom emote panel to TGUI chat interface
+  MosleyTheMalO:
+  - rscdel: Removes the obsolete sexuality pref
+  mcbalaam:
+  - bugfix: Added a join menu icon for the blacksmith
