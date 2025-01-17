@@ -1,0 +1,4 @@
+author: "ICE-IS-NICE(original), SuhEugene, Phoenix404 (port)"
+delete-after: True
+changes:
+  - rscadd: "Added custom emote panel to TGUI chat interface"
