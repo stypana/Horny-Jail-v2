@@ -9767,6 +9767,8 @@
 #include "modular_zzplurt\code\modules\surgery\organs\internal\cyberimp\augments_chest.dm"
 #include "modular_zzplurt\code\modules\surgery\organs\internal\eyes\_eyes.dm"
 #include "modular_zzplurt\code\modules\surgery\organs\internal\tongue\_tongue.dm"
+#include "modular_zzplurt\code\modules\tgui_custom_emote_panel\emote_preference.dm"
+#include "modular_zzplurt\code\modules\tgui_custom_emote_panel\topic.dm"
 #include "modular_zzplurt\code\modules\thirst\_defines.dm"
 #include "modular_zzplurt\code\modules\thirst\mob.dm"
 #include "modular_zzplurt\code\modules\thirst\mob_mood.dm"
