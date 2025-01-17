@@ -218,3 +218,6 @@
   - bugfix: Makes the sex toy toggle actually drop sex toys
   - bugfix: Fixes butts not displaying their skin alt and paves the way for belly
       skin alts
+2025-01-16:
+  SmArtKar:
+  - bugfix: Fixed wallets not showing their ID
