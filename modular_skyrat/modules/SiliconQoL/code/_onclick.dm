@@ -59,8 +59,6 @@
 		var/obj/machinery/door/airlock/airlock = locate() in A
 		if(airlock)
 			airlock.BorgCtrlShiftClick(src)
-	else if(isliving(A))
-		A.click_ctrl_shift(src) // this isn't working and I'm yet to figure out why
 	else
 		A.BorgCtrlShiftClick(src)
 

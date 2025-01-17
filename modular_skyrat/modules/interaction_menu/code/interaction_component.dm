@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		ui.open()
 
 /datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
-	if(!ishuman(user))
+	if(!isliving(user)) 		// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 		return UI_CLOSE
 
 	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
@@ -414,17 +414,17 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	if(.)
 		return
 
-	if(!ishuman(usr))
+	if(!isliving(usr)) 		// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 		return
 
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/user = usr 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	var/datum/preferences/prefs = user.client?.prefs
 
 	switch(action)
 		if("interact")
 			var/interaction_id = params["interaction"]
-			var/mob/living/carbon/human/source = locate(params["userref"])
-			var/mob/living/carbon/human/target = locate(params["selfref"])
+			var/mob/living/source = locate(params["userref"]) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
+			var/mob/living/target = locate(params["selfref"]) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 			if(!interaction_id || !source || !target)
 				return FALSE
 

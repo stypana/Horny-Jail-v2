@@ -14,12 +14,12 @@
 	var/refractory_period
 
 	var/list/simulated_genitals = list(
-		ORGAN_SLOT_PENIS = TRUE,
-		ORGAN_SLOT_VAGINA = TRUE,
-		ORGAN_SLOT_BREASTS = TRUE,
+		ORGAN_SLOT_PENIS = FALSE,
+		ORGAN_SLOT_VAGINA = FALSE,
+		ORGAN_SLOT_BREASTS = FALSE,
 		ORGAN_SLOT_ANUS = TRUE,
-		ORGAN_SLOT_BUTT = TRUE,
-		ORGAN_SLOT_BELLY = TRUE
+		ORGAN_SLOT_BUTT = FALSE,
+		ORGAN_SLOT_BELLY = FALSE
 	)
 
 	var/list/simulated_interaction_requirements = list(
