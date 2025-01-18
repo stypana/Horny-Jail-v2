@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	// SPLURT EDIT START - INTERACTIONS - A list of mobs that should be genderized
 	// A list of mobs that should be genderized.
 	var/static/list/should_be_genderized = typecacheof(list(
-		/mob/living/basic/pet/cat
+		// /mob/living/basic/pet/cat // anuything soes here
 	))
 	// SPLURT EDIT END
 
