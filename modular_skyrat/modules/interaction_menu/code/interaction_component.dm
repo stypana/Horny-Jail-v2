@@ -60,6 +60,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		"extreme_harm" = /datum/preference/choiced/erp_status_extmharm,
 		"unholy_pref" = /datum/preference/choiced/erp_status_unholy
 	)
+	// SPLURT EDIT START - INTERACTIONS - A list of mobs that should be genderized
+	// A list of mobs that should be genderized.
+	var/static/list/should_be_genderized = typecacheof(list(
+		/mob/living/basic/pet/cat
+	))
+	// SPLURT EDIT END
 
 /datum/component/interactable/Initialize(...)
 	if(QDELETED(parent))
@@ -74,6 +80,16 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	add_verb(self, /mob/living/proc/interact_with) 	// SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 
 	build_interactions_list()
+
+	// SPLURT EDIT START - INTERACTIONS - Genderize mobs
+	if(is_type_in_typecache(parent, should_be_genderized))
+		var/mob/living/mob = parent
+		if(pick("male", "female") == "male")
+			mob.simulated_genitals[ORGAN_SLOT_PENIS] = TRUE
+		else
+			mob.simulated_genitals[ORGAN_SLOT_VAGINA] = TRUE
+			mob.simulated_genitals[ORGAN_SLOT_BREASTS] = TRUE
+	// SPLURT EDIT END
 
 /datum/component/interactable/proc/build_interactions_list()
 	interactions = list()
