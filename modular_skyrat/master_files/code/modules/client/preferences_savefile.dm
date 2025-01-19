@@ -25,7 +25,7 @@
 /datum/preferences/proc/savefile_needs_update_skyrat(list/save_data)
 	var/savefile_version = save_data["modular_version"]
 
-	if(save_data.len && savefile_version < MODULAR_SAVEFILE_VERSION_MAX)
+	if(savefile_version && savefile_version < MODULAR_SAVEFILE_VERSION_MAX) // SPLURT EDIT
 		return savefile_version
 
 	return MODULAR_SAVEFILE_UP_TO_DATE
@@ -79,7 +79,7 @@
 	languages = save_languages
 
 	tgui_prefs_migration = save_data["tgui_prefs_migration"]
-	if(!tgui_prefs_migration && save_data["modular_version"]) // SPLURT EDIT - if we're missing version from migration, then the char is new. Won't be able to migrate either.
+	if(!tgui_prefs_migration && save_data["modular_version"] && save_data["modular_version"] < MODULAR_SAVEFILE_VERSION_MAX) // SPLURT EDIT - if we're missing version from migration, then the char is new. Won't be able to migrate either.
 		to_chat(parent, examine_block(span_redtext("PREFERENCE MIGRATION BEGINNING.\
 		\nDO NOT INTERACT WITH YOUR PREFERENCES UNTIL THIS PROCESS HAS BEEN COMPLETED.\
 		\nDO NOT DISCONNECT UNTIL THIS PROCESS HAS BEEN COMPLETED.\
