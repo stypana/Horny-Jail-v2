@@ -1,0 +1,4 @@
+author: "prototypemeat"
+delete-after: True
+changes:
+  - bugfix: "Fixed Razorclaws."
