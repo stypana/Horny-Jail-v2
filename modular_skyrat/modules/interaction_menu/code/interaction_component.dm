@@ -84,11 +84,16 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	// SPLURT EDIT START - INTERACTIONS - Genderize mobs
 	if(is_type_in_typecache(parent, should_be_genderized))
 		var/mob/living/mob = parent
-		if(pick("male", "female") == "male")
-			mob.simulated_genitals[ORGAN_SLOT_PENIS] = TRUE
-		else
-			mob.simulated_genitals[ORGAN_SLOT_VAGINA] = TRUE
-			mob.simulated_genitals[ORGAN_SLOT_BREASTS] = TRUE
+		switch(mob.gender)
+			if(MALE)
+				mob.simulated_genitals[ORGAN_SLOT_PENIS] = TRUE
+			if(FEMALE)
+				mob.simulated_genitals[ORGAN_SLOT_VAGINA] = TRUE
+				mob.simulated_genitals[ORGAN_SLOT_BREASTS] = TRUE
+			if(PLURAL)
+				mob.simulated_genitals[ORGAN_SLOT_PENIS] = TRUE
+				mob.simulated_genitals[ORGAN_SLOT_VAGINA] = TRUE
+				mob.simulated_genitals[ORGAN_SLOT_BREASTS] = TRUE
 	// SPLURT EDIT END
 
 /datum/component/interactable/proc/build_interactions_list()
@@ -232,6 +237,8 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	var/mob/living/carbon/human/human_user = user
 	var/mob/living/carbon/human/human_self = self
 
+	var/datum/component/interactable/user_interaction_component = user.GetComponent(/datum/component/interactable)
+
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
 			continue
@@ -253,7 +260,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		display_categories += category
 	data["categories"] = sort_list(display_categories)
 	data["interactions"] = categories
-	data["block_interact"] = interact_next >= world.time
+	data["block_interact"] = user_interaction_component?.interact_next >= world.time
 
 	// User is always the one interacting, self is the target
 	data["favorite_interactions"] = user.client?.prefs?.read_preference(/datum/preference/blob/favorite_interactions) || list()
@@ -463,8 +470,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			selected_interaction.act(source, target)
 			var/datum/component/interactable/interaction_component = source.GetComponent(/datum/component/interactable)
 			interaction_component.interact_last = world.time
-			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
-			interaction_component.interact_next = interact_next
+			interaction_component.interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
 			return TRUE
 
 		if("favorite")
@@ -610,12 +616,12 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 			return TRUE
 
 		if("toggle_genital_active")
-			if(!ishuman(user))
+			if(ishuman(user))
 				return FALSE
 			var/genital_name = params["genital"]
 			if(!genital_name)
 				return FALSE
-			user.simulated_genitals[genital_name] = params["active"]
+			user.simulated_genitals[genital_name] = !user.simulated_genitals[genital_name]
 			return TRUE
 
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")

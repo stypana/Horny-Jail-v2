@@ -52,7 +52,6 @@ export const GenitalTab = ({ searchText }: GenitalTabProps) => {
                       onClick={() =>
                         act('toggle_genital_active', {
                           genital: genital.name,
-                          active: !genital.active,
                         })
                       }
                     />
