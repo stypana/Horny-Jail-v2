@@ -1,0 +1,4 @@
+author: "SmArtKar"
+delete-after: True
+changes:
+  - bugfix: "Characters should not reset randomly anymore, plus character prefs menu should no longer runtime and potentially not save itself."
