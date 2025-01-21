@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 	// Basic attributes
 	if(target.get_bodypart(BODY_ZONE_L_ARM) || target.get_bodypart(BODY_ZONE_R_ARM))
 		attributes += "have hands"
-	if(target.get_bodypart(BODY_ZONE_HEAD))
+	if(target.get_bodypart(BODY_ZONE_HEAD) || (!iscarbon(target) && target.simulated_interaction_requirements[INTERACTION_REQUIRE_SELF_MOUTH]))
 		attributes += "have a mouth, which is [!target.is_mouth_covered() ? "covered" : "uncovered"]"
 
 	// Sexual exhaustion
@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(interaction_menu_preferences, typecacheof(list(
 		data["custom_genital_fluids_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/custom_genital_fluids)
 		data["cumflation_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/cumflation)
 		data["cumflates_partners_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/cumflates_partners)
-		
+
 		// Vore prefs
 		data["vore_enable_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable)
 		data["vore_overlays"] = user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_overlays)

@@ -13,14 +13,15 @@
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
 
-	var/nonhuman_bypass = !ishuman(src) && !src.client && !SSinteractions.is_blacklisted(src) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
+	var/nonhuman_bypass_self = !ishuman(src) && !src.client && !SSinteractions.is_blacklisted(src) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
+	var/nonhuman_bypass_partner = !ishuman(partner) && !partner.client && !SSinteractions.is_blacklisted(partner) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 
-	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && !manual && !nonhuman_bypass)
+	if(!(client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) || nonhuman_bypass_self) && !manual)
 		return
 	if(refractory_period > REALTIMEOFDAY)
 		return
 	refractory_period = REALTIMEOFDAY + 30 SECONDS
-	if(has_status_effect(/datum/status_effect/climax_cooldown) || !(client?.prefs?.read_preference(/datum/preference/toggle/erp) || nonhuman_bypass))
+	if(has_status_effect(/datum/status_effect/climax_cooldown) || !(client?.prefs?.read_preference(/datum/preference/toggle/erp) || nonhuman_bypass_self))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_NEVERBONER) || has_status_effect(/datum/status_effect/climax_cooldown) || (!has_vagina() && !has_penis()))
@@ -185,7 +186,7 @@
 
 					//Check if the target has custom genital fluids enabled
 					var/datum/reagent/original_fluid_datum = testicles.internal_fluid_datum
-					if(!target_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/custom_genital_fluids))
+					if(!(target_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/custom_genital_fluids) || nonhuman_bypass_partner))
 						testicles.internal_fluid_datum = initial(testicles.internal_fluid_datum)
 
 					var/datum/reagents/R = new(testicles.internal_fluid_maximum)
@@ -314,7 +315,7 @@
 
 					//Check if the target has custom genital fluids enabled
 					var/datum/reagent/original_fluid_datum = vagina.internal_fluid_datum
-					if(!target_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/custom_genital_fluids))
+					if(!(target_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/custom_genital_fluids) || nonhuman_bypass_partner))
 						vagina.internal_fluid_datum = initial(vagina.internal_fluid_datum)
 
 					var/datum/reagents/R = new(vagina.internal_fluid_maximum)
