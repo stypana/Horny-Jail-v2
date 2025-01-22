@@ -1,4 +1,5 @@
 /// Saliith Plushie && Pinpointer ///
+/* // Saliith Plushie (Removed at request)
 GLOBAL_DATUM_INIT(saliith_plushie, /obj/item/toy/plush/lizard_plushie/saliith, new)
 // Pointer
 /obj/item/pinpointer/plushie_saliith
@@ -127,6 +128,7 @@ GLOBAL_DATUM_INIT(saliith_plushie, /obj/item/toy/plush/lizard_plushie/saliith, n
 		return
 
 	return ..()
+*/ // Saliith Plushie (Removed at request)
 
 /// Plushie choise beacon ///
 // Box Delivery Code
@@ -166,8 +168,7 @@ GLOBAL_DATUM_INIT(saliith_plushie, /obj/item/toy/plush/lizard_plushie/saliith, n
 /obj/item/choice_beacon/box/plushie/proc/remove_bad_plushies(list/plushies)
 	plushies -= list(
 		/obj/item/toy/plush/narplush,
-		/obj/item/toy/plush/awakenedplushie,
-		/obj/item/toy/plush/lizard_plushie/saliith
+		/obj/item/toy/plush/awakenedplushie
 		)
 	return plushies
 
