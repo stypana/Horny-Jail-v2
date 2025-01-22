@@ -11,5 +11,5 @@
 
 	pleasure = clamp(pleasure + pleas, AROUSAL_MINIMUM, AROUSAL_LIMIT * lust_tolerance) // SPLURT EDIT - Lust tolerance
 
-	if(pleasure >= AROUSAL_AUTO_CLIMAX_THRESHOLD * lust_tolerance) // lets cum // SPLURT EDIT - Lust tolerance
+	if((pleasure >= AROUSAL_AUTO_CLIMAX_THRESHOLD * lust_tolerance) && (pleas > 0)) // lets cum // SPLURT EDIT - Lust tolerance
 		climax(manual = FALSE, partner = partner, climax_interaction = interaction, interaction_position = position)
