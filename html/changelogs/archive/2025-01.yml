@@ -278,11 +278,6 @@
   nikothedude:
   - bugfix: Death degradation now has info for health analyzers
 2025-01-21:
-  mcbalaam:
-  - rscadd: Any mob can now interact - yuppie!
-  - refactor: Arousal/pleasure code refactoring
-  - bugfix: Mobs statuses in the UI are now properly spaced
-  - bugfix: Death degradation no longer instantly downs you
   00-Steven:
   - bugfix: Fixed cat ears not layering properly.
   - bugfix: Husked bodies show their blood with the right colours in photographs.
@@ -306,3 +301,13 @@
   - balance: Reduces the weight of Bloodsuckers by 3, to make it notably different
       from traitors
   - balance: Raised the minimum number of players for a heretic to spawn.
+  mcbalaam:
+  - rscadd: Any mob can now interact - yuppie!
+  - refactor: Arousal/pleasure code refactoring
+  - bugfix: Mobs statuses in the UI are now properly spaced
+  - bugfix: Death degradation no longer instantly downs you
+2025-01-22:
+  Krashly:
+  - rscadd: Added more character customisation things
+  MosleyTheMalO:
+  - rscadd: added cumflation mechanics to the game
