@@ -1,0 +1,4 @@
+author: "Phoenix4O4"
+delete-after: True
+changes:
+  - bugfix: "Temporarily disabled barricade rotation to prevent client crashes"
