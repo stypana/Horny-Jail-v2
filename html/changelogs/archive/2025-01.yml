@@ -311,3 +311,6 @@
   - rscadd: Added more character customisation things
   MosleyTheMalO:
   - rscadd: added cumflation mechanics to the game
+2025-01-23:
+  Phoenix4O4:
+  - bugfix: Temporarily disabled barricade rotation to prevent client crashes
