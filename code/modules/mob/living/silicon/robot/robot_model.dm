@@ -241,6 +241,10 @@
 	cyborg.drop_all_held_items()
 	cyborg.model = new_model
 	cyborg.update_module_innate()
+	// SPLURT EDIT START - CYBORGS - Dogborg specific modules
+	if(TRAIT_R_DOGBORG in new_model.model_features)
+		new_model.dogborg_equip()
+	// SPLURT EDIT END
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
