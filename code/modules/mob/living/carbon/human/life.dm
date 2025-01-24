@@ -62,6 +62,10 @@
 
 	if(chest_covered && head_covered)
 		return ONE_ATMOSPHERE
+	// SPLURT ADD - CYBORGS - The sleeper protects from hazardous enviroments
+	if(istype(loc, /obj/item/dogborg/sleeper))
+		return ONE_ATMOSPHERE
+	// SPLURT ADD END
 	if(ismovable(loc))
 		/// If we're in a space with 0.5 content pressure protection, it averages the values, for example.
 		var/atom/movable/occupied_space = loc
@@ -179,6 +183,10 @@
 	return thermal_protection_flags
 
 /mob/living/carbon/human/get_heat_protection(temperature)
+	// SPLURT ADD - CYBORGS - The sleeper protects from hazardous enviroments
+	if(istype(loc, /obj/item/dogborg/sleeper))
+		return FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	// SPLURT ADD END
 	var/thermal_protection_flags = get_heat_protection_flags(temperature)
 	var/thermal_protection = heat_protection
 
@@ -240,6 +248,10 @@
 	// This is necessary to ensure that does not affect this calculation.
 	// Space's temperature is 2.7K and most suits that are intended to protect against any cold, protect down to 2.0K.
 	temperature = max(temperature, 2.7)
+	// SPLURT ADD - CYBORGS - The sleeper protects from hazardous enviroments
+	if(istype(loc, /obj/item/dogborg/sleeper))
+		return FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	// SPLURT ADD END
 	var/thermal_protection_flags = get_cold_protection_flags(temperature)
 	var/thermal_protection = cold_protection
 

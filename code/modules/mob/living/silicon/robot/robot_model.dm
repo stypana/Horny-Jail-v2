@@ -327,8 +327,9 @@
 
 /obj/item/robot_model/proc/do_transform_delay()
 	var/mob/living/silicon/robot/cyborg = loc
+	do_smoke(1, 2, src, get_turf(src), /obj/effect/particle_effect/fluid/smoke)
 	sleep(0.1 SECONDS)
-	flick("[cyborg_base_icon]_transform", cyborg)
+	// flick("[cyborg_base_icon]_transform", cyborg)
 	ADD_TRAIT(cyborg, TRAIT_NO_TRANSFORM, REF(src))
 	if(locked_transform)
 		cyborg.ai_lockdown = TRUE
@@ -344,6 +345,7 @@
 			'sound/items/tools/welder.ogg',
 			'sound/items/tools/ratchet.ogg',
 			), 80, TRUE, -1)
+		do_sparks(2, FALSE, src)
 		sleep(0.7 SECONDS)
 	cyborg.SetLockdown(FALSE)
 	cyborg.ai_lockdown = FALSE
