@@ -307,6 +307,10 @@
       from traitors
   - balance: Raised the minimum number of players for a heretic to spawn.
 2025-01-22:
+  Krashly:
+  - rscadd: Added more character customisation things
+  MosleyTheMalO:
+  - rscadd: added cumflation mechanics to the game
   Odairu:
   - bugfix: Lings/vampires will no longer revive as soulless bodies with DNR
   - bugfix: Borers can no longer revive hosts with DNR
@@ -314,6 +318,8 @@
   - rscadd: Updated descriptions to individual storytellers to compare them to each
       other.
 2025-01-23:
+  Phoenix4O4:
+  - bugfix: Temporarily disabled barricade rotation to prevent client crashes
   MajManatee:
   - image: basic mob xenos now look fly as hell, like our real xenos.
   Majkl-J:
