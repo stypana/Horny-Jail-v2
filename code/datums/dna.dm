@@ -135,6 +135,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	destination.dna.mutant_bodyparts = mutant_bodyparts.Copy()
 	destination.dna.body_markings = body_markings.Copy()
+	// (Custom Blood)
+	destination.dna.species.exotic_blood_color = species.exotic_blood_color
+	destination.dna.species.exotic_blood_blend_mode = species.exotic_blood_blend_mode
 	// destination.dna.update_body_size() //SPLURT EDIT
 	//SKYRAT EDIT ADDITION END
 	if(transfer_SE)
