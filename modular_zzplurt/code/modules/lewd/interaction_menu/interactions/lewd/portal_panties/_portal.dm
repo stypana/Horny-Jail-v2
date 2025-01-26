@@ -17,22 +17,18 @@
 	/// Hidden climax partner message overrides for anonymous interactions
 	var/list/hidden_cum_partner_text_overrides = list(CLIMAX_POSITION_USER = list(), CLIMAX_POSITION_TARGET = list())
 
-/datum/interaction/lewd/portal/act(mob/living/user, mob/living/target)
+/datum/interaction/lewd/portal/act(mob/living/user, mob/living/target, obj/item/clothing/sextoy/portallight/fleshlight, obj/item/clothing/sextoy/portalpanties/panties)
 	var/list/original_message = message.Copy()
 	var/list/original_user_messages = user_messages?.Copy()
 	var/list/original_target_messages = target_messages?.Copy()
 
-	// TODO: Replace these with actual item checks once implemented
-	var/portal_fleshlight_anonymous = FALSE // Replace with actual check
-	var/portal_panties_anonymous = FALSE // Replace with actual check
-
-	if(portal_fleshlight_anonymous && length(hidden_target_messages))
+	if(fleshlight.anonymous && length(hidden_target_messages))
 		target_messages = hidden_target_messages.Copy()
 
-	if(portal_panties_anonymous && length(hidden_user_messages))
+	if(panties.anonymous && length(hidden_user_messages))
 		user_messages = hidden_user_messages.Copy()
 
-	if((portal_fleshlight_anonymous || portal_panties_anonymous) && length(hidden_message))
+	if((fleshlight.anonymous || panties.anonymous) && length(hidden_message))
 		message = hidden_message.Copy()
 
 	. = ..()

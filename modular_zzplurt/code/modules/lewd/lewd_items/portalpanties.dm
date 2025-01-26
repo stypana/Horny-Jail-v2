@@ -83,7 +83,7 @@
 
 	anonymous = !anonymous
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
-	to_chat(user, span_notice("You toggle anonymous mode [anonymous ? "on" : "off"]."))
+	balloon_alert(user, "Anonymous mode: [anonymous ? "ON" : "OFF"]")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/sextoy/portalpanties/Destroy()
