@@ -556,6 +556,310 @@
 		var/target_message = list(pick(arousal_messages))
 		target.visible_message(span_lewd(replacetext(target_message, "%TARGET%", target)))
 
+/datum/interaction/lewd/portal/vaginal_ride
+	name = "Portal Vaginal Ride"
+	description = "Ride the portal dildo with your vagina."
+	user_required_parts = list(ORGAN_SLOT_VAGINA = REQUIRE_GENITAL_EXPOSED)
+	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
+	cum_genital = list(CLIMAX_POSITION_USER = CLIMAX_VAGINA, CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
+	cum_target = list(CLIMAX_POSITION_USER = ORGAN_SLOT_PENIS, CLIMAX_POSITION_TARGET = ORGAN_SLOT_VAGINA)
+
+	message = list(
+		"rides %TARGET%'s cock with their pussy through the portal fleshlight",
+		"bounces their vagina on %TARGET%'s shaft through the portal fleshlight",
+		"grinds their pussy against %TARGET%'s member through the portal fleshlight",
+		"impales their vagina on %TARGET%'s cock through the portal fleshlight"
+	)
+	user_messages = list(
+		"You feel %TARGET%'s cock filling your pussy through the portal",
+		"The warmth of %TARGET%'s shaft spreads through your vagina via the portal",
+		"You grind your pussy against %TARGET%'s member through the portal fleshlight"
+	)
+	target_messages = list(
+		"You feel your cock sliding into %USER%'s pussy through the portal panties",
+		"%USER%'s vagina squeezes around your shaft through the portal",
+		"The warmth of %USER%'s pussy envelops your cock through the portal"
+	)
+
+	hidden_message = list(
+		"rides a cock with their pussy through the portal fleshlight",
+		"bounces their vagina on a shaft through the portal fleshlight",
+		"grinds their pussy against a member through the portal fleshlight",
+		"impales their vagina on a cock through the portal fleshlight"
+	)
+	hidden_user_messages = list(
+		"You feel a cock filling your pussy through the portal",
+		"The warmth of a shaft spreads through your vagina via the portal",
+		"You grind your pussy against a member through the portal fleshlight"
+	)
+	hidden_target_messages = list(
+		"You feel your cock sliding into a pussy through the portal panties",
+		"A vagina squeezes around your shaft through the portal",
+		"The warmth of a pussy envelops your cock through the portal"
+	)
+
+	cum_message_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"%CUMMING% cums hard as their pussy is filled through the portal fleshlight",
+			"%CUMMING% climaxes while riding the cock through the portal fleshlight",
+			"%CUMMING%'s vagina squeezes tightly as they orgasm through the portal"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"%CUMMING% fills %CAME_IN%'s pussy with their seed through the portal fleshlight",
+			"%CUMMING% pumps their load deep into %CAME_IN%'s vagina through the portal fleshlight",
+			"%CUMMING% cums hard inside %CAME_IN%'s pussy through the portal"
+		)
+	)
+	cum_self_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"You cum hard as your pussy is filled through the portal fleshlight",
+			"You climax while riding the cock through the portal fleshlight",
+			"Your vagina squeezes tightly as you orgasm through the portal"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"You fill %CAME_IN%'s pussy with your seed through the portal fleshlight",
+			"You pump your load deep into %CAME_IN%'s vagina through the portal fleshlight",
+			"You cum hard inside %CAME_IN%'s pussy through the portal"
+		)
+	)
+	cum_partner_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"You feel %CUMMING%'s pussy squeeze around your cock as they cum through the portal",
+			"%CUMMING% climaxes on your shaft through the portal fleshlight",
+			"The portal fleshlight's pussy contracts around your member as %CUMMING% cums"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"You feel %CUMMING%'s hot seed flooding your pussy through the portal panties",
+			"%CUMMING% fills your vagina with their cum through the portal panties",
+			"Your pussy is filled with %CUMMING%'s warm cum through the portal"
+		)
+	)
+
+	sound_possible = list(
+		'modular_zzplurt/sound/interactions/bang1.ogg',
+		'modular_zzplurt/sound/interactions/bang2.ogg',
+		'modular_zzplurt/sound/interactions/bang3.ogg'
+	)
+	sound_range = 1
+	sound_use = TRUE
+	user_pleasure = 6
+	target_pleasure = 6
+	user_arousal = 8
+	target_arousal = 8
+
+/datum/interaction/lewd/portal/anal_ride
+	name = "Portal Anal Ride"
+	description = "Ride the portal dildo with your ass."
+	user_required_parts = list(ORGAN_SLOT_ANUS = REQUIRE_GENITAL_EXPOSED)
+	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
+	cum_genital = list(CLIMAX_POSITION_USER = CLIMAX_BOTH, CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
+	cum_target = list(CLIMAX_POSITION_TARGET = ORGAN_SLOT_ANUS)
+
+	message = list(
+		"rides %TARGET%'s cock with their ass through the portal fleshlight",
+		"bounces their anus on %TARGET%'s shaft through the portal fleshlight",
+		"grinds their ass against %TARGET%'s member through the portal fleshlight",
+		"impales their anus on %TARGET%'s cock through the portal fleshlight"
+	)
+	user_messages = list(
+		"You feel %TARGET%'s cock filling your ass through the portal",
+		"The warmth of %TARGET%'s shaft spreads through your anus via the portal",
+		"You grind your ass against %TARGET%'s member through the portal fleshlight"
+	)
+	target_messages = list(
+		"You feel your cock sliding into %USER%'s ass through the portal panties",
+		"%USER%'s anus squeezes around your shaft through the portal",
+		"The warmth of %USER%'s ass envelops your cock through the portal"
+	)
+
+	hidden_message = list(
+		"rides a cock with their ass through the portal fleshlight",
+		"bounces their anus on a shaft through the portal fleshlight",
+		"grinds their ass against a member through the portal fleshlight",
+		"impales their anus on a cock through the portal fleshlight"
+	)
+	hidden_user_messages = list(
+		"You feel a cock filling your ass through the portal",
+		"The warmth of a shaft spreads through your anus via the portal",
+		"You grind your ass against a member through the portal fleshlight"
+	)
+	hidden_target_messages = list(
+		"You feel your cock sliding into an ass through the portal panties",
+		"An anus squeezes around your shaft through the portal",
+		"The warmth of an ass envelops your cock through the portal"
+	)
+
+	cum_message_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"%CUMMING% cums hard as their ass is filled through the portal fleshlight",
+			"%CUMMING% climaxes while riding the cock through the portal fleshlight",
+			"%CUMMING%'s anus squeezes tightly as they orgasm through the portal"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"%CUMMING% fills %CAME_IN%'s ass with their seed through the portal fleshlight",
+			"%CUMMING% pumps their load deep into %CAME_IN%'s anus through the portal fleshlight",
+			"%CUMMING% cums hard inside %CAME_IN%'s ass through the portal"
+		)
+	)
+	cum_self_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"You cum hard as your ass is filled through the portal fleshlight",
+			"You climax while riding the cock through the portal fleshlight",
+			"Your anus squeezes tightly as you orgasm through the portal"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"You fill %CAME_IN%'s ass with your seed through the portal fleshlight",
+			"You pump your load deep into %CAME_IN%'s anus through the portal fleshlight",
+			"You cum hard inside %CAME_IN%'s ass through the portal"
+		)
+	)
+	cum_partner_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"You feel %CUMMING%'s ass squeeze around your cock as they cum through the portal",
+			"%CUMMING% climaxes on your shaft through the portal fleshlight",
+			"The portal fleshlight's ass contracts around your member as %CUMMING% cums"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"You feel %CUMMING%'s hot seed flooding your ass through the portal panties",
+			"%CUMMING% fills your anus with their cum through the portal panties",
+			"Your ass is filled with %CUMMING%'s warm cum through the portal"
+		)
+	)
+
+	sound_possible = list(
+		'modular_zzplurt/sound/interactions/bang1.ogg',
+		'modular_zzplurt/sound/interactions/bang2.ogg',
+		'modular_zzplurt/sound/interactions/bang3.ogg'
+	)
+	sound_range = 1
+	sound_use = TRUE
+	user_pleasure = 6
+	target_pleasure = 6
+	user_arousal = 8
+	target_arousal = 8
+
+
+/datum/interaction/lewd/portal/urethral_ride
+	name = "Portal Urethral Ride"
+	description = "Let them fuck your urethra through the portal fleshlight."
+	user_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
+	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
+	cum_genital = list(CLIMAX_POSITION_USER = CLIMAX_PENIS, CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
+	cum_target = list(CLIMAX_POSITION_USER = ORGAN_SLOT_PENIS)
+
+	message = list(
+		"takes %TARGET%'s cock into their urethra through the portal fleshlight",
+		"rides %TARGET%'s shaft with their cockhole through the portal fleshlight",
+		"lets %TARGET% penetrate their urethra through the portal fleshlight",
+		"gets their cockhole fucked by %TARGET% through the portal fleshlight"
+	)
+	user_messages = list(
+		"You feel %TARGET%'s cock sliding into your urethra through the portal",
+		"The warmth of %TARGET%'s shaft fills your cockhole through the portal",
+		"You let %TARGET% penetrate your urethra through the portal fleshlight"
+	)
+	target_messages = list(
+		"You feel your cock sliding into %USER%'s urethra through the portal panties",
+		"%USER%'s cockhole squeezes around your shaft through the portal",
+		"The warmth of %USER%'s urethra envelops your cock through the portal"
+	)
+
+	hidden_message = list(
+		"takes a cock into their urethra through the portal fleshlight",
+		"rides a shaft with their cockhole through the portal fleshlight",
+		"lets someone penetrate their urethra through the portal fleshlight",
+		"gets their cockhole fucked through the portal fleshlight"
+	)
+	hidden_user_messages = list(
+		"You feel a cock sliding into your urethra through the portal",
+		"The warmth of a shaft fills your cockhole through the portal",
+		"You let someone penetrate your urethra through the portal fleshlight"
+	)
+	hidden_target_messages = list(
+		"You feel your cock sliding into a urethra through the portal panties",
+		"A cockhole squeezes around your shaft through the portal",
+		"The warmth of a urethra envelops your cock through the portal"
+	)
+
+	cum_message_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"%CUMMING% cums hard as their urethra is filled through the portal fleshlight",
+			"%CUMMING% shoots their seed while their cockhole is penetrated through the portal fleshlight",
+			"%CUMMING% climaxes from the urethral penetration through the portal fleshlight"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"%CUMMING% fills %CAME_IN%'s urethra with their seed through the portal fleshlight",
+			"%CUMMING% pumps their load deep into %CAME_IN%'s cockhole through the portal fleshlight",
+			"%CUMMING% cums hard inside %CAME_IN%'s urethra through the portal fleshlight"
+		)
+	)
+
+	hidden_cum_message_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"cums hard as their urethra is filled through the portal fleshlight",
+			"shoots their seed while their cockhole is penetrated through the portal fleshlight",
+			"climaxes from the urethral penetration through the portal fleshlight"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"fills the portal fleshlight's urethra with their seed",
+			"pumps their load deep into the portal fleshlight's cockhole",
+			"cums hard inside the portal fleshlight's urethra"
+		)
+	)
+
+	hidden_cum_self_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"You cum hard as your urethra is filled through the portal fleshlight",
+			"You shoot your seed while your cockhole is penetrated through the portal fleshlight",
+			"You climax from the urethral penetration through the portal fleshlight"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"You fill the portal fleshlight's urethra with your seed",
+			"You pump your load deep into the portal fleshlight's cockhole",
+			"You cum hard inside the portal fleshlight's urethra"
+		)
+	)
+
+	hidden_cum_partner_text_overrides = list(
+		CLIMAX_POSITION_USER = list(
+			"You feel hot seed flooding your urethra through the portal panties",
+			"Warm cum fills your cockhole through the portal panties",
+			"Your urethra is filled with cum through the portal"
+		),
+		CLIMAX_POSITION_TARGET = list(
+			"You feel the urethra squeeze around your cock as they cum through the portal",
+			"The portal fleshlight's user climaxes on your shaft",
+			"The portal fleshlight's cockhole contracts around your member"
+		)
+	)
+
+	sound_possible = list(
+		'modular_zzplurt/sound/interactions/bang1.ogg',
+		'modular_zzplurt/sound/interactions/bang2.ogg',
+		'modular_zzplurt/sound/interactions/bang3.ogg'
+	)
+	sound_range = 1
+	sound_use = TRUE
+	user_pleasure = 4
+	target_pleasure = 6
+	user_arousal = 6
+	target_arousal = 8
+	user_pain = 4
+
+/datum/interaction/lewd/portal/urethral_ride/post_interaction(mob/living/user, mob/living/target)
+	. = ..()
+	if(prob(5 + user.arousal))
+		var/list/arousal_messages = list(
+			"%USER% moans as they ride with their urethra through the portal.",
+			"%USER% gasps as their cockhole is penetrated deeper through the portal.",
+			"%USER% trembles from the portal urethral penetration.",
+			"%USER% shudders in arousal as their urethra is filled through the portal."
+		)
+		var/target_message = list(pick(arousal_messages))
+		user.visible_message(span_lewd(replacetext(target_message, "%USER%", user)))
+
+
+
 /datum/interaction/lewd/portal/frotting
 	name = "Portal Frotting"
 	description = "Rub your cock against theirs through the portal fleshlight."
@@ -694,3 +998,59 @@
 		)
 		var/target_message = list(pick(arousal_messages))
 		target.visible_message(span_lewd(replacetext(target_message, "%TARGET%", target)))
+
+
+/datum/interaction/lewd/portal/tribadism
+	name = "Portal Tribadism"
+	description = "Grind your pussy against theirs through the portal."
+	target_required_parts = list(ORGAN_SLOT_VAGINA = REQUIRE_GENITAL_EXPOSED)
+	cum_genital = list(CLIMAX_POSITION_USER = CLIMAX_VAGINA, CLIMAX_POSITION_TARGET = CLIMAX_VAGINA)
+	cum_target = list(CLIMAX_POSITION_USER = ORGAN_SLOT_VAGINA, CLIMAX_POSITION_TARGET = ORGAN_SLOT_VAGINA)
+	message = list(
+		"grinds their pussy against %TARGET%'s cunt through the portal fleshlight",
+		"rubs their cunt against %TARGET%'s pussy through the portal fleshlight",
+		"thrusts against %TARGET%'s pussy through the portal fleshlight",
+		"humps %TARGET%, their pussies grinding together through the portal fleshlight"
+	)
+	user_messages = list(
+		"You feel %TARGET%'s pussy grinding against yours through the portal",
+		"The warmth of %TARGET%'s cunt rubs against your own through the portal",
+		"You work your pussy against %TARGET%'s through the portal fleshlight"
+	)
+	target_messages = list(
+		"You feel %USER%'s pussy grinding against yours through the portal panties",
+		"%USER%'s cunt rubs against your own through the portal",
+		"%USER%'s pussy works against yours through the portal"
+	)
+
+	hidden_message = list(
+		"grinds their pussy against the portal fleshlight's cunt",
+		"rubs their cunt against the portal fleshlight's pussy",
+		"thrusts against the portal fleshlight's pussy",
+		"humps the portal fleshlight, grinding against it"
+	)
+	hidden_user_messages = list(
+		"You feel a pussy grinding against yours through the portal",
+		"The warmth of a cunt rubs against your own through the portal",
+		"You work your pussy against another through the portal fleshlight"
+	)
+	hidden_target_messages = list(
+		"You feel a pussy grinding against yours through the portal panties",
+		"A cunt rubs against your own through the portal",
+		"A pussy works against yours through the portal"
+	)
+
+	sound_possible = list(
+		'modular_zzplurt/sound/interactions/squelch1.ogg',
+		'modular_zzplurt/sound/interactions/squelch2.ogg',
+		'modular_zzplurt/sound/interactions/squelch3.ogg'
+	)
+	sound_range = 1
+	sound_use = TRUE
+	user_pleasure = 6
+	target_pleasure = 6
+	user_arousal = 10
+	target_arousal = 10
+
+
+

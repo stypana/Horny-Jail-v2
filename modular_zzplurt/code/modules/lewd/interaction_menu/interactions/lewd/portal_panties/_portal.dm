@@ -1,5 +1,7 @@
 /datum/interaction/lewd/portal
 	category = INTERACTION_CAT_HIDE
+	distance_allowed = TRUE
+	usage = INTERACTION_BOTH
 
 	/// Messages used when the interaction is anonymous
 	var/list/hidden_message = list()
