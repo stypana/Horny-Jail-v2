@@ -47,19 +47,20 @@
 	var/portal_panties_anonymous = FALSE // Replace with actual check
 
 	// Store original climax messages
-	var/list/original_cum_message = cum_message_text_overrides[position].Copy()
-	var/list/original_cum_self = cum_self_text_overrides[position].Copy()
-	var/list/original_cum_partner = cum_partner_text_overrides[position].Copy()
+	var/list/original_cum_message = cum_message_text_overrides.Copy()
+	var/list/original_cum_self = cum_self_text_overrides.Copy()
+	var/list/original_cum_partner = cum_partner_text_overrides.Copy()
 
 	// Replace with anonymous messages if needed
-	if(portal_fleshlight_anonymous && length(hidden_cum_message_text_overrides[position]))
-		cum_message_text_overrides[position] = hidden_cum_message_text_overrides[position].Copy()
-		cum_self_text_overrides[position] = hidden_cum_self_text_overrides[position].Copy()
-		cum_partner_text_overrides[position] = hidden_cum_partner_text_overrides[position].Copy()
+	var/is_anonymous = (portal_fleshlight_anonymous && position == CLIMAX_POSITION_TARGET) || (portal_panties_anonymous && position == CLIMAX_POSITION_USER)
+	if(is_anonymous && length(hidden_cum_message_text_overrides[position]))
+		cum_message_text_overrides[position] = hidden_cum_message_text_overrides[position]
+		cum_self_text_overrides[position] = hidden_cum_self_text_overrides[position]
+		cum_partner_text_overrides[position] = hidden_cum_partner_text_overrides[position]
 
 	. = ..()
 
 	// Restore original climax messages
-	cum_message_text_overrides[position] = original_cum_message
-	cum_self_text_overrides[position] = original_cum_self
-	cum_partner_text_overrides[position] = original_cum_partner
+	cum_message_text_overrides[position] = original_cum_message[position]
+	cum_self_text_overrides[position] = original_cum_self[position]
+	cum_partner_text_overrides[position] = original_cum_partner[position]

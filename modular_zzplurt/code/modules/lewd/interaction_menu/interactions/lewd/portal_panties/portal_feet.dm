@@ -1,51 +1,57 @@
 /datum/interaction/lewd/portal/feet
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_FEET)
 
-/datum/interaction/lewd/portal/feet/show_climax(mob/living/user, mob/living/target, position)
-	var/list/original_cum_message_text_overrides = cum_message_text_overrides.Copy()
-	var/list/original_cum_self_text_overrides = cum_self_text_overrides.Copy()
-	var/list/original_cum_partner_text_overrides = cum_partner_text_overrides.Copy()
-	var/list/original_hidden_cum_message_text_overrides = hidden_cum_message_text_overrides.Copy()
-	var/list/original_hidden_cum_self_text_overrides = hidden_cum_self_text_overrides.Copy()
-	var/list/original_hidden_cum_partner_text_overrides = hidden_cum_partner_text_overrides.Copy()
-
-	var/obj/item/clothing/shoes/worn_shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
+/datum/interaction/lewd/portal/feet/show_climax(mob/living/cumming, mob/living/came_in, position)
+	var/obj/item/clothing/shoes/worn_shoes = came_in.get_item_by_slot(ITEM_SLOT_FEET)
 	var/feet_text = worn_shoes?.name || pick("bare feet", "toes", "soles")
 
-	// Replace %FEET% in all climax message lists
-	for(var/pos in cum_message_text_overrides)
-		for(var/i in 1 to length(cum_message_text_overrides[pos]))
-			cum_message_text_overrides[pos][i] = replacetext(cum_message_text_overrides[pos][i], "%FEET%", feet_text)
+	var/list/original_messages = cum_message_text_overrides.Copy()
+	var/list/original_self_messages = cum_self_text_overrides.Copy()
+	var/list/original_partner_messages = cum_partner_text_overrides.Copy()
+	var/list/original_hidden_messages = hidden_cum_message_text_overrides.Copy()
+	var/list/original_hidden_self_messages = hidden_cum_self_text_overrides.Copy()
+	var/list/original_hidden_partner_messages = hidden_cum_partner_text_overrides.Copy()
 
-	for(var/pos in cum_self_text_overrides)
-		for(var/i in 1 to length(cum_self_text_overrides[pos]))
-			cum_self_text_overrides[pos][i] = replacetext(cum_self_text_overrides[pos][i], "%FEET%", feet_text)
+	// Replace %FEET% in climax messages for the given position
+	if(length(cum_message_text_overrides[position]))
+		var/message = pick(cum_message_text_overrides[position])
+		message = replacetext(message, "%FEET%", feet_text)
+		cum_message_text_overrides[position] = list(message)
 
-	for(var/pos in cum_partner_text_overrides)
-		for(var/i in 1 to length(cum_partner_text_overrides[pos]))
-			cum_partner_text_overrides[pos][i] = replacetext(cum_partner_text_overrides[pos][i], "%FEET%", feet_text)
+	if(length(cum_self_text_overrides[position]))
+		var/message = pick(cum_self_text_overrides[position])
+		message = replacetext(message, "%FEET%", feet_text)
+		cum_self_text_overrides[position] = list(message)
 
-	for(var/pos in hidden_cum_message_text_overrides)
-		for(var/i in 1 to length(hidden_cum_message_text_overrides[pos]))
-			hidden_cum_message_text_overrides[pos][i] = replacetext(hidden_cum_message_text_overrides[pos][i], "%FEET%", feet_text)
+	if(length(cum_partner_text_overrides[position]))
+		var/message = pick(cum_partner_text_overrides[position])
+		message = replacetext(message, "%FEET%", feet_text)
+		cum_partner_text_overrides[position] = list(message)
 
-	for(var/pos in hidden_cum_self_text_overrides)
-		for(var/i in 1 to length(hidden_cum_self_text_overrides[pos]))
-			hidden_cum_self_text_overrides[pos][i] = replacetext(hidden_cum_self_text_overrides[pos][i], "%FEET%", feet_text)
+	if(length(hidden_cum_message_text_overrides[position]))
+		var/message = pick(hidden_cum_message_text_overrides[position])
+		message = replacetext(message, "%FEET%", feet_text)
+		hidden_cum_message_text_overrides[position] = list(message)
 
-	for(var/pos in hidden_cum_partner_text_overrides)
-		for(var/i in 1 to length(hidden_cum_partner_text_overrides[pos]))
-			hidden_cum_partner_text_overrides[pos][i] = replacetext(hidden_cum_partner_text_overrides[pos][i], "%FEET%", feet_text)
+	if(length(hidden_cum_self_text_overrides[position]))
+		var/message = pick(hidden_cum_self_text_overrides[position])
+		message = replacetext(message, "%FEET%", feet_text)
+		hidden_cum_self_text_overrides[position] = list(message)
+
+	if(length(hidden_cum_partner_text_overrides[position]))
+		var/message = pick(hidden_cum_partner_text_overrides[position])
+		message = replacetext(message, "%FEET%", feet_text)
+		hidden_cum_partner_text_overrides[position] = list(message)
 
 	. = ..()
 
 	// Restore original messages
-	cum_message_text_overrides = original_cum_message_text_overrides
-	cum_self_text_overrides = original_cum_self_text_overrides
-	cum_partner_text_overrides = original_cum_partner_text_overrides
-	hidden_cum_message_text_overrides = original_hidden_cum_message_text_overrides
-	hidden_cum_self_text_overrides = original_hidden_cum_self_text_overrides
-	hidden_cum_partner_text_overrides = original_hidden_cum_partner_text_overrides
+	cum_message_text_overrides = original_messages
+	cum_self_text_overrides = original_self_messages
+	cum_partner_text_overrides = original_partner_messages
+	hidden_cum_message_text_overrides = original_hidden_messages
+	hidden_cum_self_text_overrides = original_hidden_self_messages
+	hidden_cum_partner_text_overrides = original_hidden_partner_messages
 
 /datum/interaction/lewd/portal/feet/act(mob/living/user, mob/living/target)
 	var/list/original_messages = message.Copy()
@@ -58,30 +64,30 @@
 	var/obj/item/clothing/shoes/worn_shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
 	var/feet_text = worn_shoes?.name || pick("bare feet", "toes", "soles")
 
-	// Replace %FEET% in all message lists
-	message = message.Copy()
-	for(var/i in 1 to length(message))
-		message[i] = replacetext(message[i], "%FEET%", feet_text)
+	// Replace %FEET% in messages
+	if(length(message))
+		var/chosen_message = pick(message)
+		message = list(replacetext(chosen_message, "%FEET%", feet_text))
 
-	user_messages = user_messages.Copy()
-	for(var/i in 1 to length(user_messages))
-		user_messages[i] = replacetext(user_messages[i], "%FEET%", feet_text)
+	if(length(user_messages))
+		var/chosen_message = pick(user_messages)
+		user_messages = list(replacetext(chosen_message, "%FEET%", feet_text))
 
-	target_messages = target_messages.Copy()
-	for(var/i in 1 to length(target_messages))
-		target_messages[i] = replacetext(target_messages[i], "%FEET%", feet_text)
+	if(length(target_messages))
+		var/chosen_message = pick(target_messages)
+		target_messages = list(replacetext(chosen_message, "%FEET%", feet_text))
 
-	hidden_message = hidden_message.Copy()
-	for(var/i in 1 to length(hidden_message))
-		hidden_message[i] = replacetext(hidden_message[i], "%FEET%", feet_text)
+	if(length(hidden_message))
+		var/chosen_message = pick(hidden_message)
+		hidden_message = list(replacetext(chosen_message, "%FEET%", feet_text))
 
-	hidden_user_messages = hidden_user_messages.Copy()
-	for(var/i in 1 to length(hidden_user_messages))
-		hidden_user_messages[i] = replacetext(hidden_user_messages[i], "%FEET%", feet_text)
+	if(length(hidden_user_messages))
+		var/chosen_message = pick(hidden_user_messages)
+		hidden_user_messages = list(replacetext(chosen_message, "%FEET%", feet_text))
 
-	hidden_target_messages = hidden_target_messages.Copy()
-	for(var/i in 1 to length(hidden_target_messages))
-		hidden_target_messages[i] = replacetext(hidden_target_messages[i], "%FEET%", feet_text)
+	if(length(hidden_target_messages))
+		var/chosen_message = pick(hidden_target_messages)
+		hidden_target_messages = list(replacetext(chosen_message, "%FEET%", feet_text))
 
 	. = ..()
 
