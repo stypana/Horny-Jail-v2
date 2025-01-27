@@ -59,13 +59,10 @@
 
 
 //butthole
-/datum/preference/choiced/genital/anus
-	savefile_key = "feature_anus"
-	relevant_mutant_bodypart = ORGAN_SLOT_ANUS
-	default_accessory_type = /datum/sprite_accessory/genital/anus/none
-
-/datum/preference/choiced/genital/anus/is_accessible(datum/preferences/preferences)
-	return ..() && preferences.read_preference(/datum/preference/choiced/genital/butt) != "None"
+/datum/preference/choiced/genital/anus/deserialize(input, datum/preferences/preferences)
+	if(preferences.read_preference(/datum/preference/choiced/genital/butt) == SPRITE_ACCESSORY_NONE && input != SPRITE_ACCESSORY_NONE)
+		return /datum/sprite_accessory/genital/anus/normal::name
+	. = ..()
 
 /datum/preference/toggle/genital_skin_tone/anus
 	savefile_key = "anus_skin_tone"
