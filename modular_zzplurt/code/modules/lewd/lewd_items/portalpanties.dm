@@ -13,6 +13,23 @@
 	/// Whether the panties' wearer is anonymous
 	var/anonymous = FALSE
 
+/obj/item/clothing/sextoy/portalpanties/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/obj/item/clothing/sextoy/portalpanties/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	if(isnull(held_item))
+		context[SCREENTIP_CONTEXT_LMB] = "Pick up"
+		context[SCREENTIP_CONTEXT_RMB] = "Toggle anonymous mode"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = linked_fleshlight ? "Unlink fleshlight" : "No fleshlight linked"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	if(istype(held_item, /obj/item/clothing/sextoy/portallight))
+		context[SCREENTIP_CONTEXT_LMB] = "Link fleshlight"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	return NONE
+
 /obj/item/clothing/sextoy/portalpanties/examine(mob/user)
 	. = ..()
 	if(!linked_fleshlight)
@@ -85,6 +102,18 @@
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
 	balloon_alert(user, "Anonymous mode: [anonymous ? "ON" : "OFF"]")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/clothing/sextoy/portalpanties/click_alt(mob/user)
+	if(!linked_fleshlight)
+		to_chat(user, span_warning("[src] isn't linked to any portal fleshlight!"))
+		return CLICK_ACTION_BLOCKING
+
+	var/choice = tgui_alert(user, "Are you sure you want to unlink the portal fleshlight?", "Unlink Portal Fleshlight", list("Yes", "No"))
+	if(choice != "Yes")
+		return CLICK_ACTION_BLOCKING
+
+	to_chat(user, span_notice("You unlink the portal fleshlight from [src]."))
+	linked_fleshlight.unlink_panties()
 
 /obj/item/clothing/sextoy/portalpanties/Destroy()
 	if(linked_fleshlight)

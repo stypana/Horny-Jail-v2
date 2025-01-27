@@ -73,6 +73,24 @@
 /obj/item/clothing/sextoy/portallight/Initialize(mapload)
 	. = ..()
 	update_appearance()
+	register_context()
+
+/obj/item/clothing/sextoy/portallight/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	if(isnull(held_item))
+		context[SCREENTIP_CONTEXT_LMB] = "Pick up"
+		context[SCREENTIP_CONTEXT_RMB] = "Toggle anonymous mode"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = linked_panties ? "Unlink panties" : "No panties linked"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	if(istype(held_item, /obj/item/clothing/sextoy/portalpanties))
+		context[SCREENTIP_CONTEXT_LMB] = "Link panties"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	if(linked_panties?.loc && ishuman(linked_panties.loc))
+		context[SCREENTIP_CONTEXT_LMB] = "Use on target"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	return NONE
 
 /obj/item/clothing/sextoy/portallight/update_appearance(updates)
 	if(linked_panties && linked_panties.current_target == ORGAN_SLOT_PENIS)
@@ -269,7 +287,7 @@
 					add_overlay(mutable_appearance('modular_zzplurt/icons/obj/lewd/fleshlight.dmi', "portal_vag_drip"))
 			if(ORGAN_SLOT_ANUS)
 				organ = mutable_appearance('modular_zzplurt/icons/obj/lewd/fleshlight.dmi', "portal_anus")
-				organ.color = target_wearer.dna.features["mcolor"]
+				organ.color =  target_wearer.dna.features["mcolor"]
 			if(ORGAN_SLOT_PENIS)
 				var/obj/item/organ/external/genital/penis/penis = target_organ
 				organ = mutable_appearance('modular_zzplurt/icons/obj/lewd/dildo.dmi', "penis")
