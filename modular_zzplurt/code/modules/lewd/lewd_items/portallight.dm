@@ -202,21 +202,23 @@
 
 	to_chat(user, span_notice("You unlink the portal panties from [src]."))
 	unlink_panties()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/sextoy/portallight/proc/unlink_panties()
-	linked_panties.linked_fleshlight = null
-	linked_panties = null
-
 	if(isliving(loc))
 		audible_message("[icon2html(src, hearers(linked_panties))] *beep* *beep* *beep*")
 		playsound(linked_panties, 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 		to_chat(loc, span_notice("The panties beep as the link to the [src] is lost."))
 
-	if(isliving(linked_panties.loc))
+	if(isliving(linked_panties?.loc))
 		linked_panties.audible_message("[icon2html(linked_panties, hearers(linked_panties))] *beep* *beep* *beep*")
 		playsound(linked_panties, 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 		to_chat(linked_panties.loc, span_notice("The panties beep as the link to the [src] is lost."))
 
+	linked_panties.linked_fleshlight = null
+	linked_panties = null
+
+	icon_state = "unpaired"
 	update_appearance()
 
 /obj/item/clothing/sextoy/portallight/Destroy(force)
@@ -270,7 +272,8 @@
 			else if(target_wearer.dna.species.name == "Avian")
 				sleeve = mutable_appearance('modular_zzplurt/icons/obj/lewd/fleshlight.dmi', "portal_sleeve_avian")
 
-			sleeve.color = target_wearer.dna.features["mcolor"]
+
+			sleeve.color = linked_panties.current_target == ORGAN_SLOT_ANUS && LAZYFIND(list(/datum/sprite_accessory/genital/anus/donut::name, /datum/sprite_accessory/genital/anus/squished::name), target_organ.genital_name) ? target_organ.color : target_wearer.dna.features["mcolor"]
 			add_overlay(sleeve)
 
 		// Add the appropriate organ overlay
@@ -287,7 +290,7 @@
 					add_overlay(mutable_appearance('modular_zzplurt/icons/obj/lewd/fleshlight.dmi', "portal_vag_drip"))
 			if(ORGAN_SLOT_ANUS)
 				organ = mutable_appearance('modular_zzplurt/icons/obj/lewd/fleshlight.dmi', "portal_anus")
-				organ.color =  target_wearer.dna.features["mcolor"]
+				organ.color = target_organ.color
 			if(ORGAN_SLOT_PENIS)
 				var/obj/item/organ/external/genital/penis/penis = target_organ
 				organ = mutable_appearance('modular_zzplurt/icons/obj/lewd/dildo.dmi', "penis")
