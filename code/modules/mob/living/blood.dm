@@ -298,6 +298,8 @@
 			blood_data["viruses"] += D.Copy()
 
 		blood_data["blood_DNA"] = dna.unique_enzymes
+		blood_data["bloodcolor"] = dna.species.exotic_blood_color // SPLURT ADDITION - Colored Blood
+		blood_data["bloodblend"] = dna.species.exotic_blood_blend_mode // SPLURT ADDITION - Colored Blood
 		if(LAZYLEN(disease_resistances))
 			blood_data["resistances"] = disease_resistances.Copy()
 		var/list/temp_chem = list()
@@ -395,6 +397,7 @@
 				drop.drips++
 				drop.add_overlay(pick(drop.random_icon_states))
 				drop.transfer_mob_blood_dna(src)
+				drop.color = drop.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
 				return
 			else
 				temp_blood_DNA = GET_ATOM_BLOOD_DNA(drop) //we transfer the dna from the drip to the splatter
@@ -402,6 +405,7 @@
 		else
 			drop = new(T, get_static_viruses())
 			drop.transfer_mob_blood_dna(src)
+			drop.color = drop.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
 			return
 
 	// Find a blood decal or create a new one.
@@ -412,6 +416,7 @@
 		return
 	B.bloodiness = min((B.bloodiness + BLOOD_AMOUNT_PER_DECAL), BLOOD_POOL_MAX)
 	B.transfer_mob_blood_dna(src) //give blood info to the blood decal.
+	B.color = B.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
 	if(temp_blood_DNA)
 		B.add_blood_DNA(temp_blood_DNA)
 

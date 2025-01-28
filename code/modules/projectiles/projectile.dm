@@ -355,7 +355,13 @@
 				if(isalien(living_target))
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_turf, splatter_dir)
 				else
-					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir)
+				// SPLURT EDIT START - Colored Blood
+					if(ishuman(target))
+						var/mob/living/carbon/human/H = target
+						new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir, H.dna.species.exotic_blood_color)
+					else
+						new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir) // Original
+				// SPLURT EDIT END - Colored Blood
 				if(prob(33))
 					living_target.add_splatter_floor(target_turf)
 			else if (hit_bodypart?.biological_state & (BIO_METAL|BIO_WIRED))

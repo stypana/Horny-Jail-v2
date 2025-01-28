@@ -189,7 +189,13 @@
 	if(isalien(target))
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target.drop_location(), splatter_dir)
 	else
-		new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir)
+	// SPLURT EDIT START - Colored Blood
+		if(ishuman(target))
+			var/mob/living/carbon/human/H = target
+			new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir, H.dna.species.exotic_blood_color)
+		else
+			new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir) // Original
+	// SPLURT EDIT END - Colored Blood
 
 	//organs go everywhere
 	if(target_part && blocked < 100 && prob(10 * drill_level))

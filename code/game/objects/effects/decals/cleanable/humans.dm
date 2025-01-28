@@ -48,7 +48,7 @@
 		name = dryname
 		desc = drydesc
 		bloodiness = 0
-		color = COLOR_GRAY //not all blood splatters have their own sprites... It still looks pretty nice
+		color = blood_DNA_to_color() //not all blood splatters have their own sprites... It still looks pretty nice // SPLURT EDIT - Colored Blood
 		STOP_PROCESSING(SSobj, src)
 		return TRUE
 
@@ -158,12 +158,15 @@
 	var/delay = 2
 	var/range = pick(0, 200; 1, 150; 2, 50; 3, 17; 50) //the 3% chance of 50 steps is intentional and played for laughs.
 	if(!step_to(src, get_step(src, direction), 0))
+		color = blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
 		return
 	if(mapload)
 		for (var/i in 1 to range)
 			var/turf/my_turf = get_turf(src)
 			if(!isgroundlessturf(my_turf) || GET_TURF_BELOW(my_turf))
-				new /obj/effect/decal/cleanable/blood/splatter(my_turf)
+				var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(my_turf) // SPLURT EDIT - Colored Blood
+				splatter.color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
+				color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
 			if (!step_to(src, get_step(src, direction), 0))
 				break
 		return
@@ -175,7 +178,9 @@
 	SIGNAL_HANDLER
 	if(NeverShouldHaveComeHere(loc))
 		return
-	new /obj/effect/decal/cleanable/blood/splatter(loc)
+	var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(loc) // SPLURT EDIT - Colored Blood
+	splatter.color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
+	color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
 
 /obj/effect/decal/cleanable/blood/gibs/up
 	icon_state = "gibup1"
@@ -441,6 +446,7 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 			land_on_window(bumped_atom)
 		else
 			var/obj/effect/decal/cleanable/blood/splatter/over_window/final_splatter = new(prev_loc)
+			final_splatter.color = blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
 			final_splatter.pixel_x = (dir == EAST ? 32 : (dir == WEST ? -32 : 0))
 			final_splatter.pixel_y = (dir == NORTH ? 32 : (dir == SOUTH ? -32 : 0))
 	else // This will only happen if prev_loc is not even a turf, which is highly unlikely.
@@ -452,6 +458,7 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 	if(!the_window.fulltile)
 		return
 	var/obj/effect/decal/cleanable/blood/splatter/over_window/final_splatter = new
+	final_splatter.color = blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
 	final_splatter.forceMove(the_window)
 	the_window.vis_contents += final_splatter
 	the_window.bloodied = TRUE

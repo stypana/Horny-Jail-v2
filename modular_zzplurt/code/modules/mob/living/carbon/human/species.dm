@@ -1,9 +1,3 @@
-/datum/species
-	/// Assume human as the default blood colour, override this default by species subtypes
-	var/exotic_blood_color = BLOOD_STATE_HUMAN
-	/// Which blend mode should this species blood use?
-	var/exotic_blood_blend_mode = BLEND_MULTIPLY
-
 /datum/species/New()
 	var/list/extra_offset_features = list(
 		OFFSET_UNDERWEAR = list(0,0),
