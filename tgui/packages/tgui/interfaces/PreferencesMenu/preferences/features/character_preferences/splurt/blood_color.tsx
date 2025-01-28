@@ -10,7 +10,7 @@ export const custom_blood_color: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const blood_color: Feature<string[]> = {
+export const blood_color: Feature<string> = {
   name: 'Custom Blood Color',
   component: FeatureColorInput,
 };
