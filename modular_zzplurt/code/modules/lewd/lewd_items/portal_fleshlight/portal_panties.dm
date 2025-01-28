@@ -3,7 +3,7 @@
 	desc = "A pair of panties with bluespace tech allowing lovers to hump at a distance. Needs to be paired with a portal fleshlight before use."
 	icon = 'modular_zzplurt/icons/obj/lewd/fleshlight.dmi'
 	icon_state = "portal_panties"
-	worn_icon = 'modular_zzplurt/icons/obj/lewd/fleshlight.dmi' //TODO: Add a worn icon for this item
+	worn_icon = 'modular_zzplurt/icons/mob/clothing/underwear.dmi' //TODO: Add a worn icon for this item
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_MASK
 	extra_slot_flags = ITEM_SLOT_UNDERWEAR
