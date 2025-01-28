@@ -2,6 +2,15 @@
 
 // Based on Skyrat's vending overrides
 /obj/machinery/vending/dorms
+	zzplurt_product_categories = list(
+		list(
+			"name" = "Toys",
+			"products" = list(
+				/obj/item/storage/box/portal_fleshlight = 4,
+			)
+		)
+	)
+
 	// New premium items
 	zzplurt_premium = list(
 		// Original software

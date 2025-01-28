@@ -1,7 +1,7 @@
 #define URETHRA_TOP "urethra_top"
 #define URETHRA_BOTTOM "urethra_bottom"
 
-/obj/item/clothing/sextoy/portallight
+/obj/item/clothing/sextoy/portal_fleshlight
 	name = "portal fleshlight"
 	desc = "A silver love(TM) portal fleshlight, with bluespace tech allowing lovers to hump at a distance. Needs to be paired with portal panties before use."
 	icon = 'modular_zzplurt/icons/obj/lewd/fleshlight.dmi'
@@ -10,7 +10,7 @@
 	lewd_slot_flags = LEWD_SLOT_PENIS
 
 	/// The linked portal panties
-	var/obj/item/clothing/sextoy/portalpanties/linked_panties = null
+	var/obj/item/clothing/sextoy/portal_panties/linked_panties = null
 	/// Whether the fleshlight is useable (has valid configuration)
 	var/useable = FALSE
 	/// The current target organ for the fleshlight
@@ -70,19 +70,19 @@
 		)
 	)
 
-/obj/item/clothing/sextoy/portallight/Initialize(mapload)
+/obj/item/clothing/sextoy/portal_fleshlight/Initialize(mapload)
 	. = ..()
 	update_appearance()
 	register_context()
 
-/obj/item/clothing/sextoy/portallight/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+/obj/item/clothing/sextoy/portal_fleshlight/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(isnull(held_item))
 		context[SCREENTIP_CONTEXT_LMB] = "Pick up"
 		context[SCREENTIP_CONTEXT_RMB] = "Toggle anonymous mode"
 		context[SCREENTIP_CONTEXT_ALT_LMB] = linked_panties ? "Unlink panties" : "No panties linked"
 		return CONTEXTUAL_SCREENTIP_SET
 
-	if(istype(held_item, /obj/item/clothing/sextoy/portalpanties))
+	if(istype(held_item, /obj/item/clothing/sextoy/portal_panties))
 		context[SCREENTIP_CONTEXT_LMB] = "Link panties"
 		return CONTEXTUAL_SCREENTIP_SET
 
@@ -92,7 +92,7 @@
 
 	return NONE
 
-/obj/item/clothing/sextoy/portallight/update_appearance(updates)
+/obj/item/clothing/sextoy/portal_fleshlight/update_appearance(updates)
 	if(linked_panties && linked_panties.current_target == ORGAN_SLOT_PENIS)
 		icon = 'modular_zzplurt/icons/obj/lewd/dildo.dmi'
 	else
@@ -100,7 +100,7 @@
 	. = ..()
 	updatesleeve()
 
-/obj/item/clothing/sextoy/portallight/examine(mob/user)
+/obj/item/clothing/sextoy/portal_fleshlight/examine(mob/user)
 	. = ..()
 	if(!linked_panties)
 		. += span_notice("The status light is off. The device needs to be paired with portal panties.")
@@ -109,7 +109,7 @@
 	. += span_notice("The status light is [useable ? "on" : "off"]. The portal is [useable ? "open" : "closed"].")
 	. += span_notice("The current target is set to: [current_target]")
 
-/obj/item/clothing/sextoy/portallight/attack_self(mob/user)
+/obj/item/clothing/sextoy/portal_fleshlight/attack_self(mob/user)
 	. = ..()
 	switch(current_target)
 		if(ORGAN_SLOT_PENIS)
@@ -126,7 +126,7 @@
 			current_target = ORGAN_SLOT_PENIS
 	to_chat(user, span_notice("Now targeting: [current_target]"))
 
-/obj/item/clothing/sextoy/portallight/attack(mob/living/target, mob/living/user, params)
+/obj/item/clothing/sextoy/portal_fleshlight/attack(mob/living/target, mob/living/user, params)
 	. = ..()
 	if(!linked_panties?.loc || !istype(linked_panties.loc, /mob/living/carbon/human))
 		to_chat(user, span_warning("The portal fleshlight isn't linked to any worn portal panties!"))
@@ -164,11 +164,11 @@
 	interaction_to_try.act(user, target_wearer)
 	target_wearer.do_jitter_animation()
 
-/obj/item/clothing/sextoy/portallight/attackby(obj/item/W, mob/user, params)
+/obj/item/clothing/sextoy/portal_fleshlight/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	link_panties(W, user)
 
-/obj/item/clothing/sextoy/portallight/proc/link_panties(obj/item/clothing/sextoy/portalpanties/panties, mob/living/user)
+/obj/item/clothing/sextoy/portal_fleshlight/proc/link_panties(obj/item/clothing/sextoy/portal_panties/panties, mob/living/user)
 	if(!istype(panties))
 		return FALSE
 
@@ -191,7 +191,7 @@
 	update_appearance()
 	return TRUE
 
-/obj/item/clothing/sextoy/portallight/click_alt(mob/user)
+/obj/item/clothing/sextoy/portal_fleshlight/click_alt(mob/user)
 	if(!linked_panties)
 		to_chat(user, span_warning("[src] isn't linked to any portal panties!"))
 		return CLICK_ACTION_BLOCKING
@@ -204,7 +204,7 @@
 	unlink_panties()
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/clothing/sextoy/portallight/proc/unlink_panties()
+/obj/item/clothing/sextoy/portal_fleshlight/proc/unlink_panties()
 	if(isliving(loc))
 		audible_message("[icon2html(src, hearers(linked_panties))] *beep* *beep* *beep*")
 		playsound(linked_panties, 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
@@ -221,12 +221,12 @@
 	icon_state = "unpaired"
 	update_appearance()
 
-/obj/item/clothing/sextoy/portallight/Destroy(force)
+/obj/item/clothing/sextoy/portal_fleshlight/Destroy(force)
 	if(linked_panties)
 		unlink_panties()
 	. = ..()
 
-/obj/item/clothing/sextoy/portallight/proc/updatesleeve()
+/obj/item/clothing/sextoy/portal_fleshlight/proc/updatesleeve()
 	cut_overlays() // Remove current overlays
 
 	var/mob/living/carbon/human/target_wearer = null
@@ -326,7 +326,7 @@
 	else
 		useable = FALSE
 
-/obj/item/clothing/sextoy/portallight/attack_hand_secondary(mob/user, list/modifiers)
+/obj/item/clothing/sextoy/portal_fleshlight/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return .

@@ -18,8 +18,8 @@
 	var/list/hidden_cum_partner_text_overrides = list(CLIMAX_POSITION_USER = list(), CLIMAX_POSITION_TARGET = list())
 
 /datum/interaction/lewd/portal/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/obj/item/clothing/sextoy/portallight/fleshlight = user.get_active_held_item()
-	var/obj/item/clothing/sextoy/portalpanties/panties = istype(fleshlight) ? fleshlight.linked_panties : null
+	var/obj/item/clothing/sextoy/portal_fleshlight/fleshlight = user.get_active_held_item()
+	var/obj/item/clothing/sextoy/portal_panties/panties = istype(fleshlight) ? fleshlight.linked_panties : null
 
 	if(!istype(fleshlight) || !istype(panties))
 		return FALSE
@@ -31,8 +31,8 @@
 	var/list/original_user_messages = user_messages?.Copy()
 	var/list/original_target_messages = target_messages?.Copy()
 
-	var/obj/item/clothing/sextoy/portallight/fleshlight = user.get_active_held_item()
-	var/obj/item/clothing/sextoy/portalpanties/panties = istype(fleshlight) ? fleshlight.linked_panties : null
+	var/obj/item/clothing/sextoy/portal_fleshlight/fleshlight = user.get_active_held_item()
+	var/obj/item/clothing/sextoy/portal_panties/panties = istype(fleshlight) ? fleshlight.linked_panties : null
 
 	if(fleshlight.anonymous && length(hidden_target_messages))
 		target_messages = hidden_target_messages.Copy()
@@ -58,8 +58,8 @@
 	var/list/original_cum_self = cum_self_text_overrides.Copy()
 	var/list/original_cum_partner = cum_partner_text_overrides.Copy()
 
-	var/obj/item/clothing/sextoy/portallight/fleshlight = cumming.get_active_held_item()
-	var/obj/item/clothing/sextoy/portalpanties/panties = istype(fleshlight) ? fleshlight.linked_panties : null
+	var/obj/item/clothing/sextoy/portal_fleshlight/fleshlight = cumming.get_active_held_item()
+	var/obj/item/clothing/sextoy/portal_panties/panties = istype(fleshlight) ? fleshlight.linked_panties : null
 
 	// Replace with anonymous messages if needed
 	if((fleshlight.anonymous && position == CLIMAX_POSITION_TARGET) || (panties.anonymous && position == CLIMAX_POSITION_USER))
