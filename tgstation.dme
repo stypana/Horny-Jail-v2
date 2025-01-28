@@ -14,7 +14,6 @@
 // BEGIN_INCLUDE
 #include "__odlint.dm"
 #include "_maps\_basemap.dm"
-#include "_maps\splurt\automapper\templates\mining\lavaland_ashwalker_fortress.dmm"
 #include "code\__byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_experiments.dm"
@@ -9560,6 +9559,7 @@
 #include "modular_zzplurt\code\modules\admin\playtimes.dm"
 #include "modular_zzplurt\code\modules\admin\transform.dm"
 #include "modular_zzplurt\code\modules\alternative_job_titles\code\alt_job_titles.dm"
+#include "modular_zzplurt\code\modules\ashwalkers\code\items\ash_chicken.dm"
 #include "modular_zzplurt\code\modules\asset_cache\assets\chat.dm"
 #include "modular_zzplurt\code\modules\asset_cache\assets\emojipedia.dm"
 #include "modular_zzplurt\code\modules\asset_cache\assets\inventory.dm"
