@@ -117,9 +117,10 @@
 
 	. = ..()
 
-	user_pleasure -= target_pleasure
-	user_arousal -= target_arousal
-	user_pain -= target_pain
+	if(user == target && usage == INTERACTION_BOTH)
+		user_pleasure -= target_pleasure
+		user_arousal -= target_arousal
+		user_pain -= target_pain
 
 /datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target == user && usage == INTERACTION_OTHER)

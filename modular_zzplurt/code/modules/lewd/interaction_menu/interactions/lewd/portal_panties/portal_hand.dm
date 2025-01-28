@@ -1,20 +1,20 @@
 /datum/interaction/lewd/portal/handjob
 	name = "Portal Handjob"
-	description = "Give them a handjob through the portal fleshlight."
+	description = "Give them a handjob through the portal dildo."
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_HAND)
 	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
 	cum_genital = list(CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
 	cum_target = list(CLIMAX_POSITION_TARGET = null)
 	message = list(
 		"strokes %TARGET%'s cock through the portal fleshlight",
-		"works %TARGET%'s shaft with their hand through the portal fleshlight",
-		"rubs %TARGET%'s penis through the portal fleshlight",
-		"gives %TARGET%'s member a handjob through the portal fleshlight"
+		"works %TARGET%'s shaft with their hand through the portal dildo",
+		"rubs %TARGET%'s penis through the portal dildo",
+		"gives %TARGET%'s member a handjob through the portal dildo"
 	)
 	user_messages = list(
 		"You feel %TARGET%'s cock throbbing in your hand through the portal",
 		"The warmth of %TARGET%'s shaft pulses in your grip through the portal",
-		"You work %TARGET%'s penis with your hand through the portal fleshlight"
+		"You work %TARGET%'s penis with your hand through the portal dildo"
 	)
 	target_messages = list(
 		"You feel %USER%'s hand stroking your cock through the portal panties",
@@ -23,15 +23,15 @@
 	)
 
 	hidden_message = list(
-		"strokes the portal fleshlight's cock",
-		"works the portal fleshlight's shaft with their hand",
-		"rubs the portal fleshlight's penis",
-		"gives the portal fleshlight's member a handjob"
+		"strokes the portal dildo's cock",
+		"works the portal dildo's shaft with their hand",
+		"rubs the portal dildo's penis",
+		"gives the portal dildo's member a handjob"
 	)
 	hidden_user_messages = list(
 		"You feel the cock throbbing in your hand through the portal",
 		"The warmth of the shaft pulses in your grip through the portal",
-		"You work the penis with your hand through the portal fleshlight"
+		"You work the penis with your hand through the portal dildo"
 	)
 	hidden_target_messages = list(
 		"You feel a hand stroking your cock through the portal panties",
@@ -56,7 +56,7 @@
 	cum_partner_text_overrides = list(
 		CLIMAX_POSITION_TARGET = list(
 			"You feel %CUMMING%'s cock throb in your hand as they cum through the portal",
-			"%CUMMING% shoots their seed over your hand through the portal fleshlight",
+			"%CUMMING% shoots their seed over your hand through the portal dildo",
 			"Your hand is coated with %CUMMING%'s warm cum through the portal"
 		)
 	)
@@ -78,7 +78,7 @@
 	hidden_cum_partner_text_overrides = list(
 		CLIMAX_POSITION_TARGET = list(
 			"You feel the cock throb in your hand as they cum through the portal",
-			"Warm cum shoots over your hand through the portal fleshlight",
+			"Warm cum shoots over your hand through the portal dildo",
 			"Your hand is coated with cum through the portal"
 		)
 	)
@@ -340,21 +340,21 @@
 
 /datum/interaction/lewd/portal/finger_urethra
 	name = "Portal Fingering (Urethra)"
-	description = "Finger their urethra through the portal fleshlight."
+	description = "Finger their urethra through the portal dildo."
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_HAND)
 	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
 	cum_genital = list(CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
 	cum_target = list(CLIMAX_POSITION_TARGET = null)
 	message = list(
-		"fingers %TARGET%'s urethra through the portal fleshlight",
-		"works their fingers in %TARGET%'s cock through the portal fleshlight",
-		"rubs inside %TARGET%'s penis through the portal fleshlight",
-		"slides their fingers into %TARGET%'s urethra through the portal fleshlight"
+		"fingers %TARGET%'s urethra through the portal dildo",
+		"works their fingers in %TARGET%'s cock through the portal dildo",
+		"rubs inside %TARGET%'s penis through the portal dildo",
+		"slides their fingers into %TARGET%'s urethra through the portal dildo"
 	)
 	user_messages = list(
 		"You feel %TARGET%'s urethra around your fingers through the portal",
 		"The warmth of %TARGET%'s cock envelops your fingers through the portal",
-		"You work your fingers in %TARGET%'s urethra through the portal fleshlight"
+		"You work your fingers in %TARGET%'s urethra through the portal dildo"
 	)
 	target_messages = list(
 		"You feel %USER%'s fingers inside your urethra through the portal panties",
@@ -363,15 +363,15 @@
 	)
 
 	hidden_message = list(
-		"fingers the portal fleshlight's urethra",
-		"works their fingers in the portal fleshlight's cock",
-		"rubs inside the portal fleshlight's penis",
-		"slides their fingers into the portal fleshlight's urethra"
+		"fingers the portal dildo's urethra",
+		"works their fingers in the portal dildo's cock",
+		"rubs inside the portal dildo's penis",
+		"slides their fingers into the portal dildo's urethra"
 	)
 	hidden_user_messages = list(
 		"You feel the urethra around your fingers through the portal",
 		"The warmth envelops your fingers through the portal",
-		"You work your fingers in the cock through the portal fleshlight"
+		"You work your fingers in the cock through the portal dildo"
 	)
 	hidden_target_messages = list(
 		"You feel fingers inside your urethra through the portal panties",
@@ -383,21 +383,21 @@
 		CLIMAX_POSITION_TARGET = list(
 			"%CUMMING%'s cock throbs around %CAME_IN%'s fingers as they cum through the portal",
 			"%CUMMING% climaxes hard on %CAME_IN%'s fingers through the portal",
-			"%CUMMING%'s urethra contracts in orgasm around %CAME_IN%'s fingers through the portal"
+			"%CUMMING%'s urethra contracts in orgasm around %CAME_IN%'s fingers through the portal dildo"
 		)
 	)
 	cum_self_text_overrides = list(
 		CLIMAX_POSITION_TARGET = list(
 			"Your cock throbs around %CAME_IN%'s fingers as you cum through the portal",
 			"You climax hard on %CAME_IN%'s fingers through the portal",
-			"Your urethra contracts in orgasm around %CAME_IN%'s fingers through the portal"
+			"Your urethra contracts in orgasm around %CAME_IN%'s fingers through the portal dildo"
 		)
 	)
 	cum_partner_text_overrides = list(
 		CLIMAX_POSITION_TARGET = list(
 			"You feel %CUMMING%'s cock throb around your fingers as they cum through the portal",
-			"%CUMMING% climaxes on your fingers through the portal fleshlight",
-			"The portal fleshlight's urethra contracts around your fingers as %CUMMING% cums"
+			"%CUMMING% climaxes on your fingers through the portal dildo",
+			"The portal dildo's urethra contracts around your fingers as %CUMMING% cums"
 		)
 	)
 
@@ -418,8 +418,8 @@
 	hidden_cum_partner_text_overrides = list(
 		CLIMAX_POSITION_TARGET = list(
 			"You feel the cock throb around your fingers as they cum through the portal",
-			"The portal fleshlight's user climaxes on your fingers",
-			"The portal fleshlight's urethra contracts around your fingers"
+			"The portal dildo's user climaxes on your fingers",
+			"The portal dildo's urethra contracts around your fingers"
 		)
 	)
 

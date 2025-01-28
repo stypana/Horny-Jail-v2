@@ -1,20 +1,20 @@
 /datum/interaction/lewd/portal/oral_penis
 	name = "Portal Oral (Penis)"
-	description = "Suck their cock through the portal fleshlight."
+	description = "Suck their cock through the portal dildo."
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_MOUTH)
 	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
 	cum_genital = list(CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
 	cum_target = list(CLIMAX_POSITION_TARGET = CLIMAX_TARGET_MOUTH)
 	message = list(
-		"sucks %TARGET%'s cock through the portal fleshlight",
-		"works %TARGET%'s shaft with their mouth through the portal fleshlight",
-		"licks %TARGET%'s penis through the portal fleshlight",
-		"gives %TARGET%'s member oral through the portal fleshlight"
+		"sucks %TARGET%'s cock through the portal dildo",
+		"works %TARGET%'s shaft with their mouth through the portal dildo",
+		"licks %TARGET%'s penis through the portal dildo",
+		"gives %TARGET%'s member oral through the portal dildo"
 	)
 	user_messages = list(
 		"You feel %TARGET%'s cock throbbing in your mouth through the portal",
 		"The warmth of %TARGET%'s shaft pulses on your tongue through the portal",
-		"You work %TARGET%'s penis with your mouth through the portal fleshlight"
+		"You work %TARGET%'s penis with your mouth through the portal dildo"
 	)
 	target_messages = list(
 		"You feel %USER%'s mouth around your cock through the portal panties",
@@ -23,15 +23,15 @@
 	)
 
 	hidden_message = list(
-		"sucks the portal fleshlight's cock",
-		"works the portal fleshlight's shaft with their mouth",
-		"licks the portal fleshlight's penis",
-		"gives the portal fleshlight's member oral"
+		"sucks the portal dildo's cock",
+		"works the portal dildo's shaft with their mouth",
+		"licks the portal dildo's penis",
+		"gives the portal dildo's member oral"
 	)
 	hidden_user_messages = list(
 		"You feel the cock throbbing in your mouth through the portal",
 		"The warmth of the shaft pulses on your tongue through the portal",
-		"You work the penis with your mouth through the portal fleshlight"
+		"You work the penis with your mouth through the portal dildo"
 	)
 	hidden_target_messages = list(
 		"You feel a mouth around your cock through the portal panties",
@@ -56,7 +56,7 @@
 	cum_partner_text_overrides = list(
 		CLIMAX_POSITION_TARGET = list(
 			"You feel %CUMMING%'s cock throb in your mouth as they cum through the portal",
-			"%CUMMING% shoots their seed into your mouth through the portal fleshlight",
+			"%CUMMING% shoots their seed into your mouth through the portal dildo",
 			"Your mouth is filled with %CUMMING%'s warm cum through the portal"
 		)
 	)
@@ -78,7 +78,7 @@
 	hidden_cum_partner_text_overrides = list(
 		CLIMAX_POSITION_TARGET = list(
 			"You feel the cock throb in your mouth as they cum through the portal",
-			"Warm cum shoots into your mouth through the portal fleshlight",
+			"Warm cum shoots into your mouth through the portal dildo",
 			"Your mouth is filled with cum through the portal"
 		)
 	)
