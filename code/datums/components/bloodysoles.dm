@@ -222,10 +222,11 @@
 			FP.bloodiness = blood_lost
 			FP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
 			// SPLURT ADDITION START - Colored Blood
-			if(FP.forensics.blood_DNA["color"])
-				FP.forensics.blood_DNA["color"] = parent_atom.forensics.blood_DNA["color"]
-			else
-				FP.forensics.blood_DNA["color"] = BlendRGB(parent_atom.forensics.blood_DNA["color"], parent_atom.forensics.blood_DNA["color"])
+			if(FP.forensics)
+				if(FP.forensics.blood_DNA["color"])
+					FP.forensics.blood_DNA["color"] = parent_atom.forensics.blood_DNA["color"]
+				else
+					FP.forensics.blood_DNA["color"] = BlendRGB(parent_atom.forensics.blood_DNA["color"], parent_atom.forensics.blood_DNA["color"])
 			FP.forensics.blood_DNA["blendmode"] = parent_atom.forensics.blood_DNA["blendmode"]
 			FP.color = FP.blood_DNA_to_color()
 			// SPLURT ADDITION END - Colored Blood
