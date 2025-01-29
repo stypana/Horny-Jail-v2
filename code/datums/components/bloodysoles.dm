@@ -227,7 +227,7 @@
 					FP.forensics.blood_DNA["color"] = parent_atom.forensics.blood_DNA["color"]
 				else
 					FP.forensics.blood_DNA["color"] = BlendRGB(parent_atom.forensics.blood_DNA["color"], parent_atom.forensics.blood_DNA["color"])
-			FP.forensics.blood_DNA["blendmode"] = parent_atom.forensics.blood_DNA["blendmode"]
+				FP.forensics.blood_DNA["blendmode"] = parent_atom.forensics.blood_DNA["blendmode"]
 			FP.color = FP.blood_DNA_to_color()
 			// SPLURT ADDITION END - Colored Blood
 			FP.update_appearance()
