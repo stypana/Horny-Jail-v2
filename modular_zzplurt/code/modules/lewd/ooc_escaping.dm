@@ -13,6 +13,6 @@
 		// Ejecting the sleeper's occupant. There you go buddy cham pal friend bucko friend pal chum
 		this_sleeper.go_out(src)
 		message_admins("[src] 'OOC Escape'-d from a dogborg sleeper.")
-		log_consent("[src] 'OOC Escape'-d from a dogborg sleeper.")
+		log_ooc("[src] 'OOC Escape'-d from a dogborg sleeper.")
 	else
 		to_chat(src,"<span class='alert'>You aren't inside anyone, though, is the thing.</span>")

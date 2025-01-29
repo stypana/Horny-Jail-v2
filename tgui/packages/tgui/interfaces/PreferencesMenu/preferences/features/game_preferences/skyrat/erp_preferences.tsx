@@ -173,3 +173,27 @@ export const vore_overlay_options: FeatureToggle = {
     'Do you want to see fullscreen vore overlays as an option for soulcatcher overlays?',
   component: CheckboxInput,
 };
+
+// SPLURT ADD START - CYBORGS - Vore sounds, sleepers, etc.
+export const sleeper_pref: FeatureToggle = {
+  name: 'Cyborg Sleepers',
+  category: 'ERP',
+  description:
+    'Allows cyborgs to use sleepers on you and you to use sleepers as one.',
+  component: CheckboxInput,
+};
+
+export const vore_sounds_pref: FeatureToggle = {
+  name: 'Vore Sounds',
+  category: 'ERP',
+  description: 'Do you want to hear vore sounds?',
+  component: CheckboxInput,
+};
+
+export const digestable_pref: FeatureToggle = {
+  name: 'Digestable Vore',
+  category: 'ERP',
+  description: 'Allows you to be digested by the predator.',
+  component: CheckboxInput,
+};
+// SPLURT ADD END

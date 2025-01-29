@@ -38,6 +38,7 @@
 
 	if(usr != loc || !stored)
 		return
+	modify_appearance(stored, FALSE) // SPLURT EDIT - CYBORGS - Reverting to original appearance
 	stored.forceMove(get_turf(usr))
 	return
 
@@ -95,6 +96,36 @@
 		item.melee_attack_chain(user, stored, params)
 		return
 	return ..()
+
+// SPLURT EDIT START - CYBORGS - Making gripper display what it's holding
+/obj/item/borg/apparatus/update_appearance()
+	. = ..()
+	vis_contents = list()
+	if(stored)
+		modify_appearance(stored, TRUE)
+		vis_contents += stored
+
+/obj/item/borg/apparatus/proc/modify_appearance(obj/item, minify = FALSE)
+	var/matrix/new_transform = new
+	if(minify)
+		new_transform.Scale(0.5, 0.5)
+		item.transform = new_transform
+		item.pixel_x = 8
+		item.pixel_y = -8
+		item.plane = FLOAT_PLANE
+	else
+		new_transform.Scale(1, 1)
+		item.transform = new_transform
+		item.pixel_x = initial(item.pixel_x)
+		item.pixel_y = initial(item.pixel_y)
+		item.plane = initial(item.plane)
+
+/obj/item/borg/apparatus/examine(mob/user)
+	. = ..()
+	if(stored)
+		. += "<span class='notice'>It is holding [icon2html(stored, user)] [stored].</span>"
+	. += span_notice("<i>Alt-click</i> will drop the currently held item. ")
+// SPLURT EDIT END
 
 /obj/item/borg/apparatus/beaker
 	name = "beaker storage apparatus"

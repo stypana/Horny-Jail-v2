@@ -1,3 +1,7 @@
+// ⡖⢒⠒⢲⡖⠒⢲⡖⠒⢶⡖⠒⡖⢲⡖⢲⠒⢲⠒⣶⠒⡖⠒⡖⢲⠒⢲⠒⣶⠒⡖⠒⡖⢲⠒⢲⠒⣲⠒⡖⠒⡖⢲⠒⢲⠒⢲⠒⢲⠒⡖⢲⡖⢲⡖⢲⠒⣶⠒⡖⠒⡖⢲⡖⢲
+// ⡇⢸⡇⢸⠁⠾⠘⡇⢸⠈⢲⢸⡇⢠⠁⢸⣄⡖⣾⠀⣿⠀⣇⢸⣇⢸⡇⢸⠀⣿⠀⣧⢠⣇⢸⣄⣼⡀⣿⠀⣇⢸⣇⣸⡇⣸⣀⣾⡀⣷⢠⣇⣸⣇⢸⡇⣼⡀⣿⡀⣧⣰⣇⢸⡇⢸
+// ⠧⠬⠥⠾⠤⠿⠤⠧⠼⠧⠧⠬⠧⠼⠦⠼⠬⠽⠭⠿⠭⠧⠽⠧⠽⠧⠽⠤⠿⠬⠧⠬⠧⠽⠤⠽⠥⠿⠬⠣⠽⠧⠽⠧⠽⠤⠽⠬⠧⠼⠧⠽⠧⠽⠧⠽⠬⠿⠬⠧⠭⠧⠽⠧⠽
+
 // Dogborg Sleeper Units
 
 // Definitions
@@ -18,11 +22,8 @@
 	var/cleaning_cycles = 20
 	var/patient_laststat = null
 	var/list/injection_chems = list(
-		/datum/reagent/medicine/antitoxin,
 		/datum/reagent/medicine/epinephrine,
-		/datum/reagent/medicine/salbutamol,
-		/datum/reagent/medicine/bicaridine,
-		/datum/reagent/medicine/kelotane)
+		/datum/reagent/medicine/salbutamol)
 	var/eject_port = "ingestion"
 	var/escape_in_progress = FALSE
 	var/message_cooldown
@@ -41,14 +42,14 @@
 		/obj/item/clothing/shoes/magboots,
 		/obj/item/clothing/head/helmet/space,
 		/obj/item/clothing/suit/space,
-		/obj/item/reagent_containers/hypospray/CMO,
+		/obj/item/reagent_containers/hypospray/cmo,
 		/obj/item/tank/jetpack/oxygen/captain,
 		/obj/item/clothing/accessory/medal/gold/captain,
 		/obj/item/clothing/suit/armor,
 		/obj/item/documents,
 		/obj/item/nuke_core,
 		/obj/item/nuke_core_container,
-		/obj/item/areaeditor/blueprints,
+		/obj/item/blueprints,
 		/obj/item/documents/syndicate,
 		/obj/item/disk/nuclear,
 		/obj/item/bombcore,
@@ -98,18 +99,13 @@
 		to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
 		return
 
-	if (!CHECK_BITFIELD(target.vore_flags,DEVOURABLE))
+	var/datum/component/vore/vore = target.GetComponent(/datum/component/vore)
+	if(!vore)
 		to_chat(user, "The target registers an error code. Unable to insert into [src.name].")
-		return
+		return ..()
 
 	var/voracious = TRUE
-	if(
-		!target.client || !hound.client ||
-		!(target.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable)) ||
-		!(target.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers)) ||
-		!hound.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) ||
-		!hound.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers)
-		)
+	if(!target.client || !hound.client ||  !check_preference(target, /datum/preference/toggle/erp/vore_enable) || !check_preference(target, /datum/preference/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_preference(hound, /datum/preference/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src.name].</span>", "<span class='notice'>You start placing [target] into your [src.name]...</span>")
@@ -135,12 +131,12 @@
 		target.reset_perspective(src)
 		target.extinguish_mob() //The tongue already puts out fire stacks but being put into the sleeper shouldn't allow you to keep burning.
 		update_gut(hound)
-		user.visible_message("<span class='warning'>[voracious ? "[hound]'s [src.name] lights up and expands as [target] slips inside into their [src.name]." : "[hound]'s sleeper indicator lights up as [target] is scooped up into [hound.ru_ego()] [src.name]."]</span>", \
+		user.visible_message("<span class='warning'>[voracious ? "[hound]'s [src.name] lights up and expands as [target] slips inside into their [src.name]." : "[hound]'s sleeper indicator lights up as [target] is scooped up into [src.name]."]</span>", \
 			"<span class='notice'>Your [voracious ? "[src.name] lights up as [target] slips into" : "sleeper indicator light shines brightly as [target] is scooped inside"] your [src.name]. Life support functions engaged.</span>")
 		message_admins("[key_name(hound)] has sleeper'd [key_name(patient)] as a dogborg. [ADMIN_JMP(src)]")
-		playsound(hound, voracious ? 'sound/vore/prey/insertion_01.ogg' : 'sound/effects/bin_close.ogg', 100, 1)
+		playsound(hound, voracious ? 'modular_zubbers/sound/vore/insertion1.ogg' : 'sound/effects/bin/bin_close.ogg', 100, 1)
 
-/obj/item/dogborg/sleeper/container_resist(mob/living/user)
+/obj/item/dogborg/sleeper/container_resist_act(mob/living/user)
 	var/mob/living/silicon/robot/hound = get_host()
 	if(!hound)
 		go_out(user)
@@ -152,13 +148,7 @@
 		return
 
 	var/voracious = TRUE
-	if(
-		!user.client || !hound.client ||
-		!(user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable)) ||
-		!(user.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers)) ||
-		!hound.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) ||
-		!hound.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers)
-		)
+	if(!user.client || !hound.client || !user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) || !user.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers) || !hound.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) || !hound.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	if(prob(escape_chance) && !escape_pending)
@@ -181,15 +171,15 @@
 	var/voracious = hound ? TRUE : FALSE
 	var/list/targets = target && hound ? list(target) : contents
 	if(hound)
-		if(!hound.client || !hound.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) || !hound.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers))
+		if(!hound.client || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_preference(hound, /datum/preference/toggle/cyborg_sleepers))
 			voracious = FALSE
 		else
-			for(var/mob/M in targets)
-				if(!M.client || !(M.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) || !(M.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers)))
+			for(var/mob/this_mob in targets)
+				if(!this_mob.client || !check_preference(this_mob, /datum/preference/toggle/erp/vore_enable) || !check_preference(this_mob, /datum/preference/toggle/cyborg_sleepers))
 					voracious = FALSE
 	if(length(targets))
 		if(hound)
-			hound.visible_message("<span class='warning'>[voracious ? "[hound] empties out [hound.ru_ego()] contents via [hound.ru_ego()] release port." : "[hound]'s underside slides open with an audible clunk before [hound.ru_ego()] [src.name] flips over, carelessly dumping its contents onto the ground below [hound.ru_na()] before closing right back up again."]</span>", \
+			hound.visible_message("<span class='warning'>[voracious ? "[hound] empties out [hound.p_their()] contents via [hound.p_their()] release port." : "[hound]'s underside slides open with an audible clunk before [hound.p_their()] [src.name] flips over, carelessly dumping its contents onto the ground below before closing right back up again."]</span>", \
 				"<span class='notice'>[voracious ? "You empty your contents via your release port." : "You open your sleeper hatch, quickly releasing all of the contents within before closing it again."]</span>")
 		for(var/a in contents)
 			var/atom/movable/AM = a
@@ -197,7 +187,7 @@
 			if(ismob(AM))
 				var/mob/M = AM
 				M.reset_perspective()
-		playsound(loc, voracious ? 'sound/effects/splat.ogg' : 'sound/effects/bin_close.ogg', 50, 1)
+		playsound(loc, voracious ? 'sound/effects/splat.ogg' : 'sound/effects/bin/bin_close.ogg', 50, 1)
 	items_preserved.Cut()
 	cleaning_cycles = initial(cleaning_cycles)
 	cleaning = FALSE
@@ -297,25 +287,25 @@
 /obj/item/dogborg/sleeper/proc/update_gut(mob/living/silicon/robot/hound)
 	// Well, we HAD one, what happened to them?
 	var/prociconupdate = FALSE
-	var/currentenvy = hound.sleeper_nv
-	hound.sleeper_nv = FALSE
+	var/currentenvy = hound.sleeper_enviroment
+	hound.sleeper_enviroment = FALSE
 	if(patient in contents)
 		if(patient_laststat != patient.stat)
 			if(patient.stat & DEAD)
-				hound.sleeper_r = 1
-				hound.sleeper_g = 0
+				hound.sleeper_occupant = 1
+				hound.sleeper_garbage = 0
 				patient_laststat = patient.stat
 			else
-				hound.sleeper_r = 0
-				hound.sleeper_g = 1
+				hound.sleeper_occupant = 0
+				hound.sleeper_garbage = 1
 				patient_laststat = patient.stat
 			prociconupdate = TRUE
 
-		if(!patient.client || !(patient.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
-			hound.sleeper_nv = TRUE
+		if(!patient.client || !check_preference(patient, /datum/preference/toggle/erp/vore_enable) || !check_preference(patient, /datum/preference/toggle/cyborg_sleepers))
+			hound.sleeper_enviroment = TRUE
 		else
-			hound.sleeper_nv = FALSE
-		if(hound.sleeper_nv != currentenvy)
+			hound.sleeper_enviroment = FALSE
+		if(hound.sleeper_enviroment != currentenvy)
 			prociconupdate = TRUE
 
 		// Update icon
@@ -328,32 +318,27 @@
 		for(var/mob/living/carbon/human/C in contents)
 			patient = C
 			if(patient.stat & DEAD)
-				hound.sleeper_r = 1
-				hound.sleeper_g = 0
+				hound.sleeper_occupant = 1
+				hound.sleeper_garbage = 0
 				patient_laststat = patient.stat
 			else
-				hound.sleeper_r = 0
-				hound.sleeper_g = 1
+				hound.sleeper_occupant = 0
+				hound.sleeper_garbage = 1
 				patient_laststat = patient.stat
 
-			if(hound.module.sleeper_overlay == "msleeper")
-				if(!patient.client || !(patient.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
-					hound.sleeper_nv = TRUE
-			else
-				hound.sleeper_nv = FALSE
-
+				hound.sleeper_enviroment = FALSE
 			// Update icon and return new patient
 			hound.update_icons()
 			return
 
 	// Cleaning looks better with red on, even with nobody in it
 	if(cleaning)
-		hound.sleeper_r = 1
-		hound.sleeper_g = 0
+		hound.sleeper_occupant = 1
+		hound.sleeper_garbage = 0
 	// Couldn't find anyone, and not cleaning
 	else
-		hound.sleeper_r = 0
-		hound.sleeper_g = 0
+		hound.sleeper_occupant = 0
+		hound.sleeper_garbage = 0
 
 	patient_laststat = null
 	patient = null
@@ -361,12 +346,11 @@
 
 // Gurgleborg process
 /obj/item/dogborg/sleeper/proc/clean_cycle(mob/living/silicon/robot/hound)
-	// Sanity
 	if(!hound)
 		return
-	for(var/I in items_preserved)
-		if(!(I in contents))
-			items_preserved -= I
+	for(var/current_item in items_preserved)
+		if(!(current_item in contents))
+			items_preserved -= current_item
 	var/list/touchable_items = contents - items_preserved
 	var/sound/prey_digest = sound(get_sfx("digest_prey"))
 	var/sound/prey_death = sound(get_sfx("death_prey"))
@@ -374,52 +358,53 @@
 	var/sound/pred_death = sound(get_sfx("death_pred"))
 	if(cleaning_cycles)
 		cleaning_cycles--
-		for(var/mob/living/carbon/C in (touchable_items))
-			if((C.status_flags & GODMODE) || !(C.vore_flags & DIGESTABLE))
-				items_preserved += C
+		for(var/mob/living/carbon/this_carbon in (touchable_items))
+			if((HAS_TRAIT(this_carbon, TRAIT_GODMODE)) || !check_preference(this_carbon, /datum/preference/toggle/erp/vore/digestable))
+				items_preserved += this_carbon
 			else
-				C.adjustBruteLoss(2)
-				C.adjustFireLoss(3)
+				this_carbon.adjustBruteLoss(2)
+				this_carbon.adjustFireLoss(3)
 		if(contents && length(touchable_items) > 0)
 			var/atom/target = pick(touchable_items)
 			if(iscarbon(target)) // Handle the target being a mob
-				var/mob/living/carbon/T = target
-				if(T.stat == DEAD && (T.vore_flags & DIGESTABLE))	// Mob is now dead
-					message_admins("[key_name(hound)] has digested [key_name(T)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
-					to_chat(hound,"<span class='notice'>You feel your belly slowly churn around [T], breaking them down into a soft slurry to be used as power for your systems.</span>")
-					to_chat(T,"<span class='notice'>You feel [hound]'s belly slowly churn around your form, breaking you down into a soft slurry to be used as power for [hound]'s systems.</span>")
-					hound.cell.give(30000) // Fueeeeellll
+				var/mob/living/carbon/this_target = target
+				if(this_target.stat == DEAD && check_preference(this_target, /datum/preference/toggle/erp/vore/digestable))	// Mob is now dead
+					message_admins("[key_name(hound)] has digested [key_name(this_target)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
+					to_chat(hound,"<span class='notice'>You feel your belly slowly churn around [this_target], breaking them down into a soft slurry to be used as power for your systems.</span>")
+					to_chat(this_target,"<span class='notice'>You feel [hound]'s belly slowly churn around your form, breaking you down into a soft slurry to be used as power for [hound]'s systems.</span>")
+					hound.cell.give(30000) // yummers
 					if((world.time - NORMIE_HEARCHECK) > last_hearcheck)
 						var/turf/source = get_turf(hound)
 						LAZYCLEARLIST(hearing_mobs)
-						for(var/mob/H in get_hearers_in_view(3, source))
-							if(!H.client || !(H.client.prefs.cit_toggles & DIGESTION_NOISES))
+						for(var/mob/hearer in get_hearers_in_view(3, source))
+							if(!hearer.client || !check_preference(hearer, /datum/preference/toggle/erp/vore/sounds))
 								continue
-							LAZYADD(hearing_mobs, H)
+							LAZYADD(hearing_mobs, hearer)
 						last_hearcheck = world.time
-						for(var/mob/H in hearing_mobs)
-							if(!istype(H.loc, /obj/item/dogborg/sleeper))
-								H.playsound_local(source, null, 45, S = pred_death)
-							else if(H in contents)
-								H.playsound_local(source, null, 65, S = prey_death)
-					for(var/belly in T.vore_organs)
-						var/obj/belly/B = belly
-						for(var/atom/movable/thing in B)
-							thing.forceMove(src)
-							if(ismob(thing))
-								to_chat(thing, "As [T] melts away around you, you find yourself in [hound]'s [name]")
-					for(var/obj/item/W in T)
-						if(!T.dropItemToGround(W))
+						for(var/mob/hearer in hearing_mobs)
+							if(!istype(hearer.loc, /obj/item/dogborg/sleeper))
+								hearer.playsound_local(source, null, 45, soundin = "pred_death")
+							else if(hearer in contents)
+								hearer.playsound_local(source, null, 65, soundin = "prey_death")
+					var/datum/component/vore/vore = this_target.GetComponent(/datum/component/vore) // tis shi is now a component holy shit. damn!!!!!
+					if(vore)
+						for(var/obj/vore_belly/B in vore.vore_bellies)
+							for(var/atom/movable/thing in B)
+								thing.forceMove(src)
+								if(ismob(thing))
+									to_chat(thing, "As [this_target] melts away around you, you find yourself in [hound]'s [name]")
+					for(var/obj/item/W in this_target)
+						if(!this_target.dropItemToGround(W))
 							qdel(W)
-					qdel(T)
+					qdel(this_target)
 			// Handle the target being anything but a mob
 			else if(isobj(target))
-				var/obj/T = target
-				if(T.type in important_items) // If the object is in the items_preserved global list
-					items_preserved += T
+				var/obj/target_obj = target
+				if(target_obj.type in important_items) // If the object is in the items_preserved global list
+					items_preserved += target_obj
 				// If the object is not one to preserve
 				else
-					qdel(T)
+					qdel(target_obj)
 					hound.cell.give(10)
 	else if(contents && length(contents) > 0)
 		// Cycles complete and theres still stuff
@@ -442,16 +427,16 @@
 		if((world.time - NORMIE_HEARCHECK) > last_hearcheck)
 			var/turf/source = get_turf(hound)
 			LAZYCLEARLIST(hearing_mobs)
-			for(var/mob/H in get_hearers_in_view(3, source))
-				if(!H.client || !(H.client.prefs.cit_toggles & DIGESTION_NOISES))
+			for(var/mob/hearer in get_hearers_in_view(3, source))
+				if(!hearer.client || !check_preference(hearer, /datum/preference/toggle/erp/vore/sounds))
 					continue
-				LAZYADD(hearing_mobs, H)
+				LAZYADD(hearing_mobs, hearer)
 			last_hearcheck = world.time
-			for(var/mob/H in hearing_mobs)
-				if(!istype(H.loc, /obj/item/dogborg/sleeper))
-					H.playsound_local(source, null, 45, S = pred_digest)
-				else if(H in contents)
-					H.playsound_local(source, null, 65, S = prey_digest)
+			for(var/mob/hearer in hearing_mobs)
+				if(!istype(hearer.loc, /obj/item/dogborg/sleeper))
+					hearer.playsound_local(source, null, 45, soundin = pred_digest)
+				else if(hearer in contents)
+					hearer.playsound_local(source, null, 65, soundin = prey_digest)
 
 	update_gut(hound)
 
@@ -510,12 +495,13 @@
 		to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
 		return
 
-	if(!CHECK_BITFIELD(target.vore_flags,DEVOURABLE))
+	var/datum/component/vore/vore = target.GetComponent(/datum/component/vore)
+	if(!vore)
 		to_chat(user, "The target registers an error code. Unable to insert into [src.name].")
 		return
 
 	var/voracious = TRUE
-	if(!target.client || !(target.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
+	if(!target.client || !check_preference(target, /datum/preference/toggle/cyborg_sleepers) || !hound.client || !check_preference(hound, /datum/preference/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	user.visible_message("<span class='warning'>[hound.name] is ingesting [target] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
@@ -532,15 +518,13 @@
 		target.reset_perspective(src)
 		update_gut(hound)
 		user.visible_message("<span class='warning'>[hound.name]'s mobile brig clunks in series as [target] slips inside.</span>", "<span class='notice'>Your mobile brig groans lightly as [target] slips inside.</span>")
-		playsound(hound, voracious ? 'sound/vore/prey/insertion_01.ogg' : 'sound/effects/bin_close.ogg', 80, 1)
+		playsound(hound, voracious ? 'modular_zubbers/sound/vore/insertion1.ogg' : 'sound/effects/bin/bin_close.ogg', 80, 1)
 
 /obj/item/dogborg/sleeper/K9/flavour
 	name = "Recreational Sleeper"
 	desc = "A mounted, underslung sleeper, intended for holding willing occupants for leisurely purposes."
 	injection_chems = list() //So they don't have all the same chems as the medihound!
 	medical_scanner = FALSE
-
-
 
 /obj/item/storage/attackby(obj/item/dogborg/sleeper/K9, mob/user, proximity)
 	if(istype(K9))
@@ -551,9 +535,8 @@
 /obj/item/dogborg/sleeper/compactor //Janihound gut.
 	name = "garbage processor"
 	desc = "A mounted garbage compactor unit with fuel processor."
-	icon = 'icons/mob/robot_items.dmi'
+	icon = 'modular_zzplurt/icons/mob/robot/robot_items.dmi'
 	icon_state = "compactor"
-	inject_amount = 0
 	min_health = -100
 	injection_chems = null //So they don't have all the same chems as the medihound!
 	var/max_item_count = 30
@@ -564,7 +547,7 @@
 	else
 		. = ..()
 
-/obj/item/dogborg/sleeper/compactor/afterattack(atom/movable/target, mob/living/silicon/user, proximity)//GARBO NOMS
+/obj/item/dogborg/sleeper/compactor/attack(atom/movable/target, mob/living/silicon/user, proximity)//GARBO NOMS
 	var/mob/living/silicon/robot/hound = get_host()
 	if(!hound || !istype(target) || !proximity || target.anchored)
 		return
@@ -584,17 +567,18 @@
 			I.forceMove(src)
 			I.visible_message("<span class='warning'>[hound.name]'s garbage processor groans lightly as [I] slips inside.</span>", "<span class='notice'>Your garbage compactor groans lightly as [I] slips inside.</span>")
 			playsound(hound, 'sound/machines/disposalflush.ogg', 50, 1)
-			if(length(contents) > 11) //grow that tum after a certain junk amount
-				hound.sleeper_r = 1
+			if(length(contents) > 11) // grow that tum after a certain junk amount
+				hound.sleeper_occupant = 1
 				hound.update_icons()
 			else
-				hound.sleeper_r = 0
+				hound.sleeper_occupant = 0
 				hound.update_icons()
 		return
 
 	if(iscarbon(target) || issilicon(target))
 		var/mob/living/trashman = target
-		if(!CHECK_BITFIELD(trashman.vore_flags,DEVOURABLE))
+		var/datum/component/vore/vore = target.GetComponent(/datum/component/vore)
+		if(!vore)
 			to_chat(user, "<span class='warning'>[target] registers an error code to your [src]</span>")
 			return
 		if(patient)
@@ -609,7 +593,7 @@
 			trashman.reset_perspective(src)
 			update_gut(user)
 			user.visible_message("<span class='warning'>[hound.name]'s garbage processor groans lightly as [trashman] slips inside.</span>", "<span class='notice'>Your garbage compactor groans lightly as [trashman] slips inside.</span>")
-			playsound(hound, 'sound/effects/bin_close.ogg', 80, 1)
+			playsound(hound, 'sound/effects/bin/bin_close.ogg', 80, 1)
 
 #undef INJECTION_AMOUNT
 #undef INJECTION_COST

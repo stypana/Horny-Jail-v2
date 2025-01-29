@@ -144,19 +144,26 @@
 
 //Engineering cyborg apparatus
 /obj/item/borg/apparatus/engineering
-	name = "Engineering manipulation gripper"
+	name = "engineering manipulation gripper" // SPLURT EDIT
 	desc = "A simple grasping tool for interacting with various engineering related items, such as circuits, gas tanks, conveyer belts and more."
 	icon = 'modular_zubbers/code/modules/silicons/borgs/sprites/robot_items.dmi'
 	icon_state = "gripper"
 	storable = list(
-					/obj/item/vending_refill,
-					/obj/item/stack/tile,
-					/obj/item/light,
-					/obj/item/stack/conveyor,
-					/obj/item/conveyor_switch_construct,
-					/obj/item/wallframe,
-					/obj/item/tank,
-					)
+		/obj/item/vending_refill,
+		/obj/item/stack/tile,
+		/obj/item/light,
+		/obj/item/stack/conveyor,
+		/obj/item/conveyor_switch_construct,
+		/obj/item/wallframe,
+		/obj/item/tank,
+		// SPLURT EDIT START - CYBORGS - Making gripper more useful
+		/obj/item/circuitboard,
+		/obj/item/stock_parts,
+		/obj/item/assembly,
+		// SPLURT EDIT END
+		)
+
+// SPLURT EDIT START - CYBORGS - Making gripper display what it's holding
 
 /obj/item/borg/apparatus/mining/examine()
 	. = ..()
