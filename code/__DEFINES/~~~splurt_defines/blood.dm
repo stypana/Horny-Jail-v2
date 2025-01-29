@@ -1,4 +1,4 @@
-#define BLOOD_COLOR_STANDART "#950a0a" // Standart (Like Humans)
+#define BLOOD_COLOR_STANDART "#C80000" // Standart (Like Humans) // "#950a0a" - Old codebase color
 #define BLOOD_COLOR_SYNTHETIC "#3f48aa" // Synth
 #define BLOOD_COLOR_SLIME "#00ff90" // Slimes/Xeno
 #define BLOOD_COLOR_BUG "#ffc933" // Bugs
