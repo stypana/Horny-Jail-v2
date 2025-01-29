@@ -6,6 +6,7 @@
 	default_value = FALSE
 
 /datum/preference/toggle/custom_blood_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.dna.species.uses_colored_blood = value
 	return TRUE
 
 // In PREFS 2 - Color of Blood itself
@@ -16,7 +17,10 @@
 	savefile_key = "blood_color"
 
 /datum/preference/color/blood_color/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.species.exotic_blood_color = value
+	if(target.dna.species.uses_colored_blood == TRUE)
+		target.dna.species.exotic_blood_color = value
+	else
+		target.dna.species.exotic_blood_color = BLOOD_COLOR_STANDART
 	return TRUE
 
 /datum/preference/color/blood_color/is_accessible(datum/preferences/preferences)

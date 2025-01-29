@@ -1,5 +1,6 @@
 // Variables
 /datum/species
+	var/uses_colored_blood = FALSE
 	var/exotic_blood_color = BLOOD_COLOR_STANDART
 	var/exotic_blood_blend_mode = BLEND_MULTIPLY
 
