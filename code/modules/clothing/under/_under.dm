@@ -102,7 +102,7 @@
 	if(damaged_clothes)
 		. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
-		. += mutable_appearance('modular_zzplurt/icons/effects/blood.dmi', "uniformblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
+		. += mutable_appearance(if_colored_blood_then_splurt_icons(), "uniformblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 	if(accessory_overlay)
 		. += modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += accessory_overlay
 

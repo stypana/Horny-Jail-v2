@@ -50,6 +50,7 @@
 
 				gib.add_blood_DNA(dna_to_add)
 				gib.color = gib.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
+				gib.icon = gib.if_colored_blood_then_splurt_icons()
 
 				var/list/directions = gibdirections[i]
 				if(isturf(loc))

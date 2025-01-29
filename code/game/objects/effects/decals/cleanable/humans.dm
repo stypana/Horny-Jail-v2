@@ -48,7 +48,13 @@
 		name = dryname
 		desc = drydesc
 		bloodiness = 0
-		color = blood_DNA_to_color() //not all blood splatters have their own sprites... It still looks pretty nice // SPLURT EDIT - Colored Blood
+		icon = if_colored_blood_then_splurt_icons()
+		if(icon == 'icons/effects/blood.dmi')
+			color = COLOR_GRAY
+		else
+			color = blood_DNA_to_color()
+			var/old_icon_state = icon_state
+			icon_state = old_icon_state + "-old"
 		STOP_PROCESSING(SSobj, src)
 		return TRUE
 
@@ -166,7 +172,9 @@
 			if(!isgroundlessturf(my_turf) || GET_TURF_BELOW(my_turf))
 				var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(my_turf) // SPLURT EDIT - Colored Blood
 				splatter.color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
+				splatter.icon = if_colored_blood_then_splurt_icons()
 				color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
+				icon = if_colored_blood_then_splurt_icons()
 			if (!step_to(src, get_step(src, direction), 0))
 				break
 		return
@@ -181,6 +189,7 @@
 	var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(loc) // SPLURT EDIT - Colored Blood
 	splatter.color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
 	color = blood_DNA_to_color() // SPLURT EDIT - Colored Blood
+	icon = if_colored_blood_then_splurt_icons()
 
 /obj/effect/decal/cleanable/blood/gibs/up
 	icon_state = "gibup1"

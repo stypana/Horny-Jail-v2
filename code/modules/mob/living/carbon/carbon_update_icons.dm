@@ -299,7 +299,7 @@
 		if(!iter_part.dmg_overlay_type)
 			continue
 		if(isnull(damage_overlay) && (iter_part.brutestate || iter_part.burnstate))
-			damage_overlay = mutable_appearance('modular_zzplurt/icons/effects/dam_mob.dmi', "blank", -DAMAGE_LAYER, appearance_flags = KEEP_TOGETHER, color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
+			damage_overlay = mutable_appearance(icon = if_colored_blood_then_splurt_icons_dam_mob(), "blank", -DAMAGE_LAYER, appearance_flags = KEEP_TOGETHER, color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 			if(iter_part.damage_overlay_color) // SPLURT EDIT - Colored Blood - Added this check
 				damage_overlay.color = iter_part.damage_overlay_color // SPLURT EDIT - Colored Blood - Been here without mine check
 		if(iter_part.brutestate)
@@ -319,7 +319,7 @@
 	var/mutable_appearance/wound_overlay
 	for(var/obj/item/bodypart/iter_part as anything in bodyparts)
 		if(iter_part.bleed_overlay_icon)
-			wound_overlay ||= mutable_appearance('modular_zzplurt/icons/effects/bleed_overlays.dmi', "blank", -WOUND_LAYER, appearance_flags = KEEP_TOGETHER, color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
+			wound_overlay ||= mutable_appearance(icon = if_colored_blood_then_splurt_icons_bleed_overlays(), "blank", -WOUND_LAYER, appearance_flags = KEEP_TOGETHER, color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 			wound_overlay.add_overlay(iter_part.bleed_overlay_icon)
 
 	if(isnull(wound_overlay))

@@ -398,6 +398,7 @@
 				drop.add_overlay(pick(drop.random_icon_states))
 				drop.transfer_mob_blood_dna(src)
 				drop.color = drop.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
+				drop.icon = drop.if_colored_blood_then_splurt_icons()
 				return
 			else
 				temp_blood_DNA = GET_ATOM_BLOOD_DNA(drop) //we transfer the dna from the drip to the splatter
@@ -406,6 +407,7 @@
 			drop = new(T, get_static_viruses())
 			drop.transfer_mob_blood_dna(src)
 			drop.color = drop.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
+			drop.icon = drop.if_colored_blood_then_splurt_icons()
 			return
 
 	// Find a blood decal or create a new one.
@@ -417,6 +419,7 @@
 	B.bloodiness = min((B.bloodiness + BLOOD_AMOUNT_PER_DECAL), BLOOD_POOL_MAX)
 	B.transfer_mob_blood_dna(src) //give blood info to the blood decal.
 	B.color = B.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
+	B.icon = B.if_colored_blood_then_splurt_icons()
 	if(temp_blood_DNA)
 		B.add_blood_DNA(temp_blood_DNA)
 

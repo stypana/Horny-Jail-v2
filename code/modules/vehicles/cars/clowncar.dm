@@ -136,6 +136,7 @@
 			hittarget_living.adjustBruteLoss(200)
 			var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(get_turf(hittarget_living)) // SPLURT EDIT - Colored Blood
 			splatter.color = hittarget_living.blood_DNA_to_color() // SPLURT EDIT - Colored Blood
+			splatter.icon = hittarget_living.if_colored_blood_then_splurt_icons()
 
 			log_combat(src, hittarget_living, "rammed into", null, "injuring all passengers and killing the [hittarget_living]")
 			dump_mobs(TRUE)

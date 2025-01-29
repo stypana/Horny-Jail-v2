@@ -608,6 +608,7 @@
 	var/turf/borer_turf = get_turf(cortical_owner)
 	var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(borer_turf) // SPLURT EDIT - Colored Blood
 	splatter.color = splatter.blood_DNA_to_color() // SPLURT EDIT - Colored Blood
+	splatter.icon = splatter.if_colored_blood_then_splurt_icons()
 	playsound(borer_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	var/logging_text = "[key_name(cortical_owner)] gave birth alone at [loc_name(borer_turf)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)

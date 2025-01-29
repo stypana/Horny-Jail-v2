@@ -14,4 +14,4 @@
 			if(clothing_flags & LARGE_WORN_ICON)
 				. += mutable_appearance('icons/effects/64x64.dmi', "shoeblood_large") // SPLURT - We need new white icons for colored blood (I'm not spriter)
 			else
-				. += mutable_appearance('modular_zzplurt/icons/effects/blood.dmi', "shoeblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
+				. += mutable_appearance(icon = if_colored_blood_then_splurt_icons(), "shoeblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood

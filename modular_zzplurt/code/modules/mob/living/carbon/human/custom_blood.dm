@@ -1,21 +1,20 @@
 // Variables
 /datum/species
-	var/uses_colored_blood = FALSE
 	var/exotic_blood_color = BLOOD_COLOR_STANDART
 	var/exotic_blood_blend_mode = BLEND_MULTIPLY
 
 // Greyscale Icons
-/obj/effect/decal/cleanable/blood
-	icon = 'modular_zzplurt/icons/effects/blood.dmi'
+// /obj/effect/decal/cleanable/blood
+// 	icon = 'modular_zzplurt/icons/effects/blood.dmi'
 
-/obj/effect/decal/cleanable/trail_holder
-	icon = 'modular_zzplurt/icons/effects/blood.dmi'
+// /obj/effect/decal/cleanable/trail_holder
+// 	icon = 'modular_zzplurt/icons/effects/blood.dmi'
 
-/obj/effect/decal/cleanable/blood/gibs
-	icon = 'modular_zzplurt/icons/effects/blood.dmi'
+// /obj/effect/decal/cleanable/blood/gibs
+// 	icon = 'modular_zzplurt/icons/effects/blood.dmi'
 
-/obj/effect/decal/cleanable/blood/footprints
-	icon = 'modular_zzplurt/icons/effects/footprints.dmi'
+// /obj/effect/decal/cleanable/blood/footprints
+// 	icon = 'modular_zzplurt/icons/effects/footprints.dmi'
 
 // Procs
 /atom/proc/blood_DNA_to_color()
@@ -28,6 +27,30 @@
 		if(forensics.blood_DNA && !isnull(forensics.blood_DNA["blendmode"]))
 			return forensics.blood_DNA["blendmode"]
 	return BLEND_MULTIPLY
+
+/atom/proc/if_colored_blood_then_splurt_icons()
+	. = 'icons/effects/blood.dmi'
+	if(forensics?.blood_DNA["color"] != BLOOD_COLOR_STANDART)
+		return 'modular_zzplurt/icons/effects/blood.dmi'
+	return
+
+/atom/proc/if_colored_blood_then_splurt_icons_footprints()
+	. = 'icons/effects/footprints.dmi'
+	if(forensics?.blood_DNA["color"] != BLOOD_COLOR_STANDART)
+		return 'modular_zzplurt/icons/effects/footprints.dmi'
+	return
+
+/atom/proc/if_colored_blood_then_splurt_icons_dam_mob()
+	. = 'icons/mob/effects/dam_mob.dmi'
+	if(forensics?.blood_DNA["color"] != BLOOD_COLOR_STANDART)
+		return 'modular_zzplurt/icons/effects/dam_mob.dmi'
+	return
+
+/atom/proc/if_colored_blood_then_splurt_icons_bleed_overlays()
+	. = 'icons/mob/effects/bleed_overlays.dmi'
+	if(forensics?.blood_DNA["color"] != BLOOD_COLOR_STANDART)
+		return 'modular_zzplurt/icons/effects/bleed_overlays.dmi'
+	return
 
 // Reforcing the master-code procs and other stuff - Changes are commented //
 //
@@ -42,7 +65,7 @@
 	var/icon/icon_for_size = icon(icon, icon_state)
 	var/scale_factor_x = icon_for_size.Width()/ICON_SIZE_X
 	var/scale_factor_y = icon_for_size.Height()/ICON_SIZE_Y
-	var/mutable_appearance/blood_splatter = mutable_appearance('modular_zzplurt/icons/effects/blood.dmi', "itemblood", appearance_flags = RESET_COLOR) // Here (Icon)
+	var/mutable_appearance/blood_splatter = mutable_appearance(icon = I.if_colored_blood_then_splurt_icons(), "itemblood", appearance_flags = RESET_COLOR) // Here (Icon)
 	blood_splatter.transform = blood_splatter.transform.Scale(scale_factor_x, scale_factor_y)
 	blood_splatter.blend_mode = BLEND_INSET_OVERLAY
 	blood_splatter.color = I.blood_DNA_to_color() // And here ('_color' to 'I.blood_DNA_to_color()')
