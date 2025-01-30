@@ -49,8 +49,8 @@
 				gib = new gibType(loc, diseases)
 
 				gib.add_blood_DNA(dna_to_add)
-				gib.color = gib.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
-				gib.icon = gib.if_colored_blood_then_splurt_icons()
+				gib.color = gib.blood_DNA_to_color(gib.color, force = TRUE) // SPLURT ADDITION - Colored Blood
+				gib.icon = gib.colored_blood_icon(gib.icon) // SPLURT ADDITION - Colored Blood
 
 				var/list/directions = gibdirections[i]
 				if(isturf(loc))

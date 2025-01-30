@@ -25,4 +25,4 @@
 	return preferences.read_preference(/datum/preference/toggle/custom_blood_color)
 
 /datum/preference/color/create_default_value()
-	return BLOOD_COLOR_STANDART
+	return BLOOD_COLOR_STANDARD

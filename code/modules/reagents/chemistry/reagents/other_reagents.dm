@@ -1,7 +1,7 @@
 /datum/reagent/blood
-	data = list("viruses"=null,"blood_DNA"=null,"bloodcolor" = BLOOD_COLOR_STANDART,"bloodblend" = BLEND_MULTIPLY,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null, "monkey_origins" = FALSE) // SKYRAT EDIT - Rebalancing blood for Hemophages - ORIGINAL: data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null) // SPLURT EDIT - Added bloodcolor and bloodblend
+	data = list("viruses"=null,"blood_DNA"=null,"bloodcolor" = BLOOD_COLOR_STANDARD,"bloodblend" = BLEND_MULTIPLY,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null, "monkey_origins" = FALSE) // SKYRAT EDIT - Rebalancing blood for Hemophages - ORIGINAL: data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null) // SPLURT EDIT - Added bloodcolor and bloodblend
 	name = "Blood"
-	color = BLOOD_COLOR_STANDART // SPLURT EDIT - Original - "#C80000" // rgb: 200, 0, 0
+	color = BLOOD_COLOR_STANDARD // SPLURT EDIT - Original - "#C80000" // rgb: 200, 0, 0
 	metabolization_rate = 12.5 * REAGENTS_METABOLISM //fast rate so it disappears fast.
 	taste_description = "iron"
 	taste_mult = 1.3

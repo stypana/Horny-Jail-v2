@@ -517,15 +517,17 @@
 
 ///to add a mob's dna info into an object's blood_dna list.
 /atom/proc/transfer_mob_blood_dna(mob/living/injected_mob)
-	// Returns 0 if we have that blood already
 	var/new_blood_dna = injected_mob.get_blood_dna_list()
 	if(!new_blood_dna)
 		return FALSE
 	var/old_length = GET_ATOM_BLOOD_DNA_LENGTH(src)
 	add_blood_DNA(new_blood_dna)
+	forensics.blood_DNA["color"] = new_blood_dna["color"]
+	forensics.blood_DNA["blendmode"] = new_blood_dna["blendmode"]
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src) == old_length)
 		return FALSE
 	return TRUE
+
 
 ///to add blood from a mob onto something, and transfer their dna info
 /atom/proc/add_mob_blood(mob/living/injected_mob)

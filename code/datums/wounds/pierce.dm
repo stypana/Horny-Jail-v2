@@ -53,7 +53,13 @@
 				span_danger("You spit out a string of blood from the blow to your [limb.plaintext_zone]!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir)
+			// SPLURT EDIT - Colored Blood
+			if(ishuman(victim))
+				var/mob/living/carbon/human/H = victim
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir, H.dna.species.exotic_blood_color)
+			else
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir) // original
+			// SPLURT EDIT END
 			victim.bleed(blood_bled)
 		if(20 to INFINITY)
 			victim.visible_message(
@@ -62,7 +68,13 @@
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			victim.bleed(blood_bled)
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir)
+			// SPLURT EDIT - Colored Blood
+			if(ishuman(victim))
+				var/mob/living/carbon/human/H = victim
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir, H.dna.species.exotic_blood_color)
+			else
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir) // original
+			// SPLURT EDIT END
 			victim.add_splatter_floor(get_step(victim.loc, victim.dir))
 
 /datum/wound/pierce/bleed/get_bleed_rate_of_change()

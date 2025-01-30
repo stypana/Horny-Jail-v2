@@ -199,8 +199,10 @@
 				add_parent_to_footprint(oldLocFP)
 				oldLocFP.bloodiness = blood_lost
 				oldLocFP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
-				oldLocFP.color = parent_atom.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
-				oldLocFP.icon = parent_atom.if_colored_blood_then_splurt_icons_footprints() // SPLURT ADDITION - Colored Blood
+				// SPLURT ADDITION START - Colored Blood
+				oldLocFP.color = parent_atom.blood_DNA_to_color(oldLocFP.color, force = TRUE)
+				oldLocFP.icon = parent_atom.colored_blood_icon(oldLocFP.icon)
+				// SPLURT ADDITION END
 				oldLocFP.update_appearance()
 
 			blood_lost = bloody_shoes[last_blood_state] * BLOOD_PERCENT_LOSS_ON_STEP
@@ -229,8 +231,8 @@
 				else
 					FP.forensics.blood_DNA["color"] = BlendRGB(parent_atom.forensics.blood_DNA["color"], parent_atom.forensics.blood_DNA["color"])
 				FP.forensics.blood_DNA["blendmode"] = parent_atom.forensics.blood_DNA["blendmode"]
-			FP.color = FP.blood_DNA_to_color()
-			FP.icon = FP.if_colored_blood_then_splurt_icons_footprints()
+			FP.color = FP.blood_DNA_to_color(FP.color, force = TRUE)
+			FP.icon = FP.colored_blood_icon(FP.icon)
 			// SPLURT ADDITION END - Colored Blood
 			FP.update_appearance()
 
@@ -253,8 +255,10 @@
 		if((bloody_shoes[last_blood_state] - (bloody_shoes[last_blood_state] * BLOOD_PERCENT_LOSS_ON_STEP)) >= BLOOD_FOOTPRINTS_MIN && !(pool_FP.entered_dirs & wielder.dir))
 			// If our feet are bloody enough, add an entered dir
 			pool_FP.entered_dirs |= wielder.dir
-			pool_FP.color = pool.blood_DNA_to_color() // SPLURT ADDITION - Colored Blood
-			pool_FP.icon = pool.if_colored_blood_then_splurt_icons_footprints()
+			// SPLURT ADDITION START - Colored Blood
+			pool_FP.color = pool.blood_DNA_to_color(pool_FP.color, force = TRUE)
+			pool_FP.icon = pool.colored_blood_icon(pool_FP.icon)
+			// SPLURT ADDITION END
 			pool_FP.update_appearance()
 		return
 
@@ -290,7 +294,7 @@
 	if(footprint_sprite)
 		src.footprint_sprite = footprint_sprite
 	if(!bloody_feet)
-		bloody_feet = mutable_appearance(icon = parent_atom.if_colored_blood_then_splurt_icons(), "shoeblood", SHOES_LAYER, color = parent_atom.blood_DNA_to_color(), blend_mode = parent_atom.blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
+		bloody_feet = mutable_appearance(parent_atom.colored_blood_icon('icons/effects/blood.dmi'), "shoeblood", SHOES_LAYER, color = parent_atom.blood_DNA_to_color(), blend_mode = parent_atom.blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_clean))
 	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, PROC_REF(on_step_blood))

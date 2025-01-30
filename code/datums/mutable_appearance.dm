@@ -31,8 +31,10 @@
 	appearance.alpha = alpha
 	appearance.appearance_flags |= appearance_flags
 	// SPLURT ADDITION START - Colors for overlays
-	appearance.color = color
-	appearance.blend_mode = blend_mode
+	if(color)
+		appearance.color = color
+	if(blend_mode)
+		appearance.blend_mode = blend_mode
 	// SPLURT ADDITION END - Colors for overlays
 	if(plane != FLOAT_PLANE)
 		// You need to pass in some non null object to reference
