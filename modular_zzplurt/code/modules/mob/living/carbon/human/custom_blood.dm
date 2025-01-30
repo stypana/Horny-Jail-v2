@@ -71,8 +71,8 @@
 	var/new_blood_dna = injected_mob.get_blood_dna_list()
 	if(!new_blood_dna)
 		return ..()
-	forensics.blood_DNA["color"] = new_blood_dna["color"]
-	forensics.blood_DNA["blendmode"] = new_blood_dna["blendmode"]
+	forensics?.blood_DNA["color"] = new_blood_dna["color"]
+	forensics?.blood_DNA["blendmode"] = new_blood_dna["blendmode"]
 	. = ..()
 
 /* Is this necessary? It just goes over the list twice
