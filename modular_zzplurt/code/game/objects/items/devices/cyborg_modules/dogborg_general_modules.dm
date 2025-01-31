@@ -1,6 +1,14 @@
 // Dorborg specific modules
 
-/obj/item/dogborg/dogborg_tongue
+#define STATUS_IDLE 0
+#define STATUS_ENERGIZED 1
+#define BASIC_CLEANSPEED 80
+#define SCRUBPUP_CLEANSPEED 25
+#define EMAGGED_CLEANSPEED 15
+
+// Tongues (slurp)
+
+/obj/item/soap/dogborg_tongue
 	name = "synthetic tongue"
 	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
 	icon = 'modular_zzplurt/icons/mob/robot/robot_items.dmi'
@@ -8,22 +16,109 @@
 	hitsound = 'sound/effects/blob/attackblob.ogg'
 	item_flags = NOBLUDGEON
 	force = 0
+	cleanspeed = BASIC_CLEANSPEED
+	var/status = STATUS_IDLE
 
-/obj/item/dogborg/dogborg_tongue/afterattack(atom/target, mob/user, proximity)
+/obj/item/soap/dogborg_tongue/Initialize(mapload)
 	. = ..()
+
+/obj/item/soap/dogborg_tongue/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
-	var/mob/living/living_target = target
+	if(user.client && (target in user.client.screen))
+		to_chat(user, "<span class='warning'>You need to take that [target.name] off before cleaning it!</span>")
+		return
 	do_attack_animation(target, null, src)
-	if(check_zone(user.zone_selected) == "head")
-		user.visible_message("<span class='warning'>\the [user] affectionally licks \the [living_target]'s face!</span>", "<span class='notice'>You affectionally lick \the [living_target]'s face!</span>")
-		playsound(user, 'sound/effects/blob/attackblob.ogg', 50, 1)
-	else
-		user.visible_message("<span class='warning'>\the [user] affectionally licks \the [living_target]!</span>", "<span class='notice'>You affectionally lick \the [living_target]!</span>")
-		playsound(user, 'sound/effects/blob/attackblob.ogg', 50, 1)
+
+	var/mob/living/silicon/robot/this_robot = user
+	var/mob/living/living_target = target
+
+	if(istype(target, /obj/effect/decal/cleanable)) // GOTTAAAAAA SWWEEEEP SWEEP SWEEP SWEEP SWEEEEP!!
+		this_robot.visible_message("[this_robot] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		if(do_after(this_robot, src.cleanspeed, target = target))
+			to_chat(this_robot, "<span class='notice'>You clean \the [target.name].</span>")
+			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
+			SEND_SIGNAL(target, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WASH)
+	else if(istype(target, /obj/item/trash)) // yummers
+		this_robot.visible_message("[this_robot] nibbles away at \the [target.name].", "<span class='warning'>You begin to nibble away at \the [target.name]...</span>")
+		if(!do_after(this_robot, src.cleanspeed, target = target))
+			return
+		to_chat(this_robot, "<span class='notice'>You finish off \the [target.name].</span>")
+		qdel(target)
+		this_robot.cell.give(250)
+	else if(istype(target, /obj/item/stock_parts/power_store/cell)) // ayo this is bussin
+		this_robot.visible_message("[this_robot] begins cramming \the [target.name] down its throat.", "<span class='warning'>You begin cramming \the [target.name] down your throat...</span>")
+		if(!do_after(this_robot, 50, target = target))
+			return
+		to_chat(this_robot, "<span class='notice'>You finish off \the [target.name].</span>")
+		var/obj/item/stock_parts/power_store/cell/target_cell = target
+		this_robot.cell.charge = this_robot.cell.charge + (target_cell.charge / 3)
+		qdel(target)
+	else if(ishuman(living_target)) // good boy
+		if(status == STATUS_IDLE && check_zone(this_robot.zone_selected) == "head")
+			this_robot.visible_message("<span class='warning'>\the [this_robot] affectionally licks \the [living_target]'s face!</span>", "<span class='notice'>You affectionally lick \the [living_target]'s face!</span>")
+			playsound(this_robot, 'sound/effects/blob/attackblob.ogg', 50, 1)
+			if(istype(living_target) && living_target.fire_stacks > 0)
+				living_target.adjust_fire_stacks(-10)
+			return
+		else if(status == STATUS_IDLE)
+			this_robot.visible_message("<span class='warning'>\the [this_robot] affectionally licks \the [living_target]!</span>", "<span class='notice'>You affectionally lick \the [living_target]!</span>")
+			playsound(this_robot, 'sound/effects/blob/attackblob.ogg', 50, 1)
+			if(istype(living_target) && living_target.fire_stacks > 0)
+				living_target.adjust_fire_stacks(-10)
+			return
+		else
+			if(this_robot.cell.charge <= 800)
+				to_chat(this_robot, "Insufficent Power!")
+				return
+			living_target.AdjustStun(4)
+			living_target.AdjustKnockdown(80)
+			living_target.adjust_stutter(5 SECONDS)
+			living_target.visible_message("<span class='danger'>[this_robot] shocks [living_target] with its tongue!</span>", "<span class='userdanger'>[this_robot] shocks you with its tongue!</span>")
+			playsound(this_robot, 'sound/effects/sparks/sparks4.ogg', 50, 1, -1)
+			this_robot.cell.use(600)
+			log_combat(this_robot, living_target, "tongue stunned")
+	else if(istype(target, /obj/structure/window)) // splurp
+		this_robot.visible_message("[this_robot] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		if(do_after(this_robot, src.cleanspeed, target = target))
+			to_chat(this_robot, "<span class='notice'>You clean \the [target.name].</span>")
+			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
+			target.set_opacity(initial(target.opacity))
+	else // not so slurp
+		this_robot.visible_message("[this_robot] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		if(do_after(this_robot, src.cleanspeed, target = target))
+			to_chat(this_robot, "<span class='notice'>You clean \the [target.name].</span>")
+			var/obj/effect/decal/cleanable/cleanable_target = locate() in target
+			qdel(cleanable_target)
+			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
+			SEND_SIGNAL(target, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WASH)
+	return
 
 
+/obj/item/soap/dogborg_tongue/attack_self(mob/user)
+	var/mob/living/silicon/robot/this_robot = user
+	if(this_robot.cell && this_robot.cell.charge > 100)
+		if(this_robot.emagged && status == STATUS_IDLE)
+			status = STATUS_ENERGIZED
+			name = "energized tongue"
+			desc = "Your tongue is energized for dangerously maximum efficency."
+			icon_state = "syndietongue"
+			to_chat(this_robot, "<span class='notice'>Your tongue is now [status ? "Energized" : "Normal"].</span>")
+			cleanspeed = EMAGGED_CLEANSPEED
+		else
+			status = STATUS_IDLE
+			name = "synthetic tongue"
+			desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
+			icon_state = "synthtongue"
+			cleanspeed = BASIC_CLEANSPEED
+			if(this_robot.emagged)
+				to_chat(this_robot, "<span class='notice'>Your tongue is now [status ? "Energized" : "Normal"].</span>")
+	update_icon()
 
+/obj/item/soap/dogborg_tongue/scrubpup
+	cleanspeed = SCRUBPUP_CLEANSPEED
+
+// Noses (boop)
 
 /obj/item/dogborg/dogborg_nose
 	name = "BOOP module"
@@ -114,45 +209,45 @@
 	cyborg_pixel_offset = -16
 	hat_offset = INFINITY
 	basic_modules += new /obj/item/dogborg/dogborg_nose(src)
-	basic_modules += new /obj/item/dogborg/dogborg_tongue(src)
+	basic_modules += new /obj/item/soap/dogborg_tongue(src)
 
-	var/obj/item/dogborg/sleeper/I = /obj/item/dogborg/sleeper
+	var/obj/item/dogborg/sleeper/this_sleeper = /obj/item/dogborg/sleeper
 
 	var/mechanics = CONFIG_GET(flag/enable_dogborg_sleepers)
 	if (mechanics)
 		// Normal sleepers
 		if(istype(src, /obj/item/robot_model/security))
-			I = new /obj/item/dogborg/sleeper/K9(src)
+			this_sleeper = new /obj/item/dogborg/sleeper/K9(src)
 
 		if(istype(src, /obj/item/robot_model/medical))
-			I = new /obj/item/dogborg/sleeper(src)
+			this_sleeper = new /obj/item/dogborg/sleeper(src)
 
 		// "Unimplemented sleepers"
 		if(istype(src, /obj/item/robot_model/engineering))
-			I = new /obj/item/dogborg/sleeper/compactor(src)
-			I.icon_state = "decompiler"
+			this_sleeper = new /obj/item/dogborg/sleeper/compactor(src)
+			this_sleeper.icon_state = "decompiler"
 		if(istype(src, /obj/item/robot_model/janitor))
-			I = new /obj/item/dogborg/sleeper/compactor(src)
-			I.icon_state = "servicer"
+			this_sleeper = new /obj/item/dogborg/sleeper/compactor(src)
+			this_sleeper.icon_state = "servicer"
 			if(cyborg_base_icon in list("scrubpup", "drakejanit"))
-				I.icon_state = "compactor"
+				this_sleeper.icon_state = "compactor"
 	else
-		I = new /obj/item/dogborg/sleeper/K9/flavour(src) //If mechanics is a no-no, revert to flavour
+		this_sleeper = new /obj/item/dogborg/sleeper/K9/flavour(src)
 		// Recreational sleepers
 		if(istype(src, /obj/item/robot_model/security))
-			I.icon_state = "sleeperb"
+			this_sleeper.icon_state = "sleeperb"
 		if(istype(src, /obj/item/robot_model/medical))
-			I.icon_state = "sleeper"
+			this_sleeper.icon_state = "sleeper"
 
 		// Unimplemented sleepers
 		if(istype(src, /obj/item/robot_model/engineering))
-			I.icon_state = "decompiler"
+			this_sleeper.icon_state = "decompiler"
 		if(istype(src, /obj/item/robot_model/janitor))
-			I.icon_state = "servicer"
+			this_sleeper.icon_state = "servicer"
 			if(cyborg_base_icon in list("scrubpup", "drakejanit"))
-				I.icon_state = "compactor"
+				this_sleeper.icon_state = "compactor"
 
-	basic_modules += I
+	basic_modules += this_sleeper
 	rebuild_modules()
 
 /obj/item/dogborg/jaws
@@ -207,14 +302,13 @@
 				to_chat(user, "<span class='notice'>Your jaws are now [status ? "Combat" : "Pup'd"].</span>")
 	update_icon()
 
-/obj/item/analyzer/nose/afterattack(atom/target, mob/user, proximity)
+/obj/item/dogborg/dogborg_nose/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
 		return
 	do_attack_animation(target, null, src)
 	user.visible_message("<span class='notice'>[user] [pick(attack_verb_simple)] \the [target.name] with their nose!</span>")
 
-//Delivery
 /obj/item/storage/bag/borgdelivery
 	name = "fetching storage"
 	desc = "Fetch the thing!"
@@ -229,137 +323,22 @@
 	atom_storage.max_slots = 1
 	atom_storage.set_holdable(list(/obj/item/disk/nuclear))
 
-//Tongue stuff
-// /obj/item/soap/tongue
-// 	name = "synthetic tongue"
-// 	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
-// 	icon = 'modular_zzplurt/icons/mob/robot/robot_items.dmi'
-// 	icon_state = "synthtongue"
-// 	hitsound = 'sound/effects/attackblob.ogg'
-// 	cleanspeed = 80
-// 	var/status = 0
 
-// /obj/item/soap/tongue/scrubpup
-// 	cleanspeed = 25 //slightly faster than a mop.
 
-// /obj/item/soap/tongue/New()
-// 	..()
-// 	item_flags |= NOBLUDGEON //No more attack messages
 
-// /obj/item/soap/tongue/attack_self(mob/user)
-// 	var/mob/living/silicon/robot/R = user
-// 	if(R.cell && R.cell.charge > 100)
-// 		if(R.emagged && status == 0)
-// 			status = !status
-// 			name = "energized tongue"
-// 			desc = "Your tongue is energized for dangerously maximum efficency."
-// 			icon_state = "syndietongue"
-// 			to_chat(user, "<span class='notice'>Your tongue is now [status ? "Energized" : "Normal"].</span>")
-// 			cleanspeed = 10 //(nerf'd)tator soap stat
-// 		else
-// 			status = 0
-// 			name = "synthetic tongue"
-// 			desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
-// 			icon_state = "synthtongue"
-// 			cleanspeed = initial(cleanspeed)
-// 			if(R.emagged)
-// 				to_chat(user, "<span class='notice'>Your tongue is now [status ? "Energized" : "Normal"].</span>")
-// 	update_icon()
 
-// /obj/item/soap/tongue/afterattack(atom/target, mob/user, proximity)
-// 	var/mob/living/silicon/robot/R = user
-// 	if(!proximity || !check_allowed_items(target))
-// 		return
-// 	if(R.client && (target in R.client.screen))
-// 		to_chat(R, "<span class='warning'>You need to take that [target.name] off before cleaning it!</span>")
-// 	else if(is_cleanable(target))
-// 		R.visible_message("[R] begins to lick off \the [target.name].", "<span class='warning'>You begin to lick off \the [target.name]...</span>")
-// 		if(do_after(R, src.cleanspeed, target = target))
-// 			if(!in_range(src, target)) //Proximity is probably old news by now, do a new check.
-// 				return //If they moved away, you can't eat them.
-// 			to_chat(R, "<span class='notice'>You finish licking off \the [target.name].</span>")
-// 			qdel(target)
-// 			R.cell.give(50)
-// 	else if(isobj(target)) //hoo boy. danger zone man
-// 		if(istype(target,/obj/item/trash))
-// 			R.visible_message("[R] nibbles away at \the [target.name].", "<span class='warning'>You begin to nibble away at \the [target.name]...</span>")
-// 			if(!do_after(R, src.cleanspeed, target = target))
-// 				return //If they moved away, you can't eat them.
-// 			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
-// 			qdel(target)
-// 			R.cell.give(250)
-// 			return
-// 		if(istype(target,/obj/item/stock_parts/cell))
-// 			R.visible_message("[R] begins cramming \the [target.name] down its throat.", "<span class='warning'>You begin cramming \the [target.name] down your throat...</span>")
-// 			if(!do_after(R, 50, target = target))
-// 				return //If they moved away, you can't eat them.
-// 			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
-// 			var/obj/item/stock_parts/cell/C = target
-// 			R.cell.charge = R.cell.charge + (C.charge / 3) //Instant full cell upgrades op idgaf
-// 			qdel(target)
-// 			return
-// 		var/obj/item/I = target //HAHA FUCK IT, NOT LIKE WE ALREADY HAVE A SHITTON OF WAYS TO REMOVE SHIT
-// 		if(!I.anchored && R.emagged)
-// 			R.visible_message("[R] begins chewing up \the [target.name]. Looks like it's trying to loophole around its diet restriction!", "<span class='warning'>You begin chewing up \the [target.name]...</span>")
-// 			if(!do_after(R, 100, target = I)) //Nerf dat time yo
-// 				return //If they moved away, you can't eat them.
-// 			visible_message("<span class='warning'>[R] chews up \the [target.name] and cleans off the debris!</span>")
-// 			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
-// 			qdel(I)
-// 			R.cell.give(500)
-// 			return
-// 		R.visible_message("[R] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
-// 	else if(ishuman(target))
-// 		var/mob/living/L = target
-// 		if(status == 0 && check_zone(R.zone_selected) == "head")
-// 			R.visible_message("<span class='warning'>\the [R] affectionally licks \the [L]'s face!</span>", "<span class='notice'>You affectionally lick \the [L]'s face!</span>")
-// 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
-// 			if(istype(L) && L.fire_stacks > 0)
-// 				L.adjust_fire_stacks(-10)
-// 			return
-// 		else if(status == 0)
-// 			R.visible_message("<span class='warning'>\the [R] affectionally licks \the [L]!</span>", "<span class='notice'>You affectionally lick \the [L]!</span>")
-// 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
-// 			if(istype(L) && L.fire_stacks > 0)
-// 				L.adjust_fire_stacks(-10)
-// 			return
-// 		else
-// 			if(R.cell.charge <= 800)
-// 				to_chat(R, "Insufficent Power!")
-// 				return
-// 			L.Stun(4) // normal stunbaton is force 7 gimme a break good sir!
-// 			L.Knockdown(80)
-// 			L.apply_effect(EFFECT_STUTTER, 4)
-// 			L.visible_message("<span class='danger'>[R] has shocked [L] with its tongue!</span>", \
-// 								"<span class='userdanger'>[R] has shocked you with its tongue!</span>")
-// 			playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
-// 			R.cell.use(666)
-// 			log_combat(R, L, "tongue stunned")
 
-// 	else if(istype(target, /obj/structure/window))
-// 		R.visible_message("[R] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
-// 		if(do_after(user, src.cleanspeed, target = target))
-// 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
-// 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-// 			target.set_opacity(initial(target.opacity))
-// 	else
-// 		R.visible_message("[R] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
-// 		if(do_after(user, src.cleanspeed, target = target))
-// 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
-// 			var/obj/effect/decal/cleanable/C = locate() in target
-// 			qdel(C)
-// 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-// 			SEND_SIGNAL(target, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_MEDIUM)
-// 			target.wash_cream()
-// 			target.wash_cum()
-// 	return
+
+
+
+
+
 
 // /obj/item/shockpaddles/cyborg/hound
 // 	name = "Paws of Life"
 // 	desc = "MediHound specific shock paws."
 // 	icon = 'modular_zzplurt/icons/mob/robot/robot_items.dmi'
 // 	icon_state = "defibpaddles0"
-// 	item_state = "defibpaddles0"
 
 // /obj/item/shockpaddles/cyborg/hound/ComponentInitialize()
 // 	. = ..()
