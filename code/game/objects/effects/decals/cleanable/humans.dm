@@ -165,7 +165,7 @@
 			if(!isgroundlessturf(my_turf) || GET_TURF_BELOW(my_turf))
 				// SPLURT EDIT - Colored Blood
 				var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(my_turf) // SPLURT EDIT - Colored Blood
-				splatter.color = blood_DNA_to_color(splatter.color, force = TRUE)
+				splatter.color = blood_DNA_to_color(splatter.color)
 				splatter.icon = colored_blood_icon(splatter.icon)
 				// SPLURT EDIT END
 			if (!step_to(src, get_step(src, direction), 0))
@@ -181,7 +181,7 @@
 		return
 	// SPLURT EDIT - Colored Blood
 	var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(loc)
-	splatter.color = blood_DNA_to_color(splatter.color, force = TRUE)
+	splatter.color = blood_DNA_to_color(splatter.color)
 	splatter.icon = colored_blood_icon(splatter.icon)
 	// SPLURT EDIT END
 
@@ -449,7 +449,7 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 			land_on_window(bumped_atom)
 		else
 			var/obj/effect/decal/cleanable/blood/splatter/over_window/final_splatter = new(prev_loc)
-			final_splatter.color = blood_DNA_to_color(final_splatter.color, force = TRUE) // SPLURT ADDITION - Colored Blood
+			final_splatter.color = blood_DNA_to_color(final_splatter.color) // SPLURT ADDITION - Colored Blood
 			final_splatter.pixel_x = (dir == EAST ? 32 : (dir == WEST ? -32 : 0))
 			final_splatter.pixel_y = (dir == NORTH ? 32 : (dir == SOUTH ? -32 : 0))
 	else // This will only happen if prev_loc is not even a turf, which is highly unlikely.
@@ -461,7 +461,7 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 	if(!the_window.fulltile)
 		return
 	var/obj/effect/decal/cleanable/blood/splatter/over_window/final_splatter = new
-	final_splatter.color = blood_DNA_to_color(final_splatter.color, force = TRUE) // SPLURT ADDITION - Colored Blood
+	final_splatter.color = blood_DNA_to_color(final_splatter.color) // SPLURT ADDITION - Colored Blood
 	final_splatter.forceMove(the_window)
 	the_window.vis_contents += final_splatter
 	the_window.bloodied = TRUE

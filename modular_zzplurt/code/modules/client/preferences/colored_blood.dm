@@ -10,7 +10,7 @@
 
 // In PREFS 2 - Color of Blood itself
 /datum/preference/color/blood_color
-	priority = PREFERENCE_PRIORITY_BODY_TYPE
+	priority = PREFERENCE_PRIORITY_SPECIES
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "blood_color"

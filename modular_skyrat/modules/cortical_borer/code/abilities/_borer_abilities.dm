@@ -609,7 +609,7 @@
 	// SPLURT EDIT - Colored Blood
 	//new /obj/effect/decal/cleanable/blood/splatter(borer_turf)
 	var/obj/effect/decal/cleanable/blood/splatter/splatter = new /obj/effect/decal/cleanable/blood/splatter(borer_turf)
-	splatter.color = splatter.blood_DNA_to_color(splatter.color, force = TRUE)
+	splatter.color = splatter.blood_DNA_to_color(splatter.color)
 	splatter.icon = splatter.colored_blood_icon(splatter.icon)
 	// SPLURT EDIT END - Colored Blood
 	playsound(borer_turf, 'sound/effects/splat.ogg', 50, TRUE)

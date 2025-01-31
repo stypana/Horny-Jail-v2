@@ -29,7 +29,7 @@
 	var/mutable_appearance/blood_splatter = mutable_appearance(I.colored_blood_icon('icons/effects/blood.dmi'), "itemblood", appearance_flags = RESET_COLOR) //MA of the blood that we apply // SPLURT EDIT - Colored Blood
 	blood_splatter.transform = blood_splatter.transform.Scale(scale_factor_x, scale_factor_y)
 	blood_splatter.blend_mode = BLEND_INSET_OVERLAY
-	blood_splatter.color = _color || I.blood_DNA_to_color(_color, force = TRUE) // SPLURT EDIT - Colored Blood
+	blood_splatter.color = _color || I.blood_DNA_to_color(_color) // SPLURT EDIT - Colored Blood
 	pic = blood_splatter
 	return TRUE
 

@@ -242,7 +242,7 @@
 			// If our feet are bloody enough, add an entered dir
 			pool_FP.entered_dirs |= wielder.dir
 			// SPLURT ADDITION START - Colored Blood
-			pool_FP.color = pool.blood_DNA_to_color(pool_FP.color, force = TRUE)
+			pool_FP.color = pool.blood_DNA_to_color(pool_FP.color)
 			pool_FP.icon = pool.colored_blood_icon(pool_FP.icon)
 			// SPLURT ADDITION END
 			pool_FP.update_appearance()
@@ -280,7 +280,7 @@
 	if(footprint_sprite)
 		src.footprint_sprite = footprint_sprite
 	if(!bloody_feet)
-		bloody_feet = mutable_appearance(parent_atom.colored_blood_icon('icons/effects/blood.dmi'), "shoeblood", SHOES_LAYER, color = parent_atom.blood_DNA_to_color(), blend_mode = parent_atom.blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
+		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
 
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_clean))
 	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, PROC_REF(on_step_blood))

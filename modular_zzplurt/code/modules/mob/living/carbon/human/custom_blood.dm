@@ -21,15 +21,15 @@
 /**
  * Returns the color of the blood on this atom
  * Arguments:
- * * original_color - The color to return if the blood_DNA is null or empty, if null returns BLOOD_COLOR_STANDARD
- * * force - If TRUE, it will return the original_color even if it's null or empty when there's no custom color
+ * * original_color - The color to use if the blood color is BLOOD_COLOR_STANDARD
+ * * use_default_color - If TRUE and original_color is null, returns BLOOD_COLOR_STANDARD instead
  */
-/atom/proc/blood_DNA_to_color(original_color, force = FALSE)
+/atom/proc/blood_DNA_to_color(original_color, use_default_color = FALSE)
 	var/blood_color = BLOOD_COLOR_STANDARD
 	if(forensics)
 		blood_color = LAZYACCESS(forensics.blood_DNA, "color") || BLOOD_COLOR_STANDARD
-	if(blood_color == BLOOD_COLOR_STANDARD && (original_color || force))
-		return original_color
+	if(blood_color == BLOOD_COLOR_STANDARD)
+		return original_color || (use_default_color ? BLOOD_COLOR_STANDARD : original_color)
 	return blood_color
 
 /atom/proc/blood_DNA_to_blend()
@@ -39,8 +39,6 @@
 	return BLEND_MULTIPLY
 
 /atom/proc/colored_blood_icon(icon_file)
-	. = icon_file
-
 	var/static/list/colored_blood_icons = list(
 		'icons/effects/blood.dmi' = 'modular_zzplurt/icons/effects/blood.dmi',
 		'icons/effects/footprints.dmi' = 'modular_zzplurt/icons/effects/footprints.dmi',
@@ -49,7 +47,8 @@
 	)
 
 	if(LAZYACCESS(forensics?.blood_DNA, "color") && LAZYACCESS(forensics?.blood_DNA, "color") != BLOOD_COLOR_STANDARD)
-		. = colored_blood_icons[icon_file] || icon_file
+		return colored_blood_icons[icon_file] || icon_file
+	return icon_file
 
 //
 // Changed return (Color + Blendmode)
@@ -65,7 +64,8 @@
 	if(get_blood_id() != /datum/reagent/blood)
 		return
 
-	. += list("color" = dna?.species?.exotic_blood_color || BLOOD_COLOR_STANDARD, "blendmode" = dna?.species?.exotic_blood_blend_mode || BLEND_MULTIPLY)
+	.["color"] = dna?.species?.exotic_blood_color || BLOOD_COLOR_STANDARD
+	.["blendmode"] = dna?.species?.exotic_blood_blend_mode || BLEND_MULTIPLY
 
 /mob/living/carbon/get_blood_data(blood_id)
 	. = ..()
@@ -104,11 +104,11 @@
 	var/obj/effect/decal/cleanable/blood/splatter/blood_splatter = locate() in src
 	if(!blood_splatter || !QDELETED(blood_splatter))
 		return
-	blood_splatter.color = blood_splatter.blood_DNA_to_color(blood_splatter.color, force = TRUE)
+	blood_splatter.color = blood_splatter.blood_DNA_to_color(blood_splatter.color)
 
 /obj/effect/decal/cleanable/blood/add_blood_DNA(list/blood_DNA_to_add)
 	. = ..()
-	color = blood_DNA_to_color(color, force = TRUE)
+	color = blood_DNA_to_color(color)
 	icon = colored_blood_icon(icon)
 
 /obj/effect/decal/cleanable/blood/dry()
@@ -116,4 +116,10 @@
 	. = ..()
 	if(!.)
 		return
-	color = old_color == BLOOD_COLOR_STANDARD ? COLOR_GRAY : BlendRGB(blood_DNA_to_color(old_color, force = TRUE), COLOR_GRAY, 0.5)
+	color = old_color == BLOOD_COLOR_STANDARD ? COLOR_GRAY : BlendRGB(blood_DNA_to_color(old_color), COLOR_GRAY, 0.5)
+
+/datum/component/bloodysoles/feet/update_icon()
+	var/original_bloody_feet = bloody_feet
+	bloody_feet = mutable_appearance(parent_atom.colored_blood_icon('icons/effects/blood.dmi'), "shoeblood", SHOES_LAYER, color = parent_atom.blood_DNA_to_color(bloody_feet.color), blend_mode = parent_atom.blood_DNA_to_blend())
+	. = ..()
+	bloody_feet = original_bloody_feet
