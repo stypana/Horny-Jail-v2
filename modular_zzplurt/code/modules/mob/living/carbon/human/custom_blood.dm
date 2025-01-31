@@ -67,13 +67,20 @@
 
 	. += list("color" = dna?.species?.exotic_blood_color || BLOOD_COLOR_STANDARD, "blendmode" = dna?.species?.exotic_blood_blend_mode || BLEND_MULTIPLY)
 
+/mob/living/carbon/get_blood_data(blood_id)
+	. = ..()
+	if(blood_id != /datum/reagent/blood)
+		return
+	.["bloodcolor"] = dna.species.exotic_blood_color
+	.["bloodblend"] = dna.species.exotic_blood_blend_mode
+
 /atom/transfer_mob_blood_dna(mob/living/injected_mob)
 	var/new_blood_dna = injected_mob.get_blood_dna_list()
 	if(!new_blood_dna)
 		return ..()
-	forensics?.blood_DNA["color"] = new_blood_dna["color"]
-	forensics?.blood_DNA["blendmode"] = new_blood_dna["blendmode"]
 	. = ..()
+	//forensics.blood_DNA["color"] = new_blood_dna["color"]
+	//forensics.blood_DNA["blendmode"] = new_blood_dna["blendmode"]
 
 /* Is this necessary? It just goes over the list twice
 /datum/forensics/add_blood_DNA(list/blood_DNA)
@@ -98,3 +105,15 @@
 	if(!blood_splatter || !QDELETED(blood_splatter))
 		return
 	blood_splatter.color = blood_splatter.blood_DNA_to_color(blood_splatter.color, force = TRUE)
+
+/obj/effect/decal/cleanable/blood/add_blood_DNA(list/blood_DNA_to_add)
+	. = ..()
+	color = blood_DNA_to_color(color, force = TRUE)
+	icon = colored_blood_icon(icon)
+
+/obj/effect/decal/cleanable/blood/dry()
+	var/old_color = color
+	. = ..()
+	if(!.)
+		return
+	color = old_color == BLOOD_COLOR_STANDARD ? COLOR_GRAY : BlendRGB(blood_DNA_to_color(old_color, force = TRUE), COLOR_GRAY, 0.5)

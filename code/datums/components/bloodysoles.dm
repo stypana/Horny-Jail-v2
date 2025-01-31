@@ -199,10 +199,6 @@
 				add_parent_to_footprint(oldLocFP)
 				oldLocFP.bloodiness = blood_lost
 				oldLocFP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
-				// SPLURT ADDITION START - Colored Blood
-				oldLocFP.color = parent_atom.blood_DNA_to_color(oldLocFP.color, force = TRUE)
-				oldLocFP.icon = parent_atom.colored_blood_icon(oldLocFP.icon)
-				// SPLURT ADDITION END
 				oldLocFP.update_appearance()
 
 			blood_lost = bloody_shoes[last_blood_state] * BLOOD_PERCENT_LOSS_ON_STEP
@@ -224,16 +220,6 @@
 			add_parent_to_footprint(FP)
 			FP.bloodiness = blood_lost
 			FP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
-			// SPLURT ADDITION START - Colored Blood
-			if(FP.forensics)
-				if(FP.forensics.blood_DNA["color"])
-					FP.forensics.blood_DNA["color"] = parent_atom.forensics.blood_DNA["color"]
-				else
-					FP.forensics.blood_DNA["color"] = BlendRGB(parent_atom.forensics.blood_DNA["color"], parent_atom.forensics.blood_DNA["color"])
-				FP.forensics.blood_DNA["blendmode"] = parent_atom.forensics.blood_DNA["blendmode"]
-			FP.color = FP.blood_DNA_to_color(FP.color, force = TRUE)
-			FP.icon = FP.colored_blood_icon(FP.icon)
-			// SPLURT ADDITION END - Colored Blood
 			FP.update_appearance()
 
 
