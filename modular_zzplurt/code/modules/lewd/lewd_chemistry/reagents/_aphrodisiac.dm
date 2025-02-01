@@ -1,5 +1,5 @@
 /datum/reagent/drug/aphrodisiac
-	max_breast_size = 19
+	max_breast_size = BREASTS_MAX_SIZE
 
 	/// Largest size the chem can make a mob's butt
 	var/butt_max_size = BUTT_MAX_SIZE
@@ -11,11 +11,11 @@
 	var/butt_size_reduction_step = 1
 
 	/// Largest size the chem can make a mob's belly
-	var/belly_max_size = 10
+	var/belly_max_size = BELLY_MAX_SIZE
 	/// How much the belly is increased in size each time it's run
 	var/belly_size_increase_step = 1
 	/// Smallest size the chem can make a mob's belly
-	var/belly_minimum_size = 1
+	var/belly_minimum_size = BELLY_MIN_SIZE
 	/// How much to reduce the size of the belly each time it's run
 	var/belly_size_reduction_step = 1
 
