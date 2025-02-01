@@ -54,11 +54,9 @@
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			// SPLURT EDIT - Colored Blood
-			if(ishuman(victim))
-				var/mob/living/carbon/human/H = victim
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir, H.dna.species.exotic_blood_color)
-			else
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir) // original
+			var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir)
+			splatter.color = victim.blood_DNA_to_color(splatter.color)
+			splatter.icon = victim.colored_blood_icon(splatter.icon)
 			// SPLURT EDIT END
 			victim.bleed(blood_bled)
 		if(20 to INFINITY)
@@ -69,11 +67,9 @@
 			)
 			victim.bleed(blood_bled)
 			// SPLURT EDIT - Colored Blood
-			if(ishuman(victim))
-				var/mob/living/carbon/human/H = victim
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir, H.dna.species.exotic_blood_color)
-			else
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir) // original
+			var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir)
+			splatter.color = victim.blood_DNA_to_color(splatter.color)
+			splatter.icon = victim.colored_blood_icon(splatter.icon)
 			// SPLURT EDIT END
 			victim.add_splatter_floor(get_step(victim.loc, victim.dir))
 

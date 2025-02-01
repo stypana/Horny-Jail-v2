@@ -3,18 +3,22 @@
 	var/exotic_blood_color = BLOOD_COLOR_STANDARD
 	var/exotic_blood_blend_mode = BLEND_MULTIPLY
 
-// Greyscale Icons
-// /obj/effect/decal/cleanable/blood
-// 	icon = 'modular_zzplurt/icons/effects/blood.dmi'
+/* // Greyscale Icons
+/obj/effect/decal/cleanable/blood
+	icon = 'modular_zzplurt/icons/effects/blood.dmi'
 
-// /obj/effect/decal/cleanable/trail_holder
-// 	icon = 'modular_zzplurt/icons/effects/blood.dmi'
+/obj/effect/decal/cleanable/trail_holder
+	icon = 'modular_zzplurt/icons/effects/blood.dmi'
 
-// /obj/effect/decal/cleanable/blood/gibs
-// 	icon = 'modular_zzplurt/icons/effects/blood.dmi'
+/obj/effect/decal/cleanable/blood/gibs
+	icon = 'modular_zzplurt/icons/effects/blood.dmi'
 
-// /obj/effect/decal/cleanable/blood/footprints
-// 	icon = 'modular_zzplurt/icons/effects/footprints.dmi'
+/obj/effect/decal/cleanable/blood/footprints
+	icon = 'modular_zzplurt/icons/effects/footprints.dmi'
+
+/obj/effect/temp_visual/dir_setting/bloodsplatter
+	icon = 'modular_zzplurt/icons/effects/blood.dmi'
+*/ // Greyscale Icons
 
 // Procs
 
