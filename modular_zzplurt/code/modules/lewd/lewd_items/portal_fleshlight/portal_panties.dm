@@ -41,6 +41,10 @@
 	if(equipped_slot)
 		. += span_notice("The current target is: [current_target]")
 
+	. += span_notice("Use it as underwear to autodetect genitals")
+	. += span_notice("Use as mask to connect to the mouth")
+	. += span_notice("Use in genital slots to connect to specific genitals")
+
 /obj/item/clothing/sextoy/portal_panties/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	var/obj/item/clothing/sextoy/portal_fleshlight/portal_toy = W
