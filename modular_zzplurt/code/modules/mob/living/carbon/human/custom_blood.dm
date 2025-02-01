@@ -75,16 +75,16 @@
 	. = ..()
 	if(blood_id != /datum/reagent/blood)
 		return
-	.["bloodcolor"] = dna.species.exotic_blood_color
-	.["bloodblend"] = dna.species.exotic_blood_blend_mode
+	.["bloodcolor"] = dna.species.exotic_blood_color || BLOOD_COLOR_STANDARD
+	.["bloodblend"] = dna.species.exotic_blood_blend_mode || BLEND_MULTIPLY
 
 /atom/transfer_mob_blood_dna(mob/living/injected_mob)
 	var/new_blood_dna = injected_mob.get_blood_dna_list()
 	if(!new_blood_dna)
 		return ..()
 	. = ..()
-	//forensics.blood_DNA["color"] = new_blood_dna["color"]
-	//forensics.blood_DNA["blendmode"] = new_blood_dna["blendmode"]
+	forensics.blood_DNA["color"] = new_blood_dna["color"]
+	forensics.blood_DNA["blendmode"] = new_blood_dna["blendmode"]
 
 /* Is this necessary? It just goes over the list twice
 /datum/forensics/add_blood_DNA(list/blood_DNA)
