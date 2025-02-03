@@ -220,6 +220,10 @@
 			add_parent_to_footprint(FP)
 			FP.bloodiness = blood_lost
 			FP.add_blood_DNA(GET_ATOM_BLOOD_DNA(parent_atom))
+			// SPLURT ADDITION START - Colored Blood
+			FP.color = FP.blood_DNA_to_color(FP.color)
+			FP.icon = FP.colored_blood_icon(FP.icon)
+			// SPLURT ADDITION END
 			FP.update_appearance()
 
 
