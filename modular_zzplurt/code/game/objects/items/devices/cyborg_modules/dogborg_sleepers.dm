@@ -110,17 +110,11 @@
 
 	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src.name].</span>", "<span class='notice'>You start placing [target] into your [src.name]...</span>")
 	if(do_after(user, 10 SECONDS, target) && !target.buckled && !target.anchored && !patient)
-		if(!in_range(src, target)) //Proximity is probably old news by now, do a new check.
-			return //If they moved away, you can't eat them.
-
-		//if(target.buckled)
-			//to_chat(user, "<span class='warning'>The user is buckled and can not be put into your [src.name].</span>")
-			//return
-		//if(patient)
-			//to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
-			//return
-
-		//If you don't have someone in you, proceed.
+		if(!in_range(src, target)) // Proximity is probably old news by now, do a new check.
+			return // If they moved away, you can't eat them.
+		if(patient)
+			to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
+			return 	// If you don't have someone in you, proceed.
 		if(!isjellyperson(target) && ("toxin" in injection_chems))
 			injection_chems -= "toxin"
 			injection_chems += "antitoxin"
@@ -353,9 +347,7 @@
 			items_preserved -= current_item
 	var/list/touchable_items = contents - items_preserved
 	var/sound/prey_digest = sound(get_sfx("digest_prey"))
-	var/sound/prey_death = sound(get_sfx("death_prey"))
 	var/sound/pred_digest = sound(get_sfx("digest_pred"))
-	var/sound/pred_death = sound(get_sfx("death_pred"))
 	if(cleaning_cycles)
 		cleaning_cycles--
 		for(var/mob/living/carbon/this_carbon in (touchable_items))
