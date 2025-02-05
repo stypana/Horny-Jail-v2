@@ -55,7 +55,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/prison/lower)
 "aaF" = (
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/prison/lower)
 "aaP" = (
@@ -147,7 +148,7 @@
 /turf/open/floor/carpet/purple,
 /area/station/commons/dorms)
 "abT" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -348,7 +349,8 @@
 /turf/open/floor/plasteel,
 /area/station/cargo/office)
 "aeL" = (
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /obj/structure/transit_tube/crossing,
 /turf/open/floor/plating,
 /area/station/maintenance/prison/lower)
@@ -1582,7 +1584,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 8
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -2530,7 +2532,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/mid)
 "aUt" = (
@@ -3319,7 +3322,7 @@
 	id = "portsolar";
 	name = "Port Solar Array"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/port)
 "bjr" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -4802,7 +4805,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/station/security/prison/cells)
@@ -5402,7 +5405,7 @@
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "bQn" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/iron/showroomfloor,
 /area/station/service/kitchen)
@@ -6126,7 +6129,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 4
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -7202,7 +7205,7 @@
 /area/station/maintenance/central/brothel)
 "csq" = (
 /obj/machinery/rnd/experimentor,
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/effect/landmark/blobstart,
 /turf/open/floor/engine,
 /area/station/science/explab)
@@ -8202,7 +8205,7 @@
 /area/station/engineering/workshop)
 "cJr" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line,
-/obj/machinery/computer/rdconsole/production{
+/obj/machinery/modular_computer/preset/civilian{
 	dir = 1
 	},
 /obj/structure/cable/pink{
@@ -9397,7 +9400,8 @@
 "cZH" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lower)
 "cZY" = (
@@ -11073,7 +11077,7 @@
 /area/station/hallway/primary/aft)
 "dzp" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/pole,
+/obj/structure/stripper_pole,
 /obj/effect/spawner/lootdrop/space_cash,
 /turf/open/floor/carpet/black,
 /area/station/maintenance/central/brothel)
@@ -12324,7 +12328,7 @@
 /obj/structure/table/wood/shadow,
 /obj/item/kitchen/rollingpin,
 /obj/item/kitchen/efink,
-/obj/item/kitchen/knife/butcher,
+/obj/item/knife/butcher,
 /obj/item/reagent_containers/cup/bowl/mushroom_bowl,
 /turf/open/floor/wood/shadow,
 /area/ruin/powered/ylva)
@@ -12732,7 +12736,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/maintenance/solars/starboard)
 "dXL" = (
 /obj/machinery/light{
@@ -12860,7 +12864,8 @@
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/engineering)
 "dZi" = (
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lower)
 "dZr" = (
@@ -14007,7 +14012,7 @@
 	id = "starboardsolar";
 	name = "Starboard Solar Array"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/starboard)
 "epa" = (
 /obj/structure/cable{
@@ -14397,7 +14402,7 @@
 "euG" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/glass,
 /area/station/maintenance/department/medical/upper)
 "evg" = (
@@ -16418,7 +16423,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/upper)
 "fdz" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxin_output{
 	dir = 4
 	},
@@ -16468,7 +16473,7 @@
 	id = "starboardsolar";
 	name = "Starboard Solar Array"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/starboard)
 "fej" = (
 /obj/structure/railing{
@@ -21972,7 +21977,7 @@
 	id = "portsolar";
 	name = "Port Solar Array"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/port)
 "gRl" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
@@ -28519,7 +28524,8 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/station/commons/toilet/restrooms)
 "iTJ" = (
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/upper)
 "iTM" = (
@@ -29447,7 +29453,7 @@
 	id = "portsolar";
 	name = "Port Solar Array"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/port)
 "jlr" = (
 /obj/structure/closet/emcloset,
@@ -31630,7 +31636,7 @@
 /turf/open/floor/wood,
 /area/station/service/library)
 "jVy" = (
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 1
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -31653,7 +31659,8 @@
 /turf/open/floor/iron/hallway,
 /area/station/hallway/primary/port)
 "jVY" = (
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lower)
@@ -33390,7 +33397,7 @@
 	id = "portsolar";
 	name = "Port Solar Array"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/port)
 "kvX" = (
 /obj/structure/closet{
@@ -33627,7 +33634,7 @@
 "kzF" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/stump/shadow,
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/grass,
 /area/station/commons/cryopod)
 "kzN" = (
@@ -35039,7 +35046,7 @@
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/customs)
 "kWk" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/engine/air,
 /area/station/engineering/atmos)
 "kWl" = (
@@ -35565,7 +35572,7 @@
 "leh" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/port)
 "lej" = (
 /obj/effect/gibspawner/generic/animal,
@@ -36019,7 +36026,7 @@
 	id = "starboardsolar";
 	name = "Starboard Solar Array"
 	},
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/starboard)
 "lmi" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
@@ -38288,7 +38295,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
 	},
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/fore/lower)
 "mbW" = (
@@ -38871,7 +38879,8 @@
 /area/station/commons/fitness/pool)
 "mlF" = (
 /obj/structure/transit_tube/crossing,
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/prison/lower)
 "mlI" = (
@@ -40584,7 +40593,7 @@
 /area/station/maintenance/starboard/upper)
 "mQX" = (
 /obj/structure/flora/rock/jungle,
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 8
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -41186,7 +41195,8 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/mid)
 "mYx" = (
@@ -41498,7 +41508,7 @@
 /turf/closed/wall,
 /area/station/maintenance/department/chapel)
 "ndP" = (
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 8
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -45088,7 +45098,8 @@
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "okt" = (
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/bar)
 "okH" = (
@@ -45321,7 +45332,7 @@
 /turf/open/floor/plasteel,
 /area/station/cargo/storage)
 "ooL" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -45562,7 +45573,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/central/Crab)
 "orR" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/structure/janitorialcart{
 	dir = 4
 	},
@@ -48541,7 +48552,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 8
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -49269,7 +49280,7 @@
 	name = "Starboard Solar Array"
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/starboard)
 "pxm" = (
 /obj/structure/cable/pink{
@@ -51099,7 +51110,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 1
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -53023,7 +53034,7 @@
 	},
 /area/station/maintenance/space_hut/cabin)
 "qHA" = (
-/obj/structure/pole,
+/obj/structure/stripper_pole,
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet/purple,
 /area/station/service/bar/atrium)
@@ -53476,7 +53487,8 @@
 /turf/open/floor/plasteel,
 /area/station/security/courtroom)
 "qOU" = (
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
 "qPa" = (
@@ -53485,7 +53497,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/mid)
 "qPh" = (
@@ -54767,7 +54780,7 @@
 "rja" = (
 /obj/structure/table/wood,
 /obj/item/toy/plush/random,
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/blue,
 /area/station/medical/psychology)
@@ -56371,7 +56384,7 @@
 /turf/open/space/transparent/openspace,
 /area/space)
 "rJj" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /turf/closed/wall,
 /area/station/commons/toilet/auxiliary)
 "rJk" = (
@@ -56551,7 +56564,7 @@
 /turf/open/openspace,
 /area/station/medical/psychology/petpark)
 "rMt" = (
-/obj/structure/sign/poster/contraband/self{
+/obj/structure/sign/poster/contraband/self_ai_liberation{
 	pixel_y = 32
 	},
 /obj/structure/cable{
@@ -58468,7 +58481,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/corner{
 	dir = 8
 	},
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/iron/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -62180,7 +62193,7 @@
 /area/station/medical/virology)
 "tAE" = (
 /obj/machinery/airalarm/directional/north,
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 1
 	},
 /area/station/maintenance/space_hut/cabin)
@@ -62539,7 +62552,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lower)
 "tGA" = (
@@ -63036,7 +63050,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/abandoned,
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/upper)
 "tPN" = (
@@ -63353,7 +63368,7 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "tTh" = (
-/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -64423,7 +64438,7 @@
 /turf/open/floor/iron/white,
 /area/station/hallway/primary/aft)
 "ukQ" = (
-/turf/open/floor/plating/beach/coastline_b,
+/turf/open/misc/beach/coastline_b,
 /area/station/maintenance/space_hut/cabin)
 "ukT" = (
 /obj/structure/rack,
@@ -69372,7 +69387,8 @@
 	},
 /area/station/service/hydroponics)
 "vTI" = (
-/obj/machinery/door/airlock/maintenance/abandoned{
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/abandoned{
 	name = "VRcade"
 	},
 /obj/structure/cable{
@@ -73348,7 +73364,7 @@
 /turf/closed/wall,
 /area/station/science/xenobiology)
 "xhQ" = (
-/obj/machinery/computer/rdconsole/experiment{
+/obj/machinery/modular_computer/preset/civilian{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -73568,7 +73584,7 @@
 /turf/open/floor/iron/hallway,
 /area/station/hallway/primary/fore)
 "xkK" = (
-/turf/open/floor/plating/beach/coastline_b{
+/turf/open/misc/beach/coastline_b{
 	dir = 4
 	},
 /area/station/maintenance/space_hut/cabin)
