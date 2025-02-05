@@ -25,7 +25,7 @@
 		var/atom/movable/screen/inventory/inv = hud_used.extra_inventory[UNDERWEAR_INDEX]
 		inv.update_icon()
 
-	if(istype(w_underwear, /obj/item/clothing/underwear/briefs))
+	if(w_underwear)
 		var/obj/item/clothing/underwear/briefs/undies = w_underwear
 		update_hud_underwear(undies)
 
@@ -41,7 +41,7 @@
 		var/handled_by_bodyshape = TRUE
 		var/digi
 		var/woman
-		var/female_sprite_flags = w_underwear.female_sprite_flags
+		var/female_sprite_flags = istype(undies) ? undies.female_sprite_flags : NONE
 		var/mutant_styles = NONE
 		if((bodyshape & BODYSHAPE_DIGITIGRADE) && (undies.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = undies.worn_icon_digi || DIGITIGRADE_UNDERWEAR_FILE
@@ -89,7 +89,7 @@
 		overlays_standing[UNDERWEAR_LAYER] = underwear_overlay
 		apply_overlay(UNDERWEAR_LAYER)
 
-	update_mutant_bodyparts()
+	update_body_parts()
 
 /mob/living/carbon/human/update_worn_shirt(update_obscured = TRUE)
 	remove_overlay(SHIRT_LAYER)
@@ -162,7 +162,7 @@
 		overlays_standing[SHIRT_LAYER] = shirt_overlay
 		apply_overlay(SHIRT_LAYER)
 
-	update_mutant_bodyparts()
+	update_body_parts()
 
 
 /mob/living/carbon/human/update_worn_bra(update_obscured = TRUE)
@@ -237,7 +237,7 @@
 		overlays_standing[BRA_LAYER] = bra_overlay
 		apply_overlay(BRA_LAYER)
 
-	update_mutant_bodyparts()
+	update_body_parts()
 
 /mob/living/carbon/human/update_worn_wrists(update_obscured = TRUE)
 	remove_overlay(WRISTS_LAYER)
@@ -283,8 +283,8 @@
 		var/atom/movable/screen/inventory/inv = hud_used.extra_inventory[EARS_EXTRA_INDEX]
 		inv.update_icon()
 
-	if(ears)
-		var/obj/item/worn_item = ears
+	if(ears_extra)
+		var/obj/item/worn_item = ears_extra
 		update_hud_ears_extra(worn_item)
 
 		if(update_obscured)
@@ -299,7 +299,7 @@
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
 		if(bodyshape & BODYSHAPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_EARS, ears, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(OFFSET_EARS, ears_extra, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
