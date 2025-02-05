@@ -69,7 +69,6 @@
 			visible_message("<span class ='danger'>[src] smashes into [hit_atom]!</span>", "<span class ='userdanger'>You smash into [hit_atom]!</span>")
 			playsound(src, 'sound/items/trayhit/trayhit1.ogg', 50, 1)
 			Knockdown(30, 1, 1)
-			src.throw_at(src)
 		if(leaping)
 			leaping = FALSE
 			pixel_y = initial(pixel_y)

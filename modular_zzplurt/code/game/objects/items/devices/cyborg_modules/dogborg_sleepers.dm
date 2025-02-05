@@ -81,7 +81,7 @@
 	else if(iscyborg(loc.loc))
 		return loc.loc // cursed cyborg code
 
-/obj/item/dogborg/sleeper/afterattack(mob/living/carbon/target, mob/living/silicon/user, proximity)
+/obj/item/dogborg/sleeper/interact_with_atom(mob/living/carbon/target, mob/living/silicon/user, proximity)
 	var/mob/living/silicon/robot/hound = get_host()
 	if(!hound)
 		return
@@ -101,7 +101,7 @@
 
 	var/datum/component/vore/vore = target.GetComponent(/datum/component/vore)
 	if(!vore)
-		to_chat(user, "The target registers an error code. Unable to insert into [src.name].")
+		to_chat(user, "<span class='warning'>The target registers an error code. Unable to insert into [src.name].</span>")
 		return ..()
 
 	var/voracious = TRUE
@@ -435,7 +435,7 @@
 	if(cleaning)
 		addtimer(CALLBACK(src, PROC_REF(clean_cycle), hound), 50)
 
-/obj/item/dogborg/sleeper/proc/CheckAccepted(obj/item/I)
+/obj/item/dogborg/sleeper/proc/is_item_accepted(obj/item/I)
 	return is_type_in_typecache(I, important_items)
 
 /obj/item/dogborg/sleeper/proc/inject_chem(chem, mob/living/silicon/robot/hound)
@@ -449,8 +449,8 @@
 		return
 	patient.reagents.add_reagent(chem, INJECTION_AMOUNT)
 	hound.cell.use(INJECTION_COST) //-750 charge per injection
-	//var/units = round(patient.reagents.get_reagent_amount(chem))
-	to_chat(hound, "<span class='notice'>Injecting [INJECTION_AMOUNT] unit\s of [chem] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
+	var/datum/reagent/this_reagent = GLOB.chemical_reagents_list[chem]
+	to_chat(hound, "<span class='notice'>Injecting [INJECTION_AMOUNT] unit\s of [this_reagent.name] into occupant.</span>")
 
 /obj/item/dogborg/sleeper/proc/chem_allowed(chem)
 	if(!patient || !patient.reagents)
@@ -469,7 +469,7 @@
 	escape_chance = 15
 	medical_scanner = FALSE
 
-/obj/item/dogborg/sleeper/K9/afterattack(mob/living/carbon/target, mob/living/silicon/user, proximity)
+/obj/item/dogborg/sleeper/K9/attack(mob/living/carbon/target, mob/living/silicon/user, proximity)
 	var/mob/living/silicon/robot/hound = get_host()
 	if(!hound)
 		return
@@ -533,9 +533,9 @@
 	injection_chems = null //So they don't have all the same chems as the medihound!
 	var/max_item_count = 30
 
-/obj/item/storage/attackby(obj/item/dogborg/sleeper/compactor, mob/user, proximity) //GIT CIRCUMVENTED YO!
+/obj/item/storage/interact_with_atom(obj/item/dogborg/sleeper/compactor, mob/user, proximity) //GIT CIRCUMVENTED YO!
 	if(istype(compactor))
-		compactor.afterattack(src, user ,1)
+		compactor.afterattack(src, user, 1)
 	else
 		. = ..()
 
@@ -547,17 +547,17 @@
 		to_chat(user,"<span class='warning'>Your [src] is full. Eject or process contents to continue.</span>")
 		return
 	if(isitem(target))
-		var/obj/item/I = target
-		if(CheckAccepted(I))
-			to_chat(user,"<span class='warning'>[I] registers an error code to your [src]</span>")
+		var/obj/item/this_item = target
+		if(is_item_accepted(this_item))
+			to_chat(user,"<span class='warning'>[this_item] registers an error code to your [src]!</span>")
 			return
-		if(I.w_class > WEIGHT_CLASS_NORMAL)
-			to_chat(user,"<span class='warning'>[I] is too large to fit into your [src]</span>")
+		if(this_item.w_class > WEIGHT_CLASS_NORMAL)
+			to_chat(user,"<span class='warning'>[this_item] is too large to fit into your [src]!</span>")
 			return
-		user.visible_message(span_warning("[hound.name] is ingesting [I] into their [src.name]."), span_notice("You start ingesting [target] into your [src.name]..."))
+		user.visible_message(span_warning("[hound.name] is ingesting [this_item] into their [src.name]."), span_notice("You start ingesting [this_item] into your [src.name]..."))
 		if(do_after(user, 1.5 SECONDS, target) && length(contents) < max_item_count)
-			I.forceMove(src)
-			I.visible_message("<span class='warning'>[hound.name]'s garbage processor groans lightly as [I] slips inside.</span>", "<span class='notice'>Your garbage compactor groans lightly as [I] slips inside.</span>")
+			this_item.forceMove(src)
+			this_item.visible_message("<span class='warning'>[hound.name]'s garbage processor groans lightly as [this_item] slips inside.</span>", "<span class='notice'>Your garbage compactor groans lightly as [this_item] slips inside.</span>")
 			playsound(hound, 'sound/machines/disposalflush.ogg', 50, 1)
 			if(length(contents) > 11) // grow that tum after a certain junk amount
 				hound.sleeper_occupant = 1

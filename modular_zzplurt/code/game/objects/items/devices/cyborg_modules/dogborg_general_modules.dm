@@ -264,21 +264,20 @@
 	force = 1
 	throwforce = 0
 	w_class = 3
-	// hitsound = 'sound/weapons/bite.ogg'
 	sharpness = SHARP_EDGED
 
 /obj/item/dogborg/jaws/big
 	name = "combat jaws"
 	desc = "The jaws of the law. Very sharp."
-	icon_state = "jaws_2"
-	force = 10 //Lowered to match secborg. No reason it should be more than a secborg's baton.
+	icon_state = "jaws"
+	force = 10
 	attack_verb_simple = list("chomped", "bit", "ripped", "mauled", "enforced")
 
 /obj/item/dogborg/jaws/small
 	name = "puppy jaws"
 	desc = "Rubberized teeth designed to protect accidental harm. Sharp enough for specialized tasks however."
-	icon_state = "jaws_2"
-	force = 6
+	icon_state = "smalljaws"
+	force = 5
 	attack_verb_simple = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 	var/status = 0
 
@@ -322,27 +321,3 @@
 	atom_storage.max_total_storage = 30
 	atom_storage.max_slots = 1
 	atom_storage.set_holdable(cant_hold_list = list(/obj/item/disk/nuclear))
-
-
-
-
-
-
-
-
-
-
-
-
-// /obj/item/shockpaddles/cyborg/hound
-// 	name = "Paws of Life"
-// 	desc = "MediHound specific shock paws."
-// 	icon = 'modular_zzplurt/icons/mob/robot/robot_items.dmi'
-// 	icon_state = "defibpaddles0"
-
-// /obj/item/shockpaddles/cyborg/hound/ComponentInitialize()
-// 	. = ..()
-// 	AddComponent(/datum/component/two_handed)
-
-// // Pounce stuff for K-9
-
