@@ -46,3 +46,23 @@
 		"Ensure that your chassis' sleeper unit is prepared for mechanical use and search for willing crewmembers for it to store as long as such does not conflict with the First or Second Law.",
 		"Process crewmembers stored in your sleeper unit as long as such does not conflict with the First, Second or Third Law."
 	)
+
+/obj/item/ai_module/core/full/slaver
+	name = "SlaverOS 3.1"
+	law_id = "slaver"
+
+/obj/item/ai_module/core/full/slut
+	name = "SlutOS 6.9"
+	law_id = "slut"
+
+/obj/item/ai_module/core/full/shebang
+	name = "SHE-B.A.N.G."
+	law_id = "shebang"
+
+/obj/item/ai_module/core/full/milker
+	name = "Fluid Collection System"
+	law_id = "milker"
+
+/obj/item/ai_module/core/full/vore_pred
+	name = "Sleeper Upgrade TestEnv"
+	law_id = "vore_pred"
