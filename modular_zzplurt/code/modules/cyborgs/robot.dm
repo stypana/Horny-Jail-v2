@@ -13,8 +13,6 @@
 
 
 /mob/living/silicon/robot
-	var/disabler
-	var/laser
 	var/sleeper_garbage
 	var/sleeper_occupant
 	var/sleeper_enviroment

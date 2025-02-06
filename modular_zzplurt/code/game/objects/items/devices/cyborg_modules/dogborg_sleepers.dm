@@ -351,7 +351,7 @@
 	if(cleaning_cycles)
 		cleaning_cycles--
 		for(var/mob/living/carbon/this_carbon in (touchable_items))
-			if((HAS_TRAIT(this_carbon, TRAIT_GODMODE)) || !check_preference(this_carbon, /datum/preference/toggle/erp/vore/digestable))
+			if((HAS_TRAIT(this_carbon, TRAIT_GODMODE)) || !check_preference(this_carbon, /datum/preference/toggle/erp/vore_digestable))
 				items_preserved += this_carbon
 			else
 				this_carbon.adjustBruteLoss(2)
@@ -360,7 +360,7 @@
 			var/atom/target = pick(touchable_items)
 			if(iscarbon(target)) // Handle the target being a mob
 				var/mob/living/carbon/this_target = target
-				if(this_target.stat == DEAD && check_preference(this_target, /datum/preference/toggle/erp/vore/digestable))	// Mob is now dead
+				if(this_target.stat == DEAD && check_preference(this_target, /datum/preference/toggle/erp/vore_digestable))	// Mob is now dead
 					message_admins("[key_name(hound)] has digested [key_name(this_target)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
 					to_chat(hound,"<span class='notice'>You feel your belly slowly churn around [this_target], breaking them down into a soft slurry to be used as power for your systems.</span>")
 					to_chat(this_target,"<span class='notice'>You feel [hound]'s belly slowly churn around your form, breaking you down into a soft slurry to be used as power for [hound]'s systems.</span>")
@@ -369,7 +369,7 @@
 						var/turf/source = get_turf(hound)
 						LAZYCLEARLIST(hearing_mobs)
 						for(var/mob/hearer in get_hearers_in_view(3, source))
-							if(!hearer.client || !check_preference(hearer, /datum/preference/toggle/erp/vore/sounds))
+							if(!hearer.client || !check_preference(hearer, /datum/preference/toggle/erp/vore_sounds))
 								continue
 							LAZYADD(hearing_mobs, hearer)
 						last_hearcheck = world.time
@@ -420,7 +420,7 @@
 			var/turf/source = get_turf(hound)
 			LAZYCLEARLIST(hearing_mobs)
 			for(var/mob/hearer in get_hearers_in_view(3, source))
-				if(!hearer.client || !check_preference(hearer, /datum/preference/toggle/erp/vore/sounds))
+				if(!hearer.client || !check_preference(hearer, /datum/preference/toggle/erp/vore_sounds))
 					continue
 				LAZYADD(hearing_mobs, hearer)
 			last_hearcheck = world.time

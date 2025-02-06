@@ -206,10 +206,12 @@
 	cyborg_pixel_offset = -16
 	hat_offset = INFINITY
 	basic_modules += new /obj/item/dogborg/dogborg_nose(src)
-	basic_modules += new /obj/item/soap/dogborg_tongue(src)
 	basic_modules += new /obj/item/storage/bag/borgdelivery(src)
 
-
+	if(istype(src, /obj/item/robot_model/janitor))
+		basic_modules += new /obj/item/soap/dogborg_tongue/scrubpup()
+	else
+		basic_modules += new /obj/item/soap/dogborg_tongue(src)
 
 	if(istype(src, /obj/item/robot_model/security))
 		basic_modules += new /obj/item/dogborg/jaws/big(src)
@@ -314,6 +316,7 @@
 	icon = 'modular_zzplurt/icons/mob/robot/robot_items.dmi'
 	icon_state = "dbag"
 	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = NONE
 
 /obj/item/storage/bag/borgdelivery/Initialize(mapload)
 	. = ..()
