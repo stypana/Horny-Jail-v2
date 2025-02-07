@@ -1,3 +1,33 @@
+/datum/sprite_accessory/genital/breasts/pair
+	icon = 'modular_zzplurt/icons/mob/sprite_accessories/genitals/breasts_onmob.dmi'
+	color_src = USE_MATRIXED_COLORS
+	icon_state = "pair"
+	name = "Pair"
+
+/datum/sprite_accessory/genital/breasts/quad
+	icon = 'modular_zzplurt/icons/mob/sprite_accessories/genitals/breasts_onmob.dmi'
+	color_src = USE_MATRIXED_COLORS
+	icon_state = "quad"
+	name = "Quad"
+
+/datum/sprite_accessory/genital/breasts/sextuple
+	icon = 'modular_zzplurt/icons/mob/sprite_accessories/genitals/breasts_onmob.dmi'
+	color_src = USE_MATRIXED_COLORS
+	icon_state = "sextuple"
+	name = "Sextuple"
+
+/datum/sprite_accessory/genital/breasts/pair_old
+	icon_state = "pair"
+	name = "Pair (Old)"
+
+/datum/sprite_accessory/genital/breasts/quad_old
+	icon_state = "quad"
+	name = "Quad (Old)"
+
+/datum/sprite_accessory/genital/breasts/sextuple_old
+	icon_state = "sextuple"
+	name = "Sextuple (Old)"
+
 /datum/sprite_accessory/genital/butt
 	icon = 'modular_zzplurt/icons/mob/human/genitals/butt.dmi'
 	organ_type = /obj/item/organ/external/genital/butt
