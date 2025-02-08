@@ -10,3 +10,4 @@
 	new /obj/item/clothing/mask/ballgag(src)
 	new /obj/item/clothing/suit/straight_jacket/shackles(src)
 	new /obj/item/clothing/glasses/blindfold/kinky(src)
+	new /obj/item/storage/box/portal_fleshlight(src)
