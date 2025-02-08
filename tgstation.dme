@@ -9553,6 +9553,7 @@
 #include "modular_zzplurt\code\game\objects\items\implants\implant_gfluid.dm"
 #include "modular_zzplurt\code\game\objects\items\implants\implant_hide_backpack.dm"
 #include "modular_zzplurt\code\game\objects\items\lewd_items\size_items.dm"
+#include "modular_zzplurt\code\game\objects\items\storage\boxes\clothes_boxes.dm"
 #include "modular_zzplurt\code\game\turfs\open\floor\fancy_floor.dm"
 #include "modular_zzplurt\code\game\turfs\open\floor\misc_floor.dm"
 #include "modular_zzplurt\code\modules\admin\player_panel.dm"
