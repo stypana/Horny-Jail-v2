@@ -102,14 +102,6 @@
 		var/obj/item/borg/sight/borg_sight = item_module
 		sight_mode &= ~borg_sight.sight_mode
 		update_sight()
-	// SPLURT ADD - CYBORGS - We need to eject the sleeper's occupant when we unequip it
-	if(istype(item_module, /obj/item/dogborg/sleeper))
-		sleeper_garbage = FALSE
-		sleeper_occupant = FALSE
-		update_icons()
-		var/obj/item/dogborg/sleeper/sleeper_moodule = item_module
-		sleeper_moodule.go_out()
-	// SPLURT ADD END
 
 	if(client)
 		client.screen -= item_module

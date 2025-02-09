@@ -5,6 +5,12 @@
 		modify_appearance(stored, TRUE)
 		vis_contents += stored
 
+/obj/item/borg/apparatus/dropped(mob/user, silent)
+	if(stored)
+		stored.forceMove(user.drop_location())
+	else
+		. = ..()
+
 /obj/item/borg/apparatus/proc/modify_appearance(obj/item, minify = FALSE)
 	var/matrix/new_transform = new
 	if(minify)
@@ -52,3 +58,9 @@
 	if(stored)
 		. += "<span class='notice'>It is holding [icon2html(stored, user)] [stored].</span>"
 	. += span_notice("<i>Alt-click</i> will drop the currently held item. ")
+
+/obj/item/robot_model/engineering/New()
+	basic_modules += list(
+		/obj/item/borg/cyborg_inducer
+	)
+	. = ..()
