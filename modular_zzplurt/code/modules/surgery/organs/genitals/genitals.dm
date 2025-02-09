@@ -37,6 +37,7 @@
 	layer_offset = ANUS_LAYER_OFFSET
 
 /datum/bodypart_overlay/mutant/genital/breasts
+	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND | EXTERNAL_FRONT_OVER
 	layer_offset = BREASTS_LAYER_OFFSET
 
 /datum/bodypart_overlay/mutant/genital/belly
