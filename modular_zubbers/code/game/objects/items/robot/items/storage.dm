@@ -149,21 +149,14 @@
 	icon = 'modular_zubbers/code/modules/silicons/borgs/sprites/robot_items.dmi'
 	icon_state = "gripper"
 	storable = list(
-		/obj/item/vending_refill,
-		/obj/item/stack/tile,
-		/obj/item/light,
-		/obj/item/stack/conveyor,
-		/obj/item/conveyor_switch_construct,
-		/obj/item/wallframe,
-		/obj/item/tank,
-		// SPLURT EDIT START - CYBORGS - Making gripper more useful
-		/obj/item/circuitboard,
-		/obj/item/stock_parts,
-		/obj/item/assembly,
-		// SPLURT EDIT END
-		)
-
-// SPLURT EDIT START - CYBORGS - Making gripper display what it's holding
+						/obj/item/vending_refill,
+						/obj/item/stack/tile,
+						/obj/item/light,
+						/obj/item/stack/conveyor,
+						/obj/item/conveyor_switch_construct,
+						/obj/item/wallframe,
+						/obj/item/tank,
+						)
 
 /obj/item/borg/apparatus/mining/examine()
 	. = ..()

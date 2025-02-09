@@ -64,3 +64,11 @@
 		/obj/item/borg/cyborg_inducer
 	)
 	. = ..()
+
+/obj/item/borg/apparatus/engineering/New()
+	storable += list(
+		/obj/item/circuitboard,
+		/obj/item/stock_parts,
+		/obj/item/assembly,
+	)
+	. = ..()
