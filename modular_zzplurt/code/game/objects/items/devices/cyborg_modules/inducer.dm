@@ -14,8 +14,6 @@
 	icon_state = "inducer-engi"
 	force = 7
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = ITEM_SLOT_BELT
-	item_flags = SURGICAL_TOOL
 
 	/// What is this inducer doing now?
 	var/status = IND_STATUS_IDLE
