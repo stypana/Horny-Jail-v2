@@ -77,7 +77,6 @@
 		return FALSE
 	if(this_atom.get_cell() == get_cell())
 		to_chat(user, "<span class='warning'>Error: Power loop detected!</span>")
-		playsound(src, "modular_splurt/sound/misc/bonk.ogg", 50, 1)
 		return FALSE
 	if(status == IND_STATUS_CHARGING)
 		return TRUE
