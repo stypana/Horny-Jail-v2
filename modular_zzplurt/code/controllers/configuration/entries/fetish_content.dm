@@ -8,4 +8,3 @@
 	integer = FALSE
 
 /datum/config_entry/flag/enable_dogborg_sleepers
-	default = TRUE

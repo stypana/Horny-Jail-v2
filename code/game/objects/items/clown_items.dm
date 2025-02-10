@@ -32,11 +32,8 @@
 
 /obj/item/soap/Initialize(mapload)
 	. = ..()
-	// SPLURT EDIT START - CYBORGS - their tongues handle cleaning by themselves
-	if(!istype(src, /obj/item/soap/dogborg_tongue))
-		AddComponent(/datum/component/slippery, 80)
-		AddComponent(/datum/component/cleaner, cleanspeed, 0.1, pre_clean_callback=CALLBACK(src, PROC_REF(should_clean)), on_cleaned_callback=CALLBACK(src, PROC_REF(decreaseUses))) //less scaling for soapies
-	// SPLURT EDIT END
+	AddComponent(/datum/component/slippery, 80)
+	AddComponent(/datum/component/cleaner, cleanspeed, 0.1, pre_clean_callback=CALLBACK(src, PROC_REF(should_clean)), on_cleaned_callback=CALLBACK(src, PROC_REF(decreaseUses))) //less scaling for soapies
 
 /obj/item/soap/examine(mob/user)
 	. = ..()

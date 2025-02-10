@@ -21,6 +21,12 @@
 /obj/item/soap/dogborg_tongue/Initialize(mapload)
 	. = ..()
 
+/datum/component/cleaner/RegisterWithParent()
+	if(istype(parent, /obj/item/soap/dogborg_tongue))
+		return COMPONENT_INCOMPATIBLE
+	else
+		return ..()
+
 /obj/item/soap/dogborg_tongue/interact_with_atom(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
