@@ -90,3 +90,12 @@
 2025-02-09:
   Odairu:
   - image: filled in nullspace on shadekin tail BEHIND sprite
+  Phoenix4O4:
+  - rscadd: Added gear painters
+2025-02-10:
+  Phoenix4O4:
+  - rscadd: Added new Ash Plates Armor
+  - rscadd: Added Cauldron
+  - rscadd: Introduced Gunther chickens - special lava-resistant variant
+  - rscadd: Added primitive Ash Chisel tool
+  - map: Ported Ash Fortress from Nova Sector codebase
