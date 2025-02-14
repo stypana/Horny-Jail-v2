@@ -122,6 +122,8 @@
 2025-02-14:
   EliteRiceFarmer:
   - bugfix: Plasteel barricade delay. Now it's close properly.
+  SmArtKar:
+  - bugfix: Fixed more preferences issues
   Vanilla1040:
   - rscadd: Readds the Large Hypobox being Printable in the Medical Lathe
   - rscadd: Adds Advanced Hypospray into imports
