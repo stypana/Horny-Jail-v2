@@ -88,6 +88,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// If set to TRUE, will update character_profiles on the next ui_data tick.
 	var/tainted_character_profiles = FALSE
 
+	var/list/custom_emote_panel = list() // SPLURT EDIT:  CUSTOM EMOTE PANEL
+
 /datum/preferences/Destroy(force)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
@@ -136,7 +138,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	if(!loaded_preferences_successfully)
 		save_preferences()
-	save_character() //let's save this new random character so it doesn't keep generating new ones.
+	save_character(TRUE) //let's save this new random character so it doesn't keep generating new ones. // SPLURT EDIT
 
 /datum/preferences/ui_interact(mob/user, datum/tgui/ui)
 	// There used to be code here that readded the preview view if you "rejoined"
@@ -276,7 +278,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if (istype(requested_preference, /datum/preference/name))
 				tainted_character_profiles = TRUE
 			//SKYRAT EDIT
-			update_mutant_bodyparts(requested_preference)
+			update_body_parts(requested_preference)
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				if (preference_middleware.post_set_preference(usr, requested_preference_key, value))
 					return TRUE
