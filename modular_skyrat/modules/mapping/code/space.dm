@@ -131,7 +131,7 @@
 	suffix = "cargodiselost.dmm"
 	name = "Space-Ruin Cargodise Lost"
 	description = "A small crew of freight-haulers are marooned in space after pirates knock out their engines. They must survive off of the cargo on board their ship and fend off the pirate boarders on their ship."
-	//unpickable = TRUE // Bubber todo - remove the epic gamer loot and bring this back //SPLURT change: What epic gamer loot? The stuff you have to fight for?
+	unpickable = TRUE // Bubber todo - remove the epic gamer loot and bring this back
 
 /datum/map_template/ruin/space/skyrat/infestedntship
 	suffix = "scrapheap.dmm"

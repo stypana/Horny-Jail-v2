@@ -440,9 +440,9 @@
 
 /obj/effect/mob_spawn/ghost_role/human/lostcargoqm
 	name = "freighter cryo boss pod"
-	prompt_name = "a lost freighter Captain"
+	prompt_name = "a lost Quartermaster"
 	desc = "A humming cryo pod. You see someone who looks In Charge inside."
-	mob_name = "Freighter Captain"
+	mob_name = "Freighter Chief"
 	outfit = /datum/outfit/freighter_boss
 	spawner_job_path = /datum/job/freighter_crew
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -456,7 +456,7 @@
 	loadout_enabled = TRUE
 
 /datum/outfit/freighter_boss
-	name = "Freighter Captain"
+	name = "Freighter Boss"
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
 	shoes = /obj/item/clothing/shoes/workboots
 	neck = /obj/item/clothing/neck/cloak/qm
@@ -525,17 +525,17 @@
 
 /obj/item/card/id/away/freightcrew
 	name = "Freighter ID"
-	desc = "An ID card marked with the rank of Freighter Crew."
+	desc = "An ID card marked with the rank of Freight Hauler."
 	trim = /datum/id_trim/job/cargo_technician
 
 /obj/item/card/id/away/freightmine
 	name = "Freighter ID"
-	desc = "An ID card marked with the rank of Freighter Excavator."
+	desc = "An ID card marked with the rank of Freight Ship Excavator."
 	trim = /datum/id_trim/job/shaft_miner
 
 /obj/item/card/id/away/silver/freightqm
-	name = "Freighter Captain ID"
-	desc = "An ID card marked with the rank of Freighter Captain."
+	name = "Freighter Deck Chief ID"
+	desc = "An ID card marked with the rank of Freight Deck Chief."
 	trim = /datum/id_trim/job/quartermaster
 
 /obj/item/card/id/away/hotel/manager
