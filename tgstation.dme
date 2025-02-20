@@ -9726,6 +9726,7 @@
 #include "modular_zzplurt\code\modules\lewd\lewd_items\portal_fleshlight\box.dm"
 #include "modular_zzplurt\code\modules\lewd\lewd_items\portal_fleshlight\portal_fleshlight.dm"
 #include "modular_zzplurt\code\modules\lewd\lewd_items\portal_fleshlight\portal_panties.dm"
+#include "modular_zzplurt\code\modules\mob\funclaw.dm"
 #include "modular_zzplurt\code\modules\mob\mob.dm"
 #include "modular_zzplurt\code\modules\mob\mob_defines.dm"
 #include "modular_zzplurt\code\modules\mob\mob_update_icons.dm"
