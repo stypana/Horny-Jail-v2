@@ -1,5 +1,0 @@
-author: "Krashly"
-delete-after: True
-changes:
-  - rscadd: "Ported chugging of drinks."
-  - rscadd: "Ported custom blood colors."
