@@ -58,6 +58,7 @@
 		ANNOUNCER_CARP = 'modular_zzplurt/sound/announcer/tibbets/carps.ogg',
 		ANNOUNCER_BLUESPACEARTY = 'modular_zzplurt/sound/announcer/tibbets/artillery.ogg',
 		ANNOUNCER_CAPTAIN = 'modular_zzplurt/sound/announcer/tibbets/announce.ogg',
+		ANNOUNCER_GRAVANOMALIES = 'modular_zzplurt/sound/announcer/tibbets/gravanomalies.ogg',
 		ANNOUNCER_GRAVGENOFF = 'modular_zzplurt/sound/announcer/tibbets/gravityoff.ogg',
 		ANNOUNCER_GRAVGENON = 'modular_zzplurt/sound/announcer/tibbets/gravityon.ogg',
 		ANNOUNCER_GREYTIDE = 'modular_zzplurt/sound/announcer/tibbets/greytide.ogg',
@@ -66,7 +67,7 @@
 		ANNOUNCER_BRANDINTELLIGENCE = 'modular_zzplurt/sound/announcer/tibbets/rampant_brand_int.ogg',
 		//ANNOUNCER_SPOOKY = 'modular_skyrat/modules/alerts/sound/misc/admin_horror_music.ogg',
 		ANNOUNCER_ERTYES = 'modular_zzplurt/sound/announcer/tibbets/yesert.ogg',
-		ANNOUNCER_ERTNO = 'modular_zzplurt/sound/announcer/tibbets/ertno.ogg',
+		//ANNOUNCER_ERTNO = 'modular_zzplurt/sound/announcer/tibbets/ertno.ogg', //what
 		//ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/alerts/hazdet.ogg',
 		ANNOUNCER_ICARUS = 'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
 		ANNOUNCER_NRI_RAIDERS = 'modular_skyrat/modules/encounters/sounds/morse.ogg',
