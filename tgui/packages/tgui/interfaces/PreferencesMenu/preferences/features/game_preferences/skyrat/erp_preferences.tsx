@@ -173,13 +173,3 @@ export const vore_overlay_options: FeatureToggle = {
     'Do you want to see fullscreen vore overlays as an option for soulcatcher overlays?',
   component: CheckboxInput,
 };
-
-// SPLURT ADD START - CYBORGS - Cyborg sleepers
-export const sleeper_pref: FeatureToggle = {
-  name: 'Cyborg Sleepers',
-  category: 'ERP',
-  description:
-    'Allows cyborgs to use sleepers on you and you to use sleepers as one.',
-  component: CheckboxInput,
-};
-// SPLURT ADD END

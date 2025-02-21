@@ -105,7 +105,7 @@
 		return ..()
 
 	var/voracious = TRUE
-	if(!target.client || !hound.client ||  !check_preference(target, /datum/preference/toggle/erp/vore_enable) || !check_preference(target, /datum/preference/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_preference(hound, /datum/preference/toggle/cyborg_sleepers))
+	if(!target.client || !hound.client || !check_preference(target, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(target, /datum/vore_pref/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src.name].</span>", "<span class='notice'>You start placing [target] into your [src.name]...</span>")
@@ -142,7 +142,7 @@
 		return
 
 	var/voracious = TRUE
-	if(!user.client || !hound.client || !user.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) || !user.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers) || !hound.client.prefs.read_preference(/datum/preference/toggle/erp/vore_enable) || !hound.client.prefs.read_preference(/datum/preference/toggle/cyborg_sleepers))
+	if(!user.client || !hound.client || !check_preference(user, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(user, /datum/vore_pref/toggle/cyborg_sleepers) || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	if(prob(escape_chance) && !escape_pending)
@@ -165,11 +165,11 @@
 	var/voracious = hound ? TRUE : FALSE
 	var/list/targets = target && hound ? list(target) : contents
 	if(hound)
-		if(!hound.client || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_preference(hound, /datum/preference/toggle/cyborg_sleepers))
+		if(!hound.client || !check_preference(hound, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
 			voracious = FALSE
 		else
 			for(var/mob/this_mob in targets)
-				if(!this_mob.client || !check_preference(this_mob, /datum/preference/toggle/erp/vore_enable) || !check_preference(this_mob, /datum/preference/toggle/cyborg_sleepers))
+				if(!this_mob.client || !check_preference(this_mob, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(this_mob, /datum/vore_pref/toggle/cyborg_sleepers))
 					voracious = FALSE
 	if(length(targets))
 		if(hound)
@@ -295,7 +295,7 @@
 				patient_laststat = patient.stat
 			prociconupdate = TRUE
 
-		if(!patient.client || !check_preference(patient, /datum/preference/toggle/erp/vore_enable) || !check_preference(patient, /datum/preference/toggle/cyborg_sleepers))
+		if(!patient.client || !check_preference(patient, /datum/preference/toggle/erp/vore_enable) || !check_vore_preference(patient, /datum/vore_pref/toggle/cyborg_sleepers))
 			hound.sleeper_enviroment = TRUE
 		else
 			hound.sleeper_enviroment = FALSE
@@ -351,7 +351,7 @@
 	if(cleaning_cycles)
 		cleaning_cycles--
 		for(var/mob/living/carbon/this_carbon in (touchable_items))
-			if((HAS_TRAIT(this_carbon, TRAIT_GODMODE)) || !check_preference(this_carbon, /datum/vore_pref/toggle/digestion))
+			if((HAS_TRAIT(this_carbon, TRAIT_GODMODE)) || !check_vore_preference(this_carbon, /datum/vore_pref/toggle/digestion))
 				items_preserved += this_carbon
 			else
 				this_carbon.adjustBruteLoss(2)
@@ -360,7 +360,7 @@
 			var/atom/target = pick(touchable_items)
 			if(iscarbon(target)) // Handle the target being a mob
 				var/mob/living/carbon/this_target = target
-				if(this_target.stat == DEAD && check_preference(this_target, /datum/vore_pref/toggle/digestion))	// Mob is now dead
+				if(this_target.stat == DEAD && check_vore_preference(this_target, /datum/vore_pref/toggle/digestion))	// Mob is now dead
 					message_admins("[key_name(hound)] has digested [key_name(this_target)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
 					to_chat(hound,"<span class='notice'>You feel your belly slowly churn around [this_target], breaking them down into a soft slurry to be used as power for your systems.</span>")
 					to_chat(this_target,"<span class='notice'>You feel [hound]'s belly slowly churn around your form, breaking you down into a soft slurry to be used as power for [hound]'s systems.</span>")
@@ -369,7 +369,7 @@
 						var/turf/source = get_turf(hound)
 						LAZYCLEARLIST(hearing_mobs)
 						for(var/mob/hearer in get_hearers_in_view(3, source))
-							if(!hearer.client || !check_preference(hearer, /datum/vore_pref/toggle/eating_noises))
+							if(!hearer.client || !check_vore_preference(hearer, /datum/vore_pref/toggle/eating_noises))
 								continue
 							LAZYADD(hearing_mobs, hearer)
 						last_hearcheck = world.time
@@ -420,7 +420,7 @@
 			var/turf/source = get_turf(hound)
 			LAZYCLEARLIST(hearing_mobs)
 			for(var/mob/hearer in get_hearers_in_view(3, source))
-				if(!hearer.client || !check_preference(hearer, /datum/vore_pref/toggle/eating_noises))
+				if(!hearer.client || !check_vore_preference(hearer, /datum/vore_pref/toggle/eating_noises))
 					continue
 				LAZYADD(hearing_mobs, hearer)
 			last_hearcheck = world.time
@@ -493,7 +493,7 @@
 		return
 
 	var/voracious = TRUE
-	if(!target.client || !check_preference(target, /datum/preference/toggle/cyborg_sleepers) || !hound.client || !check_preference(hound, /datum/preference/toggle/cyborg_sleepers))
+	if(!check_vore_preference(target, /datum/vore_pref/toggle/cyborg_sleepers) || !check_vore_preference(hound, /datum/vore_pref/toggle/cyborg_sleepers))
 		voracious = FALSE
 
 	user.visible_message("<span class='warning'>[hound.name] is ingesting [target] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
