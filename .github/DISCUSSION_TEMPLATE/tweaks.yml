@@ -31,7 +31,7 @@ body:
       description: Describe how the content currently works in the rebase
       placeholder: |
         Please include:
-        - Location in rebase codebase (file paths, datum paths, text, images, urls, etc.)
+        - Location in rebase codebase (file paths, class paths, text, images, urls, etc.)
         - Current behavior
         - Screenshots/videos if applicable
         - Any relevant code snippets
@@ -44,7 +44,7 @@ body:
       description: Describe how the content works in our previous codebase
       placeholder: |
         Please include:
-        - Location in old codebase (file paths, datum paths, text, images, urls, etc.)
+        - Location in old codebase (file paths, class paths, text, images, urls, etc.)
         - How it behaves differently from rebase
         - Screenshots/videos if applicable
         - Any relevant code snippets

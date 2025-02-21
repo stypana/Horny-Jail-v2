@@ -35,7 +35,7 @@ body:
       description: Help us find the content you want to tweak
       placeholder: |
         Please include:
-        - Location in codebase (file paths, datum paths, text, images, urls, etc.)
+        - Location in codebase (file paths, class paths, text, images, urls, etc.)
         - How the content currently works
         - Screenshots/videos of current behavior if applicable
         - Any relevant code snippets
@@ -63,7 +63,7 @@ body:
       placeholder: |
         If this is a port, please include:
         - Source codebase/repository
-        - Location in source (file paths, datum paths, text, images, urls, etc.)
+        - Location in source (file paths, class paths, text, images, urls, etc.)
         - Any relevant code snippets
         - Screenshots/videos if applicable
 

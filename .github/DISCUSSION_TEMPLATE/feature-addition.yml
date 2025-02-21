@@ -35,7 +35,7 @@ body:
       description: Describe the content from our previous codebase that needs to be ported
       placeholder: |
         Please include:
-        - Location in old codebase (file paths, datum paths, text, images, urls, etc.)
+        - Location in old codebase (file paths, class paths, text, images, urls, etc.)
         - How the feature works/behaves
         - Screenshots/videos if applicable
         - Any relevant code snippets

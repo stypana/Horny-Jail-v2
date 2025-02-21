@@ -37,7 +37,7 @@ body:
       placeholder: |
         If this is a port, please include:
         - Source codebase/repository
-        - Location in source (file paths, datum paths, text, images, urls, etc.)
+        - Location in source (file paths, class paths, text, images, urls, etc.)
         - Any relevant code snippets
         - Screenshots/videos if applicable
 
