@@ -14,129 +14,146 @@ import {
 } from '../components';
 import { Window } from '../layouts';
 
-export const HilbertsHotelCheckout = (props) => {
+export const CheckoutMenu = (props) => {
   const { act, data } = useBackend();
-  const { current_room } = data;
+  const { current_room = 1, selected_template = 'Standard' } = data;
   const [selectedTab, setSelectedTab] = useState(0);
-  const [roomNumber, setRoomNumber] = useState(current_room || 1);
-
-  const handleNumberChange = (value) => {
-    const num = Math.floor(Number(value));
-    if (isNaN(num) || num < 1 || num > 100000) return;
-    setRoomNumber(num);
-  };
-
-  useEffect(() => {
-    act('update_room', { room: roomNumber });
-  }, [roomNumber, act]);
 
   const tabContent = [
-    <RoomsTab category="Misc" />,
-    <RoomsTab category="Apartment" />,
-    <RoomsTab category="Beach" />,
-    <RoomsTab category="Station" />,
-    <RoomsTab category="Winter" />,
-    <RoomsTab category="Special" />,
+    <RoomsTab category="Misc" selected_template={selected_template} />,
+    <RoomsTab category="Apartment" selected_template={selected_template} />,
+    <RoomsTab category="Beach" selected_template={selected_template} />,
+    <RoomsTab category="Station" selected_template={selected_template} />,
+    <RoomsTab category="Winter" selected_template={selected_template} />,
+    <RoomsTab category="Special" selected_template={selected_template} />,
   ];
+
+  return (
+    <>
+      <Section title="Room Check-in" marginBottom={'100px'}>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ flexGrow: 1, maxWidth: 600 }}>
+            <Tabs>
+              <Tabs.Tab
+                key={0}
+                selected={selectedTab === 0}
+                onClick={() => setSelectedTab(0)}
+                style={{ cursor: 'pointer' }}
+              >
+                <Icon name="shuffle" /> Misc
+              </Tabs.Tab>
+              <Tabs.Tab
+                key={1}
+                selected={selectedTab === 1}
+                onClick={() => setSelectedTab(1)}
+                style={{ cursor: 'pointer' }}
+              >
+                <Icon name="building" /> Apartment
+              </Tabs.Tab>
+              <Tabs.Tab
+                key={2}
+                selected={selectedTab === 2}
+                onClick={() => setSelectedTab(2)}
+                style={{ cursor: 'pointer' }}
+              >
+                <Icon name="umbrella-beach" /> Beach
+              </Tabs.Tab>
+              <Tabs.Tab
+                key={3}
+                selected={selectedTab === 3}
+                onClick={() => setSelectedTab(3)}
+                style={{ cursor: 'pointer' }}
+              >
+                <Icon name="satellite" /> Station
+              </Tabs.Tab>
+              <Tabs.Tab
+                key={4}
+                selected={selectedTab === 4}
+                onClick={() => setSelectedTab(4)}
+                style={{ cursor: 'pointer' }}
+              >
+                <Icon name="snowflake" /> Winter
+              </Tabs.Tab>
+              <Tabs.Tab
+                key={5}
+                selected={selectedTab === 5}
+                onClick={() => setSelectedTab(5)}
+                style={{ cursor: 'pointer' }}
+              >
+                <Icon name="heart" /> Special
+              </Tabs.Tab>
+            </Tabs>
+            <Box mt={2}>{tabContent[selectedTab]}</Box>
+          </div>
+
+          <div style={{ width: '100px' }}>
+            <NumberInput
+              width="100%"
+              minValue={1}
+              maxValue={1000000000}
+              step={1}
+              value={current_room}
+              format={(value) => Math.floor(value)}
+              onDrag={(value) =>
+                act('update_room', {
+                  room: value,
+                })
+              }
+              lineHeight={1.8}
+              fontSize="20px"
+            />
+            <Button.Confirm
+              style={{ cursor: 'pointer' }}
+              width="100%"
+              fluid
+              textAlign="center"
+              mt={1}
+              confirmContent={'Confirm?'}
+              onClick={() =>
+                act('checkin', {
+                  room: current_room,
+                  template: selected_template,
+                })
+              }
+              my={1}
+              lineHeight={2}
+            >
+              <Icon name="right-to-bracket" />
+              Check-in
+            </Button.Confirm>
+          </div>
+        </div>
+      </Section>
+      <Section title="Open Rooms">
+        <Table>
+          {data.active_rooms?.map((room) => (
+            <Table.Row key={room.number}>
+              <Table.Cell>Room {room.number}</Table.Cell>
+              <Table.Cell>
+                Occupants: {room.occupants.join(', ') || 'Empty'}
+              </Table.Cell>
+            </Table.Row>
+          ))}
+        </Table>
+      </Section>
+    </>
+  );
+};
+
+export const HilbertsHotelCheckout = (props) => {
+  const { act, data } = useBackend();
 
   return (
     <Window width={600} height={400} title="Dr. Hilbert's Hotel Room Reception">
       <Window.Content>
-        <Section title="Room Checkout">
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <div style={{ flexGrow: 1, maxWidth: 600 }}>
-              <Tabs>
-                <Tabs.Tab
-                  key={0}
-                  selected={selectedTab === 0}
-                  onClick={() => setSelectedTab(0)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <Icon name="shuffle" /> Misc
-                </Tabs.Tab>
-                <Tabs.Tab
-                  key={1}
-                  selected={selectedTab === 1}
-                  onClick={() => setSelectedTab(1)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <Icon name="building" /> Apartment
-                </Tabs.Tab>
-                <Tabs.Tab
-                  key={2}
-                  selected={selectedTab === 2}
-                  onClick={() => setSelectedTab(2)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <Icon name="umbrella-beach" /> Beach
-                </Tabs.Tab>
-                <Tabs.Tab
-                  key={3}
-                  selected={selectedTab === 3}
-                  onClick={() => setSelectedTab(3)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <Icon name="satellite" /> Station
-                </Tabs.Tab>
-                <Tabs.Tab
-                  key={4}
-                  selected={selectedTab === 4}
-                  onClick={() => setSelectedTab(4)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <Icon name="snowflake" /> Winter
-                </Tabs.Tab>
-                <Tabs.Tab
-                  key={5}
-                  selected={selectedTab === 5}
-                  onClick={() => setSelectedTab(5)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <Icon name="heart" /> Special
-                </Tabs.Tab>
-              </Tabs>
-              <Box mt={2}>{tabContent[selectedTab]}</Box>
-            </div>
-
-            <div style={{ width: '100px' }}>
-              <NumberInput
-                width="100%"
-                minValue={1}
-                maxValue={100000}
-                step={1}
-                value={roomNumber}
-                onChange={(e, value) => handleNumberChange(value)}
-                lineHeight={1.8}
-                fontSize="20px"
-              />
-              <Button.Confirm
-                style={{ cursor: 'pointer' }}
-                width="100%"
-                fluid
-                textAlign="center"
-                mt={1}
-                confirmContent={'Confirm?'}
-                onClick={() => act('checkout', { room: roomNumber })}
-                my={1}
-                lineHeight={2}
-              >
-                <Icon name="right-to-bracket" />
-                Checkout
-              </Button.Confirm>
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Open Rooms">
-          <p>Rooms Content :p</p>
-        </Section>
+        <CheckoutMenu />
       </Window.Content>
     </Window>
   );
 };
 
 const RoomsTab = (props) => {
-  const { category } = props;
+  const { category, selected_template } = props;
   const { act, data } = useBackend();
   const { hotel_map_list = [] } = data;
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -172,7 +189,7 @@ const RoomsTab = (props) => {
           <Table.Row
             width="fit-content"
             key={room.name}
-            className={selectedRoom === room.name ? 'selected' : undefined}
+            className={room.name === selected_template ? 'selected' : undefined}
             onClick={() => {
               setSelectedRoom(room.name);
               act('select_room', { room: room.name });
@@ -182,9 +199,10 @@ const RoomsTab = (props) => {
               cursor: 'pointer',
               transition: 'background-color 0.2s',
               padding: '4px 8px',
+              borderRadius: '4px',
               backgroundColor:
-                selectedRoom === room.name
-                  ? 'rgba(255, 255, 255, 0.1)'
+                room.name === selected_template
+                  ? 'rgba(159, 236, 163, 0.1)'
                   : 'transparent',
             }}
           >

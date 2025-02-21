@@ -1,7 +1,18 @@
 GLOBAL_VAR_INIT(hhStorageTurf, null)
 GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
+/// Global list of active rooms with their parameters
+GLOBAL_LIST_INIT(hilbert_room_data, list())
+/// Global list of user data
+GLOBAL_LIST_INIT(hilbert_user_data, list())
 
-#define MAX_NUMBER 1000
+#define ROOM_OPEN TRUE
+#define ROOM_CLOSED FALSE
+
+#define ROOM_VISIBLE TRUE
+#define ROOM_INVISIBLE FALSE
+
+#define ROOM_GUESTS_VISIBLE TRUE
+#define ROOM_GUESTS_HIDDEN FALSE
 
 /obj/item/hilbertshotel
 	name = "Hilbert's Hotel"
@@ -41,6 +52,28 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 	var/ruinSpawned = FALSE
 
 	var/list/hotel_map_list = list()
+	/// Name of the first template in the list - used as default
+	var/default_template
+	/**
+	 * List of ckey unique user data. Stores chosen room number and room template.
+	 * Format:
+	 * `list(ckey = list("room_number" = [number], "template" = [name]))`
+	 */
+	/// Current room number being viewed
+	var/current_room_number = 1
+	/// List of active rooms with their parameters
+	var/list/room_data = list()
+
+	var/static/list/vanity_strings = list(
+		"You feel a strange sense of déjà vu.",
+		"You feel chills rolling down your spine.",
+		"You suddenly feel like you're being watched from behind.",
+		"You feel like a gust of bone-chilling cold is passing through you.",
+		"Your vision gets a little blurry for a moment.",
+		"Your heart drops as you feel a strange sense of dread.",
+		"Your mouth goes dry.",
+		"You feel uneasy.",
+	)
 
 /obj/item/hilbertshotel/Initialize(mapload)
 	. = ..()
@@ -64,6 +97,7 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 		to_chat(world, "DEBUG: Template [this_template.name] - [this_template.mappath]")
 		hotel_map_list[this_template.name] = this_template
 
+	default_template = hotel_map_list[hotel_map_list[1]]
 	var/area/currentArea = get_area(src)
 	if(currentArea.type == /area/ruin/space/has_grav/powered/hilbertresearchfacility/secretroom)
 		ruinSpawned = TRUE
@@ -72,92 +106,45 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 	eject_all_rooms()
 	return ..()
 
-// /obj/item/hilbertshotel/attack(mob/living/M, mob/living/user)
-// 	if(M.mind)
-// 		to_chat(user, span_notice("You invite [M] to the hotel."))
-// 		promptAndCheckIn(user, M)
-// 	else
-// 		to_chat(user, span_warning("[M] looks rather confused. It seems [M] is not intelligent enough to understand how to use this device."))
-
-// /obj/item/hilbertshotel/attack_self(mob/user)
-// 	. = ..()
-// 	promptAndCheckIn(user, user)
-
 /obj/item/hilbertshotel/attack_tk(mob/user)
 	to_chat(user, span_notice("\The [src] actively rejects your mind as the bluespace energies surrounding it disrupt your telekinesis."))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
-/obj/item/hilbertshotel/proc/promptAndCheckIn(mob/user, mob/target)
-	var/chosenroom_number
-	var/static/list/vanity_messages = list(
-		"You feel chills running down your spine",
-		"You feel slightly disoriented for a moment",
-		"Your vision gets a little blurry",
-		"You feel as if someone was watching you from inside the sphere",
-		"You feel a slight odor of ozone",
-		"You hear the quiet crackle of static electricity",
-	)
-
-	// Input text changes depending on if you're using this in yourself or someone else.
-	if(user == target)
-		chosenroom_number = tgui_input_number(target, "What number room will you be checking into?", "Room Number")
-	else
-		chosenroom_number = tgui_input_number(target, "[user] is inviting you to enter \the [src]. What number room will you be checking into?", "Room Number")
-	if(!chosenroom_number)
-		return
-	if(chosenroom_number > SHORT_REAL_LIMIT)
+/obj/item/hilbertshotel/proc/prompt_check_in(mob/user, mob/target, room_number, template)
+	if(room_number > SHORT_REAL_LIMIT)
 		to_chat(target, span_warning("You have to check out the first [SHORT_REAL_LIMIT] rooms before you can go to a higher numbered one!"))
 		return
-	if((chosenroom_number < 1) || (chosenroom_number != round(chosenroom_number)))
-		to_chat(target, span_warning("That is not a valid room number!"))
+	// Check if room already exists
+	if(GLOB.hilbert_room_data["[room_number]"])
+		to_chat(target, span_warning("Someone has already claimed that room number!"))
 		return
-
 	// Orb is not adjacent to the target. No teleporties.
 	if(!src.Adjacent(target))
 		to_chat(target, span_warning("You too far away from \the [src] to enter it!"))
-
+		return
 	// If the target is incapacitated after selecting a room, they're not allowed to teleport.
 	if(target.incapacitated)
 		to_chat(target, span_warning("You aren't able to activate \the [src] anymore!"))
+		return
 
-	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
-	if(!Adjacent(user))
-		if(user == target)
+	if (src.type == /obj/item/hilbertshotel)
+		// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
+		if(!(get_atom_on_turf(src, /mob) == user))
 			to_chat(user, span_warning("\The [src] is no longer in your possession!"))
-		else
-			to_chat(target, span_warning("\The [src] is no longer in the possession of [user]!"))
-		return
+			return
+		// If it's a handheld version of the item and the player is using it on themselves, we've got some logic to deal with.
+		// The user should drop the item before teleporting, but we're not going to force the item to be dropped if it can't be done normally...
+		if(user == target)
+			// The item should be on the user or in the user's inventory somewhere.
+			// However, if they're not holding it, it may be in a pocket? In a backpack? Who knows! Still, they can't just drop it to the floor anymore...
+			if(!user.get_held_index_of_item(src))
+				to_chat(user, span_warning("You try to drop \the [src], but it's too late! It's no longer in your hands! Prepare for unforeseen consequences..."))
+			// Okay, so they HAVE to be holding it here, because it's in their hand from the above check. Try to drop the item and if it fails, oh dear...
+			else if(!user.dropItemToGround(src))
+				to_chat(user, span_warning("You can't seem to drop \the [src]! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
 
-	// If the player is using it on themselves, we've got some logic to deal with.
-	// The user should drop the item before teleporting, but we're not going to force the item to be dropped if it can't be done normally...
-	if(user == target)
-		// The item should be on the user or in the user's inventory somewhere.
-		// However, if they're not holding it, it may be in a pocket? In a backpack? Who knows! Still, they can't just drop it to the floor anymore...
-		if(!user.get_held_index_of_item(src))
-			to_chat(user, span_warning("[pick(vanity_messages)]. You try to drop \the [src], but it's too late! It's no longer in your hands! Prepare for unforeseen consequences..."))
-		// Okay, so they HAVE to be holding it here, because it's in their hand from the above check. Try to drop the item and if it fails, oh dear...
-		else if(!user.dropItemToGround(src))
-			to_chat(user, span_warning("[pick(vanity_messages)]. You try to drop \the [src], but it doesn't go! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
-
-	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE
-	var/chosen_room = "Nothing"
-	if(istype(src, /obj/item/hilbertshotel/ghostdojo)) //to don't add another one var
-		chosen_room = tgui_input_list(user, "Choose desired room:", "Time to choose", hotel_map_list )
-	//SKYRAT EDIT END
-	if(!storageTurf) //Blame subsystems for not allowing this to be in Initialize
-		if(!GLOB.hhStorageTurf)
-			var/datum/map_template/hilbertshotelstorage/storageTemp = new()
-			var/datum/turf_reservation/storageReservation = SSmapping.request_turf_block_reservation(1, 1, 1)
-			var/turf/storage_turf = storageReservation.bottom_left_turfs[1]
-			storageTemp.load(storage_turf)
-			GLOB.hhStorageTurf = storage_turf
-		else
-			storageTurf = GLOB.hhStorageTurf
-	if(tryActiveRoom(chosenroom_number, target))
-		return
-	if(tryStoredRoom(chosenroom_number, target))
-		return
-	send_to_new_room(chosenroom_number, target, chosen_room) //SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE. Was sendToNewRoom(chosenroom_number, target)
+	to_chat(user, span_notice(pick(vanity_strings)))
+	addtimer(CALLBACK(src, PROC_REF(send_to_new_room), room_number, target, template), 1 SECONDS)
 
 /obj/item/hilbertshotel/proc/tryActiveRoom(room_number, mob/user)
 	if(active_rooms["[room_number]"])
@@ -181,7 +168,7 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 		for(var/x in 0 to hotelRoomTemp.width-1)
 			for(var/y in 0 to hotelRoomTemp.height-1)
 				for(var/atom/movable/A in storedRooms["[room_number]"][turfNumber])
-					if(istype(A.loc, /obj/item/abstracthotelstorage))//Don't want to recall something thats been moved
+					if(istype(A.loc, /obj/item/abstracthotelstorage)) //Don't want to recall something thats been moved
 						A.forceMove(locate(
 							room_turf.x + x,
 							room_turf.y + y,
@@ -214,11 +201,17 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 
 	if(chosen_room in hotel_map_list)
 		load_from = hotel_map_list[chosen_room]
+		to_chat(user, span_notice("You are transported to room [chosen_room]."))
 	else
 		to_chat(user, span_warning("You are washed over by a wave of heat as the sphere violently wiggles. You wonder if you did something wrong..."))
 		return
 	load_from.load(bottom_left)
 	active_rooms["[room_number]"] = roomReservation
+	GLOB.hilbert_room_data["[room_number]"] = list(
+		"status" = ROOM_CLOSED,
+		"visibility" = ROOM_INVISIBLE,
+		"privacy" = ROOM_GUESTS_HIDDEN,
+	)
 	link_turfs(roomReservation, room_number)
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
@@ -803,17 +796,53 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 			"category" = room_template.category || "Misc"
 		))
 	data["current_room"] = current_room_number
+	data["selected_template"] = GLOB.hilbert_user_data[user.ckey]?["template"] || default_template
+	data["active_rooms"] = list()
+	for(var/room_number in active_rooms)
+		data["active_rooms"] += list(list(
+			"number" = room_number,
+			"occupants" = generate_occupant_list(room_number)
+		))
+
 	return data
 
 /obj/item/hilbertshotel/ui_act(action, params)
+	. = ..()
+	var/user_ckey = usr.ckey
+	if(!user_ckey)
+		return
+
+	if(!GLOB.hilbert_user_data[user_ckey])
+		GLOB.hilbert_user_data[user_ckey] = list("template" = default_template)
+
+	var/list/current_data = GLOB.hilbert_user_data[user_ckey]
+
 	switch(action)
 		if("update_room")
-			var/new_room = text2num(params["room"])
-			if(new_room)
-				current_room_number = clamp(new_room, 1, 100000)
+			var/new_room = params["room"]
+			if(!new_room)
+				return FALSE
+			if(new_room < 1)
+				return FALSE
+			if(current_room_number == new_room)
 				return TRUE
-		// if("checkout")
-		// 	var/room_number = text2num(params["room"])
-		// 	if(room_number)
-		// 		checkout(room_number)
-		// 	return TRUE
+			current_room_number = new_room
+			return TRUE
+
+		if("select_room")
+			var/template_name = params["room"]
+			if(!(template_name in hotel_map_list))
+				return FALSE
+			current_data["template"] = template_name
+			return TRUE
+
+		if("checkin")
+			var/template = current_data["template"]
+			var/room_number = current_room_number
+			if(!room_number || !(template in hotel_map_list))
+				return FALSE
+			if(room_number in active_rooms)
+				to_chat(usr, span_warning("This room is already occupied!"))
+				return FALSE
+			prompt_check_in(usr, usr, room_number, template)
+			return TRUE
