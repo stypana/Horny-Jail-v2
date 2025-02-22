@@ -1,4 +1,4 @@
-/mob/living/basic/hostile/deathclaw
+/mob/living/basic/deathclaw
 	name = "deathclaw"
 	desc = "A massive, reptilian creature with powerful muscles, razor-sharp claws, and aggression to match."
 	icon = 'modular_zzplurt/icons/mob/claws/funclaws.dmi'
@@ -8,14 +8,9 @@
 	pixel_x = -16
 	gender = MALE
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	stat_attack = HARD_CRIT
-	speak = list("ROAR!","Rawr!","GRRAAGH!","Growl!")
+	ai_controller = /datum/ai_controller/basic_controller/
 	speak_emote = list("growls", "roars")
-	emote_hear = list("grumbles.","grawls.")
-	emote_taunt = list("stares ferociously", "stomps")
-	speak_chance = 10
-	taunt_chance = 25
-	speed = 0
+	speed = 1
 	see_in_dark = 8
 	butcher_results = list(/obj/item/food/meat/slab/ = 4,
 							/obj/item/stack/sheet/animalhide = 2,
@@ -28,7 +23,6 @@
 	melee_damage_lower = 56
 	melee_damage_upper = 56
 	faction = list("deathclaw")
-	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 5
 	gold_core_spawnable = HOSTILE_SPAWN
 	//Someone other than me is gonna have to give the mobs lewd stuff. -Evan
@@ -40,26 +34,26 @@
 	var/has_vagina = FALSE
 	*/
 
-/mob/living/basic/hostile/deathclaw/Initialize(mapload)
+/mob/living/basic/deathclaw/Initialize(mapload)
 	. = ..()
 
-/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw
+/mob/living/basic/deathclaw/hostile
 	icon_state = "newclaw"
-	stat_attack = CONSCIOUS
+	ai_controller = /datum/ai_controller/basic_controller/simple_hostile
 	/*
 	var/base_state = "newclaw"
 	var/cock_state = "newclaw_cocked"
 	var/cock_shown = FALSE
 	*/
 
-/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw/alphaclaw
+/mob/living/basic/deathclaw/hostile/alphaclaw
 	name = "Alpha Funclaw"
 	icon_state = "alphaclaw"
-	stat_attack = HARD_CRIT
+	ai_controller = /datum/ai_controller/basic_controller/simple_hostile_obstacles
 	//base_state = "alphaclaw"
 	//cock_state = "alphaclaw_cocked"
 
-/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw/death()
+/mob/living/basic/deathclaw/hostile/death()
 	..()
 	gib()
 
@@ -85,19 +79,32 @@
 	else
 		hide_cock()
 */
+/mob/living/basic/deathclaw/funclaw/
+	name = "Docile Deathclaw"
+	simulated_genitals = list(
+		ORGAN_SLOT_PENIS = TRUE,
+		ORGAN_SLOT_ANUS = TRUE
+	)
+	gold_core_spawnable = FRIENDLY_SPAWN
 
-/mob/living/basic/hostile/deathclaw/funclaw/femclaw
+/mob/living/basic/deathclaw/funclaw/femclaw
 	icon_state = "femclaw"
 	gender = FEMALE
-	name = "Breasted Funclaw"
-	desc = "She's large and in charge... and has her eyes on you."
+	name = "Docile Breasted Funclaw"
+	desc = "She's large and in charge."
 	maxHealth = 400
 	health = 400
 	armour_penetration = 45
+	simulated_genitals = list(
+		ORGAN_SLOT_PENIS = FALSE,
+		ORGAN_SLOT_ANUS = TRUE,
+		ORGAN_SLOT_VAGINA = TRUE,
+		ORGAN_SLOT_BREASTS = TRUE
+	)
 
-/mob/living/basic/hostile/deathclaw/funclaw/femclaw/mommyclaw
+/mob/living/basic/deathclaw/funclaw/femclaw/mommyclaw
 	icon_state = "mommyclaw"
-	desc = "A machine that turns her victim's pelvis into pelvwas."
+	desc = "A machine that turns her victim's pelv<b>is</b> into pelv<b>was</b>."
 	name = "Mommy Funclaw"
 	maxHealth = 1200
 	health = 1200
@@ -105,7 +112,3 @@
 	armour_penetration = 80
 	melee_damage_lower = 80
 	melee_damage_upper = 80
-
-/mob/living/basic/hostile/deathclaw/funclaw/femclaw/death()
-	..()
-	gib()
