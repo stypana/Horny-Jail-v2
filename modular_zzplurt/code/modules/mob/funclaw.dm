@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/deathclaw
+/mob/living/basic/hostile/deathclaw
 	name = "deathclaw"
 	desc = "A massive, reptilian creature with powerful muscles, razor-sharp claws, and aggression to match."
 	icon = 'modular_zzplurt/icons/mob/claws/funclaws.dmi'
@@ -40,10 +40,10 @@
 	var/has_vagina = FALSE
 	*/
 
-/mob/living/simple_animal/hostile/deathclaw/Initialize(mapload)
+/mob/living/basic/hostile/deathclaw/Initialize(mapload)
 	. = ..()
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw
+/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw
 	icon_state = "newclaw"
 	/*
 	stat_attack = CONSCIOUS
@@ -52,33 +52,33 @@
 	var/cock_shown = FALSE
 	*/
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/alphaclaw
+/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw/alphaclaw
 	name = "Alpha Funclaw"
 	icon_state = "alphaclaw"
 	stat_attack = HARD_CRIT
 	//base_state = "alphaclaw"
 	//cock_state = "alphaclaw_cocked"
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/death()
+/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw/death()
 	..()
 	gib()
 
 /*
-/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/proc/show_cock()
+/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw/proc/show_cock()
 	if (cock_shown)
 		return
 	cock_shown = TRUE
 	icon_state = cock_state
 	visible_message("<font color=purple><b>\The [src]</b>'s cock unsheathes.</font>")
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/proc/hide_cock()
+/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw/proc/hide_cock()
 	if (!cock_shown)
 		return
 	cock_shown = FALSE
 	icon_state = base_state
 	visible_message("<font color=purple><b>\The [src]</b>'s cock slowly retracts back into its sheath.</font>")
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/handle_post_sex(amount, orifice, mob/living/partner)
+/mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw/handle_post_sex(amount, orifice, mob/living/partner)
 	..()
 	if (lust > 0)
 		show_cock()
@@ -86,7 +86,7 @@
 		hide_cock()
 */
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw
+/mob/living/basic/hostile/deathclaw/funclaw/femclaw
 	icon_state = "femclaw"
 	gender = FEMALE
 	name = "Breasted Funclaw"
@@ -95,7 +95,7 @@
 	health = 400
 	armour_penetration = 45
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/mommyclaw
+/mob/living/basic/hostile/deathclaw/funclaw/femclaw/mommyclaw
 	icon_state = "mommyclaw"
 	desc = "A machine that turns her victim's pelvis into pelvwas."
 	name = "Mommy Funclaw"
@@ -106,6 +106,6 @@
 	melee_damage_lower = 80
 	melee_damage_upper = 80
 
-/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/death()
+/mob/living/basic/hostile/deathclaw/funclaw/femclaw/death()
 	..()
 	gib()
