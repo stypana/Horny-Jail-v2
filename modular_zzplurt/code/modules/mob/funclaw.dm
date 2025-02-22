@@ -45,8 +45,8 @@
 
 /mob/living/basic/hostile/deathclaw/funclaw/gentle/newclaw
 	icon_state = "newclaw"
-	/*
 	stat_attack = CONSCIOUS
+	/*
 	var/base_state = "newclaw"
 	var/cock_state = "newclaw_cocked"
 	var/cock_shown = FALSE
