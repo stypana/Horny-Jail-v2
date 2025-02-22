@@ -26,7 +26,14 @@
 
 	command_report_sounds = list('modular_zzplurt/sound/announcer/tibbets/commandreport/01.ogg',
 		'modular_zzplurt/sound/announcer/tibbets/commandreport/02.ogg',
-		'modular_zzplurt/sound/announcer/tibbets/commandreport/03.ogg')
+		'modular_zzplurt/sound/announcer/tibbets/commandreport/03.ogg',
+		'modular_zzplurt/sound/announcer/tibbets/commandreport/04.ogg',
+		'modular_zzplurt/sound/announcer/tibbets/commandreport/05.ogg',
+		'modular_zzplurt/sound/announcer/tibbets/commandreport/06.ogg',
+		'modular_zzplurt/sound/announcer/tibbets/commandreport/07.ogg',
+		'modular_zzplurt/sound/announcer/tibbets/commandreport/08.ogg',
+		'modular_zzplurt/sound/announcer/tibbets/commandreport/09.ogg',
+		)
 
 	event_sounds = list(
 		ANNOUNCER_AIMALF = 'modular_zzplurt/sound/announcer/tibbets/aimalf.ogg',
@@ -72,6 +79,17 @@
 		ANNOUNCER_ICARUS = 'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
 		ANNOUNCER_NRI_RAIDERS = 'modular_skyrat/modules/encounters/sounds/morse.ogg',
 		ANNOUNCER_DEPARTMENTAL = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
-		ANNOUNCER_SHUTTLE = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg')
+		ANNOUNCER_SHUTTLE = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
+		ANNOUNCER_AURORA_CAELUS = 'modular_zzplurt/sound/announcer/tibbets/auroracaelus.ogg',
+		ANNOUNCER_BUREAUCRATIC_ERROR = 'modular_zzplurt/sound/announcer/tibbets/bureaucraticerror.ogg',
+		ANNOUNCER_MARKET_CRASH = 'modular_zzplurt/sound/announcer/tibbets/marketcrash.ogg',
+		ANNOUNCER_MOUSE_MIGRATION = 'modular_zzplurt/sound/announcer/tibbets/mouse_migration.ogg',
+		ANNOUNCER_SCRUBBER_OVERFLOW = 'modular_zzplurt/sound/announcer/tibbets/scrubberoverflow.ogg',
+		ANNOUNCER_SHUTTLE_INSURANCE = 'modular_zzplurt/sound/announcer/tibbets/shuttleinsurance.ogg',
+		ANNOUNCER_SUPERMATTER_SURGE = 'modular_zzplurt/sound/announcer/tibbets/supermatter_surge.ogg',
+		ANNOUNCER_WISDOM_COW = 'modular_zzplurt/sound/announcer/tibbets/wisdom_cow.ogg',
+		ANNOUNCER_IMMOVABLE_ROD = 'modular_zzplurt/sound/announcer/tibbets/immovablerod.ogg',
+		ANNOUNCER_SCRAMBLER_ANOMALY = 'modular_zzplurt/sound/announcer/tibbets/scrambleranom.ogg'
+	)
 
 	custom_alert_message = span_alert("Please stand by for an important message from our head rat.<br>")
