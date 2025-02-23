@@ -36,7 +36,7 @@
 		// Fallback to default sounds for those without lait equivalents
 		ANNOUNCER_AIMALF = 'sound/announcer/default/aimalf.ogg',
 		ANNOUNCER_OUTBREAK6 = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
-		//ANNOUNCER_RADIATIONPASSED = 'modular_skyrat/modules/alerts/sound/alerts/radpassed.ogg', // We need a voice line for this
+		ANNOUNCER_RADIATIONPASSED = 'modular_zzplurt/sound/announcer/lait/lait_radpassed.ogg', // We need a voice line for this
 		ANNOUNCER_ANOMALIES = 'modular_skyrat/modules/alerts/sound/alerts/alert2.ogg',
 		ANNOUNCER_SPOOKY = 'modular_skyrat/modules/alerts/sound/misc/admin_horror_music.ogg',
 		ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/alerts/hazdet.ogg', // We could use voice lines for this
