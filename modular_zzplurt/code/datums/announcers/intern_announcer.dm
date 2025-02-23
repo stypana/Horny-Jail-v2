@@ -46,7 +46,7 @@
 		ANNOUNCER_OUTBREAK5 = 'modular_zzplurt/sound/announcer/tibbets/outbreak5.ogg',
 		ANNOUNCER_OUTBREAK6 = 'modular_zzplurt/sound/announcer/tibbets/alert3.ogg',
 		ANNOUNCER_OUTBREAK7 = 'modular_zzplurt/sound/announcer/tibbets/outbreak7.ogg',
-		ANNOUNCER_POWEROFF = 'modular_zzplurt/sound/announcer/tibbets/poweroffALT.ogg',
+		ANNOUNCER_POWEROFF = 'modular_zzplurt/sound/announcer/tibbets/poweroff.ogg',
 		ANNOUNCER_POWERON = 'modular_zzplurt/sound/announcer/tibbets/poweron.ogg',
 		ANNOUNCER_RADIATION = 'modular_zzplurt/sound/announcer/tibbets/radiation.ogg',
 		ANNOUNCER_RADIATIONPASSED = 'modular_zzplurt/sound/announcer/tibbets/radpassed.ogg',
@@ -93,3 +93,7 @@
 	)
 
 	custom_alert_message = span_alert("Please stand by for an important message from our head rat.<br>")
+
+/datum/centcom_announcer/intern/tibbets/New()
+	event_sounds[ANNOUNCER_POWEROFF] = pick('modular_zzplurt/sound/announcer/tibbets/poweroff.ogg', 'modular_zzplurt/sound/announcer/tibbets/poweroffALT.ogg') // easter egg
+	. = ..()
