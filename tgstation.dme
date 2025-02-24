@@ -9819,6 +9819,8 @@
 #include "modular_zzplurt\code\modules\sprite_accessories\tails.dm"
 #include "modular_zzplurt\code\modules\sprite_accessories\taur.dm"
 #include "modular_zzplurt\code\modules\sprite_accessories\wings.dm"
+#include "modular_zzplurt\code\modules\storyteller\config.dm"
+#include "modular_zzplurt\code\modules\storyteller\gamemode.dm"
 #include "modular_zzplurt\code\modules\storyteller\storytellers\tellers\storyteller_0_extended.dm"
 #include "modular_zzplurt\code\modules\surgery\bodyparts\parts.dm"
 #include "modular_zzplurt\code\modules\surgery\bodyparts\species_parts\arachnid_parts.dm"
