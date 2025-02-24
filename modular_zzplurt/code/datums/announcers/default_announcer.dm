@@ -45,5 +45,7 @@
 		ANNOUNCER_NRI_RAIDERS = 'modular_skyrat/modules/encounters/sounds/morse.ogg',
 		ANNOUNCER_DEPARTMENTAL = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
 		ANNOUNCER_SHUTTLE = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
-		ANNOUNCER_COMMSBLACKOUT = 'modular_skyrat/modules/alerts/sound/alerts/commsblackout.ogg'
+		ANNOUNCER_COMMSBLACKOUT = 'modular_skyrat/modules/alerts/sound/alerts/commsblackout.ogg',
+		ANNOUNCER_GRAVGENBLACKOUT = 'modular_zzplurt/sound/announcer/lait/lait_gravityoff.ogg',
+		ANNOUNCER_METEORWARNING = 'modular_zzplurt/sound/announcer/lait/lait_meteors.ogg'
 	)
