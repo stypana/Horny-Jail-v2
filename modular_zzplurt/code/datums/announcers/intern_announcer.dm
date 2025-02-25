@@ -92,4 +92,5 @@
 		ANNOUNCER_SCRAMBLER_ANOMALY = 'modular_zzplurt/sound/announcer/tibbets/scrambleranom.ogg'
 	)
 
-	custom_alert_message = span_alert("Please stand by for an important message from our head rat.<br>")
+	//custom_alert_message = span_alert("Please stand by for an important message from our head rat.<br>")
+	custom_alert_message = null //Make it not obfuscate the content of the announcements
