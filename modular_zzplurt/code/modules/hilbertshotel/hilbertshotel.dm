@@ -69,8 +69,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 	// If no global sphere yet, we're boutta become one
 	if(!GLOB.main_hilbert_sphere)
 		GLOB.main_hilbert_sphere = src
-	// Load templates
-	INVOKE_ASYNC(src, PROC_REF(prepare_rooms))
+		// Load templates
+		INVOKE_ASYNC(src, PROC_REF(prepare_rooms))
 
 /obj/item/hilbertshotel/ghostdojo/examine(mob/user)
 	. = ..()
@@ -153,8 +153,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /// Attempts to join an existing active room.
 /obj/item/hilbertshotel/proc/try_join_active_room(room_number, mob/user)
-	if(room_data["[room_number]"])
-		var/datum/turf_reservation/roomReservation = room_data["[room_number]"]["reservation"]
+	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
+	if(main_sphere?.room_data["[room_number]"])
+		var/datum/turf_reservation/roomReservation = main_sphere.room_data["[room_number]"]["reservation"]
 		do_sparks(3, FALSE, get_turf(user))
 		var/turf/room_bottom_left = roomReservation.bottom_left_turfs[1]
 		user.forceMove(locate(
@@ -167,14 +168,15 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /// Attempts to join an existing stored room.
 /obj/item/hilbertshotel/proc/try_join_conservated_room(room_number, mob/user)
-	if(conservated_rooms["[room_number]"])
+	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
+	if(main_sphere?.conservated_rooms["[room_number]"])
 		var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
 		var/turf/room_turf = roomReservation.bottom_left_turfs[1]
 		hotel_room_template_empty.load(room_turf)
 		var/turfNumber = 1
 		for(var/x in 0 to hotel_room_template.width-1)
 			for(var/y in 0 to hotel_room_template.height-1)
-				for(var/atom/movable/A in conservated_rooms["[room_number]"][turfNumber])
+				for(var/atom/movable/A in main_sphere.conservated_rooms["[room_number]"][turfNumber])
 					if(istype(A.loc, /obj/item/abstracthotelstorage)) //Don't want to recall something thats been moved
 						A.forceMove(locate(
 							room_turf.x + x,
@@ -185,8 +187,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 		for(var/obj/item/abstracthotelstorage/this_item in storageTurf)
 			if((this_item.room_number == room_number) && (this_item.parentSphere == src))
 				qdel(this_item)
-		conservated_rooms -= "[room_number]"
-		room_data["[room_number]"] = list(
+		main_sphere.conservated_rooms -= "[room_number]"
+		main_sphere.room_data["[room_number]"] = list(
 			"reservation" = roomReservation,
 			"status" = ROOM_CLOSED,
 			"visibility" = ROOM_INVISIBLE,
@@ -553,8 +555,10 @@ GLOBAL_VAR(main_hilbert_sphere)
 				A.forceMove(storageObj)
 			storage[turfNumber] = turfContents
 			turfNumber++
-	parentSphere.conservated_rooms["[room_number]"] = storage
-	parentSphere.room_data -= "[room_number]"
+	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
+	if(main_sphere)
+		main_sphere.conservated_rooms["[room_number]"] = storage
+		main_sphere.room_data -= "[room_number]"
 	qdel(reservation)
 
 /area/misc/hilbertshotelstorage
@@ -610,19 +614,15 @@ GLOBAL_VAR(main_hilbert_sphere)
 		if(!Adjacent(interacting_with))
 			to_chat(user, span_warning("It's to far away to scan!"))
 			return ITEM_INTERACT_BLOCKING
-		var/obj/item/hilbertshotel/sphere = interacting_with
-		if(sphere.room_data.len)
+		var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
+		if(main_sphere?.room_data.len)
 			to_chat(user, "Currently Occupied Rooms:")
-			for(var/room_number in sphere.room_data)
+			for(var/room_number in main_sphere.room_data)
 				to_chat(user, room_number)
-		else
-			to_chat(user, "No currenty occupied rooms.")
-		if(sphere.conservated_rooms.len)
+		if(main_sphere?.conservated_rooms.len)
 			to_chat(user, "Vacated Rooms:")
-			for(var/room_number in sphere.conservated_rooms)
+			for(var/room_number in main_sphere.conservated_rooms)
 				to_chat(user, room_number)
-		else
-			to_chat(user, "No vacated rooms.")
 		return ITEM_INTERACT_SUCCESS
 	return ..()
 
