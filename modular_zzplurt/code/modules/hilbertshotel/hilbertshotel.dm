@@ -58,6 +58,9 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 		"You feel uneasy.",
 	)
 
+	/// List of user preferences. Format: list(ckey = list("room_number" = number, "template" = template_name))
+	var/list/user_data = list()
+
 // Links to the main sphere to have a common room dataset
 GLOBAL_VAR(main_hilbert_sphere)
 
@@ -806,8 +809,16 @@ GLOBAL_VAR(main_hilbert_sphere)
 			"name" = room_template.name,
 			"category" = room_template.category || "Misc"
 		))
-	data["current_room"] = current_room_number
-	data["selected_template"] = default_template
+
+	if(!user_data[user.ckey])
+		user_data[user.ckey] = list(
+			"room_number" = 1,
+			"template" = default_template
+		)
+
+	data["current_room"] = user_data[user.ckey]["room_number"]
+	data["selected_template"] = user_data[user.ckey]["template"]
+
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
 	if(main_sphere)
 		data["active_rooms"] = list()
@@ -823,6 +834,12 @@ GLOBAL_VAR(main_hilbert_sphere)
 	if(!usr.ckey)
 		return
 
+	if(!user_data[usr.ckey])
+		user_data[usr.ckey] = list(
+			"room_number" = 1,
+			"template" = default_template
+		)
+
 	switch(action)
 		if("update_room")
 			var/new_room = params["room"]
@@ -830,21 +847,19 @@ GLOBAL_VAR(main_hilbert_sphere)
 				return FALSE
 			if(new_room < 1)
 				return FALSE
-			if(current_room_number == new_room)
-				return TRUE
-			current_room_number = new_room
+			user_data[usr.ckey]["room_number"] = new_room
 			return TRUE
 
 		if("select_room")
 			var/template_name = params["room"]
 			if(!(template_name in hotel_map_list))
 				return FALSE
-			default_template = template_name
+			user_data[usr.ckey]["template"] = template_name
 			return TRUE
 
 		if("checkin")
-			var/template = default_template
-			var/room_number = current_room_number
+			var/template = user_data[usr.ckey]["template"]
+			var/room_number = user_data[usr.ckey]["room_number"]
 			if(!room_number || !(template in hotel_map_list))
 				return FALSE
 			var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
