@@ -9566,6 +9566,7 @@
 #include "modular_zzplurt\code\datums\traits\neutral\oversized.dm"
 #include "modular_zzplurt\code\datums\weather\weather_types\ash_storm.dm"
 #include "modular_zzplurt\code\game\objects\items.dm"
+#include "modular_zzplurt\code\game\objects\effects\decals\cleanable\lewd_decals.dm"
 #include "modular_zzplurt\code\game\objects\effects\posters\contraband.dm"
 #include "modular_zzplurt\code\game\objects\items\cards_ids.dm"
 #include "modular_zzplurt\code\game\objects\items\emags.dm"
