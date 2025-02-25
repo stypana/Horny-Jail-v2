@@ -9647,6 +9647,7 @@
 #include "modular_zzplurt\code\modules\clothing\suits\jackets.dm"
 #include "modular_zzplurt\code\modules\clothing\suits\misc.dm"
 #include "modular_zzplurt\code\modules\clothing\under\uniform.dm"
+#include "modular_zzplurt\code\modules\clothing\under\jobs\medical.dm"
 #include "modular_zzplurt\code\modules\clothing\underwear\_underwear.dm"
 #include "modular_zzplurt\code\modules\clothing\underwear\briefs.dm"
 #include "modular_zzplurt\code\modules\clothing\underwear\shirt.dm"
