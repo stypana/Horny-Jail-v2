@@ -2,3 +2,9 @@ author: "MosleyTheMalO"
 delete-after: True
 changes:
   - rscadd: "adds the bathrobe as part of the loadout."
+  - rscadd: "adds bunny ears from our codebase"
+  - tweak: "makes extended a votable storyteller"
+  - config: "adds configs for days with calm rounds vs days with calm and chaotic rounds"
+  - bugfix: "fixes genital sniffer to show genital info"
+  - tweak: "now the me verb is multiline"
+  - tweak: "now the me keybind verb is also multiline"
