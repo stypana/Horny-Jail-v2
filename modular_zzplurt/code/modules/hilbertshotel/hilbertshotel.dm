@@ -146,7 +146,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 				to_chat(user, span_warning("You can't seem to drop \the [src]! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
 
 	to_chat(user, span_notice(pick(vanity_strings)))
-	addtimer(CALLBACK(src, PROC_REF(send_to_new_room), room_number, target, template), 1 SECONDS)
+	send_to_new_room(room_number, target, template)
 
 /// Attempts to join an existing active room.
 /obj/item/hilbertshotel/proc/try_join_active_room(room_number, mob/user)
