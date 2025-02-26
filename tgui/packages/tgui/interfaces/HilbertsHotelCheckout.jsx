@@ -1,9 +1,7 @@
 import { useBackend } from '../backend';
 import { useState, useEffect } from 'react';
 import {
-  AnimatedNumber,
   Button,
-  ProgressBar,
   Section,
   Tabs,
   NumberInput,
@@ -16,7 +14,12 @@ import { Window } from '../layouts';
 
 const OpenRooms = ({ data, act, selected_template }) => {
   return (
-    <Section title="Open Rooms">
+    <Section
+      title="Open Rooms"
+      style={{
+        paddingBottom: '0px',
+      }}
+    >
       <Box
         style={{
           height: '100%',
@@ -30,7 +33,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
               key={room.number}
               style={{
                 padding: '4px 4px',
-                backgroundColor: 'rgba(240, 240, 240, 0.1)',
+                backgroundColor: 'rgba(138, 138, 138, 0.1)',
               }}
             >
               <Table.Cell
@@ -49,7 +52,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                     backgroundColor: 'rgb(0, 0, 0)',
                     border: '2px solid rgb(53, 118, 172)',
                     borderRadius: '3px',
-                    marginBottom: '2px',
+                    marginBottom: '5px',
                     color: 'rgb(115, 177, 228)',
                     padding: '0px 0px',
                   }}
@@ -75,14 +78,13 @@ const OpenRooms = ({ data, act, selected_template }) => {
                   Join
                 </Button.Confirm>
               </Table.Cell>
-              <Table.Cell>
-                <Box
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    marginLeft: '10px',
-                  }}
-                >
+              <Table.Cell
+                style={{
+                  textAlign: 'left',
+                  width: '100%',
+                }}
+              >
+                <Box>
                   <Box
                     style={{
                       fontSize: '18px',
@@ -274,7 +276,7 @@ export const CheckoutMenu = (props) => {
   ];
 
   return (
-    <>
+    <Box>
       <RoomCheckIn
         data={data}
         act={act}
@@ -288,7 +290,7 @@ export const CheckoutMenu = (props) => {
         selected_template={data.selected_template}
       />
       <ReservedRooms data={data} />
-    </>
+    </Box>
   );
 };
 
@@ -335,7 +337,7 @@ const RoomsTab = (props) => {
               act('select_room', { room: room.name });
             }}
             style={{
-              lineHeight: '2.2',
+              lineHeight: '2.5',
               cursor: 'pointer',
               transition: 'background-color 0.2s',
               padding: '4px 4px',
@@ -367,7 +369,7 @@ export const HilbertsHotelCheckout = (props) => {
   const { act, data } = useBackend();
 
   return (
-    <Window width={600} height={400} title="Dr. Hilbert's Hotel Room Reception">
+    <Window width={600} height={600} title="Dr. Hilbert's Hotel Room Reception">
       <Window.Content>
         <CheckoutMenu />
       </Window.Content>
