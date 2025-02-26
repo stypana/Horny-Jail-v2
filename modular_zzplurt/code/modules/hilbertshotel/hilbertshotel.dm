@@ -64,17 +64,21 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 // Links to the main sphere to have a common room dataset
 GLOBAL_VAR(main_hilbert_sphere)
 
-/obj/item/hilbertshotel/Initialize(mapload)
+/obj/item/hilbertshotel/New()
 	. = ..()
-	// If no global sphere yet, we're boutta become one
 	if(!GLOB.main_hilbert_sphere)
 		GLOB.main_hilbert_sphere = src
-		// Load templates
-		INVOKE_ASYNC(src, PROC_REF(prepare_rooms))
+		to_chat(world, "DEBUG: Main Hilbert's Hotel sphere initialized in New().")
+	else
+		to_chat(world, "DEBUG: Main Hilbert's Hotel sphere linked to [GLOB.main_hilbert_sphere].")
+
+/obj/item/hilbertshotel/Initialize(mapload)
+	. = ..()
+	INVOKE_ASYNC(src, PROC_REF(prepare_rooms))
 
 /obj/item/hilbertshotel/ghostdojo/examine(mob/user)
 	. = ..()
-	if(!GLOB.main_hilbert_sphere == src)
+	if(!(src == GLOB.main_hilbert_sphere))
 		. += span_notice("It's slightly trembling.")
 
 /// Creates a static hotel room template list iterating over the templates typecache. Initializes the templates.
@@ -87,10 +91,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 	hotel_room_template_empty = new()
 	hotel_room_template_lore = new()
 
-	to_chat(world, "DEBUG: Loading hotel templates... ([hotel_map_templates.len] types)")
+	to_chat(world, "DEBUG: Loading hotel templates of [hotel_map_templates.len] types")
 	for(var/template_type in hotel_map_templates)
 		var/datum/map_template/this_template = new template_type()
-		to_chat(world, "DEBUG: Template [this_template.name] - [this_template.mappath]")
 		hotel_map_list[this_template.name] = this_template
 
 	default_template = hotel_map_list[hotel_map_list[1]]
@@ -112,16 +115,24 @@ GLOBAL_VAR(main_hilbert_sphere)
 		to_chat(target, span_warning("You have to check out the first [SHORT_REAL_LIMIT] rooms before you can go to a higher numbered one!"))
 		return
 
-	// Try to enter existing active room first
-	if(try_join_active_room(room_number, target))
-		return
-	// Then try stored room
-	if(try_join_conservated_room(room_number, target))
-		return
-
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
+	// Check if room exists and its status
 	if(main_sphere?.room_data["[room_number]"])
-		to_chat(target, span_warning("Someone has already claimed that room number!"))
+		var/list/room = main_sphere.room_data["[room_number]"]
+		if(room["status"] == ROOM_CLOSED)
+			to_chat(target, span_warning("This room is currently closed and cannot be entered!"))
+			return
+		// Try to enter if room is open
+		if(try_join_active_room(room_number, target))
+			return
+	// Check conservated rooms
+	else if(main_sphere?.conservated_rooms["[room_number]"])
+		if(try_join_conservated_room(room_number, target))
+			return
+		return
+	// Don't allow creating new room if it exists in any form
+	else if(main_sphere?.room_data["[room_number]"] || main_sphere?.conservated_rooms["[room_number]"])
+		to_chat(target, span_warning("This room number is already taken!"))
 		return
 	// Orb is not adjacent to the target. No teleporties.
 	if(!src.Adjacent(target))
@@ -191,7 +202,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 		main_sphere.room_data["[room_number]"] = list(
 			"reservation" = roomReservation,
 			"status" = ROOM_CLOSED,
-			"visibility" = ROOM_INVISIBLE,
+			"visibility" = ROOM_VISIBLE,
 			"privacy" = ROOM_GUESTS_HIDDEN,
 			"description" = null,
 		)
@@ -207,6 +218,10 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /// Loads the room template and sends the user there. Requires `room_number` and `chosen_room` to be set.
 /obj/item/hilbertshotel/proc/send_to_new_room(room_number, mob/user, chosen_room)
+	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
+	if(!main_sphere)
+		return
+
 	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
 	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
 	var/datum/map_template/load_from = hotel_room_template
@@ -216,17 +231,18 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 	if(chosen_room in hotel_map_list)
 		load_from = hotel_map_list[chosen_room]
-		to_chat(user, span_notice("You are transported to room [chosen_room]."))
 	else
 		to_chat(user, span_warning("You are washed over by a wave of heat as the sphere violently wiggles. You wonder if you did something wrong..."))
 		return
+
 	load_from.load(bottom_left)
-	room_data["[room_number]"] = list(
+	main_sphere.room_data["[room_number]"] = list(
 		"reservation" = roomReservation,
 		"status" = ROOM_CLOSED,
-		"visibility" = ROOM_INVISIBLE,
+		"visibility" = ROOM_VISIBLE,
 		"privacy" = ROOM_GUESTS_HIDDEN,
 		"description" = null,
+		"template_name" = chosen_room
 	)
 	link_turfs(roomReservation, room_number)
 	do_sparks(3, FALSE, get_turf(user))
@@ -258,21 +274,22 @@ GLOBAL_VAR(main_hilbert_sphere)
 /obj/item/hilbertshotel/proc/generate_occupant_list(room_number)
 	var/list/occupants = list()
 	if(room_data["[room_number]"])
-		var/datum/turf_reservation/room = room_data["[room_number]"]["reservation"]
+		var/datum/turf_reservation/room = room_data[room_number]["reservation"]
 		var/turf/room_bottom_left = room.bottom_left_turfs[1]
 		for(var/i in 0 to hotel_room_template.width-1)
 			for(var/j in 0 to hotel_room_template.height-1)
 				for(var/atom/movable/movable_atom in locate(room_bottom_left.x + i, room_bottom_left.y + j, room_bottom_left.z))
 					if(ismob(movable_atom))
 						var/mob/this_mob = movable_atom
-						if(this_mob.mind)
-							occupants += this_mob.mind.name
+						if(isliving(this_mob))
+							if(this_mob.mind)
+								occupants += this_mob.mind.name
 	return occupants
 
 /obj/item/hilbertshotel/proc/eject_all_rooms()
 	if(room_data.len)
-		for(var/x in room_data)
-			var/datum/turf_reservation/room = room_data[x]["reservation"]
+		for(var/number in room_data)
+			var/datum/turf_reservation/room = room_data[number]["reservation"]
 			var/turf/room_bottom_left = room.bottom_left_turfs[1]
 			for(var/i in 0 to hotel_room_template.width-1)
 				for(var/j in 0 to hotel_room_template.height-1)
@@ -823,9 +840,21 @@ GLOBAL_VAR(main_hilbert_sphere)
 	if(main_sphere)
 		data["active_rooms"] = list()
 		for(var/room_number in main_sphere.room_data)
-			data["active_rooms"] += list(list(
+			var/list/room = main_sphere.room_data[room_number]
+			if(room["visibility"] == ROOM_VISIBLE)
+				data["active_rooms"] += list(list(
+					"number" = room_number,
+					"name" = room["template_name"] || "Unknown Room",
+					"occupants" = main_sphere.generate_occupant_list(room_number),
+					"description" = room["description"]
+				))
+		to_chat(world, "DEBUG: Active rooms: [data["active_rooms"]]")
+		data["conservated_rooms"] = list()
+		for(var/room_number in main_sphere.conservated_rooms)
+			var/list/room = main_sphere.conservated_rooms[room_number]
+			data["conservated_rooms"] += list(list(
 				"number" = room_number,
-				"occupants" = main_sphere.generate_occupant_list(room_number)
+				"description" = room["description"]
 			))
 	return data
 
