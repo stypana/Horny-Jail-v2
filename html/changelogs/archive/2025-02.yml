@@ -222,3 +222,12 @@
   TealSeer:
   - bugfix: fixed cryoing with a storage implant dumping the contents of said implant
       onto the floor
+2025-02-25:
+  MosleyTheMalO:
+  - rscadd: adds the bathrobe as part of the loadout.
+  - rscadd: adds bunny ears from our codebase
+  - refactor: makes extended a votable storyteller
+  - config: adds configs for days with calm rounds vs days with calm and chaotic rounds
+  - bugfix: fixes genital sniffer to show genital info
+  - refactor: now the me verb is multiline
+  - refactor: now the me keybind verb is also multiline
