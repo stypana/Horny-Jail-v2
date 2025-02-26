@@ -1,8 +1,5 @@
-// OOC Escape code in case of pref-breaking or predators going AFK. What was the safe word, again?
-
-/mob/living/proc/escapeOOC()
-	set name = "OOC Escape"
-	set category = "IC"
+/mob/living/carbon/human/safeword()
+	. = ..()
 
 	if(istype(loc, /obj/item/dogborg/sleeper))
 		var/obj/item/dogborg/sleeper/this_sleeper = loc
@@ -14,5 +11,3 @@
 		this_sleeper.go_out(src)
 		message_admins("[src] 'OOC Escape'-d from a dogborg sleeper.")
 		log_ooc("[src] 'OOC Escape'-d from a dogborg sleeper.")
-	else
-		to_chat(src,"<span class='alert'>You aren't inside anyone, though, is the thing.</span>")
