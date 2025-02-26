@@ -1,0 +1,6 @@
+author: "mcbalaam"
+delete-after: True
+changes:
+  - rscadd: "New dogborg specific cyborg modules - check out the PR!"
+  - rscadd: "Slutty AI laws - unleash your dirty side"
+  - qol: "Manipulation apparatus module's held item is now visible and interactable"
