@@ -240,11 +240,6 @@
   Alecksohs:
   - code_imp: Vendors are now aware of sprite refits and will inform you if any are
       available.
-  StrangeWeirdKitten:
-  - rscadd: Seamless heels quirk
-  - rscadd: Nameless Quirk
-  xPokee:
-  - rscadd: added the intern ghoul plushie to both in game and the loadouts
   MosleyTheMalO:
   - rscadd: adds the bathrobe as part of the loadout.
   - rscadd: adds bunny ears from our codebase
@@ -253,3 +248,13 @@
   - bugfix: fixes genital sniffer to show genital info
   - refactor: now the me verb is multiline
   - refactor: now the me keybind verb is also multiline
+  StrangeWeirdKitten:
+  - rscadd: Seamless heels quirk
+  - rscadd: Nameless Quirk
+  xPokee:
+  - rscadd: added the intern ghoul plushie to both in game and the loadouts
+2025-02-26:
+  mcbalaam:
+  - rscadd: New dogborg specific cyborg modules - check out the PR!
+  - rscadd: Slutty AI laws - unleash your dirty side
+  - qol: Manipulation apparatus module's held item is now visible and interactable
