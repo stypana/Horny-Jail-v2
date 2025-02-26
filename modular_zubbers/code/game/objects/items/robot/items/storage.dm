@@ -144,7 +144,7 @@
 
 //Engineering cyborg apparatus
 /obj/item/borg/apparatus/engineering
-	name = "Engineering manipulation gripper"
+	name = "engineering manipulation gripper" // SPLURT EDIT
 	desc = "A simple grasping tool for interacting with various engineering related items, such as circuits, gas tanks, conveyer belts and more."
 	icon = 'modular_zubbers/code/modules/silicons/borgs/sprites/robot_items.dmi'
 	icon_state = "gripper"
