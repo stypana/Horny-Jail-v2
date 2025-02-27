@@ -268,6 +268,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 			Strangely, this door doesn't even seem openable. \
 			The doorknob, however, seems to buzz with unusual energy...<br/>\
 			[span_info("Alt-Click to look through the peephole.")]"
+	for(var/obj/machinery/room_controller/controller in currentReservation.reserved_turfs)
+		controller.room_number = currentroom_number
 	for(var/turf/open/space/bluespace/BSturf in currentReservation.reserved_turfs)
 		BSturf.parentSphere = src
 

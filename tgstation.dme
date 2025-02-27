@@ -9664,6 +9664,7 @@
 #include "modular_zzplurt\code\modules\food_and_drinks\recipes\drinks\drink_non-alcoholic.dm"
 #include "modular_zzplurt\code\modules\food_and_drinks\recipes\drinks\drinks_alcoholic.dm"
 #include "modular_zzplurt\code\modules\hilbertshotel\hilbertshotel.dm"
+#include "modular_zzplurt\code\modules\hilbertshotel\hotelroomcontroller.dm"
 #include "modular_zzplurt\code\modules\hud\_hud.dm"
 #include "modular_zzplurt\code\modules\hud\screen_objects.dm"
 #include "modular_zzplurt\code\modules\language\_language_holder.dm"
