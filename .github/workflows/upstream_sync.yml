@@ -57,8 +57,7 @@ jobs:
       - name: Get current date
         if: steps.sync.outputs.has_new_commits == 'true'
         run: |
-          $NOW =& Get-Date -format "dd.MM.yyyy"
-          echo "NOW=$NOW" >> $env:GITHUB_ENV
+          echo "NOW=$(date +%d.%m.%Y)" >> $env:GITHUB_ENV
 
       # Add new step to create pull request when changes are found
       - name: Create Pull Request
