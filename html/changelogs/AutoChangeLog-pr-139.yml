@@ -1,0 +1,5 @@
+author: "Phoenix4O4"
+delete-after: True
+changes:
+  - image: "both normal legs and digitigrade legs are now available for xeno species"
+  - image: "The coroner's scrubs and jumpsuit now have digitigrade sprites."
