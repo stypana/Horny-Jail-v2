@@ -129,7 +129,7 @@
 		"skull",
 		"space",
 		"trade",
-		"scp",
+		"scp", //splurt add
 	)
 	/// List of selectable drawing options
 	var/static/list/drawings = list(
@@ -154,9 +154,9 @@
 		"taser",
 		"toilet",
 		"toolbox",
-		"bdragon",
-		"booty",
-		"boobs",
+		"bdragon", //splurt add
+		"booty", //splurt add
+		"boobs", //splurt add
 	)
 	/// List of selectable orientable options
 	var/static/list/oriented = list(
