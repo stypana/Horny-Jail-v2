@@ -3,7 +3,7 @@
 	desc = "A large shell, belonging to probably a very large snail or slug... Wait... It can store things?"
 	icon = 'modular_zzplurt/icons/obj/storage.dmi'
 	icon_state = "sloog_backpack"
-	mob_overlay_icon = 'modular_zzplurt/icons/mob/clothing/64_back.dmi'
+	worn_icon = 'modular_zzplurt/icons/mob/clothing/64_back.dmi'
 	worn_x_dimension = 64
 	slowdown = 4 // Slightly faster than snail shell since it's a larger creature
 	obj_flags = IMMUTABLE_SLOW

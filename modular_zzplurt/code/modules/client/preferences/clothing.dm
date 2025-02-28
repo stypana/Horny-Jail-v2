@@ -12,7 +12,7 @@
 		if (SNAIL_SHELL)
 			return /obj/item/storage/backpack/snail
 		if (SLOOG_SHELL)
-			return /obj/item/storage/backpack/sloog
+			return /obj/item/storage/backpack/sloogshell
 
 /datum/preference/choiced/underwear
 	priority = PREFERENCE_PRIORITY_DEFAULT
