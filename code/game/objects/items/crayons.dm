@@ -129,6 +129,7 @@
 		"skull",
 		"space",
 		"trade",
+		"scp",
 	)
 	/// List of selectable drawing options
 	var/static/list/drawings = list(
@@ -153,6 +154,9 @@
 		"taser",
 		"toilet",
 		"toolbox",
+		"bdragon",
+		"booty",
+		"boobs",
 	)
 	/// List of selectable orientable options
 	var/static/list/oriented = list(
