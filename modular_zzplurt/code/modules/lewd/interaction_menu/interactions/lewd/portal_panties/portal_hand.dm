@@ -2,7 +2,7 @@
 	name = "Portal Handjob"
 	description = "Give them a handjob through the portal dildo."
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_HAND)
-	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
+	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_ANY)
 	cum_genital = list(CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
 	cum_target = list(CLIMAX_POSITION_TARGET = null)
 	message = list(
@@ -99,7 +99,7 @@
 	name = "Portal Fingering (Vagina)"
 	description = "Finger their pussy through the portal fleshlight."
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_HAND)
-	target_required_parts = list(ORGAN_SLOT_VAGINA = REQUIRE_GENITAL_EXPOSED)
+	target_required_parts = list(ORGAN_SLOT_VAGINA = REQUIRE_GENITAL_ANY)
 	cum_genital = list(CLIMAX_POSITION_TARGET = CLIMAX_VAGINA)
 	cum_target = list(CLIMAX_POSITION_TARGET = null)
 	message = list(
@@ -195,7 +195,7 @@
 	name = "Portal Fingering (Anus)"
 	description = "Finger their ass through the portal fleshlight."
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_HAND)
-	target_required_parts = list(ORGAN_SLOT_ANUS = REQUIRE_GENITAL_EXPOSED)
+	target_required_parts = list(ORGAN_SLOT_ANUS = REQUIRE_GENITAL_ANY)
 	cum_genital = list(CLIMAX_POSITION_TARGET = CLIMAX_BOTH)
 	cum_target = list(CLIMAX_POSITION_TARGET = null)
 	message = list(
@@ -341,7 +341,7 @@
 	name = "Portal Fingering (Urethra)"
 	description = "Finger their urethra through the portal dildo."
 	interaction_requires = list(INTERACTION_REQUIRE_SELF_HAND)
-	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
+	target_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_ANY)
 	cum_genital = list(CLIMAX_POSITION_TARGET = CLIMAX_PENIS)
 	cum_target = list(CLIMAX_POSITION_TARGET = null)
 	message = list(
