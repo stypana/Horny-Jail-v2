@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
@@ -21,8 +21,8 @@ type RoomData = {
   name: string;
   room_number: number;
   icon: string;
-  bluespace_box?: number;
-  id_card: number;
+  bluespace_box: boolean;
+  id_card: string;
 };
 
 const AVAILABLE_ICONS = [
@@ -44,11 +44,11 @@ const AVAILABLE_ICONS = [
 
 export const HilbertsHotelRoomControl = (props) => {
   const { act, data } = useBackend<RoomData>();
-  const [iconPickerOpen, setIconPickerOpen] = useLocalState(
+  const [iconPickerOpen, setIconPickerOpen] = useSharedState(
     'iconPicker',
     false,
   );
-  const [departureModalOpen, setDepartureModalOpen] = useLocalState(
+  const [departureModalOpen, setDepartureModalOpen] = useSharedState(
     'departure',
     false,
   );
@@ -188,7 +188,7 @@ export const HilbertsHotelRoomControl = (props) => {
                 padding: '2px 5px',
               }}
             >
-              {data.room_number || '69'}
+              {data.room_number || 'Err'}
             </Stack.Item>
             <Stack vertical>
               <Stack.Item
@@ -330,7 +330,7 @@ export const HilbertsHotelRoomControl = (props) => {
               style={{
                 width: '100%',
                 height: 'fit-content',
-                padding: '2px 2px',
+                padding: '5px 5px',
                 backgroundColor: 'rgb(36, 36, 36)',
               }}
             >
@@ -338,10 +338,12 @@ export const HilbertsHotelRoomControl = (props) => {
                 <Button
                   fluid
                   icon="eject"
-                  onClick={() => act('eject_id')}
+                  onClick={() => {
+                    act('eject_id');
+                  }}
                   lineHeight="2"
                 >
-                  test
+                  {data.id_card}
                 </Button>
               ) : (
                 <i
@@ -363,14 +365,28 @@ export const HilbertsHotelRoomControl = (props) => {
                 backgroundColor: 'rgb(36, 36, 36)',
               }}
             >
-              <Button
-                fluid
-                icon="eject"
-                onClick={() => act('eject_id')}
-                lineHeight="2"
-              >
-                Bluespace Storage
-              </Button>
+              {data.bluespace_box ? (
+                <Button
+                  fluid
+                  icon="eject"
+                  onClick={() => {
+                    act('eject_box');
+                  }}
+                  lineHeight="2"
+                >
+                  Eject storage
+                </Button>
+              ) : (
+                <i
+                  style={{
+                    lineHeight: '2',
+                    marginLeft: '4px',
+                    color: 'rgb(128, 128, 128)',
+                  }}
+                >
+                  Insert the storage container here.
+                </i>
+              )}
             </Stack.Item>
             <Stack.Item>
               <Button

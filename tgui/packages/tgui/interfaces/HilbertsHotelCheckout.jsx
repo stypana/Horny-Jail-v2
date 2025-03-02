@@ -9,6 +9,7 @@ import {
   Icon,
   Table,
   NoticeBox,
+  Stack,
 } from '../components';
 import { Window } from '../layouts';
 
@@ -130,6 +131,9 @@ const OpenRooms = ({ data, act, selected_template }) => {
                   </Box>
                 </Box>
               </Table.Cell>
+              <Table.Cell>
+                <Icon name={room.icon || 'door-open'} />
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table>
@@ -148,8 +152,8 @@ const RoomCheckIn = ({
   const { current_room = 1, selected_template = 'Standard' } = data;
   return (
     <Section title="Room Check-In">
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <div style={{ flexGrow: 1, maxWidth: 600 }}>
+      <Stack>
+        <Stack.Item grow>
           <Tabs>
             <Tabs.Tab
               key={0}
@@ -200,10 +204,9 @@ const RoomCheckIn = ({
               <Icon name="heart" /> Special
             </Tabs.Tab>
           </Tabs>
-          <Box mt={2}>{tabContent[selectedTab]}</Box>
-        </div>
-
-        <div style={{ width: '100px' }}>
+          <Box mt={1}>{tabContent[selectedTab]}</Box>
+        </Stack.Item>
+        <Stack.Item width="120px">
           <NumberInput
             width="100%"
             minValue={1}
@@ -237,8 +240,8 @@ const RoomCheckIn = ({
             <Icon name="right-to-bracket" />
             Check-in
           </Button.Confirm>
-        </div>
-      </div>
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };
@@ -305,7 +308,6 @@ const RoomsTab = (props) => {
     (room) => room.category?.toLowerCase() === targetCategory,
   );
 
-  // Иконки для категорий
   const categoryIcons = {
     apartment: 'building',
     beach: 'umbrella-beach',
@@ -323,7 +325,7 @@ const RoomsTab = (props) => {
         width: '100%',
       }}
     >
-      <Table width="95%">
+      <Table width="100%">
         {filteredRooms.length === 0 && (
           <NoticeBox>No {category} rooms found!</NoticeBox>
         )}

@@ -848,9 +848,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 					"number" = room_number,
 					"name" = room["template_name"] || "Unknown Room",
 					"occupants" = main_sphere.generate_occupant_list(room_number),
-					"description" = room["description"]
+					"description" = room["description"],
+					"icon" = room["icon"] || "door-open"
 				))
-		to_chat(world, "DEBUG: Active rooms: [data["active_rooms"]]")
 		data["conservated_rooms"] = list()
 		for(var/room_number in main_sphere.conservated_rooms)
 			var/list/room = main_sphere.conservated_rooms[room_number]

@@ -5,12 +5,44 @@
 	icon_state = "box"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	foldable_result = null
+	w_class = WEIGHT_CLASS_BULKY
+	// The controller this box was initialized at
+	var/datum/weakref/origin_controller
+	// The hotel room area
+	var/area/creation_area
+	// If the box was sent to the station (required to ignore area checks)
+	var/successfully_sent = FALSE
+
+/obj/item/storage/box/bluespace/proc/return_to_station()
+	// Shrinking the box back so it wouldn't get abused
+	atom_storage.max_slots = 7
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_total_storage = WEIGHT_CLASS_SMALL * 7
+	desc += span_info("There's a red \"BLUESPACE-REACTIVE. HANDLE WITH CARE.\" sticker on it.")
 
 /obj/item/storage/box/bluespace/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = INFINITY
 	atom_storage.max_total_storage = INFINITY
 	atom_storage.max_slots = INFINITY
+	creation_area = get_area(src)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/storage/box/bluespace/process()
+	if(!creation_area)
+		return
+
+	// The INPUT box should NOT exist outside of the hotel room in any scenario, since it's gonna keep it's perks then
+	var/area/current_area = get_area(src)
+	if(current_area != creation_area)
+		var/obj/machinery/room_controller/controller = origin_controller?.resolve()
+		do_sparks(5, TRUE, src)
+		if(controller)
+			forceMove(controller)
+			controller.bluespace_box = src
+			controller.update_appearance()
+		else
+			qdel(src)
 
 /obj/machinery/room_controller
 	name = "Hilbert's Hotel Room Controller"
@@ -32,7 +64,7 @@
 
 /obj/machinery/room_controller/examine(mob/user)
 	. = ..()
-	. += span_info("A large number reads out on the screen: [room_number].")
+	. += span_info("The screen displays [room_number? "the word \"Error\". Nothing else." : "some small text and a large number [room_number]."]")
 	. += span_info("There is an old tag on the back of the device, scribbled all around it. 'Last Serviced: 3025-02-27'.")
 
 /obj/machinery/room_controller/Initialize()
@@ -42,6 +74,8 @@
 		to_chat(world, span_warning("Hilbert's Hotel Room Controller failed to locate the main sphere!"))
 		return INITIALIZE_HINT_QDEL
 	bluespace_box = new /obj/item/storage/box/bluespace(src)
+	bluespace_box.origin_controller = WEAKREF(src)
+	inserted_id = null
 
 /obj/machinery/room_controller/update_overlays()
 	. = ..()
@@ -72,7 +106,7 @@
 			x_offset += 4
 	. += emissive_appearance(icon, "screen_dim", src)
 	if(bluespace_box)
-		. += mutable_appearance(icon, "box_inserted", src)
+		. += mutable_appearance(icon, "box_inserted")
 
 /obj/machinery/room_controller/interact(mob/user)
 	. = ..()
@@ -87,6 +121,10 @@
 /obj/machinery/room_controller/ui_data(mob/user)
 	var/list/data = list()
 
+	var/obj/item/card/id/this_id = inserted_id
+	data["id_card"] = this_id?.registered_name
+	data["bluespace_box"] = !isnull(bluespace_box)
+
 	if(!room_number || !main_sphere?.room_data["[room_number]"])
 		return data
 
@@ -98,8 +136,6 @@
 	data["room_description"] = current_room_data["description"]
 	data["name"] = current_room_data["name"]
 	data["icon"] = current_room_data["icon"]
-	data["bluespace_box"] = bluespace_box
-	data["id_card"] = inserted_id
 
 	return data
 
@@ -108,46 +144,57 @@
 	if(.)
 		return
 
+	switch(action)
+		if("eject_id")
+			to_chat(world, "Debug - Attempting to eject ID: [inserted_id]")
+			if(inserted_id)
+				eject_id(inserted_id, usr)
+				return TRUE
+		if("eject_box")
+			if(bluespace_box)
+				bluespace_box.forceMove(drop_location())
+				bluespace_box = null
+				update_appearance()
+				return TRUE
+
 	if(!room_number || !main_sphere?.room_data["[room_number]"])
 		return
 
 	var/list/room_data = main_sphere.room_data["[room_number]"]
-
 	switch(action)
 		if("toggle_visibility")
 			room_data["visibility"] = !room_data["visibility"]
-			. = TRUE
+			return TRUE
 		if("toggle_status")
 			room_data["status"] = !room_data["status"]
-			. = TRUE
+			return TRUE
 		if("toggle_privacy")
 			room_data["privacy"] = !room_data["privacy"]
-			. = TRUE
+			return TRUE
 		if("update_description")
 			room_data["description"] = params["description"]
-			. = TRUE
+			return TRUE
 		if("confirm_description")
 			room_data["description"] = params["description"]
-			. = TRUE
+			return TRUE
 		if("set_icon")
 			room_data["icon"] = params["icon"]
-			. = TRUE
-		if("eject_box")
-			if(bluespace_box)
-				bluespace_box.forceMove(drop_location())
-				. = TRUE
-		if("eject_id")
-			if(inserted_id)
-				var/obj/item/card/id/id = inserted_id
-				id.forceMove(drop_location())
-				if(usr.CanReach(src))
-					usr.put_in_hands(id)
-				inserted_id = null
-				update_appearance()
-				. = TRUE
+			return TRUE
 
 /obj/machinery/room_controller/emp_act(severity)
 	return
+
+/obj/machinery/room_controller/proc/eject_id(id, user)
+	to_chat(world, "Debug - Ejecting ID: [id]")
+	var/obj/item/card/id/this_id = id
+	var/mob/living/carbon/human/this_humanoid = user
+	this_id.forceMove(drop_location())
+	if(this_humanoid.CanReach(this_id))
+		this_humanoid.put_in_hands(this_id)
+	inserted_id = null
+	update_appearance()
+	SStgui.update_uis(src)
+	return TRUE
 
 /obj/machinery/room_controller/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/card/id))
@@ -157,7 +204,10 @@
 		if(!user.transferItemToLoc(item, src))
 			return
 		inserted_id = item
+		to_chat(user, span_notice("DEBUG: ID inserted, value: [inserted_id]"))
 		playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, TRUE)
+		update_appearance()
+		SStgui.update_uis(src)
 		return TRUE
 	if(istype(item, /obj/item/storage/box/bluespace))
 		if(bluespace_box)
@@ -169,9 +219,10 @@
 		return TRUE
 	return ..()
 
-/obj/machinery/room_controller/click_alt(mob/user)
+/obj/machinery/room_controller/click_ctrl(mob/user)
+	. = ..()
 	if(inserted_id)
-		if(!user.transferItemToLoc(inserted_id, src))
+		if(!eject_id(inserted_id, usr))
 			return
 		playsound(src, 'sound/machines/terminal/terminal_eject.ogg', 50, TRUE)
 		return TRUE
