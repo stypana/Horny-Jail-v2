@@ -12,13 +12,33 @@
 	var/area/creation_area
 	// If the box was sent to the station (required to ignore area checks)
 	var/successfully_sent = FALSE
+	// The name of the person who sent the package to the station
+	var/assigned_name = "Unknown"
+	// List of roles that are disallowed to use the "Depart" feature
+	var/list/disallowed_roles = list(
+		/datum/job/ghostcafe,
+		/datum/job/hotel_staff,
+	)
 
 /obj/item/storage/box/bluespace/proc/return_to_station()
-	// Shrinking the box back so it wouldn't get abused
-	atom_storage.max_slots = 7
+	atom_storage.max_slots = 7 // shrinking the box back so it wouldn't get abused
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = WEIGHT_CLASS_SMALL * 7
+
+	name = "bluespace box ([assigned_name])"
 	desc += span_info("There's a red \"BLUESPACE-REACTIVE. HANDLE WITH CARE.\" sticker on it.")
+
+	resistance_flags = FLAMMABLE // no more plot armour
+
+/obj/item/storage/box/bluespace/attack_self(mob/user)
+	if(!successfully_sent)
+		return ..()
+	else if(contents)
+		return ..()
+	else
+		visible_message("[src] begins to violently shake, shrinking in size!")
+		src.Shake(3, 3, 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(qdel), src), 3 SECONDS)
 
 /obj/item/storage/box/bluespace/Initialize(mapload)
 	. = ..()
@@ -108,6 +128,10 @@
 	if(bluespace_box)
 		. += mutable_appearance(icon, "box_inserted")
 
+/obj/machinery/room_controller/proc/can_depart(id)
+	var/obj/item/card/id/this_id = id
+
+
 /obj/machinery/room_controller/interact(mob/user)
 	. = ..()
 	ui_interact(user)
@@ -146,7 +170,6 @@
 
 	switch(action)
 		if("eject_id")
-			to_chat(world, "Debug - Attempting to eject ID: [inserted_id]")
 			if(inserted_id)
 				eject_id(inserted_id, usr)
 				return TRUE
@@ -185,7 +208,6 @@
 	return
 
 /obj/machinery/room_controller/proc/eject_id(id, user)
-	to_chat(world, "Debug - Ejecting ID: [id]")
 	var/obj/item/card/id/this_id = id
 	var/mob/living/carbon/human/this_humanoid = user
 	this_id.forceMove(drop_location())
@@ -227,3 +249,23 @@
 		playsound(src, 'sound/machines/terminal/terminal_eject.ogg', 50, TRUE)
 		return TRUE
 	return ..()
+
+/obj/machinery/room_controller/directional/north
+	pixel_x = 0
+	pixel_y = 28
+	dir = NORTH
+
+/obj/machinery/room_controller/directional/south
+	pixel_x = 0
+	pixel_y = -28
+	dir = SOUTH
+
+/obj/machinery/room_controller/directional/east
+	pixel_x = 28
+	pixel_y = 0
+	dir = EAST
+
+/obj/machinery/room_controller/directional/west
+	pixel_x = -28
+	pixel_y = 0
+	dir = WEST
