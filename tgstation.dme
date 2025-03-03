@@ -8489,8 +8489,6 @@
 #include "modular_skyrat\modules\sec_haul\code\technode\conversion_kit.dm"
 #include "modular_skyrat\modules\sec_haul\code\technode\sec_research.dm"
 #include "modular_skyrat\modules\self_actualization_device\code\self_actualization_device.dm"
-#include "modular_skyrat\modules\serenity2\space.dm"
-#include "modular_skyrat\modules\serenity2\serenity2\shuttles.dm"
 #include "modular_skyrat\modules\server_overflow\code\chat_link.dm"
 #include "modular_skyrat\modules\server_overflow\code\client_procs.dm"
 #include "modular_skyrat\modules\server_overflow\code\server_connect_panel.dm"
@@ -9868,4 +9866,6 @@
 #include "modular_zzplurt\code\modules\vending\lustwish.dm"
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
+#include "modular_zzplurt\modules\serenity2\space.dm"
+#include "modular_zzplurt\modules\serenity2\serenity2\shuttles.dm"
 // END_INCLUDE
