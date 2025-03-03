@@ -61,7 +61,7 @@
 	/// How long is the shared emote cooldown triggered by this emote?
 	var/general_emote_audio_cooldown = 2 SECONDS
 	/// How long is the specific emote cooldown triggered by this emote?
-	var/specific_emote_audio_cooldown = 5 SECONDS
+	var/specific_emote_audio_cooldown = 2 SECONDS
 	/// Does this emote's sound ignore walls?
 	var/sound_wall_ignore = FALSE
 
