@@ -156,17 +156,17 @@ GLOBAL_VAR(main_hilbert_sphere)
 /// Attempts to join an existing active room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
 /obj/item/hilbertshotel/proc/try_join_active_room(room_number, mob/user)
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-	if(main_sphere?.room_data["[room_number]"])
-		var/datum/turf_reservation/roomReservation = main_sphere.room_data["[room_number]"]["reservation"]
-		do_sparks(3, FALSE, get_turf(user))
-		var/turf/room_bottom_left = roomReservation.bottom_left_turfs[1]
-		user.forceMove(locate(
-			room_bottom_left.x + hotel_room_template.landingZoneRelativeX,
-			room_bottom_left.y + hotel_room_template.landingZoneRelativeY,
-			room_bottom_left.z,
-		))
-		return TRUE
-	return FALSE
+	if(!main_sphere?.room_data["[room_number]"])
+		return FALSE
+	var/datum/turf_reservation/roomReservation = main_sphere.room_data["[room_number]"]["reservation"]
+	do_sparks(3, FALSE, get_turf(user))
+	var/turf/room_bottom_left = roomReservation.bottom_left_turfs[1]
+	user.forceMove(locate(
+		room_bottom_left.x + hotel_room_template.landingZoneRelativeX,
+		room_bottom_left.y + hotel_room_template.landingZoneRelativeY,
+		room_bottom_left.z,
+	))
+	return TRUE
 
 /// Attempts to recreate and join an existing stored room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
 /obj/item/hilbertshotel/proc/try_join_conservated_room(room_number, mob/user)
@@ -176,21 +176,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
 	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
+	hotel_room_template_empty.load(room_turf)
 
-	// Получаем имя шаблона из сохраненных данных
-	var/template_name = main_sphere.conservated_rooms["[room_number]"]["template_name"]
-	var/datum/map_template/load_template
-
-	// Выбираем правильный шаблон на основе сохраненного имени
-	if(template_name in hotel_map_list)
-		load_template = hotel_map_list[template_name]
-	else
-		load_template = hotel_room_template_empty
-
-	// Загружаем правильный базовый шаблон
-	load_template.load(room_turf)
-
-	// Восстанавливаем содержимое комнаты
 	var/turfNumber = 1
 	for(var/x in 0 to hotel_room_template.width-1)
 		for(var/y in 0 to hotel_room_template.height-1)
@@ -203,7 +190,6 @@ GLOBAL_VAR(main_hilbert_sphere)
 					))
 			turfNumber++
 
-	// Очищаем хранилище
 	for(var/obj/item/abstracthotelstorage/this_item in storageTurf)
 		if((this_item.room_number == room_number) && (this_item.parentSphere == src))
 			qdel(this_item)
@@ -216,7 +202,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 		"visibility" = ROOM_VISIBLE,
 		"privacy" = ROOM_GUESTS_HIDDEN,
 		"description" = null,
-		"template_name" = template_name
+		"template_name" = main_sphere.conservated_rooms["[room_number]"]["template_name"]
 	)
 
 	link_turfs(roomReservation, room_number)
