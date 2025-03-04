@@ -1,15 +1,3 @@
-/datum/map_template/shuttle/ruin/serenity2_cargo
-	prefix = "_maps/shuttles/zzplurt/"
-	suffix = "luxury_splurt_cargo"
-	description = "A luxurious NanoTrasen space exploration vessel."
-	name = "'Serenity II' - Cargo"
-
-/datum/map_template/shuttle/ruin/serenity2_dorm
-	prefix = "_maps/shuttles/zzplurt/"
-	suffix = "luxury_splurt_dorm"
-	description = "A luxurious NanoTrasen self-exploration vessel."
-	name = "'Serenity II' - Dorm"
-
 /obj/machinery/computer/shuttle/serenity2
 	name = "FSC 'Serenity II' Console"
 	desc = "Used to control the FSC 'Serenity II'."
@@ -27,10 +15,6 @@
 	view_range = 2
 	x_offset = 5
 	y_offset = 1
-
-/obj/item/circuitboard/computer/serenity2
-	name = "FSC 'Serenity II' Control Console (Computer Board)"
-	build_path = /obj/machinery/computer/shuttle/serenity2
 
 /area/shuttle/serenity2
 	name = "FSC 'Serenity II'"

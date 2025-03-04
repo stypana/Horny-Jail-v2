@@ -13,7 +13,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	color = "#e9dfec";
-	id = "lux_bedroom_shutters"
+	id = "lux_bedroom_shutters_d"
 	},
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "1,12";
@@ -98,7 +98,7 @@
 "dO" = (
 /obj/machinery/door/airlock/hatch{
 	name = "External Airlock";
-	id_tag = "lux_external_airlock_2"
+	id_tag = "lux_external_airlock_2_d"
 	},
 /obj/structure/fans/tiny/forcefield{
 	dir = 4
@@ -250,7 +250,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	color = "#e9dfec";
-	id = "lux_kitchen_shutters"
+	id = "lux_kitchen_shutters_d"
 	},
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "15,14"
@@ -265,7 +265,7 @@
 	specialfunctions = 4;
 	pixel_x = 0;
 	pixel_y = 26;
-	id = "lux_external_airlock_1"
+	id = "lux_external_airlock_1_d"
 	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/shuttle/serenity2/midship)
@@ -296,7 +296,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 4;
 	color = "#e9dfec";
-	id = "lux_shower_shutters"
+	id = "lux_shower_shutters_d"
 	},
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "15,14";
@@ -357,7 +357,7 @@
 "ks" = (
 /obj/machinery/door/airlock/hatch{
 	name = "External Airlock";
-	id_tag = "lux_external_airlock_1"
+	id_tag = "lux_external_airlock_1_d"
 	},
 /obj/structure/fans/tiny/forcefield{
 	dir = 8
@@ -685,7 +685,7 @@
 	name = "Shutters Control";
 	pixel_x = -24;
 	pixel_y = -7;
-	id = "lux_bedroom_shutters"
+	id = "lux_bedroom_shutters_d"
 	},
 /obj/machinery/light_switch/directional/south{
 	pixel_x = -23;
@@ -719,7 +719,7 @@
 	specialfunctions = 4;
 	pixel_x = 0;
 	pixel_y = 26;
-	id = "lux_external_airlock_2"
+	id = "lux_external_airlock_2_d"
 	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/shuttle/serenity2/midship)
@@ -735,7 +735,7 @@
 	specialfunctions = 4;
 	pixel_x = -25;
 	pixel_y = 9;
-	id = "lux_toilets_airlock"
+	id = "lux_toilets_airlock_d"
 	},
 /obj/machinery/light_switch/directional/south{
 	pixel_x = -24;
@@ -999,8 +999,10 @@
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
 	dir = 8
 	},
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Cargo Bay"
+/obj/machinery/door/airlock/freezer{
+	color = "#e9dfec";
+	name = "Bathroom";
+	id_tag = "lux_shower_airlock_d"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/serenity2/midship)
@@ -1024,7 +1026,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 4;
 	color = "#e9dfec";
-	id = "lux_shower_shutters"
+	id = "lux_shower_shutters_d"
 	},
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "15,11";
@@ -1097,13 +1099,13 @@
 	specialfunctions = 4;
 	pixel_x = -8;
 	pixel_y = -22;
-	id = "lux_shower_airlock"
+	id = "lux_shower_airlock_d"
 	},
 /obj/machinery/button/door/directional/west{
 	name = "Shutters Control";
 	pixel_x = -8;
 	pixel_y = -32;
-	id = "lux_shower_shutters"
+	id = "lux_shower_shutters_d"
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 6
@@ -1592,7 +1594,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	color = "#e9dfec";
-	id = "lux_kitchen_shutters"
+	id = "lux_kitchen_shutters_d"
 	},
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "15,11"
@@ -1606,7 +1608,7 @@
 	name = "Shutters Control";
 	pixel_x = -9;
 	pixel_y = -23;
-	id = "lux_kitchen_shutters"
+	id = "lux_kitchen_shutters_d"
 	},
 /obj/structure/table/reinforced/plastitaniumglass{
 	pixel_x = 2;

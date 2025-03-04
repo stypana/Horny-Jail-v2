@@ -1592,7 +1592,8 @@
 	},
 /obj/machinery/space_heater/wall_mounted/directional/east{
 	pixel_x = 6;
-	pixel_y = -31
+	pixel_y = -31;
+	cell = /obj/item/stock_parts/power_store/cell/high
 	},
 /turf/open/floor/iron/white/smooth_corner{
 	dir = 4
