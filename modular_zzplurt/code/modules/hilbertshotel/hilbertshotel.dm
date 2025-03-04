@@ -195,7 +195,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 		if((this_item.room_number == room_number) && (this_item.parentSphere == src))
 			qdel(this_item)
 
-	// Обновляем данные комнаты
+	// Updating room data
 	main_sphere.conservated_rooms -= "[room_number]"
 	main_sphere.room_data[room_number] = list(
 		"reservation" = roomReservation,
