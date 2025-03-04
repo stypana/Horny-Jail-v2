@@ -31,7 +31,7 @@
 	sound = 'modular_zzplurt/sound/voice/whine.ogg'
 
 /datum/emote/living/meow4
-	key = "meow"
+	key = "meow4"
 	key_third_person = "meows"
 	message = "meows!"
 	emote_type = EMOTE_AUDIBLE
