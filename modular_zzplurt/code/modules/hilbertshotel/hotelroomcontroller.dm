@@ -91,7 +91,7 @@
 	. = ..()
 	main_sphere = GLOB.main_hilbert_sphere
 	if(!main_sphere)
-		to_chat(world, span_warning("DEBUG: Hilbert's Hotel Room Controller failed to locate the main sphere!"))
+		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] at room [room_number] failed to locate the main hotel sphere!")
 		return INITIALIZE_HINT_QDEL
 	to_chat(world, "DEBUG: Hilbert's Hotel Room Controller initialized. Main sphere located.")
 	bluespace_box = new /obj/item/storage/box/bluespace(src)

@@ -93,6 +93,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 		lore_room_spawned = TRUE
 
 /obj/item/hilbertshotel/Destroy()
+	if(GLOB.main_hilbert_sphere == src)
+		GLOB.main_hilbert_sphere = null
+		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] was destroyed when being the main sphere!")
 	eject_all_rooms()
 	return ..()
 
@@ -164,18 +167,25 @@ GLOBAL_VAR(main_hilbert_sphere)
 /// Attempts to recreate and join an existing stored room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
 /obj/item/hilbertshotel/proc/try_join_conservated_room(room_number, mob/user)
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-	if(!main_sphere?.conservated_rooms[room_number])
-		to_chat(world, "Conservated room not found! Returning false...")
+	if(!main_sphere?.conservated_rooms["[room_number]"])
 		return FALSE
 
 	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
 	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
 	hotel_room_template_empty.load(room_turf)
 
-	var/list/room_data = main_sphere.conservated_rooms?[room_number]
+	var/list/room_data = main_sphere.conservated_rooms["[room_number]"]
 	if(!room_data)
 		return FALSE
+
+	// Добавим отладочный вывод
+	to_chat(world, "Room data: [json_encode(room_data)]")
+
 	var/list/storage = room_data["storage"]
+	if(!storage)
+		to_chat(world, "Storage data not found!")
+		return FALSE
+
 	var/turfNumber = 1
 	for(var/x in 0 to hotel_room_template.width-1)
 		for(var/y in 0 to hotel_room_template.height-1)
@@ -270,13 +280,13 @@ GLOBAL_VAR(main_hilbert_sphere)
 		return
 
 	currentArea.name = "Hilbert's Hotel Room [currentroom_number]"
-	currentArea.parentSphere = src
+	currentArea.parentSphere = GLOB.main_hilbert_sphere
 	currentArea.storageTurf = storageTurf
 	currentArea.room_number = currentroom_number
 	currentArea.reservation = currentReservation
 
 	for(var/turf/closed/indestructible/hoteldoor/door in currentReservation.reserved_turfs)
-		door.parentSphere = src
+		door.parentSphere = GLOB.main_hilbert_sphere
 		door.desc = "The door to this hotel room. \
 			The placard reads 'Room [currentroom_number]'. \
 			Strangely, this door doesn't even seem openable. \
@@ -288,7 +298,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 			controller.room_number = currentroom_number
 			controller.update_appearance()
 	for(var/turf/open/space/bluespace/BSturf in currentReservation.reserved_turfs)
-		BSturf.parentSphere = src
+		BSturf.parentSphere = GLOB.main_hilbert_sphere
 
 /obj/item/hilbertshotel/proc/generate_occupant_list(room_number)
 	var/list/occupants = list()
@@ -612,6 +622,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 		)
 		main_sphere.room_data -= "[room_number]"
 	qdel(reservation)
+	to_chat(world, "DEBUG: Room [room_number] conservated")
 
 /area/misc/hilbertshotelstorage
 	name = "Hilbert's Hotel Storage Room"
