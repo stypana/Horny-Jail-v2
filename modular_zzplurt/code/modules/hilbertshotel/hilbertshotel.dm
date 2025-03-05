@@ -95,7 +95,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 /obj/item/hilbertshotel/Destroy()
 	if(GLOB.main_hilbert_sphere == src)
 		GLOB.main_hilbert_sphere = null
-		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] was destroyed when being the main sphere!")
+		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] was destroyed while being the main sphere!")
 	eject_all_rooms()
 	return ..()
 
@@ -112,7 +112,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
 
 	if(main_sphere?.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
-		to_chat(world, "Conservated room found! Trying to join...")
+		to_chat(world, "DEBUG: Conservated room found! Trying to join...")
 		to_chat(target, span_notice(pick(vanity_strings))) // We're lucky - a conservated room exists which means we don't have to check for other stuff here
 		if(try_join_conservated_room(room_number, target))
 			return
@@ -146,7 +146,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 				to_chat(user, span_warning("You can't seem to drop \the [src]! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
 	else
 		to_chat(target, span_notice(pick(vanity_strings)))
-	to_chat(world, "Sending to new room...")
+	to_chat(world, "DEBUG: Sending to new room...")
 	send_to_new_room(room_number, target, template)
 
 /// Attempts to join an existing active room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
@@ -178,32 +178,29 @@ GLOBAL_VAR(main_hilbert_sphere)
 	if(!room_data)
 		return FALSE
 
-	// Добавим отладочный вывод
-	to_chat(world, "Room data: [json_encode(room_data)]")
+	to_chat(world, "DEBUG: Room data: [json_encode(room_data)]")
 
 	var/list/storage = room_data["storage"]
 	if(!storage)
-		to_chat(world, "Storage data not found!")
+		to_chat(world, "DEBUG: Storage data not found!")
 		return FALSE
 
 	var/turfNumber = 1
 	for(var/x in 0 to hotel_room_template.width-1)
 		for(var/y in 0 to hotel_room_template.height-1)
-			for(var/atom/movable/A in storage[turfNumber])
-				if(istype(A.loc, /obj/item/abstracthotelstorage))
-					A.forceMove(locate(
-						room_turf.x + x,
-						room_turf.y + y,
-						room_turf.z,
-					))
+			var/turf/target_turf = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
+			var/list/stored_contents = storage["[turfNumber]"]
+			if(stored_contents)
+				for(var/atom/movable/A in stored_contents)
+					if(istype(A.loc, /obj/item/abstracthotelstorage))
+						A.forceMove(target_turf)
 			turfNumber++
 
 	for(var/obj/item/abstracthotelstorage/this_item in storageTurf)
 		if((this_item.room_number == room_number) && (this_item.parentSphere == src))
 			qdel(this_item)
 
-	// Updating room data
-	main_sphere.conservated_rooms -= room_number
+	main_sphere.conservated_rooms -= "[room_number]"
 	main_sphere.room_data["[room_number]"] = list(
 		"reservation" = roomReservation,
 		"room_preferences" = list(
@@ -219,7 +216,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 	link_turfs(roomReservation, room_number)
 	var/turf/closed/indestructible/hoteldoor/door = main_sphere.room_data["[room_number]"]["door_reference"]
-	to_chat(world, "Adding entry point for [user.ckey]")
+	to_chat(world, "DEBUG: Adding entry point for [user.ckey]")
 	door.entry_points[user.ckey] = src // adding the sphere to the entry points list
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
@@ -262,7 +259,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 	))
 	link_turfs(roomReservation, room_number)
 	var/turf/closed/indestructible/hoteldoor/door = main_sphere.room_data["[room_number]"]["door_reference"]
-	to_chat(world, "Adding entry point for [user.ckey]")
+	to_chat(world, "DEBUG: Adding entry point for [user.ckey]")
 	door.entry_points[user.ckey] = src // adding the sphere to the entry points list
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
@@ -451,12 +448,14 @@ GLOBAL_VAR(main_hilbert_sphere)
 		to_chat(user, span_warning("The door seems to be malfunctioning!"))
 		if(!tgui_alert(user, "Attention: the outside controller is malfunctioning. Hilbert's Hotel will not be responsible for any damage to your belongings or health. Are you sure you still want to leave?", "Exit", list("Yes", "No")) == "Yes")
 			return
-		destination = entry_points[user.ckey] // user's entry point
 	else if(!parentSphere)
 		to_chat(user, span_warning("The door seems to be malfunctioning and refuses to operate!"))
 		return
+	else
+		destination = entry_points[user.ckey] // user's entry point
 	if(HAS_TRAIT(user, TRAIT_IMMOBILIZED) || (get_dist(get_turf(src), get_turf(user)) > 1)) // no teleporting around if they're dead or moved away during the prompt
 		return
+	to_chat(world, "DEBUG: Moving [user] to [destination]")
 	user.forceMove(get_turf(destination))
 	do_sparks(3, FALSE, get_turf(user))
 
@@ -594,7 +593,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 	var/roomSize = \
 		((room_top_right.x - room_bottom_left.x) + 1) * \
 		((room_top_right.y - room_bottom_left.y) + 1)
-	var/storage[roomSize]
+	var/list/storage = list()
 	var/turfNumber = 1
 	var/obj/item/abstracthotelstorage/storageObj = new(storageTurf)
 	storageObj.room_number = room_number
@@ -603,13 +602,12 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 	for(var/x in 0 to parentSphere.hotel_room_template.width-1)
 		for(var/y in 0 to parentSphere.hotel_room_template.height-1)
-			var/list/turfContents = list()
+			storage["[turfNumber]"] = list()
 			for(var/atom/movable/A in locate(room_bottom_left.x + x, room_bottom_left.y + y, room_bottom_left.z))
 				if(ismob(A) && !isliving(A))
 					continue
-				turfContents += A
+				storage["[turfNumber]"] += A
 				A.forceMove(storageObj)
-			storage[turfNumber] = turfContents
 			turfNumber++
 
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
