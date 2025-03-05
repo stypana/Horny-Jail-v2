@@ -91,8 +91,9 @@
 	. = ..()
 	main_sphere = GLOB.main_hilbert_sphere
 	if(!main_sphere)
-		to_chat(world, span_warning("Hilbert's Hotel Room Controller failed to locate the main sphere!"))
+		to_chat(world, span_warning("DEBUG: Hilbert's Hotel Room Controller failed to locate the main sphere!"))
 		return INITIALIZE_HINT_QDEL
+	to_chat(world, "DEBUG: Hilbert's Hotel Room Controller initialized. Main sphere located.")
 	bluespace_box = new /obj/item/storage/box/bluespace(src)
 	bluespace_box.origin_controller = WEAKREF(src)
 	inserted_id = null
@@ -109,13 +110,10 @@
 		var/room_text = "[room_number]"
 		to_display = list()
 
-		to_display += room_text[1]
-		to_display += room_text[2]
-
+		for(var/digit in room_text)
+			to_display += digit
 		if(length(room_text) > 3)
-			to_display += "dot"
-		else if(length(room_text) == 3)
-			to_display += room_text[3]
+			to_display[3] = "dot"
 
 		var/x_offset = 9
 		for(var/digit in to_display)

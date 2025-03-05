@@ -107,26 +107,21 @@ GLOBAL_VAR(main_hilbert_sphere)
 		return
 
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-	// Checking for conservated rooms
-	if(main_sphere?.conservated_rooms["[room_number]"])
+
+	if(main_sphere?.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
 		to_chat(world, "Conservated room found! Trying to join...")
 		to_chat(target, span_notice(pick(vanity_strings))) // We're lucky - a conservated room exists which means we don't have to check for other stuff here
 		if(try_join_conservated_room(room_number, target))
 			return
 		return
-	// Checking for active rooms
-	else if(main_sphere?.room_data[room_number])
-		var/list/room = main_sphere.room_data[room_number]
+	else if(main_sphere?.room_data["[room_number]"]) // check 2 - active rooms
+		var/list/room = main_sphere.room_data["[room_number]"]
 		if(room["status"] == ROOM_CLOSED)
-			to_chat(target, span_warning("This room is currently closed and cannot be entered!"))
+			to_chat(target, span_warning("This room is occupied!"))
 			return
 		// Try to enter if room is open
 		if(try_join_active_room(room_number, target))
 			return
-	// Don't allow creating new room if it exists in any form. If we're here, that means that either the room with the same number is closed or somehow the conservated room with the same number is closed... yikes.
-	else if(main_sphere?.room_data[room_number] || main_sphere?.conservated_rooms[room_number])
-		to_chat(target, span_warning("This room number is already taken!"))
-		return
 	// Orb is not adjacent to the target. No teleporties.
 	if(!src.Adjacent(target))
 		to_chat(target, span_warning("You too far away from \the [src] to enter it!"))
@@ -154,9 +149,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 /// Attempts to join an existing active room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
 /obj/item/hilbertshotel/proc/try_join_active_room(room_number, mob/user)
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-	if(!main_sphere?.room_data[room_number])
+	if(!main_sphere?.room_data["[room_number]"])
 		return FALSE
-	var/datum/turf_reservation/roomReservation = main_sphere.room_data[room_number]["reservation"]
+	var/datum/turf_reservation/roomReservation = main_sphere.room_data["[room_number]"]["reservation"]
 	do_sparks(3, FALSE, get_turf(user))
 	var/turf/room_bottom_left = roomReservation.bottom_left_turfs[1]
 	user.forceMove(locate(
@@ -177,7 +172,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
 	hotel_room_template_empty.load(room_turf)
 
-	var/list/room_data = main_sphere.conservated_rooms[room_number]
+	var/list/room_data = main_sphere.conservated_rooms?[room_number]
+	if(!room_data)
+		return FALSE
 	var/list/storage = room_data["storage"]
 	var/turfNumber = 1
 	for(var/x in 0 to hotel_room_template.width-1)
@@ -196,8 +193,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 			qdel(this_item)
 
 	// Updating room data
-	main_sphere.conservated_rooms -= "[room_number]"
-	main_sphere.room_data[room_number] = list(
+	main_sphere.conservated_rooms -= room_number
+	main_sphere.room_data["[room_number]"] = list(
 		"reservation" = roomReservation,
 		"room_preferences" = list(
 			"status" = ROOM_CLOSED,
@@ -211,6 +208,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 	)
 
 	link_turfs(roomReservation, room_number)
+	var/turf/closed/indestructible/hoteldoor/door = main_sphere.room_data["[room_number]"]["door_reference"]
+	to_chat(world, "Adding entry point for [user.ckey]")
+	door.entry_points[user.ckey] = src // adding the sphere to the entry points list
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
 		room_turf.x + hotel_room_template.landingZoneRelativeX,
@@ -220,7 +220,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 	return TRUE
 
 /// Creates a new room. Loads the room template and sends the user there. Requires `room_number` and `chosen_room` to be set.
-/obj/item/hilbertshotel/proc/send_to_new_room(room_number, mob/user, chosen_room)
+/obj/item/hilbertshotel/proc/send_to_new_room(room_number, mob/user, template)
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
 	if(!main_sphere)
 		return
@@ -231,15 +231,14 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 	if(lore_room_spawned && room_number == GLOB.hhMysteryroom_number)
 		load_from = hotel_room_template_lore
-
-	if(chosen_room in hotel_map_list)
-		load_from = hotel_map_list[chosen_room]
+	else if(template in hotel_map_list)
+		load_from = hotel_map_list[template]
 	else
 		to_chat(user, span_warning("You are washed over by a wave of heat as the sphere violently wiggles. You wonder if you did something wrong..."))
 		return
 
 	load_from.load(bottom_left)
-	main_sphere.room_data[room_number] = list(
+	LAZYSET(main_sphere.room_data, "[room_number]", list(
 		"reservation" = roomReservation,
 		"room_preferences" = list(
 			"status" = ROOM_CLOSED,
@@ -247,11 +246,14 @@ GLOBAL_VAR(main_hilbert_sphere)
 			"privacy" = ROOM_GUESTS_HIDDEN,
 		),
 		"description" = null,
-		"name" = chosen_room,
+		"name" = template,
 		"door_reference" = null,
-		"icon" = "snowflake"
-	)
+		"icon" = "door-open"
+	))
 	link_turfs(roomReservation, room_number)
+	var/turf/closed/indestructible/hoteldoor/door = main_sphere.room_data["[room_number]"]["door_reference"]
+	to_chat(world, "Adding entry point for [user.ckey]")
+	door.entry_points[user.ckey] = src // adding the sphere to the entry points list
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
 		bottom_left.x + hotel_room_template.landingZoneRelativeX,
@@ -280,7 +282,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 			Strangely, this door doesn't even seem openable. \
 			The doorknob, however, seems to buzz with unusual energy...<br/>\
 			[span_info("Alt-Click to look through the peephole.")]"
-		main_sphere.room_data[currentroom_number]["door_reference"] = door // easier door referencing to keep track of entry points
+		main_sphere.room_data["[currentroom_number]"]["door_reference"] = door // easier door referencing to keep track of entry points
 	for(var/turf/T in currentReservation.reserved_turfs)
 		for(var/obj/machinery/room_controller/controller in T.contents)
 			controller.room_number = currentroom_number
@@ -290,8 +292,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /obj/item/hilbertshotel/proc/generate_occupant_list(room_number)
 	var/list/occupants = list()
-	if(room_data[room_number])
-		var/datum/turf_reservation/room = room_data[room_number]["reservation"]
+	if(room_data["[room_number]"])
+		var/datum/turf_reservation/room = room_data["[room_number]"]["reservation"]
 		var/turf/room_bottom_left = room.bottom_left_turfs[1]
 		for(var/i in 0 to hotel_room_template.width-1)
 			for(var/j in 0 to hotel_room_template.height-1)
@@ -428,18 +430,25 @@ GLOBAL_VAR(main_hilbert_sphere)
 	return CONTEXTUAL_SCREENTIP_SET
 
 /turf/closed/indestructible/hoteldoor/proc/promptExit(mob/living/user)
+	var/destination = parentSphere
 	if(!isliving(user))
 		return
 	if(!user.mind)
 		return
-	if(!parentSphere)
+	if(!tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "Exit", list("Leave", "Stay")) == "Leave")
+		return
+	if(!(user.ckey in entry_points)) // no valid entry point for this ckey - reverting to the parent sphere
+		to_chat(user, span_warning("The door seems to be malfunctioning!"))
+		if(!tgui_alert(user, "Attention: the outside controller is malfunctioning. Hilbert's Hotel will not be responsible for any damage to your belongings or health. Are you sure you still want to leave?", "Exit", list("Yes", "No")) == "Yes")
+			return
+		destination = entry_points[user.ckey] // user's entry point
+	else if(!parentSphere)
 		to_chat(user, span_warning("The door seems to be malfunctioning and refuses to operate!"))
 		return
-	if(tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "Exit", list("Leave", "Stay")) == "Leave")
-		if(HAS_TRAIT(user, TRAIT_IMMOBILIZED) || (get_dist(get_turf(src), get_turf(user)) > 1)) //no teleporting around if they're dead or moved away during the prompt.
-			return
-		user.forceMove(get_turf(parentSphere))
-		do_sparks(3, FALSE, get_turf(user))
+	if(HAS_TRAIT(user, TRAIT_IMMOBILIZED) || (get_dist(get_turf(src), get_turf(user)) > 1)) // no teleporting around if they're dead or moved away during the prompt
+		return
+	user.forceMove(get_turf(destination))
+	do_sparks(3, FALSE, get_turf(user))
 
 /turf/closed/indestructible/hoteldoor/attack_ghost(mob/dead/observer/user)
 	if(!isobserver(user) || !parentSphere)
@@ -594,7 +603,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 			turfNumber++
 
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-	var/room_name = main_sphere.room_data[room_number]["name"]
+	var/room_name = main_sphere.room_data["[room_number]"]["name"]
 
 	if(main_sphere)
 		main_sphere.conservated_rooms["[room_number]"] = list(
@@ -718,10 +727,6 @@ GLOBAL_VAR(main_hilbert_sphere)
 			var/template = user_data[usr.ckey]["template"]
 			var/room_number = user_data[usr.ckey]["room_number"]
 			if(!room_number || !(template in hotel_map_list))
-				return FALSE
-			var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-			if(main_sphere?.room_data[room_number])
-				to_chat(usr, span_warning("This room is already occupied!"))
 				return FALSE
 			prompt_check_in(usr, usr, room_number, template)
 			return TRUE
