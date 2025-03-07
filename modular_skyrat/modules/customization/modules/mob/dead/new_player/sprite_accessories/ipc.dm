@@ -220,7 +220,6 @@
 	icon_state = "human"
 	color_src = MUTANT_COLOR
 	dimorphic = TRUE
-	is_digi_compatible = TRUE
 
 /datum/sprite_accessory/synth_chassis/android
 	name = "Android Chassis"

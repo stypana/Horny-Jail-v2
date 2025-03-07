@@ -9866,4 +9866,5 @@
 #include "modular_zzplurt\code\modules\vending\lustwish.dm"
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
+#include "modular_zzplurt\master_files\customization\modules\mob\dead\new_player\sprite_accessories\ipc.dm"
 // END_INCLUDE
