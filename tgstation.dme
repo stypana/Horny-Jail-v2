@@ -9744,6 +9744,7 @@
 #include "modular_zzplurt\code\modules\mob\mob_defines.dm"
 #include "modular_zzplurt\code\modules\mob\mob_update_icons.dm"
 #include "modular_zzplurt\code\modules\mob\dead\new_player\new_player.dm"
+#include "modular_zzplurt\code\modules\mob\dead\new_player\sprite_accessories\ipc.dm"
 #include "modular_zzplurt\code\modules\mob\living\emote.dm"
 #include "modular_zzplurt\code\modules\mob\living\living.dm"
 #include "modular_zzplurt\code\modules\mob\living\living_defines.dm"
@@ -9866,5 +9867,4 @@
 #include "modular_zzplurt\code\modules\vending\lustwish.dm"
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
-#include "modular_zzplurt\master_files\customization\modules\mob\dead\new_player\sprite_accessories\ipc.dm"
 // END_INCLUDE
