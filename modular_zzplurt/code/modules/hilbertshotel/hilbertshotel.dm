@@ -16,6 +16,8 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 #define ROOM_GUESTS_VISIBLE TRUE
 #define ROOM_GUESTS_HIDDEN FALSE
 
+#define ONSTATION_OVERRIDE TRUE
+
 /obj/item/hilbertshotel
 	name = "Hilbert's Hotel"
 	desc = "A sphere of what appears to be an intricate network of bluespace. Observing it in detail seems to give you a headache as you try to comprehend the infinite amount of infinitesimally distinct points on its surface."
@@ -59,10 +61,25 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 // Links to the main sphere to have a common room dataset
 GLOBAL_VAR(main_hilbert_sphere)
 
+//   ___          _      ___
+//  | _ ) __ _ __(_)__  | _ \_ _ ___  __ ___
+//  | _ \/ _` (_-< / _| |  _/ '_/ _ \/ _(_-<
+//  |___/\__,_/__/_\__| |_| |_| \___/\__/__/
+//
+
 /obj/item/hilbertshotel/New()
 	. = ..()
 	if(!GLOB.main_hilbert_sphere)
 		GLOB.main_hilbert_sphere = src
+
+	if(!storageTurf) // setting up a storage for the room objects
+		if(!GLOB.hhStorageTurf)
+			var/datum/map_template/hilbertshotelstorage/storageTemp = new()
+			var/datum/turf_reservation/storageReservation = SSmapping.request_turf_block_reservation(3, 3)
+			var/turf/bottom_left = get_turf(storageReservation.bottom_left_turfs[1])
+			storageTemp.load(bottom_left)
+			GLOB.hhStorageTurf = locate(bottom_left.x + 1, bottom_left.y + 1, bottom_left.z)
+		storageTurf = GLOB.hhStorageTurf
 
 /obj/item/hilbertshotel/Initialize(mapload)
 	. = ..()
@@ -105,15 +122,23 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /// Runs all necessary checks before allowing a user to be moved to a room (or not). Requires `room_number` and `template` to be set.
 /obj/item/hilbertshotel/proc/prompt_check_in(mob/user, mob/target, room_number, template)
+	var/max_rooms = CONFIG_GET(number/hilbertshotel_max_rooms)
+	var/hilbertshotel_enabled = CONFIG_GET(flag/hilbertshotel_enabled)
+	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
+
+	if(!hilbertshotel_enabled)
+		to_chat(target, span_warning("Hilbert's Hotel is currently disabled!"))
+		return
+	if((length(main_sphere.room_data) + 1) >= max_rooms)
+		to_chat(target, span_warning("Hilbert's Hotel is currently at maximum capacity!"))
+		return
 	if(room_number > SHORT_REAL_LIMIT)
 		to_chat(target, span_warning("You have to check out the first [SHORT_REAL_LIMIT] rooms before you can go to a higher numbered one!"))
 		return
 
-	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-
 	if(main_sphere?.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
 		to_chat(world, "DEBUG: Conservated room found! Trying to join...")
-		to_chat(target, span_notice(pick(vanity_strings))) // We're lucky - a conservated room exists which means we don't have to check for other stuff here
+		to_chat(target, span_notice(pick(vanity_strings))) // we're lucky - a conservated room exists which means we don't have to check for other stuff here
 		if(try_join_conservated_room(room_number, target))
 			return
 		return
@@ -122,19 +147,10 @@ GLOBAL_VAR(main_hilbert_sphere)
 		if(room["status"] == ROOM_CLOSED)
 			to_chat(target, span_warning("This room is occupied!"))
 			return
-		// Try to enter if room is open
+		// try to enter if room is open
 		if(try_join_active_room(room_number, target))
 			return
-	// Orb is not adjacent to the target. No teleporties.
-	if(!src.Adjacent(target))
-		to_chat(target, span_warning("You too far away from \the [src] to enter it!"))
-		return
-	// If the target is incapacitated after selecting a room, they're not allowed to teleport.
-	if(target.incapacitated)
-		to_chat(target, span_warning("You aren't able to activate \the [src] anymore!"))
-		return
-
-	// Some vanity stuff I guess? Also kudos to the dev for HL reference lol
+	// some vanity stuff I guess? also kudos to the dev for HL reference lol
 	if(src.type == /obj/item/hilbertshotel)
 		if(!(get_atom_on_turf(src, /mob) == user))
 			to_chat(user, span_warning("\The [src] is no longer in your possession!"))
@@ -170,36 +186,48 @@ GLOBAL_VAR(main_hilbert_sphere)
 	if(!main_sphere?.conservated_rooms["[room_number]"])
 		return FALSE
 
-	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
-	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
-	hotel_room_template_empty.load(room_turf)
-
 	var/list/room_data = main_sphere.conservated_rooms["[room_number]"]
 	if(!room_data)
 		return FALSE
 
-	to_chat(world, "DEBUG: Room data: [json_encode(room_data)]")
-
 	var/list/storage = room_data["storage"]
 	if(!storage)
-		to_chat(world, "DEBUG: Storage data not found!")
 		return FALSE
 
+	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
+	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
+
+	var/template_name = room_data["template"]
+	var/datum/map_template/template_to_load = hotel_map_list[template_name]
+	template_to_load.load(room_turf)
+
+	// clearing default objects
+	for(var/x in 0 to hotel_room_template.width - 1)
+		for(var/y in 0 to hotel_room_template.height - 1)
+			var/turf/T = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
+			for(var/atom/movable/A in T)
+				if(ismob(A) && !isliving(A))
+					continue
+				if(istype(A, /obj/effect))
+					continue
+				QDEL_LIST(A.contents)
+				qdel(A)
+
+	// restoring saved objects
 	var/turfNumber = 1
 	for(var/x in 0 to hotel_room_template.width-1)
 		for(var/y in 0 to hotel_room_template.height-1)
 			var/turf/target_turf = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
-			var/list/stored_contents = storage["[turfNumber]"]
-			if(stored_contents)
-				for(var/atom/movable/A in stored_contents)
-					if(istype(A.loc, /obj/item/abstracthotelstorage))
-						A.forceMove(target_turf)
+			for(var/atom/movable/A in storage["[turfNumber]"])
+				A.forceMove(target_turf)
 			turfNumber++
 
+	// clearing the storage
 	for(var/obj/item/abstracthotelstorage/this_item in storageTurf)
-		if((this_item.room_number == room_number) && (this_item.parentSphere == src))
+		if((this_item.room_number == room_number))
 			qdel(this_item)
 
+	// updating the room data
 	main_sphere.conservated_rooms -= "[room_number]"
 	main_sphere.room_data["[room_number]"] = list(
 		"reservation" = roomReservation,
@@ -211,13 +239,13 @@ GLOBAL_VAR(main_hilbert_sphere)
 		"description" = null,
 		"name" = room_data["name"],
 		"door_reference" = room_turf,
-		"icon" = room_data["icon"] || "door-open"
+		"icon" = room_data["icon"] || "door-open",
+		"template" = template_name
 	)
 
 	link_turfs(roomReservation, room_number)
 	var/turf/closed/indestructible/hoteldoor/door = main_sphere.room_data["[room_number]"]["door_reference"]
-	to_chat(world, "DEBUG: Adding entry point for [user.ckey]")
-	door.entry_points[user.ckey] = src // adding the sphere to the entry points list
+	door.entry_points[user.ckey] = src
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
 		room_turf.x + hotel_room_template.landingZoneRelativeX,
@@ -233,10 +261,12 @@ GLOBAL_VAR(main_hilbert_sphere)
 		return
 
 	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
-	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
-	var/datum/map_template/load_from = hotel_room_template
+	var/mysteryRoom = GLOB.hhMysteryroom_number
 
-	if(lore_room_spawned && room_number == GLOB.hhMysteryroom_number)
+	var/datum/map_template/load_from = hotel_room_template
+	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
+
+	if(lore_room_spawned && room_number == mysteryRoom)
 		load_from = hotel_room_template_lore
 	else if(template in hotel_map_list)
 		load_from = hotel_map_list[template]
@@ -245,6 +275,13 @@ GLOBAL_VAR(main_hilbert_sphere)
 		return
 
 	load_from.load(bottom_left)
+
+	var/area/misc/hilbertshotel/current_area = get_area(locate(bottom_left.x, bottom_left.y, bottom_left.z))
+
+	for(var/obj/machinery/vending/this_vending in current_area)
+		this_vending.onstation = ONSTATION_OVERRIDE
+		this_vending.onstation_override = ONSTATION_OVERRIDE
+
 	LAZYSET(main_sphere.room_data, "[room_number]", list(
 		"reservation" = roomReservation,
 		"room_preferences" = list(
@@ -257,9 +294,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 		"door_reference" = null,
 		"icon" = "door-open"
 	))
+
 	link_turfs(roomReservation, room_number)
 	var/turf/closed/indestructible/hoteldoor/door = main_sphere.room_data["[room_number]"]["door_reference"]
-	to_chat(world, "DEBUG: Adding entry point for [user.ckey]")
 	door.entry_points[user.ckey] = src // adding the sphere to the entry points list
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
@@ -589,10 +626,6 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /area/misc/hilbertshotel/proc/conservate_room()
 	var/turf/room_bottom_left = reservation.bottom_left_turfs[1]
-	var/turf/room_top_right = reservation.top_right_turfs[1]
-	var/roomSize = \
-		((room_top_right.x - room_bottom_left.x) + 1) * \
-		((room_top_right.y - room_bottom_left.y) + 1)
 	var/list/storage = list()
 	var/turfNumber = 1
 	var/obj/item/abstracthotelstorage/storageObj = new(storageTurf)
@@ -600,27 +633,38 @@ GLOBAL_VAR(main_hilbert_sphere)
 	storageObj.parentSphere = parentSphere
 	storageObj.name = "Room [room_number] Storage"
 
-	for(var/x in 0 to parentSphere.hotel_room_template.width-1)
-		for(var/y in 0 to parentSphere.hotel_room_template.height-1)
-			storage["[turfNumber]"] = list()
-			for(var/atom/movable/A in locate(room_bottom_left.x + x, room_bottom_left.y + y, room_bottom_left.z))
-				if(ismob(A) && !isliving(A))
+	// saving room contents
+	for(var/x in 0 to parentSphere.hotel_room_template.width - 1)
+		for(var/y in 0 to parentSphere.hotel_room_template.height - 1)
+			var/turf/T = locate(room_bottom_left.x + x, room_bottom_left.y + y, room_bottom_left.z)
+			var/list/turfContents = list()
+
+			for(var/atom/movable/movable_atom in T.contents)
+				if(istype(movable_atom, /obj/effect))
 					continue
-				storage["[turfNumber]"] += A
-				A.forceMove(storageObj)
+				if(ismob(movable_atom) && !isliving(movable_atom) || !isturf(movable_atom.loc))
+					continue
+				turfContents += movable_atom
+				movable_atom.forceMove(storageObj)
+				if(istype(movable_atom, /obj/machinery/light))
+					to_chat(world, "DEBUG: [ADMIN_VERBOSEJMP(movable_atom)] saved to [movable_atom.loc] and referred to at [turfNumber]")
+
+			storage["[turfNumber]"] = turfContents
 			turfNumber++
 
 	var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-	var/room_name = main_sphere.room_data["[room_number]"]["name"]
+	var/room_name = main_sphere?.room_data["[room_number]"]["name"]
 
 	if(main_sphere)
 		main_sphere.conservated_rooms["[room_number]"] = list(
 			"storage" = storage,
-			"name" = room_name
+			"name" = room_name,
+			"template" = room_name
 		)
 		main_sphere.room_data -= "[room_number]"
+	else
+		message_admins("Attention: Unable to find main sphere while conserving room [room_number] at [ADMIN_VERBOSEJMP(src)]")
 	qdel(reservation)
-	to_chat(world, "DEBUG: Room [room_number] conservated")
 
 /area/misc/hilbertshotelstorage
 	name = "Hilbert's Hotel Storage Room"
