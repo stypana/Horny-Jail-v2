@@ -25,7 +25,7 @@
 
 	// Self-amputation ability from Autotomy genetic
 	// Define quirk action
-	var/datum/action/cooldown/spell/self_amputation/modularlimbs/quirk_action = new
+	var/datum/action/cooldown/spell/modularlimbs/quirk_action = new
 
 	// Grant quirk action
 	quirk_action.Grant(quirk_holder)
@@ -44,7 +44,7 @@
 	), TRAIT_MODULAR_LIMBS)
 
 	// Define quirk action
-	var/datum/action/cooldown/spell/self_amputation/modularlimbs/quirk_action = new
+	var/datum/action/cooldown/spell/modularlimbs/quirk_action = new
 
 	// Revoke quirk action
 	quirk_action.Remove(quirk_holder)
