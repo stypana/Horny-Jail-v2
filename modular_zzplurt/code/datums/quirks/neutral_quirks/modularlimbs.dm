@@ -6,7 +6,7 @@
 	value = 0
 	gain_text = span_notice("Your limbs feel like they could come off with a bit of effort.")
 	lose_text = span_notice("Your limbs feel more firmly attached.")
-	medical_record_text = "Patient has undergone an experimental ligament hook surgery."
+	medical_record_text = "Patient has detachable limbs."
 	mob_trait = TRAIT_MODULAR_LIMBS
 	icon = FA_ICON_PUZZLE_PIECE
 
@@ -53,7 +53,7 @@
 /datum/action/cooldown/spell/modularlimbs
 	// More descriptive text, with warning
 	name = "Eject a random limb"
-	desc = "Violently eject a random limb from your body. This will hurt."
+	desc = "Eject a random limb from your body."
 
 	// Default ability background
 	background_icon = 'icons/mob/actions/backgrounds.dmi'
