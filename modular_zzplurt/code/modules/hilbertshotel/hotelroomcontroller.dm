@@ -16,11 +16,6 @@
 	var/successfully_sent = FALSE
 	/// The name of the person who sent the package to the station
 	var/assigned_name = "Unknown"
-	/// List of roles that are disallowed to use the "Depart" feature
-	var/list/disallowed_roles = list(
-		/datum/job/ghostcafe,
-		/datum/job/hotel_staff,
-	)
 
 /obj/item/storage/box/bluespace/proc/return_to_station()
 	atom_storage.max_slots = 7 // shrinking the box back so it wouldn't get abused
@@ -44,8 +39,8 @@
 
 /obj/item/storage/box/bluespace/Initialize(mapload)
 	. = ..()
-	atom_storage.max_specific_storage = INFINITY
-	atom_storage.max_total_storage = INFINITY
+	atom_storage.max_specific_storage = WEIGHT_CLASS_GIGANTIC
+	atom_storage.max_total_storage = WEIGHT_CLASS_GIGANTIC * INFINITY
 	atom_storage.max_slots = INFINITY
 	creation_area = get_area(src)
 	START_PROCESSING(SSobj, src)
@@ -79,17 +74,36 @@
 	integrity_failure = 0
 	max_integrity = INFINITY
 
+	/// The main sphere of the hotel, the global room network handler
 	var/obj/item/hilbertshotel/main_sphere
+	/// The number of the hotel room
 	var/room_number
+	/// Data of the current room as an associative list
 	var/list/current_room_data
-
+	/// The ID card inserted into the controller
 	var/inserted_id
+	/// The bluespace box inside the controller
 	var/obj/item/storage/box/bluespace/bluespace_box
-
+	/// List of roles that are disallowed to use the "Depart" feature
+	var/list/disallowed_roles = list(
+		/datum/job/ghostcafe,
+		/datum/job/hotel_staff,
+	)
+	/// Vanity desctiption tags
+	var/static/list/vanity_tags = list(
+		", scribbled all around it",
+		". There's a small bloody fingerprint on it",
+		". The corner is torn off",
+		". It's covered in a thick layer of dust",
+		". The writing is smudged, as if someone was in a hurry. You squint your eyes..",
+		". The writing is faded",
+		". The writing is barely visible",
+		". The corner is burnt",
+	)
 /obj/machinery/room_controller/examine(mob/user)
 	. = ..()
-	. += span_info("The screen displays [room_number? "the word \"Error\". Nothing else." : "some small text and a large number [room_number]."]")
-	. += span_info("There is an old tag on the back of the device, scribbled all around it. 'Last Serviced: 3025-02-27'.")
+	. += span_info("The screen displays [!room_number ? "the word \"Error\". Nothing else." : "some small text and a large number [room_number]."]")
+	. += span_info("There is an old tag on the back of the device[pick(vanity_tags)]. 'Last Serviced: 3025-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")]-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")]'.")
 
 /obj/machinery/room_controller/Initialize()
 	. = ..()
@@ -101,6 +115,8 @@
 	bluespace_box = new /obj/item/storage/box/bluespace(src)
 	bluespace_box.origin_controller = WEAKREF(src)
 	inserted_id = null
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Welcome to Hilbert's Hotel."), 3 SECONDS)
+	update_appearance()
 
 /obj/machinery/room_controller/update_overlays()
 	. = ..()
@@ -114,8 +130,8 @@
 		var/room_text = "[room_number]"
 		to_display = list()
 
-		for(var/digit in room_text)
-			to_display += digit
+		for(var/digit = 1; digit <= length(room_text); digit++)
+			to_display += room_text[digit]
 		if(length(room_text) > 3)
 			to_display[3] = "dot"
 
@@ -132,6 +148,10 @@
 
 /obj/machinery/room_controller/proc/can_depart(id)
 	var/obj/item/card/id/this_id = id
+	if(!this_id)
+		return FALSE
+	var/datum/job/job = this_id.assignment
+	return !(job in disallowed_roles)
 
 
 /obj/machinery/room_controller/interact(mob/user)
@@ -163,6 +183,9 @@
 	data["name"] = current_room_data["name"]
 	data["icon"] = current_room_data["icon"]
 
+	// Добавляем возможность "отбытия"
+	data["can_depart"] = inserted_id ? can_depart(inserted_id) : FALSE
+
 	return data
 
 /obj/machinery/room_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -181,6 +204,11 @@
 				bluespace_box = null
 				update_appearance()
 				return TRUE
+		if("depart")
+			if(!inserted_id || !can_depart(inserted_id))
+				return FALSE
+			depart_user(usr)
+			return TRUE
 
 	if(!room_number || !main_sphere?.room_data["[room_number]"])
 		return
@@ -271,3 +299,47 @@
 	pixel_x = -28
 	pixel_y = 0
 	dir = WEST
+
+/obj/machinery/room_controller/proc/depart_user(mob/living/departing_mob)
+	var/obj/item/card/id/depart_id = inserted_id
+	if(!depart_id || !istype(departing_mob) || departing_mob.stat == DEAD)
+		return FALSE
+
+	var/job_name = depart_id.assignment
+	var/real_name = departing_mob.real_name
+
+	SSjob.FreeRole(job_name)
+
+	if(!GLOB.cryopod_computers)
+		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] at room [room_number] failed to locate the station cryopod computer!")
+		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
+		say("No valid destination points specified.")
+		return
+	var/obj/machinery/computer/cryopod/control_computer = GLOB.cryopod_computers[1] // locating the station cryopod computer
+	if(control_computer)
+		control_computer.announce("CRYO_DEPART", real_name, job_name)
+		control_computer.frozen_crew += list(list("name" = real_name, "job" = job_name))
+
+	bluespace_box.forceMove(control_computer)
+	control_computer.frozen_item += bluespace_box
+	if(departing_mob.mind)
+		departing_mob.mind.objectives = list()
+		departing_mob.mind.special_role = null
+
+	visible_message(span_notice("[src] whizzes, swallowing the ID card."))
+	playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
+	say("Transfer successful.")
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Thank you for your stay!"), 1 SECONDS)
+	to_chat(world, "DEBUG: transferd destination: [ADMIN_VERBOSEJMP(control_computer)]")
+	message_admins("[departing_mob.real_name] ([departing_mob.job]) departed from room [room_number].")
+
+	if(inserted_id)
+		qdel(inserted_id)
+		inserted_id = null
+		update_appearance()
+		SStgui.update_uis(src)
+
+	return TRUE
+
+/obj/machinery/room_controller/proc/say_message(message)
+	say(message)

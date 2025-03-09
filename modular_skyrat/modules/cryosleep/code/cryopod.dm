@@ -130,6 +130,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 			radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has woken up from cryo storage.", announcement_channel)
 		if("CRYO_LEAVE")
 			radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", announcement_channel)
+		// SPLURT EDIT START
+		if("CRYO_DEPART")
+			radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has departed from the station.", announcement_channel)
+		// SPLURT EDIT END
 
 // Cryopods themselves.
 /obj/machinery/cryopod
