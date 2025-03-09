@@ -9726,7 +9726,6 @@
 #include "modular_zzplurt\code\modules\lewd\interaction_menu\interactions\lewd\self\misc.dm"
 #include "modular_zzplurt\code\modules\lewd\interaction_menu\interactions\lewd\self\oral.dm"
 #include "modular_zzplurt\code\modules\lewd\interaction_menu\interactions\lewd\unholy\_unholy.dm"
-#include "modular_zzplurt\code\modules\lewd\interaction_menu\interactions\lewd\unholy\fart.dm"
 #include "modular_zzplurt\code\modules\lewd\interaction_menu\interactions\lewd\unholy\piss.dm"
 #include "modular_zzplurt\code\modules\lewd\lewd_chemistry\items\bottles.dm"
 #include "modular_zzplurt\code\modules\lewd\lewd_chemistry\reagents\_aphrodisiac.dm"
