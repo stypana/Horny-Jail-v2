@@ -83,7 +83,17 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /obj/item/hilbertshotel/Initialize(mapload)
 	. = ..()
+	light_system = OVERLAY_LIGHT
+	light_color = "#5692d6"
+	light_range = 5
+	light_power = 3
+	light_on = TRUE
+	update_appearance()
 	INVOKE_ASYNC(src, PROC_REF(prepare_rooms))
+
+/obj/item/hilbertshotel/update_overlays()
+	. = ..()
+	. += emissive_appearance(icon, "hilbertshotel", src)
 
 /obj/item/hilbertshotel/ghostdojo/examine(mob/user)
 	. = ..()

@@ -23,14 +23,16 @@
 	atom_storage.max_total_storage = WEIGHT_CLASS_SMALL * 7
 
 	name = "bluespace box ([assigned_name])"
-	desc += span_info("There's a red \"BLUESPACE-REACTIVE. HANDLE WITH CARE.\" sticker on it.")
+	desc += span_info("\nThere's a red \"BLUESPACE-REACTIVE. HANDLE WITH CARE.\" sticker on it.")
 
 	resistance_flags = FLAMMABLE // no more plot armour
+	successfully_sent = TRUE
+	in_hotel_room = FALSE
 
 /obj/item/storage/box/bluespace/attack_self(mob/user)
 	if(!successfully_sent)
 		return ..()
-	else if(contents)
+	else if(length(contents))
 		return ..()
 	else
 		visible_message("[src] begins to violently shake, shrinking in size!")
@@ -100,10 +102,11 @@
 		". The writing is barely visible",
 		". The corner is burnt",
 	)
+
+
 /obj/machinery/room_controller/examine(mob/user)
 	. = ..()
 	. += span_info("The screen displays [!room_number ? "the word \"Error\". Nothing else." : "some small text and a large number [room_number]."]")
-	. += span_info("There is an old tag on the back of the device[pick(vanity_tags)]. 'Last Serviced: 3025-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")]-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")]'.")
 
 /obj/machinery/room_controller/Initialize()
 	. = ..()
@@ -115,12 +118,15 @@
 	bluespace_box = new /obj/item/storage/box/bluespace(src)
 	bluespace_box.origin_controller = WEAKREF(src)
 	inserted_id = null
+	desc += span_info("There is an old tag on the back of the device[pick(vanity_tags)]. 'Last Serviced: 3025-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")]-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")]'.")
+
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Welcome to Hilbert's Hotel."), 3 SECONDS)
 	update_appearance()
 
 /obj/machinery/room_controller/update_overlays()
 	. = ..()
 	var/list/to_display = list()
+
 	if(!room_number)
 		var/mutable_appearance/error = mutable_appearance(icon, "n_err")
 		error.pixel_x = 9
@@ -130,10 +136,11 @@
 		var/room_text = "[room_number]"
 		to_display = list()
 
-		for(var/digit = 1; digit <= length(room_text); digit++)
-			to_display += room_text[digit]
 		if(length(room_text) > 3)
-			to_display[3] = "dot"
+			to_display = list(room_text[1], room_text[2], "dot")
+		else
+			for(var/i in 1 to min(length(room_text), 3))
+				to_display += room_text[i]
 
 		var/x_offset = 9
 		for(var/digit in to_display)
@@ -142,6 +149,7 @@
 			digit_overlay.pixel_y = -11
 			. += digit_overlay
 			x_offset += 4
+
 	. += emissive_appearance(icon, "screen_dim", src)
 	if(bluespace_box)
 		. += mutable_appearance(icon, "box_inserted")
@@ -314,19 +322,20 @@
 		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] at room [room_number] failed to locate the station cryopod computer!")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
 		say("No valid destination points specified.")
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say)), "Please contact the hotel staff for further assistance.", 2 SECONDS)
 		return
 	var/obj/machinery/computer/cryopod/control_computer = GLOB.cryopod_computers[1] // locating the station cryopod computer
 	if(control_computer)
 		control_computer.announce("CRYO_DEPART", real_name, job_name)
 		control_computer.frozen_crew += list(list("name" = real_name, "job" = job_name))
 
+	bluespace_box.return_to_station()
 	bluespace_box.forceMove(control_computer)
 	control_computer.frozen_item += bluespace_box
 	if(departing_mob.mind)
 		departing_mob.mind.objectives = list()
 		departing_mob.mind.special_role = null
-
-	visible_message(span_notice("[src] whizzes, swallowing the ID card."))
+	visible_message(span_notice("[src] whizzes as it swallows the ID card."))
 	playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
 	say("Transfer successful.")
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Thank you for your stay!"), 1 SECONDS)
