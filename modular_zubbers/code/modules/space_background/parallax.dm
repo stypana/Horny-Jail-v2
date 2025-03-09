@@ -1,2 +1,2 @@
 /datum/preference/choiced/parallax/create_default_value()
-	return PARALLAX_DISABLE
+	return PARALLAX_INSANE // VENUS: Default to insane

@@ -186,7 +186,7 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>S.P.L.U.R.T Station 13</h1>
+        <h1>V.E.N.U.S Station 13</h1>
         <p>
           <b>Thanks to: </b>
           /tg/ Station, Bubberstation, Skyrat Space Station 13, Traditional
