@@ -12,6 +12,7 @@ import {
   Stack,
 } from '../components';
 import { Window } from '../layouts';
+import { TableCell } from '../components/Table';
 
 const OpenRooms = ({ data, act, selected_template }) => {
   return (
@@ -21,123 +22,124 @@ const OpenRooms = ({ data, act, selected_template }) => {
         paddingBottom: '0px',
       }}
     >
-      <Box
-        style={{
-          height: '100%',
-          overflowY: 'auto',
-          width: '100%',
-        }}
-      >
-        <Table>
-          {data.active_rooms?.map((room) => (
-            <Table.Row
-              key={room.number}
-              style={{
-                padding: '4px 4px',
-                backgroundColor: 'rgba(138, 138, 138, 0.1)',
-              }}
-            >
-              <Table.Cell
+      {data.active_rooms.length ? (
+        <Box
+          style={{
+            height: '100%',
+            overflowY: 'auto',
+            width: '100%',
+          }}
+        >
+          <Stack vertical>
+            {data.active_rooms?.map((room) => (
+              <Stack
+                grow
+                key={room.number}
                 style={{
                   padding: '5px 5px',
-                  verticalAlign: 'top',
-                  marginLeft: '0px',
-                  marginRight: 'auto',
+                  backgroundColor: 'rgba(138, 138, 138, 0.1)',
                 }}
               >
-                <Box
-                  style={{
-                    fontSize: '20px',
-                    width: '100px',
-                    textAlign: 'center',
-                    backgroundColor: 'rgb(0, 0, 0)',
-                    border: '2px solid rgb(53, 118, 172)',
-                    borderRadius: '3px',
-                    marginBottom: '5px',
-                    color: 'rgb(115, 177, 228)',
-                    padding: '0px 0px',
-                  }}
-                >
-                  {room.number}
-                </Box>
-                <Button.Confirm
-                  style={{
-                    cursor: 'pointer',
-                    width: '100px',
-                    textAlign: 'center',
-                  }}
-                  confirmContent={'Join?'}
-                  confirmColor="green"
-                  onClick={() =>
-                    act('checkin', {
-                      room: room.number,
-                      template: selected_template,
-                    })
-                  }
-                >
-                  <Icon name="right-to-bracket" />
-                  Join
-                </Button.Confirm>
-              </Table.Cell>
-              <Table.Cell
-                style={{
-                  textAlign: 'left',
-                  width: '100%',
-                }}
-              >
-                <Box>
+                <Stack.Item mr={'10px'}>
                   <Box
                     style={{
-                      fontSize: '18px',
-                      lineHeight: '1.4',
-                      padding: '0px 3px',
-                      marginBottom: '2px',
+                      fontSize: '20px',
+                      width: '100px',
+                      textAlign: 'center',
+                      backgroundColor: 'rgb(0, 0, 0)',
+                      border: '2px solid rgb(53, 118, 172)',
+                      marginBottom: '5px',
+                      color: 'rgb(115, 177, 228)',
+                      padding: '0px 0px',
+                      borderRadius: '2px',
                     }}
                   >
-                    <Box
+                    {room.number}
+                  </Box>
+                  <Button.Confirm
+                    style={{
+                      cursor: 'pointer',
+                      width: '100px',
+                      textAlign: 'center',
+                    }}
+                    confirmContent={'Join?'}
+                    confirmColor="green"
+                    onClick={() =>
+                      act('checkin', {
+                        room: room.number,
+                        template: selected_template,
+                      })
+                    }
+                  >
+                    <Icon name="right-to-bracket" />
+                    Join
+                  </Button.Confirm>
+                </Stack.Item>
+                <Stack vertical width={'100%'}>
+                  <Stack.Item
+                    style={{
+                      width: '100%',
+                    }}
+                  >
+                    <span
                       style={{
                         display: 'flex',
-                        alignItems: 'center',
-                        padding: '2px 0px',
+                        marginTop: '-2px',
+                        marginBottom: '-6px',
                       }}
                     >
-                      <span>{room.name}</span>
-                      <Box
+                      {' '}
+                      <Icon
+                        size={1.4}
+                        style={{
+                          marginRight: '10px',
+                          lineHeight: '24px',
+                        }}
+                        name={room.icon || 'door-open'}
+                      />
+                      <span
+                        style={{
+                          fontSize: '18px',
+                        }}
+                      >
+                        {room.name}
+                      </span>
+                      <span
                         style={{
                           fontSize: '10px',
                           marginLeft: '10px',
+                          lineHeight: '26px',
                         }}
                       >
                         <Icon name="users" /> {room.occupants.length}
-                      </Box>
-                    </Box>
-                    <Box
-                      style={{
-                        color: 'rgba(255, 255, 255, 0.7)',
-                        fontSize: '12px',
-                        lineHeight: '1.4',
-                        wordWrap: 'break-word',
-                        overflowWrap: 'break-word',
-                        maxWidth: '400px',
-                        marginBottom: '5px',
-                      }}
-                    >
-                      {room.description ? (
-                        room.description
-                      ) : (
-                        <i>No description</i>
-                      )}
-                    </Box>
-                  </Box>
-                </Box>
-              </Table.Cell>
-              <Table.Cell>
-                <Icon name={room.icon || 'door-open'} />
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table>
-      </Box>
+                      </span>
+                    </span>
+                  </Stack.Item>
+                  <Stack.Item
+                    style={{
+                      color: 'rgba(255, 255, 255, 0.7)',
+                      fontSize: '12px',
+                      lineHeight: '1.4',
+                      wordWrap: 'break-word',
+                      overflowWrap: 'break-word',
+                      maxWidth: '400px',
+                      marginBottom: '5px',
+                    }}
+                  >
+                    {room.description ? (
+                      room.description
+                    ) : (
+                      <i>No description</i>
+                    )}
+                  </Stack.Item>
+                </Stack>
+              </Stack>
+            ))}
+          </Stack>
+        </Box>
+      ) : (
+        <i>No open rooms now...</i>
+      )}
     </Section>
   );
 };
@@ -249,16 +251,20 @@ const RoomCheckIn = ({
 const ReservedRooms = ({ data }) => {
   return (
     <Section title="Reserved Rooms">
-      <Table>
-        {data.conservated_rooms?.map((room) => (
-          <Table.Row key={room.number}>
-            <Table.Cell>Room {room.number}</Table.Cell>
-            <Table.Cell>
-              {room.description ? room.description : <i>No description</i>}
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
+      {data.conservated_rooms.length ? (
+        <Table>
+          {data.conservated_rooms?.map((room) => (
+            <Table.Row key={room.number}>
+              <Table.Cell>Room {room.number}</Table.Cell>
+              <Table.Cell>
+                {room.description ? room.description : <i>No description</i>}
+              </Table.Cell>
+            </Table.Row>
+          ))}
+        </Table>
+      ) : (
+        <i>No reserved rooms now...</i>
+      )}
     </Section>
   );
 };
@@ -325,44 +331,51 @@ const RoomsTab = (props) => {
         width: '100%',
       }}
     >
-      <Table width="100%">
-        {filteredRooms.length === 0 && (
-          <NoticeBox>No {category} rooms found!</NoticeBox>
-        )}
-        {filteredRooms.map((room) => (
-          <Table.Row
-            width="fit-content"
+      {filteredRooms.length === 0 && (
+        <NoticeBox>No {category} rooms found!</NoticeBox>
+      )}
+      <Stack vertical fill>
+        {filteredRooms.map((room, index) => (
+          <Box
             key={room.name}
-            className={room.name === selected_template ? 'selected' : undefined}
-            onClick={() => {
-              setSelectedRoom(room.name);
-              act('select_room', { room: room.name });
-            }}
-            style={{
-              lineHeight: '2.5',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s',
-              padding: '4px 4px',
-              borderRadius: '4px',
-              backgroundColor:
-                room.name === selected_template
-                  ? 'rgba(159, 236, 163, 0.1)'
-                  : 'transparent',
-            }}
+            mb={index < filteredRooms.length - 1 ? '5px' : '0px'}
           >
-            <Table.Cell collapsing width="25px">
-              <Icon
-                name={
-                  categoryIcons[room.category?.toLowerCase()] || 'door-open'
-                }
-                mr={2}
-                style={{ marginLeft: '10px' }}
-              />
-            </Table.Cell>
-            <Table.Cell>{room.name}</Table.Cell>
-          </Table.Row>
+            <Stack
+              className={
+                room.name === selected_template ? 'selected' : undefined
+              }
+              onClick={() => {
+                setSelectedRoom(room.name);
+                act('select_room', { room: room.name });
+              }}
+              style={{
+                lineHeight: '1.5',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s',
+                padding: '4px 4px',
+                borderRadius: '2px',
+                border: '1px solid rgba(150, 211, 150, 0.21)',
+                backgroundColor:
+                  room.name === selected_template
+                    ? 'rgba(159, 212, 163, 0.64)'
+                    : 'rgba(167, 212, 167, 0.1)',
+              }}
+            >
+              <Stack.Item>
+                {' '}
+                <Icon
+                  name={
+                    categoryIcons[room.category?.toLowerCase()] || 'door-open'
+                  }
+                  mr={2}
+                  style={{ marginLeft: '5px', marginRight: '5px' }}
+                />
+              </Stack.Item>
+              <Stack.Item>{room.name}</Stack.Item>
+            </Stack>
+          </Box>
         ))}
-      </Table>
+      </Stack>
     </Box>
   );
 };

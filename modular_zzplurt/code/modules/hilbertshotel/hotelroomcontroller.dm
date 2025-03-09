@@ -6,15 +6,17 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	foldable_result = null
 	w_class = WEIGHT_CLASS_BULKY
-	// The controller this box was initialized at
+	/// The controller this box was initialized at
 	var/datum/weakref/origin_controller
-	// The hotel room area
+	/// If the controller is currently in a hotel room
+	var/in_hotel_room = FALSE
+	/// The hotel room area
 	var/area/creation_area
-	// If the box was sent to the station (required to ignore area checks)
+	/// If the box was sent to the station (required to ignore area checks)
 	var/successfully_sent = FALSE
-	// The name of the person who sent the package to the station
+	/// The name of the person who sent the package to the station
 	var/assigned_name = "Unknown"
-	// List of roles that are disallowed to use the "Depart" feature
+	/// List of roles that are disallowed to use the "Depart" feature
 	var/list/disallowed_roles = list(
 		/datum/job/ghostcafe,
 		/datum/job/hotel_staff,
@@ -51,8 +53,10 @@
 /obj/item/storage/box/bluespace/process()
 	if(!creation_area)
 		return
+	if(!in_hotel_room)
+		return
 
-	// The INPUT box should NOT exist outside of the hotel room in any scenario, since it's gonna keep it's perks then
+	// The INPUT box should NOT exist outside of the hotel room or the storage object
 	var/area/current_area = get_area(src)
 	if(current_area != creation_area)
 		var/obj/machinery/room_controller/controller = origin_controller?.resolve()

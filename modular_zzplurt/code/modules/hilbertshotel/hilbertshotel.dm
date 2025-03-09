@@ -210,6 +210,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 					continue
 				if(istype(A, /obj/effect))
 					continue
+				if(length(A.GetComponents(/datum/component/wall_mounted)))
+					continue
 				QDEL_LIST(A.contents)
 				qdel(A)
 
@@ -219,7 +221,13 @@ GLOBAL_VAR(main_hilbert_sphere)
 		for(var/y in 0 to hotel_room_template.height-1)
 			var/turf/target_turf = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
 			for(var/atom/movable/A in storage["[turfNumber]"])
-				A.forceMove(target_turf)
+				if(istype(A.loc, /obj/item/abstracthotelstorage))
+					A.forceMove(target_turf)
+
+					if(istype(A, /obj/machinery/room_controller)) // updating the box's area reference
+						var/obj/machinery/room_controller/controller = A
+						controller.bluespace_box.in_hotel_room = TRUE
+						controller.bluespace_box.creation_area = get_area(A.loc)
 			turfNumber++
 
 	// clearing the storage
@@ -330,6 +338,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 	for(var/turf/T in currentReservation.reserved_turfs)
 		for(var/obj/machinery/room_controller/controller in T.contents)
 			controller.room_number = currentroom_number
+			if(controller.bluespace_box)
+				controller.bluespace_box.in_hotel_room = TRUE
+				controller.bluespace_box.creation_area = currentArea
 			controller.update_appearance()
 	for(var/turf/open/space/bluespace/BSturf in currentReservation.reserved_turfs)
 		BSturf.parentSphere = GLOB.main_hilbert_sphere
@@ -479,8 +490,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 		return
 	if(!user.mind)
 		return
-	if(!tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "Exit", list("Leave", "Stay")) == "Leave")
-		return
+	if(playsound(user, 'sound/machines/terminal/terminal_prompt.ogg', 100, TRUE))
+		if(!tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "ATTENTION!", list("Leave", "Stay")) == "Leave")
+			return
 	if(!(user.ckey in entry_points)) // no valid entry point for this ckey - reverting to the parent sphere
 		to_chat(user, span_warning("The door seems to be malfunctioning!"))
 		if(!tgui_alert(user, "Attention: the outside controller is malfunctioning. Hilbert's Hotel will not be responsible for any damage to your belongings or health. Are you sure you still want to leave?", "Exit", list("Yes", "No")) == "Yes")
@@ -639,15 +651,21 @@ GLOBAL_VAR(main_hilbert_sphere)
 			var/turf/T = locate(room_bottom_left.x + x, room_bottom_left.y + y, room_bottom_left.z)
 			var/list/turfContents = list()
 
-			for(var/atom/movable/movable_atom in T.contents)
+			for(var/atom/movable/movable_atom in T)
 				if(istype(movable_atom, /obj/effect))
 					continue
-				if(ismob(movable_atom) && !isliving(movable_atom) || !isturf(movable_atom.loc))
+				if(ismob(movable_atom) && !isliving(movable_atom))
 					continue
+				if(movable_atom.loc != T)
+					continue
+				if(length(movable_atom.GetComponents(/datum/component/wall_mounted)))
+					continue
+				if(istype(movable_atom, /obj/machinery/room_controller))
+					var/obj/machinery/room_controller/controller = movable_atom
+					controller.bluespace_box.in_hotel_room = FALSE
+					controller.bluespace_box.creation_area = null
 				turfContents += movable_atom
 				movable_atom.forceMove(storageObj)
-				if(istype(movable_atom, /obj/machinery/light))
-					to_chat(world, "DEBUG: [ADMIN_VERBOSEJMP(movable_atom)] saved to [movable_atom.loc] and referred to at [turfNumber]")
 
 			storage["[turfNumber]"] = turfContents
 			turfNumber++
@@ -777,8 +795,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 			return TRUE
 
 		if("checkin")
-			var/template = user_data[usr.ckey]["template"]
-			var/room_number = user_data[usr.ckey]["room_number"]
+			var/template = user_data[usr.ckey]["template"] || default_template
+			var/room_number = user_data[usr.ckey]["room_number"] || 1
 			if(!room_number || !(template in hotel_map_list))
 				return FALSE
 			prompt_check_in(usr, usr, room_number, template)
