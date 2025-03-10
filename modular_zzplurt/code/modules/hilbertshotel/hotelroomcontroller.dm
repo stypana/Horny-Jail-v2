@@ -17,7 +17,8 @@
 	/// The name of the person who sent the package to the station
 	var/assigned_name = "Unknown"
 
-/obj/item/storage/box/bluespace/proc/return_to_station()
+/obj/item/storage/box/bluespace/proc/return_to_station(name)
+	assigned_name = name
 	atom_storage.max_slots = 7 // shrinking the box back so it wouldn't get abused
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = WEIGHT_CLASS_SMALL * 7
@@ -28,6 +29,12 @@
 	resistance_flags = FLAMMABLE // no more plot armour
 	successfully_sent = TRUE
 	in_hotel_room = FALSE
+	update_appearance()
+
+/obj/item/storage/box/bluespace/update_overlays()
+	. = ..()
+	if(successfully_sent)
+		. += mutable_appearance(icon, "sticker")
 
 /obj/item/storage/box/bluespace/attack_self(mob/user)
 	if(!successfully_sent)
@@ -35,9 +42,15 @@
 	else if(length(contents))
 		return ..()
 	else
-		visible_message("[src] begins to violently shake, shrinking in size!")
-		src.Shake(3, 3, 1 SECONDS)
-		addtimer(CALLBACK(src, PROC_REF(qdel), src), 3 SECONDS)
+		visible_message(span_danger("[src] begins to violently shake, shrinking in size!"))
+		var/matrix/shrink_back = matrix()
+		shrink_back.Scale(0.5,0.5)
+		animate(src, 3 SECONDS, transform = shrink_back)
+		addtimer(CALLBACK(src, PROC_REF(fancydelete)), 3 SECONDS)
+
+/obj/item/storage/box/bluespace/proc/fancydelete()
+	do_sparks(3, FALSE, src)
+	qdel(src)
 
 /obj/item/storage/box/bluespace/Initialize(mapload)
 	. = ..()
@@ -45,6 +58,7 @@
 	atom_storage.max_total_storage = WEIGHT_CLASS_GIGANTIC * INFINITY
 	atom_storage.max_slots = INFINITY
 	creation_area = get_area(src)
+	update_appearance()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/storage/box/bluespace/process()
@@ -308,6 +322,11 @@
 	pixel_y = 0
 	dir = WEST
 
+/obj/machinery/computer/cryopod/announce(message_type, user, rank)
+	if(message_type == "CRYO_DEPART")
+		radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has departed from the station.", announcement_channel)
+	..()
+
 /obj/machinery/room_controller/proc/depart_user(mob/living/departing_mob)
 	var/obj/item/card/id/depart_id = inserted_id
 	if(!depart_id || !istype(departing_mob) || departing_mob.stat == DEAD)
@@ -318,9 +337,9 @@
 
 	SSjob.FreeRole(job_name)
 
-	if(!GLOB.cryopod_computers)
+	if(!length(GLOB.cryopod_computers))
 		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] at room [room_number] failed to locate the station cryopod computer!")
-		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
+		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 30, TRUE)
 		say("No valid destination points specified.")
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say)), "Please contact the hotel staff for further assistance.", 2 SECONDS)
 		return
@@ -329,25 +348,24 @@
 		control_computer.announce("CRYO_DEPART", real_name, job_name)
 		control_computer.frozen_crew += list(list("name" = real_name, "job" = job_name))
 
-	bluespace_box.return_to_station()
+	bluespace_box.return_to_station(real_name)
 	bluespace_box.forceMove(control_computer)
 	control_computer.frozen_item += bluespace_box
 	if(departing_mob.mind)
 		departing_mob.mind.objectives = list()
 		departing_mob.mind.special_role = null
 	visible_message(span_notice("[src] whizzes as it swallows the ID card."))
-	playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
+	playsound(src, 'sound/machines/terminal/terminal_success.ogg', 20, TRUE)
 	say("Transfer successful.")
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Thank you for your stay!"), 1 SECONDS)
 	to_chat(world, "DEBUG: transferd destination: [ADMIN_VERBOSEJMP(control_computer)]")
-	message_admins("[departing_mob.real_name] ([departing_mob.job]) departed from room [room_number].")
+	message_admins("[departing_mob.ckey]/[departing_mob.real_name] departed from room [room_number] as [departing_mob.job].")
 
 	if(inserted_id)
 		qdel(inserted_id)
 		inserted_id = null
 		update_appearance()
 		SStgui.update_uis(src)
-
 	return TRUE
 
 /obj/machinery/room_controller/proc/say_message(message)
