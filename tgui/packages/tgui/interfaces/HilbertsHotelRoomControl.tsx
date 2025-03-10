@@ -12,12 +12,13 @@ import {
   LabeledList,
 } from '../components';
 import { Window } from '../layouts';
+import { useState, useEffect } from 'react';
 
 type RoomData = {
-  visibility: number;
-  status: number;
-  privacy: number;
-  description: string;
+  room_visibility: number;
+  room_status: number;
+  room_privacy: number;
+  room_description: string;
   name: string;
   room_number: number;
   icon: string;
@@ -53,46 +54,18 @@ export const HilbertsHotelRoomControl = (props) => {
     false,
   );
 
+  const [localName, setLocalName] = useState(data.name || '');
+  const [localDescription, setLocalDescription] = useState(
+    data.room_description || '',
+  );
+
+  useEffect(() => {
+    setLocalName(data.name || '');
+    setLocalDescription(data.room_description || '');
+  }, [data.name, data.room_description]);
+
   return (
     <Window width={400} height={500} title="Room Control Panel">
-      {!!iconPickerOpen && (
-        <Modal
-          style={{
-            width: '280px',
-            padding: '5px',
-          }}
-        >
-          <Section>
-            <Box
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '4px',
-                padding: '4px',
-              }}
-            >
-              {AVAILABLE_ICONS.map((icon) => (
-                <Button
-                  key={icon}
-                  onClick={() => {
-                    act('set_icon', { icon });
-                    setIconPickerOpen(false);
-                  }}
-                  style={{
-                    height: '32px',
-                    width: '32px',
-                    padding: '3px 8px',
-                    lineHeight: '32px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Icon name={icon} size={1.5} />
-                </Button>
-              ))}
-            </Box>
-          </Section>
-        </Modal>
-      )}
       {!!iconPickerOpen && (
         <Modal
           style={{
@@ -237,34 +210,37 @@ export const HilbertsHotelRoomControl = (props) => {
               <Stack.Item grow>
                 <Button
                   fluid
-                  icon={data.visibility ? 'eye' : 'eye-slash'}
+                  icon={data.room_visibility ? 'eye' : 'eye-slash'}
                   onClick={() => act('toggle_visibility')}
                   lineHeight="2.2"
-                  color="green"
+                  color={data.room_visibility ? 'blue' : 'green'}
+                  style={{ cursor: 'pointer' }}
                 >
-                  {data.visibility ? 'Room visible' : 'Room hidden'}
+                  {data.room_visibility ? 'Visible' : 'Invisible'}
                 </Button>
               </Stack.Item>
               <Stack.Item grow>
                 <Button
                   fluid
-                  icon={data.status ? 'lock-open' : 'lock'}
+                  icon={data.room_status ? 'lock-open' : 'lock'}
                   onClick={() => act('toggle_status')}
                   lineHeight="2.2"
-                  color="green"
+                  color={data.room_status ? 'blue' : 'green'}
+                  style={{ cursor: 'pointer' }}
                 >
-                  {data.status ? 'Room open' : 'Room closed'}
+                  {data.room_status ? 'Open' : 'Closed'}
                 </Button>
               </Stack.Item>
               <Stack.Item grow>
                 <Button
                   fluid
-                  icon={data.privacy ? 'users' : 'user-secret'}
+                  icon={data.room_privacy ? 'users' : 'user-secret'}
                   onClick={() => act('toggle_privacy')}
                   lineHeight="2.2"
-                  color="green"
+                  color={data.room_privacy ? 'blue' : 'green'}
+                  style={{ cursor: 'pointer' }}
                 >
-                  {data.privacy ? 'Guests visible' : 'Guests hidden'}
+                  {data.room_privacy ? 'Guest names' : 'Only number'}
                 </Button>
               </Stack.Item>
             </Stack>
@@ -275,25 +251,22 @@ export const HilbertsHotelRoomControl = (props) => {
                   height="1.7em"
                   width="100%"
                   placeholder="Enter room name here..."
-                  value={data.name || ''}
-                  onChange={(e, value) =>
-                    act('update_name', {
-                      name: value,
-                    })
-                  }
+                  value={localName}
+                  onChange={(e, value) => setLocalName(value)}
+                  maxLength={50}
                 />
               </Stack.Item>
               <Stack.Item>
                 <Button.Confirm
                   fluid
                   icon="check"
-                  onClick={() => act('confirm_name')}
+                  onClick={() => act('confirm_name', { name: localName })}
                   style={{
                     cursor: 'pointer',
                     height: '1.7em',
                     width: '1.85em',
                   }}
-                  confirmContent={<Icon name="question"></Icon>}
+                  confirmContent={<Icon name="question" />}
                 ></Button.Confirm>
               </Stack.Item>
             </Stack>
@@ -302,25 +275,31 @@ export const HilbertsHotelRoomControl = (props) => {
                 fluid
                 style={{
                   width: '100%',
-                  height: '4em',
+                  height: '8em',
                 }}
                 placeholder="Enter room description here..."
-                value={data.description || ''}
-                onChange={(e, value) =>
-                  act('update_description', {
-                    description: value,
-                  })
-                }
+                value={localDescription}
+                onChange={(e, value) => setLocalDescription(value)}
+                maxLength={220}
               />
             </Stack.Item>
             <Stack.Item>
-              <Button
+              <Button.Confirm
                 fluid
                 icon="check"
-                onClick={() => act('confirm_description')}
+                onClick={() =>
+                  act('confirm_description', { description: localDescription })
+                }
+                confirmContent={
+                  <>
+                    <Icon name="question" />
+                    Confirm?
+                  </>
+                }
+                confirmColor="blue"
               >
                 Update description
-              </Button>
+              </Button.Confirm>
             </Stack.Item>
           </Stack>
         </Section>

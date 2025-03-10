@@ -83,6 +83,11 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 /obj/item/hilbertshotel/Initialize(mapload)
 	. = ..()
+	if(!GLOB.main_hilbert_sphere)
+		GLOB.main_hilbert_sphere = src
+
+	RegisterSignal(SSdcs, COMSIG_HILBERT_ROOM_UPDATED, PROC_REF(on_room_updated))
+
 	light_system = OVERLAY_LIGHT
 	light_color = "#5692d6"
 	light_range = 5
@@ -763,6 +768,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 				data["active_rooms"] += list(list(
 					"number" = room_number,
 					"name" = room["name"] || "Unknown Room",
+					"visibility" = room["visibility"],
+					"room_privacy" = room["privacy"],
 					"occupants" = main_sphere.generate_occupant_list(room_number),
 					"description" = room["description"],
 					"icon" = room["icon"] || "door-open"
@@ -811,3 +818,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 				return FALSE
 			prompt_check_in(usr, usr, room_number, template)
 			return TRUE
+
+/obj/item/hilbertshotel/proc/on_room_updated(datum/source, list/data)
+	SIGNAL_HANDLER
+
+	SStgui.update_uis(src)
+	return

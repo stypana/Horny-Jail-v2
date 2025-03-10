@@ -10,11 +10,13 @@ import {
   Table,
   NoticeBox,
   Stack,
+  Tooltip,
 } from '../components';
 import { Window } from '../layouts';
-import { TableCell } from '../components/Table';
 
 const OpenRooms = ({ data, act, selected_template }) => {
+  const visibleRooms = data.active_rooms.filter((room) => room.visibility);
+
   return (
     <Section
       title="Open Rooms"
@@ -22,7 +24,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
         paddingBottom: '0px',
       }}
     >
-      {data.active_rooms.length ? (
+      {visibleRooms.length ? (
         <Box
           style={{
             height: '100%',
@@ -31,7 +33,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
           }}
         >
           <Stack vertical>
-            {data.active_rooms?.map((room) => (
+            {visibleRooms?.map((room) => (
               <Stack
                 grow
                 key={room.number}
@@ -93,6 +95,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                         size={1.4}
                         style={{
                           marginRight: '10px',
+                          marginLeft: '5px',
                           lineHeight: '24px',
                         }}
                         name={room.icon || 'door-open'}
@@ -111,7 +114,17 @@ const OpenRooms = ({ data, act, selected_template }) => {
                           lineHeight: '26px',
                         }}
                       >
-                        <Icon name="users" /> {room.occupants.length}
+                        {!room.room_privacy ? (
+                          <Icon name="users" />
+                        ) : (
+                          <Tooltip
+                            content={room.occupants.join(', ')}
+                            position="top"
+                          >
+                            <Icon name="users" />
+                          </Tooltip>
+                        )}{' '}
+                        {room.occupants.length}
                       </span>
                     </span>
                   </Stack.Item>
@@ -124,6 +137,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                       overflowWrap: 'break-word',
                       maxWidth: '400px',
                       marginBottom: '5px',
+                      marginLeft: '5px',
                     }}
                   >
                     {room.description ? (

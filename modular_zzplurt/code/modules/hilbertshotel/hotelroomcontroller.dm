@@ -42,9 +42,9 @@
 	else if(length(contents))
 		return ..()
 	else
-		visible_message(span_danger("[src] begins to violently shake, shrinking in size!"))
+		visible_message(span_danger("[src] begins rapidly shrinking!"))
 		var/matrix/shrink_back = matrix()
-		shrink_back.Scale(0.5,0.5)
+		shrink_back.Scale(0.1,0.1)
 		animate(src, 3 SECONDS, transform = shrink_back)
 		addtimer(CALLBACK(src, PROC_REF(fancydelete)), 3 SECONDS)
 
@@ -132,7 +132,7 @@
 	bluespace_box = new /obj/item/storage/box/bluespace(src)
 	bluespace_box.origin_controller = WEAKREF(src)
 	inserted_id = null
-	desc += span_info("There is an old tag on the back of the device[pick(vanity_tags)]. 'Last Serviced: 3025-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")]-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")]'.")
+	desc += span_info("There is an old tag on the back of the device[pick(vanity_tags)]. 'Last Serviced: 1025-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")]-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "10", "31")]'.")
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Welcome to Hilbert's Hotel."), 3 SECONDS)
 	update_appearance()
@@ -233,27 +233,40 @@
 			return TRUE
 
 	if(!room_number || !main_sphere?.room_data["[room_number]"])
+		to_chat(usr, span_warning("Ошибка: контроллер не может найти данные комнаты!"))
 		return
 
 	var/list/room_data = main_sphere.room_data["[room_number]"]
 	switch(action)
 		if("toggle_visibility")
 			room_data["visibility"] = !room_data["visibility"]
+			SStgui.update_uis(src)
+			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "toggle_visibility", "room" = room_number))
 			return TRUE
 		if("toggle_status")
 			room_data["status"] = !room_data["status"]
+			SStgui.update_uis(src)
+			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "toggle_status", "room" = room_number))
 			return TRUE
 		if("toggle_privacy")
 			room_data["privacy"] = !room_data["privacy"]
-			return TRUE
-		if("update_description")
-			room_data["description"] = params["description"]
+			SStgui.update_uis(src)
+			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "toggle_privacy", "room" = room_number))
 			return TRUE
 		if("confirm_description")
 			room_data["description"] = params["description"]
+			SStgui.update_uis(src)
+			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "update_description", "room" = room_number))
+			return TRUE
+		if("confirm_name")
+			room_data["name"] = params["name"]
+			SStgui.update_uis(src)
+			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "update_name", "room" = room_number))
 			return TRUE
 		if("set_icon")
 			room_data["icon"] = params["icon"]
+			SStgui.update_uis(src)
+			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "update_icon", "room" = room_number))
 			return TRUE
 
 /obj/machinery/room_controller/emp_act(severity)
@@ -339,7 +352,7 @@
 
 	if(!length(GLOB.cryopod_computers))
 		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] at room [room_number] failed to locate the station cryopod computer!")
-		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 30, TRUE)
+		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 10, TRUE)
 		say("No valid destination points specified.")
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say)), "Please contact the hotel staff for further assistance.", 2 SECONDS)
 		return
