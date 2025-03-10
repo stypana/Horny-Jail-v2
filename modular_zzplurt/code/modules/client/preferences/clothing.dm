@@ -10,7 +10,7 @@
 	. = ..()
 	switch (value)
 		if (SNAIL_SHELL)
-			return /obj/item/storage/backpack/snail
+			return /obj/item/storage/backpack/snail_replica
 		if (SLOOG_SHELL)
 			return /obj/item/storage/backpack/sloogshell
 
