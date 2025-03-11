@@ -645,6 +645,23 @@
 			if(0 to NUTRITION_LEVEL_STARVING)
 				combined_msg += span_danger("You're starving!")
 
+		//VENUS ADDITION START: Thirst status on self-examine
+		if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
+			switch(thirst)
+				if(THIRST_LEVEL_FULL to INFINITY)
+					combined_msg += span_info("You're completely full of water!")
+				if(THIRST_LEVEL_QUENCHED to THIRST_LEVEL_FULL)
+					combined_msg += span_info("You're hydrated.")
+				if(THIRST_LEVEL_BIT_THIRSTY to THIRST_LEVEL_QUENCHED)
+					combined_msg += span_info("You're not thirsty.")
+				if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_BIT_THIRSTY)
+					combined_msg += span_info("You could use a drink to quench your thirst.")
+				if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+					combined_msg += span_info("You feel quite thirsty!")
+				if(0 to THIRST_LEVEL_PARCHED)
+					combined_msg += span_danger("You're parched!")
+		//VENUS END
+
 	//Compiles then shows the list of damaged organs and broken organs
 	var/list/broken = list()
 	var/list/damaged = list()

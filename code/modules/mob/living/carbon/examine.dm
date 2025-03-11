@@ -139,7 +139,7 @@
 		else
 			. += "<b>[t_He] [t_is] quite chubby.</b>"
 
-	if(water_level < THIRST_LEVEL_PARCHED - 50) // SPLURT ADDITION - THIRST
+	if(thirst < THIRST_LEVEL_PARCHED - 50) // SPLURT ADDITION - THIRST
 		. += "[t_He] [t_is] parched.\n" // SPLURT ADDITION - THIRST
 
 	switch(disgust)
