@@ -213,7 +213,8 @@
 		return overlays
 
 	if(my_head.head_flags & HEAD_EYECOLOR)
-		if(IS_ROBOTIC_ORGAN(src) || !my_head.draw_color || (parent.appears_alive() && !HAS_TRAIT(parent, TRAIT_KNOCKEDOUT)))
+		// VENUS EDIT: Added HAS_TRAIT(parent, TRAIT_UNDEAD) check to stop their eyes from being shut constantly
+		if(IS_ROBOTIC_ORGAN(src) || !my_head.draw_color || ((parent.appears_alive() || HAS_TRAIT(parent, TRAIT_UNDEAD)) && !HAS_TRAIT(parent, TRAIT_KNOCKEDOUT)))
 			// show the eyes as open
 			eye_right.color = eye_color_right
 			eye_left.color = eye_color_left
