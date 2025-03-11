@@ -1,4 +1,6 @@
 // Ported drink containers from S.P.L.U.R.T-Station-13
+//VENUS EDIT REMOVAL START
+/*
 /obj/item/reagent_containers/cup/soda_cans/carbonatedcum
 	name = "Mosley's Special Carbonated Cum"
 	desc = "A pink can with the image of a Mal0 on the front. Very seductive eyes."
@@ -25,3 +27,5 @@
 	desc = "Looks like cola, smells like iron."
 	icon_state = "cola"
 	list_reagents = list(/datum/reagent/blood = 30)
+*/
+//VENUS EDIT REMOVAL END
