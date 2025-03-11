@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/anomaly/anomaly_flux
 
 	min_players = 10
-	max_occurrences = 5
+	max_occurrences = 1 //VENUS EDIT: 5 -> 1
 	weight = 20
 	description = "This anomaly shocks and explodes."
 	min_wizard_trigger_potency = 1
