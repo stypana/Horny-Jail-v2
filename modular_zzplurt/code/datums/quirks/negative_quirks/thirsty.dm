@@ -1,4 +1,3 @@
-// UNIMPLEMENTED QUIRK!
 /datum/quirk/thirsty
 	name = "Thirsty"
 	desc = "You become thirsty twice as quickly. Make sure to drink plenty of fluids!"
@@ -12,7 +11,6 @@
 	mail_goodies = list (
 		/obj/item/reagent_containers/cup/glass/waterbottle = 1
 	)
-	hidden_quirk = TRUE
 
 
 /datum/quirk/thirsty/add(client/client_source)

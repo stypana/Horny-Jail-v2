@@ -14,7 +14,7 @@
 /datum/quirk/item_quirk/bloodfledge
 	name = "Bloodfledge"
 	desc = "You are apprentice sanguine sorcerer endowed with vampiric power beyond that of a common hemophage. While not truly undead, many of the same conditions still apply."
-	value = 4
+	value = 2
 	gain_text = span_notice("A sanguine blessing flows through your body, granting it new strength.")
 	lose_text = span_notice("The sanguine blessing fades away...")
 	medical_record_text = "Patient appears to possess a paranormal connection to otherworldly forces."

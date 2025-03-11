@@ -8,4 +8,3 @@
 	mob_trait = TRAIT_NOBREATH
 	hardcore_value = -4
 	icon = FA_ICON_BAN_SMOKING
-	hidden_quirk = TRUE
