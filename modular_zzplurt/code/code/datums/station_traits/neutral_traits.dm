@@ -1,3 +1,5 @@
+//VENUS REMOVAL START
+/*
 /datum/station_trait/announcement_intern
 	name = "Announcement rat"
 	report_message = "Don't forget to bring cheese!"
@@ -10,6 +12,8 @@
 /datum/station_trait/announcement_medbot/New()
 	blacklist += list(/datum/station_trait/announcement_dagoth)
 	. = ..()
+*/
+//VENUS REMOVAL END
 
 /datum/station_trait/announcement_dagoth
 	name = "Announcement Sixth House"
