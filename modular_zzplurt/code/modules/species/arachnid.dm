@@ -186,6 +186,7 @@
 
 
 /datum/status_effect/web_cooldown
+	id = "web_cooldown"
 	duration = 20 SECONDS
 	alert_type = null
 	remove_on_fullheal = TRUE

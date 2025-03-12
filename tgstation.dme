@@ -9613,6 +9613,8 @@
 #include "modular_zubbers\modules\plexagon_selfserve\code\shame_box.dm"
 #include "modular_zubbers\modules\plexagon_selfserve\code\sign.dm"
 #include "modular_zubbers\modules\plexagon_selfserve\code\time_clock.dm"
+#include "modular_zubbers\modules\wood_walls\code\mineral_walls.dm"
+#include "modular_zubbers\modules\wood_walls\code\new_floors.dm"
 #include "modular_zzplurt\code\_globalvars\mobs.dm"
 #include "modular_zzplurt\code\_globalvars\lists\global_lewd.dm"
 #include "modular_zzplurt\code\_helpers\preferences.dm"
@@ -9970,6 +9972,4 @@
 #include "modular_zzplurt\code\modules\vending\lustwish.dm"
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
-#include "modular_zubbers\modules\wood_walls\code\mineral_walls.dm"
-#include "modular_zubbers\modules\wood_walls\code\new_floors.dm"
 // END_INCLUDE
