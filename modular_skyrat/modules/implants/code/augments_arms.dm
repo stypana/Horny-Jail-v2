@@ -109,7 +109,7 @@
 	/*
 	knife_force = ENHANCED_KNIFE_FORCE
 	*/
-  	//SPLURT EDIT REMOVAL END
+	//SPLURT EDIT REMOVAL END
 	knife_wound_bonus = ENHANCED_KNIFE_WOUND_BONUS
 	armour_penetration = ENHANCED_KNIFE_ARMOR_PENETRATION //Let's give them some AP for the trouble.
 
