@@ -121,7 +121,7 @@
 						target_buttons += ORGAN_SLOT_ANUS //SPLURT EDIT CHANGE - Interactions - Changed asshole to anus for consistency
 					if(target_mob.has_penis(REQUIRE_GENITAL_EXPOSED))
 						target_buttons += ORGAN_SLOT_PENIS
-						var/obj/item/organ/genital/penis/other_penis = target_human.get_organ_slot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/genital/penis/other_penis = target_mob.get_organ_slot(ORGAN_SLOT_PENIS)
 						if(other_penis.sheath != "None")
 							target_buttons += "sheath"
 					target_buttons += "On [target_mob_them]"

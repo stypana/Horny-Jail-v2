@@ -2,8 +2,6 @@ import hljs from 'highlight.js/lib/core';
 import lua from 'highlight.js/lib/languages/lua';
 import { marked } from 'marked';
 import { Component, createRef } from 'react';
-
-import { useBackend, useLocalState } from '../../backend';
 import {
   Box,
   Button,
@@ -16,6 +14,8 @@ import {
   Tabs,
   TextArea,
 } from 'tgui-core/components';
+
+import { useBackend, useLocalState } from '../../backend';
 import { Window } from '../../layouts';
 import { sanitizeText } from '../../sanitize';
 import { CallModal } from './CallModal';

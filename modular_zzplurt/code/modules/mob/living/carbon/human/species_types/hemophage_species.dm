@@ -16,7 +16,7 @@
 	. = ..()
 
 // Called when a mob gains this species
-/datum/species/hemophage/on_species_gain(mob/living/carbon/human/human_target, datum/species/old_species, pref_load)
+/datum/species/hemophage/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons = TRUE)
 	. = ..()
 
 	// Add profane penalties
