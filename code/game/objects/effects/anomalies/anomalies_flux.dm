@@ -5,7 +5,7 @@
 	anomaly_core = /obj/item/assembly/signaler/anomaly/flux
 	var/canshock = FALSE
 	var/shockdamage = 20
-	var/explosive = FLUX_EXPLOSIVE
+	var/explosive = FLUX_LOW_EXPLOSIVE //VENUS EDIT - ORIGINAL: FLUX_EXPLOSIVE
 
 /obj/effect/anomaly/flux/Initialize(mapload, new_lifespan, drops_core = TRUE, explosive = FLUX_EXPLOSIVE)
 	. = ..()
