@@ -700,6 +700,25 @@ h2.alert {
   font-size: 185%;
 }
 
+//VENUS ADDITION START (for splurt's span.dm)
+.umbra {
+  color: #5000a0;
+}
+
+.umbra_emphasis {
+  color: #5000a0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.umbra_large {
+  color: #5000a0;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 3;
+}
+//VENUS ADDITION END
+
 .deconversion_message {
   color: #5000a0;
   font-size: 185%;
@@ -1243,6 +1262,25 @@ $border-width-px: $border-width * 1px;
   height: 1px;
   margin: 8px 16px 8px 16px;
 }
+
+.userlove {
+  color: #ff1493;
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ff6dbc;
+}
+
+//VENUS ADDITION START: From Sandstorm Station (for splurt's span.dm)
+.love {
+  color: #ff4591;
+  font-style: italic;
+  text-shadow: 0 0 6px #994449;
+}
+
+.lewd {
+  color: #800080;
+}
+//VENUS ADDITION END
 
 .crossooc {
   color: #9f6efc;
