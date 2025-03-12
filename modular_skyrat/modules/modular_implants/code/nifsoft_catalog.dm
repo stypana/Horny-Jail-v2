@@ -110,6 +110,10 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 			var/rewards_purchase = (params["rewards_purchase"])
 			var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif.resolve()
 
+			if(!buyer_nif)
+				paying_account.bank_card_talk("You are unable to buy this. A NIF implant is required to purchase NIFSofts.")
+				return FALSE
+
 			if(rewards_purchase)
 				if(buyer_nif.rewards_points < amount_to_charge)
 					buyer_nif.send_message("You don't have enough reward points to buy this.", alert = TRUE)
