@@ -3,8 +3,17 @@
 #undef BODY_SIZE_MAX
 #undef BODY_SIZE_MIN
 
-#define BODY_SIZE_MAX 2.0
-#define BODY_SIZE_MIN 0.1
+#ifdef SPLURT_BODY_SIZE_MAX
+	#define BODY_SIZE_MAX SPLURT_BODY_SIZE_MAX
+#else
+	#define BODY_SIZE_MAX 2.0
+#endif
+
+#ifdef SPLURT_BODY_SIZE_MIN
+	#define BODY_SIZE_MIN SPLURT_BODY_SIZE_MIN
+#else
+	#define BODY_SIZE_MIN 0.1
+#endif
 
 //genitals
 #undef TESTICLES_MAX_SIZE
