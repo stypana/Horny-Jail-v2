@@ -9667,6 +9667,7 @@
 #include "modular_zzplurt\code\modules\hilbertshotel\__DEFINES.dm"
 #include "modular_zzplurt\code\modules\hilbertshotel\hilbertshotel.dm"
 #include "modular_zzplurt\code\modules\hilbertshotel\hilbertsvanity.dm"
+#include "modular_zzplurt\code\modules\hilbertshotel\hotel_room_templates.dm"
 #include "modular_zzplurt\code\modules\hilbertshotel\hotelroomcontroller.dm"
 #include "modular_zzplurt\code\modules\hud\_hud.dm"
 #include "modular_zzplurt\code\modules\hud\screen_objects.dm"
