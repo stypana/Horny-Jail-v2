@@ -1,6 +1,0 @@
-author: "sakke03"
-delete-after: True
-changes:
-  - rscadd: "Added coo, whine and huh emotes from old codebase"
-  - rscadd: "Added meow4 emote from Monkestation's meow"
-  - bugfix: "Fixed emote sound cooldown being 5 seconds instead of 2 seconds due to a default value in the individual cooldown override"
