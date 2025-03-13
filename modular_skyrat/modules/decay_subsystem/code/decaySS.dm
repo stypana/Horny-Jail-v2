@@ -30,16 +30,12 @@ SUBSYSTEM_DEF(decay)
 		/obj/structure/mob_spawner/spiders,
 		/obj/structure/mob_spawner/bush,
 		/obj/structure/mob_spawner/beehive,
-		/obj/structure/mob_spawner/rats
-	)
-
-	//VENUS ADDITION START - Add more mob spawner varieties with rarity
-	var/list/rare_nests = list(
+		/obj/structure/mob_spawner/rats,
+		//VENUS ADDITION START - More mob spawners
 		/obj/structure/mob_spawner/snake,
-		/obj/structure/mob_spawner/beehive/toxic,
-		/obj/structure/mob_spawner/grapes
+		/obj/structure/mob_spawner/beehive/toxic
+		//VENUS ADDITION END
 	)
-	//VENUS ADDITION END
 
 /datum/controller/subsystem/decay/Initialize()
 	//VENUS ADDITION START - Allow nests when decay disabled
@@ -84,17 +80,17 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
 
-	severity_modifier = rand(1, 4)
+	severity_modifier = rand(1, 3) //VENUS EDIT: Changed rand max from 4 to 3
 
 	message_admins("SSDecay severity modifier set to [severity_modifier]")
 	log_world("SSDecay severity modifier set to [severity_modifier]")
 
 	//VENUS ADDITION START - Allow nests when decay disabled
+	if(spawn_nests)
+		do_nests()
+
 	if(CONFIG_GET(flag/ssdecay_disabled))
-		// Only spawn nests if decay is disabled
-		if(spawn_nests)
-			do_nests()
-		return SS_INIT_SUCCESS
+		return SS_INIT_SUCCESS //Make sure we return now if decay is disabled
 	//VENUS ADDITION END
 
 	do_common()
@@ -139,11 +135,15 @@ SUBSYSTEM_DEF(decay)
 				if(!iterating_floor.Enter(spawned_web))
 					qdel(spawned_web)
 
+			//VENUS REMOVAL START - Remove old nest spawning code which is called by do_nests instead
+			/*
 			if(!CONFIG_GET(flag/ssdecay_disable_nests) && prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50))
 				var/spawner_to_spawn = pick(possible_nests)
 				var/obj/structure/mob_spawner/spawned_spawner = new spawner_to_spawn(iterating_floor)
 				if(!iterating_floor.Enter(spawned_spawner))
 					qdel(spawned_spawner)
+			*/
+			//VENUS EDIT END
 
 /datum/controller/subsystem/decay/proc/do_engineering()
 	for(var/area/station/engineering/iterating_engineering in possible_areas)
@@ -178,12 +178,7 @@ SUBSYSTEM_DEF(decay)
 	for(var/area/station/maintenance/iterating_maintenance in possible_areas)
 		for(var/turf/open/iterating_floor in iterating_maintenance)
 			if(prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50))
-				var/spawner_to_spawn
-				// Give rare nests a smaller chance to spawn (25%)
-				if(prob(25))
-					spawner_to_spawn = pick(rare_nests)
-				else
-					spawner_to_spawn = pick(possible_nests)
+				var/spawner_to_spawn = pick(possible_nests)
 				var/obj/structure/mob_spawner/spawned_spawner = new spawner_to_spawn(iterating_floor)
 				if(!iterating_floor.Enter(spawned_spawner))
 					qdel(spawned_spawner)
