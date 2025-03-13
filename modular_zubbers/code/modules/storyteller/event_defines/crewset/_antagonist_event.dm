@@ -51,6 +51,8 @@
 
 	var/list/ruleset_lazy_templates
 
+	max_occurrences = 0 //! VENUS EDIT: Disabled all antag events for now.
+
 /datum/round_event_control/antagonist/New()
 	. = ..()
 	if(CONFIG_GET(flag/protect_roles_from_antagonist))
@@ -119,8 +121,6 @@
 	var/list/restricted_roles
 	/// The minds we've setup in setup() and need to finalize in start()
 	var/list/setup_minds = list()
-
-	max_occurrences = 0 //VENUS EDIT: Disabled all antag events for now.
 
 /datum/round_event/antagonist/solo
 
