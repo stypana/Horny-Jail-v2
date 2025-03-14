@@ -100,7 +100,7 @@ SSDECAY_DISABLE_NESTS
 ## This setting affects both decay visuals and nests according to their respective toggle settings
 ## Default: 50
 #SSDECAY_CHANCE 50
-##VENUS END
+## VENUS END
 
 ## Disables any ERP preferences for codebases that don't want it.
 #DISABLE_ERP_PREFERENCES
