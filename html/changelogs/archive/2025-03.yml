@@ -10,3 +10,13 @@
   - rscadd: Added meow4 emote from Monkestation's meow
   - bugfix: Fixed emote sound cooldown being 5 seconds instead of 2 seconds due to
       a default value in the individual cooldown override
+2025-03-14:
+  Nuk5513:
+  - rscadd: Added the Serenity II Luxury Shuttle and its ""Cargo-ified"" variant
+  SaraSayomi:
+  - bugfix: Wench dress can be worn chest out style again.
+  - bugfix: Sheer dress is now visible.
+  - bugfix: The sheer miniskirt now has the skirt part.
+  - bugfix: The V-neck now has it's boob mesh back.
+  - bugfix: removed a few icon states that are no longer needed in greyscale that
+      were in polychrome, to lessen bloat.
