@@ -5,6 +5,7 @@
 	user_required_parts = list(ORGAN_SLOT_VAGINA = REQUIRE_GENITAL_EXPOSED)
 	usage = INTERACTION_SELF
 	cum_genital = list(CLIMAX_POSITION_USER = CLIMAX_VAGINA)
+	additional_details = list(INTERACTION_FILLS_CONTAINERS)
 	cum_message_text_overrides = list(CLIMAX_POSITION_USER = list(
 		"cums hard on their fingers",
 		"shudders as they cum on their hand",
@@ -15,7 +16,6 @@
 		"You shudder as you cum on your hand",
 		"You finger yourself to climax"
 	))
-	additional_details = list(INTERACTION_FILLS_CONTAINERS)
 	message = list(
 		"fingers their pussy deep",
 		"fingers their pussy",

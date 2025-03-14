@@ -5,6 +5,7 @@
 	user_required_parts = list(ORGAN_SLOT_PENIS = REQUIRE_GENITAL_EXPOSED)
 	usage = INTERACTION_SELF
 	cum_genital = list(CLIMAX_POSITION_USER = CLIMAX_PENIS)
+	additional_details = list(INTERACTION_FILLS_CONTAINERS)
 	cum_message_text_overrides = list(CLIMAX_POSITION_USER = list(
 		"cums hard on their hand",
 		"shoots their load onto their fingers",
@@ -15,7 +16,6 @@
 		"You shoot your load onto your fingers",
 		"You ejaculate onto your palm"
 	))
-	additional_details = list(INTERACTION_FILLS_CONTAINERS)
 	message = list(
 		"jerks themself off",
 		"works their shaft",
@@ -69,10 +69,10 @@
 			liquid_container = cached_item
 
 	if(liquid_container)
-		var/obj/item/organ/external/genital/penis/penis = user.get_organ_slot(ORGAN_SLOT_PENIS)
-		if(penis?.internal_fluid_datum)
-			var/datum/reagents/R = new(penis.internal_fluid_maximum)
-			penis.transfer_internal_fluid(R, penis.internal_fluid_count)
+		var/obj/item/organ/external/genital/testicles/testicles = user.get_organ_slot(ORGAN_SLOT_TESTICLES)
+		if(testicles?.internal_fluid_datum)
+			var/datum/reagents/R = new(testicles.internal_fluid_maximum)
+			testicles.transfer_internal_fluid(R, testicles.internal_fluid_count)
 			R.trans_to(liquid_container, R.total_volume)
 			qdel(R)
 	. = ..()
