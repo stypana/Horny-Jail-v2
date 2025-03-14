@@ -79,3 +79,17 @@
   - rscadd: Added meow4 emote from Monkestation's meow
   - bugfix: Fixed emote sound cooldown being 5 seconds instead of 2 seconds due to
       a default value in the individual cooldown override
+  Majkl-J:
+  - bugfix: Having digi legs is now baked into your bodypart_overrides, speeding up
+      replace_body, and fixing a bug with slime legs
+  Odairu:
+  - bugfix: emissives for sci dragon borg will show up now when sitting
+  TealSeer:
+  - bugfix: fixed 9x25mm magazines being invisible
+  - bugfix: fixed hemophages missing their blood meter
+2025-03-13:
+  Ghommie:
+  - bugfix: You no longer jitter when crawling under tables and the likes as a borer
+      or from of army crawling.
+  Majkl-J:
+  - bugfix: Akula hair now layers correctly
