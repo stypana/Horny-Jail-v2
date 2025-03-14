@@ -138,8 +138,8 @@
 
 	var/space = should_have_space_before_emote(html_decode(subtler_emote)[1]) ? " " : ""
 
-	//VENUS EDIT: span_subtler -> span_emote (subtler color looked like deadchat's)
-	subtler_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i>")
+	//VENUS EDIT: span_subtler -> span_purple (subtler color looked like deadchat's)
+	subtler_message = span_purple("<b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i>")
 
 	if(istype(target, /mob))
 		var/mob/target_mob = target
