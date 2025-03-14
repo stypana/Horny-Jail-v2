@@ -70,3 +70,12 @@
   - image: adds new borg sprites
   nikothedude:
   - bugfix: Taur clothing rendering is mostly functional
+2025-03-12:
+  MosleyTheMalO:
+  - sound: Makes our custom default announcer
+  - sound: Makes our custom intern announcer
+  sakke03:
+  - rscadd: Added coo, whine and huh emotes from old codebase
+  - rscadd: Added meow4 emote from Monkestation's meow
+  - bugfix: Fixed emote sound cooldown being 5 seconds instead of 2 seconds due to
+      a default value in the individual cooldown override
