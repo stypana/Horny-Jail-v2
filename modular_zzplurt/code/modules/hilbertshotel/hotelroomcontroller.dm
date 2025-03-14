@@ -49,7 +49,7 @@
 		addtimer(CALLBACK(src, PROC_REF(fancydelete)), 3 SECONDS)
 
 /obj/item/storage/box/bluespace/proc/fancydelete()
-	do_sparks(3, FALSE, src)
+	do_harmless_sparks(3, FALSE, src)
 	qdel(src)
 
 /obj/item/storage/box/bluespace/Initialize(mapload)
@@ -71,13 +71,22 @@
 	var/area/current_area = get_area(src)
 	if(current_area != creation_area)
 		var/obj/machinery/room_controller/controller = origin_controller?.resolve()
-		do_sparks(5, TRUE, src)
+		do_harmless_sparks(3, FALSE, src)
+		visible_message(span_danger("[src] vanishes in a flash of light!"))
 		if(controller)
 			forceMove(controller)
 			controller.bluespace_box = src
 			controller.update_appearance()
 		else
 			qdel(src)
+
+/*
+  ___  ___   ___  __  __    ___ ___  _  _ _____ ___  ___  _    _    ___ ___
+ | _ \/ _ \ / _ \|  \/  |  / __/ _ \| \| |_   _| _ \/ _ \| |  | |  | __| _ \
+ |   / (_) | (_) | |\/| | | (_| (_) | .` | | | |   / (_) | |__| |__| _||   /
+ |_|_\\___/ \___/|_|  |_|  \___\___/|_|\_| |_| |_|_\\___/|____|____|___|_|_\
+
+*/
 
 /obj/machinery/room_controller
 	name = "Hilbert's Hotel Room Controller"
@@ -135,6 +144,7 @@
 	desc += span_info("There is an old tag on the back of the device[pick(vanity_tags)]. 'Last Serviced: 1025-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")]-[pick("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "10", "31")]'.")
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Welcome to Hilbert's Hotel."), 3 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Enjoy your stay!"), 5 SECONDS)
 	update_appearance()
 
 /obj/machinery/room_controller/update_overlays()
@@ -204,10 +214,7 @@
 	data["room_description"] = current_room_data["description"]
 	data["name"] = current_room_data["name"]
 	data["icon"] = current_room_data["icon"]
-
-	// Добавляем возможность "отбытия"
 	data["can_depart"] = inserted_id ? can_depart(inserted_id) : FALSE
-
 	return data
 
 /obj/machinery/room_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -233,7 +240,9 @@
 			return TRUE
 
 	if(!room_number || !main_sphere?.room_data["[room_number]"])
-		to_chat(usr, span_warning("Ошибка: контроллер не может найти данные комнаты!"))
+		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 10, TRUE)
+		say("Room number out of array range.")
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Please contact the hotel staff for further assistance."), 3 SECONDS)
 		return
 
 	var/list/room_data = main_sphere.room_data["[room_number]"]
@@ -291,7 +300,6 @@
 		if(!user.transferItemToLoc(item, src))
 			return
 		inserted_id = item
-		to_chat(user, span_notice("DEBUG: ID inserted, value: [inserted_id]"))
 		playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, TRUE)
 		update_appearance()
 		SStgui.update_uis(src)
@@ -354,7 +362,7 @@
 		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] at room [room_number] failed to locate the station cryopod computer!")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 10, TRUE)
 		say("No valid destination points specified.")
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say)), "Please contact the hotel staff for further assistance.", 2 SECONDS)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Please contact the hotel staff for further assistance."), 2 SECONDS)
 		return
 	var/obj/machinery/computer/cryopod/control_computer = GLOB.cryopod_computers[1] // locating the station cryopod computer
 	if(control_computer)
@@ -370,9 +378,11 @@
 	visible_message(span_notice("[src] whizzes as it swallows the ID card."))
 	playsound(src, 'sound/machines/terminal/terminal_success.ogg', 20, TRUE)
 	say("Transfer successful.")
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Thank you for your stay!"), 1 SECONDS)
-	to_chat(world, "DEBUG: transferd destination: [ADMIN_VERBOSEJMP(control_computer)]")
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Thank you for your stay!"), 2 SECONDS)
 	message_admins("[departing_mob.ckey]/[departing_mob.real_name] departed from room [room_number] as [departing_mob.job].")
+
+	bluespace_box = new /obj/item/storage/box/bluespace(src)
+	bluespace_box.origin_controller = WEAKREF(src)
 
 	if(inserted_id)
 		qdel(inserted_id)

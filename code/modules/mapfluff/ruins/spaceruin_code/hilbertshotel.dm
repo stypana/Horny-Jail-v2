@@ -1,4 +1,15 @@
 /*
+    _ _____ _____ ___ _  _ _____ ___ ___  _  _
+   /_\_   _|_   _| __| \| |_   _|_ _/ _ \| \| |
+  / _ \| |   | | | _|| .` | | |  | | (_) | .` |
+ /_/ \_\_|   |_| |___|_|\_| |_| |___\___/|_|\_|
+
+SPLURT EDIT - GHOST HOTEL UPDATE. REFACTORED IN MODULAR - SEE HERE: `modular_zzplurt\code\modules\hilbertshotel\hilbertshotel.dm`
+
+
+
+
+
 GLOBAL_VAR_INIT(hhStorageTurf, null)
 GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 

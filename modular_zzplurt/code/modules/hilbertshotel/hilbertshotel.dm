@@ -1,8 +1,10 @@
-//  _  _ _ _ _             _   _      	 _  _     _       _
-// | || (_) | |__  ___ _ _| |_( )___ 		| || |___| |_ ___| |
-// | __ | | | '_ \/ -_) '_|  _|/(_-< 		| __ / _ \  _/ -_) |
-// |_||_|_|_|_.__/\___|_|  \__| /__/ 		|_||_\___/\__\___|_|
-//
+/*
+  _  _ _ _ _             _   _      	 _  _     _       _
+ | || (_) | |__  ___ _ _| |_( )___ 		| || |___| |_ ___| |
+ | __ | | | '_ \/ -_) '_|  _|/(_-< 		| __ / _ \  _/ -_) |
+ |_||_|_|_|_.__/\___|_|  \__| /__/ 		|_||_\___/\__\___|_|
+
+*/
 
 GLOBAL_VAR_INIT(hhStorageTurf, null)
 GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
@@ -16,6 +18,7 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 #define ROOM_GUESTS_VISIBLE TRUE
 #define ROOM_GUESTS_HIDDEN FALSE
 
+/// Should we charge guests for using the vending machines?
 #define ONSTATION_OVERRIDE TRUE
 
 /obj/item/hilbertshotel
@@ -60,12 +63,6 @@ GLOBAL_VAR_INIT(hhMysteryroom_number, rand(1, 999999))
 
 // Links to the main sphere to have a common room dataset
 GLOBAL_VAR(main_hilbert_sphere)
-
-//   ___          _      ___
-//  | _ ) __ _ __(_)__  | _ \_ _ ___  __ ___
-//  | _ \/ _` (_-< / _| |  _/ '_/ _ \/ _(_-<
-//  |___/\__,_/__/_\__| |_| |_| \___/\__/__/
-//
 
 /obj/item/hilbertshotel/New()
 	. = ..()
@@ -152,7 +149,6 @@ GLOBAL_VAR(main_hilbert_sphere)
 		return
 
 	if(main_sphere?.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
-		to_chat(world, "DEBUG: Conservated room found! Trying to join...")
 		to_chat(target, span_notice(pick(vanity_strings))) // we're lucky - a conservated room exists which means we don't have to check for other stuff here
 		if(try_join_conservated_room(room_number, target))
 			return
@@ -177,7 +173,6 @@ GLOBAL_VAR(main_hilbert_sphere)
 				to_chat(user, span_warning("You can't seem to drop \the [src]! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
 	else
 		to_chat(target, span_notice(pick(vanity_strings)))
-	to_chat(world, "DEBUG: Sending to new room...")
 	send_to_new_room(room_number, target, template)
 
 /// Attempts to join an existing active room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
@@ -221,6 +216,9 @@ GLOBAL_VAR(main_hilbert_sphere)
 		for(var/y in 0 to hotel_room_template.height - 1)
 			var/turf/T = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
 			for(var/atom/movable/A in T)
+				if(ismachinery(A))
+					var/obj/machinery/M = A
+					M.obj_flags += NO_DEBRIS_AFTER_DECONSTRUCTION
 				if(ismob(A) && !isliving(A))
 					continue
 				if(istype(A, /obj/effect))
@@ -237,9 +235,11 @@ GLOBAL_VAR(main_hilbert_sphere)
 			var/turf/target_turf = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
 			for(var/atom/movable/A in storage["[turfNumber]"])
 				if(istype(A.loc, /obj/item/abstracthotelstorage))
+					var/old_resist = A.resistance_flags
+					A.resistance_flags |= INDESTRUCTIBLE
 					A.forceMove(target_turf)
-
-					if(istype(A, /obj/machinery/room_controller)) // updating the box's area reference
+					A.resistance_flags = old_resist
+					if(istype(A, /obj/machinery/room_controller))
 						var/obj/machinery/room_controller/controller = A
 						controller.bluespace_box.in_hotel_room = TRUE
 						controller.bluespace_box.creation_area = get_area(A.loc)
@@ -505,9 +505,8 @@ GLOBAL_VAR(main_hilbert_sphere)
 		return
 	if(!user.mind)
 		return
-	if(playsound(user, 'sound/machines/terminal/terminal_prompt.ogg', 100, TRUE))
-		if(!tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "ATTENTION!", list("Leave", "Stay")) == "Leave")
-			return
+	if(playsound(user, 'sound/machines/terminal/terminal_prompt.ogg', 100, TRUE) && tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "ATTENTION!", list("Leave", "Stay")) == "Stay")
+		return
 	if(!(user.ckey in entry_points)) // no valid entry point for this ckey - reverting to the parent sphere
 		to_chat(user, span_warning("The door seems to be malfunctioning!"))
 		if(!tgui_alert(user, "Attention: the outside controller is malfunctioning. Hilbert's Hotel will not be responsible for any damage to your belongings or health. Are you sure you still want to leave?", "Exit", list("Yes", "No")) == "Yes")
@@ -519,7 +518,6 @@ GLOBAL_VAR(main_hilbert_sphere)
 		destination = entry_points[user.ckey] // user's entry point
 	if(HAS_TRAIT(user, TRAIT_IMMOBILIZED) || (get_dist(get_turf(src), get_turf(user)) > 1)) // no teleporting around if they're dead or moved away during the prompt
 		return
-	to_chat(world, "DEBUG: Moving [user] to [destination]")
 	user.forceMove(get_turf(destination))
 	do_sparks(3, FALSE, get_turf(user))
 
@@ -593,9 +591,6 @@ GLOBAL_VAR(main_hilbert_sphere)
 	has_gravity = TRUE
 	area_flags = NOTELEPORT | HIDDEN_AREA
 	static_lighting = TRUE
-	/* 	SKYRAT EDIT REMOVAL - GHOST HOTEL UPDATE
-	ambientsounds = list('sound/ambience/servicebell.ogg')
-	SKYRAT EDIT END */
 	var/room_number = 0
 	var/obj/item/hilbertshotel/parentSphere
 	var/datum/turf_reservation/reservation
@@ -640,17 +635,18 @@ GLOBAL_VAR(main_hilbert_sphere)
 /area/misc/hilbertshotel/Exited(atom/movable/gone, direction)
 	. = ..()
 	if(ismob(gone))
-		var/mob/M = gone
-		if(M.mind)
+		var/mob/this_mob = gone
+		if(this_mob.mind)
 			var/stillPopulated = FALSE
-			var/list/currentLivingMobs = get_all_contents_type(/mob/living) //Got to catch anyone hiding in anything
-			for(var/mob/living/L in currentLivingMobs) //Check to see if theres any sentient mobs left.
-				if(L.mind)
+			var/list/currentLivingMobs = get_all_contents_type(/mob/living) // gotta catch anyone hiding in anything
+			for(var/mob/living/this_living in currentLivingMobs) // check to see if theres any *sentient* mobs left
+				if(this_living.mind)
 					stillPopulated = TRUE
 					break
 			if(!stillPopulated)
 				conservate_room()
 
+/// "Reserves" the room when the last guest leaves it. Creates an abstract storage object and forceMoves all the contents into it, deleting the reservation afterwards.
 /area/misc/hilbertshotel/proc/conservate_room()
 	var/turf/room_bottom_left = reservation.bottom_left_turfs[1]
 	var/list/storage = list()
@@ -673,15 +669,17 @@ GLOBAL_VAR(main_hilbert_sphere)
 					continue
 				if(movable_atom.loc != T)
 					continue
-				if(length(movable_atom.GetComponents(/datum/component/wall_mounted)))
-					continue
 				if(istype(movable_atom, /obj/machinery/room_controller))
 					var/obj/machinery/room_controller/controller = movable_atom
-					controller.bluespace_box.in_hotel_room = FALSE
-					controller.bluespace_box.creation_area = null
+					controller.bluespace_box?.in_hotel_room = FALSE
+					controller.bluespace_box?.creation_area = null
+				if(length(movable_atom.GetComponents(/datum/component/wall_mounted)))
+					continue
 				turfContents += movable_atom
+				var/old_resist = movable_atom.resistance_flags
+				movable_atom.resistance_flags |= INDESTRUCTIBLE
 				movable_atom.forceMove(storageObj)
-
+				movable_atom.resistance_flags = old_resist
 			storage["[turfNumber]"] = turfContents
 			turfNumber++
 
@@ -723,6 +721,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 	if(ismob(arrived))
 		var/mob/target = arrived
 		ADD_TRAIT(target, TRAIT_NO_TRANSFORM, REF(src))
+	arrived.resistance_flags |= INDESTRUCTIBLE
 
 /obj/item/abstracthotelstorage/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -732,6 +731,7 @@ GLOBAL_VAR(main_hilbert_sphere)
 	if(istype(gone, /obj/machinery/light))
 		var/obj/machinery/light/exited_light = gone
 		exited_light.begin_processing()
+	gone.resistance_flags &= ~INDESTRUCTIBLE
 
 /obj/item/hilbertshotel/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -824,3 +824,11 @@ GLOBAL_VAR(main_hilbert_sphere)
 
 	SStgui.update_uis(src)
 	return
+
+#undef ROOM_OPEN
+#undef ROOM_CLOSED
+#undef ROOM_VISIBLE
+#undef ROOM_INVISIBLE
+#undef ROOM_GUESTS_VISIBLE
+#undef ROOM_GUESTS_HIDDEN
+#undef ONSTATION_OVERRIDE
