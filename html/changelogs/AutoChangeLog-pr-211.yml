@@ -1,0 +1,4 @@
+author: "evandarksky"
+delete-after: True
+changes:
+  - rscadd: "Changed NT Rep to use *_ADMIN xp type."
