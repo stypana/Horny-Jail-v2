@@ -8,9 +8,9 @@
 	supervisors = "Central Command"
 	minimal_player_age = 14
 	exp_requirements = 600
-	exp_required_type = EXP_TYPE_ADMIN //SPLURT modification : original EXP_TYPE_CREW
-	exp_required_type_department = EXP_TYPE_ADMIN //SPLURT modification : original EXP_TYPE_COMMAND
-	exp_granted_type = EXP_TYPE_CENTRAL_COMMAND //SPLURT modification : original EXP_TYPE_CREW
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "NANOTRASEN_CONSULTANT"
 
 	department_for_prefs = /datum/job_department/captain

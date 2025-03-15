@@ -9694,6 +9694,7 @@
 #include "modular_zzplurt\code\modules\food_and_drinks\recipes\drinks\drinks_alcoholic.dm"
 #include "modular_zzplurt\code\modules\hud\_hud.dm"
 #include "modular_zzplurt\code\modules\hud\screen_objects.dm"
+#include "modular_zzplurt\code\modules\jobs\job_types\nanotrasen_consultant.dm"
 #include "modular_zzplurt\code\modules\language\_language_holder.dm"
 #include "modular_zzplurt\code\modules\language\buzzwords.dm"
 #include "modular_zzplurt\code\modules\lewd\pain.dm"
