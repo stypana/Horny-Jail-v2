@@ -375,6 +375,9 @@
 /obj/structure/flora/grass/both,
 /turf/open/misc/asteroid/snow,
 /area/misc/hilbertshotel)
+"yH" = (
+/turf/open/space/bluespace,
+/area/misc/hilbertshotel)
 "zh" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood{
@@ -819,6 +822,27 @@
 /area/misc/hilbertshotel)
 
 (1,1,1) = {"
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+"}
+(2,1,1) = {"
+yH
 sv
 sv
 sv
@@ -835,8 +859,10 @@ sv
 sv
 sv
 sv
+yH
 "}
-(2,1,1) = {"
+(3,1,1) = {"
+yH
 sv
 Ab
 ve
@@ -853,8 +879,10 @@ wC
 mS
 PY
 sv
+yH
 "}
-(3,1,1) = {"
+(4,1,1) = {"
+yH
 sv
 Ps
 jI
@@ -871,8 +899,10 @@ if
 if
 uU
 sv
+yH
 "}
-(4,1,1) = {"
+(5,1,1) = {"
+yH
 sv
 Cx
 Lo
@@ -889,8 +919,10 @@ if
 if
 Yq
 sv
+yH
 "}
-(5,1,1) = {"
+(6,1,1) = {"
+yH
 sv
 cq
 Hj
@@ -907,8 +939,10 @@ if
 if
 uU
 sv
+yH
 "}
-(6,1,1) = {"
+(7,1,1) = {"
+yH
 sv
 Dx
 oQ
@@ -925,8 +959,10 @@ Ta
 rz
 El
 sv
+yH
 "}
-(7,1,1) = {"
+(8,1,1) = {"
+yH
 sv
 sv
 sv
@@ -943,8 +979,10 @@ sv
 IR
 sv
 sv
+yH
 "}
-(8,1,1) = {"
+(9,1,1) = {"
+yH
 nP
 nq
 cC
@@ -961,8 +999,10 @@ ET
 Rj
 Ic
 sv
+yH
 "}
-(9,1,1) = {"
+(10,1,1) = {"
+yH
 Mr
 lu
 lu
@@ -979,8 +1019,10 @@ IF
 ni
 Mq
 sv
+yH
 "}
-(10,1,1) = {"
+(11,1,1) = {"
+yH
 mM
 lu
 hm
@@ -997,8 +1039,10 @@ sv
 sv
 sv
 sv
+yH
 "}
-(11,1,1) = {"
+(12,1,1) = {"
+yH
 lD
 jL
 jb
@@ -1015,8 +1059,10 @@ Qb
 yC
 qe
 VS
+yH
 "}
-(12,1,1) = {"
+(13,1,1) = {"
+yH
 hO
 lZ
 BZ
@@ -1033,8 +1079,10 @@ rf
 Qb
 Qb
 qe
+yH
 "}
-(13,1,1) = {"
+(14,1,1) = {"
+yH
 IC
 lZ
 cc
@@ -1051,8 +1099,10 @@ sA
 Qb
 Qb
 VS
+yH
 "}
-(14,1,1) = {"
+(15,1,1) = {"
+yH
 et
 lZ
 oy
@@ -1069,8 +1119,10 @@ qA
 ir
 Qb
 aM
+yH
 "}
-(15,1,1) = {"
+(16,1,1) = {"
+yH
 sv
 rZ
 cd
@@ -1087,8 +1139,10 @@ Qb
 Qb
 VS
 qe
+yH
 "}
-(16,1,1) = {"
+(17,1,1) = {"
+yH
 sv
 sv
 sv
@@ -1105,4 +1159,25 @@ qe
 VS
 qe
 OB
+yH
+"}
+(18,1,1) = {"
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
+yH
 "}

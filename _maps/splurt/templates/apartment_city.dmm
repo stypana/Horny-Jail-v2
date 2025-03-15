@@ -202,9 +202,7 @@
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "ok" = (
-/obj/machinery/oven/range,
-/obj/machinery/light/blacklight/directional/north,
-/turf/open/floor/iron/kitchen/small,
+/turf/closed/wall,
 /area/misc/hilbertshotel)
 "ot" = (
 /turf/closed/indestructible/steel,
@@ -263,6 +261,10 @@
 /obj/machinery/light_switch/directional/west,
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
+"rB" = (
+/obj/machinery/light/blacklight/directional/north,
+/turf/open/floor/iron/kitchen/small,
+/area/misc/hilbertshotel)
 "rT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/trash_pile,
@@ -283,10 +285,7 @@
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "sZ" = (
-/obj/machinery/light/blacklight/directional/north,
-/obj/structure/closet/crate/wooden,
-/obj/item/stack/sheet/mineral/wood/fifty,
-/turf/open/floor/carpet/stellar,
+/turf/open/space/bluespace,
 /area/misc/hilbertshotel)
 "tb" = (
 /obj/structure/chair/pew/left{
@@ -331,6 +330,12 @@
 /obj/structure/sign/poster/ripped/directional/east,
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
+"uQ" = (
+/obj/structure/closet/crate/wooden,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/machinery/light/warm/directional/north,
+/turf/open/floor/carpet/stellar,
+/area/misc/hilbertshotel)
 "uX" = (
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
@@ -361,6 +366,10 @@
 "wn" = (
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/iron/kitchen/small,
+/area/misc/hilbertshotel)
+"wr" = (
+/obj/structure/barricade/wooden/crude,
+/turf/closed/wall,
 /area/misc/hilbertshotel)
 "xh" = (
 /obj/structure/railing/corner{
@@ -855,6 +864,27 @@
 /area/misc/hilbertshotel)
 
 (1,1,1) = {"
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+"}
+(2,1,1) = {"
+sZ
 Zu
 Zu
 Zu
@@ -871,13 +901,15 @@ ot
 ot
 ot
 ot
+sZ
 "}
-(2,1,1) = {"
+(3,1,1) = {"
+sZ
 ot
 ot
 ot
 ot
-Ka
+wr
 fF
 rT
 Jv
@@ -889,13 +921,15 @@ Qh
 bz
 Eg
 ot
+sZ
 "}
-(3,1,1) = {"
+(4,1,1) = {"
+sZ
 ot
 Yf
 Fb
 SA
-Ka
+wr
 rT
 Od
 PG
@@ -907,13 +941,15 @@ XR
 Jv
 jv
 Ka
+sZ
 "}
-(4,1,1) = {"
+(5,1,1) = {"
+sZ
 ot
 Wz
 xA
 Jc
-ot
+ok
 zb
 lO
 Zp
@@ -925,98 +961,110 @@ pG
 Jv
 rT
 Ka
+sZ
 "}
-(5,1,1) = {"
+(6,1,1) = {"
+sZ
 ot
 fK
 az
 CP
-ot
-ot
-ot
-ot
-ot
-ot
-ot
+ok
+ok
+ok
+ok
+ok
+ok
+ok
 ot
 CX
+ok
+ok
 ot
-ot
-ot
+sZ
 "}
-(6,1,1) = {"
+(7,1,1) = {"
+sZ
 ot
-ot
+ok
 km
-ot
-ot
+ok
+ok
 WA
 YT
 MN
 OX
 ZK
-ot
+ok
 Cp
 xM
 qz
 ot
 be
+sZ
 "}
-(7,1,1) = {"
+(8,1,1) = {"
+sZ
 ot
 Xr
 EV
 BF
-ot
+ok
 gx
 pD
 WI
 zO
 lG
-ot
-sZ
+ok
+uQ
 ZX
 Ou
 ot
 Zu
+sZ
 "}
-(8,1,1) = {"
+(9,1,1) = {"
+sZ
 ot
 Hq
 qd
 qd
-ot
+ok
 uL
 pD
 zO
 Xw
 AX
-ot
+ok
 QF
 ZX
 dZ
 ot
 Zu
+sZ
 "}
-(9,1,1) = {"
+(10,1,1) = {"
+sZ
 ot
 gS
 qd
 qd
-ot
+ok
 Ke
 pD
 ZE
 lb
 eI
-ot
-ot
+ok
+ok
 Mq
+ok
+ok
 ot
-ot
-ot
+sZ
 "}
-(10,1,1) = {"
+(11,1,1) = {"
+sZ
 ot
 Sj
 BT
@@ -1033,13 +1081,15 @@ DV
 Ey
 Eh
 ot
+sZ
 "}
-(11,1,1) = {"
+(12,1,1) = {"
+sZ
 ot
 qq
 nZ
 BF
-ot
+ok
 sb
 pD
 pD
@@ -1051,13 +1101,15 @@ uX
 CQ
 Wv
 ot
+sZ
 "}
-(12,1,1) = {"
+(13,1,1) = {"
+sZ
 ot
-ot
-ot
-ot
-ot
+ok
+ok
+ok
+ok
 HL
 TR
 Pe
@@ -1069,44 +1121,50 @@ uX
 Ut
 wn
 ot
+sZ
 "}
-(13,1,1) = {"
+(14,1,1) = {"
+sZ
 ot
 Sw
 JH
 GS
-ot
-ot
+ok
+ok
 lM
 nk
 Yh
-ot
-ot
+ok
+ok
 NW
 cn
 BP
 SJ
 ot
+sZ
 "}
-(14,1,1) = {"
+(15,1,1) = {"
+sZ
 ot
 pv
 XZ
 vW
 cy
-ot
+ok
 ox
 ox
-ot
+ok
 uw
-ot
+ok
 fU
 HZ
 HZ
 ee
 ot
+sZ
 "}
-(15,1,1) = {"
+(16,1,1) = {"
+sZ
 ot
 FK
 gd
@@ -1117,32 +1175,36 @@ ox
 ox
 HE
 vt
-ot
 ok
+rB
 HZ
 HZ
 gE
 ot
+sZ
 "}
-(16,1,1) = {"
+(17,1,1) = {"
+sZ
 ot
 Pm
 tb
 hX
 RP
-ot
+ok
 Na
 hB
-ot
+ok
 cP
-ot
+ok
 gG
 AO
 HZ
 MT
 ot
+sZ
 "}
-(17,1,1) = {"
+(18,1,1) = {"
+sZ
 ot
 ot
 ot
@@ -1159,4 +1221,25 @@ ot
 ot
 ot
 ot
+sZ
+"}
+(19,1,1) = {"
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
 "}

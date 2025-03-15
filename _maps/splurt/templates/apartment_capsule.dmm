@@ -53,6 +53,9 @@
 "hj" = (
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
+"jb" = (
+/turf/open/space/bluespace,
+/area/misc/hilbertshotel)
 "jg" = (
 /obj/structure/flora/biolumi/mine,
 /turf/open/water/jungle,
@@ -462,6 +465,27 @@
 /area/misc/hilbertshotel)
 
 (1,1,1) = {"
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+"}
+(2,1,1) = {"
+jb
 mo
 mo
 mo
@@ -478,8 +502,10 @@ cA
 cA
 cA
 cA
+jb
 "}
-(2,1,1) = {"
+(3,1,1) = {"
+jb
 mo
 mo
 rK
@@ -496,8 +522,10 @@ Ad
 Lz
 ns
 cA
+jb
 "}
-(3,1,1) = {"
+(4,1,1) = {"
+jb
 mo
 rK
 fj
@@ -514,8 +542,10 @@ EA
 Vd
 PF
 cA
+jb
 "}
-(4,1,1) = {"
+(5,1,1) = {"
+jb
 mo
 rK
 jg
@@ -532,8 +562,10 @@ BP
 Cd
 nl
 cA
+jb
 "}
-(5,1,1) = {"
+(6,1,1) = {"
+jb
 mo
 rK
 rK
@@ -550,8 +582,10 @@ Pl
 bD
 bP
 cA
+jb
 "}
-(6,1,1) = {"
+(7,1,1) = {"
+jb
 mo
 wO
 EL
@@ -568,8 +602,10 @@ mC
 va
 sw
 cA
+jb
 "}
-(7,1,1) = {"
+(8,1,1) = {"
+jb
 mo
 fX
 EL
@@ -586,8 +622,10 @@ cA
 tU
 cA
 cA
+jb
 "}
-(8,1,1) = {"
+(9,1,1) = {"
+jb
 mo
 fX
 yP
@@ -604,8 +642,10 @@ Ox
 Rl
 xo
 cA
+jb
 "}
-(9,1,1) = {"
+(10,1,1) = {"
+jb
 mo
 fX
 jv
@@ -622,8 +662,10 @@ cA
 cA
 cA
 cA
+jb
 "}
-(10,1,1) = {"
+(11,1,1) = {"
+jb
 mo
 fX
 EL
@@ -640,8 +682,10 @@ Rc
 cA
 tq
 cA
+jb
 "}
-(11,1,1) = {"
+(12,1,1) = {"
+jb
 mo
 zW
 fP
@@ -658,8 +702,10 @@ Rc
 Eg
 cA
 Eg
+jb
 "}
-(12,1,1) = {"
+(13,1,1) = {"
+jb
 mo
 fX
 EL
@@ -676,8 +722,10 @@ Rc
 Rc
 Rc
 mo
+jb
 "}
-(13,1,1) = {"
+(14,1,1) = {"
+jb
 mo
 jv
 MA
@@ -694,8 +742,10 @@ Rc
 Rc
 CQ
 mo
+jb
 "}
-(14,1,1) = {"
+(15,1,1) = {"
+jb
 mo
 mo
 EL
@@ -712,8 +762,10 @@ hj
 hj
 hj
 mo
+jb
 "}
-(15,1,1) = {"
+(16,1,1) = {"
+jb
 mo
 mo
 mo
@@ -730,8 +782,10 @@ Rc
 GI
 hj
 mo
+jb
 "}
-(16,1,1) = {"
+(17,1,1) = {"
+jb
 mo
 mo
 mo
@@ -748,4 +802,25 @@ mo
 mo
 mo
 mo
+jb
+"}
+(18,1,1) = {"
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
+jb
 "}

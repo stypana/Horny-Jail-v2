@@ -199,6 +199,9 @@
 /obj/effect/baseturf_helper/beach/water,
 /turf/open/floor/iron/pool,
 /area/misc/hilbertshotel)
+"rd" = (
+/turf/open/space/bluespace,
+/area/misc/hilbertshotel)
 "rh" = (
 /obj/structure/closet/cabinet,
 /obj/effect/turf_decal/siding/wood{
@@ -579,6 +582,27 @@
 /area/misc/hilbertshotel)
 
 (1,1,1) = {"
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+"}
+(2,1,1) = {"
+rd
 QA
 QA
 QA
@@ -595,8 +619,10 @@ QJ
 Wk
 Wk
 cJ
+rd
 "}
-(2,1,1) = {"
+(3,1,1) = {"
+rd
 QA
 NR
 nA
@@ -613,8 +639,10 @@ OK
 Lx
 QJ
 Wk
+rd
 "}
-(3,1,1) = {"
+(4,1,1) = {"
+rd
 Wk
 iz
 iz
@@ -631,8 +659,10 @@ Rl
 Lx
 DA
 vp
+rd
 "}
-(4,1,1) = {"
+(5,1,1) = {"
+rd
 Wk
 Co
 Xw
@@ -649,8 +679,10 @@ Lx
 BH
 sr
 Wk
+rd
 "}
-(5,1,1) = {"
+(6,1,1) = {"
+rd
 Wk
 Ln
 gN
@@ -667,8 +699,10 @@ dc
 GR
 DA
 QJ
+rd
 "}
-(6,1,1) = {"
+(7,1,1) = {"
+rd
 yc
 oP
 yc
@@ -685,8 +719,10 @@ ht
 DA
 DA
 Wk
+rd
 "}
-(7,1,1) = {"
+(8,1,1) = {"
+rd
 yc
 wR
 sl
@@ -703,8 +739,10 @@ Lx
 DA
 Vx
 Wk
+rd
 "}
-(8,1,1) = {"
+(9,1,1) = {"
+rd
 hV
 ef
 zI
@@ -721,8 +759,10 @@ KI
 DA
 DA
 vp
+rd
 "}
-(9,1,1) = {"
+(10,1,1) = {"
+rd
 yc
 pR
 kp
@@ -739,8 +779,10 @@ DA
 DA
 DA
 Wk
+rd
 "}
-(10,1,1) = {"
+(11,1,1) = {"
+rd
 ay
 ef
 VE
@@ -757,8 +799,10 @@ dw
 DA
 DA
 QJ
+rd
 "}
-(11,1,1) = {"
+(12,1,1) = {"
+rd
 yc
 Zg
 ef
@@ -775,8 +819,10 @@ DA
 DA
 DA
 Wk
+rd
 "}
-(12,1,1) = {"
+(13,1,1) = {"
+rd
 yc
 Mh
 nP
@@ -793,8 +839,10 @@ DA
 LF
 DA
 vp
+rd
 "}
-(13,1,1) = {"
+(14,1,1) = {"
+rd
 yc
 If
 by
@@ -811,8 +859,10 @@ DA
 Vx
 DA
 Wk
+rd
 "}
-(14,1,1) = {"
+(15,1,1) = {"
+rd
 yc
 Yw
 PR
@@ -829,8 +879,10 @@ DA
 DA
 DA
 vp
+rd
 "}
-(15,1,1) = {"
+(16,1,1) = {"
+rd
 yc
 Cj
 kB
@@ -847,8 +899,10 @@ DA
 DA
 QJ
 Wk
+rd
 "}
-(16,1,1) = {"
+(17,1,1) = {"
+rd
 yc
 yc
 yc
@@ -865,4 +919,25 @@ Wk
 vp
 Wk
 Vf
+rd
+"}
+(18,1,1) = {"
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
+rd
 "}
