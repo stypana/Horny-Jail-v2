@@ -556,9 +556,11 @@
 	name = "Tactical Pants"
 	item_path = /obj/item/clothing/under/pants/tactical
 
+/*
 /datum/loadout_item/uniform/miscellaneous/blastwave_uniform
 	name = "Blastwave Uniform"
 	item_path = /obj/item/clothing/under/blastwave
+*/
 
 //HALLOWEEN
 /datum/loadout_item/uniform/miscellaneous/pj_blood

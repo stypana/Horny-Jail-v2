@@ -467,9 +467,11 @@
 	name = "Cardigan"
 	item_path = /obj/item/clothing/suit/toggle/jacket/cardigan
 
+/*
 /datum/loadout_item/suit/blastwave_suit
 	name = "Blastwave Trenchcoat"
 	item_path = /obj/item/clothing/suit/blastwave
+*/
 
 /*
 *	HOODIES

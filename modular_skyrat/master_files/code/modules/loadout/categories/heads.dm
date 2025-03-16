@@ -358,6 +358,7 @@
 	name = "Fashionable Baseball Cap"
 	item_path = /obj/item/clothing/head/soft/yankee
 
+/*
 /datum/loadout_item/head/blastwave_helmet
 	name = "Blastwave Plastic Helmet"
 	item_path = /obj/item/clothing/head/blastwave
@@ -365,6 +366,7 @@
 /datum/loadout_item/head/blastwave_cap
 	name = "Blastwave Peaked Cap"
 	item_path = /obj/item/clothing/head/blastwave/officer
+*/
 
 /*
 *	COWBOY
