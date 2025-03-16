@@ -140,7 +140,12 @@
 	desc = "A mush of sticky cobwebs and nasty looking eggs..."
 	icon_state = "nest_spider"
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
-	monster_types = list(/mob/living/basic/spider/giant/hunter, /mob/living/basic/spider/giant/)
+	//VENUS EDIT START: Aggressive duct spider
+	// ORIGINAL: monster_types = list(/mob/living/basic/spider/giant/hunter, /mob/living/basic/spider/giant/)
+	monster_types = list(/mob/living/basic/spider/maintenance/hostile)
+	max_mobs = 8
+	spawn_cooldown = 15 SECONDS
+	//VENUS EDIT END
 	loot = list(/obj/item/spider_egg = 4)
 
 /obj/item/spider_egg
