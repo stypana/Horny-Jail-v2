@@ -1,4 +1,4 @@
-// Modifies Blastwave costumes to use newer ported (goner) ones.
+// Modifies Blastwave crate to use newer ported clothing.
 /datum/supply_pack/costumes_toys/blastwave
 	cost = CARGO_CRATE_VALUE * 2.5
 	contains = list(
