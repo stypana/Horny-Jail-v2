@@ -271,7 +271,7 @@ const ReservedRooms = ({ data }) => {
             <Table.Row key={room.number}>
               <Table.Cell>Room {room.number}</Table.Cell>
               <Table.Cell>
-                {room.description ? room.description : <i>No description</i>}
+                <i>No information.</i>
               </Table.Cell>
             </Table.Row>
           ))}

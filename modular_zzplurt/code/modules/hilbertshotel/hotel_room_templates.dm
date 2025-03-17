@@ -41,6 +41,9 @@
 /datum/map_template/ghost_cafe_rooms/grotto
 	category = GHC_SPECIAL
 
+/datum/map_template/ghost_cafe_rooms/grotto2
+	category = GHC_SPECIAL
+
 // SPLURT's custom room templates
 
 /datum/map_template/ghost_cafe_rooms/apartment_city
