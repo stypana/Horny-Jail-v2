@@ -749,8 +749,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       page={PrefPage.Lore}
                       setPage={setCurrentPrefPage}
                     >
-                      {/* VENUS EDIT: Character Lore -> Character Info */}
-                      Character Info
+                      Character Lore
                     </PageButton>
                   </Stack.Item>
                 </Stack>
