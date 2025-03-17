@@ -262,7 +262,7 @@
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "rB" = (
-/obj/machinery/light/blacklight/directional/north,
+/obj/machinery/oven/range,
 /turf/open/floor/iron/kitchen/small,
 /area/misc/hilbertshotel)
 "rT" = (
@@ -771,6 +771,19 @@
 	},
 /obj/structure/closet/crate/freezer/food,
 /obj/machinery/light/directional/south,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/carrot,
+/obj/item/food/grown/carrot,
+/obj/item/food/grown/carrot,
 /turf/open/floor/iron/kitchen/small,
 /area/misc/hilbertshotel)
 "Wz" = (
