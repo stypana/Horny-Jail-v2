@@ -581,12 +581,12 @@
 	. = ..()
 	if(persistence_id)
 		. += span_notice("Any painting placed here will be archived at the end of the shift.")
-		//VENUS ADDITION: Helpful comment about paintings being saved
+		//SPLURT ADDITION: Helpful comment about paintings being saved
 		. += span_notice("Previously archived paintings are forever safe and can be displayed again in the future.")
-		//VENUS END
+		//SPLURT END
 	if(current_canvas)
 		current_canvas.ui_interact(user)
-		. += span_notice("Use wirecutters to safely remove the painting - fret not, this won't delete saved paintings.") //VENUS EDIT: Added info about paintings not being deleted if removed from frame
+		. += span_notice("Use wirecutters to safely remove the painting - fret not, this won't delete saved paintings.") //SPLURT EDIT: Added info about paintings not being deleted if removed from frame
 		if(IS_WEAKREF_OF(user?.mind, current_canvas.last_patron))
 			. += span_notice("<b>Alt-Click</b> to change select a new appearance for the frame of this painting.")
 
