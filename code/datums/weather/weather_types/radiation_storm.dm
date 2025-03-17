@@ -120,8 +120,3 @@
 	if(!active) //we stay on
 		return
 	..()
-
-//VENUS ADDITION START: Radstorm that only affects hallways
-/datum/weather/rad_storm/hallway
-	area_type = /area/station/hallway
-//VENUS ADDITION END
