@@ -5,8 +5,7 @@
 
 /datum/controller/subsystem/discord/proc/check_login(mob/dead/new_player/player)
 	. = TRUE
-	//VENUS: We don't need to check for the command prefix
-	if(!(SSdbcore.IsConnected() && CONFIG_GET(flag/discord_bunker))) //&& CONFIG_GET(string/discordbotcommandprefix))) //If not configured/using DB
+	if(!(SSdbcore.IsConnected() && CONFIG_GET(flag/discord_bunker) && CONFIG_GET(string/discordbotcommandprefix))) //If not configured/using DB
 		return TRUE
 	if(!player.client) //Safety check
 		return FALSE
