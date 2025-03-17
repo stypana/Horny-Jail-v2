@@ -47,7 +47,7 @@
 		state = THIRST_STATE_FINE
 		return
 
-	switch(thirst.thirst)
+	switch(thirst.water_level)
 		if(THIRST_LEVEL_THRESHOLD to INFINITY)
 			state = THIRST_STATE_FINE
 		if(THIRST_LEVEL_QUENCHED to THIRST_LEVEL_VERY_QUENCHED)

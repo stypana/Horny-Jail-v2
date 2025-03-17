@@ -20,7 +20,7 @@
 	// SPLURT ADDITION START - THIRST
 	if(HAS_TRAIT(src, TRAIT_NOTHIRST))
 		set_thirst(THIRST_LEVEL_QUENCHED - 1)
-	else if(thirst && stat != DEAD)
+	else if(water_level && stat != DEAD)
 		var/loss = THIRST_FACTOR / 10
 		if(move_intent == MOVE_INTENT_RUN)
 			loss *= 2

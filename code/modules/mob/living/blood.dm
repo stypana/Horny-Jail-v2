@@ -28,7 +28,7 @@
 			// SPLURT ADDITION START - THIRST
 			var/thirst_ratio = 0
 			if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
-				switch(thirst)
+				switch(water_level)
 					if(0 to THIRST_LEVEL_PARCHED)
 						thirst_ratio = 0.2
 					if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)

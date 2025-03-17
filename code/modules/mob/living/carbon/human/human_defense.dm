@@ -647,7 +647,7 @@
 
 		//VENUS ADDITION START: Thirst status on self-examine
 		if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
-			switch(thirst)
+			switch(water_level)
 				if(THIRST_LEVEL_FULL to INFINITY)
 					combined_msg += span_info("You're completely full of water!")
 				if(THIRST_LEVEL_QUENCHED to THIRST_LEVEL_FULL)

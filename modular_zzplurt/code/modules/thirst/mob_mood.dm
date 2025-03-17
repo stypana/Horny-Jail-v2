@@ -13,9 +13,9 @@
 /datum/mood/proc/HandleThirst()
 	if(HAS_TRAIT(mob_parent, TRAIT_NOTHIRST))
 		return FALSE //no mood events for thirst
-	if(mob_parent.thirst >= THIRST_LEVEL_THRESHOLD)
-		mob_parent.set_thirst(clamp(mob_parent.thirst, 0, THIRST_LEVEL_THRESHOLD))
-	switch(mob_parent.thirst)
+	if(mob_parent.water_level >= THIRST_LEVEL_THRESHOLD)
+		mob_parent.set_thirst(clamp(mob_parent.water_level, 0, THIRST_LEVEL_THRESHOLD))
+	switch(mob_parent.water_level)
 		if(THIRST_LEVEL_QUENCHED to INFINITY)
 			add_mood_event(MOOD_CATEGORY_WATER, /datum/mood_event/quenched)
 		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_QUENCHED)
