@@ -296,6 +296,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //
+/* They exist nonmodularly and adding them causes issues with the loadout.
 /obj/item/clothing/under/suit/pencil
 	name = "black pencilskirt"
 	desc = "A clean white shirt with a tight-fitting black pencilskirt."
@@ -400,6 +401,7 @@
 	name = "red shirt with white skirt"
 	desc = "No time. Busy gathering boys."
 	icon_state = "helltakerskirt"
+*/
 
 //
 /obj/item/clothing/under/rank/civilian/clown/clussy_outfit
