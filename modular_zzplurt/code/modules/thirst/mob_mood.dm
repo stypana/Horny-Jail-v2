@@ -15,7 +15,6 @@
 		return FALSE //no mood events for thirst
 	if(mob_parent.thirst >= THIRST_LEVEL_THRESHOLD)
 		mob_parent.set_thirst(clamp(mob_parent.thirst, 0, THIRST_LEVEL_THRESHOLD))
-		mob_parent.thirst = 380
 	switch(mob_parent.thirst)
 		if(THIRST_LEVEL_QUENCHED to INFINITY)
 			add_mood_event(MOOD_CATEGORY_WATER, /datum/mood_event/quenched)
