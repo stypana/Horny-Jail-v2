@@ -587,8 +587,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/Destroy()
 	if(mob)
-		//VENUS EDIT REMOVAL BEGIN - DEADCHAT BROADCAST
-		/*
 		var/stealth_admin = mob.client?.holder?.fakekey
 		var/announce_join = mob.client?.prefs?.read_preference(/datum/preference/toggle/broadcast_login_logout)
 		if (!stealth_admin)
