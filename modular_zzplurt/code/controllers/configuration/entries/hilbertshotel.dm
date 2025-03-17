@@ -2,5 +2,5 @@
 	default = TRUE
 
 /datum/config_entry/number/hilbertshotel_max_rooms
-	default = 10
+	default = 100
 
