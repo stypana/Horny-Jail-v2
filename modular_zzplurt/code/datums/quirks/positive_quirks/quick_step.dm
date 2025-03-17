@@ -17,4 +17,4 @@
 	quirk_holder.remove_movespeed_modifier(/datum/movespeed_modifier/quick_step)
 
 /datum/movespeed_modifier/quick_step
-	multiplicative_slowdown = -1.25
+	multiplicative_slowdown = -0.5
