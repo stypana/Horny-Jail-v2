@@ -62,8 +62,8 @@
 	item_path = /obj/item/clothing/under/vaultsuit
 
 //
-// Polychrome GWTB
-/datum/loadout_item/uniform/gonercloth
+// (Non-)Polychrome GWTB
+/datum/loadout_item/uniform/miscellaneous/blastwave_uniform
 	name = "trencher uniform"
 	item_path = /obj/item/clothing/under/goner/fake
 
