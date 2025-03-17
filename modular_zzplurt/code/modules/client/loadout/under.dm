@@ -63,9 +63,11 @@
 
 //
 // (Non-)Polychrome GWTB
+/* VENUS REMOVAL START: This is a duplicate of skyrat's blastwave uniform.
 /datum/loadout_item/uniform/miscellaneous/blastwave_uniform
 	name = "trencher uniform"
 	item_path = /obj/item/clothing/under/goner/fake
+*/
 
 /datum/loadout_item/uniform/leia_outfit
 	name = "Princess Leia Outfit"

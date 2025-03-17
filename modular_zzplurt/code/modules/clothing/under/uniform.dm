@@ -163,6 +163,7 @@
 	return
 
 // GWTB-inspired stuff wooo
+/* VENUS REMOVAL START: This is a duplicate of skyrat's blastwave uniform.
 /obj/item/clothing/under/goner
 	name = "trencher uniform"
 	desc = "An utilitarian uniform of rugged warfare. This one have purple-colored, corporate insignias."
@@ -198,6 +199,7 @@
 	name = "yellow trencher uniform"
 	desc = "An utilitarian uniform of rugged warfare, with yellow insignias."
 	icon_state = "goner_uniform_y"
+*/
 
 //
 /obj/item/clothing/under/misc/leia_outfit
