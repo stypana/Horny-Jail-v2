@@ -22,7 +22,6 @@
 	key = "fart"
 	key_third_person = "farts"
 	message = "farts out shitcode."
-	sound = 'modular_zzplurt/sound/voice/farts/fart.ogg'
 	cooldown = 3 SECONDS
 	emote_type = EMOTE_AUDIBLE
 
@@ -71,6 +70,9 @@
 	)
 	message = pick(fart_emotes)
 	. = ..()
+
+/datum/emote/living/fart/get_sound(mob/living/user)
+	return pick(GLOB.brap_noises)
 
 /datum/emote/living/speen
 	key = "speen"
