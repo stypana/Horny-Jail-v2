@@ -29,12 +29,13 @@
 	resistance_flags = FLAMMABLE // no more plot armour
 	successfully_sent = TRUE
 	in_hotel_room = FALSE
-	update_appearance()
+	update_icon()
 
-/obj/item/storage/box/bluespace/update_overlays()
+/obj/item/storage/box/bluespace/update_icon()
 	. = ..()
+	cut_overlays()
 	if(successfully_sent)
-		. += mutable_appearance(icon, "sticker")
+		add_overlay(mutable_appearance(icon, "sticker"))
 
 /obj/item/storage/box/bluespace/attack_self(mob/user)
 	if(!successfully_sent)
@@ -58,7 +59,7 @@
 	atom_storage.max_total_storage = WEIGHT_CLASS_GIGANTIC * INFINITY
 	atom_storage.max_slots = INFINITY
 	creation_area = get_area(src)
-	update_appearance()
+	update_icon()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/storage/box/bluespace/process()
@@ -76,6 +77,6 @@
 		if(controller)
 			forceMove(controller)
 			controller.bluespace_box = src
-			controller.update_appearance()
+			controller.update_icon()
 		else
 			qdel(src)
