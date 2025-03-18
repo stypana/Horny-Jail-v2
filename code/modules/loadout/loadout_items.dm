@@ -40,7 +40,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	/// Set automatically to TRUE for all items that have the flag [IS_PLAYER_COLORABLE_1].
 	/// If you really want it to not be colorable set this to [DONT_GREYSCALE]
 	var/can_be_greyscale = FALSE
-
 	/// Whether this item can be renamed.
 	/// I recommend you apply this sparingly becuase it certainly can go wrong (or get reset / overridden easily)
 	var/can_be_named = TRUE // SKYRAT EDIT
@@ -132,12 +131,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		if("select_color")
 			if(can_be_greyscale)
 				return set_item_color(manager, user)
-
-		//SPLURT EDIT ADDITION START: Simple item color (changes color var directly)
-		if("select_simple_color")
-			if(can_be_colored && !can_be_greyscale)
-				return set_item_simple_color(manager, user)
-		//SPLURT EDIT ADDITION END
 
 		if("set_name")
 			if(can_be_named)

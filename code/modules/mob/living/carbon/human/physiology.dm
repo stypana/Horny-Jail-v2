@@ -38,7 +38,6 @@
 	var/datum/armor/armor // internal armor datum
 
 	var/hunger_mod = 1 //% of hunger rate taken per tick.
-	var/thirst_mod = 1 //SPLURT ADDITION FOR THIRST: % of thirst rate taken per tick.
 
 /datum/physiology/New()
 	armor = new
