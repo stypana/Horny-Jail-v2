@@ -41,10 +41,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	/// If you really want it to not be colorable set this to [DONT_GREYSCALE]
 	var/can_be_greyscale = FALSE
 
-	/// VENUS ADDITION START: Whether this item can be simple-colored. (Changes color var directly)
-	var/can_be_colored = TRUE
-	/// VENUS ADDITION END
-
 	/// Whether this item can be renamed.
 	/// I recommend you apply this sparingly becuase it certainly can go wrong (or get reset / overridden easily)
 	var/can_be_named = TRUE // SKYRAT EDIT
@@ -137,11 +133,11 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			if(can_be_greyscale)
 				return set_item_color(manager, user)
 
-		//VENUS EDIT ADDITION START: Simple item color (changes color var directly)
+		//SPLURT EDIT ADDITION START: Simple item color (changes color var directly)
 		if("select_simple_color")
 			if(can_be_colored && !can_be_greyscale)
 				return set_item_simple_color(manager, user)
-		//VENUS EDIT ADDITION END
+		//SPLURT EDIT ADDITION END
 
 		if("set_name")
 			if(can_be_named)
@@ -157,25 +153,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			return set_skin(manager, user, params)
 
 	return TRUE
-
-/// Opens a color picker for directly coloring the item.
-/datum/loadout_item/proc/set_item_simple_color(datum/preference_middleware/loadout/manager, mob/user)
-	var/list/loadout = manager.get_current_loadout()
-	if(!loadout?[item_path])
-		return FALSE
-
-	var/current_color = loadout[item_path][INFO_COLOR] || "#FFFFFF"
-	var/new_color = tgui_color_picker(user, "Choose a color for [name]:", "Color Selection", current_color)
-	if(!new_color)
-		return FALSE
-
-	loadout = manager.get_current_loadout() // Make sure no shenanigans happened
-	if(!loadout?[item_path])
-		return FALSE
-
-	loadout[item_path][INFO_COLOR] = new_color
-	manager.save_current_loadout(loadout)
-	return TRUE  // update UI
 
 /// Opens up the GAGS editing menu.
 /datum/loadout_item/proc/set_item_color(datum/preference_middleware/loadout/manager, mob/user)
@@ -316,12 +293,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		equipped_item.set_greyscale(item_details[INFO_GREYSCALE])
 		update_flag |= equipped_item.slot_flags
 
-	// VENUS ADDITION START: Simple item color (changes color var directly)
-	if(can_be_colored && item_details?[INFO_COLOR])
-		equipped_item.color = item_details[INFO_COLOR]
-		update_flag |= equipped_item.slot_flags
-	// VENUS ADDITION END
-
 	// SKYRAT EDIT BEGIN - DESCRIPTIONS~
 	if(can_be_named && !visuals_only)
 		var/renamed = 0
@@ -443,16 +414,6 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			"button_icon" = FA_ICON_PALETTE,
 			"active_key" = INFO_GREYSCALE,
 		))
-
-	// VENUS ADDITION START: Simple item color (changes color var directly)
-	if(can_be_colored && !can_be_greyscale)
-		UNTYPED_LIST_ADD(button_list, list(
-			"label" = "Simple recolor",
-			"act_key" = "select_simple_color",
-			"button_icon" = FA_ICON_PALETTE,
-			"active_key" = INFO_COLOR,
-		))
-	// VENUS ADDITION END
 
 	if(can_be_named)
 		UNTYPED_LIST_ADD(button_list, list(

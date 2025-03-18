@@ -152,9 +152,6 @@
 // Changing these will break existing loadouts
 /// Tracks GAGS color information
 #define INFO_GREYSCALE "greyscale"
-/// VENUS ADDITION START: Loadout simple item color (changes color var directly)
-#define INFO_COLOR "color"
-/// VENUS ADDITION END
 /// Used to set custom names
 #define INFO_NAMED "name"
 /// Used for specific alt-reskins, like the pride pin
