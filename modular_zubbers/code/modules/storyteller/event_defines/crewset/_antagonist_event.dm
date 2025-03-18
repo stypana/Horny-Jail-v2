@@ -120,8 +120,6 @@
 	/// The minds we've setup in setup() and need to finalize in start()
 	var/list/setup_minds = list()
 
-	max_occurrences = 0 //VENUS EDIT: Disabled all antag events for now.
-
 /datum/round_event/antagonist/solo
 
 /datum/round_event/antagonist/setup()
