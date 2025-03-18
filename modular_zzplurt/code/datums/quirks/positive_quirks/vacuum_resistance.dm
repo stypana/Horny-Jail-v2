@@ -1,7 +1,7 @@
 /datum/quirk/vacuum_resistance
     name = "Vacuum Resistance"
     desc = "Your body is specially adapted to withstand and operate in zero-pressure environments. You may still need a source of breathable air, however."
-    value = 6
+    value = 8
     gain_text = span_notice("Your physique attunes to the silence of space, now able to operate in zero pressure.")
     lose_text = span_notice("Your physiology reverts as your space faring gifts lay dormant once more.")
     medical_record_text = "Patient's body has fully adapted to zero-pressure environments."
