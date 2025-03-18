@@ -66,6 +66,11 @@
 			continue
 		if (target.stat >= UNCONSCIOUS)
 			continue // Don't just haunt a corpse
+		//VENUS ADDITION START - Prevent bioscrambler from targeting people in dorms
+		var/area/target_area = get_area(target)
+		if(istype(target_area, /area/station/commons/dorms))
+			continue
+		//VENUS ADDITION END
 		var/distance_from_target = get_dist(src, target)
 		if(distance_from_target >= closest_distance)
 			continue
