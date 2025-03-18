@@ -33,14 +33,6 @@ SUBSYSTEM_DEF(decay)
 		/obj/structure/mob_spawner/rats
 		)
 
-	//VENUS ADDITION START - Add more mob spawner varieties with rarity
-	var/list/rare_nests = list(
-		/obj/structure/mob_spawner/snake,
-		/obj/structure/mob_spawner/beehive/toxic,
-		/obj/structure/mob_spawner/grapes
-	)
-	//VENUS ADDITION END
-
 /datum/controller/subsystem/decay/Initialize()
 	if(CONFIG_GET(flag/ssdecay_disabled))
 		message_admins("SSDecay was disabled in config.")
