@@ -45,3 +45,8 @@
   - bugfix: fixes loadout items duplication
   funnyfreeperson:
   - code_imp: made modular limbs no longer scream
+2025-03-18:
+  MosleyTheMalO:
+  - rscadd: item coloring in loadout
+  - rscadd: New spans for subtler.
+  - rscadd: readds some quirks to the quirk selection
