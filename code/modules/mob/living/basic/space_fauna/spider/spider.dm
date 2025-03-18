@@ -198,16 +198,3 @@
 	AddElement(/datum/element/ai_retaliate)
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 	AddElement(/datum/element/tiny_mob_hunter)
-
-//VENUS ADDITION START: Aggressive duct spider
-/mob/living/basic/spider/maintenance/hostile
-	name = "aggressive duct spider"
-	desc = "A maintenance-dwelling spider with an attitude problem and uncomfortably sharp fangs. This one definitely bites."
-	maxHealth = 15
-	health = 15
-	melee_damage_lower = 3
-	melee_damage_upper = 6
-	can_be_held = FALSE
-	gold_core_spawnable = NO_SPAWN
-	ai_controller = /datum/ai_controller/basic_controller/giant_spider //Aggressive spider AI
-//VENUS ADDITION END
