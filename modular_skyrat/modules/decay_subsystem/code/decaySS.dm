@@ -33,6 +33,14 @@ SUBSYSTEM_DEF(decay)
 		/obj/structure/mob_spawner/rats
 		)
 
+	//VENUS ADDITION START - Add more mob spawner varieties with rarity
+	var/list/rare_nests = list(
+		/obj/structure/mob_spawner/snake,
+		/obj/structure/mob_spawner/beehive/toxic,
+		/obj/structure/mob_spawner/grapes
+	)
+	//VENUS ADDITION END
+
 /datum/controller/subsystem/decay/Initialize()
 	if(CONFIG_GET(flag/ssdecay_disabled))
 		message_admins("SSDecay was disabled in config.")
@@ -66,7 +74,7 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
 
-	severity_modifier = rand(1, 2) //VENUS EDIT - Reduced max severity modifier to 2 (from 4)
+	severity_modifier = rand(1, 4)
 
 	message_admins("SSDecay severity modifier set to [severity_modifier]")
 	log_world("SSDecay severity modifier set to [severity_modifier]")
@@ -113,15 +121,11 @@ SUBSYSTEM_DEF(decay)
 				if(!iterating_floor.Enter(spawned_web))
 					qdel(spawned_web)
 
-			//VENUS REMOVAL START - Remove old nest spawning code which is called by do_nests instead
-			/*
 			if(!CONFIG_GET(flag/ssdecay_disable_nests) && prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50))
 				var/spawner_to_spawn = pick(possible_nests)
 				var/obj/structure/mob_spawner/spawned_spawner = new spawner_to_spawn(iterating_floor)
 				if(!iterating_floor.Enter(spawned_spawner))
 					qdel(spawned_spawner)
-			*/
-			//VENUS EDIT END
 
 /datum/controller/subsystem/decay/proc/do_engineering()
 	for(var/area/station/engineering/iterating_engineering in possible_areas)
