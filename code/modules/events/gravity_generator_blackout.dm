@@ -1,7 +1,7 @@
 /datum/round_event_control/gravity_generator_blackout
 	name = "Gravity Generator Blackout"
 	typepath = /datum/round_event/gravity_generator_blackout
-	weight = 15 //VENUS EDIT: 30 -> 15
+	weight = 30
 	category = EVENT_CATEGORY_ENGINEERING
 	description = "Turns off the gravity generator."
 	min_wizard_trigger_potency = 0
