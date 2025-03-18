@@ -91,7 +91,6 @@ SSDECAY_DISABLED
 
 ## Toggles off SSDecay nests when uncommented, HIGHLY recommended for map test-merges, to avoid giving it a bad first impression.
 ## If SSDECAY_DISABLED is uncommented, then it does not matter if this is commented out since this config requires SSDecay to be enabled first.
-## VENUS EDIT: This can now be used independently of SSDECAY_DISABLED - you can have nests spawn even with decay visuals disabled
 SSDECAY_DISABLE_NESTS
 
 ## VENUS START

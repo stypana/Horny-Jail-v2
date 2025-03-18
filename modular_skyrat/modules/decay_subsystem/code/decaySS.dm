@@ -30,29 +30,14 @@ SUBSYSTEM_DEF(decay)
 		/obj/structure/mob_spawner/spiders,
 		/obj/structure/mob_spawner/bush,
 		/obj/structure/mob_spawner/beehive,
-		/obj/structure/mob_spawner/rats,
-		//VENUS ADDITION START - More mob spawners
-		/obj/structure/mob_spawner/snake,
-		/obj/structure/mob_spawner/beehive/toxic
-		//VENUS ADDITION END
-	)
+		/obj/structure/mob_spawner/rats
+		)
 
 /datum/controller/subsystem/decay/Initialize()
-	//VENUS ADDITION START - Allow nests when decay disabled
-	var/spawn_nests = !CONFIG_GET(flag/ssdecay_disable_nests)
-	//VENUS ADDITION END
-
 	if(CONFIG_GET(flag/ssdecay_disabled))
 		message_admins("SSDecay was disabled in config.")
 		log_world("SSDecay was disabled in config.")
-		// return SS_INIT_NO_NEED //VENUS EDIT - Commented out (look below)
-		//VENUS ADDITION START - Allow nests when decay disabled
-		if(spawn_nests)
-			message_admins("SSDecay was disabled in config, but SSDecay mob nests were enabled, so they will still spawn.")
-			// Continue execution to handle nest spawning
-		else
-			return SS_INIT_NO_NEED
-		//VENUS ADDITION END
+		return SS_INIT_NO_NEED
 
 	if(SSmapping.current_map.map_name in station_filter)
 		message_admins("SSDecay was disabled due to map filter.")
@@ -81,18 +66,10 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
 
-	severity_modifier = rand(1, 4)
+	severity_modifier = rand(1, 2) //VENUS EDIT - Reduced max severity modifier to 2 (from 4)
 
 	message_admins("SSDecay severity modifier set to [severity_modifier]")
 	log_world("SSDecay severity modifier set to [severity_modifier]")
-
-	//VENUS ADDITION START - Allow nests when decay disabled
-	if(spawn_nests)
-		do_nests()
-
-	if(CONFIG_GET(flag/ssdecay_disabled))
-		return SS_INIT_SUCCESS //Make sure we return now if decay is disabled
-	//VENUS ADDITION END
 
 	do_common()
 
@@ -173,15 +150,4 @@ SUBSYSTEM_DEF(decay)
 				var/obj/effect/decal/cleanable/vomit/spawned_vomit = new (iterating_floor)
 				if(!iterating_floor.Enter(spawned_vomit))
 					qdel(spawned_vomit)
-
-//VENUS ADDITION START - Separate nest spawning function
-/datum/controller/subsystem/decay/proc/do_nests()
-	for(var/area/station/maintenance/iterating_maintenance in possible_areas)
-		for(var/turf/open/iterating_floor in iterating_maintenance)
-			if(prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50))
-				var/spawner_to_spawn = pick(possible_nests)
-				var/obj/structure/mob_spawner/spawned_spawner = new spawner_to_spawn(iterating_floor)
-				if(!iterating_floor.Enter(spawned_spawner))
-					qdel(spawned_spawner)
-//VENUS ADDITION END
 
