@@ -29,6 +29,13 @@
 	playsound(src, 'sound/effects/magic/cosmic_energy.ogg', vol = 50, vary = TRUE)
 	COOLDOWN_START(src, pulse_cooldown, pulse_delay)
 	for(var/mob/living/carbon/nearby in hearers(range, src))
+		//SPLURT ADDITION START - Prevent bioscrambler effect in dorms (but not if you're the target)
+		var/area/A = get_area(nearby)
+		if(istype(A, /area/station/commons/dorms))
+			if(nearby != pursuit_target?.resolve())
+				to_chat(nearby, span_notice("\the [A.name]'s habitation field hums quietly as it hides you from the [name]!"))
+				continue
+		//SPLURT ADDITION END
 		nearby.bioscramble(name)
 
 /obj/effect/anomaly/bioscrambler/move_anomaly()
@@ -67,6 +74,11 @@
 			continue
 		if (target.stat >= UNCONSCIOUS)
 			continue // Don't just haunt a corpse
+		//SPLURT ADDITION START - Prevent bioscrambler from targeting people in dorms
+		var/area/target_area = get_area(target)
+		if(istype(target_area, /area/station/commons/dorms))
+			continue
+		//SPLURT ADDITION END
 		var/distance_from_target = get_dist(src, target)
 		if(distance_from_target >= closest_distance)
 			continue

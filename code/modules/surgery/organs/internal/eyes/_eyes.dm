@@ -426,7 +426,7 @@
 	base_color[3] *= 0.85
 	var/eyelid_color = rgb(base_color[1], base_color[2], base_color[3], (length(base_color) >= 4 ? base_color[4] : null), COLORSPACE_HSL)
 	// If we're knocked out, just color the eyes
-	if (!parent.appears_alive() || HAS_TRAIT(parent, TRAIT_KNOCKEDOUT))
+	if ((!parent.appears_alive() && !HAS_TRAIT(owner, TRAIT_UNDEAD)) || HAS_TRAIT(parent, TRAIT_KNOCKEDOUT)) // SPLURT EDIT - Undead eyes
 		eye_right.color = eyelid_color
 		eye_left.color = eyelid_color
 		return

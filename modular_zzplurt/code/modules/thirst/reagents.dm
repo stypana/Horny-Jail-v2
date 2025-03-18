@@ -173,7 +173,9 @@
 /obj/item/organ/stomach/proc/handle_thirst(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	if(HAS_TRAIT(H, TRAIT_NOTHIRST))
 		return
-	H.adjust_thirst(-THIRST_FACTOR)
+	var/thirst_rate = THIRST_FACTOR
+	thirst_rate *= H.physiology.thirst_mod
+	H.adjust_thirst(-thirst_rate)
 
 /datum/reagent/consumable/metabolize_reagent(mob/living/carbon/M)
 	. = ..()
