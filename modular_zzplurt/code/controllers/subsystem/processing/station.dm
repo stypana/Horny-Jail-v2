@@ -1,9 +1,5 @@
-//VENUS REMOVAL START
-/*
 /datum/controller/subsystem/processing/station
 	announcer = /datum/centcom_announcer/default/lait
-*/
-//VENUS REMOVAL END
 
 /datum/controller/subsystem/processing/station/proc/set_announcer(datum/centcom_announcer/new_announcer)
 	QDEL_NULL(announcer)
