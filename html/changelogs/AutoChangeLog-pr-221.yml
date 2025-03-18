@@ -1,0 +1,6 @@
+author: "MosleyTheMalO"
+delete-after: True
+changes:
+  - rscadd: "item coloring in loadout"
+  - rscadd: "New spans for subtler."
+  - rscadd: "readds some quirks to the quirk selection"
