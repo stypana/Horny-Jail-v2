@@ -93,14 +93,6 @@ SSDECAY_DISABLED
 ## If SSDECAY_DISABLED is uncommented, then it does not matter if this is commented out since this config requires SSDecay to be enabled first.
 SSDECAY_DISABLE_NESTS
 
-## VENUS START
-## Probability (in percent) that the decay subsystem will affect a round
-## Set to 0 to never activate decay, 100 to always activate decay
-## This setting affects both decay visuals and nests according to their respective toggle settings
-## Default: 50
-#SSDECAY_CHANCE 50
-## VENUS END
-
 ## Disables any ERP preferences for codebases that don't want it.
 #DISABLE_ERP_PREFERENCES
 #DISABLE_LEWD_ITEMS

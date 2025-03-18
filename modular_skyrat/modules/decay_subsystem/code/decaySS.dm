@@ -53,8 +53,7 @@ SUBSYSTEM_DEF(decay)
 		return SS_INIT_NO_NEED
 
 	// Putting this first so that it just doesn't waste time iterating through everything if it's not going to do anything anyway.
-	//VENUS EDIT - Original: if(prob(50)) - Changed to: if(!prob(CONFIG_GET(number/ssdecay_chance)))
-	if(!prob(CONFIG_GET(number/ssdecay_chance)))
+	if(prob(50))
 		message_admins("SSDecay will not interact with this round.")
 		log_world("SSDecay will not interact with this round.")
 		return SS_INIT_NO_NEED
