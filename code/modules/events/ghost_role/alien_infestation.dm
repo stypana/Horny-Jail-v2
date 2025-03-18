@@ -3,8 +3,7 @@
 	typepath = /datum/round_event/ghost_role/alien_infestation
 	weight = 5
 
-	min_players = 30 //VENUS EDIT: 10 -> 30
-	max_occurrences = 0 //VENUS ADDITION
+	min_players = 10
 
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
