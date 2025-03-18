@@ -22,6 +22,9 @@
 	// Define quirk action
 	var/datum/action/cooldown/werewolf/transform/quirk_action = locate() in quirk_holder.actions
 
+	if(QDELETED(quirk_action))
+		return
+
 	// Revoke quirk action
 	quirk_action.Remove(quirk_holder)
 

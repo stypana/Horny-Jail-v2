@@ -33,6 +33,9 @@
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
+	if(QDELETED(quirk_mob))
+		return
+
 	// Remove quirk ability action datum
 	var/datum/action/cooldown/hypnotize/act_hypno = locate() in quirk_mob.actions
 	act_hypno.Remove(quirk_mob)
