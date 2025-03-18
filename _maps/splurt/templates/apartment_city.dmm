@@ -493,8 +493,7 @@
 "Eh" = (
 /obj/structure/flora/bush/jungle,
 /obj/structure/flora/bush/large/style_3{
-	pixel_y = -1;
-	layer = 5.2
+	pixel_y = -1
 	},
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
@@ -700,8 +699,7 @@
 "QB" = (
 /obj/structure/flora/bush/jungle,
 /obj/structure/flora/bush/large/style_2{
-	layer = 5.2;
-	pixel_y = 3
+	pixel_y = -2
 	},
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)

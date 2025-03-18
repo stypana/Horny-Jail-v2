@@ -180,8 +180,8 @@
 /area/misc/hilbertshotel)
 "pd" = (
 /obj/structure/table/wood,
-/obj/structure/window/reinforced,
 /obj/structure/curtain/cloth/fancy,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "pR" = (
@@ -196,8 +196,8 @@
 /area/misc/hilbertshotel)
 "qH" = (
 /obj/machinery/shower/directional/west,
-/obj/effect/baseturf_helper/beach/water,
-/turf/open/floor/iron/pool,
+/obj/effect/spawner/liquids_spawner,
+/turf/open/floor/iron/small,
 /area/misc/hilbertshotel)
 "rd" = (
 /turf/open/space/bluespace,
@@ -383,8 +383,8 @@
 /turf/open/floor/iron/kitchen/small,
 /area/misc/hilbertshotel)
 "II" = (
-/obj/effect/baseturf_helper/beach/water,
-/turf/open/floor/iron/pool,
+/obj/effect/spawner/liquids_spawner,
+/turf/open/floor/iron/small,
 /area/misc/hilbertshotel)
 "JE" = (
 /obj/structure/flora/tree/jungle{
@@ -462,10 +462,10 @@
 /area/misc/hilbertshotel)
 "Ox" = (
 /obj/structure/table/wood,
-/obj/structure/window/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen/fountain,
 /obj/structure/curtain/cloth/fancy,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "OK" = (
@@ -492,10 +492,10 @@
 /turf/closed/indestructible/rock,
 /area/misc/hilbertshotel)
 "QQ" = (
-/obj/structure/window/reinforced,
 /obj/structure/curtain/cloth/fancy,
-/obj/effect/baseturf_helper/beach/water,
-/turf/open/floor/iron/pool,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/spawner/liquids_spawner,
+/turf/open/floor/iron/small,
 /area/misc/hilbertshotel)
 "Rl" = (
 /obj/structure/flora/grass/jungle/a/style_2,
@@ -506,16 +506,14 @@
 	dir = 4
 	},
 /obj/item/soap,
-/obj/structure/window/reinforced/tinted{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white/small,
 /area/misc/hilbertshotel)
 "TC" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
-/obj/structure/window/reinforced,
 /obj/structure/curtain/cloth/fancy,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "Vf" = (

@@ -65,12 +65,8 @@
 /turf/open/misc/grass,
 /area/misc/hilbertshotel)
 "jy" = (
-/obj/structure/ore_box{
-	layer = 2.1
-	},
-/obj/effect/turf_decal/box{
-	layer = 2
-	},
+/obj/effect/turf_decal/box,
+/obj/structure/ore_box,
 /turf/open/floor/pod/dark,
 /area/misc/hilbertshotel)
 "jE" = (
@@ -226,9 +222,7 @@
 /area/misc/hilbertshotel)
 "Ad" = (
 /obj/structure/closet/cabinet,
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = -31
-	},
+/obj/structure/sign/poster/contraband/random/directional/west,
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "Bo" = (
@@ -283,13 +277,6 @@
 /obj/structure/flora/grass/jungle,
 /turf/open/misc/dirt/dark/station,
 /area/misc/hilbertshotel)
-"Gf" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/turf/closed/wall/mineral/titanium/survival/pod,
-/area/misc/hilbertshotel)
 "GI" = (
 /obj/structure/mecha_wreckage/ripley,
 /turf/open/floor/fakebasalt,
@@ -300,6 +287,7 @@
 /area/misc/hilbertshotel)
 "IM" = (
 /obj/machinery/smartfridge/survival_pod,
+/obj/structure/sign/poster/contraband/random/directional/north,
 /turf/open/floor/pod/dark,
 /area/misc/hilbertshotel)
 "JL" = (
@@ -400,9 +388,7 @@
 /area/misc/hilbertshotel)
 "Qi" = (
 /obj/machinery/light/small/blacklight/directional/west,
-/obj/machinery/portable_atmospherics/canister/air{
-	layer = 1
-	},
+/obj/machinery/portable_atmospherics/canister/air,
 /turf/open/misc/dirt/dark/station,
 /area/misc/hilbertshotel)
 "QJ" = (
@@ -424,18 +410,14 @@
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "WG" = (
-/obj/structure/ore_box{
-	layer = 2.1
-	},
-/obj/effect/turf_decal/box{
-	layer = 2
-	},
 /obj/effect/turf_decal{
 	dir = 4
 	},
 /obj/machinery/light/small/blacklight/directional/west{
 	dir = 2
 	},
+/obj/structure/ore_box,
+/obj/effect/turf_decal/box,
 /turf/open/floor/pod/dark,
 /area/misc/hilbertshotel)
 "Yb" = (
@@ -571,7 +553,7 @@ rK
 rK
 rK
 rK
-Gf
+cA
 IM
 wC
 wC

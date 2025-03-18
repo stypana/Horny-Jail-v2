@@ -1,18 +1,17 @@
+import { useEffect, useState } from 'react';
+
 import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
-  Grid,
   Icon,
   Modal,
   Section,
   Stack,
   TextArea,
   Tooltip,
-  LabeledList,
 } from '../components';
 import { Window } from '../layouts';
-import { useState, useEffect } from 'react';
 
 type RoomData = {
   room_visibility: number;
@@ -115,8 +114,8 @@ export const HilbertsHotelRoomControl = (props) => {
             <Stack vertical>
               <Stack.Item>
                 Departing will consume your ID card and open your job slot, as
-                if you've entered cryosleep stasis. Items you put in the box
-                will be returned to the cryogenic oversight console.
+                if you&apos;ve entered cryosleep stasis. Items you put in the
+                box will be returned to the cryogenic oversight console.
               </Stack.Item>
               <Stack.Item>
                 <Stack justify="space-between">
@@ -172,7 +171,7 @@ export const HilbertsHotelRoomControl = (props) => {
                   fontStyle: 'italic',
                 }}
               >
-                You're currently in...
+                You&apos;re currently in...
               </Stack.Item>
               <Stack.Item
                 style={{
@@ -267,7 +266,7 @@ export const HilbertsHotelRoomControl = (props) => {
                     width: '1.85em',
                   }}
                   confirmContent={<Icon name="question" />}
-                ></Button.Confirm>
+                />
               </Stack.Item>
             </Stack>
             <Stack.Item>
