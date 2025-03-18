@@ -28,6 +28,12 @@
 	playsound(src, 'sound/effects/magic/cosmic_energy.ogg', vol = 50, vary = TRUE)
 	COOLDOWN_START(src, pulse_cooldown, pulse_delay)
 	for(var/mob/living/carbon/nearby in hearers(range, src))
+		//VENUS ADDITION START - Prevent bioscrambler effect in dorms
+		var/area/nearby_area = get_area(nearby)
+		if(istype(nearby_area, /area/station/commons/dorms))
+			to_chat(nearby, span_notice("The Dormitories' neutralizing field protects you from the [name]!"))
+			continue
+		//VENUS ADDITION END
 		nearby.bioscramble(name)
 
 /obj/effect/anomaly/bioscrambler/move_anomaly()
