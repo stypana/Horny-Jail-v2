@@ -703,25 +703,6 @@ h2.alert {
   font-size: 185%;
 }
 
-//SPLURT ADDITION START (for splurt's span.dm)
-.umbra {
-  color: #5000a0;
-}
-
-.umbra_emphasis {
-  color: #5000a0;
-  font-weight: bold;
-  font-style: italic;
-}
-
-.umbra_large {
-  color: #5000a0;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 3;
-}
-//SPLURT ADDITION END
-
 .deconversion_message {
   color: hsl(270, 100%, 31.4%);
   font-size: 185%;
@@ -1286,25 +1267,6 @@ $border-width-px: $border-width * 1px;
   text-shadow: 0 0 6px #ff6dbc;
 }
 
-.userlove {
-  color: #ff1493;
-  font-style: italic;
-  font-weight: bold;
-  text-shadow: 0 0 6px #ff6dbc;
-}
-
-//SPLURT ADDITION START: From Sandstorm Station (for splurt's span.dm)
-.love {
-  color: #ff4591;
-  font-style: italic;
-  text-shadow: 0 0 6px #994449;
-}
-
-.lewd {
-  color: #800080;
-}
-//SPLURT ADDITION END
-
 .crossooc {
   color: #9f6efc;
   font-weight: bold;
@@ -1507,3 +1469,32 @@ $border-width-px: $border-width * 1px;
   }
 }
 /* BUBBER EDIT ADDITION END - LIGHT MODE CLASSES */
+
+/* SPLURT EDIT ADDITION - LIGHT MODE CLASSES */
+.umbra {
+  color: #5000a0;
+}
+
+.umbra_emphasis {
+  color: #5000a0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.umbra_large {
+  color: #5000a0;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 3;
+}
+
+.love {
+  color: #ff4591;
+  font-style: italic;
+  text-shadow: 0 0 6px #994449;
+}
+
+.lewd {
+  color: #800080;
+}
+/* SPLURT EDIT ADDITION END */
