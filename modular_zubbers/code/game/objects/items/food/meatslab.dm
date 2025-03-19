@@ -1,6 +1,6 @@
 /obj/item/food/meat/slab/drakebait
 	name = "Seasoned Goliath Meat"
-	desc = "A slab of goliath meat cooked to a scorching perfection. Offer this to a friendly Ash Drake in exchange for their valuable, sturdy hide."
+	desc = "A slab of goliath meat. It's been blessed somehow, Often seen as an offering for Ash Drakes."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 20,
 		/datum/reagent/toxin = 1,
