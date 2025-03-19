@@ -854,3 +854,7 @@
   - bugfix: fixes loadout items duplication
   funnyfreeperson:
   - code_imp: made modular limbs no longer scream
+2025-03-18:
+  Arturlang:
+  - bugfix: Character setup panel is now slightly bigger
+  - bugfix: Character setup panel's add loadout button now works again
