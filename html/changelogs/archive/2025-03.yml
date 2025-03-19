@@ -858,3 +858,8 @@
   Arturlang:
   - bugfix: Character setup panel is now slightly bigger
   - bugfix: Character setup panel's add loadout button now works again
+  MosleyTheMalO:
+  - rscadd: item coloring in loadout
+  - rscadd: New spans for subtler.
+  - rscadd: readds some quirks to the quirk selection
+
