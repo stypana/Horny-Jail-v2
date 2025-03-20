@@ -1,6 +1,3 @@
-2025-03-09:
-  idrk13:
-  - rscadd: Digitigrade Human Chassis for synthetic humanoids
 2025-03-02:
   Alecksohs:
   - rscadd: Added a omni-species Kiryu-esque outfit to the Outfit Vendor.
@@ -63,6 +60,9 @@
   - rscadd: Wheelchair now in the inhand section of loadout
   xPokee:
   - bugfix: fixed xenos lacking their abilities
+2025-03-09:
+  idrk13:
+  - rscadd: Digitigrade Human Chassis for synthetic humanoids
 2025-03-10:
   Odairu:
   - code_imp: adds handling for borg skins to have their own unique item sprites for
@@ -71,22 +71,22 @@
   nikothedude:
   - bugfix: Taur clothing rendering is mostly functional
 2025-03-12:
-  MosleyTheMalO:
-  - sound: Makes our custom default announcer
-  - sound: Makes our custom intern announcer
-  sakke03:
-  - rscadd: Added coo, whine and huh emotes from old codebase
-  - rscadd: Added meow4 emote from Monkestation's meow
-  - bugfix: Fixed emote sound cooldown being 5 seconds instead of 2 seconds due to
-      a default value in the individual cooldown override
   Majkl-J:
   - bugfix: Having digi legs is now baked into your bodypart_overrides, speeding up
       replace_body, and fixing a bug with slime legs
+  MosleyTheMalO:
+  - sound: Makes our custom default announcer
+  - sound: Makes our custom intern announcer
   Odairu:
   - bugfix: emissives for sci dragon borg will show up now when sitting
   TealSeer:
   - bugfix: fixed 9x25mm magazines being invisible
   - bugfix: fixed hemophages missing their blood meter
+  sakke03:
+  - rscadd: Added coo, whine and huh emotes from old codebase
+  - rscadd: Added meow4 emote from Monkestation's meow
+  - bugfix: Fixed emote sound cooldown being 5 seconds instead of 2 seconds due to
+      a default value in the individual cooldown override
 2025-03-13:
   Ghommie:
   - bugfix: You no longer jitter when crawling under tables and the likes as a borer
@@ -809,6 +809,10 @@
   - bugfix: Fix hauntinum reagent to work when it is exposed to item objects.
   - code_imp: Optimize Nyctophobia quirk to not process while certain traits present
 2025-03-17:
+  Anonymous:
+  - rscadd: You can now buy trencher/Blastwave outfit from Clothesmate (minus gasmask).
+  - rscadd: Cargo can import armored variant of trencher clothing as contraband.
+  - bugfix: Removed duplicate trencher/Blastwave clothing.
   CydiaButt13:
   - rscadd: Third eye marking
   IgiariValkyr:
@@ -816,27 +820,6 @@
   KazooBard:
   - rscadd: Eldritch Essence (heretic's heal juice) now works on synths, the mansus
       disregards it's worshippers equally.
-  TealSeer:
-  - bugfix: fixed character prefs bluescreening for certain species
-  kiwedespars:
-  - qol: last resort is no longer innate, instead just a free ability like DNA sting
-      and defib grasp.
-  nikothedude:
-  - rscadd: Venom milkers - siphon venom from people with the venom quirk
-  xPokee:
-  - balance: oversized characters can no longer use growth serum outside of dorms
-  - balance: growth serum is now capped at the same size as you would be if you took
-      the oversized quirk unless in dorms
-  xPokee, RimiNosha:
-  - rscadd: Added the ability to change the character creator background via the character
-      visuals tab.
-  - bugfix: Fixed oversized characters and larger characters not being fully visible
-      in the character creator
-  - image: Added additional background icons for the character creator.
-  Anonymous:
-  - rscadd: You can now buy trencher/Blastwave outfit from Clothesmate (minus gasmask).
-  - rscadd: Cargo can import armored variant of trencher clothing as contraband.
-  - bugfix: Removed duplicate trencher/Blastwave clothing.
   MosleyTheMalO:
   - image: resprites breasts
   - image: resprites penises
@@ -852,8 +835,25 @@
   - rscadd: adds puddle transformation ability to slimes
   - bugfix: Fixes slugbobbers
   - bugfix: fixes loadout items duplication
+  TealSeer:
+  - bugfix: fixed character prefs bluescreening for certain species
   funnyfreeperson:
   - code_imp: made modular limbs no longer scream
+  kiwedespars:
+  - qol: last resort is no longer innate, instead just a free ability like DNA sting
+      and defib grasp.
+  nikothedude:
+  - rscadd: Venom milkers - siphon venom from people with the venom quirk
+  xPokee:
+  - balance: oversized characters can no longer use growth serum outside of dorms
+  - balance: growth serum is now capped at the same size as you would be if you took
+      the oversized quirk unless in dorms
+  xPokee, RimiNosha:
+  - rscadd: Added the ability to change the character creator background via the character
+      visuals tab.
+  - bugfix: Fixed oversized characters and larger characters not being fully visible
+      in the character creator
+  - image: Added additional background icons for the character creator.
 2025-03-18:
   Arturlang:
   - bugfix: Character setup panel is now slightly bigger
@@ -868,3 +868,15 @@
       psionic abilities
   Mitryll:
   - rscadd: Adds Beo plushie to the loadout (sprite by Cepha)
+2025-03-20:
+  BurgerBB:
+  - rscadd: Fixes several moonstation bugs/issues/whatever.
+  Jinshee:
+  - rscadd: Added 2 new shadekin ears
+  MMmmikhail:
+  - spellcheck: Modified the description of seasoned goliath meat to make sure ashies
+      don't murder their friendly drakes
+  StrangeWeirdKitten:
+  - qol: Adds the ability to put a reference picture on the examine panel.
+  sakke03:
+  - rscadd: Added malaysia and pain emotes from oldbase
