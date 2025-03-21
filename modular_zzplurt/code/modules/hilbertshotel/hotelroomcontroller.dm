@@ -20,7 +20,7 @@
 	/// The bluespace box inside the controller
 	var/obj/item/storage/box/bluespace/bluespace_box
 	/// List of roles that are disallowed to use the "Depart" feature
-	var/list/disallowed_roles = list(
+	var/static/list/disallowed_roles = list(
 		/datum/job/ghostcafe,
 		/datum/job/hotel_staff,
 		/datum/job/captain,
