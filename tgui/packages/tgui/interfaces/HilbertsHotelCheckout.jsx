@@ -1,17 +1,18 @@
-import { useBackend } from '../backend';
-import { useState, useEffect } from 'tgui-core/react';
+import React, { useState } from 'react';
 import {
-  Button,
-  Section,
-  Tabs,
-  NumberInput,
   Box,
+  Button,
   Icon,
-  Table,
   NoticeBox,
+  NumberInput,
+  Section,
   Stack,
+  Table,
+  Tabs,
   Tooltip,
 } from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 const OpenRooms = ({ data, act, selected_template }) => {
@@ -287,15 +288,36 @@ export const CheckoutMenu = (props) => {
   const { act, data } = useBackend();
   const [selectedTab, setSelectedTab] = useState(0);
   const tabContent = [
-    <RoomsTab category="Misc" selected_template={data.selected_template} />,
     <RoomsTab
+      key="misc"
+      category="Misc"
+      selected_template={data.selected_template}
+    />,
+    <RoomsTab
+      key="apartment"
       category="Apartment"
       selected_template={data.selected_template}
     />,
-    <RoomsTab category="Beach" selected_template={data.selected_template} />,
-    <RoomsTab category="Station" selected_template={data.selected_template} />,
-    <RoomsTab category="Winter" selected_template={data.selected_template} />,
-    <RoomsTab category="Special" selected_template={data.selected_template} />,
+    <RoomsTab
+      key="beach"
+      category="Beach"
+      selected_template={data.selected_template}
+    />,
+    <RoomsTab
+      key="station"
+      category="Station"
+      selected_template={data.selected_template}
+    />,
+    <RoomsTab
+      key="winter"
+      category="Winter"
+      selected_template={data.selected_template}
+    />,
+    <RoomsTab
+      key="special"
+      category="Special"
+      selected_template={data.selected_template}
+    />,
   ];
 
   return (
