@@ -193,3 +193,6 @@
 	lethal_projectile = /obj/projectile/magic/teleport
 	stun_projectile = /obj/projectile/magic/teleport
 	faction = list(FACTION_TURRET)
+
+/obj/projectile/magic/teleport/bluespace
+	antimagic_flags = NONE
