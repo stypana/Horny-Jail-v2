@@ -23,6 +23,7 @@
 	var/list/disallowed_roles = list(
 		/datum/job/ghostcafe,
 		/datum/job/hotel_staff,
+		/datum/job/captain,
 	)
 	/// Vanity desctiption tags
 	var/static/list/vanity_tags = list(
@@ -88,13 +89,12 @@
 	if(bluespace_box)
 		. += mutable_appearance(icon, "box_inserted")
 
-/obj/machinery/room_controller/proc/can_depart(id)
-	var/obj/item/card/id/this_id = id
-	if(!this_id)
+/// Checks if the player's role allows them to depart.
+/obj/machinery/room_controller/proc/can_depart(mob/living/carbon/human/this_mob)
+	var/datum/job/job = this_mob.mind?.assigned_role
+	if(!job)
 		return FALSE
-	var/datum/job/job = this_id.assignment
-	return !(job in disallowed_roles)
-
+	return !(job.type in disallowed_roles)
 
 /obj/machinery/room_controller/interact(mob/user)
 	. = ..()
@@ -124,7 +124,6 @@
 	data["room_description"] = current_room_data["description"]
 	data["name"] = current_room_data["name"]
 	data["icon"] = current_room_data["icon"]
-	data["can_depart"] = inserted_id ? can_depart(inserted_id) : FALSE
 	return data
 
 /obj/machinery/room_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -144,13 +143,16 @@
 				update_appearance()
 				return TRUE
 		if("depart")
-			if(!inserted_id || !can_depart(inserted_id))
+			if(!inserted_id || !can_depart(usr))
+				playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
+				say("Access denied.")
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Please contact the hotel staff for further assistance."), 3 SECONDS)
 				return FALSE
 			depart_user(usr)
 			return TRUE
 
 	if(!room_number || !main_sphere?.room_data["[room_number]"])
-		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 10, TRUE)
+		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
 		say("Room number out of array range.")
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Please contact the hotel staff for further assistance."), 3 SECONDS)
 		return

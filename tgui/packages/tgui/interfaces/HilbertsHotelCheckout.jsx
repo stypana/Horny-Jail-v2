@@ -49,7 +49,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                       width: '100px',
                       textAlign: 'center',
                       backgroundColor: 'rgb(0, 0, 0)',
-                      border: '2px solid rgb(53, 118, 172)',
+                      border: '2px solid rgb(77, 130, 173)',
                       marginBottom: '5px',
                       color: 'rgb(115, 177, 228)',
                       padding: '0px 0px',

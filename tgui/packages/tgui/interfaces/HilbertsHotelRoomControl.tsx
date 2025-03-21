@@ -154,7 +154,7 @@ export const HilbertsHotelRoomControl = (props) => {
                 fontSize: '20px',
                 textAlign: 'center',
                 backgroundColor: 'rgb(0, 0, 0)',
-                border: '2px solid rgb(53, 118, 172)',
+                border: '2px solid rgb(77, 130, 173)',
                 borderRadius: '3px',
                 color: 'rgb(115, 177, 228)',
                 padding: '2px 5px',
