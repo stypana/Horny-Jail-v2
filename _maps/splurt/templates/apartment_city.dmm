@@ -4,19 +4,13 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "aK" = (
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "be" = (
 /obj/machinery/telecomms/relay/preset/auto,
 /turf/open/floor/catwalk_floor,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "bz" = (
 /obj/structure/fence/corner{
@@ -24,23 +18,17 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "cn" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "cy" = (
 /obj/item/stack/sheet/mineral/wood/fifty,
 /obj/structure/closet/crate/wooden,
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "cP" = (
 /obj/structure/toilet{
@@ -57,29 +45,21 @@
 	pixel_y = 31
 	},
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "dr" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "dZ" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 1
 	},
 /turf/open/floor/carpet/stellar,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ee" = (
 /obj/structure/table/reinforced,
 /obj/item/knife/butcher,
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "eI" = (
 /obj/structure/chair/sofa/corp/right{
@@ -89,8 +69,6 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "fF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -98,8 +76,6 @@
 	dir = 5
 	},
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "fK" = (
 /obj/structure/table/reinforced,
@@ -109,8 +85,6 @@
 	},
 /obj/item/reagent_containers/hypospray/medipen/crocin/plus,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "fU" = (
 /obj/structure/table/reinforced,
@@ -119,13 +93,9 @@
 	pixel_y = 11
 	},
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "gd" = (
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "gx" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -134,15 +104,11 @@
 /turf/open/floor/iron/dark/corner{
 	dir = 4
 	},
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "gE" = (
 /obj/machinery/griddle,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "gG" = (
 /obj/structure/table/reinforced,
@@ -150,8 +116,6 @@
 	pixel_y = 11
 	},
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "gS" = (
 /obj/structure/table/wood,
@@ -160,16 +124,12 @@
 	},
 /obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
 /turf/open/floor/carpet/royalblack,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "hB" = (
 /obj/item/kirbyplants/random{
 	pixel_y = 10
 	},
 /turf/open/floor/carpet/red,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "hX" = (
 /obj/structure/chair/pew/right{
@@ -180,29 +140,21 @@
 	},
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ib" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/broken_flooring/pile/directional/south,
 /obj/structure/sign/poster/ripped/directional/east,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "jv" = (
 /obj/structure/trash_pile,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "km" = (
 /obj/structure/falsewall,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "lb" = (
 /obj/item/newspaper{
@@ -211,8 +163,6 @@
 	},
 /obj/structure/table/wood/fancy/blue,
 /turf/open/floor/carpet/royalblue,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "lG" = (
 /obj/structure/chair/sofa/corp{
@@ -221,8 +171,6 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "lM" = (
 /obj/effect/turf_decal/siding/wood{
@@ -230,8 +178,6 @@
 	},
 /obj/structure/curtain/cloth/fancy,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "lO" = (
 /obj/structure/fence/cut/large{
@@ -239,44 +185,30 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "mo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/abductor/ayy_cops/directional/west,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "nk" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/curtain/cloth/fancy,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "nZ" = (
 /obj/structure/table/wood,
 /obj/item/toy/plush/lizard_plushie,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ok" = (
 /turf/closed/wall,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ot" = (
 /turf/closed/indestructible/steel,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ox" = (
 /turf/open/floor/carpet/red,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "pv" = (
 /obj/structure/chair/pew,
@@ -285,29 +217,19 @@
 	},
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "pD" = (
 /turf/open/floor/carpet/royalblue,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "pG" = (
 /turf/open/floor/carpet/green,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "qd" = (
 /turf/open/floor/carpet/royalblack,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "qn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "qq" = (
 /obj/structure/table/wood,
@@ -321,8 +243,6 @@
 	},
 /obj/item/pen/red,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "qz" = (
 /obj/structure/closet/crate/bin{
@@ -330,8 +250,6 @@
 	},
 /obj/item/toy/plush/lizard_plushie/space,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "qE" = (
 /obj/effect/turf_decal/siding/wood{
@@ -342,21 +260,15 @@
 	},
 /obj/machinery/light_switch/directional/west,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "rB" = (
 /obj/machinery/oven/range,
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "rT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/trash_pile,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "sb" = (
 /obj/effect/turf_decal/siding/wood{
@@ -364,8 +276,6 @@
 	},
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "sN" = (
 /obj/structure/fake_stairs/wood/directional/north,
@@ -373,8 +283,6 @@
 	dir = 4
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "sZ" = (
 /turf/open/space/basic,
@@ -387,33 +295,23 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "tr" = (
 /obj/structure/sign/poster/abductor/ayy_no/directional/east,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "tW" = (
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "uv" = (
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "uw" = (
 /obj/structure/curtain/cloth,
 /obj/machinery/shower/directional/north,
 /obj/item/soap/nanotrasen,
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "uL" = (
 /obj/structure/fireplace,
@@ -423,8 +321,6 @@
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "uN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -433,43 +329,31 @@
 	},
 /obj/structure/sign/poster/ripped/directional/east,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "uQ" = (
 /obj/structure/closet/crate/wooden,
 /obj/item/stack/sheet/mineral/wood/fifty,
 /obj/machinery/light/warm/directional/north,
 /turf/open/floor/carpet/stellar,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "uX" = (
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "vt" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "vJ" = (
 /turf/closed/indestructible/hoteldoor{
 	icon_state = "door_closed";
 	icon = 'icons/obj/doors/puzzledoor/default.dmi'
 	},
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "vW" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "vZ" = (
 /obj/structure/railing{
@@ -478,20 +362,14 @@
 	},
 /obj/structure/fake_stairs/wood/directional/north,
 /turf/open/floor/grass,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "wn" = (
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "wr" = (
 /obj/structure/barricade/wooden/crude,
 /turf/closed/wall,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "xh" = (
 /obj/structure/railing/corner{
@@ -501,8 +379,6 @@
 	dir = 1
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "xA" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -512,32 +388,22 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "xM" = (
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "zb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/broken_flooring/pile/always_floorplane/directional/west,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "zO" = (
 /obj/structure/table/wood/fancy/blue,
 /turf/open/floor/carpet/royalblue,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "AO" = (
 /obj/structure/sign/poster/contraband/babel_device/directional/east,
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "AX" = (
 /obj/structure/chair/sofa/corp{
@@ -545,32 +411,24 @@
 	},
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "BF" = (
 /obj/item/kirbyplants/random{
 	pixel_y = 10
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "BP" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "BT" = (
 /obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/open/floor/carpet/royalblack,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Cp" = (
 /obj/structure/rack/shelf{
@@ -591,8 +449,6 @@
 	pixel_y = 5
 	},
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "CP" = (
 /obj/structure/table/reinforced,
@@ -602,8 +458,6 @@
 	pixel_y = 6
 	},
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "CQ" = (
 /obj/effect/turf_decal/siding/wood,
@@ -611,14 +465,10 @@
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "CX" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "DV" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -628,23 +478,17 @@
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "DZ" = (
 /obj/machinery/light/blacklight/directional/west,
 /obj/structure/fluff/broken_canister_frame,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Eg" = (
 /obj/structure/fence/corner{
 	dir = 6
 	},
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Eh" = (
 /obj/structure/flora/bush/jungle,
@@ -652,8 +496,6 @@
 	pixel_y = -1
 	},
 /turf/open/floor/grass,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Ey" = (
 /obj/effect/turf_decal/siding/wood{
@@ -661,8 +503,6 @@
 	},
 /obj/structure/railing,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "EV" = (
 /obj/structure/bed/double{
@@ -672,8 +512,6 @@
 	dir = 4
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Fa" = (
 /obj/structure/railing/corner{
@@ -683,16 +521,12 @@
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Fb" = (
 /obj/effect/decal/cleanable/blood/trails{
 	dir = 4
 	},
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "FK" = (
 /obj/structure/chair/pew/right,
@@ -700,16 +534,12 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Ga" = (
 /obj/structure/fluff/paper/stack{
 	dir = 1
 	},
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Gs" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -719,8 +549,6 @@
 	dir = 1
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "GS" = (
 /obj/structure/sauna_oven{
@@ -731,20 +559,14 @@
 	pixel_y = -5
 	},
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Hq" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/carpet/royalblack,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "HE" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "HL" = (
 /obj/effect/turf_decal/siding/wood{
@@ -754,43 +576,31 @@
 	pixel_y = 10
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "HT" = (
 /obj/structure/mineral_door/wood,
 /obj/structure/fans/tiny/invisible,
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "HZ" = (
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Jc" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/under/costume/lewdmaid,
 /obj/machinery/light/red/dim/directional/south,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Jh" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Jv" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "JH" = (
 /obj/effect/turf_decal/siding/wood{
@@ -798,14 +608,10 @@
 	},
 /obj/structure/sink/directional/east,
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Ka" = (
 /obj/structure/barricade/wooden/crude,
 /turf/closed/indestructible/steel,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Ke" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -814,14 +620,10 @@
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Mq" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "MN" = (
 /obj/structure/chair/sofa/corp/left{
@@ -832,22 +634,16 @@
 	},
 /obj/machinery/light/directional/west,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "MT" = (
 /obj/structure/closet/secure_closet/freezer/fridge/all_access,
 /obj/item/storage/cans/sixbeer,
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Na" = (
 /obj/structure/table/wood,
 /obj/structure/towel_bin,
 /turf/open/floor/carpet/red,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "NW" = (
 /obj/effect/turf_decal/siding/wood{
@@ -855,8 +651,6 @@
 	},
 /obj/structure/sink/kitchen/directional/south,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Od" = (
 /obj/effect/decal/cleanable/dirt,
@@ -865,16 +659,12 @@
 	dir = 8
 	},
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Ou" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 1
 	},
 /turf/open/floor/carpet/stellar,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "OX" = (
 /obj/structure/chair/sofa/corp{
@@ -884,14 +674,10 @@
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Pe" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Pm" = (
 /obj/structure/table/wood,
@@ -899,22 +685,16 @@
 	dir = 5
 	},
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "PG" = (
 /obj/structure/fence/corner,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Qh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/broken_flooring/pile/always_floorplane/directional/north,
 /obj/structure/sign/poster/contraband/gorlex_recruitment/directional/west,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "QB" = (
 /obj/structure/flora/bush/jungle,
@@ -922,14 +702,10 @@
 	pixel_y = -2
 	},
 /turf/open/floor/grass,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "QF" = (
 /obj/machinery/room_controller/directional/north,
 /turf/open/floor/carpet/stellar,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "RP" = (
 /obj/structure/rack/shelf,
@@ -938,22 +714,16 @@
 /obj/item/clothing/under/costume/skyrat/bathrobe,
 /obj/item/clothing/under/costume/skyrat/bathrobe,
 /turf/open/floor/iron/white/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "RY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Sj" = (
 /obj/machinery/computer,
 /obj/machinery/light/directional/north,
 /turf/open/floor/carpet/royalblack,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Sw" = (
 /obj/structure/chair/pew/left,
@@ -961,14 +731,10 @@
 	dir = 9
 	},
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "SA" = (
 /obj/machinery/vending/dorms,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "SJ" = (
 /obj/structure/table/reinforced,
@@ -981,28 +747,20 @@
 	pixel_y = 2
 	},
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Th" = (
 /obj/machinery/light/broken/directional/east,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "TR" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Ut" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Wv" = (
 /obj/structure/railing{
@@ -1025,8 +783,6 @@
 /obj/item/food/grown/carrot,
 /obj/item/food/grown/carrot,
 /turf/open/floor/iron/kitchen/small,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Wz" = (
 /obj/structure/chair,
@@ -1034,8 +790,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/machinery/light/red/dim/directional/north,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "WA" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1043,21 +797,15 @@
 	},
 /obj/structure/aquarium/prefilled,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "WI" = (
 /obj/item/lighter,
 /obj/structure/table/wood/fancy/blue,
 /turf/open/floor/carpet/royalblue,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Xr" = (
 /obj/structure/dresser,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Xw" = (
 /obj/effect/spawner/random/food_or_drink/three_course_meal{
@@ -1066,24 +814,18 @@
 	},
 /obj/structure/table/wood/fancy/blue,
 /turf/open/floor/carpet/royalblue,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "XR" = (
 /obj/structure/fluff/paper/stack{
 	dir = 8
 	},
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "XZ" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
 /turf/open/floor/wood,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Yf" = (
 /obj/structure/table/reinforced,
@@ -1097,39 +839,27 @@
 	},
 /obj/structure/sign/poster/contraband/crocin_pool/directional/north,
 /turf/open/floor/iron,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Yh" = (
 /obj/machinery/vending/boozeomat/cafe,
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "YT" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Zp" = (
 /obj/structure/closet/crate/trashcart/filled,
 /turf/open/floor/stone,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "Zu" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ZE" = (
 /obj/machinery/jukebox/no_access,
 /turf/open/floor/carpet/royalblue,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ZK" = (
 /obj/structure/chair/sofa/corp/corner{
@@ -1139,13 +869,9 @@
 	dir = 10
 	},
 /turf/open/floor/wood/large,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 "ZX" = (
 /turf/open/floor/carpet/stellar,
-/turf/open/space/mirage,
-/turf/open/space,
 /area/misc/hilbertshotel)
 
 (1,1,1) = {"
