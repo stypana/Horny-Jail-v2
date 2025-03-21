@@ -106,7 +106,7 @@
 		return
 
 	// Define owner tongue
-	var/obj/item/organ/internal/tongue/target_tongue = quirk_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/tongue/target_tongue = quirk_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
 
 	// Check if tongue exists
 	if(target_tongue)
@@ -214,6 +214,9 @@
 /datum/quirk/item_quirk/bloodfledge/remove()
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	if(QDELETED(quirk_mob))
+		return
 
 	// Remove quirk ability action datums
 	var/datum/action/cooldown/bloodfledge/revive/act_revive = locate() in quirk_mob.actions
@@ -957,7 +960,7 @@
 			// Zone is eyes
 			if(BODY_ZONE_PRECISE_EYES)
 				// Define target's eyes
-				var/obj/item/organ/internal/eyes/target_eyes = bite_target.get_organ_slot(ORGAN_SLOT_EYES)
+				var/obj/item/organ/eyes/target_eyes = bite_target.get_organ_slot(ORGAN_SLOT_EYES)
 
 				// Check if eyes exist
 				// This should always be the case since eyes exposed was checked above
