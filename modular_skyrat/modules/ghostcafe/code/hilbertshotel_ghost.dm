@@ -5,10 +5,11 @@
 
 /obj/item/hilbertshotel/ghostdojo/attack_hand(mob/user, list/modifiers)
 	. = ..()
+	// SPLURT REMOVAL START - Hilbert's Hotel - Refactored in modular, see modular_zzplurt\code\modules\hilbertshotel\hilbertshotel.dm
 	// if(.)
 	// 	return
 	// return promptAndCheckIn(user, user)
-
+	// SPLURT REMOVAL END
 // borgos need love too
 /obj/item/hilbertshotel/ghostdojo/attack_robot(mob/living/user)
 	attack_hand(user)

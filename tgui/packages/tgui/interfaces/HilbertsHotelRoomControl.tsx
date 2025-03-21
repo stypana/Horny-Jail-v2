@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-
-import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
@@ -10,7 +8,9 @@ import {
   Stack,
   TextArea,
   Tooltip,
-} from '../components';
+} from 'tgui-core/components';
+
+import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 
 type RoomData = {

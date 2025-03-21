@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'tgui-core/react';
 import {
   Button,
   Section,
@@ -11,7 +11,7 @@ import {
   NoticeBox,
   Stack,
   Tooltip,
-} from '../components';
+} from 'tgui-core/components';
 import { Window } from '../layouts';
 
 const OpenRooms = ({ data, act, selected_template }) => {
