@@ -377,9 +377,7 @@
 /turf/open/space,
 /area/misc/hilbertshotel)
 "sZ" = (
-/turf/open/space/bluespace,
-/turf/open/space/mirage,
-/turf/open/space,
+/turf/open/space/basic,
 /area/misc/hilbertshotel)
 "tb" = (
 /obj/structure/chair/pew/left{
