@@ -880,3 +880,6 @@
   - qol: Adds the ability to put a reference picture on the examine panel.
   sakke03:
   - rscadd: Added malaysia and pain emotes from oldbase
+2025-03-22:
+  SmArtKar:
+  - bugfix: Clothesplosion no longer drops straightjackets or facehuggers
