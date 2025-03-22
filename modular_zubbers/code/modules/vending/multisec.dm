@@ -41,7 +41,6 @@
 					/obj/item/clothing/gloves/color/black/security = 10,
 					/obj/item/clothing/head/helmet/sec/futuristic = 6,
 					/obj/item/clothing/suit/armor/vest/collared_vest = 6, //added by Bangle
-					/obj/item/clothing/suit/armor/vest/harness = 6, //SPLURT addition
 				),
 			),
 		list(
