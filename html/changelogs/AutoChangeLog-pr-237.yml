@@ -1,0 +1,7 @@
+author: "idrk13"
+delete-after: True
+changes:
+  - rscadd: "Armored harness"
+  - rscadd: "Armored harness crafting recipe"
+  - rscadd: "Armored harness loadout item"
+  - rscadd: "Armored harness for Multisec vendors"
