@@ -883,3 +883,11 @@
 2025-03-22:
   SmArtKar:
   - bugfix: Clothesplosion no longer drops straightjackets or facehuggers
+2025-03-23:
+  SmArtKar:
+  - bugfix: Fixed HEV suit actions
+  idrk13:
+  - rscadd: Armored harness
+  - rscadd: Armored harness crafting recipe
+  - rscadd: Armored harness loadout item
+  - rscadd: Armored harness for Multisec vendors
