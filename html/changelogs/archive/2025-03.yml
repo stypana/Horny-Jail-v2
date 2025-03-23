@@ -885,3 +885,6 @@
   - rscadd: Fixes several moonstation bugs/issues/whatever.
   Majkl-J:
   - rscdel: Removes the martyr and hijack objs from traitor and spy
+2025-03-22:
+  SmArtKar:
+  - bugfix: Clothesplosion no longer drops straightjackets or facehuggers
