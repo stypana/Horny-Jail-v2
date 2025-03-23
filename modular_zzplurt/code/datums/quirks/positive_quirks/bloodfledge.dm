@@ -11,7 +11,7 @@
 /// How much damage is healed in a coffin
 #define BLOODFLEDGE_HEAL_AMT -2
 /// List of traits inherent to bloodfledges
-#define BLOODFLEDGE_TRAITS list(TRAIT_NO_MIRROR_REFLECTION, TRAIT_RESISTCOLD, TRAIT_DRINKS_BLOOD)
+#define BLOODFLEDGE_TRAITS list(TRAIT_NO_MIRROR_REFLECTION, TRAIT_DRINKS_BLOOD)
 /datum/quirk/item_quirk/bloodfledge
 	name = "Bloodfledge"
 	desc = "You are apprentice sanguine sorcerer endowed with vampiric power beyond that of a common hemophage. While not truly undead, many of the same conditions still apply."
