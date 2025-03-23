@@ -1,4 +1,7 @@
 /obj/machinery/vending/wardrobe/sec_wardrobe
-	zzplurt_premium = list(
-		/obj/item/clothing/suit/armor/vest/harness = 6,
+	zzplurt_product_categories = list(
+		"name" = "Blue",
+		"products" = list(
+			/obj/item/clothing/suit/armor/vest/harness = 6,
+		)
 	)
