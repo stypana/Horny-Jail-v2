@@ -9646,6 +9646,7 @@
 #include "modular_zzplurt\code\datums\announcers\intern_announcer.dm"
 #include "modular_zzplurt\code\datums\components\crafting\crafting.dm"
 #include "modular_zzplurt\code\datums\components\crafting\equipment.dm"
+#include "modular_zzplurt\code\datums\components\crafting\tailoring.dm"
 #include "modular_zzplurt\code\datums\components\vore\preferences.dm"
 #include "modular_zzplurt\code\datums\components\vore\vore.dm"
 #include "modular_zzplurt\code\datums\elements\chapel_weakness.dm"
@@ -10003,6 +10004,7 @@
 #include "modular_zzplurt\code\modules\vending\clothmate.dm"
 #include "modular_zzplurt\code\modules\vending\cola.dm"
 #include "modular_zzplurt\code\modules\vending\lustwish.dm"
+#include "modular_zzplurt\code\modules\vending\multisec.dm"
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
 // END_INCLUDE
