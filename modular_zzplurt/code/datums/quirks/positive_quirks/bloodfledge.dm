@@ -10,7 +10,8 @@
 #define BLOODFLEDGE_BANK_CAPACITY (BLOODFLEDGE_DRAIN_AMT * 2)
 /// How much damage is healed in a coffin
 #define BLOODFLEDGE_HEAL_AMT -2
-
+/// List of traits inherent to bloodfledges
+#define BLOODFLEDGE_TRAITS list(TRAIT_NO_MIRROR_REFLECTION, TRAIT_RESISTCOLD, TRAIT_DRINKS_BLOOD)
 /datum/quirk/item_quirk/bloodfledge
 	name = "Bloodfledge"
 	desc = "You are apprentice sanguine sorcerer endowed with vampiric power beyond that of a common hemophage. While not truly undead, many of the same conditions still apply."
@@ -21,8 +22,8 @@
 	mob_trait = TRAIT_BLOODFLEDGE
 	hardcore_value = -2
 	icon = FA_ICON_CHAMPAGNE_GLASSES
-	/// Toggle between using blood volume or nutrition. Blood volume is used for hemophages.
-	var/use_nutrition = TRUE
+	/// Does the quirk holder still breathe? If so, don't lower their blood levels to critical level.
+	var/demi_mortal = TRUE
 
 /datum/quirk/item_quirk/bloodfledge/add(client/client_source)
 	// Define quirk mob
@@ -47,11 +48,11 @@
 		return
 
 	// Add quirk traits
-	ADD_TRAIT(quirk_mob, TRAIT_LIVERLESS_METABOLISM, TRAIT_BLOODFLEDGE)
-	//ADD_TRAIT(quirk_mob, TRAIT_NOTHIRST, TRAIT_BLOODFLEDGE) // Not yet implemented
+	quirk_mob.add_traits(BLOODFLEDGE_TRAITS, TRAIT_BLOODFLEDGE)
 
 	// Register blood consumption interaction
-	RegisterSignal(quirk_holder, COMSIG_REAGENT_ADD_BLOOD, PROC_REF(on_consume_blood))
+	//SOMETHING broke this and I couldn't tell you what. The blood_DNA part of data is never set. If you have a fix for that, this can be enabled again to provide mood events for different blood types.
+	//RegisterSignal(quirk_holder, COMSIG_REAGENT_ADD_BLOOD, PROC_REF(on_consume_blood))
 
 	// Register coffin interaction
 	RegisterSignal(quirk_holder, COMSIG_ENTER_COFFIN, PROC_REF(on_enter_coffin))
@@ -100,7 +101,7 @@
 		to_chat(quirk_mob, span_warning("Because you already possess the tumor's corruption, some redundant bloodfledge abilities remain dormant. Your bite ability will manifest once the tumor's corruption takes hold."))
 
 		// Disable nutrition mode
-		use_nutrition = FALSE
+		demi_mortal = FALSE
 
 		// Ignore remaining features
 		return
@@ -148,9 +149,9 @@
 	var/has_enough_blood = TRUE
 
 	// Check if using nutrition mode
-	if(use_nutrition)
+	if(demi_mortal)
 		// Nutrition level must be above STARVING
-		if(quirk_mob.nutrition <= NUTRITION_LEVEL_STARVING)
+		if(quirk_mob.blood_volume <= BLOOD_VOLUME_RISKY)
 			// Set variable
 			has_enough_blood = FALSE
 
@@ -201,14 +202,7 @@
 
 	// Remove a resource as compensation for healing
 	// Amount is equal to healing done
-
-	// Check if using nutrition mode
-	if(use_nutrition)
-		quirk_mob.adjust_nutrition(health_restored*-1)
-
-	// Using blood volume mode
-	else
-		quirk_mob.blood_volume -= (health_restored*-1)
+	quirk_mob.blood_volume -= health_restored
 
 
 /datum/quirk/item_quirk/bloodfledge/remove()
@@ -238,7 +232,7 @@
 		return
 
 	// Remove quirk traits
-	REMOVE_TRAIT(quirk_mob, TRAIT_LIVERLESS_METABOLISM, ROUNDSTART_TRAIT)
+	quirk_mob.remove_traits(BLOODFLEDGE_TRAITS, TRAIT_BLOODFLEDGE)
 	//REMOVE_TRAIT(quirk_mob, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
 
 	// Check if species should still be vampiric
@@ -354,14 +348,14 @@
 	var/examine_hunger_secret
 
 	// Check hunger levels
-	switch(quirk_mob.nutrition)
+	switch(quirk_mob.blood_volume)
 		// Hungry
-		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+		if(BLOOD_VOLUME_RISKY to BLOOD_VOLUME_OKAY)
 			examine_hunger_secret = "[holder_they] [holder_are] blood starved!"
 			examine_hunger_public = "[holder_they] seem[quirk_holder.p_s()] on edge from something."
 
 		// Starving
-		if(0 to NUTRITION_LEVEL_STARVING)
+		if(0 to BLOOD_VOLUME_RISKY)
 			examine_hunger_secret = "[holder_they] [holder_are] in dire need of blood!"
 			examine_hunger_public = "[holder_they] [holder_are] radiating an aura of frenzied hunger!"
 
@@ -432,6 +426,7 @@
  * * Causes instant death if the target is unconscious
  * * Warns normally if the target is conscious
 */
+
 /datum/quirk/item_quirk/bloodfledge/proc/on_staked(atom/target, forced)
 	SIGNAL_HANDLER
 
@@ -510,13 +505,7 @@
 		// End here
 		return
 
-	// Check for valid reagent
-	if(ispath(handled_reagent))
-		// Remove reagent
-		quirk_holder.reagents.remove_reagent(handled_reagent, amount)
 
-	// Add Notriment
-	quirk_holder.reagents.add_reagent(/datum/reagent/consumable/notriment, amount)
 
 //
 // Bloodfledge actions
@@ -533,7 +522,7 @@
 	buttontooltipstyle = "cult"
 
 	/// Toggle between using blood volume or nutrition. Blood volume is used for hemophages.
-	var/use_nutrition = TRUE
+	var/demi_mortal = TRUE
 
 /datum/action/cooldown/bloodfledge/Grant()
 	. = ..()
@@ -541,7 +530,7 @@
 	// Check if user is a hemophage
 	if(ishemophage(owner))
 		// Disable nutrition mode
-		use_nutrition = FALSE
+		demi_mortal = FALSE
 
 /**
  * Check if Bloodfledge power is allowed to be used
@@ -608,7 +597,7 @@
 	. = ..()
 
 	// Check if using nutrition mode
-	if(use_nutrition)
+	if(demi_mortal)
 		// Create reagent holder
 		blood_bank = new(BLOODFLEDGE_BANK_CAPACITY)
 
@@ -649,38 +638,19 @@
 		to_chat(action_owner, span_warning("You can't bite things with your mouth covered!"))
 		owner.balloon_alert(owner, "mouth covered!")
 		return FALSE
+	// Limit maximum blood volume
+	if(action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("Your body contains too much blood to drain any more."))
+		owner.balloon_alert(owner, "too full!")
+		return
 
-	// Using nutrition mode
-	if(use_nutrition)
-		// Limit maximum nutrition
-		if(action_owner.nutrition >= NUTRITION_LEVEL_FAT)
-			// Warn the user, then return
-			to_chat(action_owner, span_warning("You are too full to drain any more."))
-			owner.balloon_alert(owner, "too full!")
-			return
-
-		// Limit maximum potential nutrition
-		if(action_owner.nutrition + BLOODFLEDGE_DRAIN_AMT >= NUTRITION_LEVEL_FAT)
-			// Warn the user, then return
-			to_chat(action_owner, span_warning("You would become too full by draining any more blood."))
-			owner.balloon_alert(owner, "too full!")
-			return
-
-	// Using blood volume mode
-	else
-		// Limit maximum blood volume
-		if(action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM)
-			// Warn the user, then return
-			to_chat(action_owner, span_warning("Your body contains too much blood to drain any more."))
-			owner.balloon_alert(owner, "too full!")
-			return
-
-		// Limit maximum potential blood volume
-		if(action_owner.blood_volume + BLOODFLEDGE_DRAIN_AMT >= BLOOD_VOLUME_MAXIMUM)
-			// Warn the user, then return
-			to_chat(action_owner, span_warning("You body would become overwhelmed by draining any more blood."))
-			owner.balloon_alert(owner, "too full!")
-			return
+	// Limit maximum potential blood volume
+	if(action_owner.blood_volume + BLOODFLEDGE_DRAIN_AMT >= BLOOD_VOLUME_MAXIMUM)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You body would become overwhelmed by draining any more blood."))
+		owner.balloon_alert(owner, "too full!")
+		return
 
 	// Define pulled target
 	var/pull_target = action_owner.pulling
@@ -1264,7 +1234,7 @@
 		// Check if action owner received valid blood
 		if(blood_valid)
 			// Using nutrition mode
-			if(use_nutrition)
+			if(demi_mortal)
 				// Add blood reagent to reagent holder
 				blood_bank.add_reagent(/datum/reagent/blood/, drained_blood, bite_target.get_blood_data())
 
@@ -1388,19 +1358,14 @@
 	var/mob/living/carbon/human/action_owner = owner
 
 	// Condition: Insufficient nutrition
-	if(use_nutrition)
-		if(action_owner.nutrition <= NUTRITION_LEVEL_STARVING)
+	if(demi_mortal)
+		if(action_owner.blood_volume <= BLOOD_VOLUME_RISKY)
 			revive_failed += "\n- You're too blood-starved!"
 
 	// Condition: Insufficient blood volume
 	else
 		if(action_owner.blood_volume > BLOOD_VOLUME_SURVIVE)
 			revive_failed += "\n- You don't have enough blood volume left!"
-
-	// Condition: Can be revived
-	// This is used by revive(), and must be checked here to prevent false feedback
-	if(!action_owner.can_be_revived())
-		revive_failed += "\n- Your body is too weak to sustain life!"
 
 	// Condition: Damage limit, brute
 	if(action_owner.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE)
@@ -1503,12 +1468,12 @@
 	action_owner.log_message("revived using a bloodfledge quirk ability.", LOG_GAME)
 
 	// Play a haunted sound effect
-	playsound(action_owner, 'sound/effects/hallucinations/growl1.ogg', 30, 1, -2)
+	playsound(action_owner, 'sound/effects/curse/curseattack.ogg', 30, 1, -2)
 
 	// Nutrition mode
-	if(use_nutrition)
+	if(demi_mortal)
 		// Set nutrition to starving
-		action_owner.set_nutrition(NUTRITION_LEVEL_STARVING)
+		action_owner.blood_volume = min(action_owner.blood_volume, BLOOD_VOLUME_RISKY)
 
 	// Blood volume mode
 	else
@@ -1610,3 +1575,4 @@
 #undef BLOODFLEDGE_COOLDOWN_REVIVE
 #undef BLOODFLEDGE_BANK_CAPACITY
 #undef BLOODFLEDGE_HEAL_AMT
+#undef BLOODFLEDGE_TRAITS
