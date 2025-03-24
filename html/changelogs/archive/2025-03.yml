@@ -913,3 +913,11 @@
   - rscdel: DS-2 Mining Officer (not the Persistence, DS-2) no longer has a Makarov.
   SarmentiCampbell:
   - rscadd: Borgo can put on hats by rightclicking.
+2025-03-23:
+  SmArtKar:
+  - bugfix: Fixed HEV suit actions
+  idrk13:
+  - rscadd: Armored harness
+  - rscadd: Armored harness crafting recipe
+  - rscadd: Armored harness loadout item
+  - rscadd: Armored harness for Multisec vendors
