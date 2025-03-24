@@ -44,9 +44,6 @@
 	},
 /turf/open/water/jungle,
 /area/misc/hilbertshotel)
-"fP" = (
-/turf/open/space/basic,
-/area/misc/hilbertshotel)
 "fX" = (
 /turf/open/misc/grass,
 /area/misc/hilbertshotel)
@@ -215,7 +212,7 @@
 /area/misc/hilbertshotel)
 "zW" = (
 /obj/structure/flora/grass/jungle/b,
-/turf/open/space/basic,
+/turf/open/space/bluespace,
 /area/misc/hilbertshotel)
 "Ad" = (
 /obj/structure/closet/cabinet,
@@ -670,7 +667,7 @@ Ne
 Ne
 mo
 zW
-fP
+Ne
 ap
 fX
 EL
