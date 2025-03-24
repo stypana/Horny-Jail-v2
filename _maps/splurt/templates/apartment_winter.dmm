@@ -376,8 +376,8 @@
 /turf/open/misc/asteroid/snow,
 /area/misc/hilbertshotel)
 "yH" = (
-/turf/open/space/basic,
-/area/space)
+/turf/open/space/bluespace,
+/area/misc/hilbertshotel)
 "zh" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood{

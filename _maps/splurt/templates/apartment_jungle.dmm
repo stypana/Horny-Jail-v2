@@ -199,8 +199,8 @@
 /turf/open/floor/iron/pool/cobble/corner,
 /area/misc/hilbertshotel)
 "rd" = (
-/turf/open/space/basic,
-/area/space)
+/turf/open/space/bluespace,
+/area/misc/hilbertshotel)
 "rh" = (
 /obj/structure/closet/cabinet,
 /obj/effect/turf_decal/siding/wood{

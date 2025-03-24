@@ -406,9 +406,6 @@
 "Vd" = (
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
-"VQ" = (
-/turf/open/space/basic,
-/area/space)
 "WG" = (
 /obj/effect/turf_decal{
 	dir = 4
@@ -447,27 +444,27 @@
 /area/misc/hilbertshotel)
 
 (1,1,1) = {"
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
 "}
 (2,1,1) = {"
-VQ
+Ne
 mo
 mo
 mo
@@ -484,10 +481,10 @@ cA
 cA
 cA
 cA
-VQ
+Ne
 "}
 (3,1,1) = {"
-VQ
+Ne
 mo
 mo
 rK
@@ -504,10 +501,10 @@ Ad
 Lz
 ns
 cA
-VQ
+Ne
 "}
 (4,1,1) = {"
-VQ
+Ne
 mo
 rK
 fj
@@ -524,10 +521,10 @@ EA
 Vd
 PF
 cA
-VQ
+Ne
 "}
 (5,1,1) = {"
-VQ
+Ne
 mo
 rK
 jg
@@ -544,10 +541,10 @@ BP
 Cd
 nl
 cA
-VQ
+Ne
 "}
 (6,1,1) = {"
-VQ
+Ne
 mo
 rK
 rK
@@ -564,10 +561,10 @@ Pl
 bD
 bP
 cA
-VQ
+Ne
 "}
 (7,1,1) = {"
-VQ
+Ne
 mo
 wO
 EL
@@ -584,10 +581,10 @@ mC
 va
 sw
 cA
-VQ
+Ne
 "}
 (8,1,1) = {"
-VQ
+Ne
 mo
 fX
 EL
@@ -604,10 +601,10 @@ cA
 tU
 cA
 cA
-VQ
+Ne
 "}
 (9,1,1) = {"
-VQ
+Ne
 mo
 fX
 yP
@@ -624,10 +621,10 @@ Ox
 Rl
 xo
 cA
-VQ
+Ne
 "}
 (10,1,1) = {"
-VQ
+Ne
 mo
 fX
 jv
@@ -644,10 +641,10 @@ cA
 cA
 cA
 cA
-VQ
+Ne
 "}
 (11,1,1) = {"
-VQ
+Ne
 mo
 fX
 EL
@@ -664,10 +661,10 @@ Rc
 cA
 tq
 cA
-VQ
+Ne
 "}
 (12,1,1) = {"
-VQ
+Ne
 mo
 zW
 Ne
@@ -684,10 +681,10 @@ Rc
 Eg
 cA
 Eg
-VQ
+Ne
 "}
 (13,1,1) = {"
-VQ
+Ne
 mo
 fX
 EL
@@ -704,10 +701,10 @@ Rc
 Rc
 Rc
 mo
-VQ
+Ne
 "}
 (14,1,1) = {"
-VQ
+Ne
 mo
 jv
 MA
@@ -724,10 +721,10 @@ Rc
 Rc
 CQ
 mo
-VQ
+Ne
 "}
 (15,1,1) = {"
-VQ
+Ne
 mo
 mo
 EL
@@ -744,10 +741,10 @@ hj
 hj
 hj
 mo
-VQ
+Ne
 "}
 (16,1,1) = {"
-VQ
+Ne
 mo
 mo
 mo
@@ -764,10 +761,10 @@ Rc
 GI
 hj
 mo
-VQ
+Ne
 "}
 (17,1,1) = {"
-VQ
+Ne
 mo
 mo
 mo
@@ -784,25 +781,25 @@ mo
 mo
 mo
 mo
-VQ
+Ne
 "}
 (18,1,1) = {"
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
-VQ
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
 "}
