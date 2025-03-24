@@ -6,6 +6,7 @@
 #define GHC_SPECIAL "Special"
 
 /datum/map_template/ghost_cafe_rooms
+	default_area = /area/misc/hilbertshotel
 	var/category = GHC_MISC //Room categorizing
 
 /datum/map_template/ghost_cafe_rooms/apartment
