@@ -921,3 +921,10 @@
   - rscadd: Armored harness crafting recipe
   - rscadd: Armored harness loadout item
   - rscadd: Armored harness for Multisec vendors
+  LT3:
+  - rscadd: Miniskirt now available in the clothesmate
+2025-03-24:
+  LT3:
+  - bugfix: Fixed fitting of black and colorable flannel shirts
+  TealSeer:
+  - bugfix: fixed larger sprite size mobs being unable to pixel shift properly
