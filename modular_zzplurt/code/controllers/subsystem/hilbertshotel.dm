@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 		var/datum/map_template/this_template = new template_type()
 		hotel_map_list[this_template.name] = this_template
 
-	default_template = hotel_map_list[hotel_map_list[1]]
+	default_template = hotel_map_list[1]
 
 /// Attempts to join an existing active room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
 /datum/controller/subsystem/hilbertshotel/proc/try_join_active_room(room_number, mob/user)

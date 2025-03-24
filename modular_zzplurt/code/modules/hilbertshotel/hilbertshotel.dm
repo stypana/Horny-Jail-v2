@@ -156,7 +156,7 @@
 	if(!SShilbertshotel.user_data[usr.ckey])
 		SShilbertshotel.user_data[usr.ckey] = list(
 			"room_number" = 1,
-			"template" = SShilbertshotel.default_template.name
+			"template" = SShilbertshotel.default_template
 		)
 
 	switch(action)

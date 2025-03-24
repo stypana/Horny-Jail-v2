@@ -6,7 +6,7 @@
 #define GHC_SPECIAL "Special"
 
 /datum/map_template/ghost_cafe_rooms
-	category = GHC_MISC
+	var/category = GHC_MISC //Room categorizing
 
 /datum/map_template/ghost_cafe_rooms/apartment
 	category = GHC_APARTMENT

@@ -16,7 +16,6 @@
 
 /datum/map_template/ghost_cafe_rooms
 	name = "Hilbert's Hotel"
-	var/category // SPLURT ADD - Hilbert's Hotel - Room categorizing
 
 /datum/map_template/ghost_cafe_rooms/apartment
 	name = "Apartment"
