@@ -9,8 +9,6 @@
 	integrity_failure = 0
 	max_integrity = INFINITY
 
-	/// The main sphere of the hotel, the global room network handler
-	var/obj/item/hilbertshotel/main_sphere
 	/// The number of the hotel room
 	var/room_number
 	/// Data of the current room as an associative list
@@ -44,11 +42,9 @@
 
 /obj/machinery/room_controller/Initialize()
 	. = ..()
-	main_sphere = GLOB.main_hilbert_sphere
-	if(!main_sphere)
+	if(!SShilbertshotel.initialized)
 		message_admins("Attention: [ADMIN_VERBOSEJMP(src)] at room [room_number] failed to locate the main hotel sphere!")
 		return INITIALIZE_HINT_QDEL
-	to_chat(world, "DEBUG: Hilbert's Hotel Room Controller initialized. Main sphere located.")
 	bluespace_box = new /obj/item/storage/box/bluespace(src)
 	bluespace_box.origin_controller = WEAKREF(src)
 	inserted_id = null
@@ -113,10 +109,10 @@
 	data["id_card"] = this_id?.registered_name
 	data["bluespace_box"] = !isnull(bluespace_box)
 
-	if(!room_number || !main_sphere?.room_data["[room_number]"])
+	if(!room_number || !SShilbertshotel.room_data["[room_number]"])
 		return data
 
-	current_room_data = main_sphere.room_data["[room_number]"]
+	current_room_data = SShilbertshotel.room_data["[room_number]"]
 	data["room_number"] = room_number
 	data["room_status"] = current_room_data["status"]
 	data["room_visibility"] = current_room_data["visibility"]
@@ -151,44 +147,35 @@
 			depart_user(usr)
 			return TRUE
 
-	if(!room_number || !main_sphere?.room_data["[room_number]"])
+	if(!room_number || !SShilbertshotel.room_data["[room_number]"])
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
 		say("Room number out of array range.")
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Please contact the hotel staff for further assistance."), 3 SECONDS)
 		return
 
-	var/list/room_data = main_sphere.room_data["[room_number]"]
+	var/list/room_data = SShilbertshotel.room_data["[room_number]"]
 	switch(action)
 		if("toggle_visibility")
 			room_data["visibility"] = !room_data["visibility"]
-			SStgui.update_uis(src)
-			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "toggle_visibility", "room" = room_number))
-			return TRUE
+			. = TRUE
 		if("toggle_status")
 			room_data["status"] = !room_data["status"]
-			SStgui.update_uis(src)
-			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "toggle_status", "room" = room_number))
-			return TRUE
+			. = TRUE
 		if("toggle_privacy")
 			room_data["privacy"] = !room_data["privacy"]
-			SStgui.update_uis(src)
-			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "toggle_privacy", "room" = room_number))
-			return TRUE
-		if("confirm_description")
+			. = TRUE
+		if("update_description")
 			room_data["description"] = params["description"]
-			SStgui.update_uis(src)
-			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "update_description", "room" = room_number))
-			return TRUE
-		if("confirm_name")
+			. = TRUE
+		if("update_name")
 			room_data["name"] = params["name"]
-			SStgui.update_uis(src)
-			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "update_name", "room" = room_number))
-			return TRUE
+			. = TRUE
 		if("set_icon")
 			room_data["icon"] = params["icon"]
-			SStgui.update_uis(src)
-			SEND_GLOBAL_SIGNAL(COMSIG_HILBERT_ROOM_UPDATED, list("action" = "update_icon", "room" = room_number))
-			return TRUE
+			. = TRUE
+	if(.)
+		SStgui.update_uis(src)
+		SEND_SIGNAL(SShilbertshotel, COMSIG_HILBERT_ROOM_UPDATED, list("action" = action, "room" = room_number))
 
 /obj/machinery/room_controller/emp_act(severity)
 	return

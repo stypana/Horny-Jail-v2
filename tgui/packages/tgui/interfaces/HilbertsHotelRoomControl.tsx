@@ -259,7 +259,7 @@ export const HilbertsHotelRoomControl = (props) => {
                 <Button.Confirm
                   fluid
                   icon="check"
-                  onClick={() => act('confirm_name', { name: localName })}
+                  onClick={() => act('update_name', { name: localName })}
                   style={{
                     cursor: 'pointer',
                     height: '1.7em',
@@ -287,7 +287,7 @@ export const HilbertsHotelRoomControl = (props) => {
                 fluid
                 icon="check"
                 onClick={() =>
-                  act('confirm_description', { description: localDescription })
+                  act('update_description', { description: localDescription })
                 }
                 confirmContent={
                   <>

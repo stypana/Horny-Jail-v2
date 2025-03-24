@@ -15,14 +15,13 @@
 		if(!Adjacent(interacting_with))
 			to_chat(user, span_warning("It's to far away to scan!"))
 			return ITEM_INTERACT_BLOCKING
-		var/obj/item/hilbertshotel/main_sphere = GLOB.main_hilbert_sphere
-		if(main_sphere?.room_data.len)
+		if(SShilbertshotel.room_data.len)
 			to_chat(user, "Currently Occupied Rooms:")
-			for(var/room_number in main_sphere.room_data)
+			for(var/room_number in SShilbertshotel.room_data)
 				to_chat(user, room_number)
-		if(main_sphere?.conservated_rooms.len)
+		if(SShilbertshotel.conservated_rooms.len)
 			to_chat(user, "Vacated Rooms:")
-			for(var/room_number in main_sphere.conservated_rooms)
+			for(var/room_number in SShilbertshotel.conservated_rooms)
 				to_chat(user, room_number)
 		return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -85,7 +84,7 @@
 	If you're reading this, I hope you're from the Institute. First things first, I should apologise. I won't be coming back to teach in the new semester.<br>
 	We've made some powerful enemies. Very powerful. More powerful than any of you can imagine, and so we can't come back.<br>
 	So, we've made the decision to vanish. Perhaps more literally than you might think. Do not try to find us- for your own safety.<br>
-	I've left some of our effects in the Hotel. Room number <u>[uppertext(num2hex(GLOB.hhMysteryroom_number, 0))]</u>. To anyone who should know, that should make sense.<br>
+	I've left some of our effects in the Hotel. Room number <u>[uppertext(num2hex(SShilbertshotel.hhMysteryroom_number, 0))]</u>. To anyone who should know, that should make sense.<br>
 	Best of luck with the research. From all of us in the Hilbert Group, it's been a pleasure working with you.<br>
 	- David, Phil, Fiona and Jen"}
 	return ..()
