@@ -9708,6 +9708,7 @@
 #include "modular_zzplurt\code\datums\traits\neutral\oversized.dm"
 #include "modular_zzplurt\code\datums\weather\weather_types\ash_storm.dm"
 #include "modular_zzplurt\code\game\objects\items.dm"
+#include "modular_zzplurt\code\game\objects\items\armor_kits.dm"
 #include "modular_zzplurt\code\game\objects\items\cards_ids.dm"
 #include "modular_zzplurt\code\game\objects\items\emags.dm"
 #include "modular_zzplurt\code\game\objects\items\holy_weapons.dm"
