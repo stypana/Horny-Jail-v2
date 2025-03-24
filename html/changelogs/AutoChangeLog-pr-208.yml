@@ -1,8 +1,0 @@
-author: "SaraSayomi"
-delete-after: True
-changes:
-  - bugfix: "Wench dress can be worn chest out style again."
-  - bugfix: "Sheer dress is now visible."
-  - bugfix: "The sheer miniskirt now has the skirt part."
-  - bugfix: "The V-neck now has it's boob mesh back."
-  - bugfix: "removed a few icon states that are no longer needed in greyscale that were in polychrome, to lessen bloat."
