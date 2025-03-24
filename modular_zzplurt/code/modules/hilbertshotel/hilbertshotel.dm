@@ -73,7 +73,21 @@
 		to_chat(target, span_warning("You have to check out the first [SHORT_REAL_LIMIT] rooms before you can go to a higher numbered one!"))
 		return
 
+	if(!template || !(template in SShilbertshotel.hotel_map_list))
+		template = SShilbertshotel.default_template
+
+	if(!template)
+		return
+
 	if(SShilbertshotel.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
+		var/list/access_restrictions = SShilbertshotel.conservated_rooms["[room_number]"]["access_restrictions"] || SShilbertshotel.room_data["[room_number]"]["access_restrictions"]
+		if(access_restrictions && user.mind)
+			var/is_owner = (access_restrictions["room_owner"] == user.mind)
+			var/is_trusted = (user.mind in access_restrictions["trusted_guests"])
+			if(!is_owner && !is_trusted)
+				playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
+				to_chat(user, span_warning("Access denied."))
+				return
 		to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings))) // we're lucky - a conservated room exists which means we don't have to check for other stuff here
 		if(SShilbertshotel.try_join_conservated_room(room_number, target, src))
 			return
@@ -85,6 +99,8 @@
 			return
 		// try to enter if room is open
 		if(SShilbertshotel.try_join_active_room(room_number, target))
+			to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings)))
+			do_sparks(3, FALSE, src)
 			return
 	// some vanity stuff I guess? also kudos to the dev for HL reference lol
 	if(src.type == /obj/item/hilbertshotel)
@@ -144,7 +160,8 @@
 		var/list/room = SShilbertshotel.conservated_rooms[room_number]
 		data["conservated_rooms"] += list(list(
 			"number" = room_number,
-			"description" = room["description"]
+			"description" = room["description"],
+			"name" = room["name"] || room["template"]
 		))
 	return data
 
@@ -271,17 +288,18 @@
 		return
 	if(!user.mind)
 		return
-	if(playsound(user, 'sound/machines/terminal/terminal_prompt.ogg', 100, TRUE) && tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "ATTENTION!", list("Leave", "Stay")) == "Stay")
+	if(playsound(user, 'sound/machines/terminal/terminal_prompt.ogg', 100, TRUE) && tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "You sure?", list("Leave", "Stay")) == "Stay")
 		return
-	if(!(user.ckey in entry_points)) // no valid entry point for this ckey - reverting to the parent sphere
+	if(!(user.mind in entry_points)) // no valid entry point for this mind - reverting to the parent sphere
 		to_chat(user, span_warning("The door seems to be malfunctioning!"))
-		if(!tgui_alert(user, "Attention: the outside controller is malfunctioning. Hilbert's Hotel will not be responsible for any damage to your belongings or health. Are you sure you still want to leave?", "Exit", list("Yes", "No")) == "Yes")
+		var/choice = tgui_alert(user, "Attention: the outside controller is malfunctioning. Hilbert's Hotel will not be responsible for any damage to your belongings or health. Are you sure you still want to leave?", "ATTENTION!", list("Yes", "No"))
+		if(choice != "Yes")
 			return
 	else if(!parentSphere)
 		to_chat(user, span_warning("The door seems to be malfunctioning and refuses to operate!"))
 		return
 	else
-		destination = entry_points[user.ckey] // user's entry point
+		destination = entry_points[user.mind] // user's entry point
 	if(HAS_TRAIT(user, TRAIT_IMMOBILIZED) || (get_dist(get_turf(src), get_turf(user)) > 1)) // no teleporting around if they're dead or moved away during the prompt
 		return
 	user.forceMove(get_turf(destination))

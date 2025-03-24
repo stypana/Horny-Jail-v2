@@ -1,3 +1,8 @@
+#define ACTION_ADD "add"
+#define ACTION_REMOVE "remove"
+#define ACTION_CLEAR "clear"
+#define ACTION_TRANSFER "transfer"
+
 /obj/machinery/room_controller
 	name = "Hilbert's Hotel Room Controller"
 	desc = "A mysterious device."
@@ -120,6 +125,9 @@
 	data["room_description"] = current_room_data["description"]
 	data["name"] = current_room_data["name"]
 	data["icon"] = current_room_data["icon"]
+	data["room_owner"] = current_room_data["access_restrictions"]["room_owner"]
+	data["trusted_guests"] = current_room_data["access_restrictions"]["trusted_guests"]
+	data["user"] = user
 	return data
 
 /obj/machinery/room_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -172,6 +180,9 @@
 			. = TRUE
 		if("set_icon")
 			room_data["icon"] = params["icon"]
+			. = TRUE
+		if("modify_trusted_guests")
+			modify_trusted_guests(usr, params["action"], params["user"])
 			. = TRUE
 	if(.)
 		SStgui.update_uis(src)
@@ -275,7 +286,7 @@
 		departing_mob.mind.objectives = list()
 		departing_mob.mind.special_role = null
 	visible_message(span_notice("[src] whizzes as it swallows the ID card."))
-	playsound(src, 'sound/machines/terminal/terminal_success.ogg', 20, TRUE)
+	playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
 	say("Transfer successful.")
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Thank you for your stay!"), 2 SECONDS)
 	message_admins("[departing_mob.ckey]/[departing_mob.real_name] departed from room [room_number] as [departing_mob.job].")
@@ -289,3 +300,17 @@
 		update_appearance()
 		SStgui.update_uis(src)
 	return TRUE
+
+/obj/machinery/room_controller/proc/modify_trusted_guests(this_user, action, target_name)
+	if(!room_number || !SShilbertshotel.room_data["[room_number]"])
+		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
+		return
+	SShilbertshotel.modify_trusted_guests(room_number, this_user, action, target_name)
+	playsound(src, 'sound/machines/terminal/terminal_processing.ogg', 50, TRUE)
+	if(action == ACTION_TRANSFER)
+		say("Room ownership transferred.")
+
+#undef ACTION_ADD
+#undef ACTION_REMOVE
+#undef ACTION_CLEAR
+#undef ACTION_TRANSFER

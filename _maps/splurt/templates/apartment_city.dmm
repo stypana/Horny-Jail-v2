@@ -285,7 +285,7 @@
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "sZ" = (
-/turf/open/space/basic,
+/turf/open/space/bluespace,
 /area/misc/hilbertshotel)
 "tb" = (
 /obj/structure/chair/pew/left{

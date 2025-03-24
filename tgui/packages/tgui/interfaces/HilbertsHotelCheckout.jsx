@@ -73,8 +73,8 @@ const OpenRooms = ({ data, act, selected_template }) => {
                         template: selected_template,
                       })
                     }
+                    icon="right-to-bracket"
                   >
-                    <Icon name="right-to-bracket" />
                     Join
                   </Button.Confirm>
                 </Stack.Item>
@@ -253,8 +253,8 @@ const RoomCheckIn = ({
               })
             }
             lineHeight={2}
+            icon="right-to-bracket"
           >
-            <Icon name="right-to-bracket" />
             Check-in
           </Button.Confirm>
         </Stack.Item>
@@ -271,9 +271,7 @@ const ReservedRooms = ({ data }) => {
           {data.conservated_rooms?.map((room) => (
             <Table.Row key={room.number}>
               <Table.Cell>Room {room.number}</Table.Cell>
-              <Table.Cell>
-                <i>No information.</i>
-              </Table.Cell>
+              <Table.Cell>{room.name}</Table.Cell>
             </Table.Row>
           ))}
         </Table>

@@ -149,21 +149,29 @@ SUBSYSTEM_DEF(hilbertshotel)
 	conservated_rooms -= "[room_number]"
 	room_data["[room_number]"] = list(
 		"reservation" = roomReservation,
+		"door_reference" = room_turf,
+		"template" = conservated_room_data["template"],
 		"room_preferences" = list(
 			"status" = ROOM_CLOSED,
 			"visibility" = ROOM_VISIBLE,
 			"privacy" = ROOM_GUESTS_HIDDEN,
+			"description" = null,
+			"name" = conservated_room_data["name"],
+			"icon" = conservated_room_data["icon"],
 		),
-		"description" = null,
-		"name" = conservated_room_data["name"],
-		"door_reference" = room_turf,
-		"icon" = conservated_room_data["icon"] || "door-open",
-		"template" = conservated_room_data["template"]
+		"access_restrictions" = conservated_room_data["access_restrictions"],
 	)
 
 	link_turfs(roomReservation, room_number, parentSphere)
-	var/turf/closed/indestructible/hoteldoor/door = room_data["[room_number]"]["door_reference"]
-	door.entry_points[user.ckey] = parentSphere
+	var/turf/door_turf = room_data["[room_number]"]["door_reference"]
+	if(istype(door_turf, /turf/closed/indestructible/hoteldoor))
+		var/turf/closed/indestructible/hoteldoor/door = door_turf
+		if(user?.mind && parentSphere)
+			door.entry_points[user.mind] = parentSphere
+		else
+			to_chat(world, "Hilbert's Hotel: Failed to set entry point for room [room_number]")
+	else
+		to_chat(world, "Hilbert's Hotel: Door reference is invalid for room [room_number]")
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
 		room_turf.x + hotel_room_template.landingZoneRelativeX,
@@ -199,21 +207,25 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 	LAZYSET(room_data, "[room_number]", list(
 		"reservation" = roomReservation,
+		"door_reference" = null,
+		"template" = template,
 		"room_preferences" = list(
 			"status" = ROOM_CLOSED,
 			"visibility" = ROOM_VISIBLE,
 			"privacy" = ROOM_GUESTS_HIDDEN,
+			"description" = null,
+			"name" = template,
+					"icon" = "door-open",
 		),
-		"description" = null,
-		"name" = template,
-		"door_reference" = null,
-		"icon" = "door-open",
-		"template" = template
+		"access_restrictions" = list(
+			"room_owner" = user.mind,
+			"trusted_guests" = list(),
+		),
 	))
 
 	link_turfs(roomReservation, room_number, parentSphere)
 	var/turf/closed/indestructible/hoteldoor/door = room_data["[room_number]"]["door_reference"]
-	door.entry_points[user.ckey] = parentSphere // adding the sphere to the entry points list
+	door.entry_points[user.mind] = parentSphere // adding the sphere to the entry points list
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
 		bottom_left.x + hotel_room_template.landingZoneRelativeX,
@@ -293,21 +305,34 @@ SUBSYSTEM_DEF(hilbertshotel)
 					controller.bluespace_box?.creation_area = null
 				if(length(movable_atom.GetComponents(/datum/component/wall_mounted)))
 					continue
+
 				turfContents += movable_atom
 				var/old_resist = movable_atom.resistance_flags
+				var/old_smoothing = movable_atom.smoothing_flags
 				movable_atom.resistance_flags |= INDESTRUCTIBLE
+				movable_atom.smoothing_flags = NONE
 				movable_atom.forceMove(storageObj)
 				movable_atom.resistance_flags = old_resist
+				movable_atom.smoothing_flags = old_smoothing
 			storage["[turfNumber]"] = turfContents
 			turfNumber++
 
-	var/room_name = room_data["[current_area.room_number]"]["name"]
+	var/room_name = room_data["[current_area.room_number]"]["room_preferences"]["name"]
 	var/room_template = room_data["[current_area.room_number]"]["template"]
+	var/room_icon = room_data["[current_area.room_number]"]["room_preferences"]["icon"]
+	var/room_owner = room_data["[current_area.room_number]"]["access_restrictions"]["room_owner"]
+	var/list/access_restrictions = room_data["[current_area.room_number]"]["access_restrictions"]
+	var/list/trusted_guests = access_restrictions["trusted_guests"]
 
 	conservated_rooms["[current_area.room_number]"] = list(
 		"storage" = storage,
 		"name" = room_name,
-		"template" = room_template
+		"template" = room_template,
+		"icon" = room_icon,
+		"access_restrictions" = list(
+			"room_owner" = room_owner,
+			"trusted_guests" = trusted_guests
+		)
 	)
 	room_data -= "[current_area.room_number]"
 	qdel(current_area.reservation)
@@ -360,5 +385,29 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 	for(var/obj/item/hilbertshotel/sphere in all_hilbert_spheres)
 		SStgui.update_uis(sphere)
-
 	return
+
+/datum/controller/subsystem/hilbertshotel/proc/modify_trusted_guests(room_number, mob/user, action, target_name)
+	if(!room_data["[room_number]"])
+		return FALSE
+	var/list/local_room_data = room_data["[room_number]"]
+	switch(action)
+		if("add")
+			if(!user.mind)
+				return FALSE
+			if(user.mind in local_room_data["access_restrictions"]["trusted_guests"])
+				return FALSE
+			if(user.mind == local_room_data["access_restrictions"]["room_owner"])
+				return FALSE
+			local_room_data["access_restrictions"]["trusted_guests"] += user.mind
+		if("remove")
+			var/list/trusted_guests = local_room_data["access_restrictions"]["trusted_guests"]
+			for(var/datum/mind/guest_mind in trusted_guests)
+				if(guest_mind.name == target_name)
+					trusted_guests -= guest_mind
+					break
+		if("clear")
+			local_room_data["access_restrictions"]["trusted_guests"] = list()
+		if("transfer")
+			local_room_data["access_restrictions"]["room_owner"] = user.mind
+	return TRUE

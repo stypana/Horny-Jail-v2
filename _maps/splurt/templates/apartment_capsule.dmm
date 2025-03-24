@@ -348,6 +348,9 @@
 /obj/structure/flora/grass/jungle/b,
 /turf/open/misc/grass,
 /area/misc/hilbertshotel)
+"Ne" = (
+/turf/open/space/bluespace,
+/area/misc/hilbertshotel)
 "NF" = (
 /obj/machinery/light/small,
 /turf/open/water/jungle,
@@ -444,27 +447,27 @@
 /area/misc/hilbertshotel)
 
 (1,1,1) = {"
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
 "}
 (2,1,1) = {"
-fP
+Ne
 mo
 mo
 mo
@@ -481,10 +484,10 @@ cA
 cA
 cA
 cA
-fP
+Ne
 "}
 (3,1,1) = {"
-fP
+Ne
 mo
 mo
 rK
@@ -501,10 +504,10 @@ Ad
 Lz
 ns
 cA
-fP
+Ne
 "}
 (4,1,1) = {"
-fP
+Ne
 mo
 rK
 fj
@@ -521,10 +524,10 @@ EA
 Vd
 PF
 cA
-fP
+Ne
 "}
 (5,1,1) = {"
-fP
+Ne
 mo
 rK
 jg
@@ -541,10 +544,10 @@ BP
 Cd
 nl
 cA
-fP
+Ne
 "}
 (6,1,1) = {"
-fP
+Ne
 mo
 rK
 rK
@@ -561,10 +564,10 @@ Pl
 bD
 bP
 cA
-fP
+Ne
 "}
 (7,1,1) = {"
-fP
+Ne
 mo
 wO
 EL
@@ -581,10 +584,10 @@ mC
 va
 sw
 cA
-fP
+Ne
 "}
 (8,1,1) = {"
-fP
+Ne
 mo
 fX
 EL
@@ -601,10 +604,10 @@ cA
 tU
 cA
 cA
-fP
+Ne
 "}
 (9,1,1) = {"
-fP
+Ne
 mo
 fX
 yP
@@ -621,10 +624,10 @@ Ox
 Rl
 xo
 cA
-fP
+Ne
 "}
 (10,1,1) = {"
-fP
+Ne
 mo
 fX
 jv
@@ -641,10 +644,10 @@ cA
 cA
 cA
 cA
-fP
+Ne
 "}
 (11,1,1) = {"
-fP
+Ne
 mo
 fX
 EL
@@ -661,10 +664,10 @@ Rc
 cA
 tq
 cA
-fP
+Ne
 "}
 (12,1,1) = {"
-fP
+Ne
 mo
 zW
 fP
@@ -681,10 +684,10 @@ Rc
 Eg
 cA
 Eg
-fP
+Ne
 "}
 (13,1,1) = {"
-fP
+Ne
 mo
 fX
 EL
@@ -701,10 +704,10 @@ Rc
 Rc
 Rc
 mo
-fP
+Ne
 "}
 (14,1,1) = {"
-fP
+Ne
 mo
 jv
 MA
@@ -721,10 +724,10 @@ Rc
 Rc
 CQ
 mo
-fP
+Ne
 "}
 (15,1,1) = {"
-fP
+Ne
 mo
 mo
 EL
@@ -741,10 +744,10 @@ hj
 hj
 hj
 mo
-fP
+Ne
 "}
 (16,1,1) = {"
-fP
+Ne
 mo
 mo
 mo
@@ -761,10 +764,10 @@ Rc
 GI
 hj
 mo
-fP
+Ne
 "}
 (17,1,1) = {"
-fP
+Ne
 mo
 mo
 mo
@@ -781,25 +784,25 @@ mo
 mo
 mo
 mo
-fP
+Ne
 "}
 (18,1,1) = {"
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
-fP
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
+Ne
 "}

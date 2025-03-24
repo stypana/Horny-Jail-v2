@@ -199,7 +199,7 @@
 /turf/open/floor/iron/pool/cobble/corner,
 /area/misc/hilbertshotel)
 "rd" = (
-/turf/open/space/basic,
+/turf/open/space/bluespace,
 /area/misc/hilbertshotel)
 "rh" = (
 /obj/structure/closet/cabinet,
