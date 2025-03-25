@@ -953,3 +953,6 @@
       one more 3x3 construction area.
   - map: toned down some of the roundstart persistence equipment that can be acquired
       through other relatively easy means such as cargo.
+2025-03-25:
+  funnyfreeperson:
+  - bugfix: makes modular limbs spell work
