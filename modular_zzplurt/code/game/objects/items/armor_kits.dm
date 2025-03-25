@@ -24,10 +24,11 @@
 		return
 
 	var/obj/item/clothing/C = target
+	var/datum/armor/curr_armor = C.get_armor()
 
 	for(var/curr_stat in ARMOR_ALL)
-		if(C.armor.get_rating(curr_stat) < target_armor.get_rating(curr_stat))
-			C.armor = C.armor.generate_new_with_specific(list(curr_stat = target_armor.get_rating(curr_stat)))
+		if(curr_armor.get_rating(curr_stat) < target_armor.get_rating(curr_stat))
+			C.set_armor(curr_armor.generate_new_with_specific(list(curr_stat = target_armor.get_rating(curr_stat))))
 			used = TRUE
 
 	if(used)
