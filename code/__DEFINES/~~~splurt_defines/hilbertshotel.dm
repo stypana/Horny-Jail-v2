@@ -1,5 +1,6 @@
-#define ROOM_OPEN TRUE
-#define ROOM_CLOSED FALSE
+#define ROOM_OPEN 1
+#define ROOM_GUESTS_ONLY 2
+#define ROOM_CLOSED 3
 
 #define ROOM_VISIBLE TRUE
 #define ROOM_INVISIBLE FALSE

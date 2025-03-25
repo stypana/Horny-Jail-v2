@@ -78,7 +78,26 @@ SUBSYSTEM_DEF(hilbertshotel)
 /datum/controller/subsystem/hilbertshotel/proc/try_join_active_room(room_number, mob/user)
 	if(!room_data["[room_number]"])
 		return FALSE
-	var/datum/turf_reservation/roomReservation = room_data["[room_number]"]["reservation"]
+
+	var/list/room = room_data["[room_number]"]
+	var/room_status = room["room_preferences"]["status"]
+	var/list/access_restrictions = room["access_restrictions"]
+	var/is_owner = FALSE
+	var/is_trusted = FALSE
+
+	if(user?.mind)
+		is_owner = (access_restrictions["room_owner"] == user.mind)
+		is_trusted = (user.mind in access_restrictions["trusted_guests"])
+
+	if(room_status == ROOM_CLOSED && !is_owner)
+		to_chat(user, span_warning("This room is closed!"))
+		return FALSE
+
+	if(room_status == ROOM_GUESTS_ONLY && !is_owner && !is_trusted)
+		to_chat(user, span_warning("Access denied. This room is only available to invited guests."))
+		return FALSE
+
+	var/datum/turf_reservation/roomReservation = room["reservation"]
 	do_sparks(3, FALSE, get_turf(user))
 	var/turf/room_bottom_left = roomReservation.bottom_left_turfs[1]
 	user.forceMove(locate(
@@ -96,6 +115,34 @@ SUBSYSTEM_DEF(hilbertshotel)
 	var/list/conservated_room_data = conservated_rooms["[room_number]"]
 	if(!conservated_room_data)
 		return FALSE
+
+	var/room_status = conservated_room_data["status"]
+
+	if(room_status != ROOM_OPEN)
+		to_chat(world, span_info("DEBUG: Room is not open."))
+		var/list/access_restrictions = conservated_room_data["access_restrictions"]
+		var/datum/mind/owner_mind = access_restrictions["room_owner"]
+		var/list/trusted_guests = access_restrictions["trusted_guests"]
+		var/is_owner = FALSE
+		var/is_trusted = FALSE
+
+		if(owner_mind == user.mind)
+			is_owner = TRUE
+			to_chat(world, span_info("DEBUG: You are the owner of this room."))
+		else
+			for(var/datum/mind/guest_mind in trusted_guests)
+				if(istype(guest_mind) && guest_mind == user.mind)
+					to_chat(world, span_info("DEBUG: You are a trusted guest of this room."))
+					is_trusted = TRUE
+					break
+
+		if(room_status == ROOM_CLOSED && !is_owner)
+			to_chat(user, span_warning("Access denied. This room is locked by the owner."))
+			return FALSE
+
+		if(room_status == ROOM_GUESTS_ONLY && !is_owner && !is_trusted)
+			to_chat(user, span_warning("Access denied. This room is only available to invited guests."))
+			return FALSE
 
 	var/list/storage = conservated_room_data["storage"]
 	if(!storage)
@@ -154,7 +201,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 		"door_reference" = room_turf,
 		"template" = conservated_room_data["template"],
 		"room_preferences" = list(
-			"status" = ROOM_CLOSED,
+			"status" = conservated_room_data["status"] || ROOM_OPEN,
 			"visibility" = ROOM_VISIBLE,
 			"privacy" = ROOM_GUESTS_HIDDEN,
 			"description" = null,
@@ -212,7 +259,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 		"door_reference" = null,
 		"template" = template,
 		"room_preferences" = list(
-			"status" = ROOM_CLOSED,
+			"status" = ROOM_OPEN,
 			"visibility" = ROOM_VISIBLE,
 			"privacy" = ROOM_GUESTS_HIDDEN,
 			"description" = null,
@@ -322,6 +369,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 	var/room_name = room_data["[current_area.room_number]"]["room_preferences"]["name"]
 	var/room_template = room_data["[current_area.room_number]"]["template"]
 	var/room_icon = room_data["[current_area.room_number]"]["room_preferences"]["icon"]
+	var/room_status = room_data["[current_area.room_number]"]["room_preferences"]["status"]
 	var/room_owner = room_data["[current_area.room_number]"]["access_restrictions"]["room_owner"]
 	var/list/access_restrictions = room_data["[current_area.room_number]"]["access_restrictions"]
 	var/list/trusted_guests = access_restrictions["trusted_guests"]
@@ -331,6 +379,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 		"name" = room_name,
 		"template" = room_template,
 		"icon" = room_icon,
+		"status" = room_status,
 		"access_restrictions" = list(
 			"room_owner" = room_owner,
 			"trusted_guests" = trusted_guests

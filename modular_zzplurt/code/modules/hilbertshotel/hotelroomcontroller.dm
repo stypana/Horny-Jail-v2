@@ -167,7 +167,13 @@
 			room_data["visibility"] = !room_data["visibility"]
 			. = TRUE
 		if("toggle_status")
-			room_data["status"] = !room_data["status"]
+			var/current_status = room_data["status"]
+			if(current_status == ROOM_OPEN)
+				room_data["status"] = ROOM_GUESTS_ONLY
+			else if(current_status == ROOM_GUESTS_ONLY)
+				room_data["status"] = ROOM_CLOSED
+			else
+				room_data["status"] = ROOM_OPEN
 			. = TRUE
 		if("toggle_privacy")
 			room_data["privacy"] = !room_data["privacy"]

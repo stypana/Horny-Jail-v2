@@ -82,14 +82,6 @@
 		return
 
 	if(SShilbertshotel.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
-		var/list/access_restrictions = SShilbertshotel.conservated_rooms["[room_number]"]["access_restrictions"] || SShilbertshotel.room_data["[room_number]"]["access_restrictions"]
-		if(access_restrictions && user.mind)
-			var/is_owner = (access_restrictions["room_owner"] == user.mind)
-			var/is_trusted = (user.mind in access_restrictions["trusted_guests"])
-			if(!is_owner && !is_trusted)
-				playsound(src, 'sound/machines/terminal/terminal_error.ogg', 50, TRUE)
-				to_chat(user, span_warning("Access denied."))
-				return
 		to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings))) // we're lucky - a conservated room exists which means we don't have to check for other stuff here
 		if(SShilbertshotel.try_join_conservated_room(room_number, target, src))
 			return
@@ -290,7 +282,8 @@
 		return
 	if(!user.mind)
 		return
-	if(playsound(user, 'sound/machines/terminal/terminal_prompt.ogg', 100, TRUE) && tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "You sure?", list("Leave", "Stay")) == "Stay")
+	playsound(user, 'sound/machines/terminal/terminal_prompt.ogg', 100, TRUE)
+	if(tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "You sure?", list("Leave", "Stay")) == "Stay")
 		return
 	if(!(user.mind in entry_points)) // no valid entry point for this mind - reverting to the parent sphere
 		to_chat(user, span_warning("The door seems to be malfunctioning!"))

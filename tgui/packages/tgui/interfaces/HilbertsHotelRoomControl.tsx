@@ -314,6 +314,7 @@ export const HilbertsHotelRoomControl = (props) => {
                   borderRadius: '3px',
                   color: 'rgb(115, 177, 228)',
                   padding: '2px 5px',
+                  minWidth: '40px',
                 }}
               >
                 {data.room_number || 'Err'}
@@ -399,6 +400,11 @@ export const HilbertsHotelRoomControl = (props) => {
                       lineHeight="2.2"
                       color={data.room_visibility ? 'blue' : 'green'}
                       style={{ cursor: 'pointer' }}
+                      tooltip={
+                        data.room_visibility
+                          ? 'The room is visible in the room list'
+                          : 'The room is invisible: only those who know the number can join'
+                      }
                     >
                       {data.room_visibility ? 'Visible' : 'Invisible'}
                     </Button>
@@ -406,13 +412,37 @@ export const HilbertsHotelRoomControl = (props) => {
                   <Stack.Item grow>
                     <Button
                       fluid
-                      icon={data.room_status ? 'lock-open' : 'lock'}
+                      icon={
+                        data.room_status === 1
+                          ? 'door-open'
+                          : data.room_status === 2
+                            ? 'user-check'
+                            : 'door-closed'
+                      }
+                      color={
+                        data.room_status === 1
+                          ? 'orange'
+                          : data.room_status === 2
+                            ? 'blue'
+                            : 'green'
+                      }
                       onClick={() => act('toggle_status')}
                       lineHeight="2.2"
-                      color={data.room_status ? 'blue' : 'green'}
                       style={{ cursor: 'pointer' }}
+                      tooltip={
+                        data.room_status === 1
+                          ? 'Room is open: anyone can join'
+                          : data.room_status === 2
+                            ? 'Only guests from the list can join'
+                            : 'Room is locked: nobody can join'
+                      }
                     >
-                      {data.room_status ? 'Open' : 'Closed'}
+                      {' '}
+                      {data.room_status === 1
+                        ? 'Open'
+                        : data.room_status === 2
+                          ? 'Guests Only'
+                          : 'Closed'}
                     </Button>
                   </Stack.Item>
                   <Stack.Item grow>
@@ -423,6 +453,11 @@ export const HilbertsHotelRoomControl = (props) => {
                       lineHeight="2.2"
                       color={data.room_privacy ? 'blue' : 'green'}
                       style={{ cursor: 'pointer' }}
+                      tooltip={
+                        data.room_privacy
+                          ? 'Guest names are visible in the room list'
+                          : 'Only the amount of guests is visible in the room list'
+                      }
                     >
                       {data.room_privacy ? 'Guest names' : 'Only number'}
                     </Button>
