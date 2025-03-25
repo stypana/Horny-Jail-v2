@@ -35,7 +35,7 @@
 		if(change_allowed)
 			C.allowed = target_allowed
 		user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
-		"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a [armor_text].</span>")
+		"<span class = 'notice'>You reinforce [C] with [src], making it as protective as \a [armor_text].</span>")
 		C.name = "[target_prefix] [C.name]"
 		qdel(src)
 		return
