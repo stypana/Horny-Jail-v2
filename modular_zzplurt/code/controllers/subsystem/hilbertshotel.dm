@@ -43,7 +43,9 @@ SUBSYSTEM_DEF(hilbertshotel)
 	. = ..()
 	RegisterSignal(src, COMSIG_HILBERT_ROOM_UPDATED, PROC_REF(on_room_updated))
 	hhMysteryroom_number = hhMysteryroom_number || rand(1, 999999)
+#ifndef UNIT_TESTS // This is a hack to prevent the storage turf from being loaded in unit tests and causing errors
 	setup_storage_turf()
+#endif
 	prepare_rooms()
 	return SS_INIT_SUCCESS
 
