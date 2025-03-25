@@ -111,7 +111,7 @@
 
 /datum/loadout_item/toys/donator/braixen_plushie
 	name = "Braixen Plushie"
-	item_path = "/obj/item/toy/plush/braixen"
+	item_path = /obj/item/toy/plush/braixen
 
 /datum/loadout_item/toys/donator/ethanol_shark_plushie
 	name = "Ethanol shark plushie"
