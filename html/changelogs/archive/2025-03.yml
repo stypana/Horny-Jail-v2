@@ -876,6 +876,8 @@
   MMmmikhail:
   - spellcheck: Modified the description of seasoned goliath meat to make sure ashies
       don't murder their friendly drakes
+  Majkl-J:
+  - rscdel: Removes the martyr and hijack objs from traitor and spy
   StrangeWeirdKitten:
   - qol: Adds the ability to put a reference picture on the examine panel.
   sakke03:
@@ -883,11 +885,7 @@
   - rscadd: Events no longer run if the shuttle is moving towards the station in a
       no-recall state.
   - rscadd: Fixes several moonstation bugs/issues/whatever.
-  Majkl-J:
-  - rscdel: Removes the martyr and hijack objs from traitor and spy
 2025-03-22:
-  SmArtKar:
-  - bugfix: Clothesplosion no longer drops straightjackets or facehuggers
   Arturlang:
   - bugfix: Hologram mobs no longer have blood
   BurgerBB:
@@ -913,7 +911,11 @@
   - rscdel: DS-2 Mining Officer (not the Persistence, DS-2) no longer has a Makarov.
   SarmentiCampbell:
   - rscadd: Borgo can put on hats by rightclicking.
+  SmArtKar:
+  - bugfix: Clothesplosion no longer drops straightjackets or facehuggers
 2025-03-23:
+  LT3:
+  - rscadd: Miniskirt now available in the clothesmate
   SmArtKar:
   - bugfix: Fixed HEV suit actions
   idrk13:
@@ -921,11 +923,16 @@
   - rscadd: Armored harness crafting recipe
   - rscadd: Armored harness loadout item
   - rscadd: Armored harness for Multisec vendors
-  LT3:
-  - rscadd: Miniskirt now available in the clothesmate
 2025-03-24:
   LT3:
   - bugfix: Fixed fitting of black and colorable flannel shirts
+  MosleyTheMalO:
+  - bugfix: fixes the buttons ui
+  - bugfix: readds the dogborg sleeper config
+  - bugfix: fixes some uis not having a scrollwheel
+  - bugfix: fixes colormate rendering
+  - bugfix: fixes player playtimes admin tab
+  - admin: makes the round type appear with the new round messages
   TealSeer:
   - bugfix: fixed larger sprite size mobs being unable to pixel shift properly
   nikothedude:

@@ -1,9 +1,0 @@
-author: "MosleyTheMalO"
-delete-after: True
-changes:
-  - bugfix: "fixes the buttons ui"
-  - bugfix: "readds the dogborg sleeper config"
-  - bugfix: "fixes some uis not having a scrollwheel"
-  - bugfix: "fixes colormate rendering"
-  - bugfix: "fixes player playtimes admin tab"
-  - admin: "makes the round type appear with the new round messages"
