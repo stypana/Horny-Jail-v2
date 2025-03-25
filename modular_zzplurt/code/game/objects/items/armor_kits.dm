@@ -1,6 +1,6 @@
 /obj/item/armorkit
 	name = "rampart armor kit"
-	desc = "A standard Nanotrasen security armoring kit with flexible armored sheets and some nanoglue, for reinforcing outerwear."
+	desc = "A standard Nanotrasen security nanite armoring kit, for reinforcing outerwear."
 	icon = 'modular_zzplurt/icons/obj/reinforcekits.dmi'
 	icon_state = "sec_armor_kit"
 	w_class = WEIGHT_CLASS_SMALL
@@ -45,7 +45,7 @@
 
 /obj/item/armorkit/helmet
 	name = "rampart headgear kit"
-	desc = "A standard Nanotrasen security armoring kit with flexible armored sheets and some nanoglue, for reinforcing hats or other headgear."
+	desc = "A standard Nanotrasen security nanite armoring kit, for reinforcing hats or other headgear."
 	icon_state = "sec_helmet_kit"
 
 	target_armor = /datum/armor/head_helmet
@@ -58,7 +58,7 @@
 
 /obj/item/armorkit/blueshield
 	name = "aegis armor kit"
-	desc = "An elite Nanotrasen armoring kit with armored plates and some nanoglue, for reinforcing outerwear."
+	desc = "An elite Nanotrasen nanite armoring kit, for reinforcing outerwear."
 	icon_state = "blueshield_armor_kit"
 
 	target_armor = /datum/armor/suit_armor/blueshield
@@ -71,7 +71,7 @@
 
 /obj/item/armorkit/helmet/blueshield
 	name = "aegis headgear kit"
-	desc = "An elite Nanotrasen security armoring kit with flexible armored sheets and some nanoglue, for reinforcing hats or other headgear."
+	desc = "An elite Nanotrasen security nanite armoring kit, for reinforcing hats or other headgear."
 	icon_state = "blueshield_helmet_kit"
 
 	target_armor = /datum/armor/head_helmet/blueshield
