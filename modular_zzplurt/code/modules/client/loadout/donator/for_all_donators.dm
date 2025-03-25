@@ -89,6 +89,7 @@
 	name = "Chameleon Mask"
 	item_path = /obj/item/clothing/mask/chameleon
 
+// Plushies
 /datum/loadout_item/toys/donator/chaotic_toaster
 	name = "Chaotic Toaster"
 	item_path = /obj/item/toy/plush/chaotic_toaster
@@ -104,7 +105,7 @@
 /datum/loadout_item/toys/donator/nobl_plushie
 	name = "Nobl Plushie"
 	item_path = /obj/item/toy/plush/nobl
-
+/*What is wrong with these 4?
 /datum/loadout_item/toys/donator/foth_plushie
 	name = "Foth Plushie"
 	item_path = /obj/item/toy/plush/foth
@@ -120,3 +121,4 @@
 /datum/loadout_item/toys/donator/thomas_plushie
 	name = "Thomas Plushie"
 	item_path = /obj/item/toy/plush/thomas_plush
+*/
