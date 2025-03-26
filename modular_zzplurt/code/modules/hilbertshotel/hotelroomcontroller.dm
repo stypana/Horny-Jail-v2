@@ -119,14 +119,8 @@
 
 	current_room_data = SShilbertshotel.room_data["[room_number]"]
 	data["room_number"] = room_number
-	data["room_status"] = current_room_data["status"]
-	data["room_visibility"] = current_room_data["visibility"]
-	data["room_privacy"] = current_room_data["privacy"]
-	data["room_description"] = current_room_data["description"]
-	data["name"] = current_room_data["name"]
-	data["icon"] = current_room_data["icon"]
-	data["room_owner"] = current_room_data["access_restrictions"]["room_owner"]
-	data["trusted_guests"] = current_room_data["access_restrictions"]["trusted_guests"]
+	data["room_preferences"] = current_room_data["room_preferences"]
+	data["access_restrictions"] = current_room_data["access_restrictions"]
 	data["user"] = user
 	return data
 
@@ -164,28 +158,29 @@
 	var/list/room_data = SShilbertshotel.room_data["[room_number]"]
 	switch(action)
 		if("toggle_visibility")
-			room_data["visibility"] = !room_data["visibility"]
+			room_data["room_preferences"]["visibility"] = !room_data["room_preferences"]["visibility"]
 			. = TRUE
 		if("toggle_status")
-			var/current_status = room_data["status"]
-			if(current_status == ROOM_OPEN)
-				room_data["status"] = ROOM_GUESTS_ONLY
-			else if(current_status == ROOM_GUESTS_ONLY)
-				room_data["status"] = ROOM_CLOSED
-			else
-				room_data["status"] = ROOM_OPEN
+			var/current_status = room_data["room_preferences"]["status"]
+			switch(current_status)
+				if(ROOM_OPEN)
+					room_data["room_preferences"]["status"] = ROOM_GUESTS_ONLY
+				if(ROOM_GUESTS_ONLY)
+					room_data["room_preferences"]["status"] = ROOM_CLOSED
+				if(ROOM_CLOSED)
+					room_data["room_preferences"]["status"] = ROOM_OPEN
 			. = TRUE
 		if("toggle_privacy")
-			room_data["privacy"] = !room_data["privacy"]
+			room_data["room_preferences"]["privacy"] = !room_data["room_preferences"]["privacy"]
 			. = TRUE
 		if("update_description")
-			room_data["description"] = params["description"]
+			room_data["room_preferences"]["description"] = params["description"]
 			. = TRUE
 		if("update_name")
-			room_data["name"] = params["name"]
+			room_data["room_preferences"]["name"] = params["name"]
 			. = TRUE
 		if("set_icon")
-			room_data["icon"] = params["icon"]
+			room_data["room_preferences"]["icon"] = params["icon"]
 			. = TRUE
 		if("modify_trusted_guests")
 			modify_trusted_guests(usr, params["action"], params["user"])

@@ -18,7 +18,7 @@
 	. = ..()
 
 #ifndef UNIT_TESTS // This is a hack to prevent the storage turf from being loaded in unit tests and causing errors
-	if(!SShilbertshotel.storageTurf) // setting up a storage for the room objects
+	if(!SShilbertshotel.storageTurf && CONFIG_GET(flag/hilbertshotel_enabled)) // setting up a storage for the room objects
 		SShilbertshotel.setup_storage_turf()
 #endif
 
@@ -33,7 +33,7 @@
 
 	update_appearance()
 
-	if(!length(SShilbertshotel.hotel_map_list))
+	if(!length(SShilbertshotel.hotel_map_list) && CONFIG_GET(flag/hilbertshotel_enabled))
 		INVOKE_ASYNC(SShilbertshotel, TYPE_PROC_REF(/datum/controller/subsystem/hilbertshotel, prepare_rooms))
 
 	var/area/currentArea = get_area(src)
@@ -162,6 +162,9 @@
 /obj/item/hilbertshotel/ui_act(action, params)
 	. = ..()
 	if(!usr.ckey)
+		return
+
+	if(!isliving(usr)) // Avoid ghosts from creating or updating rooms
 		return
 
 	if(!SShilbertshotel.user_data[usr.ckey])

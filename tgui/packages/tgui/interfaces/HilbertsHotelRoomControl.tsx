@@ -8,24 +8,29 @@ import {
   Stack,
   Table,
   TextArea,
+  Tooltip,
 } from 'tgui-core/components';
 
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 
 type RoomData = {
-  room_visibility: number;
-  room_status: number;
-  room_privacy: number;
-  room_description: string;
-  name: string;
   room_number: number;
-  icon: string;
   bluespace_box: boolean;
   id_card: string;
-  room_owner: string;
-  trusted_guests: string[];
   user: string;
+  room_preferences: {
+    status: number;
+    visibility: number;
+    privacy: number;
+    description: string;
+    name: string;
+    icon: string;
+  };
+  access_restrictions: {
+    room_owner: string;
+    trusted_guests: string[];
+  };
 };
 
 const AVAILABLE_ICONS = [
@@ -84,15 +89,15 @@ export const HilbertsHotelRoomControl = (props) => {
     false,
   );
 
-  const [localName, setLocalName] = useState(data.name || '');
+  const [localName, setLocalName] = useState(data.room_preferences.name || '');
   const [localDescription, setLocalDescription] = useState(
-    data.room_description || '',
+    data.room_preferences.description || '',
   );
 
   useEffect(() => {
-    setLocalName(data.name || '');
-    setLocalDescription(data.room_description || '');
-  }, [data.name, data.room_description]);
+    setLocalName(data.room_preferences.name || '');
+    setLocalDescription(data.room_preferences.description || '');
+  }, [data.room_preferences.name, data.room_preferences.description]);
 
   return (
     <Window width={400} height={500} title="Room Control Panel">
@@ -155,7 +160,7 @@ export const HilbertsHotelRoomControl = (props) => {
                       fontSize: '1.5em',
                     }}
                     onClick={() =>
-                      data.user === data.room_owner &&
+                      data.user === data.access_restrictions.room_owner &&
                       setInterfaceLocked(!interfaceLocked)
                     }
                   />
@@ -338,7 +343,7 @@ export const HilbertsHotelRoomControl = (props) => {
                     marginTop: '1px',
                   }}
                 >
-                  {data.name || 'Custom Room'}
+                  {data.room_preferences.name || 'Custom Room'}
                 </Stack.Item>
               </Stack>
               <Stack.Item ml="auto" mr="2px">
@@ -354,7 +359,10 @@ export const HilbertsHotelRoomControl = (props) => {
                   }}
                   tooltip="Icon picker"
                 >
-                  <Icon size={1.5} name={data.icon || 'snowflake'} />
+                  <Icon
+                    size={1.5}
+                    name={data.room_preferences.icon || 'snowflake'}
+                  />
                 </Button>
               </Stack.Item>
             </Stack>
@@ -363,7 +371,7 @@ export const HilbertsHotelRoomControl = (props) => {
             title="Room Controls"
             buttons={
               <Stack>
-                {data.user === data.room_owner && (
+                {data.user === data.access_restrictions.room_owner && (
                   <Stack.Item>
                     <Button
                       fluid
@@ -395,34 +403,40 @@ export const HilbertsHotelRoomControl = (props) => {
                   <Stack.Item grow>
                     <Button
                       fluid
-                      icon={data.room_visibility ? 'eye' : 'eye-slash'}
+                      icon={
+                        data.room_preferences.visibility ? 'eye' : 'eye-slash'
+                      }
                       onClick={() => act('toggle_visibility')}
                       lineHeight="2.2"
-                      color={data.room_visibility ? 'blue' : 'green'}
+                      color={
+                        data.room_preferences.visibility ? 'blue' : 'green'
+                      }
                       style={{ cursor: 'pointer' }}
                       tooltip={
-                        data.room_visibility
+                        data.room_preferences.visibility
                           ? 'The room is visible in the room list'
                           : 'The room is invisible: only those who know the number can join'
                       }
                     >
-                      {data.room_visibility ? 'Visible' : 'Invisible'}
+                      {data.room_preferences.visibility
+                        ? 'Visible'
+                        : 'Invisible'}
                     </Button>
                   </Stack.Item>
                   <Stack.Item grow>
                     <Button
                       fluid
                       icon={
-                        data.room_status === 1
+                        data.room_preferences.status === 1
                           ? 'door-open'
-                          : data.room_status === 2
+                          : data.room_preferences.status === 2
                             ? 'user-check'
                             : 'door-closed'
                       }
                       color={
-                        data.room_status === 1
+                        data.room_preferences.status === 1
                           ? 'orange'
-                          : data.room_status === 2
+                          : data.room_preferences.status === 2
                             ? 'blue'
                             : 'green'
                       }
@@ -430,17 +444,17 @@ export const HilbertsHotelRoomControl = (props) => {
                       lineHeight="2.2"
                       style={{ cursor: 'pointer' }}
                       tooltip={
-                        data.room_status === 1
+                        data.room_preferences.status === 1
                           ? 'Room is open: anyone can join'
-                          : data.room_status === 2
+                          : data.room_preferences.status === 2
                             ? 'Only guests from the list can join'
                             : 'Room is locked: nobody can join'
                       }
                     >
                       {' '}
-                      {data.room_status === 1
+                      {data.room_preferences.status === 1
                         ? 'Open'
-                        : data.room_status === 2
+                        : data.room_preferences.status === 2
                           ? 'Guests Only'
                           : 'Closed'}
                     </Button>
@@ -448,18 +462,22 @@ export const HilbertsHotelRoomControl = (props) => {
                   <Stack.Item grow>
                     <Button
                       fluid
-                      icon={data.room_privacy ? 'users' : 'user-secret'}
+                      icon={
+                        data.room_preferences.privacy ? 'users' : 'user-secret'
+                      }
                       onClick={() => act('toggle_privacy')}
                       lineHeight="2.2"
-                      color={data.room_privacy ? 'blue' : 'green'}
+                      color={data.room_preferences.privacy ? 'blue' : 'green'}
                       style={{ cursor: 'pointer' }}
                       tooltip={
-                        data.room_privacy
+                        data.room_preferences.privacy
                           ? 'Guest names are visible in the room list'
                           : 'Only the amount of guests is visible in the room list'
                       }
                     >
-                      {data.room_privacy ? 'Guest names' : 'Only number'}
+                      {data.room_preferences.privacy
+                        ? 'Guest names'
+                        : 'Only number'}
                     </Button>
                   </Stack.Item>
                 </Stack>
@@ -479,13 +497,18 @@ export const HilbertsHotelRoomControl = (props) => {
                     <Button.Confirm
                       fluid
                       icon="check"
+                      tooltip="Update room name"
                       onClick={() => act('update_name', { name: localName })}
                       style={{
                         cursor: 'pointer',
                         height: '1.7em',
                         width: '1.85em',
                       }}
-                      confirmContent={<Icon name="question" />}
+                      confirmContent={
+                        <Tooltip content="Confirm?">
+                          <Icon name="question" />
+                        </Tooltip>
+                      }
                       confirmColor="green"
                     />
                   </Stack.Item>
@@ -618,22 +641,23 @@ export const HilbertsHotelRoomControl = (props) => {
             title="Room Access"
             buttons={
               <Stack>
-                {accessSectionOpen && data.user === data.room_owner && (
-                  <Stack.Item>
-                    <Button
-                      fluid
-                      icon="plus"
-                      color="transparent"
-                      onClick={() => setRegisterNewUser(true)}
-                      style={{
-                        cursor: 'pointer',
-                      }}
-                    />
-                  </Stack.Item>
-                )}
                 {accessSectionOpen &&
-                  data.user === data.room_owner &&
-                  data.trusted_guests?.length > 0 && (
+                  data.user === data.access_restrictions.room_owner && (
+                    <Stack.Item>
+                      <Button
+                        fluid
+                        icon="plus"
+                        color="transparent"
+                        onClick={() => setRegisterNewUser(true)}
+                        style={{
+                          cursor: 'pointer',
+                        }}
+                      />
+                    </Stack.Item>
+                  )}
+                {accessSectionOpen &&
+                  data.user === data.access_restrictions.room_owner &&
+                  data.access_restrictions.trusted_guests?.length > 0 && (
                     <Stack.Item>
                       <Button
                         icon="trash-alt"
@@ -664,7 +688,7 @@ export const HilbertsHotelRoomControl = (props) => {
               <Box>
                 {' '}
                 <Stack lineHeight="1.6">
-                  {data.user === data.room_owner && (
+                  {data.user === data.access_restrictions.room_owner && (
                     <Stack.Item>
                       <Button
                         icon="exchange-alt"
@@ -675,7 +699,7 @@ export const HilbertsHotelRoomControl = (props) => {
                       />
                     </Stack.Item>
                   )}
-                  <Stack.Item>{data.room_owner}</Stack.Item>
+                  <Stack.Item>{data.access_restrictions.room_owner}</Stack.Item>
                   <Stack.Item textAlign="right" grow>
                     Room Owner
                   </Stack.Item>
@@ -683,17 +707,18 @@ export const HilbertsHotelRoomControl = (props) => {
               </Box>
             )}
           </Section>
-          {accessSectionOpen && data.trusted_guests?.length > 0 && (
-            <Section>
-              <Table>
-                <tbody>
-                  {data.trusted_guests?.map((guest) => (
-                    <GuestRow key={guest} guest_name={guest} />
-                  ))}
-                </tbody>
-              </Table>
-            </Section>
-          )}
+          {accessSectionOpen &&
+            data.access_restrictions.trusted_guests?.length > 0 && (
+              <Section>
+                <Table>
+                  <tbody>
+                    {data.access_restrictions.trusted_guests?.map((guest) => (
+                      <GuestRow key={guest} guest_name={guest} />
+                    ))}
+                  </tbody>
+                </Table>
+              </Section>
+            )}
         </Box>
       </Window.Content>
     </Window>
@@ -723,7 +748,7 @@ const GuestRow = (props: GuestRowProps) => {
       </Table.Cell>
       <Table.Cell>Guest</Table.Cell>
       <Table.Cell>
-        {data.user === data.room_owner && (
+        {data.user === data.access_restrictions.room_owner && (
           <Button
             icon="trash-alt"
             color="transparent"

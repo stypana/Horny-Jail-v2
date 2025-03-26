@@ -41,6 +41,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 /datum/controller/subsystem/hilbertshotel/Initialize()
 	. = ..()
+	if(!CONFIG_GET(flag/hilbertshotel_enabled))
+		return SS_INIT_NO_NEED
 	RegisterSignal(src, COMSIG_HILBERT_ROOM_UPDATED, PROC_REF(on_room_updated))
 	hhMysteryroom_number = hhMysteryroom_number || rand(1, 999999)
 #ifndef UNIT_TESTS // This is a hack to prevent the storage turf from being loaded in unit tests and causing errors
@@ -116,11 +118,12 @@ SUBSYSTEM_DEF(hilbertshotel)
 	if(!conservated_room_data)
 		return FALSE
 
-	var/room_status = conservated_room_data["status"]
+	var/list/room_preferences = conservated_room_data["room_preferences"]
+	var/list/access_restrictions = conservated_room_data["access_restrictions"]
+	var/room_status = room_preferences["status"]
 
 	if(room_status != ROOM_OPEN)
 		to_chat(world, span_info("DEBUG: Room is not open."))
-		var/list/access_restrictions = conservated_room_data["access_restrictions"]
 		var/datum/mind/owner_mind = access_restrictions["room_owner"]
 		var/list/trusted_guests = access_restrictions["trusted_guests"]
 		var/is_owner = FALSE
@@ -195,21 +198,14 @@ SUBSYSTEM_DEF(hilbertshotel)
 			qdel(this_item)
 
 	// updating the room data
-	conservated_rooms -= "[room_number]"
 	room_data["[room_number]"] = list(
 		"reservation" = roomReservation,
 		"door_reference" = room_turf,
 		"template" = conservated_room_data["template"],
-		"room_preferences" = list(
-			"status" = conservated_room_data["status"] || ROOM_OPEN,
-			"visibility" = ROOM_VISIBLE,
-			"privacy" = ROOM_GUESTS_HIDDEN,
-			"description" = null,
-			"name" = conservated_room_data["name"],
-			"icon" = conservated_room_data["icon"],
-		),
-		"access_restrictions" = conservated_room_data["access_restrictions"],
+		"room_preferences" = room_preferences.Copy(),
+		"access_restrictions" = access_restrictions.Copy(),
 	)
+	conservated_rooms -= "[room_number]"
 
 	link_turfs(roomReservation, room_number, parentSphere)
 	var/turf/door_turf = room_data["[room_number]"]["door_reference"]
@@ -264,7 +260,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 			"privacy" = ROOM_GUESTS_HIDDEN,
 			"description" = null,
 			"name" = template,
-					"icon" = "door-open",
+			"icon" = "door-open",
 		),
 		"access_restrictions" = list(
 			"room_owner" = user.mind,
@@ -299,7 +295,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 			Strangely, this door doesn't even seem openable. \
 			The doorknob, however, seems to buzz with unusual energy...<br/>\
 			[span_info("Alt-Click to look through the peephole.")]"
-		SShilbertshotel.room_data["[currentroom_number]"]["door_reference"] = door // easier door referencing to keep track of entry points
+		room_data["[currentroom_number]"]["door_reference"] = door // easier door referencing to keep track of entry points
 	for(var/turf/T in currentReservation.reserved_turfs)
 		for(var/obj/machinery/room_controller/controller in T.contents)
 			controller.room_number = currentroom_number
@@ -366,24 +362,14 @@ SUBSYSTEM_DEF(hilbertshotel)
 			storage["[turfNumber]"] = turfContents
 			turfNumber++
 
-	var/room_name = room_data["[current_area.room_number]"]["room_preferences"]["name"]
 	var/room_template = room_data["[current_area.room_number]"]["template"]
-	var/room_icon = room_data["[current_area.room_number]"]["room_preferences"]["icon"]
-	var/room_status = room_data["[current_area.room_number]"]["room_preferences"]["status"]
-	var/room_owner = room_data["[current_area.room_number]"]["access_restrictions"]["room_owner"]
+	var/list/room_preferences = room_data["[current_area.room_number]"]["room_preferences"]
 	var/list/access_restrictions = room_data["[current_area.room_number]"]["access_restrictions"]
-	var/list/trusted_guests = access_restrictions["trusted_guests"]
-
 	conservated_rooms["[current_area.room_number]"] = list(
 		"storage" = storage,
-		"name" = room_name,
 		"template" = room_template,
-		"icon" = room_icon,
-		"status" = room_status,
-		"access_restrictions" = list(
-			"room_owner" = room_owner,
-			"trusted_guests" = trusted_guests
-		)
+		"room_preferences" = room_preferences.Copy(),
+		"access_restrictions" = access_restrictions.Copy(),
 	)
 	room_data -= "[current_area.room_number]"
 	qdel(current_area.reservation)
