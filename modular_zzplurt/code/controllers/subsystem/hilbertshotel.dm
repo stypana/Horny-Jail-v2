@@ -148,11 +148,10 @@ SUBSYSTEM_DEF(hilbertshotel)
 	if(!storage)
 		return FALSE
 
-	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
-	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
-
 	var/template_name = conservated_room_data["template"]
 	var/datum/map_template/template_to_load = hotel_map_list[template_name]
+	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(template_to_load.width, template_to_load.height, 1)
+	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
 	template_to_load.load(room_turf)
 
 	// clearing default objects

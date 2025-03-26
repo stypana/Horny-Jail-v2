@@ -255,6 +255,11 @@
 "vh" = (
 /turf/closed/indestructible/rock,
 /area/misc/hilbertshotel)
+"vC" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/machinery/vending/dorms,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "wa" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_pp/style_random,
@@ -589,7 +594,7 @@ vh
 iF
 sI
 RO
-yb
+vC
 rC
 iF
 EI
