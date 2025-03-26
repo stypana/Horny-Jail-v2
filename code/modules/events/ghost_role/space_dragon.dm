@@ -34,3 +34,4 @@
 	dragon.log_message("was spawned as a Space Dragon by an event.", LOG_GAME)
 	spawned_mobs += dragon
 	return SUCCESSFUL_SPAWN
+*/
