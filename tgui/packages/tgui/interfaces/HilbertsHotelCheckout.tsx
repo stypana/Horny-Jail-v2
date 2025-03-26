@@ -24,7 +24,9 @@ type RoomsData = {
 };
 
 const OpenRooms = ({ data, act, selected_template }) => {
-  const visibleRooms = data.active_rooms.filter((room) => room.visibility);
+  const visibleRooms = data.active_rooms.filter(
+    (room) => room.room_preferences.visibility,
+  );
 
   return (
     <Section
@@ -107,7 +109,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                           marginLeft: '5px',
                           lineHeight: '24px',
                         }}
-                        name={room.icon || 'door-open'}
+                        name={room.room_preferences.icon || 'door-open'}
                       />
                       <span
                         style={{
@@ -123,7 +125,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                           lineHeight: '26px',
                         }}
                       >
-                        {!room.room_privacy ? (
+                        {!room.room_preferences.privacy ? (
                           <Icon name="users" />
                         ) : (
                           <Tooltip
@@ -149,8 +151,8 @@ const OpenRooms = ({ data, act, selected_template }) => {
                       marginLeft: '5px',
                     }}
                   >
-                    {room.description ? (
-                      room.description
+                    {room.room_preferences.description ? (
+                      room.room_preferences.description
                     ) : (
                       <i>No description</i>
                     )}
@@ -327,7 +329,13 @@ export const CheckoutMenu = (props) => {
   ];
 
   return (
-    <Box>
+    <Box
+      style={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <RoomCheckIn
         data={data}
         act={act}
@@ -335,12 +343,22 @@ export const CheckoutMenu = (props) => {
         setSelectedTab={setSelectedTab}
         tabContent={tabContent}
       />
-      <OpenRooms
-        data={data}
-        act={act}
-        selected_template={data.selected_template}
-      />
-      <ReservedRooms data={data} />
+      <Box
+        style={{
+          flex: 1,
+          overflowY: 'auto',
+          width: '100%',
+          minHeight: 0, // This is important for Firefox
+          scrollbarWidth: 'none',
+        }}
+      >
+        <OpenRooms
+          data={data}
+          act={act}
+          selected_template={data.selected_template}
+        />
+        <ReservedRooms data={data} />
+      </Box>
     </Box>
   );
 };
