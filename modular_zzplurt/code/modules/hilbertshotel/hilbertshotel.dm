@@ -154,13 +154,20 @@
 	for(var/room_number in SShilbertshotel.conservated_rooms)
 		var/list/room = SShilbertshotel.conservated_rooms[room_number]
 		var/visibility = room["room_preferences"]["visibility"]
-		if(visibility == ROOM_VISIBLE)
-			data["conservated_rooms"] += list(list(
-				"number" = room_number,
-				"room_preferences" = room["room_preferences"]
-			))
-		else if(visibility == ROOM_GUESTS_ONLY)
-			if(user.mind in room["access_restrictions"]["trusted_guests"])
+		switch(visibility)
+			if(ROOM_VISIBLE)
+				data["conservated_rooms"] += list(list(
+					"number" = room_number,
+					"room_preferences" = room["room_preferences"]
+					))
+			if(ROOM_GUESTS_ONLY)
+				if((user.mind in room["access_restrictions"]["trusted_guests"]) || (user.mind == room["access_restrictions"]["room_owner"]))
+				data["conservated_rooms"] += list(list(
+					"number" = room_number,
+					"room_preferences" = room["room_preferences"]
+				))
+			if(ROOM_CLOSED)
+				if((user.mind == room["access_restrictions"]["room_owner"]))
 				data["conservated_rooms"] += list(list(
 					"number" = room_number,
 					"room_preferences" = room["room_preferences"]
