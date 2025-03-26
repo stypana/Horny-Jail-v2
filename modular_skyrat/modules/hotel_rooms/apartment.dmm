@@ -410,7 +410,6 @@
 /area/misc/hilbertshotel)
 "Oh" = (
 /obj/structure/sign/poster/random/directional/south,
-/obj/machinery/vending/wallmed/directional/west,
 /obj/structure/table,
 /obj/structure/towel_bin,
 /turf/open/floor/iron/freezer,

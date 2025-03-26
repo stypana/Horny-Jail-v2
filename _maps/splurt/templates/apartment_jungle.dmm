@@ -1,7 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ay" = (
 /obj/machinery/vending/coffee{
-	shut_up = 1
+	shut_up = 1;
+	pixel_y = -12
 	},
 /turf/closed/indestructible/wood,
 /area/misc/hilbertshotel)
@@ -101,7 +102,8 @@
 /area/misc/hilbertshotel)
 "hV" = (
 /obj/machinery/vending/games{
-	shut_up = 1
+	shut_up = 1;
+	pixel_y = -12
 	},
 /turf/closed/indestructible/wood,
 /area/misc/hilbertshotel)

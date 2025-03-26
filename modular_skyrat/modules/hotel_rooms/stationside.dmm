@@ -227,7 +227,6 @@
 /area/misc/hilbertshotel)
 "uX" = (
 /obj/structure/table/wood/poker,
-/obj/item/stack/spacecash/c1000,
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "wb" = (
@@ -255,7 +254,6 @@
 /area/misc/hilbertshotel)
 "xT" = (
 /obj/structure/table/wood/poker,
-/obj/item/stack/spacecash/c1000,
 /turf/open/floor/wood/parquet,
 /area/misc/hilbertshotel)
 "zA" = (

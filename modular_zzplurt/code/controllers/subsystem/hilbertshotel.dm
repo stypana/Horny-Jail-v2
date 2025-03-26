@@ -123,7 +123,6 @@ SUBSYSTEM_DEF(hilbertshotel)
 	var/room_status = room_preferences["status"]
 
 	if(room_status != ROOM_OPEN)
-		to_chat(world, span_info("DEBUG: Room is not open."))
 		var/datum/mind/owner_mind = access_restrictions["room_owner"]
 		var/list/trusted_guests = access_restrictions["trusted_guests"]
 		var/is_owner = FALSE
@@ -131,11 +130,9 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 		if(owner_mind == user.mind)
 			is_owner = TRUE
-			to_chat(world, span_info("DEBUG: You are the owner of this room."))
 		else
 			for(var/datum/mind/guest_mind in trusted_guests)
 				if(istype(guest_mind) && guest_mind == user.mind)
-					to_chat(world, span_info("DEBUG: You are a trusted guest of this room."))
 					is_trusted = TRUE
 					break
 

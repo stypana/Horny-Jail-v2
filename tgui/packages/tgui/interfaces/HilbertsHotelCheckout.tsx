@@ -15,6 +15,14 @@ import {
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
+type RoomsData = {
+  current_room: number;
+  selected_template: string;
+  active_rooms: any[];
+  conservated_rooms: any[];
+  hotel_map_list: any[];
+};
+
 const OpenRooms = ({ data, act, selected_template }) => {
   const visibleRooms = data.active_rooms.filter((room) => room.visibility);
 
@@ -36,7 +44,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
           <Stack vertical>
             {visibleRooms?.map((room) => (
               <Stack
-                grow
+                fill
                 key={room.number}
                 style={{
                   padding: '5px 5px',
@@ -230,7 +238,7 @@ const RoomCheckIn = ({
             maxValue={1000000000}
             step={1}
             value={current_room}
-            format={(value) => Math.floor(value)}
+            format={(value) => String(Math.floor(value))}
             onDrag={(value) =>
               act('update_room', {
                 room: value,
@@ -283,38 +291,38 @@ const ReservedRooms = ({ data }) => {
 };
 
 export const CheckoutMenu = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<RoomsData>();
   const [selectedTab, setSelectedTab] = useState(0);
   const tabContent = [
     <RoomsTab
       key="misc"
       category="Misc"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="apartment"
       category="Apartment"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="beach"
       category="Beach"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="station"
       category="Station"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="winter"
       category="Winter"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="special"
       category="Special"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
   ];
 
@@ -339,7 +347,7 @@ export const CheckoutMenu = (props) => {
 
 const RoomsTab = (props) => {
   const { category, selected_template } = props;
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<RoomsData>();
   const { hotel_map_list = [] } = data;
   const [selectedRoom, setSelectedRoom] = useState(null);
 

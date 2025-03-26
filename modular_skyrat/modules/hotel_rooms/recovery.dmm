@@ -105,8 +105,8 @@
 /area/misc/hilbertshotel)
 "lS" = (
 /obj/structure/table,
-/obj/machinery/microwave{
-	pixel_y = 6
+/obj/structure/showcase/machinery/microwave{
+	pixel_y = 2
 	},
 /turf/open/indestructible/hotelwood,
 /area/misc/hilbertshotel)
@@ -170,7 +170,7 @@
 /turf/closed/indestructible/fakeglass,
 /area/misc/hilbertshotel)
 "qR" = (
-/obj/machinery/vending/imported,
+/obj/machinery/vending/cola,
 /turf/open/indestructible/hotelwood,
 /area/misc/hilbertshotel)
 "rY" = (
@@ -212,9 +212,9 @@
 /turf/open/indestructible/hotelwood,
 /area/misc/hilbertshotel)
 "vt" = (
-/obj/machinery/vending/medical,
 /obj/effect/turf_decal/tile/blue/opposingcorners,
 /obj/structure/sign/poster/official/random/directional/south,
+/obj/item/kirbyplants/random/fullysynthetic,
 /turf/open/indestructible/white/textured,
 /area/misc/hilbertshotel)
 "vJ" = (

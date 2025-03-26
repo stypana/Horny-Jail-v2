@@ -108,8 +108,8 @@
 	},
 /area/misc/hilbertshotel)
 "pm" = (
-/obj/structure/destructible/cult/item_dispenser/archives/library,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/wood/shuttle_bar,
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "pv" = (
@@ -131,9 +131,9 @@
 /turf/open/misc/dirt/jungle/dark,
 /area/misc/hilbertshotel)
 "tZ" = (
-/obj/structure/destructible/cult/pants_altar,
 /obj/item/toy/toy_dagger,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/wood/shuttle_bar,
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "uX" = (

@@ -16,7 +16,7 @@
 	light_color = "#f27d0c";
 	color = "FFB43A"
 	},
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "cc" = (
 /obj/effect/turf_decal/siding/wood{
@@ -52,12 +52,12 @@
 /area/misc/hilbertshotel)
 "dq" = (
 /obj/structure/bonfire,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "dU" = (
 /obj/structure/flora/grass/green,
 /obj/machinery/light/small,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "et" = (
 /obj/machinery/vending/games{
@@ -106,6 +106,10 @@
 /obj/structure/flora/grass/brown,
 /turf/open/misc/asteroid/snow,
 /area/misc/hilbertshotel)
+"it" = (
+/obj/structure/flora/grass/brown,
+/turf/open/floor/fake_snow/safe,
+/area/misc/hilbertshotel)
 "iy" = (
 /obj/structure/chair/pew/left,
 /obj/effect/turf_decal/siding/wood{
@@ -142,7 +146,7 @@
 /area/misc/hilbertshotel)
 "kw" = (
 /obj/structure/chair/pew/left,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "lu" = (
 /turf/open/floor/iron/kitchen,
@@ -252,7 +256,7 @@
 /area/misc/hilbertshotel)
 "pD" = (
 /obj/structure/chair/pew/right,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "qe" = (
 /turf/closed/indestructible/rock/snow,
@@ -261,17 +265,17 @@
 /obj/structure/chair/wood{
 	dir = 1
 	},
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "qR" = (
 /obj/structure/chair/wood{
 	dir = 8
 	},
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "rf" = (
 /turf/open/floor/plating/snowed/smoothed{
-	initial_gas_mix = "o2=21.78;n2=82.36;TEMP=275"
+	planetary_atmos = 0
 	},
 /area/misc/hilbertshotel)
 "rz" = (
@@ -302,7 +306,7 @@
 /area/misc/hilbertshotel)
 "sA" = (
 /obj/structure/flora/grass/green,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "sF" = (
 /obj/effect/turf_decal/siding/wood{
@@ -330,7 +334,7 @@
 	brightness = 3;
 	dir = 8
 	},
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "tS" = (
 /obj/structure/window/reinforced,
@@ -373,7 +377,7 @@
 /area/misc/hilbertshotel)
 "yC" = (
 /obj/structure/flora/grass/both,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "yH" = (
 /turf/open/space/bluespace,
@@ -425,7 +429,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/snowed/smoothed{
-	initial_gas_mix = "o2=21.78;n2=82.36;TEMP=275"
+	planetary_atmos = 0
 	},
 /area/misc/hilbertshotel)
 "Aq" = (
@@ -480,7 +484,7 @@
 /area/misc/hilbertshotel)
 "EJ" = (
 /obj/structure/chair/wood,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "ET" = (
 /obj/effect/turf_decal/siding/wood{
@@ -598,6 +602,9 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
+"Km" = (
+/turf/open/floor/fake_snow/safe,
+/area/misc/hilbertshotel)
 "KF" = (
 /obj/structure/table/reinforced,
 /obj/item/sharpener{
@@ -622,7 +629,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "Lo" = (
 /obj/effect/turf_decal/siding/wood,
@@ -669,7 +676,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "Ps" = (
 /obj/effect/turf_decal/siding/wood{
@@ -773,7 +780,7 @@
 /area/misc/hilbertshotel)
 "Tl" = (
 /obj/structure/flora/tree/pine,
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "TO" = (
 /obj/effect/turf_decal/siding/wood{
@@ -806,7 +813,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/misc/asteroid/snow,
+/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel)
 "Yq" = (
 /obj/effect/turf_decal/siding/wood,
@@ -1052,12 +1059,12 @@ uU
 ol
 bV
 rf
-Qb
-ir
+Km
+it
 sA
-Qb
+Km
 yC
-qe
+Km
 VS
 yH
 "}
@@ -1076,8 +1083,8 @@ rf
 rf
 rf
 rf
-Qb
-Qb
+Km
+Km
 qe
 yH
 "}
@@ -1091,13 +1098,13 @@ oI
 Yq
 sv
 Wa
-Qb
+Km
 sA
 yC
 Ad
 sA
-Qb
-Qb
+Km
+Km
 VS
 yH
 "}
@@ -1110,13 +1117,13 @@ SO
 JS
 uU
 sv
-Qb
+Km
 Tl
-Qb
+Km
 EJ
 dq
 qA
-ir
+it
 Qb
 aM
 yH
@@ -1130,13 +1137,13 @@ ux
 sS
 TO
 sv
-Qb
+Km
 ir
 yC
-ir
+it
 qR
-Qb
-Qb
+Km
+Km
 VS
 qe
 yH

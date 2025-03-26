@@ -74,12 +74,10 @@
 	},
 /area/misc/hilbertshotel)
 "dY" = (
-/obj/machinery/modular_computer/preset/research{
-	is_operational = 0;
-	name = "Research Terminal";
-	desc = "A stationary Research computer. This one appears to have been wiped clean and displays an Evactuation order."
-	},
 /obj/machinery/light/broken/directional/north,
+/obj/structure/showcase/fakeid{
+	name = "research console"
+	},
 /turf/open/indestructible/dark/textured{
 	force_no_gravity = 1;
 	name = "Dark Tiling"
@@ -91,6 +89,7 @@
 	is_operational = 0;
 	name = "Cloning Lab Lathe"
 	},
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/indestructible/dark/textured{
 	force_no_gravity = 1;
 	name = "Dark Tiling"
@@ -103,6 +102,12 @@
 /turf/open/indestructible/hotelwood{
 	force_no_gravity = 1
 	},
+/area/misc/hilbertshotel)
+"fA" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/structure/cable,
+/obj/machinery/door/firedoor/closed,
+/turf/open/indestructible/plating,
 /area/misc/hilbertshotel)
 "fM" = (
 /obj/machinery/firealarm/directional/west{
@@ -154,6 +159,7 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/machinery/light/broken/directional/north,
 /obj/machinery/vending/hydronutrients,
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/indestructible/dark/textured{
 	force_no_gravity = 1;
 	name = "Dark Tiling"
@@ -326,6 +332,7 @@
 /area/misc/hilbertshotel)
 "rV" = (
 /obj/machinery/vending/hydroseeds,
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/indestructible/dark/textured{
 	force_no_gravity = 1;
 	name = "Dark Tiling"
@@ -490,6 +497,7 @@
 "Bl" = (
 /obj/machinery/power/smes,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/indestructible/plating{
 	force_no_gravity = 1
 	},
@@ -647,15 +655,11 @@
 /turf/closed/indestructible/titanium,
 /area/misc/hilbertshotel)
 "Ju" = (
-/obj/item/clothing/shoes/magboots/advance,
-/obj/item/clothing/shoes/magboots/advance{
-	pixel_x = 4;
-	pixel_y = -8
-	},
-/turf/open/indestructible/dark/textured{
-	force_no_gravity = 1;
-	name = "Dark Tiling"
-	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/effect/mapping_helpers/damaged_window,
+/obj/structure/cable,
+/obj/machinery/door/firedoor/closed,
+/turf/open/indestructible/plating,
 /area/misc/hilbertshotel)
 "Ka" = (
 /turf/open/indestructible/hotelwood{
@@ -955,13 +959,14 @@
 	name = "Cloning Chamber";
 	desc = "A deactivated Cloning Pod designed for the Hydroponics Research Wing."
 	},
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/indestructible/dark/textured{
 	force_no_gravity = 1;
 	name = "Dark Tiling"
 	},
 /area/misc/hilbertshotel)
 "ZQ" = (
-/obj/machinery/cryopod{
+/obj/structure/showcase/machinery/oldpod/used{
 	dir = 1
 	},
 /turf/open/indestructible/dark/textured{
@@ -990,7 +995,7 @@ Mc
 (2,1,1) = {"
 vJ
 Zs
-Ju
+jp
 AA
 fM
 rX
@@ -1057,7 +1062,7 @@ Oe
 "}
 (6,1,1) = {"
 Mc
-Zh
+fA
 uL
 zG
 zG
@@ -1074,7 +1079,7 @@ SL
 "}
 (7,1,1) = {"
 Mc
-vJ
+Ju
 Xy
 tb
 WL

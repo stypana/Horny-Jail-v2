@@ -295,8 +295,8 @@
 /area/misc/hilbertshotel)
 "AU" = (
 /obj/structure/table/wood,
-/obj/item/documents/nanotrasen{
-	pixel_y = 3
+/obj/item/documents{
+	pixel_y = 4
 	},
 /turf/open/indestructible/carpet,
 /area/misc/hilbertshotel)

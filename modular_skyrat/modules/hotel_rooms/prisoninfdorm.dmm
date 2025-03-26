@@ -171,10 +171,10 @@
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "ws" = (
-/obj/machinery/vending/security/noaccess,
 /obj/item/toy/figure/secofficer{
 	pixel_y = 16
 	},
+/obj/structure/showcase/fakesec,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "xh" = (
@@ -454,10 +454,8 @@
 /area/misc/hilbertshotel)
 "TT" = (
 /obj/structure/closet,
-/obj/item/market_uplink,
 /obj/effect/spawner/random/entertainment/coin,
 /obj/effect/spawner/random/entertainment/coin,
-/obj/item/gun/ballistic/automatic/l6_saw/toy,
 /obj/effect/spawner/random/entertainment/toy_figure,
 /obj/item/pen/sleepy,
 /turf/open/floor/iron,
