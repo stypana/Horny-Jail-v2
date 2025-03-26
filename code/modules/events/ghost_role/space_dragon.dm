@@ -1,3 +1,4 @@
+/* Removed pending rework - Splurt
 /datum/round_event_control/space_dragon
 	name = "Spawn Space Dragon"
 	typepath = /datum/round_event/ghost_role/space_dragon
