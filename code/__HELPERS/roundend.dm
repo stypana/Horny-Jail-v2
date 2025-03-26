@@ -249,7 +249,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>The round has ended."))))
 	log_game("The round has ended.")
-	if(!CONFIG_GET(flag/rounded_embeds)) // SPLURT EDIT - Discord rounded embeds.
+	if(!CONFIG_GET(flag/roundend_embeds)) // SPLURT EDIT - Discord rounded embeds.
 		for(var/channel_tag in CONFIG_GET(str_list/channel_announce_end_game))
 			send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended. [CONFIG_GET(string/roundend_ping_role) ? "" : ""]"), channel_tag)
 	send2adminchat("Server", "Round just ended.")
@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	if(length(CONFIG_GET(keyed_list/cross_server)))
 		send_news_report()
 	*/
-	if(!CONFIG_GET(flag/rounded_embeds)) // SPLURT EDIT - Discord rounded embeds.
+	if(!CONFIG_GET(flag/roundend_embeds)) // SPLURT EDIT - Discord rounded embeds.
 		for(var/channel_tag in CONFIG_GET(str_list/channel_announce_end_game))
 			send2chat("The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!", channel_tag)
 			send2chat(send_news_report(), channel_tag)

@@ -8,6 +8,6 @@
 
 /datum/config_entry/flag/forced_discord_stay
 
-/datum/config_entry/flag/rounded_embeds
+/datum/config_entry/flag/roundend_embeds
 
 /datum/config_entry/string/roundend_ping_role

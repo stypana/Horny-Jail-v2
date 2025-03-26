@@ -1,5 +1,5 @@
 /datum/controller/subsystem/ticker/declare_completion(was_forced)
-	if(!CONFIG_GET(flag/rounded_embeds)) // SPLURT EDIT - Discord rounded embeds.
+	if(!CONFIG_GET(flag/roundend_embeds)) // SPLURT EDIT - Discord rounded embeds.
 		return ..()
 
 	generate_roundend_embed()

@@ -14,7 +14,7 @@
 
 /datum/controller/subsystem/ticker/declare_completion(force_ending)
 
-	if(!CONFIG_GET(flag/rounded_embeds)) // SPLURT EDIT - Discord rounded embeds.
+	if(!CONFIG_GET(flag/roundend_embeds)) // SPLURT EDIT - Discord rounded embeds.
 		if(quote_of_the_round_text)
 			for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
 				send2chat(
