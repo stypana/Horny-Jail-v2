@@ -44,5 +44,5 @@
 	desc = "A lattice of advanced alloys and stubborn physics, forged not to contain power, but to politely ask it to stay put. A lesson in humility, written in plasma."
 
 /datum/design/beamrifle
-	name = "Pulsar Hyper-resonance Beam Rifle Part Kit"
+	name = "Pulsar hyper-resonance Beam Rifle Part Kit"
 	desc = "A tidy box of parts engineered to vaporize problems at the speed of light. Comes with instructions, regrets, and a small sticker that says 'Handle With Awe.'"
