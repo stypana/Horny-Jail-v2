@@ -162,16 +162,16 @@
 					))
 			if(ROOM_GUESTS_ONLY)
 				if((user.mind in room["access_restrictions"]["trusted_guests"]) || (user.mind == room["access_restrictions"]["room_owner"]))
-				data["conservated_rooms"] += list(list(
-					"number" = room_number,
-					"room_preferences" = room["room_preferences"]
-				))
+					data["conservated_rooms"] += list(list(
+						"number" = room_number,
+						"room_preferences" = room["room_preferences"]
+					))
 			if(ROOM_CLOSED)
 				if((user.mind == room["access_restrictions"]["room_owner"]))
-				data["conservated_rooms"] += list(list(
-					"number" = room_number,
-					"room_preferences" = room["room_preferences"]
-				))
+					data["conservated_rooms"] += list(list(
+						"number" = room_number,
+						"room_preferences" = room["room_preferences"]
+					))
 	return data
 
 /obj/item/hilbertshotel/ui_act(action, params)
