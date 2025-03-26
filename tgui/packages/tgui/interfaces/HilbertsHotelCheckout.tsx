@@ -280,8 +280,11 @@ const ReservedRooms = ({ data }) => {
         <Table>
           {data.conservated_rooms?.map((room) => (
             <Table.Row key={room.number}>
+              <Table.Cell width="1.8em">
+                <Icon name={room.room_preferences.icon} />
+              </Table.Cell>
               <Table.Cell>Room {room.number}</Table.Cell>
-              <Table.Cell>{room.name}</Table.Cell>
+              <Table.Cell>{room.room_preferences.name}</Table.Cell>
             </Table.Row>
           ))}
         </Table>

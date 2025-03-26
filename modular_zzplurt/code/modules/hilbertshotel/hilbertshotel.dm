@@ -153,10 +153,18 @@
 	data["conservated_rooms"] = list()
 	for(var/room_number in SShilbertshotel.conservated_rooms)
 		var/list/room = SShilbertshotel.conservated_rooms[room_number]
-		data["conservated_rooms"] += list(list(
-			"number" = room_number,
-			"room_preferences" = room["room_preferences"]
-		))
+		var/visibility = room["room_preferences"]["visibility"]
+		if(visibility == ROOM_VISIBLE)
+			data["conservated_rooms"] += list(list(
+				"number" = room_number,
+				"room_preferences" = room["room_preferences"]
+			))
+		else if(visibility == ROOM_GUESTS_ONLY)
+			if(user.mind in room["access_restrictions"]["trusted_guests"])
+				data["conservated_rooms"] += list(list(
+					"number" = room_number,
+					"room_preferences" = room["room_preferences"]
+				))
 	return data
 
 /obj/item/hilbertshotel/ui_act(action, params)
