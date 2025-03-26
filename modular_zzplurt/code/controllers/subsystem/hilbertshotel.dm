@@ -70,6 +70,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 	hotel_room_template_empty = new()
 	hotel_room_template_lore = new()
 
+	hotel_map_list[hotel_room_template.name] = hotel_room_template
+
 	for(var/template_type in hotel_map_templates)
 		var/datum/map_template/this_template = new template_type()
 		hotel_map_list[this_template.name] = this_template
@@ -387,8 +389,11 @@ SUBSYSTEM_DEF(hilbertshotel)
 						var/list/possible_transtitons = list()
 						for(var/AZ in SSmapping.z_list)
 							var/datum/space_level/D = AZ
+							/* Doesn't work for some reason, guess we can remove it for now, this proc isn't supposed to run anytime anyways.
 							if (D.linkage == CROSSLINKED)
 								possible_transtitons += D.z_value
+							*/
+							possible_transtitons += D.z_value
 						var/_z = pick(possible_transtitons)
 						var/_x = rand(min,max)
 						var/_y = rand(min,max)
@@ -405,8 +410,11 @@ SUBSYSTEM_DEF(hilbertshotel)
 				var/list/possible_transtitons = list()
 				for(var/AZ in SSmapping.z_list)
 					var/datum/space_level/D = AZ
+					/* Doesn't work for some reason, guess we can remove it for now, this proc isn't supposed to run anytime anyways.
 					if (D.linkage == CROSSLINKED)
 						possible_transtitons += D.z_value
+					*/
+					possible_transtitons += D.z_value
 				var/_z = pick(possible_transtitons)
 				var/_x = rand(min,max)
 				var/_y = rand(min,max)
