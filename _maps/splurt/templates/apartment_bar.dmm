@@ -406,6 +406,11 @@
 /obj/structure/table/wood/fancy/royalblack,
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
+"VY" = (
+/obj/structure/chair/stool/bar,
+/obj/machinery/room_controller/directional/west,
+/turf/open/floor/carpet/black,
+/area/misc/hilbertshotel)
 "We" = (
 /obj/machinery/vending/snack/teal,
 /turf/open/floor/carpet/black,
@@ -417,7 +422,7 @@
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "WO" = (
-/obj/structure/table,
+/obj/machinery/vending/dorms,
 /turf/open/indestructible/hoteltile,
 /area/misc/hilbertshotel)
 "Xr" = (
@@ -483,7 +488,7 @@ pr
 yO
 Wg
 yz
-dy
+VY
 nQ
 TA
 Pz

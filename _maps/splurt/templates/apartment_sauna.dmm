@@ -146,6 +146,13 @@
 	},
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
+"ml" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/room_controller/directional/north,
+/turf/open/floor/carpet/royalblue,
+/area/misc/hilbertshotel)
 "ne" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -722,7 +729,7 @@ KL
 hJ
 tB
 FQ
-vL
+ml
 tX
 FQ
 Ym

@@ -1190,6 +1190,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/machinery/room_controller/directional/west,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "Sr" = (

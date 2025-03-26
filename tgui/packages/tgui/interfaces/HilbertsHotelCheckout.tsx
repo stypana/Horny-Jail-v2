@@ -391,6 +391,7 @@ const RoomsTab = (props) => {
       style={{
         height: '100%',
         overflowY: 'auto',
+        maxHeight: '15em',
         width: '100%',
       }}
     >

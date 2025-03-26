@@ -420,6 +420,10 @@
 /obj/structure/flora/bush/grassy/style_random,
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
+"GR" = (
+/obj/machinery/room_controller/directional/south,
+/turf/open/floor/iron/cafeteria,
+/area/misc/hilbertshotel)
 "IT" = (
 /turf/open/floor/carpet/purple,
 /area/misc/hilbertshotel)
@@ -628,7 +632,7 @@ Os
 cq
 bK
 Kv
-bK
+GR
 ah
 ab
 "}

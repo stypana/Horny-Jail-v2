@@ -217,6 +217,11 @@
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/floor/grass/fairy,
 /area/misc/hilbertshotel)
+"Cc" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/machinery/room_controller/directional/west,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "Cd" = (
 /obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/flora/bush/flowers_pp/style_random,
@@ -366,6 +371,12 @@
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
+"VV" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/machinery/vending/dorms,
+/obj/structure/spacevine,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "We" = (
 /obj/structure/chair/pew/left{
 	dir = 8
@@ -429,10 +440,10 @@ gm
 gm
 gm
 Cl
-Qc
+VV
 TH
 TH
-Qc
+Cc
 iy
 tu
 vA

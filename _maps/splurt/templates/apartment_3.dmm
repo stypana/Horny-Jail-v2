@@ -343,6 +343,7 @@
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = 32
 	},
+/obj/machinery/room_controller/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/misc/hilbertshotel)
 "nA" = (

@@ -66,6 +66,41 @@
 	mappath = "_maps/splurt/templates/apartment_capsule.dmm"
 	category = GHC_MISC
 
+/datum/map_template/ghost_cafe_rooms/apartment_2
+	name = "Apartment 2"
+	mappath = "_maps/splurt/templates/apartment_2.dmm"
+	category = GHC_APARTMENT
+
+/datum/map_template/ghost_cafe_rooms/apartment_3
+	name = "Apartment 3"
+	mappath = "_maps/splurt/templates/apartment_3.dmm"
+	category = GHC_APARTMENT
+
+/datum/map_template/ghost_cafe_rooms/apartment_bar
+	name = "Bar Lounge"
+	mappath = "_maps/splurt/templates/apartment_bar.dmm"
+	category = GHC_APARTMENT
+
+/datum/map_template/ghost_cafe_rooms/apartment_forest
+	name = "Forest Picnic"
+	mappath = "_maps/splurt/templates/apartment_forest.dmm"
+	category = GHC_BEACH
+
+/datum/map_template/ghost_cafe_rooms/apartment_garden
+	name = "Garden"
+	mappath = "_maps/splurt/templates/apartment_garden.dmm"
+	category = GHC_MISC
+
+/datum/map_template/ghost_cafe_rooms/apartment_prison_cell
+	name = "Top Security Prison"
+	mappath = "_maps/splurt/templates/apartment_prison.dmm"
+	category = GHC_SPECIAL
+
+/datum/map_template/ghost_cafe_rooms/apartment_sauna
+	name = "Sauna"
+	mappath = "_maps/splurt/templates/apartment_sauna.dmm"
+	category = GHC_MISC
+
 #undef GHC_MISC
 #undef GHC_APARTMENT
 #undef GHC_BEACH
