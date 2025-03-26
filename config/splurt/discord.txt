@@ -18,3 +18,11 @@
 ## Uncomment this if your players need to remain in the discord to keep verification ##
 ## Note, this only produces aesthetic changes, the real magic happens with the redbot modules
 #FORCED_DISCORD_STAY
+
+# Roundend embeds
+## Overrides the roundend messages with a custom embed system
+#ROUNDEND_EMBEDS
+
+# Roundend ping role
+## Role to ping with the roundend message. So we can ping users when the round ends so they can prepare and also when the round starts.
+#ROUNDEND_PING_ROLE
