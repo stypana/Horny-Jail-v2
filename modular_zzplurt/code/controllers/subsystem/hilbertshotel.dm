@@ -70,6 +70,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 	hotel_room_template_empty = new()
 	hotel_room_template_lore = new()
 
+	hotel_map_list[hotel_room_template.name] = hotel_room_template
+
 	for(var/template_type in hotel_map_templates)
 		var/datum/map_template/this_template = new template_type()
 		hotel_map_list[this_template.name] = this_template
@@ -123,7 +125,6 @@ SUBSYSTEM_DEF(hilbertshotel)
 	var/room_status = room_preferences["status"]
 
 	if(room_status != ROOM_OPEN)
-		to_chat(world, span_info("DEBUG: Room is not open."))
 		var/datum/mind/owner_mind = access_restrictions["room_owner"]
 		var/list/trusted_guests = access_restrictions["trusted_guests"]
 		var/is_owner = FALSE
@@ -131,11 +132,9 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 		if(owner_mind == user.mind)
 			is_owner = TRUE
-			to_chat(world, span_info("DEBUG: You are the owner of this room."))
 		else
 			for(var/datum/mind/guest_mind in trusted_guests)
 				if(istype(guest_mind) && guest_mind == user.mind)
-					to_chat(world, span_info("DEBUG: You are a trusted guest of this room."))
 					is_trusted = TRUE
 					break
 
@@ -151,16 +150,15 @@ SUBSYSTEM_DEF(hilbertshotel)
 	if(!storage)
 		return FALSE
 
-	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
-	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
-
 	var/template_name = conservated_room_data["template"]
 	var/datum/map_template/template_to_load = hotel_map_list[template_name]
+	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(template_to_load.width, template_to_load.height, 1)
+	var/turf/room_turf = roomReservation.bottom_left_turfs[1]
 	template_to_load.load(room_turf)
 
 	// clearing default objects
-	for(var/x in 0 to hotel_room_template.width - 1)
-		for(var/y in 0 to hotel_room_template.height - 1)
+	for(var/x in 0 to template_to_load.width - 1)
+		for(var/y in 0 to template_to_load.height - 1)
 			var/turf/T = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
 			for(var/atom/movable/A in T)
 				if(ismachinery(A))
@@ -177,8 +175,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 	// restoring saved objects
 	var/turfNumber = 1
-	for(var/x in 0 to hotel_room_template.width-1)
-		for(var/y in 0 to hotel_room_template.height-1)
+	for(var/x in 0 to template_to_load.width - 1)
+		for(var/y in 0 to template_to_load.height - 1)
 			var/turf/target_turf = locate(room_turf.x + x, room_turf.y + y, room_turf.z)
 			for(var/atom/movable/A in storage["[turfNumber]"])
 				if(istype(A.loc, /obj/item/abstracthotelstorage))
@@ -227,13 +225,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 /// Creates a new room. Loads the room template and sends the user there. Requires `room_number` and `chosen_room` to be set.
 /datum/controller/subsystem/hilbertshotel/proc/send_to_new_room(room_number, mob/user, template, obj/item/hilbertshotel/parentSphere)
-
-	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(hotel_room_template.width, hotel_room_template.height, 1)
 	var/mysteryRoom = hhMysteryroom_number
-
 	var/datum/map_template/load_from = hotel_room_template
-	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
-
 	if(lore_room_spawned && room_number == mysteryRoom)
 		load_from = hotel_room_template_lore
 	else if(template in hotel_map_list)
@@ -242,6 +235,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 		to_chat(user, span_warning("You are washed over by a wave of heat as the sphere violently wiggles. You wonder if you did something wrong..."))
 		return
 
+	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(load_from.width, load_from.height, 1)
+	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
 	load_from.load(bottom_left)
 
 	var/area/misc/hilbertshotel/current_area = get_area(locate(bottom_left.x, bottom_left.y, bottom_left.z))
@@ -307,12 +302,13 @@ SUBSYSTEM_DEF(hilbertshotel)
 		BSturf.parentSphere = parentSphere
 
 /datum/controller/subsystem/hilbertshotel/proc/generate_occupant_list(room_number)
+	var/datum/map_template/template = hotel_map_list[room_data["[room_number]"]["template"]]
 	var/list/occupants = list()
 	if(room_data["[room_number]"])
 		var/datum/turf_reservation/room = room_data["[room_number]"]["reservation"]
 		var/turf/room_bottom_left = room.bottom_left_turfs[1]
-		for(var/i in 0 to hotel_room_template.width-1)
-			for(var/j in 0 to hotel_room_template.height-1)
+		for(var/i in 0 to template.width-1)
+			for(var/j in 0 to template.height-1)
 				for(var/atom/movable/movable_atom in locate(room_bottom_left.x + i, room_bottom_left.y + j, room_bottom_left.z))
 					if(ismob(movable_atom))
 						var/mob/this_mob = movable_atom
@@ -323,6 +319,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 /// "Reserves" the room when the last guest leaves it. Creates an abstract storage object and forceMoves all the contents into it, deleting the reservation afterwards.
 /datum/controller/subsystem/hilbertshotel/proc/conservate_room(area/misc/hilbertshotel/current_area)
+	var/datum/map_template/template = hotel_map_list[room_data["[current_area.room_number]"]["template"]]
 	var/turf/room_bottom_left = current_area.reservation.bottom_left_turfs[1]
 	var/list/storage = list()
 	var/turfNumber = 1
@@ -332,8 +329,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 	storageObj.name = "Room [current_area.room_number] Storage"
 
 	// saving room contents
-	for(var/x in 0 to hotel_room_template.width - 1)
-		for(var/y in 0 to hotel_room_template.height - 1)
+	for(var/x in 0 to template.width - 1)
+		for(var/y in 0 to template.height - 1)
 			var/turf/T = locate(room_bottom_left.x + x, room_bottom_left.y + y, room_bottom_left.z)
 			var/list/turfContents = list()
 
@@ -378,9 +375,10 @@ SUBSYSTEM_DEF(hilbertshotel)
 	if(room_data.len)
 		for(var/number in room_data)
 			var/datum/turf_reservation/room = room_data[number]["reservation"]
+			var/datum/map_template/template = hotel_map_list[room_data[number]["template"]]
 			var/turf/room_bottom_left = room.bottom_left_turfs[1]
-			for(var/i in 0 to hotel_room_template.width-1)
-				for(var/j in 0 to hotel_room_template.height-1)
+			for(var/i in 0 to template.width-1)
+				for(var/j in 0 to template.height-1)
 					for(var/atom/movable/A in locate(room_bottom_left.x + i, room_bottom_left.y + j, room_bottom_left.z))
 						if(ismob(A))
 							var/mob/M = A
@@ -391,8 +389,11 @@ SUBSYSTEM_DEF(hilbertshotel)
 						var/list/possible_transtitons = list()
 						for(var/AZ in SSmapping.z_list)
 							var/datum/space_level/D = AZ
+							/* Doesn't work for some reason, guess we can remove it for now, this proc isn't supposed to run anytime anyways.
 							if (D.linkage == CROSSLINKED)
 								possible_transtitons += D.z_value
+							*/
+							possible_transtitons += D.z_value
 						var/_z = pick(possible_transtitons)
 						var/_x = rand(min,max)
 						var/_y = rand(min,max)
@@ -409,8 +410,11 @@ SUBSYSTEM_DEF(hilbertshotel)
 				var/list/possible_transtitons = list()
 				for(var/AZ in SSmapping.z_list)
 					var/datum/space_level/D = AZ
+					/* Doesn't work for some reason, guess we can remove it for now, this proc isn't supposed to run anytime anyways.
 					if (D.linkage == CROSSLINKED)
 						possible_transtitons += D.z_value
+					*/
+					possible_transtitons += D.z_value
 				var/_z = pick(possible_transtitons)
 				var/_x = rand(min,max)
 				var/_y = rand(min,max)

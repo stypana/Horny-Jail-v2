@@ -34,7 +34,7 @@ type RoomData = {
 };
 
 const AVAILABLE_ICONS = [
-  'snowflake',
+  'door-open',
   'bed',
   'coffee',
   'glass-water',

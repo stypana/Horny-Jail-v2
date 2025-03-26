@@ -224,6 +224,11 @@
 	},
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
+"sM" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/machinery/vending/dorms,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "tv" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/weather/dirt{
@@ -584,7 +589,7 @@ vh
 iF
 sI
 RO
-yb
+sM
 rC
 iF
 EI

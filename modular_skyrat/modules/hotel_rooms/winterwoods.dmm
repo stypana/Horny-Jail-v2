@@ -12,13 +12,14 @@
 	dir = 1
 	},
 /obj/item/stack/sheet/mineral/wood/fifty{
-	pixel_x = 0;
-	pixel_y = 8
+	pixel_x = 8;
+	pixel_y = -5
 	},
 /obj/item/assembly/igniter{
-	pixel_x = -10;
-	pixel_y = 9
+	pixel_x = -6;
+	pixel_y = -6
 	},
+/obj/structure/fireplace,
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel/winterwoods)
 "by" = (
@@ -39,7 +40,6 @@
 /turf/closed/indestructible/wood,
 /area/misc/hilbertshotel/winterwoods)
 "de" = (
-/obj/structure/fireplace,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
@@ -64,7 +64,6 @@
 /obj/item/tank/internals/emergency_oxygen/double,
 /obj/item/clothing/under/costume/soviet,
 /obj/item/clothing/under/costume/soviet,
-/obj/item/gun/ballistic/revolver/nagant,
 /turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel/winterwoods)
 "es" = (
@@ -131,17 +130,13 @@
 	pixel_x = 8;
 	pixel_y = 17
 	},
-/obj/item/storage/toolbox/guncase/soviet{
-	pixel_x = 0;
-	pixel_y = -5
-	},
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
 	pixel_x = 2;
-	pixel_y = 8
+	pixel_y = 3
 	},
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
-	pixel_x = -11;
-	pixel_y = 8
+	pixel_x = -7;
+	pixel_y = 0
 	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel/winterwoods)
@@ -175,17 +170,12 @@
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel/winterwoods)
 "uY" = (
-/obj/item/wisp_lantern,
+/obj/item/flashlight/lantern/jade,
 /turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel/winterwoods)
 "wq" = (
 /obj/effect/decal/remains/plasma,
 /turf/open/floor/fakeice/slippery,
-/area/misc/hilbertshotel/winterwoods)
-"wr" = (
-/obj/structure/flora/tree/dead/style_random,
-/obj/effect/overlay/light_snow,
-/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel/winterwoods)
 "wK" = (
 /obj/effect/spawner/structure/window/ice,
@@ -219,8 +209,9 @@
 /turf/open/lava/plasma/biodome,
 /area/misc/hilbertshotel/winterwoods)
 "Dx" = (
-/obj/effect/overlay/light_snow,
-/obj/structure/flora/grass/both/style_random,
+/obj/structure/barricade/wooden/snowed,
+/obj/structure/curtain/bounty/start_closed,
+/obj/effect/spawner/structure/window/ice,
 /turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel/winterwoods)
 "EN" = (
@@ -266,17 +257,14 @@
 /turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel/winterwoods)
 "Lw" = (
-/obj/effect/overlay/light_snow,
-/turf/closed/indestructible/rock/snow/ice/ore,
+/obj/machinery/vending/dorms{
+	pixel_y = -10
+	},
+/turf/closed/indestructible/wood,
 /area/misc/hilbertshotel/winterwoods)
 "Mr" = (
 /obj/effect/turf_decal/weather/snow,
 /turf/open/misc/dirt/jungle,
-/area/misc/hilbertshotel/winterwoods)
-"MJ" = (
-/obj/structure/flora/tree/pine,
-/obj/effect/overlay/light_snow,
-/turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel/winterwoods)
 "Nh" = (
 /obj/effect/spawner/structure/window/ice,
@@ -314,11 +302,6 @@
 "Tt" = (
 /obj/structure/flora/grass/both/style_random,
 /obj/effect/turf_decal/weather/snow/corner,
-/obj/effect/overlay/light_snow,
-/turf/open/floor/fake_snow/safe,
-/area/misc/hilbertshotel/winterwoods)
-"Ve" = (
-/obj/structure/barricade/wooden/snowed,
 /obj/effect/overlay/light_snow,
 /turf/open/floor/fake_snow/safe,
 /area/misc/hilbertshotel/winterwoods)
@@ -387,7 +370,7 @@ yf
 yd
 yd
 fQ
-AG
+Lw
 de
 ht
 FP
@@ -404,7 +387,7 @@ yd
 yd
 yf
 Tt
-wK
+AG
 aL
 aj
 aj
@@ -421,7 +404,7 @@ lf
 yd
 EN
 fQ
-ET
+Dx
 ua
 ZK
 ZK

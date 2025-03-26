@@ -15,8 +15,18 @@ import {
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
+type RoomsData = {
+  current_room: number;
+  selected_template: string;
+  active_rooms: any[];
+  conservated_rooms: any[];
+  hotel_map_list: any[];
+};
+
 const OpenRooms = ({ data, act, selected_template }) => {
-  const visibleRooms = data.active_rooms.filter((room) => room.visibility);
+  const visibleRooms = data.active_rooms.filter(
+    (room) => room.room_preferences.visibility,
+  );
 
   return (
     <Section
@@ -36,7 +46,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
           <Stack vertical>
             {visibleRooms?.map((room) => (
               <Stack
-                grow
+                fill
                 key={room.number}
                 style={{
                   padding: '5px 5px',
@@ -99,7 +109,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                           marginLeft: '5px',
                           lineHeight: '24px',
                         }}
-                        name={room.icon || 'door-open'}
+                        name={room.room_preferences.icon || 'door-open'}
                       />
                       <span
                         style={{
@@ -115,7 +125,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                           lineHeight: '26px',
                         }}
                       >
-                        {!room.room_privacy ? (
+                        {!room.room_preferences.privacy ? (
                           <Icon name="users" />
                         ) : (
                           <Tooltip
@@ -141,8 +151,8 @@ const OpenRooms = ({ data, act, selected_template }) => {
                       marginLeft: '5px',
                     }}
                   >
-                    {room.description ? (
-                      room.description
+                    {room.room_preferences.description ? (
+                      room.room_preferences.description
                     ) : (
                       <i>No description</i>
                     )}
@@ -230,7 +240,7 @@ const RoomCheckIn = ({
             maxValue={1000000000}
             step={1}
             value={current_room}
-            format={(value) => Math.floor(value)}
+            format={(value) => String(Math.floor(value))}
             onDrag={(value) =>
               act('update_room', {
                 room: value,
@@ -270,8 +280,11 @@ const ReservedRooms = ({ data }) => {
         <Table>
           {data.conservated_rooms?.map((room) => (
             <Table.Row key={room.number}>
+              <Table.Cell width="1.8em">
+                <Icon name={room.room_preferences.icon} />
+              </Table.Cell>
               <Table.Cell>Room {room.number}</Table.Cell>
-              <Table.Cell>{room.name}</Table.Cell>
+              <Table.Cell>{room.room_preferences.name}</Table.Cell>
             </Table.Row>
           ))}
         </Table>
@@ -283,43 +296,49 @@ const ReservedRooms = ({ data }) => {
 };
 
 export const CheckoutMenu = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<RoomsData>();
   const [selectedTab, setSelectedTab] = useState(0);
   const tabContent = [
     <RoomsTab
       key="misc"
       category="Misc"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="apartment"
       category="Apartment"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="beach"
       category="Beach"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="station"
       category="Station"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="winter"
       category="Winter"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
     <RoomsTab
       key="special"
       category="Special"
-      selected_template={data.selected_template}
+      selected_template={data?.selected_template}
     />,
   ];
 
   return (
-    <Box>
+    <Box
+      style={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <RoomCheckIn
         data={data}
         act={act}
@@ -327,19 +346,29 @@ export const CheckoutMenu = (props) => {
         setSelectedTab={setSelectedTab}
         tabContent={tabContent}
       />
-      <OpenRooms
-        data={data}
-        act={act}
-        selected_template={data.selected_template}
-      />
-      <ReservedRooms data={data} />
+      <Box
+        style={{
+          flex: 1,
+          overflowY: 'auto',
+          width: '100%',
+          minHeight: 0, // This is important for Firefox
+          scrollbarWidth: 'none',
+        }}
+      >
+        <OpenRooms
+          data={data}
+          act={act}
+          selected_template={data.selected_template}
+        />
+        <ReservedRooms data={data} />
+      </Box>
     </Box>
   );
 };
 
 const RoomsTab = (props) => {
   const { category, selected_template } = props;
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<RoomsData>();
   const { hotel_map_list = [] } = data;
   const [selectedRoom, setSelectedRoom] = useState(null);
 

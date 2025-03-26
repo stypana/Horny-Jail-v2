@@ -210,10 +210,6 @@
 /obj/structure/flora/tree/jungle/small,
 /turf/open/misc/grass,
 /area/misc/hilbertshotel)
-"zW" = (
-/obj/structure/flora/grass/jungle/b,
-/turf/open/space/bluespace,
-/area/misc/hilbertshotel)
 "Ad" = (
 /obj/structure/closet/cabinet,
 /obj/structure/sign/poster/contraband/random/directional/west,
@@ -666,8 +662,8 @@ Ne
 (12,1,1) = {"
 Ne
 mo
-zW
-Ne
+MA
+fX
 ap
 fX
 EL

@@ -88,7 +88,7 @@
 		return
 	else if(SShilbertshotel.room_data["[room_number]"]) // check 2 - active rooms
 		var/list/room = SShilbertshotel.room_data["[room_number]"]
-		if(room["status"] == ROOM_CLOSED)
+		if(room["room_preferences"]["status"] == ROOM_CLOSED)
 			to_chat(target, span_warning("This room is occupied!"))
 			return
 		// try to enter if room is open
@@ -117,15 +117,20 @@
 		ui.set_autoupdate(TRUE)
 		ui.open()
 
-/obj/item/hilbertshotel/ui_data(mob/user)
-	var/list/data = list()
-	data["hotel_map_list"] = list()
+/obj/item/hilbertshotel/ui_static_data(mob/user)
+	. = ..()
+
+	// Shouldn't change during the round so we may as well cache it
+	.["hotel_map_list"] = list()
 	for(var/template in SShilbertshotel.hotel_map_list)
 		var/datum/map_template/ghost_cafe_rooms/room_template = SShilbertshotel.hotel_map_list[template]
-		data["hotel_map_list"] += list(list(
+		.["hotel_map_list"] += list(list(
 			"name" = room_template.name,
 			"category" = room_template.category || "Misc"
 		))
+
+/obj/item/hilbertshotel/ui_data(mob/user)
+	var/list/data = list()
 
 	if(!SShilbertshotel.user_data[user.ckey])
 		SShilbertshotel.user_data[user.ckey] = list(
@@ -138,25 +143,28 @@
 
 	data["active_rooms"] = list()
 	for(var/room_number in SShilbertshotel.room_data)
-		var/list/room = SShilbertshotel.room_data[room_number]
+		var/list/room = SShilbertshotel.room_data["[room_number]"]
 		if(room["room_preferences"]["visibility"] == ROOM_VISIBLE)
 			data["active_rooms"] += list(list(
 				"number" = room_number,
-				"name" = room["name"] || "Unknown Room",
-				"visibility" = room["visibility"],
-				"room_privacy" = room["privacy"],
 				"occupants" = SShilbertshotel.generate_occupant_list(room_number),
-				"description" = room["description"],
-				"icon" = room["icon"] || "door-open"
+				"room_preferences" = room["room_preferences"]
 			))
 	data["conservated_rooms"] = list()
 	for(var/room_number in SShilbertshotel.conservated_rooms)
 		var/list/room = SShilbertshotel.conservated_rooms[room_number]
-		data["conservated_rooms"] += list(list(
-			"number" = room_number,
-			"description" = room["description"],
-			"name" = room["name"] || room["template"]
-		))
+		var/visibility = room["room_preferences"]["visibility"]
+		if(visibility == ROOM_VISIBLE)
+			data["conservated_rooms"] += list(list(
+				"number" = room_number,
+				"room_preferences" = room["room_preferences"]
+			))
+		else if(visibility == ROOM_GUESTS_ONLY)
+			if(user.mind in room["access_restrictions"]["trusted_guests"])
+				data["conservated_rooms"] += list(list(
+					"number" = room_number,
+					"room_preferences" = room["room_preferences"]
+				))
 	return data
 
 /obj/item/hilbertshotel/ui_act(action, params)
