@@ -6,13 +6,17 @@
 #define BLOODFLEDGE_COOLDOWN_BITE 60 // Six seconds
 /// Cooldown for the revive ability
 #define BLOODFLEDGE_COOLDOWN_REVIVE 3000 // Five minutes
+/// Cooldown for the analyze ability
+#define BLOODFLEDGE_COOLDOWN_ANALYZE 50 // Five seconds
 /// How much blood can be held after biting
 #define BLOODFLEDGE_BANK_CAPACITY (BLOODFLEDGE_DRAIN_AMT * 2)
 /// How much damage is healed in a coffin
 #define BLOODFLEDGE_HEAL_AMT -2
 /// List of traits inherent to bloodfledges
-#define BLOODFLEDGE_TRAITS list(TRAIT_NO_MIRROR_REFLECTION, TRAIT_DRINKS_BLOOD)
+#define BLOODFLEDGE_TRAITS list(TRAIT_NO_MIRROR_REFLECTION, TRAIT_DRINKS_BLOOD, TRAIT_NO_BLOOD_REGEN)
 /datum/quirk/item_quirk/bloodfledge
+/// Delay between activating revive and actually getting up
+#define BLOODFLEDGE_REVIVE_DELAY 300
 	name = "Bloodfledge"
 	desc = "You are apprentice sanguine sorcerer endowed with vampiric power beyond that of a common hemophage. While not truly undead, many of the same conditions still apply."
 	value = 4
@@ -24,6 +28,28 @@
 	icon = FA_ICON_CHAMPAGNE_GLASSES
 	/// Does the quirk holder still breathe? If so, don't lower their blood levels to critical level.
 	var/demi_mortal = TRUE
+
+//Create a memory of the bloodfledge's blood type, for easy access
+/datum/memory/key/quirk_bloodfledge
+	var/blood_type
+
+/datum/memory/key/quirk_bloodfledge/New(
+	datum/mind/memorizer_mind,
+	atom/protagonist,
+	atom/deuteragonist,
+	atom/antagonist,
+	blood_type,
+)
+	src.blood_type = blood_type
+	return ..()
+
+/datum/memory/key/quirk_bloodfledge/get_names()
+	return list("[protagonist_name] becomes aware of their blood type, [blood_type].")
+
+/datum/memory/key/quirk_bloodfledge/get_starts()
+	return list(
+		"Their cursed blood, singing to them. [blood_type]",
+	)
 
 /datum/quirk/item_quirk/bloodfledge/add(client/client_source)
 	// Define quirk mob
@@ -50,9 +76,12 @@
 	// Add quirk traits
 	quirk_mob.add_traits(BLOODFLEDGE_TRAITS, TRAIT_BLOODFLEDGE)
 
+	//Add a memory and inform them of their blood type
+	quirk_mob.mind.add_memory(/datum/memory/key/quirk_bloodfledge, blood_type = quirk_mob.dna.blood_type)
+	to_chat(quirk_mob, "You remember that your blood type is [quirk_mob.dna.blood_type]")
+
 	// Register blood consumption interaction
-	//SOMETHING broke this and I couldn't tell you what. The blood_DNA part of data is never set. If you have a fix for that, this can be enabled again to provide mood events for different blood types.
-	//RegisterSignal(quirk_holder, COMSIG_REAGENT_ADD_BLOOD, PROC_REF(on_consume_blood))
+	RegisterSignal(quirk_holder, COMSIG_REAGENT_ADD_BLOOD, PROC_REF(on_consume_blood))
 
 	// Register coffin interaction
 	RegisterSignal(quirk_holder, COMSIG_ENTER_COFFIN, PROC_REF(on_enter_coffin))
@@ -118,6 +147,10 @@
 	// Define and grant ability Bite
 	var/datum/action/cooldown/bloodfledge/bite/act_bite = new
 	act_bite.Grant(quirk_mob)
+
+	// Define and grant ability Analyze
+	var/datum/action/cooldown/spell/pointed/bloodfledge_analyze/act_analyze = new
+	act_analyze.Grant(quirk_mob)
 
 // Processing is currently only used for coffin healing
 /datum/quirk/item_quirk/bloodfledge/process(seconds_per_tick)
@@ -243,6 +276,9 @@
 	// Remove quirk ability action datums
 	var/datum/action/cooldown/bloodfledge/bite/act_bite = locate() in quirk_mob.actions
 	act_bite?.Remove(quirk_mob)
+
+	var/datum/action/cooldown/spell/pointed/bloodfledge_analyze/act_analyze = locate() in quirk_mob.actions
+	act_analyze?.Remove(quirk_mob)
 
 	// Remove profane penalties
 	REMOVE_TRAIT(quirk_holder, TRAIT_CHAPEL_WEAKNESS, TRAIT_BLOODFLEDGE)
@@ -450,10 +486,9 @@
 	target.balloon_alert(target, "you have been staked!")
 
 /**
- * Blood nourishment for Bloodfledges
+ * Mood events for drinking different kinds of blood as a bloodfledge
  * * Checks if the blood was synthesized or from an invalid mob
  * * Checks if the owner tried to drink their own blood
- * * Converts any valid blood into Notriment
 */
 /datum/quirk/item_quirk/bloodfledge/proc/on_consume_blood(mob/living/target, datum/reagent/blood/handled_reagent, amount, data)
 	SIGNAL_HANDLER
@@ -1359,7 +1394,7 @@
 
 	// Condition: Insufficient nutrition
 	if(demi_mortal)
-		if(action_owner.blood_volume <= BLOOD_VOLUME_RISKY)
+		if(action_owner.blood_volume <= BLOOD_VOLUME_OKAY)
 			revive_failed += "\n- You're too blood-starved!"
 
 	// Condition: Insufficient blood volume
@@ -1405,6 +1440,13 @@
 		// Return
 		return
 
+	// Alert nearby players that we are about to revive
+	playsound(action_owner, 'sound/effects/singlebeat.ogg', 30, 1, -2)
+	action_owner.visible_message(span_notice("[action_owner]'s body begins to twitch and radiate an ominous aura"), span_warning("You begin gathering the strength to revive."))
+	if(!do_after(action_owner,BLOODFLEDGE_REVIVE_DELAY,action_owner,list(IGNORE_USER_LOC_CHANGE, IGNORE_TARGET_LOC_CHANGE,IGNORE_SLOWDOWNS)))
+		return FALSE
+	if(!can_use(owner) || action_owner.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE || action_owner.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE)
+		return FALSE
 	// Remove oxygen damage
 	action_owner.adjustOxyLoss(-100, FALSE)
 
@@ -1468,7 +1510,7 @@
 	action_owner.log_message("revived using a bloodfledge quirk ability.", LOG_GAME)
 
 	// Play a haunted sound effect
-	playsound(action_owner, 'sound/effects/curse/curseattack.ogg', 30, 1, -2)
+	playsound(action_owner, 'sound/effects/pope_entry.ogg', 30, 1, -2)
 
 	// Nutrition mode
 	if(demi_mortal)
@@ -1486,6 +1528,42 @@
 	// Start cooldown
 	StartCooldown()
 
+//Action: Analyze
+/datum/action/cooldown/spell/pointed/bloodfledge_analyze
+	name = "Fledgling Analyze"
+	desc = "Examine the scent of another to learn their blood."
+	background_icon = 'modular_zubbers/icons/mob/actions/bloodsucker.dmi'
+	background_icon_state = "vamp_power_off"
+	button_icon = 'modular_zubbers/icons/mob/actions/bloodsucker.dmi'
+	button_icon_state = "power_mez"
+	buttontooltipstyle = "cult"
+	spell_requirements = SPELL_CASTABLE_WITHOUT_INVOCATION
+	cooldown_time = BLOODFLEDGE_COOLDOWN_ANALYZE
+	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
+
+/datum/action/cooldown/spell/pointed/bloodfledge_analyze/InterceptClickOn(mob/living/clicker, params, atom/target)
+	. = ..()
+	var/mob/living/carbon/human/human_target = target
+	var/mob/living/carbon/human/human_caster = clicker
+	if(!ishuman(human_target) || !human_caster || human_target == human_caster)
+		return FALSE
+	var/t_their = human_target.p_Their()
+	var/output = "[t_their] blood smells unremarkable and incompatible with ours."
+	var/t_bloodtype = human_target.dna.blood_type
+	var/c_bloodtype = human_caster.dna.blood_type
+	var/t_blood_volume = human_target.blood_volume
+	if(t_bloodtype == c_bloodtype)
+		output = "[t_their] blood smells delicious. A perfect match!"
+	else if(t_bloodtype in get_safe_blood(c_bloodtype))
+		output = "[t_their] blood smells sweet and enticing."
+	switch(t_blood_volume)
+		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_MAXIMUM)
+			output += "\n[t_their] veins run rich with blood, ripe for the taking."
+		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+			output += "\n[t_their] heart is beating faster, [t_their] blood supply running low."
+		if(0 to BLOOD_VOLUME_BAD)
+			output += "\n[t_their] heartbeat thrashes wildly, desperately trying to offset [t_their] drained blood supply."
+	to_chat(human_caster, custom_boxed_message("red_box",span_cult("Analyzing the blood of [human_target]...\n" + output)))
 //
 // Bloodfledge mood events
 //
@@ -1576,3 +1654,5 @@
 #undef BLOODFLEDGE_BANK_CAPACITY
 #undef BLOODFLEDGE_HEAL_AMT
 #undef BLOODFLEDGE_TRAITS
+#undef BLOODFLEDGE_COOLDOWN_ANALYZE
+#undef TRAIT_NO_BLOOD_REGEN
