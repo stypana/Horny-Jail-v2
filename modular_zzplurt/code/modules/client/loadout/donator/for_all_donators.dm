@@ -102,10 +102,6 @@
 	name = "Mal0 Plushie"
 	item_path = /obj/item/toy/plush/mal0
 
-/datum/loadout_item/toys/donator/nobl_plushie
-	name = "Nobl Plushie"
-	item_path = /obj/item/toy/plush/nobl
-/*What is wrong with these 4?
 /datum/loadout_item/toys/donator/foth_plushie
 	name = "Foth Plushie"
 	item_path = /obj/item/toy/plush/foth
@@ -121,4 +117,4 @@
 /datum/loadout_item/toys/donator/thomas_plushie
 	name = "Thomas Plushie"
 	item_path = /obj/item/toy/plush/thomas_plush
-*/
+
