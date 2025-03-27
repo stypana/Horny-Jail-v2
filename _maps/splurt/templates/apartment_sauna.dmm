@@ -97,9 +97,7 @@
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "jr" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = -31
-	},
+/obj/structure/sign/poster/contraband/random/directional/west,
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "jP" = (
@@ -359,6 +357,7 @@
 "DO" = (
 /obj/structure/table,
 /obj/machinery/light/warm/directional/east,
+/obj/structure/towel_bin,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "EW" = (
@@ -399,10 +398,6 @@
 	icon_state = "door_closed";
 	icon = 'icons/obj/doors/puzzledoor/default.dmi'
 	},
-/area/misc/hilbertshotel)
-"HB" = (
-/obj/machinery/smartfridge/drinks,
-/turf/closed/indestructible/wood,
 /area/misc/hilbertshotel)
 "HN" = (
 /obj/structure/table/glass,
@@ -481,11 +476,8 @@
 /obj/effect/turf_decal/trimline/white/filled/line{
 	dir = 8
 	},
-/obj/machinery/shower{
-	desc = "Despite their age, they seem clean and capable of providing hot water just as well as their modern counterparts. Hopefully Nanotrasen cleaned the water pipes this well...";
-	dir = 4
-	},
 /obj/effect/spawner/liquids_spawner/shoulders,
+/obj/machinery/shower/directional/east,
 /turf/open/floor/iron/pool,
 /area/misc/hilbertshotel)
 "OW" = (
@@ -525,8 +517,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/table,
-/obj/structure/towel_bin,
+/obj/machinery/smartfridge/drinks,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "Rt" = (
@@ -631,7 +622,7 @@ OE
 OE
 OE
 OE
-HB
+OE
 OE
 OE
 OE

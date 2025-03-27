@@ -237,12 +237,6 @@
 /obj/structure/flora/bush/jungle/c/style_random,
 /turf/open/misc/grass/jungle/station,
 /area/misc/hilbertshotel)
-"sy" = (
-/obj/machinery/door/airlock/centcom{
-	name = "re-education room 2"
-	},
-/turf/open/floor/iron,
-/area/misc/hilbertshotel)
 "sQ" = (
 /obj/structure/flora/bush/large/style_random,
 /turf/open/misc/grass/jungle/station,
@@ -440,12 +434,6 @@
 /obj/item/kitchen/fork,
 /obj/structure/table,
 /turf/open/floor/iron/cafeteria,
-/area/misc/hilbertshotel)
-"Ei" = (
-/obj/machinery/door/airlock/centcom{
-	name = "re-education room 1"
-	},
-/turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "Et" = (
 /obj/structure/flora/tree/jungle/style_random,
@@ -714,8 +702,10 @@
 /area/misc/hilbertshotel)
 "UC" = (
 /obj/machinery/door/airlock/centcom{
-	name = "isolator";
-	id_tag = "isolator-prison-door"
+	name = "Cells Access";
+	pixel_x = 0;
+	pixel_y = 0;
+	id_tag = "main-prison-door"
 	},
 /turf/open/floor/iron/white,
 /area/misc/hilbertshotel)
@@ -992,7 +982,7 @@ tm
 oL
 oL
 oL
-sy
+zS
 oL
 mk
 "}
@@ -1046,7 +1036,7 @@ UQ
 oL
 oL
 oL
-Ei
+UQ
 oL
 mk
 "}

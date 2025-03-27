@@ -39,6 +39,7 @@
 "kp" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/east,
+/obj/structure/sign/poster/random/directional/east,
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "kr" = (
@@ -55,10 +56,8 @@
 /area/misc/hilbertshotel)
 "kC" = (
 /obj/structure/table/wood,
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = 32
-	},
 /obj/machinery/light/directional/east,
+/obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "kQ" = (
@@ -108,6 +107,7 @@
 /obj/machinery/chem_dispenser/drinks/beer{
 	dir = 1
 	},
+/obj/structure/sign/poster/random/directional/south,
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
 "pr" = (
@@ -121,10 +121,6 @@
 "qQ" = (
 /obj/structure/table/wood/fancy/purple,
 /turf/open/floor/carpet/royalblack,
-/area/misc/hilbertshotel)
-"rY" = (
-/obj/structure/sign/poster/random,
-/turf/closed/indestructible/steel,
 /area/misc/hilbertshotel)
 "sm" = (
 /obj/effect/turf_decal/siding/wood,
@@ -169,12 +165,14 @@
 /area/misc/hilbertshotel)
 "wB" = (
 /obj/machinery/computer/slot_machine,
+/obj/structure/sign/poster/random/directional/north,
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "xI" = (
 /obj/structure/chair/sofa/corp{
 	color = "#DE3A3A"
 	},
+/obj/structure/sign/poster/random/directional/north,
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "yz" = (
@@ -265,8 +263,8 @@
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "Jn" = (
-/obj/structure/sign/poster/random,
-/turf/closed/wall,
+/obj/structure/sign/poster/random/directional/north,
+/turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "Mr" = (
 /obj/machinery/light{
@@ -312,8 +310,8 @@
 /turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "QC" = (
-/obj/structure/sign/poster/contraband/random,
-/turf/closed/wall,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/carpet/royalblack,
 /area/misc/hilbertshotel)
 "QE" = (
 /obj/effect/turf_decal/siding/wood{
@@ -321,6 +319,7 @@
 	},
 /obj/structure/table/wood/fancy/royalblack,
 /obj/machinery/light/directional/south,
+/obj/structure/sign/poster/random/directional/south,
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
 "RL" = (
@@ -328,8 +327,8 @@
 /turf/open/space/bluespace,
 /area/misc/hilbertshotel)
 "SW" = (
-/obj/structure/sign/poster/contraband/random,
-/turf/closed/indestructible/steel,
+/obj/structure/sign/poster/contraband/random/directional/south,
+/turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "Tk" = (
 /obj/structure/table,
@@ -416,24 +415,24 @@ Xr
 Xr
 ZE
 ZE
-SW
+ZE
 ZE
 ZE
 ZE
 kQ
 ZE
 ZE
-rY
 ZE
-SW
+ZE
+ZE
 ZE
 Xr
 "}
 (3,1,1) = {"
 Xr
 vU
-rY
-ee
+ZE
+Jn
 ee
 pr
 yO
@@ -468,8 +467,8 @@ Xr
 (5,1,1) = {"
 Xr
 RL
-SW
-ee
+ZE
+QC
 hi
 hi
 kr
@@ -480,7 +479,7 @@ dR
 af
 af
 oH
-rY
+ZE
 Xr
 "}
 (6,1,1) = {"
@@ -504,7 +503,7 @@ Xr
 (7,1,1) = {"
 Xr
 RL
-rY
+ZE
 wB
 hi
 ee
@@ -534,7 +533,7 @@ EI
 CL
 CL
 QE
-rY
+ZE
 Xr
 "}
 (9,1,1) = {"
@@ -578,7 +577,7 @@ Xr
 Xr
 ZE
 MV
-QC
+MV
 GV
 MV
 We
@@ -587,7 +586,7 @@ cK
 cK
 cK
 cK
-cK
+SW
 ZE
 Xr
 "}
@@ -599,14 +598,14 @@ DV
 te
 GV
 MV
-Jn
+MV
 ut
 sY
 Hs
 FA
 sY
 Zn
-SW
+ZE
 Xr
 "}
 (13,1,1) = {"
@@ -635,14 +634,14 @@ DV
 te
 GV
 WO
-QC
+MV
 Fz
 kp
 Hy
 Mz
 kC
 OA
-rY
+ZE
 Xr
 "}
 (15,1,1) = {"
@@ -651,11 +650,11 @@ Xr
 ZE
 ZE
 ZE
-rY
 ZE
 ZE
 ZE
-rY
+ZE
+ZE
 ZE
 ZE
 ZE
