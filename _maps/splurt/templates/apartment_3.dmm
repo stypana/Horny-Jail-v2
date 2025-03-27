@@ -285,13 +285,6 @@
 /obj/structure/flora/bush/jungle/b/style_random,
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
-"iA" = (
-/obj/structure/railing{
-	dir = 4;
-	icon_state = "railing"
-	},
-/turf/open/floor/carpet,
-/area/misc/hilbertshotel)
 "kt" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box{
@@ -327,10 +320,8 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 5
 	},
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = 32
-	},
 /obj/machinery/room_controller/directional/north,
+/obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/misc/hilbertshotel)
 "nA" = (
@@ -400,8 +391,11 @@
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
 "IH" = (
-/obj/structure/sign/poster/contraband/random,
-/turf/closed/wall,
+/obj/structure/railing{
+	dir = 4;
+	icon_state = "railing"
+	},
+/turf/open/floor/carpet,
 /area/misc/hilbertshotel)
 "Ka" = (
 /obj/effect/turf_decal/siding/wood{
@@ -453,9 +447,7 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
 	},
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = 32
-	},
+/obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/misc/hilbertshotel)
 "Rh" = (
@@ -464,6 +456,13 @@
 	pixel_y = 11
 	},
 /turf/open/floor/carpet,
+/area/misc/hilbertshotel)
+"SM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
 "TK" = (
 /obj/structure/fake_stairs/directional/north,
@@ -477,8 +476,11 @@
 /turf/open/floor/mineral/plastitanium,
 /area/misc/hilbertshotel)
 "Xr" = (
-/obj/structure/sign/poster/contraband/random,
-/turf/closed/indestructible/steel,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/open/floor/mineral/plastitanium,
 /area/misc/hilbertshotel)
 "XP" = (
 /turf/closed/indestructible/steel,
@@ -555,7 +557,7 @@ ab
 aj
 XP
 XP
-Xr
+XP
 XP
 XP
 XP
@@ -573,7 +575,7 @@ aj
 aj
 XP
 oY
-Vu
+Xr
 Vu
 KK
 GL
@@ -683,8 +685,8 @@ ZC
 ZC
 aK
 ZC
-IH
-Ka
+ZC
+SM
 Yw
 wX
 bl
@@ -739,10 +741,10 @@ aL
 aP
 aT
 aX
-iA
+IH
 bn
 bv
-iA
+IH
 dC
 XP
 aa

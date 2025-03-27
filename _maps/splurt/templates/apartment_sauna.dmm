@@ -96,10 +96,6 @@
 /obj/structure/rack,
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
-"jr" = (
-/obj/structure/sign/poster/contraband/random/directional/west,
-/turf/open/floor/wood,
-/area/misc/hilbertshotel)
 "jP" = (
 /obj/structure/chair/pew/right{
 	dir = 4
@@ -427,9 +423,6 @@
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "Ml" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = 29
-	},
 /obj/structure/bed/double,
 /obj/effect/spawner/random/bedsheet/double,
 /turf/open/floor/carpet/red,
@@ -631,7 +624,7 @@ OE
 (2,1,1) = {"
 OE
 tS
-jr
+hJ
 Kz
 FQ
 ne

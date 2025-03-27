@@ -751,8 +751,7 @@
 /area/misc/hilbertshotel)
 "WI" = (
 /obj/machinery/door/poddoor/preopen{
-	id = "prison-window_dorm";
-	name = "space shutters"
+	id = "prison-window_dorm"
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -802,11 +801,11 @@
 /area/misc/hilbertshotel)
 "Zr" = (
 /obj/machinery/light/directional/north,
-/obj/machinery/computer/security/telescreen/prison/directional/north{
-	network = list("prison-dorm")
-	},
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
+	},
+/obj/machinery/computer/camera_advanced{
+	networks = list("prison-dorm")
 	},
 /turf/open/floor/iron/dark,
 /area/misc/hilbertshotel)
