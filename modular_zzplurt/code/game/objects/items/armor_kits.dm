@@ -17,15 +17,20 @@
 	. = ..()
 	target_allowed = GLOB.security_vest_allowed
 
-/obj/item/armorkit/afterattack(obj/item/target, mob/user, click_parameters)
+/obj/item/armorkit/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/used = FALSE
 
 	stack_trace("[src] started afterattack.")
 
-	if(!(isobj(target) && target.slot_flags & target_slot))
+	if(!isobj(interacting_with))
+		return NONE
+
+	var/obj/item/target = interacting_with
+
+	if(!(target.slot_flags & target_slot))
 		to_chat(user, "<span class = 'notice'>You can't reinforce [target] with [src].</span>")
 		stack_trace("[src] aborted afterattack.")
-		return
+		return NONE
 
 	stack_trace("[src] check passed.")
 
@@ -44,10 +49,10 @@
 		"<span class = 'notice'>You reinforce [C] with [src], making it as protective as \a [armor_text].</span>")
 		C.name = "[target_prefix] [C.name]"
 		qdel(src)
-		return
+		return ITEM_INTERACT_SUCCESS
 
 	to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
-	return
+	return NONE
 
 /obj/item/armorkit/helmet
 	name = "rampart headgear kit"
