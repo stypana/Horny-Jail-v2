@@ -34,10 +34,8 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/item/reagent_containers/cup/bottle/hexacrocin,
+/obj/structure/table,
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "fy" = (
@@ -47,9 +45,7 @@
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "fG" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/warm/directional/north,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "fH" = (
@@ -90,10 +86,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 8;
-	light_color = "#e8eaff"
-	},
+/obj/machinery/light/warm/directional/west,
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "iJ" = (
@@ -110,9 +103,6 @@
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "jP" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 1
-	},
 /obj/structure/chair/pew/right{
 	dir = 4
 	},
@@ -134,16 +124,14 @@
 /obj/item/stack/sheet/mineral/wood/fifty,
 /obj/item/wrench,
 /obj/effect/spawner/random/entertainment/lighter,
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/carpet/red,
 /area/misc/hilbertshotel)
 "mc" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 4;
-	light_color = "#c1caff"
-	},
+/obj/machinery/light/warm/directional/east,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "ml" = (
@@ -171,9 +159,6 @@
 /area/misc/hilbertshotel)
 "oR" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
-	},
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "pw" = (
@@ -224,7 +209,7 @@
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "tB" = (
-/obj/machinery/light,
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "tF" = (
@@ -239,18 +224,11 @@
 /area/misc/hilbertshotel)
 "tS" = (
 /obj/structure/closet/athletic_mixed,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
-	},
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "tX" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/light,
 /obj/item/clothing/shoes/sandal,
 /obj/item/clothing/shoes/sandal,
 /obj/item/clothing/shoes/sandal,
@@ -258,6 +236,7 @@
 /obj/item/clothing/shoes/sandal,
 /obj/item/clothing/shoes/sandal,
 /obj/item/clothing/shoes/sandal,
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "ut" = (
@@ -283,9 +262,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/warm/directional/east,
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "wD" = (
@@ -381,16 +358,10 @@
 /area/misc/hilbertshotel)
 "DO" = (
 /obj/structure/table,
-/obj/machinery/light{
-	dir = 4;
-	light_color = "#c1caff"
-	},
+/obj/machinery/light/warm/directional/east,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "EW" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 1
-	},
 /obj/structure/chair/pew/left{
 	dir = 8
 	},
@@ -435,10 +406,7 @@
 /area/misc/hilbertshotel)
 "HN" = (
 /obj/structure/table/glass,
-/obj/machinery/light{
-	dir = 4;
-	light_color = "#c1caff"
-	},
+/obj/machinery/light/warm/directional/east,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "Kq" = (
@@ -449,22 +417,8 @@
 /obj/effect/spawner/liquids_spawner/shoulders,
 /turf/open/floor/iron/pool,
 /area/misc/hilbertshotel)
-"Kt" = (
-/obj/structure/falsewall/wood,
-/turf/open/floor/carpet/royalblue,
-/area/misc/hilbertshotel)
 "Kz" = (
 /obj/structure/rack,
-/turf/open/floor/wood,
-/area/misc/hilbertshotel)
-"KL" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
-	},
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "LP" = (
@@ -508,10 +462,8 @@
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "NG" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 1
-	},
-/turf/open/floor/wood/tile,
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
+/turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "Op" = (
 /obj/structure/closet/crate/bin{
@@ -609,6 +561,7 @@
 /area/misc/hilbertshotel)
 "Tp" = (
 /obj/structure/reagent_dispensers/watertank,
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "TH" = (
@@ -619,11 +572,8 @@
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "Ur" = (
-/obj/structure/closet/athletic_mixed,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
-/turf/open/floor/wood,
+/obj/structure/fans/tiny/invisible,
+/turf/open/floor/iron,
 /area/misc/hilbertshotel)
 "UJ" = (
 /obj/structure/closet/crate/wooden,
@@ -654,7 +604,7 @@
 /area/misc/hilbertshotel)
 "XH" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/light,
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/carpet/royalblue,
 /area/misc/hilbertshotel)
 "Ym" = (
@@ -689,7 +639,7 @@ OE
 "}
 (2,1,1) = {"
 OE
-Ur
+tS
 jr
 Kz
 FQ
@@ -725,7 +675,7 @@ OE
 "}
 (4,1,1) = {"
 OE
-KL
+oR
 hJ
 tB
 FQ
@@ -743,7 +693,7 @@ OE
 "}
 (5,1,1) = {"
 OE
-KL
+oR
 hJ
 hJ
 FQ
@@ -807,9 +757,9 @@ xC
 xU
 xC
 xC
+xC
 bd
 xC
-Kt
 BQ
 OE
 "}
@@ -825,9 +775,9 @@ wy
 ut
 Pn
 Pn
+Pn
 wy
 Pn
-Kt
 fo
 OE
 "}
@@ -860,7 +810,7 @@ Zm
 FQ
 zJ
 zJ
-zJ
+NG
 jP
 Dt
 Aq
@@ -878,8 +828,8 @@ Zm
 FQ
 Gm
 zJ
-zJ
 NG
+nJ
 nJ
 Vk
 OE
@@ -896,7 +846,7 @@ XH
 FQ
 fG
 WQ
-zJ
+Ur
 nJ
 qi
 Sx
@@ -914,8 +864,8 @@ Zm
 FQ
 Gm
 zJ
-zJ
 NG
+nJ
 nJ
 Vk
 OE

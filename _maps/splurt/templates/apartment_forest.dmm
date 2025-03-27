@@ -35,17 +35,6 @@
 /obj/structure/flora/tree/palm/style_random,
 /turf/open/misc/beach/sand,
 /area/misc/hilbertshotel)
-"cN" = (
-/obj/structure/spacevine,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8;
-	invisibility = 1
-	},
-/obj/structure/flora/bush/flowers_br/style_random,
-/obj/structure/flora/bush/flowers_pp/style_random,
-/obj/structure/flora/bush/flowers_yw/style_random,
-/turf/open/misc/beach/coast,
-/area/misc/hilbertshotel)
 "dl" = (
 /obj/machinery/light/floor{
 	light_power = 20;
@@ -415,13 +404,10 @@
 /area/misc/hilbertshotel)
 "Oh" = (
 /obj/structure/spacevine,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4;
-	invisibility = 1
-	},
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
+/obj/structure/curtain/bounty,
 /turf/open/misc/beach/coast,
 /area/misc/hilbertshotel)
 "Po" = (
@@ -458,18 +444,6 @@
 /area/misc/hilbertshotel)
 "RQ" = (
 /obj/structure/flora/tree/jungle/small,
-/turf/open/floor/grass,
-/area/misc/hilbertshotel)
-"RW" = (
-/obj/machinery/light/floor{
-	light_power = 20;
-	light_range = 5
-	},
-/obj/machinery/light/floor{
-	light_power = 20;
-	light_range = 5
-	},
-/obj/structure/flora/bush/grassy/style_random,
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
 "Su" = (
@@ -679,7 +653,7 @@ Dl
 yr
 WD
 WD
-cN
+Oh
 iJ
 iJ
 BZ
@@ -808,7 +782,7 @@ ag
 cC
 ag
 bH
-RW
+Hw
 Yd
 ag
 QO
