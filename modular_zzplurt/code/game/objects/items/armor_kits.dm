@@ -17,16 +17,22 @@
 	. = ..()
 	target_allowed = GLOB.security_vest_allowed
 
-/obj/item/armorkit/afterattack(obj/item/target, mob/user, proximity_flag, click_parameters)
+/obj/item/armorkit/afterattack(obj/item/target, mob/user, click_parameters)
 	var/used = FALSE
 
+	stack_trace("[src] started afterattack.")
+
 	if(!(isobj(target) && target.slot_flags & target_slot))
+		to_chat(user, "<span class = 'notice'>You can't reinforce [target] with [src].</span>")
+		stack_trace("[src] aborted afterattack.")
 		return
+
+	stack_trace("[src] check passed.")
 
 	var/obj/item/clothing/C = target
 	var/datum/armor/curr_armor = C.get_armor()
 
-	for(var/curr_stat in ARMOR_ALL)
+	for(var/curr_stat in ARMOR_LIST_ALL())
 		if(curr_armor.get_rating(curr_stat) < target_armor.get_rating(curr_stat))
 			C.set_armor(curr_armor.generate_new_with_specific(list(curr_stat = target_armor.get_rating(curr_stat))))
 			used = TRUE
@@ -39,9 +45,9 @@
 		C.name = "[target_prefix] [C.name]"
 		qdel(src)
 		return
-	else
-		to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
-		return
+
+	to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
+	return
 
 /obj/item/armorkit/helmet
 	name = "rampart headgear kit"
