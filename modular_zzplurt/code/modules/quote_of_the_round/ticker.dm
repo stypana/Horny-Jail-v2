@@ -45,9 +45,9 @@
 		first_death = copytext(news_report, start_pos, end_pos)
 		news_report = replacetext(news_report, first_death, "")
 
-	var/datum/tgs_chat_embed/structure/embed = new()
+	var/datum/tgs_chat_embed/structure/embed = new
 
-	embed.url = "byond://" + (CONFIG_GET(string/public_address) || CONFIG_GET(string/server) || "[world.internet_address]:[world.port]")
+	embed.url = null //Placeholder, apparently it does not support byond:// links.
 
 	// Author
 	embed.author = new("S.P.L.U.R.T. Round Reports")
@@ -61,10 +61,6 @@
 
 	// Fields
 	embed.fields = list()
-	embed.fields += new /datum/tgs_chat_embed/field(
-		"News Report",
-		quote_of_the_round_data["map_text"]
-	)
 	if(length(first_death))
 		embed.fields += new /datum/tgs_chat_embed/field(
 			"First Death",
@@ -86,7 +82,7 @@
 	*/
 
 	// Footer
-	embed.footer = "Round #[GLOB.round_id] ([SSgamemode.storyteller.name])"
+	embed.footer = new("Round #[GLOB.round_id] ([SSgamemode.storyteller.name])")
 	embed.timestamp = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
 
 	var/datum/tgs_message_content/message = new("# Round #[GLOB.round_id] ([SSgamemode.storyteller.name]) just ended. [CONFIG_GET(string/roundend_ping_role) ? "<@[CONFIG_GET(string/roundend_ping_role)]>" : ""]")
