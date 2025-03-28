@@ -4,6 +4,7 @@
 	icon = 'modular_zzplurt/icons/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'modular_zzplurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'modular_zzplurt/icons/mob/inhands/weapons/guns_righthand.dmi'
+	worn_icon = 'modular_zzplurt/icons/mob/clothing/back.dmi'
 
 /obj/item/ammo_casing/energy/event_horizon
 	select_name = "hyper-resonant"
