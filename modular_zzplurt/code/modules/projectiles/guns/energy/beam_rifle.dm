@@ -1,6 +1,9 @@
 /obj/item/gun/energy/event_horizon
 	name = "\improper Pulsar hyper-resonance beam rifle"
 	desc = "While the masterminds of the Event Horizon chased oblivion, the team behind the Pulsar sought control. Developed in the wake of anti-existential deployment backlash, this weapon represents a more measured apocalypse. This weapon melts everything in its path with the precision of a scalpel and the elegance of a dying star."
+	icon = 'modular_zzplurt/icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'modular_zzplurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'modular_zzplurt/icons/mob/inhands/weapons/guns_righthand.dmi'
 
 /obj/item/ammo_casing/energy/event_horizon
 	select_name = "hyper-resonant"
