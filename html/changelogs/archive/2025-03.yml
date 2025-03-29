@@ -981,3 +981,6 @@
   - sound: Added vox_laugh.ogg from ss14
   StrangeWeirdKitten:
   - bugfix: Modsuits no longer delete the seamless heels quirk.
+2025-03-29:
+  sakke03:
+  - bugfix: bloodfledge works again
