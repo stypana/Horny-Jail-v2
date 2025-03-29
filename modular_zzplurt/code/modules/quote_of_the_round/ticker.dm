@@ -72,14 +72,14 @@
 	)
 
 	// Embed Image
-	/*
-	embed.image = new("placeholder.png") // Needs implementation for splashscreens
-	*/
+	var/image_url = CONFIG_GET(string/roundend_image_url)
+	if(CONFIG_GET(string/roundend_splashscreen_url) && CONFIG_GET(string/splashscreen_webserver_path))
+		image_url = "[CONFIG_GET(string/roundend_splashscreen_url)][SStitle.splashscreen_name]"
+	embed.image = new(image_url)
 
 	// Thumbnail
-	/*
-	embed.thumbnail = new("placeholder.png") // Needs implementation for server icon
-	*/
+	var/thumbnail_url = CONFIG_GET(string/roundend_thumbnail_url)
+	embed.thumbnail = new(thumbnail_url)
 
 	// Footer
 	embed.footer = new("Round #[GLOB.round_id] ([SSgamemode.storyteller.name])")
