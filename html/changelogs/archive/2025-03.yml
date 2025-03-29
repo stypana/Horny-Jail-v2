@@ -963,3 +963,6 @@
   - bugfix: fixed synth chassis taking their color from the head
   xPokee:
   - rscadd: akula tongues now have the fish chat bubble effect tied to them
+2025-03-29:
+  sakke03:
+  - bugfix: bloodfledge works again
