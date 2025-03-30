@@ -49,7 +49,7 @@
 
 	embed.url = null //Placeholder, apparently it does not support byond:// links.
 
-	embed.color = "#[CONFIG_GET(string/roundend_embed_color)]"
+	embed.colour = "#[CONFIG_GET(string/roundend_embed_color)]"
 
 	// Author
 	embed.author = new("S.P.L.U.R.T. Round Reports")
