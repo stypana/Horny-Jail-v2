@@ -11,10 +11,9 @@
 		TAG_COMBAT = 0.3,
 		TAG_DESTRUCTIVE = 0.3,
 		TAG_CHAOTIC = 0.1
-		)
+	)
 	antag_divisor = 32
 	storyteller_type = STORYTELLER_TYPE_CALM
-	population_min = 15
 
 /datum/storyteller_data/tracks/chill
 	threshold_mundane = 1800
