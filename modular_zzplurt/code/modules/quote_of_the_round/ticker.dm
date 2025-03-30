@@ -60,7 +60,7 @@
 
 	// Description
 	embed.description = "The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!"
-	if(length(news_report))
+	if(length(trim(news_report)))
 		embed.description += "\n\n```\n[news_report]\n```"
 
 	// Fields
