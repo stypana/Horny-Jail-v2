@@ -13,8 +13,9 @@
 		TAG_CHAOTIC = 1.3,
 		TAG_LOW = 1,
 		TAG_MEDIUM = 1,
-		TAG HIGH = 1,
+		TAG_HIGH = 1
 	)
+
 	population_min = 35
 	antag_divisor = 5
 	storyteller_type = STORYTELLER_TYPE_INTENSE

@@ -6,7 +6,7 @@
 	antag_divisor = 8
 	storyteller_type = STORYTELLER_TYPE_ALWAYS_AVAILABLE
 
-		tag_multipliers = list(
+	tag_multipliers = list(
 		TAG_LOW = 1,
 		TAG_MEDIUM = 1,
 		TAG_HIGH = 0
