@@ -9986,7 +9986,6 @@
 #include "modular_zzplurt\code\modules\sprite_accessories\wings.dm"
 #include "modular_zzplurt\code\modules\storyteller\config.dm"
 #include "modular_zzplurt\code\modules\storyteller\gamemode.dm"
-#include "modular_zzplurt\code\modules\storyteller\event_defines\crewset\_antagonist_event.dm"
 #include "modular_zzplurt\code\modules\storyteller\event_defines\crewset\bloodsucker.dm"
 #include "modular_zzplurt\code\modules\storyteller\event_defines\crewset\changeling.dm"
 #include "modular_zzplurt\code\modules\storyteller\event_defines\crewset\heretic.dm"

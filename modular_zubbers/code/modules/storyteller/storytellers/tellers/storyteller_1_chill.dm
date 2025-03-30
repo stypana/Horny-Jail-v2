@@ -11,7 +11,7 @@
 		TAG_COMBAT = 0.3,
 		TAG_DESTRUCTIVE = 0.3,
 		TAG_CHAOTIC = 0.1
-	)
+		)
 	antag_divisor = 32
 	storyteller_type = STORYTELLER_TYPE_CALM
 
