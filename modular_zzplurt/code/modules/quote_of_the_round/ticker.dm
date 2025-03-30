@@ -59,7 +59,9 @@
 	embed.title = quote_of_the_round_data["map_text"]
 
 	// Description
-	embed.description = "The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!\n\n```\n[news_report]\n```"
+	embed.description = "The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!"
+	if(length(news_report))
+		embed.description += "\n\n```\n[news_report]\n```"
 
 	// Fields
 	embed.fields = list()
@@ -77,11 +79,11 @@
 	var/image_url = CONFIG_GET(string/roundend_image_url)
 	if(CONFIG_GET(string/roundend_splashscreen_url) && CONFIG_GET(string/splashscreen_webserver_path))
 		image_url = "[CONFIG_GET(string/roundend_splashscreen_url)][SStitle.splashscreen_name]"
-	embed.image = new(image_url)
+	embed.image = length(image_url) ? new(image_url) : null
 
 	// Thumbnail
 	var/thumbnail_url = CONFIG_GET(string/roundend_thumbnail_url)
-	if(thumbnail_url)
+	if(thumbnail_url && length(thumbnail_url))
 		embed.thumbnail = new(thumbnail_url)
 
 	// Footer
