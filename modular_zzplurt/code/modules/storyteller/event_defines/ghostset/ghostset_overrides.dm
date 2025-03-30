@@ -3,6 +3,7 @@
 
 /datum/round_event_control/space_dragon
 	tags = list(TAG_COMBAT, TAG_CHAOTIC, TAG_HIGH)
+	max_occurrences = 0
 
 /datum/round_event_control/space_ninja
 	tags = list(TAG_COMBAT, TAG_HIGH)
