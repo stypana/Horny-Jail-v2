@@ -11,5 +11,3 @@
 		TAG_MEDIUM = 1,
 		TAG_HIGH = 0
 		)
-
-	population_min = 25
