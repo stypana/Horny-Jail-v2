@@ -1,3 +1,4 @@
+/* Removed pending rework - Splurt
 /datum/round_event_control/space_dragon
 	name = "Spawn Space Dragon"
 	typepath = /datum/round_event/ghost_role/space_dragon
@@ -33,3 +34,4 @@
 	dragon.log_message("was spawned as a Space Dragon by an event.", LOG_GAME)
 	spawned_mobs += dragon
 	return SUCCESSFUL_SPAWN
+*/
