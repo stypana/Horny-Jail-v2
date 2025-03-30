@@ -20,3 +20,5 @@
 
 /datum/config_entry/string/splashscreen_webserver_path
 
+/datum/config_entry/string/roundend_embed_color
+	default = "ff4ff0"

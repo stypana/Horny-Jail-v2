@@ -23,6 +23,10 @@
 ## Overrides the roundend messages with a custom embed system
 #ROUNDEND_EMBEDS
 
+# Roundend embed color
+## Color that'll be displayed in the embed's message
+#ROUNDEND_EMBED_COLOR ff4ff0
+
 # Roundend ping role
 ## Role to ping with the roundend message. So we can ping users when the round ends so they can prepare and also when the round starts.
 #ROUNDEND_PING_ROLE

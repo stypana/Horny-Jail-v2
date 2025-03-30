@@ -49,6 +49,8 @@
 
 	embed.url = null //Placeholder, apparently it does not support byond:// links.
 
+	embed.color = "#[CONFIG_GET(string/roundend_embed_color)]"
+
 	// Author
 	embed.author = new("S.P.L.U.R.T. Round Reports")
 	embed.author.url = embed.url
@@ -79,7 +81,8 @@
 
 	// Thumbnail
 	var/thumbnail_url = CONFIG_GET(string/roundend_thumbnail_url)
-	embed.thumbnail = new(thumbnail_url)
+	if(thumbnail_url)
+		embed.thumbnail = new(thumbnail_url)
 
 	// Footer
 	embed.footer = new("Round #[GLOB.round_id] ([SSgamemode.storyteller.name])")
