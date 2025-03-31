@@ -256,7 +256,7 @@
 /turf/open/indestructible/dark,
 /area/misc/hilbertshotel)
 "yM" = (
-/obj/machinery/vending/boozeomat/cafe,
+/obj/machinery/vending/boozeomat,
 /turf/closed/indestructible/riveted,
 /area/misc/hilbertshotel)
 "yX" = (
@@ -267,16 +267,12 @@
 	pixel_y = 11
 	},
 /obj/item/stamp/denied{
-	pixel_y = 7;
+	pixel_y = 6;
 	pixel_x = -9
 	},
 /obj/item/stamp/void{
 	pixel_x = -9;
-	pixel_y = 3
-	},
-/obj/item/stamp/centcom{
-	pixel_x = -9;
-	pixel_y = -1
+	pixel_y = 0
 	},
 /turf/open/indestructible/dark,
 /area/misc/hilbertshotel)
@@ -463,9 +459,6 @@
 /area/misc/hilbertshotel)
 "Sq" = (
 /obj/structure/table/wood,
-/obj/item/documents{
-	pixel_y = 4
-	},
 /turf/open/indestructible/carpet,
 /area/misc/hilbertshotel)
 "Sx" = (
