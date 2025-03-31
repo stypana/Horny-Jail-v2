@@ -99,7 +99,7 @@
 			to_chat(target, span_warning("This room is occupied!"))
 			return
 		// try to enter if room is open
-		if(SShilbertshotel.try_join_active_room(room_number, target))
+		if(SShilbertshotel.try_join_active_room(room_number, target, src))
 			to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings)))
 			do_sparks(3, FALSE, src)
 			return
@@ -113,9 +113,9 @@
 				to_chat(user, span_warning("You try to drop \the [src], but it's too late! It's no longer in your hands! Prepare for unforeseen consequences..."))
 			else if(!user.dropItemToGround(src))
 				to_chat(user, span_warning("You can't seem to drop \the [src]! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
-	else
-		to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings)))
-		SShilbertshotel.send_to_new_room(room_number, target, template, src)
+
+	to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings)))
+	SShilbertshotel.send_to_new_room(room_number, target, template, src)
 
 /obj/item/hilbertshotel/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -187,7 +187,7 @@
 	. = ..()
 	if(.) // Orange eye; updates but is not interactive
 		return
-		
+
 	if(!usr.ckey)
 		return
 

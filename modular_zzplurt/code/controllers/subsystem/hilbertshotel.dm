@@ -79,7 +79,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 	default_template = hotel_map_list[1]
 
 /// Attempts to join an existing active room. Returns TRUE if successful, FALSE otherwise. Requires `room_number` to be set.
-/datum/controller/subsystem/hilbertshotel/proc/try_join_active_room(room_number, mob/user)
+/datum/controller/subsystem/hilbertshotel/proc/try_join_active_room(room_number, mob/user, parentSphere)
 	if(!room_data["[room_number]"])
 		return FALSE
 
@@ -104,6 +104,13 @@ SUBSYSTEM_DEF(hilbertshotel)
 	var/datum/turf_reservation/roomReservation = room["reservation"]
 	do_sparks(3, FALSE, get_turf(user))
 	var/turf/room_bottom_left = roomReservation.bottom_left_turfs[1]
+
+	var/turf/door_turf = room_data["[room_number]"]["door_reference"]
+	if(istype(door_turf, /turf/closed/indestructible/hoteldoor))
+		var/turf/closed/indestructible/hoteldoor/door = door_turf
+		if(user?.mind && parentSphere)
+			door.entry_points[user.mind] = parentSphere
+
 	user.forceMove(locate(
 		room_bottom_left.x + hotel_room_template.landingZoneRelativeX,
 		room_bottom_left.y + hotel_room_template.landingZoneRelativeY,
@@ -212,10 +219,17 @@ SUBSYSTEM_DEF(hilbertshotel)
 		var/turf/closed/indestructible/hoteldoor/door = door_turf
 		if(user?.mind && parentSphere)
 			door.entry_points[user.mind] = parentSphere
-		else
-			to_chat(world, "Hilbert's Hotel: Failed to set entry point for room [room_number]")
-	else
-		to_chat(world, "Hilbert's Hotel: Door reference is invalid for room [room_number]")
+
+	var/list/all_living_mobs = user.get_all_contents_type(/mob/living)
+	for(var/atom/any_atom in all_living_mobs)
+		if(istype(any_atom, /obj/item/clothing/head/mob_holder))
+			var/obj/item/clothing/head/mob_holder/some_holder = any_atom
+			some_holder.release()
+		if(!isliving(any_atom))
+			continue
+		var/mob/living/some_mob = any_atom
+		some_mob.forceMove(get_turf(user))
+
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
 		room_turf.x + hotel_room_template.landingZoneRelativeX,
@@ -268,6 +282,17 @@ SUBSYSTEM_DEF(hilbertshotel)
 	link_turfs(roomReservation, room_number, parentSphere)
 	var/turf/closed/indestructible/hoteldoor/door = room_data["[room_number]"]["door_reference"]
 	door.entry_points[user.mind] = parentSphere // adding the sphere to the entry points list
+
+	var/list/all_living_mobs = user.get_all_contents_type(/mob/living)
+	for(var/atom/any_atom in all_living_mobs)
+		if(istype(any_atom, /obj/item/clothing/head/mob_holder))
+			var/obj/item/clothing/head/mob_holder/some_holder = any_atom
+			some_holder.release()
+		if(!isliving(any_atom))
+			continue
+		var/mob/living/some_mob = any_atom
+		some_mob.forceMove(get_turf(user))
+
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
 		bottom_left.x + hotel_room_template.landingZoneRelativeX,
