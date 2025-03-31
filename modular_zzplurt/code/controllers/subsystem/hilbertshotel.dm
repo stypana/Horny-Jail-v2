@@ -202,6 +202,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 		"template" = conservated_room_data["template"],
 		"room_preferences" = room_preferences.Copy(),
 		"access_restrictions" = access_restrictions.Copy(),
+		"is_ghost_cafe" = conservated_room_data["is_ghost_cafe"],
 	)
 	conservated_rooms -= "[room_number]"
 
@@ -261,6 +262,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 			"room_owner" = user.mind,
 			"trusted_guests" = list(),
 		),
+		"is_ghost_cafe" = parentSphere.is_ghost_cafe,
 	))
 
 	link_turfs(roomReservation, room_number, parentSphere)
@@ -362,11 +364,13 @@ SUBSYSTEM_DEF(hilbertshotel)
 	var/room_template = room_data["[current_area.room_number]"]["template"]
 	var/list/room_preferences = room_data["[current_area.room_number]"]["room_preferences"]
 	var/list/access_restrictions = room_data["[current_area.room_number]"]["access_restrictions"]
+	var/is_ghost_cafe = room_data["[current_area.room_number]"]["is_ghost_cafe"]
 	conservated_rooms["[current_area.room_number]"] = list(
 		"storage" = storage,
 		"template" = room_template,
 		"room_preferences" = room_preferences.Copy(),
 		"access_restrictions" = access_restrictions.Copy(),
+		"is_ghost_cafe" = is_ghost_cafe,
 	)
 	room_data -= "[current_area.room_number]"
 	qdel(current_area.reservation)
