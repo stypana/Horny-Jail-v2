@@ -16,7 +16,7 @@
 	if(quote_of_the_round_text)
 		data["quote_presentation"] = "-# [pick(strings("quote_of_the_round.json", "workers"))] [pick(strings("quote_of_the_round.json", "action"))] [pick(strings("quote_of_the_round.json", "message"))] that occured during said shift:"
 		data["quote_text"] = "**\"[quote_of_the_round_text]\"**"
-		data["quote_attribution"] = "*- [quote_of_the_round_attribution]*"
+		data["quote_attribution"] = "*-[quote_of_the_round_attribution]*"
 		to_chat(world, span_notice("A quote of the round was found, and should have been sent to discord."))
 		log_runtime("A quote of the round was found, and should have been sent to discord.")
 	else
