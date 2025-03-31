@@ -79,7 +79,8 @@
 	var/image_url = CONFIG_GET(string/roundend_image_url)
 	if(CONFIG_GET(string/roundend_splashscreen_url) && CONFIG_GET(string/splashscreen_webserver_path))
 		image_url = "[CONFIG_GET(string/roundend_splashscreen_url)][SStitle.splashscreen_name]"
-	embed.image = length(image_url) ? new(image_url) : embed.image
+	if(image_url && length(image_url))
+		embed.image = new(image_url)
 
 	// Thumbnail
 	var/thumbnail_url = CONFIG_GET(string/roundend_thumbnail_url)
