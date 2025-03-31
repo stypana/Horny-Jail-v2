@@ -126,7 +126,7 @@
 
 /obj/machinery/room_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	if(.)
+	if(.) // Orange eye; updates but is not interactive
 		return
 
 	switch(action)

@@ -13,6 +13,7 @@
 	icon_state = "hilbertshotel"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	var/is_ghost_cafe = FALSE
 
 /obj/item/hilbertshotel/New()
 	. = ..()
@@ -82,11 +83,17 @@
 		return
 
 	if(SShilbertshotel.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
+		if(SShilbertshotel.conservated_rooms["[room_number]"]["is_ghost_cafe"] != is_ghost_cafe)
+			to_chat(target, span_warning("You can't enter this room!"))
+			return
 		to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings))) // we're lucky - a conservated room exists which means we don't have to check for other stuff here
 		if(SShilbertshotel.try_join_conservated_room(room_number, target, src))
 			return
 		return
 	else if(SShilbertshotel.room_data["[room_number]"]) // check 2 - active rooms
+		if(SShilbertshotel.room_data["[room_number]"]["is_ghost_cafe"] != is_ghost_cafe)
+			to_chat(target, span_warning("You can't enter this room!"))
+			return
 		var/list/room = SShilbertshotel.room_data["[room_number]"]
 		if(room["room_preferences"]["status"] == ROOM_CLOSED)
 			to_chat(target, span_warning("This room is occupied!"))
@@ -144,7 +151,7 @@
 	data["active_rooms"] = list()
 	for(var/room_number in SShilbertshotel.room_data)
 		var/list/room = SShilbertshotel.room_data["[room_number]"]
-		if(room["room_preferences"]["visibility"] == ROOM_VISIBLE)
+		if(room["room_preferences"]["visibility"] == ROOM_VISIBLE && room["is_ghost_cafe"] == is_ghost_cafe)
 			data["active_rooms"] += list(list(
 				"number" = room_number,
 				"occupants" = SShilbertshotel.generate_occupant_list(room_number),
@@ -154,6 +161,8 @@
 	for(var/room_number in SShilbertshotel.conservated_rooms)
 		var/list/room = SShilbertshotel.conservated_rooms[room_number]
 		var/visibility = room["room_preferences"]["visibility"]
+		if(room["is_ghost_cafe"] != is_ghost_cafe)
+			continue
 		switch(visibility)
 			if(ROOM_VISIBLE)
 				data["conservated_rooms"] += list(list(
@@ -176,10 +185,10 @@
 
 /obj/item/hilbertshotel/ui_act(action, params)
 	. = ..()
-	if(!usr.ckey)
+	if(.) // Orange eye; updates but is not interactive
 		return
-
-	if(!isliving(usr)) // Avoid ghosts from creating or updating rooms
+		
+	if(!usr.ckey)
 		return
 
 	if(!SShilbertshotel.user_data[usr.ckey])
@@ -207,7 +216,7 @@
 
 		if("checkin")
 			var/template = SShilbertshotel.user_data[usr.ckey]["template"] || SShilbertshotel.default_template
-			var/room_number = SShilbertshotel.user_data[usr.ckey]["room_number"] || 1
+			var/room_number = params["room"] || SShilbertshotel.user_data[usr.ckey]["room_number"] || 1
 			if(!room_number || !(template in SShilbertshotel.hotel_map_list))
 				return FALSE
 			prompt_check_in(usr, usr, room_number, template)

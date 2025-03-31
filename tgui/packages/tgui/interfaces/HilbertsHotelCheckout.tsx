@@ -79,7 +79,7 @@ const OpenRooms = ({ data, act, selected_template }) => {
                     confirmColor="green"
                     onClick={() =>
                       act('checkin', {
-                        room: room.number,
+                        room: Number(room.number),
                         template: selected_template,
                       })
                     }

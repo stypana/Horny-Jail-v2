@@ -2276,7 +2276,9 @@
 /turf/open/misc/grass/planet,
 /area/centcom/holding/cafe/park)
 "aCR" = (
-/obj/item/hilbertshotel/ghostdojo,
+/obj/item/hilbertshotel/ghostdojo{
+	is_ghost_cafe = 1
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aCS" = (
