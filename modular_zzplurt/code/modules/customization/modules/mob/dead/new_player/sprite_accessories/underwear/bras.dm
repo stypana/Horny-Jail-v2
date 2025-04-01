@@ -106,10 +106,12 @@
 	icon_state = "bra_bee-kini"
 	use_static = TRUE
 
+/*
 /datum/sprite_accessory/bra/cow
 	name = "Bra - Cow"
 	icon_state = "bra_cow"
 	use_static = TRUE
+*/
 
 /datum/sprite_accessory/bra/hi_vis_bra
 	name = "Safekini"
