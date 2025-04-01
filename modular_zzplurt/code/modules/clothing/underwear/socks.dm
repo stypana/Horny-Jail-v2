@@ -14,6 +14,8 @@
 	var/mob/living/carbon/human/human = user
 	if(slot & ITEM_SLOT_EXTRA && slot_noextra & ITEM_SLOT_SOCKS)
 		human.socks = name
+		// Force an update when equipping to ensure visibility is properly set
+		human.update_worn_socks()
 	else
 		human.socks = "Nude"
 
@@ -23,6 +25,8 @@
 		return
 	var/mob/living/carbon/human/human = user
 	human.socks = "Nude"
+	// Force an update when dropping socks
+	human.update_worn_socks()
 
 /**
  * Do not declare new shirt or bra objects directly through typepaths, use SHIRT_OBJECT(class)/BRA_OBJECT(class) instead
