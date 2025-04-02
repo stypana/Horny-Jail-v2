@@ -131,3 +131,8 @@
 	icon_state = "babydoll"
 	gender = FEMALE
 	use_static = FALSE
+
+/datum/sprite_accessory/undershirt/dogborgshirt
+	name = "I Love Dogborgs"
+	icon_state = "shirt_dogborg"
+	use_static = FALSE

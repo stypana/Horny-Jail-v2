@@ -32,6 +32,9 @@
 		if(update_obscured)
 			update_obscured_slots(undies.flags_inv)
 
+		if(underwear_hidden())
+			return
+
 		var/target_overlay = undies.icon_state
 		var/mutable_appearance/underwear_overlay
 		var/icon_file = 'modular_zzplurt/icons/mob/clothing/underwear.dmi'
@@ -98,6 +101,8 @@
 		if(update_obscured)
 			update_obscured_slots(undershirt.flags_inv)
 
+		if(undershirt_hidden())
+			return
 		var/target_overlay = undershirt.icon_state
 		var/mutable_appearance/shirt_overlay
 		var/icon_file = 'modular_zzplurt/icons/mob/clothing/underwear.dmi'
@@ -163,6 +168,9 @@
 
 		if(update_obscured)
 			update_obscured_slots(bra.flags_inv)
+
+		if(bra_hidden())
+			return
 
 		var/target_overlay = bra.icon_state
 		var/mutable_appearance/bra_overlay
@@ -307,6 +315,9 @@
 
 		if(update_obscured)
 			update_obscured_slots(worn_item.flags_inv)
+
+		if(socks_hidden())
+			return
 
 		var/target_overlay = worn_item.icon_state
 		var/icon_file = DEFAULT_SOCKS_FILE
