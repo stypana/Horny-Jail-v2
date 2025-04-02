@@ -189,6 +189,7 @@
 	//ensure we detach once we no longer need to be attached
 	addtimer(CALLBACK(src, PROC_REF(detach)), MAX_IMPREGNATION_TIME)
 
+	breakouttime = 0.1 SECONDS // SPLRUT EDIT // To prevent these from being torn off by clothesplosion
 
 	if(!sterile)
 		victim.take_bodypart_damage(strength,0) //done here so that humans in helmets take damage
@@ -199,6 +200,7 @@
 	addtimer(CALLBACK(src, PROC_REF(Impregnate), victim), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 /obj/item/clothing/mask/facehugger/proc/detach()
+	breakouttime = initial(breakouttime) // SPLRUT EDIT // To prevent these from being torn off by clothesplosion
 	attached = 0
 
 /obj/item/clothing/mask/facehugger/proc/Impregnate(mob/living/target)
