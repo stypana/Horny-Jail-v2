@@ -1,4 +1,13 @@
 2025-04-01:
+  BurgerBB:
+  - rscdel: Disabler boots have a 5% chance (per locker) to spawn in a locker during
+      april fools.
+  - rscadd: Adds a new storyteller, "The Enemy Within".
+2025-04-02:
+  StrangeWeirdKitten:
+  - rscdel: Removes the handheld crew monitor from the medical lathes.
+  plsleavemealon:
+  - bugfix: fixed ethereals powercell back to bubbers values
   Fabian272:
   - bugfix: Fixes Tiziran Black Broth recipe
   evandarksky:
