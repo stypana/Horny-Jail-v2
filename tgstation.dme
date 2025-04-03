@@ -10003,7 +10003,6 @@
 #include "modular_zzplurt\code\modules\modular_items\misc\toys.dm"
 #include "modular_zzplurt\code\modules\movespeed\modifiers\components.dm"
 #include "modular_zzplurt\code\modules\movespeed\modifiers\innate.dm"
-#include "modular_zzplurt\code\modules\primitive_cooking_additions\cauldron.dm"
 #include "modular_zzplurt\code\modules\projectiles\guns\energy\kinetic_accelerator.dm"
 #include "modular_zzplurt\code\modules\projectiles\guns\energy\pka_skin_variations.dm"
 #include "modular_zzplurt\code\modules\quote_of_the_round\ticker.dm"
