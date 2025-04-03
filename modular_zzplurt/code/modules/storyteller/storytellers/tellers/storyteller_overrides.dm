@@ -15,3 +15,6 @@
 
 /datum/storyteller/house
 	votable = FALSE
+
+/datum/storyteller/enemy
+	votable = FALSE
