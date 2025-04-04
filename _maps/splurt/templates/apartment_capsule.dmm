@@ -6,6 +6,7 @@
 "aK" = (
 /obj/machinery/light/directional,
 /obj/structure/table/reinforced,
+/obj/effect/spawner/random/food_or_drink/three_course_meal,
 /turf/open/floor/pod/dark,
 /area/misc/hilbertshotel)
 "bl" = (
@@ -20,6 +21,7 @@
 /area/misc/hilbertshotel)
 "bL" = (
 /obj/structure/fans,
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/floor/pod/dark,
 /area/misc/hilbertshotel)
 "bP" = (
@@ -278,6 +280,7 @@
 "IM" = (
 /obj/machinery/smartfridge/survival_pod,
 /obj/structure/sign/poster/contraband/random/directional/north,
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/floor/pod/dark,
 /area/misc/hilbertshotel)
 "JL" = (
@@ -386,6 +389,7 @@
 /area/misc/hilbertshotel)
 "QJ" = (
 /obj/item/gps/computer,
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/floor/pod/dark,
 /area/misc/hilbertshotel)
 "Rc" = (

@@ -607,9 +607,6 @@
 /area/misc/hilbertshotel)
 "KF" = (
 /obj/structure/table/reinforced,
-/obj/item/sharpener{
-	pixel_x = -5
-	},
 /turf/open/floor/iron/kitchen,
 /area/misc/hilbertshotel)
 "Lf" = (

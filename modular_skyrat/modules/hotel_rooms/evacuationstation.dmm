@@ -85,12 +85,12 @@
 	},
 /area/misc/hilbertshotel)
 "eM" = (
-/obj/machinery/rnd/production/protolathe/department/science{
-	on_station_lathe = 0;
-	is_operational = 0;
-	name = "Cloning Lab Lathe"
+/obj/structure/showcase{
+	icon = 'icons/obj/machines/research.dmi';
+	icon_state = "protolathe";
+	name = "Science Protolathe";
+	desc = "A special protolathe with a built in interface meant for departmental usage, with built in ExoSync receivers allowing it to print designs researched that match its ROM-encoded department type."
 	},
-/obj/effect/mapping_helpers/broken_machine,
 /turf/open/indestructible/dark/textured{
 	force_no_gravity = 1;
 	name = "Dark Tiling"
@@ -963,6 +963,7 @@
 /obj/structure/showcase/machinery/oldpod/used{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/broken_machine,
 /turf/open/indestructible/dark/textured{
 	force_no_gravity = 1;
 	name = "Dark Tiling"
