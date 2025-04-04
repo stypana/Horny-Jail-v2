@@ -5,7 +5,8 @@
 	icon_state = "sec_armor_kit"
 	w_class = WEIGHT_CLASS_SMALL
 
-	var/datum/armor/target_armor = /datum/armor/suit_armor
+	var/datum/armor/target_armor = /datum/armor/suit_armor // Holds the typepath of the armor.
+	var/datum/armor/actual_armor // Holds the real datum of the armor.
 	var/target_slot = ITEM_SLOT_OCLOTHING
 	var/change_allowed = TRUE
 	var/list/target_allowed // = GLOB.security_vest_allowed
@@ -13,14 +14,13 @@
 	var/armor_text = "standard Nanotrasen security armored vest"
 	var/target_prefix = "rampart"
 
-/obj/item/armorkit/Initialize(mapload) // You're killing me here.
+/obj/item/armorkit/Initialize(mapload)
 	. = ..()
-	target_allowed = GLOB.security_vest_allowed
+	actual_armor = new target_armor(src)
+	target_allowed = GLOB.security_vest_allowed // You're killing me here.
 
 /obj/item/armorkit/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/used = FALSE
-
-	stack_trace("[src] started afterattack.")
 
 	if(!isobj(interacting_with))
 		return NONE
@@ -29,17 +29,14 @@
 
 	if(!(target.slot_flags & target_slot))
 		to_chat(user, "<span class = 'notice'>You can't reinforce [target] with [src].</span>")
-		stack_trace("[src] aborted afterattack.")
 		return NONE
-
-	stack_trace("[src] check passed.")
 
 	var/obj/item/clothing/C = target
 	var/datum/armor/curr_armor = C.get_armor()
 
 	for(var/curr_stat in ARMOR_LIST_DAMAGE())
-		if(!curr_armor.get_rating(curr_stat) || curr_armor.get_rating(curr_stat) < target_armor.get_rating(curr_stat))
-			C.set_armor(curr_armor.generate_new_with_specific(list(curr_stat = target_armor.get_rating(curr_stat))))
+		if(!curr_armor.get_rating(curr_stat) || curr_armor.get_rating(curr_stat) < actual_armor.get_rating(curr_stat))
+			C.set_armor_rating(curr_stat, actual_armor.get_rating(curr_stat))
 			used = TRUE
 
 	if(used)
