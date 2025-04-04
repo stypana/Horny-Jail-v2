@@ -47,6 +47,14 @@
 	. = ..()
 	. += emissive_appearance(icon, "hilbertshotel", src)
 
+/obj/item/hilbertshotel/attack(mob/living/target_mob, mob/living/user, params)
+	if(!target_mob.mind)
+		to_chat(user, span_warning("[target_mob] is not intelligent enough to understand how to use this device!"))
+		return ..()
+
+	to_chat(user, span_notice("You invite [target_mob] to the hotel."))
+	ui_interact(target_mob)
+
 /obj/item/hilbertshotel/ghostdojo/examine(mob/user)
 	. = ..()
 	. += span_notice("It's slightly trembling.")
@@ -105,7 +113,7 @@
 			return
 	// some vanity stuff I guess? also kudos to the dev for HL reference lol
 	if(src.type == /obj/item/hilbertshotel)
-		if(!(get_atom_on_turf(src, /mob) == user))
+		if(!(get_atom_on_turf(src, /mob) == user || loc == user))
 			to_chat(user, span_warning("\The [src] is no longer in your possession!"))
 			return
 		if(user == target)
@@ -219,7 +227,10 @@
 			var/room_number = params["room"] || SShilbertshotel.user_data[usr.ckey]["room_number"] || 1
 			if(!room_number || !(template in SShilbertshotel.hotel_map_list))
 				return FALSE
-			prompt_check_in(usr, usr, room_number, template)
+			var/mob/living/user = usr
+			if(type == /obj/item/hilbertshotel)
+				user = istype(loc, /mob/living) ? loc : usr
+			prompt_check_in(user, usr, room_number, template)
 			return TRUE
 
 // Template Stuff
