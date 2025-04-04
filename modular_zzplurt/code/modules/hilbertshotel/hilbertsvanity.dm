@@ -80,6 +80,8 @@
 	name = "note to the institute"
 
 /obj/item/paper/crumpled/ruins/note_institute/Initialize(mapload)
+	if(!SShilbertshotel.hhMysteryroom_number)
+		SShilbertshotel.hhMysteryroom_number = rand(1, 999999) // Fix, it should keep the same number on subsystem init
 	default_raw_text = {"Note to the Institute<br>
 	If you're reading this, I hope you're from the Institute. First things first, I should apologise. I won't be coming back to teach in the new semester.<br>
 	We've made some powerful enemies. Very powerful. More powerful than any of you can imagine, and so we can't come back.<br>
