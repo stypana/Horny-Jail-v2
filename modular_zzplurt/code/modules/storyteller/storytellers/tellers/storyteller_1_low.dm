@@ -17,4 +17,4 @@
 		TAG_HIGH = 0
 	)
 	antag_divisor = 32
-	storyteller_type = STORYTELLER_TYPE_CALM
+	//storyteller_type = STORYTELLER_TYPE_CALM //for testing

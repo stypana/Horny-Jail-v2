@@ -17,4 +17,4 @@
 	)
 
 	antag_divisor = 5
-	storyteller_type = STORYTELLER_TYPE_INTENSE
+	//storyteller_type = STORYTELLER_TYPE_INTENSE //for testing
