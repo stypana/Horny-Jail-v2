@@ -105,7 +105,7 @@
 /datum/reagent/shrinkchem/on_mob_life(mob/living/M)
 	var/size = get_size(M)
 	if(size > RESIZE_MICRO)
-		M.update_size(get_size(M) - 0.025)
+		M.update_size(size - 0.025)
 		M.visible_message(span_danger("[pick("[M] shrinks down!", "[M] dwindles in size!", "[M] compresses down!")]"), span_danger("[pick("You feel your body compressing in size!", "The world pushes outwards in every direction!", "You feel your muscles contract, and your surroundings grow!")]"))
 	..()
 	. = 1
