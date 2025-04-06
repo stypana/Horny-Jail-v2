@@ -9,7 +9,7 @@
 	has_desc = TRUE
 	count_method = VOTE_COUNT_METHOD_RANKED
 	winner_method = VOTE_WINNER_METHOD_RANKED
-	ranked_winner_threshold = 50 // 50% threshold for direct win
+	ranked_winner_threshold = 80 // 80% threshold for direct win
 	vote_reminder = TRUE
 
 /datum/vote/storyteller/New()
