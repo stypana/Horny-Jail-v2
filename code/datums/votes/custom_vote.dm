@@ -64,7 +64,7 @@
 		user = vote_creator,
 		message = "How should the vote winner be determined?",
 		title = "Winner Method",
-		items = list("Simple", "Weighted Random", "No Winner"),
+		items = list("Simple", "Weighted Random", "No Winner", "Ranked"),
 		default = "Simple",
 	)
 	switch(custom_win_method)
@@ -74,6 +74,8 @@
 			winner_method = VOTE_WINNER_METHOD_WEIGHTED_RANDOM
 		if("No Winner")
 			winner_method = VOTE_WINNER_METHOD_NONE
+		if("Ranked")
+			winner_method = VOTE_WINNER_METHOD_RANKED
 		if(null)
 			return FALSE
 		else
