@@ -23,6 +23,8 @@
 	var/winner_method = VOTE_WINNER_METHOD_SIMPLE
 	/// Should we show details about the number of votes submitted for each option?
 	var/display_statistics = TRUE
+	/// The threshold for a winner in ranked voting as a percentage (0-100)
+	var/ranked_winner_threshold = 50
 
 	// Internal values used when tracking ongoing votes.
 	// Don't mess with these, change the above values / override procs for subtypes.
@@ -133,6 +135,8 @@
 			return get_simple_winner()
 		if(VOTE_WINNER_METHOD_WEIGHTED_RANDOM)
 			return get_random_winner()
+		if(VOTE_WINNER_METHOD_RANKED)
+			return get_ranked_winner()
 
 	stack_trace("invalid select winner method: [winner_method]. Defaulting to simple.")
 	return get_simple_winner()
@@ -160,6 +164,105 @@
 	var/winner = pick_weight(choices)
 	return winner ? list(winner) : list()
 
+/// Gets the winner using ranked choice voting.
+/datum/vote/proc/get_ranked_winner()
+	// Create a copy of the choices to work with
+	var/list/remaining_choices = choices.Copy()
+	// Total number of voters who submitted at least one ranked choice
+	var/total_voters = 0
+	// List of all voter ckeys
+	var/list/all_voters = list()
+
+	// Collect all voters
+	for(var/key in choices_by_ckey)
+		var/split_key = splittext(key, "_")
+		if(length(split_key) != 2)
+			continue
+
+		var/ckey = split_key[1]
+		if(!(ckey in all_voters) && choices_by_ckey[key] > 0)
+			all_voters += ckey
+			total_voters++
+
+	// If no one voted, return empty list
+	if(total_voters == 0)
+		return list()
+
+	// Calculate the threshold for victory (>50% by default)
+	var/victory_threshold = round((total_voters * ranked_winner_threshold) / 100, 1)
+
+	// While we still have choices to consider
+	while(length(remaining_choices) > 1)
+		// Find highest vote count and check if it meets threshold
+		var/highest_votes = 0
+		var/list/highest_choices = list()
+
+		for(var/option in remaining_choices)
+			var/votes = remaining_choices[option]
+			if(votes > highest_votes)
+				highest_votes = votes
+				highest_choices = list(option)
+			else if(votes == highest_votes)
+				highest_choices += option
+
+		// Check if any option has reached the threshold
+		if(highest_votes >= victory_threshold)
+			return highest_choices
+
+		// Find lowest vote count to eliminate
+		var/lowest_votes = INFINITY
+		var/list/lowest_choices = list()
+
+		for(var/option in remaining_choices)
+			var/votes = remaining_choices[option]
+			if(votes < lowest_votes)
+				lowest_votes = votes
+				lowest_choices = list(option)
+			else if(votes == lowest_votes)
+				lowest_choices += option
+
+		// If we have multiple options with the lowest votes, pick one randomly
+		var/option_to_eliminate
+		if(length(lowest_choices) > 1)
+			option_to_eliminate = pick(lowest_choices)
+		else
+			option_to_eliminate = lowest_choices[1]
+
+		// Remove the eliminated option from choices
+		remaining_choices -= option_to_eliminate
+
+		// Redistribute votes
+		for(var/ckey in all_voters)
+			// Find what rank the voter gave to the eliminated option
+			var/eliminated_rank = choices_by_ckey["[ckey]_[option_to_eliminate]"]
+			if(!eliminated_rank) // They didn't rank this option
+				continue
+
+			// Find their next preference after this one
+			var/next_preference = null
+			var/next_rank = INFINITY
+
+			for(var/option in remaining_choices)
+				var/rank = choices_by_ckey["[ckey]_[option]"]
+				if(!rank || rank <= eliminated_rank)
+					continue
+
+				if(rank < next_rank)
+					next_rank = rank
+					next_preference = option
+
+			// If we found a next preference and they had the eliminated option as their #1 choice
+			if(next_preference)
+				// Transfer first place vote to next preference
+				remaining_choices[next_preference]++
+
+	// If we're down to one option, it's the winner
+	if(length(remaining_choices) == 1)
+		return list(remaining_choices[1])
+
+	// This should never happen but just in case
+	return list()
+
 /**
  * Gets the resulting text displayed when the vote is completed.
  *
@@ -183,6 +286,8 @@
 			returned_text += "None"
 		if(VOTE_WINNER_METHOD_WEIGHTED_RANDOM)
 			returned_text += "Weighted Random"
+		if(VOTE_WINNER_METHOD_RANKED)
+			returned_text += "Ranked"
 		else
 			returned_text += "Simple"
 
