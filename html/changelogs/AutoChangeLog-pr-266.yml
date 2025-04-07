@@ -1,9 +1,0 @@
-author: "Phoenix4O4"
-delete-after: True
-changes:
-  - bugfix: "Fixed issue with underwear not being visible after removing outer clothing when it was equipped while outer clothing was worn"
-  - bugfix: "Fixed incorrect underwear color display in UI and on characters"
-  - bugfix: "Fixed underwear sprites not properly updating when changing leg types in character creation menu"
-  - bugfix: "Fixed underwear colors not properly applying when first spawning into the round"
-  - refactor: "Consolidated underwear sprite system to use a single file with \"d\" suffix for digitigrade variants instead of separate DMI files"
-  - image: "Replaced underwear sprites with more detailed versions from NovaSector, keeping S.P.L.U.R.T. originals as modular additions"

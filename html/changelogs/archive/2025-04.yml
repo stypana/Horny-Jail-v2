@@ -50,10 +50,6 @@
   Bombermansam:
   - rscadd: Makes Nugget Boxes and Food packs small
 2025-04-05:
-  MosleyTheMalO:
-  - bugfix: fixes some size-related code hardsetting your size instead of editing
-      it
-  - bugfix: fixes lewd medipen sprites
   Bombermansam:
   - rscadd: '*skweh emote to be sad'
   - bugfix: Silicons can now yip.
@@ -64,6 +60,10 @@
   - sound: Slug Scream sound added to *scream choices
   LT3:
   - bugfix: Tram information plate and other signs mount correctly on tram walls
+  MosleyTheMalO:
+  - bugfix: fixes some size-related code hardsetting your size instead of editing
+      it
+  - bugfix: fixes lewd medipen sprites
   Odairu:
   - rscadd: several vulpkanin species buffs/debuffs
   - balance: shadekin empathy is better/worse based on mood
@@ -80,3 +80,19 @@
   - bugfix: fixed sechud nv goggles being invisible when off
   pixelkitty286:
   - balance: Super cat ear cool downs are longer and removed the freedom implant function.
+2025-04-07:
+  Odairu:
+  - balance: shadekin nv buffed from 4.5/100 to 15/100
+  - balance: shadekin move a bit slower in the light
+  Phoenix4O4:
+  - bugfix: Fixed issue with underwear not being visible after removing outer clothing
+      when it was equipped while outer clothing was worn
+  - bugfix: Fixed incorrect underwear color display in UI and on characters
+  - bugfix: Fixed underwear sprites not properly updating when changing leg types
+      in character creation menu
+  - bugfix: Fixed underwear colors not properly applying when first spawning into
+      the round
+  - refactor: Consolidated underwear sprite system to use a single file with "d" suffix
+      for digitigrade variants instead of separate DMI files
+  - image: Replaced underwear sprites with more detailed versions from NovaSector,
+      keeping S.P.L.U.R.T. originals as modular additions
