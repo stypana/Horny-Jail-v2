@@ -1,6 +1,0 @@
-author: "mcbalaam"
-delete-after: True
-changes:
-  - rscadd: "Added the Room Controller to adjust Infinity Hotel rooms"
-  - rscadd: "New UI for the Infinity Hotel sphere"
-  - refactor: "Minor hotel template loading refactor - new rooms can be fully modular now"
