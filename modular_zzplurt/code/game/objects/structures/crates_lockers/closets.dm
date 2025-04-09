@@ -58,7 +58,7 @@
 	return CLICK_ACTION_BLOCKING
 
 /obj/structure/closet/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stack/packing_peanuts) && opened && !packing_overlay)
+	if(istype(W, /obj/item/stack/packing_peanuts) && opened && packable && !packing_overlay)
 		try_packing(W, user)
 		take_contents()
 		return TRUE //no afterattack
@@ -81,20 +81,20 @@
 	packing_overlay.update_contents(src)
 
 /obj/structure/closet/proc/try_packing(obj/item/stack/peanuts, mob/user)
-	if(user && !do_after(user, 3 SECONDS, src))
-		return FALSE
 	if(user)
 		balloon_alert(user, "Packing...")
+		if(!do_after(user, 3 SECONDS, src))
+			return FALSE
 	if(!peanuts.use(10))
 		balloon_alert(user, "Not enough peanuts!")
 		return FALSE
 	return get_packed()
 
 /obj/structure/closet/proc/try_unpacking(mob/user, create_peanuts = TRUE)
-	if(user && !do_after(user, 3 SECONDS, src))
-		return FALSE
 	if(user)
-		balloon_alert("Unpacking....")
+		balloon_alert(user, "Unpacking....")
+		if(!do_after(user, 3 SECONDS, src))
+			return FALSE
 	var/successfully_unpacked = get_unpacked(create_peanuts)
 	if(successfully_unpacked && opened)
 		dump_contents()

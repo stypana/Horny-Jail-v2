@@ -32,7 +32,8 @@
 
 /obj/effect/overlay/packing_peanuts/update_overlays()
 	. = ..()
-	. += mutable_appearance(icon, "[base_icon_state]_over", plane = GAME_PLANE, layer = ABOVE_MOB_LAYER,  offset_spokesman = (peanut_master || src))
+	. += mutable_appearance(icon, "[base_icon_state]_over", plane = FLOAT_PLANE, layer = ABOVE_MOB_LAYER,  offset_spokesman = (peanut_master || src))
 
 /obj/effect/overlay/packing_peanuts/proc/update_contents(obj/structure/closet/packed_crate)
 	vis_contents = packed_crate.contents
+	update_appearance(UPDATE_ICON)

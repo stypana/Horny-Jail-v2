@@ -1029,6 +1029,10 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	if(isstructure(loc))
 		relay_container_resist_act(user, loc)
 	if(opened)
+		// SPLURT EDIT ADDITION - PACKING PEANUTS
+		if(packing_overlay)
+			get_unpacked(create_peanuts = TRUE)
+		// SPLURT EDIT END
 		return
 	if(ismovable(loc))
 		user.changeNext_move(CLICK_CD_BREAKOUT)
