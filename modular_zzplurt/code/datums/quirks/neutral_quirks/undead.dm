@@ -41,6 +41,9 @@
 	// Define quirk holder mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
+	if(QDELETED(quirk_mob))
+		return
+
 	// Revert biotypes
 	quirk_mob.mob_biotypes += MOB_ORGANIC
 	quirk_mob.mob_biotypes -= MOB_UNDEAD
