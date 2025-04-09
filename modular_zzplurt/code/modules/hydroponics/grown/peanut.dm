@@ -35,7 +35,7 @@
 	var/packing_name = "packing peanuts"
 
 // Copypasta from cotton, bite me
-/obj/item/grown/cotton/attack_self(mob/user)
+/obj/item/food/grown/peanut/packing/attack_self(mob/user)
 	var/packing_count = 1
 	if(seed)
 		packing_count += round(seed.potency / 25)
