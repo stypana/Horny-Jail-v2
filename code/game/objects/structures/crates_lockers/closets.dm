@@ -494,7 +494,13 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	opened = TRUE
 	if(!dense_when_open)
 		set_density(FALSE)
+	/* SPLURT EDIT REMOVAL - Packing peanuts
 	dump_contents()
+	*/
+	// SPLURT EDIT - Packing peanuts
+	if(!packing_overlay)
+		dump_contents()
+	// SPLURT EDIT END
 	if(special_effects)
 		animate_door(FALSE)
 	update_appearance()
