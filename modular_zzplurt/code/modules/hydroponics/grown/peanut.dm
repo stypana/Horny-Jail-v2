@@ -26,7 +26,8 @@
 	seed = /obj/item/seeds/peanut/packing
 	name = "package peanut"
 	desc = "A boring mutated crop that doesn't pack much flavor. Though, when processed, they make shipping safer."
-	icon_state = "peanut"
+	icon = 'modular_zzplurt/icons/obj/service/hydroponics/harvest.dmi'
+	icon_state = "package_peanut"
 	foodtypes = GRAIN | NUTS | CLOTH
 	grind_results = list(/datum/reagent/consumable/peanut_butter/packing = 0)
 	tastes = list("starchy peanuts" = 1)
