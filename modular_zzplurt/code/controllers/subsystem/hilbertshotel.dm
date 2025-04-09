@@ -220,6 +220,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 		if(user?.mind && parentSphere)
 			door.entry_points[user.mind] = parentSphere
 
+	/* Not necessary thanks to the ghost cafe configs
 	var/list/all_living_mobs = user.get_all_contents_type(/mob/living)
 	for(var/atom/any_atom in all_living_mobs)
 		if(istype(any_atom, /obj/item/clothing/head/mob_holder))
@@ -229,6 +230,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 			continue
 		var/mob/living/some_mob = any_atom
 		some_mob.forceMove(get_turf(user))
+	*/
 
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
@@ -283,6 +285,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 	var/turf/closed/indestructible/hoteldoor/door = room_data["[room_number]"]["door_reference"]
 	door.entry_points[user.mind] = parentSphere // adding the sphere to the entry points list
 
+	/* Not necessary thanks to the ghost cafe configs
 	var/list/all_living_mobs = user.get_all_contents_type(/mob/living)
 	for(var/atom/any_atom in all_living_mobs)
 		if(istype(any_atom, /obj/item/clothing/head/mob_holder))
@@ -292,6 +295,7 @@ SUBSYSTEM_DEF(hilbertshotel)
 			continue
 		var/mob/living/some_mob = any_atom
 		some_mob.forceMove(get_turf(user))
+	*/
 
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(

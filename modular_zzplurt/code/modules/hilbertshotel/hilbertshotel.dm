@@ -91,7 +91,7 @@
 		return
 
 	if(SShilbertshotel.conservated_rooms["[room_number]"]) // check 1 - conservated rooms
-		if(SShilbertshotel.conservated_rooms["[room_number]"]["is_ghost_cafe"] != is_ghost_cafe)
+		if(SShilbertshotel.conservated_rooms["[room_number]"]["is_ghost_cafe"] != is_ghost_cafe && CONFIG_GET(flag/hilbertshotel_ghost_cafe_restricted))
 			to_chat(target, span_warning("You can't enter this room!"))
 			return
 		to_chat(target, span_notice(pick(SShilbertshotel.vanity_strings))) // we're lucky - a conservated room exists which means we don't have to check for other stuff here
@@ -99,7 +99,7 @@
 			return
 		return
 	else if(SShilbertshotel.room_data["[room_number]"]) // check 2 - active rooms
-		if(SShilbertshotel.room_data["[room_number]"]["is_ghost_cafe"] != is_ghost_cafe)
+		if(SShilbertshotel.room_data["[room_number]"]["is_ghost_cafe"] != is_ghost_cafe && CONFIG_GET(flag/hilbertshotel_ghost_cafe_restricted))
 			to_chat(target, span_warning("You can't enter this room!"))
 			return
 		var/list/room = SShilbertshotel.room_data["[room_number]"]
@@ -159,7 +159,7 @@
 	data["active_rooms"] = list()
 	for(var/room_number in SShilbertshotel.room_data)
 		var/list/room = SShilbertshotel.room_data["[room_number]"]
-		if(room["room_preferences"]["visibility"] == ROOM_VISIBLE && room["is_ghost_cafe"] == is_ghost_cafe)
+		if(room["room_preferences"]["visibility"] == ROOM_VISIBLE && (room["is_ghost_cafe"] == is_ghost_cafe || !CONFIG_GET(flag/hilbertshotel_ghost_cafe_restricted)))
 			data["active_rooms"] += list(list(
 				"number" = room_number,
 				"occupants" = SShilbertshotel.generate_occupant_list(room_number),
@@ -169,7 +169,7 @@
 	for(var/room_number in SShilbertshotel.conservated_rooms)
 		var/list/room = SShilbertshotel.conservated_rooms[room_number]
 		var/visibility = room["room_preferences"]["visibility"]
-		if(room["is_ghost_cafe"] != is_ghost_cafe)
+		if(room["is_ghost_cafe"] != is_ghost_cafe && CONFIG_GET(flag/hilbertshotel_ghost_cafe_restricted))
 			continue
 		switch(visibility)
 			if(ROOM_VISIBLE)

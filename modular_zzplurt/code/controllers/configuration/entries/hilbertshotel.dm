@@ -11,3 +11,5 @@
 
 	if (config_entry_value < 0)
 		config_entry_value = INFINITY
+
+/datum/config_entry/flag/hilbertshotel_ghost_cafe_restricted
