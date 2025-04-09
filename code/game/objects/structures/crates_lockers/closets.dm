@@ -1031,7 +1031,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	if(opened)
 		// SPLURT EDIT ADDITION - PACKING PEANUTS
 		if(packing_overlay)
-			get_unpacked(create_peanuts = TRUE)
+			dump_contents()
 		// SPLURT EDIT END
 		return
 	if(ismovable(loc))
