@@ -15,7 +15,6 @@
 
 /obj/structure/closet/LateInitialize()
 	. = ..()
-	register_context()
 	if(start_packed)
 		get_packed()
 
