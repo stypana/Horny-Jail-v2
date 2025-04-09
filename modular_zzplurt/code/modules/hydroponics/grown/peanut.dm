@@ -31,3 +31,15 @@
 	foodtypes = GRAIN | NUTS | CLOTH
 	grind_results = list(/datum/reagent/consumable/peanut_butter/packing = 0)
 	tastes = list("starchy peanuts" = 1)
+	var/packing_type = /obj/item/stack/packing_peanuts
+	var/packing_name = "packing peanuts"
+
+// Copypasta from cotton, bite me
+/obj/item/grown/cotton/attack_self(mob/user)
+	var/packing_count = 1
+	if(seed)
+		packing_count += round(seed.potency / 25)
+
+	user.balloon_alert(user, "pulled [packing_count] piece\s")
+	new packing_type(user.drop_location(), packing_count)
+	qdel(src)

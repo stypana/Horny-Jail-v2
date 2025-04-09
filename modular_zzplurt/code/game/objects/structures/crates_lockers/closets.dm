@@ -26,7 +26,7 @@
 	. = ..()
 	if(opened)
 		if(istype(held_item, /obj/item/stack/packing_peanuts) && !packing_overlay)
-			context[SCREENTIP_CONTEXT_LMB] = "Pack with peanuts"
+			context[SCREENTIP_CONTEXT_LMB] = "Pack peanuts"
 			return CONTEXTUAL_SCREENTIP_SET
 		else if(isnull(held_item) && packing_overlay)
 			context[SCREENTIP_CONTEXT_ALT_RMB] = "Unpack peanuts"
@@ -62,9 +62,12 @@
 		try_packing(W, user)
 		take_contents()
 		return TRUE //no afterattack
-	else if(opened && packing_overlay && do_after(user, 3 SECONDS, target = src))
-		insert(W)
-		return TRUE
+	else if(opened && packing_overlay)
+		balloon_alert(user, "Packing item...")
+		if(do_after(user, 1 SECONDS, target = src))
+			insert(W)
+			balloon_alert(user, "Packed!")
+			return TRUE
 	return ..()
 
 /obj/structure/closet/dump_contents()
@@ -86,9 +89,12 @@
 		if(!do_after(user, 3 SECONDS, src))
 			return FALSE
 	if(!peanuts.use(10))
-		balloon_alert(user, "Not enough peanuts!")
+		balloon_alert(user, "Not enough [peanuts]!")
 		return FALSE
-	return get_packed()
+	var/successfully_packed = get_packed()
+	if(successfully_packed && user)
+		balloon_alert(user, "Packed!")
+	return successfully_packed
 
 /obj/structure/closet/proc/try_unpacking(mob/user, create_peanuts = TRUE)
 	if(user)
@@ -96,8 +102,11 @@
 		if(!do_after(user, 3 SECONDS, src))
 			return FALSE
 	var/successfully_unpacked = get_unpacked(create_peanuts)
-	if(successfully_unpacked && opened)
-		dump_contents()
+	if(successfully_unpacked)
+		if(opened)
+			dump_contents()
+		if(user)
+			balloon_alert(user, "Unpacked!")
 	return successfully_unpacked
 
 /obj/structure/closet/proc/get_packed()
