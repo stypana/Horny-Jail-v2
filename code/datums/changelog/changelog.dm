@@ -35,8 +35,11 @@
 	var/list/tg_files = flist("html/changelogs/archive/")
 	var/list/bubber_files = flist("html/changelogs/bubber_archive/")
 	// BUBBER EDIT ADDITION END: Changelog 2
+	// SPLURT EDIT ADDITION BEGIN: Changelog 3
+	var/list/splurt_files = flist("html/changelogs/splurt_archive/")
+	// SPLURT EDIT ADDITION END: Changelog 3
 
-	for(var/archive_file in sort_list(tg_files |= bubber_files)) // BUBBER EDIT CHANGE: Changelog 2: Original: for(var/archive_file in sort_list(flist("html/changelogs/archive/")))
+	for(var/archive_file in sort_list(tg_files |= bubber_files | splurt_files)) // SPLURT EDIT CHANGE: Changelog 3: Original: for(var/archive_file in sort_list(flist("html/changelogs/archive/")))
 		var/archive_date = ymlRegex.Replace(archive_file, "")
 		data["dates"] = list(archive_date) + data["dates"]
 
