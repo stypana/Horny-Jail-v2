@@ -5,7 +5,6 @@
 	welcome_text = "Welcome to the Gamer storyteller. Now with 50% more ahelps!"
 
 	track_data = /datum/storyteller_data/tracks/gamer
-	storyteller_type = STORYTELLER_TYPE_ALWAYS_AVAILABLE
 
 	tag_multipliers = list(
 		TAG_COMBAT = 1.5,
@@ -17,4 +16,4 @@
 	)
 
 	antag_divisor = 5
-	//storyteller_type = STORYTELLER_TYPE_INTENSE //for testing
+	storyteller_type = STORYTELLER_TYPE_INTENSE

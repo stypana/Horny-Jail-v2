@@ -3,7 +3,6 @@
 	desc = "Low Chaos will be light on events compared to other storytellers, especially so on ones involving combat, destruction, or chaos. \
 	The least hectic storyteller of all, while still having some spice. Best for RP-focused rounds with a few events sprinkled in."
 	welcome_text = "If you vote for this storyteller on Ice Box, you have no originality."
-	storyteller_type = STORYTELLER_TYPE_ALWAYS_AVAILABLE
 
 	track_data = /datum/storyteller_data/tracks/chill
 
@@ -17,4 +16,4 @@
 		TAG_HIGH = 0
 	)
 	antag_divisor = 32
-	//storyteller_type = STORYTELLER_TYPE_CALM //for testing
+	storyteller_type = STORYTELLER_TYPE_CALM
