@@ -1161,7 +1161,7 @@
 	spawned_muzzle = FALSE
 	record_hitscan_start(offset = FALSE)
 
-/obj/projectile/proc/generate_hitscan_tracers(impact_point = TRUE, impact_visual = TRUE)
+/obj/projectile/proc/generate_hitscan_tracers(impact_point = TRUE, impact_visual = TRUE, duration = PROJECTILE_TRACER_DURATION) // SPLURT EDIT
 	if (!length(beam_points))
 		return
 
@@ -1173,7 +1173,7 @@
 		// Uses an assoc list for performance reasons
 		var/list/passed_turfs = list()
 		for (var/beam_point in beam_points)
-			generate_tracer(beam_point, passed_turfs)
+			generate_tracer(beam_point, passed_turfs, duration) // SPLURT EDIT
 
 	if (muzzle_type && !spawned_muzzle)
 		spawned_muzzle = TRUE
@@ -1185,7 +1185,7 @@
 		muzzle_effect.transform = matrix
 		muzzle_effect.color =  color
 		muzzle_effect.set_light(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override || color)
-		QDEL_IN(muzzle_effect, PROJECTILE_TRACER_DURATION)
+		QDEL_IN(muzzle_effect, duration) // SPLURT EDIT
 
 	if (impact_type && impact_visual)
 		var/atom/movable/impact_effect = new impact_type(loc)
@@ -1195,9 +1195,9 @@
 		impact_effect.transform = matrix
 		impact_effect.color =  color
 		impact_effect.set_light(impact_light_range, impact_light_intensity, impact_light_color_override || color)
-		QDEL_IN(impact_effect, PROJECTILE_TRACER_DURATION)
+		QDEL_IN(impact_effect, duration) // SPLURT EDIT
 
-/obj/projectile/proc/generate_tracer(datum/point/start_point, list/passed_turfs)
+/obj/projectile/proc/generate_tracer(datum/point/start_point, list/passed_turfs, duration = PROJECTILE_TRACER_DURATION) // SPLURT EDIT
 	if (isnull(beam_points[start_point]))
 		return
 
@@ -1213,7 +1213,7 @@
 	)
 	SET_PLANE_EXPLICIT(tracer_effect, GAME_PLANE, src)
 
-	QDEL_IN(tracer_effect, PROJECTILE_TRACER_DURATION)
+	QDEL_IN(tracer_effect, duration) // SPLURT EDIT
 
 	if (!hitscan_light_range || !hitscan_light_intensity)
 		return
@@ -1223,7 +1223,7 @@
 		if (passed_turfs[light_turf])
 			continue
 		passed_turfs[light_turf] = TRUE
-		QDEL_IN(new /obj/effect/abstract/projectile_lighting(light_turf, hitscan_light_color_override || color, hitscan_light_range, hitscan_light_intensity), PROJECTILE_TRACER_DURATION)
+		QDEL_IN(new /obj/effect/abstract/projectile_lighting(light_turf, hitscan_light_color_override || color, hitscan_light_range, hitscan_light_intensity), duration) // SPLURT EDIT
 
 /**
  * Aims the projectile at a target.
