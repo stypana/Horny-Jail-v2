@@ -99,7 +99,7 @@
 /obj/structure/closet/proc/try_unpacking(mob/user, create_peanuts = TRUE)
 	if(user)
 		balloon_alert(user, "Unpacking....")
-		if(!do_after(user, 3 SECONDS, src))
+		if(!do_after(user, 1 SECONDS, src))
 			return FALSE
 	var/successfully_unpacked = get_unpacked(create_peanuts)
 	if(successfully_unpacked)
