@@ -359,7 +359,7 @@ export const BubberChangelog = (props) => {
         links[1].status !== 200 &&
         links[2].status !== 200
       ) {
-      // SPLURT EDIT ADDITION END
+        // SPLURT EDIT ADDITION END
         const timeout = 50 + attemptNumber * 50;
 
         setContents('Loading changelog data' + '.'.repeat(attemptNumber + 3));
@@ -525,8 +525,8 @@ export const BubberChangelog = (props) => {
           No
         </p>
         <p>
-          S.P.L.U.R.T, Bubberstation and /tg/station 13 are thankful to the GoonStation 13
-          Development Team for its work on the game up to the
+          S.P.L.U.R.T, Bubberstation and /tg/station 13 are thankful to the
+          GoonStation 13 Development Team for its work on the game up to the
           {' r4407 release. The changelog for changes up to r4407 can be seen '}
           <a href="https://wiki.ss13.co/Pre-2016_Changelog#April_2010">here</a>.
         </p>
