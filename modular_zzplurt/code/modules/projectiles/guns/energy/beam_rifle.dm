@@ -28,8 +28,6 @@
 		create_hitscan_point(impact = TRUE)
 
 	if (tracer_type)
-		// Stores all turfs we've created light effects on, in order to not dupe them if we enter a reflector loop
-		// Uses an assoc list for performance reasons
 		var/list/passed_turfs = list()
 		for (var/beam_point in beam_points)
 			generate_tracer(beam_point, passed_turfs)
