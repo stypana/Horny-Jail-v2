@@ -14,21 +14,6 @@
   Arturlang:
   - bugfix: The unique AI station trait will no longer be able to choose lawsets set
       as default in the config.
-  MosleyTheMalO:
-  - refactor: Refactored the interaction system to support our custom interactions
-  - rscadd: Added specific handling for different types of climaxing and climax text
-      overrides
-  - rscadd: Added interaction subsystem
-  - rscadd: Added handling for correct genital/slot usage during interactions and
-      orgasms
-  - rscadd: Added fluid filling system for climaxing
-  - rscadd: Added messy trait implementation
-  - rscadd: Added preferences for unsafe interactions (extreme, harmful, unholy)
-  - rscadd: Added new interaction sounds
-  - rscadd: Added various new interactions (armpit, belly, breasts, feet, etc.)
-  - rscadd: Added ERP status preferences and multipliers
-  - sound: Added multiple new interaction sound effects
-  - code_imp: Added helper procs for checking genital states
   LemonInTheDark:
   - bugfix: Boulders will no longer randomly run free from smelting pipelines! We
       have enslaved them once more.
@@ -57,8 +42,6 @@
   - bugfix: dropping all the mobs' contents in some special admin cases won't gib
       the player
 2025-01-03:
-  MosleyTheMalO:
-  - bugfix: makes clients not crash when seeing an inflatable object (temporary fix)
   AyIong:
   - admin: Ticket actions buttons in chat got a little bigger
   - bugfix: Highlighted PMs, vote results and examine will not have weird black title
@@ -86,12 +69,6 @@
   - qol: soul-less brains that can be revived (like those from recovered crew) now
       have an examine tip
 2025-01-04:
-  LT3:
-  - qol: Wearable HUDs can be toggled on and off
-  MosleyTheMalO:
-  - rscadd: adds a batch of our custom drinks (modular_splurt)
-  ReturnToZender:
-  - qol: Flowers no longer donator-only in the loadout
   Bisar Metek:
   - code_imp: Fixed up the return value of checkbox-input for tgui to behave consistently.
   LT3:
@@ -108,8 +85,6 @@
   timothymtorres:
   - bugfix: Fix pAIs interacting with machinery via alt/ctrl clicking.
 2025-01-05:
-  MosleyTheMalO:
-  - rscadd: adds the custom genital fluids system
   Ben10Omintrix:
   - qol: virtual pet holograms now automatically follow you when released rather than
       having to give it the command post summon
@@ -206,10 +181,6 @@
   Ben10Omintrix:
   - bugfix: goliaths can now be tamed
   - bugfix: fixes turtles rerolling strange seed chems
-  Phoenix4O4:
-  - rscadd: Custom loading animation with Splurt icon.
-  - rscadd: Our logo displayed in the main client window.
-  - bugfix: Disabled all relays to the official server.
   StrangeWeirdKitten:
   - bugfix: Things that drop in random places are no longer statistically weighted
       to drop in security.
@@ -247,9 +218,6 @@
       ammunition and want to change magazine colors to be appropriate.
   - qol: C-20r magazines and Stechkin APS magazines now have ammo band support.
   - qol: Standardized some descriptions for AP, HP, and incendiary magazines.
-  MosleyTheMalO:
-  - rscadd: adds our interaction panel and its functionalities
-  - rscdel: removes the erroring plushie
   Melbert:
   - qol: You can now look down ladders, both via the look down verb/hotkey and by
       just looking with your eyes
@@ -320,16 +288,6 @@
       forms of mental instability following a near-death experience.
   - spellcheck: Foam Force's brand management team require us to remove an erroneous
       underscore which was in violation of their logo usage terms and conditions.
-  MosleyTheMalO:
-  - bugfix: Fixes restorative metabolism so it processes correctly
-  - bugfix: Fixes Vacuum resistance by adding the missing trait to it
-  - bugfix: Fixes a lot of the lewd content using the sound pref instead of default
-      erp pref
-  - bugfix: Fixes condoms
-  - bugfix: Fixes ghost ass slapping to check for the config well
-  - bugfix: toggle subtypes no longer reset arousal related variables
-  - sound: adds more interaction sounds
-  - rscadd: adds the interaction details
   SmArtKar:
   - bugfix: Station traits no longer use clown and mime's human names (they're not
       human)
@@ -366,8 +324,6 @@
       dreams, with a 5 minute cooldown
   SmArtKar:
   - image: Cult's blood barrage has received new sprites
-  prototypemeat:
-  - balance: Buffed Razor Claws and their upgraded variants, happy killing
   timothymtorres:
   - bugfix: Fix emag not working on secure briefcases and safes
   - image: Tweak secure briefcases sprite to have glowing red/green pixels for lock.
@@ -413,11 +369,6 @@
   Zytolg:
   - map: Who turned down Birdshots Thermostat?
 2025-01-15:
-  MosleyTheMalO:
-  - bugfix: Fixes condoms for real this time
-  - bugfix: Makes the sex toy toggle actually drop sex toys
-  - bugfix: Fixes butts not displaying their skin alt and paves the way for belly
-      skin alts
   00-Steven:
   - bugfix: Aquarium/fish tank admiring works again.
   - bugfix: Inverted aquarium/fish tank panel opening tooltip to be the right way.
@@ -477,10 +428,6 @@
   timothymtorres:
   - bugfix: Fix airlock authentication card not getting stored in containers
 2025-01-16:
-  SmArtKar:
-  - bugfix: Fixed wallets not showing their ID
-  - bugfix: You can no longer get stuck in stacked lockers
-  - bugfix: Fixed a runtime in requests console error logging
   JoshAdamPowell:
   - admin: 'All admins will now see what is in a classified command report
 
@@ -500,6 +447,9 @@
   - balance: Rewards from departmental orders use a logarithmic scale, resulting in
       less rewards for high tier crates. The cooldown time is also logarithmic  now,
       which has slightly decreased cooldown values on cheaper crates.
+  SmArtKar:
+  - bugfix: You can no longer get stuck in stacked lockers
+  - bugfix: Fixed a runtime in requests console error logging
   SyncIt21:
   - code_imp: removes a redundant var from anomaly effects
   - bugfix: Fixes runtimes for some anomaly effects
@@ -529,15 +479,6 @@
       should be fixed now
   - code_imp: status_effect/grouped merging code has been improved (i hope)
 2025-01-17:
-  Arturlang:
-  - rscdel: Profound fishers without ckeys can no longer fish out juvenile lobsters,
-      this is to prevent lobster armies
-  ICE-IS-NICE(original), SuhEugene, Phoenix404 (port):
-  - rscadd: Added custom emote panel to TGUI chat interface
-  MosleyTheMalO:
-  - rscdel: Removes the obsolete sexuality pref
-  mcbalaam:
-  - bugfix: Added a join menu icon for the blacksmith
   00-Steven:
   - spellcheck: Exporting a human tongue no longer calls it a 'tounge'.
   Majkl-J:
@@ -575,8 +516,6 @@
       in one click (RMB on product)
   Chowder-McArthor:
   - qol: Strange geysers now say in their name what they produce.
-  prototypemeat:
-  - bugfix: Fixed Razorclaws.
   Jacquerel:
   - rscadd: Eggs (and all other edible food) left in a hot place will fry.
   MTandi:
@@ -591,8 +530,6 @@
   RengaN02:
   - bugfix: Fixed Engine Diagnostic surgery
   SmArtKar:
-  - bugfix: Characters should not reset randomly anymore, plus character prefs menu
-      should no longer runtime and potentially not save itself.
   - image: Resprited default and mirage grenades
   - image: Made the unholy water flask darker
   Y0SH1M4S73R:
@@ -611,11 +548,6 @@
   - refactor: mimics (bolt of animation, malf ai Machine Override, etc) are basicmobs
   - bugfix: crate mimics may now be opened
 2025-01-21:
-  mcbalaam:
-  - rscadd: Any mob can now interact - yuppie!
-  - refactor: Arousal/pleasure code refactoring
-  - bugfix: Mobs statuses in the UI are now properly spaced
-  - bugfix: Death degradation no longer instantly downs you
   AyIong:
   - qol: 'Vending machines got new design with 2 layouts: List and Grid (List by default)'
   NamelessFairy:
@@ -628,10 +560,6 @@
   - rscadd: You can now ctrl-click IDs to set your Honorific, which will change your
       display name to reflect your TITLE as a WORKING MAN on SPACE STATION 13.
 2025-01-22:
-  Krashly:
-  - rscadd: Added more character customisation things
-  MosleyTheMalO:
-  - rscadd: added cumflation mechanics to the game
   SyncIt21:
   - bugfix: pockets update their icons correctly when removing items that have storage
       (e.g. box of bandages) from them
@@ -656,8 +584,6 @@
   - bugfix: Deluxe Donk Pockets (and their no-carb and vegan variants) are no longer
       craftable without collecting the recipe.
 2025-01-23:
-  Phoenix4O4:
-  - bugfix: Temporarily disabled barricade rotation to prevent client crashes
   Ghommie:
   - bugfix: Chasms are once again incompatible with explosive fishing.
   Jacquerel:

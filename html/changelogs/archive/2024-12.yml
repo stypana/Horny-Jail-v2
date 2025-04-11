@@ -302,9 +302,7 @@
   - bugfix: Made wendigo's bullet hell lag less, at cost of its visuals.
   - bugfix: Toolboxes can now be placed onto tables/into crates
   - bugfix: Fixed toolboxes automatically using the first item in them
-2024-12-14:
-  Phoenix4O4:
-  - bugfix: Restored the examine functionality and height display.
+2024-12-13:
   Majkl-J:
   - bugfix: Fauna can no longer push necropolis gates
   Melbert:
@@ -543,8 +541,6 @@
   - spellcheck: Fix holodeck emag message claiming to increase power
   - rscadd: Add power efficiency when stasis bed stock parts are upgraded
 2024-12-23:
-  Krashly:
-  - rscadd: Added thirst system.
   AyIong:
   - bugfix: Fixed scrollbar colors and background position in TGUI on Byond 516
   Ben10Omintrix:
@@ -783,9 +779,6 @@
   mc-oofert:
   - qol: you can adjust diagonal walls to be not diagonal walls with a wrench
 2024-12-31:
-  Krashly:
-  - rscadd: all or almost all clothes and items of the old codebase loadouts have
-      been ported
   Kylerace:
   - bugfix: holodeck is slightly less likely to explode the server
   SmArtKar:

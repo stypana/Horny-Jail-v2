@@ -6,15 +6,6 @@
       now use Grid layout by default.'
   BobDABuilder9001:
   - balance: solars now make 2.5kw each instead of 1.5kw
-  MosleyTheMalO:
-  - rscadd: Adds portal panties and fleshlights + their functionalities, find them
-      in the lustwish
-  - bugfix: Fixes anuses so they're a separate organ from the butt, but still reliant
-      on it for rendering
-  - bugfix: fixes monkey socks runtimes
-  - bugfix: adds our mobs clothing folder to the worn items test
-  - rscadd: adds our genital growth reagents to the lustwish
-  - code_imp: fixes scattered lewd folders and puts them in our modular lewd folder
   MTandi:
   - qol: Added forensic scanner UI
   - qol: Made forensic scanner report format cleaner
@@ -147,8 +138,6 @@
   - qol: Added the resin mister module to the roundstart atmos MODsuit.
   Melbert:
   - rscadd: Adds two fantasy affixes
-  Phoenix4O4:
-  - rscadd: Added gear painters
   SmArtKar:
   - rscadd: Hydrogen Peroxide and Eldritch Essence now can rust turfs, with latter
       producing heretic instead of normal rust.
@@ -167,12 +156,6 @@
   - code_imp: Add error message logs to screenshot CI test failure when screenshots
       do not exist.
 2025-02-10:
-  Phoenix4O4:
-  - rscadd: Added new Ash Plates Armor
-  - rscadd: Added Cauldron
-  - rscadd: Introduced Gunther chickens - special lava-resistant variant
-  - rscadd: Added primitive Ash Chisel tool
-  - map: Ported Ash Fortress from Nova Sector codebase
   SmArtKar:
   - bugfix: Fixed missing HTML encodes in comms console code
   - bugfix: Examining walls no longer allows you to see items mounted on its other
@@ -436,10 +419,6 @@
   - balance: Having a strongarm implant installed into each arm now allows you to
       pry open doors.
 2025-02-20:
-  Krashly:
-  - rscadd: Ported chugging of drinks.
-  - rscadd: Ported custom blood colors.
-  TealSeer:
   Aniantan:
   - bugfix: Can of fishing bait no longer evaporates its bait when used on an active
       fishing rod
@@ -628,19 +607,25 @@
   - sound: added new ghost poll sound.
   - sound: normalised volume of ghost poll sounds
 2025-02-25:
-  MosleyTheMalO:
-  - rscadd: adds the bathrobe as part of the loadout.
-  - rscadd: adds bunny ears from our codebase
-  - refactor: makes extended a votable storyteller
-  - config: adds configs for days with calm rounds vs days with calm and chaotic rounds
-  - bugfix: fixes genital sniffer to show genital info
-  - refactor: now the me verb is multiline
-  - refactor: now the me keybind verb is also multiline
+  EOBGames:
+  - rscadd: 'No longer content to speak purely in Galactic Common, the Space Russians
+      have begun to use their own language: Spinwarder Russian. Best of luck in understanding
+      them; we sure don''t!'
+  Jacquerel:
+  - balance: Foam now passes through tables, grilles, computers, and several other
+      dense structures. You can still escape foam by mantling onto tables and such.
+  - balance: MODSuit parts now slow you only when deployed, regardless of whether
+      they are sealed.
+  - balance: MODSuit parts no longer slow you when they aren't deployed.
+  Melbert, Absolucy:
+  - qol: Touches up the language menu
+  SmArtKar:
+  - image: Resprited advanced robotic limbs
+  SmArtKar, PiotrTheTchaikowsky:
+  - image: Resprited boxing gloves
+  combustor:
+  - map: Added an air alarm to birdshot's engine room
 2025-02-26:
-  mcbalaam:
-  - rscadd: New dogborg specific cyborg modules - check out the PR!
-  - rscadd: Slutty AI laws - unleash your dirty side
-  - qol: Manipulation apparatus module's held item is now visible and interactable
   Dmeto:
   - bugfix: Nebulastation Supermatter is no longer hotwired roundstart.
   Jacquerel:
@@ -701,9 +686,6 @@
   - bugfix: You no longer lose tenacity trauma gained via lobotomy after losing voltaic
       override
 2025-02-28:
-  Phoenix4O4:
-  - image: both normal legs and digitigrade legs are now available for xeno species
-  - image: The coroner's scrubs and jumpsuit now have digitigrade sprites.
   Profakos:
   - bugfix: Request consoles once again enter emergency mode when you hit an emergency
       button
