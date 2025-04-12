@@ -395,6 +395,10 @@
 	},
 /turf/closed/indestructible/steel,
 /area/misc/hilbertshotel)
+"OE" = (
+/obj/machinery/room_controller/directional/west,
+/turf/open/floor/carpet/purple,
+/area/misc/hilbertshotel)
 "PZ" = (
 /obj/structure/chair/comfy/brown{
 	color = "#596479";
@@ -528,7 +532,7 @@ aC
 aC
 FN
 cy
-cy
+OE
 vk
 DR
 VK

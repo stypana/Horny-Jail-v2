@@ -140,6 +140,10 @@
 	},
 /turf/open/floor/iron/terracotta,
 /area/misc/hilbertshotel)
+"mt" = (
+/obj/machinery/room_controller/directional/west,
+/turf/open/misc/beach/sand,
+/area/misc/hilbertshotel)
 "mJ" = (
 /obj/effect/turf_decal/weather/sand{
 	dir = 6
@@ -469,7 +473,7 @@ jT
 wI
 jT
 jT
-jT
+mt
 KL
 jT
 jT

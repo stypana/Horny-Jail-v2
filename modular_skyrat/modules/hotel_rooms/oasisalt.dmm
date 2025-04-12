@@ -215,6 +215,10 @@
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron/terracotta,
 /area/misc/hilbertshotel)
+"At" = (
+/obj/machinery/room_controller/directional/west,
+/turf/open/misc/beach/sand,
+/area/misc/hilbertshotel)
 "AX" = (
 /obj/structure/flora/tree/palm{
 	density = 0
@@ -476,7 +480,7 @@ jT
 wI
 jT
 jT
-jT
+At
 KL
 jT
 jT
