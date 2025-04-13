@@ -37,7 +37,7 @@
 	name = "Packing Peanut Butter"
 	description = "A tasteless, starchy spread produced by grinding packing peanuts."
 	taste_description = "starch"
-	color = "#FFB9EA"
+	color = "#FFB9EA" //pinkut...
 	nutriment_factor = 0.5 //absolutely no nutritive value
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	default_container = /obj/item/reagent_containers/condiment/peanut_butter/packing
