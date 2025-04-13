@@ -2,6 +2,7 @@
 /obj/effect/overlay/packing_peanuts
 	name = "packing peanuts"
 	desc = "The latest development in cargonian technology. You can safely store your items among these."
+	icon = 'modular_zzplurt/icons/obj/crates_peanuts.dmi'
 	icon_state = "packing"
 	base_icon_state = "packing"
 	anchored = TRUE
