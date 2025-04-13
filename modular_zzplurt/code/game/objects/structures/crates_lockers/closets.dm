@@ -37,7 +37,7 @@
 	if(opened)
 		if(packing_overlay)
 			. += span_notice("[p_Theyre()] filled to the brim with packing peanuts. [EXAMINE_HINT("Alt-RMB")] to take them out.")
-		else if(packable)
+		else if(packable && !packing_overlay)
 			. += span_notice("[p_They()] can be packed with [EXAMINE_HINT("packing peanuts")] for safer delivery of fragile objects.")
 
 /obj/structure/closet/update_overlays()
@@ -52,7 +52,7 @@
 
 /obj/structure/closet/click_alt_secondary(mob/user)
 	. = ..()
-	if(. == CLICK_ACTION_BLOCKING || !packing_overlay)
+	if(. == CLICK_ACTION_BLOCKING || !opened || !packing_overlay)
 		return
 	try_unpacking(user, create_peanuts = TRUE)
 	return CLICK_ACTION_BLOCKING
