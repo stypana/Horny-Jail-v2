@@ -43,3 +43,27 @@
 	user.balloon_alert(user, "pulled [packing_count] piece\s")
 	new packing_type(user.drop_location(), packing_count)
 	qdel(src)
+
+// Override to make it so cargo techs love package peanuts
+/obj/item/food/grown/peanut/packing/proc/make_edible()
+	AddComponentFrom(
+		SOURCE_EDIBLE_INNATE,\
+		/datum/component/edible,\
+		initial_reagents = food_reagents,\
+		food_flags = food_flags,\
+		foodtypes = foodtypes,\
+		volume = max_volume,\
+		eat_time = eat_time,\
+		tastes = tastes,\
+		eatverbs = eatverbs,\
+		bite_consumption = bite_consumption,\
+		junkiness = junkiness,\
+		reagent_purity = starting_reagent_purity,\
+		check_liked = CALLBACK(src, PROC_REF(check_liked)),\
+	)
+
+/// Override for checkliked in edible component, because cargo technicians LOVE packing peanuts
+/obj/item/food/grown/peanut/packing/proc/check_liked(mob/living/carbon/human/consumer)
+	var/obj/item/organ/liver/liver = consumer.get_organ_slot(ORGAN_SLOT_LIVER)
+	if(!HAS_TRAIT(consumer, TRAIT_AGEUSIA) && liver && HAS_TRAIT(liver, TRAIT_CARGO_METABOLISM))
+		return FOOD_LIKED

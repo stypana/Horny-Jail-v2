@@ -3,7 +3,7 @@
 	singular_name = "packing peanut"
 	desc = "100% biodegradable packing peanuts for ensuring safe delivery of fragile objects - You still shouldn't eat them."
 	icon = 'modular_zzplurt/icons/obj/stack_objects.dmi'
-	icon_state = "packing_peanuts"
+	icon_state = "packing_peanuts_1"
 	base_icon_state = "packing_peanuts"
 	dye_color = DYE_SYNDICATE
 	w_class = WEIGHT_CLASS_TINY
