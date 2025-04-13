@@ -82,6 +82,7 @@
 	if(!. || !packing_overlay)
 		return .
 	packing_overlay.update_contents(src)
+	inserted.flags_1 |= IS_ONTOP_1
 
 /obj/structure/closet/proc/try_packing(obj/item/stack/peanuts, mob/user)
 	if(user)
