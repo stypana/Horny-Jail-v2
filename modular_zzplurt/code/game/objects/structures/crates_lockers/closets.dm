@@ -83,6 +83,7 @@
 		return .
 	packing_overlay.update_contents(src)
 	inserted.flags_1 |= IS_ONTOP_1
+	RegisterSignal(inserted, COMSIG_MOVABLE_MOVED, PROC_REF(thing_moved))
 
 /obj/structure/closet/proc/try_packing(obj/item/stack/peanuts, mob/user)
 	if(user)
@@ -124,3 +125,10 @@
 			return new /obj/item/stack/packing_peanuts(src, 10)
 		return new /obj/item/stack/packing_peanuts(loc, 10)
 	return TRUE
+
+/obj/structure/closet/proc/thing_moved(atom/movable/source)
+	SIGNAL_HANDLER
+
+	source.flags_1 &= ~IS_ONTOP_1
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+	packing_overlay.update_contents(src)

@@ -462,9 +462,6 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		AM.forceMove(L)
 		if(throwing) // you keep some momentum when getting out of a thrown closet
 			step(AM, dir)
-		// SPLURT EDIT ADDITION - Packing peanuts
-		AM.flags_1 &= ~IS_ONTOP_1
-		// SPLURT EDIT END
 	if(throwing)
 		throwing.finalize(FALSE)
 
