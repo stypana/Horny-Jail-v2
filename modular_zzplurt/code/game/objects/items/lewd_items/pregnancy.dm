@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(pregnancy_egg_skins, list( \
 	"Hybrid" = "hybrid",\
 ))
 
-// Oviposition egg, logic is at the pregnancy component
+// Oviposition egg, most logic is at the pregnancy status effect and pregnant component
 /obj/item/food/egg/oviposition
 	name = "peculiar egg"
 	desc = "An egg, this one looks suspiciously large though."
