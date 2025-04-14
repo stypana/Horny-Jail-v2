@@ -117,7 +117,8 @@
 	var/atom/atom_parent = parent
 	if(!QDELING(src))
 		qdel(src)
-	playsound(parent, 'sound/effects/splat.ogg', 80, vary = TRUE)
+	playsound(atom_parent, 'sound/effects/splat.ogg', 80, vary = TRUE)
+	a_living_soul.AdjustUnconscious(30 SECONDS)
 	a_living_soul.forceMove(atom_parent.drop_location())
 	if(atom_parent.uses_integrity)
 		atom_parent.take_damage(atom_parent.max_integrity * (1-atom_parent.integrity_failure))

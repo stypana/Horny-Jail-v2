@@ -44,3 +44,5 @@ GLOBAL_LIST_INIT(pregnancy_egg_skins, list( \
 	base_icon_state = "egg"
 	w_class = WEIGHT_CLASS_HUGE
 	obj_flags = parent_type::obj_flags | UNIQUE_RENAME
+	uses_integrity = TRUE
+	integrity_failure = 0.5
