@@ -52,6 +52,7 @@
 		UnregisterSignal(owner, list(\
 			SIGNAL_ADDTRAIT(TRAIT_INFERTILE),\
 			COMSIG_ATOM_ATTACKBY,\
+			COMSIG_LIVING_DEATH,\
 			COMSIG_LIVING_HEALTHSCAN,\
 		))
 		var/obj/item/organ/genital/belly/belly = owner.get_organ_slot(ORGAN_SLOT_BELLY)
@@ -75,6 +76,7 @@
 	if(ishuman(mother))
 		var/mob/living/carbon/human/baby_momma = mother
 		baby_momma.dna.copy_dna(mother_dna)
+		mother_name = baby_momma.real_name
 	else
 		mother_dna.initialize_dna(random_blood_type())
 
@@ -82,6 +84,7 @@
 	if(ishuman(father))
 		var/mob/living/carbon/human/baby_daddy = father
 		baby_daddy.dna.copy_dna(father_dna)
+		father_name = baby_daddy.real_name
 	else
 		father_dna.initialize_dna(random_blood_type())
 
@@ -92,6 +95,7 @@
 
 	RegisterSignal(new_owner, SIGNAL_ADDTRAIT(TRAIT_INFERTILE), PROC_REF(on_infertile))
 	RegisterSignal(new_owner, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attacked_by))
+	RegisterSignal(new_owner, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 	RegisterSignal(new_owner, COMSIG_LIVING_HEALTHSCAN, PROC_REF(on_health_scan))
 
 /datum/status_effect/pregnancy/proc/inherit_preferences(mob/living/gestator)
@@ -107,7 +111,7 @@
 	if(preference_source.prefs.read_preference(/datum/preference/toggle/pregnancy/inert))
 		pregnancy_flags |= PREGNANCY_FLAG_INERT
 
-	pregnancy_duration = preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/duration)
+	pregnancy_duration = preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/duration) * PREGNANCY_DURATION_MULTIPLIER
 	pregnancy_genetic_distribution = preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/genetic_distribution)
 
 /datum/status_effect/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/baby_boy)
@@ -160,9 +164,13 @@
 		return
 
 	baby_name = target_name
-
 	owner.visible_message(span_notice("[user] writes \"[target_name]\" on [owner]'s belly."), \
 								span_notice("[user] writes \"[target_name]\" on your belly."))
+
+/datum/status_effect/pregnancy/proc/on_death(datum/source)
+	SIGNAL_HANDLER
+
+	qdel(src)
 
 /datum/status_effect/pregnancy/proc/on_attacked_by(datum/source, obj/item/pen, mob/living/attacker, params)
 	SIGNAL_HANDLER
@@ -171,6 +179,7 @@
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(try_rename_baby), attacker)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/status_effect/pregnancy/proc/on_health_scan(datum/source, list/render_list, advanced, mob/user, mode, tochat)
 	SIGNAL_HANDLER
@@ -181,7 +190,7 @@
 	if(pregnancy_stage >= 5)
 		render_list += conditional_tooltip("<span class='alert ml-1'>Subject is going into labor!</span>", "Patient will suffer from extreme nausea and fatigue until they deliver their baby.", tochat)
 	else if((pregnancy_stage >= 2) || advanced)
-		render_list += conditional_tooltip("<span class='alert ml-1'>Subject is impregnated.</span>", "Wait until patient goes into labor, or perform an abortion.", tochat)
+		render_list += conditional_tooltip("<span class='alert ml-1'>Subject is pregnant[advanced ? " (Stage [pregnancy_stage])" : "."]</span>", "Wait until patient goes into labor, or perform an abortion.", tochat)
 	render_list += "<br>"
 
 /datum/status_effect/pregnancy/proc/on_infertile(atom/source)
@@ -198,11 +207,10 @@
 
 	pregnancy_progress += (seconds_between_ticks SECONDS)
 	var/previous_stage = pregnancy_stage
-	pregnancy_stage = min(FLOOR((pregnancy_progress / (pregnancy_duration * PREGNANCY_DURATION_MULTIPLIER)) * 5, 1), 5)
+	pregnancy_stage = min(FLOOR((pregnancy_progress / pregnancy_duration) * 5, 1), 5)
 
 	if(pregnancy_stage >= 2)
 		if(previous_stage < 2)
-			owner.throw_alert(ALERT_PREGNANCY, /atom/movable/screen/alert/status_effect/pregnancy)
 			to_chat(owner, span_warning("You can feel some pressure build up against your chest cavity."))
 		//big wave of nausea every 40 seconds or so
 		else
@@ -239,7 +247,7 @@
 				owner.adjust_disgust(3 * seconds_between_ticks)
 				if((owner.getStaminaLoss() < 100) && SPT_PROB(5, seconds_between_ticks))
 					owner.emote("scream")
-					owner.adjustStaminaLoss("You REALLY need to give birth!")
+					to_chat(owner, "You REALLY need to give birth!")
 			else
 				var/egg_species = "animal"
 				if(ishuman(owner) && ispath(baby_type, /mob/living/carbon/human))
@@ -256,9 +264,9 @@
 					belly.set_size(previous_belly_size)
 
 				lay_egg(get_turf(owner), egg_species, egg_skin)
+				owner.add_mood_event("preggers", /datum/mood_event/pregnant_relief)
 				if(!QDELETED(src))
 					qdel(src)
-				owner.add_mood_event("preggers", /datum/mood_event/pregnant_relief)
 
 /datum/status_effect/pregnancy/proc/lay_egg(atom/location, egg_species, egg_skin = src.egg_skin)
 	var/atom/movable/egg = new egg_type(location)

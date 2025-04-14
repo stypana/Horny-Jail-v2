@@ -38,7 +38,7 @@
 			role_name = "Offspring of [mother_name || "someone"][father_name ? " and [father_name]" : ""]",\
 			poll_question = "Do you want to play as [mother_name || "someone"]'s offspring?[baby_name ? " Your name will be [baby_name]" : ""]",\
 			poll_candidates = TRUE,\
-			poll_length = 30 SECONDS,\
+			poll_length = 1.5 MINUTES,\
 			assumed_control_message = "You are the son (or daughter) of [mother_name || "someone"][father_name ? " and [father_name]" : ""]!",\
 			poll_ignore_key = POLL_IGNORE_PREGNANCY,\
 			after_assumed_control = CALLBACK(src, PROC_REF(ghost_assumed_control)),\
@@ -69,8 +69,7 @@
 
 	//relay to the mob
 	if(baby_boy)
-		var/atom/atom_parent = parent
-		INVOKE_ASYNC(atom_parent, TYPE_PROC_REF(/atom, attack_ghost), hopeful_ghost)
+		INVOKE_ASYNC(baby_boy, TYPE_PROC_REF(/atom, attack_ghost), hopeful_ghost)
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/component/pregnant/proc/on_renamed(atom/source)
@@ -95,7 +94,7 @@
 	else if(father_name)
 		parents = "<b>[father_name]</b>"
 	if(parents)
-		examine_list += span_info("This is the offspring of [parents].")
+		examine_list += span_info("It is the offspring of [parents].")
 	if(baby_name)
 		examine_list += span_info("The offspring's name will be \"[baby_name]\".")
 
@@ -116,17 +115,20 @@
 
 /datum/component/pregnant/proc/ghost_assumed_control(mob/living/a_living_soul)
 	var/atom/atom_parent = parent
+	if(!QDELING(src))
+		qdel(src)
 	playsound(parent, 'sound/effects/splat.ogg', 80, vary = TRUE)
 	a_living_soul.forceMove(atom_parent.drop_location())
 	if(atom_parent.uses_integrity)
 		atom_parent.take_damage(atom_parent.max_integrity * (1-atom_parent.integrity_failure))
 	if(ishuman(a_living_soul))
 		INVOKE_ASYNC(src, PROC_REF(assumed_control_async), a_living_soul)
-	if(!QDELING(src))
-		qdel(src)
 
 /datum/component/pregnant/proc/assumed_control_async(mob/living/carbon/human/a_living_soul)
-	var/target_name = reject_bad_name(tgui_input_text(a_living_soul, "What will be your name?", "The miracle of birth"))
+	if(baby_name)
+		return
+
+	var/target_name = reject_bad_name(tgui_input_text(a_living_soul, "What will be your name?", "The miracle of birth", a_living_soul.real_name))
 	if(!target_name)
 		return
 

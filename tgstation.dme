@@ -540,7 +540,6 @@
 #include "code\__DEFINES\~~bubber_defines\traits\nanites.dm"
 #include "code\__DEFINES\~~bubber_defines\traits\sources.dm"
 #include "code\__DEFINES\~~bubber_defines\traits\station_traits.dm"
-#include "code\__DEFINES\~~~splurt_defines\alerts.dm"
 #include "code\__DEFINES\~~~splurt_defines\blood.dm"
 #include "code\__DEFINES\~~~splurt_defines\DNA.dm"
 #include "code\__DEFINES\~~~splurt_defines\fonts.dm"
