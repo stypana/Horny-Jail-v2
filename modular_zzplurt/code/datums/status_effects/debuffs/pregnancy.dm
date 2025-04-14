@@ -111,13 +111,6 @@
 	pregnancy_genetic_distribution = preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/genetic_distribution)
 
 /datum/status_effect/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/baby_boy)
-	//its fucked
-	baby_boy.set_hairstyle(pick("Bedhead", "Bedhead 2", "Bedhead 3"), update = FALSE)
-	baby_boy.set_facial_hairstyle("Shaved", update = FALSE)
-	baby_boy.underwear = "Nude"
-	baby_boy.undershirt = "Nude"
-	baby_boy.socks = "Nude"
-
 	//inherit species from momma no matter what
 	baby_boy.set_species(mother_dna.species.type)
 
@@ -140,6 +133,24 @@
 		baby_dna.blood_type = father_dna.blood_type
 	else
 		baby_dna.blood_type = mother_dna.blood_type
+
+	/*
+	I am a great soft jelly thing. Smoothly rounded, with no mouth,
+	with pulsing white holes filled by fog where my eyes used to be. Rubbery appendages that were once my arms;
+	bulks rounding down into legless humps of soft slippery matter.
+	I leave a moist trail when I move.
+	Blotches of diseased, evil gray come and go on my surface, as though light is being beamed from within.
+	Outwardly: dumbly, I shamble about, a thing that could never have been known as human, a thing whose shape is so alien a travesty
+	that humanity becomes more obscene for the vague resemblance.
+	Inwardly: alone. Here. Living under the land, under the sea, in the belly of AM, whom we created because our time was badly spent
+	and we must have known unconsciously that he could do it better. At least the four of them are safe at last.
+	AM will be all the madder for that. It makes me a little happier. And yet ... AM has won, simply ... he has taken his revenge ...
+	*/
+	baby_boy.set_hairstyle(pick("Bedhead", "Bedhead 2", "Bedhead 3"), update = FALSE)
+	baby_boy.set_facial_hairstyle("Shaved", update = FALSE)
+	baby_boy.underwear = "Nude"
+	baby_boy.undershirt = "Nude"
+	baby_boy.socks = "Nude"
 
 	baby_boy.updateappearance()
 

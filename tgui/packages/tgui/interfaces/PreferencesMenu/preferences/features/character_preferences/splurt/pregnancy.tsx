@@ -37,7 +37,7 @@ export const pregnancy_cryptic: FeatureToggle = {
 };
 
 export const pregnancy_inert: FeatureToggle = {
-  name: 'Pregnancy: Cryptic',
+  name: 'Pregnancy: Inert',
   description:
     'Inert pregnancies will only create eggs, which will not grow into player mobs.',
   component: CheckboxInput,
