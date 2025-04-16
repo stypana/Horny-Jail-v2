@@ -350,6 +350,12 @@
 			if(0 to NUTRITION_LEVEL_STARVING)
 				msg += "[span_boldwarning("I'm starving!")]<br>"
 
+	// SPLURT EDIT BEGIN - THIRST
+	var/thirst_mood = get_thirst_mood(mob_parent)
+	if(thirst_mood)
+		msg += span_notice("My current thirst: [thirst_mood]<br>")
+	// SPLURT EDIT END - THIRST
+
 	// BUBBER EDIT CHANGE BEGIN - ALCOHOL PROCESSING
 	/*
 	var/drunkness = mob_parent.get_drunk_amount()
