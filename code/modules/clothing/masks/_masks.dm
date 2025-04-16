@@ -38,7 +38,7 @@
 	if(isinhands || !(body_parts_covered & HEAD))
 		return
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
-			. += mutable_appearance(colored_blood_icon('icons/effects/blood.dmi'), "maskblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
+		. += mutable_appearance(colored_blood_icon('icons/effects/blood.dmi'), "maskblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
 
 /obj/item/clothing/mask/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()
