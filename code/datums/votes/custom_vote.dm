@@ -29,9 +29,9 @@
 /datum/vote/custom_vote/create_vote(mob/vote_creator)
 	var/custom_count_method = tgui_input_list(
 		user = vote_creator,
-		message = "Single, multiple, or ranked choice?",
+		message = "Single, multiple, or ranked choice?", // SPLURT EDIT ADDITION - Ranked Choice Voting
 		title = "Choice Method",
-		items = list("Single", "Multiple", "Ranked"),
+		items = list("Single", "Multiple", "Ranked"), // SPLURT EDIT ADDITION - Ranked Choice Voting
 		default = "Single",
 	)
 	switch(custom_count_method)
@@ -39,6 +39,7 @@
 			count_method = VOTE_COUNT_METHOD_SINGLE
 		if("Multiple")
 			count_method = VOTE_COUNT_METHOD_MULTI
+		// SPLURT EDIT ADDITION - Ranked Choice Voting
 		if("Ranked")
 			count_method = VOTE_COUNT_METHOD_RANKED
 			// Ask for the threshold if it's ranked voting
@@ -53,6 +54,7 @@
 			if(isnull(threshold))
 				return FALSE
 			ranked_winner_threshold = threshold
+		// SPLURT EDIT ADDITION - End
 		if(null)
 			return FALSE
 		else
@@ -64,7 +66,7 @@
 		user = vote_creator,
 		message = "How should the vote winner be determined?",
 		title = "Winner Method",
-		items = list("Simple", "Weighted Random", "No Winner", "Ranked"),
+		items = list("Simple", "Weighted Random", "No Winner", "Ranked"), // SPLURT EDIT ADDITION - Ranked Choice Voting
 		default = "Simple",
 	)
 	switch(custom_win_method)
@@ -72,10 +74,10 @@
 			winner_method = VOTE_WINNER_METHOD_SIMPLE
 		if("Weighted Random")
 			winner_method = VOTE_WINNER_METHOD_WEIGHTED_RANDOM
-		if("No Winner")
-			winner_method = VOTE_WINNER_METHOD_NONE
+		// SPLURT EDIT ADDITION - Ranked Choice Voting
 		if("Ranked")
 			winner_method = VOTE_WINNER_METHOD_RANKED
+		// SPLURT EDIT ADDITION - End
 		if(null)
 			return FALSE
 		else

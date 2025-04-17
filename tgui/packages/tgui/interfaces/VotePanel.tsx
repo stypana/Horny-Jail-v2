@@ -54,7 +54,7 @@ type UserData = {
 enum VoteSystem {
   VOTE_SINGLE = 1,
   VOTE_MULTI = 2,
-  VOTE_RANKED = 3,
+  VOTE_RANKED = 3, // SPLURT EDIT ADDITION - Ranked Choice Voting
 }
 
 type Data = {
@@ -330,6 +330,7 @@ const ChoicesPanel = (props) => {
             ))}
           </LabeledList>
         ) : null}
+        {/* SPLURT EDIT ADDITION - Ranked Choice Voting */}
         {currentVote && currentVote.countMethod === VoteSystem.VOTE_RANKED ? (
           <NoticeBox success>
             Click options to rank them in order of preference. Click again to
@@ -453,6 +454,7 @@ const ChoicesPanel = (props) => {
               })}
           </LabeledList>
         ) : null}
+        {/* SPLURT EDIT ADDITION - End */}
         {currentVote ? null : <NoticeBox>No vote active!</NoticeBox>}
       </Section>
     </Stack.Item>
