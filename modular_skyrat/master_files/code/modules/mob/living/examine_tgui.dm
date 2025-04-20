@@ -18,6 +18,10 @@
 
 
 /datum/examine_panel/ui_interact(mob/user, datum/tgui/ui)
+	if(!holder)
+		return
+	if(!user.client)
+		return
 	if(!examine_panel_screen)
 		examine_panel_screen = new
 		examine_panel_screen.name = "screen"
@@ -46,6 +50,8 @@
 
 /datum/examine_panel/ui_data(mob/user)
 	var/list/data = list()
+	if(!holder)
+		return data
 
 	var/datum/preferences/preferences = holder.client?.prefs
 
