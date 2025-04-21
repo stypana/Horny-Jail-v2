@@ -1,0 +1,5 @@
+author: "evandarksky"
+delete-after: True
+changes:
+  - rscadd: "checks for `holder` and `user.client` in examine_tgui"
+  - rscadd: "an initialize for examine_panel on mapload for silicons"
