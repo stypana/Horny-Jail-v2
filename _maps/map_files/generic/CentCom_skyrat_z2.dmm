@@ -337,6 +337,13 @@
 /obj/structure/flora/bush/leavy/style_2,
 /turf/open/misc/grass/planet,
 /area/centcom/holding/cafe/park)
+"ahx" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/machinery/self_actualization_device,
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "ahA" = (
 /obj/structure/flora/bush/flowers_br,
 /obj/structure/flora/bush/fullgrass,
@@ -13313,6 +13320,31 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"nuS" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 14;
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/applicator/pill/morphine{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/applicator/pill/morphine{
+	pixel_y = -2;
+	pixel_x = -5
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_x = 6;
+	pixel_y = 2;
+	list_reagents = list(/datum/reagent/water=50)
+	},
+/turf/open/indestructible/hoteltile{
+	icon_state = "carpet_royalblack-255";
+	base_icon_state = "carpet_royalblack";
+	icon = 'icons/turf/floors/carpet_royalblack.dmi'
+	},
+/area/centcom/holding/cafe)
 "nvy" = (
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
@@ -14262,12 +14294,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
-"oKM" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/centcom/interlink)
 "oLI" = (
 /obj/structure/chair/sofa/corp/left,
 /turf/open/floor/carpet/black,
@@ -14626,6 +14652,12 @@
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
+/area/centcom/holding/cafe)
+"pjt" = (
+/obj/item/hilbertshotel/ghostdojo{
+	is_ghost_cafe = 1
+	},
+/turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "pkJ" = (
 /obj/structure/fans/tiny/invisible,
@@ -17640,31 +17672,6 @@
 	icon_state = "darkfull"
 	},
 /area/centcom/holding/cafe)
-"sOM" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green{
-	pixel_y = 14;
-	pixel_x = 3
-	},
-/obj/item/reagent_containers/applicator/pill/morphine{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/applicator/pill/morphine{
-	pixel_y = -2;
-	pixel_x = -5
-	},
-/obj/item/reagent_containers/cup/glass/drinkingglass{
-	pixel_x = 6;
-	pixel_y = 2;
-	list_reagents = list(/datum/reagent/water=50)
-	},
-/turf/open/indestructible/hoteltile{
-	icon_state = "carpet_royalblack-255";
-	base_icon_state = "carpet_royalblack";
-	icon = 'icons/turf/floors/carpet_royalblack.dmi'
-	},
-/area/centcom/holding/cafe)
 "sPA" = (
 /obj/effect/turf_decal/tile/blue/half/contrasted,
 /obj/item/kirbyplants/random,
@@ -19345,12 +19352,6 @@
 	icon_state = "floor"
 	},
 /area/centcom/holding/cafe/park)
-"vpD" = (
-/obj/item/hilbertshotel/ghostdojo{
-	is_ghost_cafe = 1
-	},
-/turf/open/indestructible/hotelwood,
-/area/centcom/holding/cafe)
 "vpT" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/beer,
@@ -31803,7 +31804,7 @@ vat
 eSk
 vat
 aDg
-oKM
+ahx
 aWb
 aWb
 aWb
@@ -69630,7 +69631,7 @@ ajx
 aUo
 aUo
 aUo
-vpD
+pjt
 aqf
 vTT
 pqy
@@ -70616,7 +70617,7 @@ aaa
 aaa
 aTb
 aTb
-sOM
+nuS
 nlu
 goe
 aTb
