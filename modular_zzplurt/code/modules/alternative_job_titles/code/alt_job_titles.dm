@@ -445,7 +445,7 @@
 		"Security Bitch",
 		"Security Slave",
 		"Cum Holder",
-		"Cum Reciever"
+		"Cum Receiver"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
