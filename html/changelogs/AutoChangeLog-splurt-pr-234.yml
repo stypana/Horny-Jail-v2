@@ -1,0 +1,14 @@
+author: "Krashly"
+delete-after: True
+changes:
+  - bugfix: "220 issue fixed"
+  - bugfix: "201 issue fixed"
+  - bugfix: "197 issue fixed"
+  - bugfix: "191 issue fixed"
+  - bugfix: "249 issue fixed"
+  - bugfix: "269 issue fixed"
+  - bugfix: "293 issues fixed"
+  - bugfix: "256 issues fixed"
+  - bugfix: "306 issue fixed"
+  - rscadd: "Added more alter job-titles"
+  - bugfix: "308 issue fixed"
