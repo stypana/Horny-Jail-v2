@@ -61,16 +61,16 @@
 	lefthand_file = 'modular_skyrat/modules/implants/icons/razorclaws_lefthand.dmi'
 	icon_state = "wolverine"
 	inhand_icon_state = "wolverine"
-	var/knife_force = 15 //Splurt Edit
+	var/knife_force = 7.5 //Splurt Edit
 	w_class = WEIGHT_CLASS_BULKY
-	var/knife_wound_bonus = 5
+	var/knife_wound_bonus = 2
 	var/cutter_force = CUTTER_FORCE
 	var/cutter_wound_bonus = CUTTER_WOUND_BONUS
 	var/cutter_bare_wound_bonus = CUTTER_WOUND_BONUS
 	tool_behaviour = TOOL_KNIFE
-	toolspeed = 1
-	attack_speed = 6
-	force = 15 //Splurt Edit/Addition
+	toolspeed = 4
+	attack_speed = 10
+	force = 7.5 //Splurt Edit/Addition
 	item_flags = NEEDS_PERMIT //Beepers gets angry if you get caught with this.
 
 /obj/item/knife/razor_claws/attack_self(mob/user)
@@ -93,7 +93,7 @@
 		to_chat(user, span_notice("You shift [src] into Killing mode, for slicing."))
 		icon_state = "wolverine"
 		inhand_icon_state = "wolverine"
-		force = 15 //Splurt Edit
+		force = 7.5 //Splurt Edit
 		sharpness = KNIFE_SHARPNESS
 		wound_bonus = knife_wound_bonus
 		bare_wound_bonus = KNIFE_BARE_WOUND_BONUS
