@@ -217,7 +217,7 @@
 	SSquirks.AssignQuirks(patient, patient.client)
 	// SPLURT ADDITION START - Fix of naga with shoes
 	var/taur_mode = patient.get_taur_mode()
-	if(taur_mode & STYLE_TAUR_SNAKE)
+	if((taur_mode & STYLE_TAUR_SNAKE) && (patient.shoes))
 		patient.dropItemToGround(patient.shoes, TRUE)
 	// SPLURT ADDITION END - Fix of naga with shoes
 	if(patient.dna.real_name != original_name)
