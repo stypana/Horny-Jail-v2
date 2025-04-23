@@ -6,7 +6,7 @@
 	base_pixel_x = -16
 	icon_state = "chryssalid"
 	icon_living = "chryssalid"
-	icon_dead = "chryssalid"
+	icon_dead = "chryssalid_dead"
 	gender = NEUTER
 	status_flags = CANPUSH
 	butcher_results = list(
@@ -63,5 +63,5 @@
 	AddComponent(/datum/component/seethrough_mob)
 	add_traits(list(TRAIT_VENTCRAWLER_ALWAYS), INNATE_TRAIT)
 
-/mob/living/basic/alien/create_splatter(splatter_dir)
+/mob/living/basic/chryssalid/create_splatter(splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(get_turf(src), splatter_dir)
