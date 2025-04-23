@@ -80,3 +80,8 @@
   evandarksky:
   - rscadd: checks for `holder` and `user.client` in examine_tgui
   - rscadd: an initialize for examine_panel on mapload for silicons
+2025-04-22:
+  Bomberman66Dev:
+  - rscadd: Added packing peanuts, most cargo crates comes filled with them
+  - rscadd: Cargonians now have a liver trait that makes them love eating packing
+      peanuts
