@@ -29,6 +29,7 @@
 		"custom_genital_fluids_pref" = /datum/preference/toggle/erp/custom_genital_fluids,
 		"cumflation_pref" = /datum/preference/toggle/erp/cumflation,
 		"cumflates_partners_pref" = /datum/preference/toggle/erp/cumflates_partners,
+		"favorite_interactions" = /datum/preference/blob/favorite_interactions, // Not a toggle but it shouldn't cause any issues
 		// Vore prefs
 		"vore_enable_pref" = /datum/preference/toggle/erp/vore_enable,
 		"vore_overlays" = /datum/preference/toggle/erp/vore_overlays,
@@ -43,6 +44,8 @@
 		"extreme_harm" = /datum/preference/choiced/erp_status_extmharm,
 		"unholy_pref" = /datum/preference/choiced/erp_status_unholy
 	)
+	/// Cache of the user's preferences, used to avoid re-reading them from the client
+	var/list/cached_preferences = list()
 
 	// A list of mobs that should be genderized.
 	var/static/list/should_be_genderized = typecacheof(list(
@@ -72,11 +75,12 @@
 /datum/component/interactable/ui_data(mob/living/user)
 	. = ..()
 
+	if(!LAZYLEN(cached_preferences))
+		update_cached_preferences(user)
+
+
 	var/mob/living/carbon/human/human_user = user
 	var/mob/living/carbon/human/human_self = self
-
-	// User is always the one interacting, self is the target
-	.["favorite_interactions"] = user.client?.prefs?.read_preference(/datum/preference/blob/favorite_interactions) || list()
 
 	// Character info - Reoriented to show from user's perspective
 	.["isTargetSelf"] = (user == self)
@@ -120,20 +124,16 @@
 
 	// Content preferences - Always use user's preferences
 	if(user.client?.prefs)
-		// Master ERP pref
-		.["master_erp_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences)
-		// Base ERP toggle
-		.["base_erp_pref"] = user.client.prefs.read_preference(/datum/preference/toggle/erp)
 
 		// Character ERP prefs (status prefs)
 		for(var/entry in character_preference_paths)
 			var/datum/preference/choiced/pref = GLOB.preference_entries[character_preference_paths[entry]]
-			.[entry] = user.client.prefs.read_preference(pref.type)
+			.[entry] = cached_preferences[entry]
 			.["[entry]_values"] = pref.get_choices()
 
 		// Content toggle prefs
 		for(var/entry in preference_paths)
-			.[entry] = user.client.prefs.read_preference(preference_paths[entry])
+			.[entry] = cached_preferences[entry]
 
 	// Genital data - Only if user is human
 	var/list/genital_list = list()
@@ -164,10 +164,30 @@
 	.["item_name"] = item ? item.name : null
 
 /datum/component/interactable/ui_close(mob/user)
+	cached_preferences = list()
 	if(length(modified_preferences) && self.client?.prefs)
 		self.client.prefs.save_character()
 		self.client.prefs.save_preferences()
 		modified_preferences.Cut()
+
+/**
+ * Updates the cached preferences for the given user
+ *
+ * Created to avoid spamming the client for preferences since static data isn't the best option for this
+ *
+ * user - The user to update the cached preferences for
+ */
+/datum/component/interactable/proc/update_cached_preferences(mob/living/user, list/preferences)
+	if(LAZYLEN(preferences))
+		for(var/entry in preferences)
+			cached_preferences[entry] = user.client?.prefs.read_preference(character_preference_paths[entry] || preference_paths[entry])
+		return
+
+	cached_preferences = list()
+	for(var/entry in character_preference_paths)
+		cached_preferences[entry] = user.client?.prefs.read_preference(character_preference_paths[entry])
+	for(var/entry in preference_paths)
+		cached_preferences[entry] = user.client?.prefs.read_preference(preference_paths[entry])
 
 /// Returns a list of interaction-relevant attributes for the given mob
 /datum/component/interactable/proc/get_interaction_attributes(mob/living/target)

@@ -213,6 +213,7 @@
 				favorite_interactions += interaction_id
 			prefs.update_preference(GLOB.preference_entries[/datum/preference/blob/favorite_interactions], favorite_interactions)
 			modified_preferences |= "favorite_interactions"
+			update_cached_preferences(user, list("favorite_interactions"))
 			return TRUE
 
 		if("pref")
@@ -227,6 +228,7 @@
 			else
 				prefs.update_preference(GLOB.preference_entries[pref_path], !prefs.read_preference(pref_path))
 			modified_preferences |= pref_path
+			update_cached_preferences(user, list(params["pref"]))
 			return TRUE
 
 		if("char_pref")
@@ -245,6 +247,7 @@
 
 			prefs.update_preference(pref_type, value)
 			modified_preferences |= pref_path
+			update_cached_preferences(user, list(params["char_pref"]))
 			return TRUE
 
 		if("item_slot")
