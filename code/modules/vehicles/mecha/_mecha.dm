@@ -23,7 +23,7 @@
 	desc = "Exosuit"
 	icon = 'icons/mob/rideables/mecha.dmi'
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	max_integrity = 300
+	max_integrity = 200
 	armor_type = /datum/armor/sealed_mecha
 	force = 5
 	movedelay = 1 SECONDS

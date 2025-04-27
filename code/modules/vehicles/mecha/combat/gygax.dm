@@ -4,7 +4,7 @@
 	icon_state = "gygax"
 	base_icon_state = "gygax"
 	movedelay = 3
-	max_integrity = 250
+	max_integrity = 150
 	accesses = list(ACCESS_MECH_SCIENCE, ACCESS_MECH_SECURITY)
 	armor_type = /datum/armor/mecha_gygax
 	max_temperature = 25000

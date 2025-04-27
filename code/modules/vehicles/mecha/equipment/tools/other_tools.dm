@@ -156,6 +156,19 @@
 	//how much the armor of the mech is modified by
 	var/datum/armor/armor_mod
 
+	//splurt start
+	///how much integrity this armor have
+	var/armor_integrity = 150
+	var/armor_operational = TRUE
+
+/obj/item/mecha_parts/mecha_equipment/armor/roundstart
+	armor_integrity = 100
+	name = "General Purpose Metal Plates"
+	desc = "Special armoured ablative plate of metal, designed to increase survivability. Standard issue for military-grade exosuits"
+	icon_state = "mecha_abooster_ccw"
+	iconstate_name = "melee"
+	protect_name = "Melee Armor"
+
 /obj/item/mecha_parts/mecha_equipment/armor/attach(obj/vehicle/sealed/mecha/new_mecha, attach_right)
 	. = ..()
 	chassis.set_armor(chassis.get_armor().add_other_armor(armor_mod))
