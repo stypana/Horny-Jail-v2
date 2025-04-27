@@ -54,10 +54,6 @@
 		return
 	. += trapped.examine(user)
 
-/obj/structure/toilet/skibidi/update_icon_state()
-	. = ..()
-	icon = initial(icon)
-
 /obj/structure/toilet/skibidi/update_overlays()
 	. = ..()
 	if(!trapped || !cover_open)
@@ -80,8 +76,6 @@
 				i_am_an_appearance_trust_me = layer
 				i_am_an_appearance_trust_me.pixel_y -= 2
 				i_am_an_appearance_trust_me.pixel_x += 1
-			head_overlays += mutable_appearance(icon, icon_state)
-			icon = null
 		if(WEST)
 			for(var/datum/layer in head_overlays)
 				i_am_an_appearance_trust_me = layer
