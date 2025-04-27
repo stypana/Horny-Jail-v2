@@ -142,9 +142,9 @@
 
 	if(!cover_open)
 		speech_args[SPEECH_MESSAGE] = ""
-		playsound(target, 'sound/machines/toilet_flush.ogg', 20, TRUE)
+		playsound(src, 'sound/machines/toilet_flush.ogg', 20, TRUE)
 	else
-		playsound(target, 'sound/machines/toilet_flush.ogg', 40, TRUE)
+		playsound(src, 'sound/machines/toilet_flush.ogg', 40, TRUE)
 
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(!length(message) || message[1] == "*")
