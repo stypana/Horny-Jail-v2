@@ -1,5 +1,5 @@
 /datum/smite/skibidi
-	name = "Skibidi Dob Dob Yes Yes"
+	name = "Toiletification"
 
 /datum/smite/skibidi/effect(client/user, mob/living/target)
 	. = ..()
