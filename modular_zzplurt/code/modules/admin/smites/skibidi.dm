@@ -178,7 +178,7 @@
 
 	var/obj/item/bodypart/head/skibidi_head = goodbye.get_bodypart(BODY_ZONE_HEAD)
 	if(skibidi_head)
-		skibidi_head.drop_limb(special = FALSE, dismembered = FALSE, move_to_floor = TRUE)
+		skibidi_head.drop_limb(special = FALSE, dismembered = FALSE)
 		skibidi_head.forceMove(loc)
 
 	goodbye.gib(DROP_ALL_REMAINS)
