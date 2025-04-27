@@ -48,6 +48,12 @@
 	if(trapped)
 		. += span_warning("[trapped] [trapped.p_are()] trapped inside.")
 
+/obj/structure/toilet/skibidi/examine_more(mob/user)
+	. = ..()
+	if(!trapped)
+		return
+	. += trapped.examine(user)
+
 /obj/structure/toilet/skibidi/update_icon_state()
 	. = ..()
 	icon = initial(icon)
