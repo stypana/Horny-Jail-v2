@@ -17,16 +17,14 @@
 		var/obj/item/thingmabob = contents[i]
 		var/mutable_appearance/obamna_soda = new /mutable_appearance(thingmabob)
 		obamna_soda.plane = FLOAT_PLANE
+		obamna_soda.layer = src.layer - 0.1
 		if(istype(thingmabob, /obj/item/reagent_containers/cup/glass/bottle))
-			obamna_soda.layer = FLOAT_LAYER
 			obamna_soda.pixel_x = -11 + ( ((i - 1) % 3) * 10)
 			obamna_soda.pixel_y = 0 + (FLOOR((i - 1) / 3, 1) * 8)
 		else if(istype(thingmabob, /obj/item/reagent_containers/cup/glass/waterbottle))
-			obamna_soda.layer = FLOAT_LAYER
 			obamna_soda.pixel_x = -10 + ( ((i - 1) % 3) * 10)
 			obamna_soda.pixel_y = -5 + (FLOOR((i - 1) / 3, 1) * 8)
 		else
-			obamna_soda.layer = src.layer - 0.1
 			obamna_soda.pixel_x = -10 + ( ((i - 1) % 3) * 10)
 			obamna_soda.pixel_y = -4 + (FLOOR((i - 1) / 3, 1) * 8)
 		. += obamna_soda
