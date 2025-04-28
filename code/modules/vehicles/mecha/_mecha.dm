@@ -452,6 +452,9 @@
 
 /obj/vehicle/sealed/mecha/proc/update_part_values() ///Updates the values given by scanning module and capacitor tier, called when a part is removed or inserted.
 	update_energy_drain()
+	if(servo)
+		var/percentage_buff = (100 - (servo.rating * 4)) / 100
+		movedelay = initial(movedelay) * percentage_buff
 
 	if(capacitor)
 		var/datum/armor/stock_armor = get_armor_by_type(armor_type)
