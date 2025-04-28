@@ -165,9 +165,9 @@
 	armor_integrity = 100
 	name = "General Purpose Metal Plates"
 	desc = "Special armoured ablative plate of metal, designed to increase survivability. Standard issue for military-grade exosuits"
-	icon_state = "mecha_abooster_ccw"
+	icon_state = "rounstartarmor"
 	iconstate_name = "melee"
-	protect_name = "Melee Armor"
+	protect_name = "General Armor"
 
 /obj/item/mecha_parts/mecha_equipment/armor/attach(obj/vehicle/sealed/mecha/new_mecha, attach_right)
 	. = ..()
