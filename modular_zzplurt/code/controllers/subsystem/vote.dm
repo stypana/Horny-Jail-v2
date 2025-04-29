@@ -16,16 +16,16 @@
 	voted += ckey
 
 	// Clear previous ranking for this option if any
-	var/old_rank = current_vote.choices_by_ckey["[ckey]_[their_vote]"]
+	var/old_rank = current_vote.choices_by_ckey["[ckey]*[their_vote]"]
 	if(old_rank)
 		// Remove the old first place vote if we're changing from rank 1
 		if(old_rank == 1)
 			current_vote.choices[their_vote]--
-		current_vote.choices_by_ckey["[ckey]_[their_vote]"] = null
+		current_vote.choices_by_ckey["[ckey]*[their_vote]"] = null
 
 	// Add new ranking
 	if(rank > 0)
-		current_vote.choices_by_ckey["[ckey]_[their_vote]"] = rank
+		current_vote.choices_by_ckey["[ckey]*[their_vote]"] = rank
 		// Only count first place votes in the total
 		if(rank == 1)
 			current_vote.choices[their_vote]++

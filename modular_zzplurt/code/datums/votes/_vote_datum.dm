@@ -12,7 +12,7 @@
 	// Collect all voters and create a map of their current rankings
 	var/list/voter_rankings = list() // Stores current rankings for each voter
 	for(var/key in choices_by_ckey)
-		var/split_key = splittext(key, "_")
+		var/split_key = splittext(key, "*")
 		if(length(split_key) != 2)
 			continue
 
