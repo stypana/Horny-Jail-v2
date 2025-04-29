@@ -165,7 +165,7 @@
 	armor_integrity = 100
 	name = "General Purpose Metal Plates"
 	desc = "Special armoured ablative plate of metal, designed to increase survivability. Standard issue for military-grade exosuits"
-	icon_state = "rounstartarmor"
+	icon_state = "roundstartarmor"
 	iconstate_name = "melee"
 	protect_name = "General Armor"
 

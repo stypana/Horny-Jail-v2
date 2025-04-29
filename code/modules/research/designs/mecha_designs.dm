@@ -615,7 +615,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/general_purpose_armor
-	name = "General Purpose Metal Plates"
+	name = "General Purpose Metal Armor"
 	desc = "Special armoured ablative plate of metal, designed to increase survivability. Standard issue for military-grade exosuits."
 	id = "mech_armor"
 	build_type = MECHFAB
