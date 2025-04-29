@@ -13,6 +13,8 @@ SUBSYSTEM_DEF(gamemode)
 	var/datum/storyteller/storyteller
 	/// Result of the storyteller vote. Defaults to the guide.
 	var/voted_storyteller = /datum/storyteller/default
+	/// Storyteller displayed to the statpanel, depending if the round is secret or not
+	var/statpanel_display = "N/A"
 	/// List of all the storytellers. Populated at init. Associative from type
 	var/list/storytellers = list()
 	/// Next process for our storyteller. The wait time is STORYTELLER_WAIT_TIME
@@ -135,6 +137,8 @@ SUBSYSTEM_DEF(gamemode)
 	var/wizardmode = FALSE
 
 	var/storyteller_voted = FALSE
+	var/ready_only_vote = FALSE
+	var/list/storyteller_vote_results = list()
 
 /datum/controller/subsystem/gamemode/Initialize(time, zlevel)
 	. = ..()
@@ -702,7 +706,7 @@ SUBSYSTEM_DEF(gamemode)
 		vote_message += "[storyboy.desc]"
 		vote_message += ""
 	var/finalized_message = "[vote_message.Join("\n")]"
-	to_chat(world, custom_boxed_message("purple_box", vote_font("[span_bold("Storyteller Vote")]\n<hr>[finalized_message]")))
+	to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[finalized_message]", "boxed_message purple_box")))
 	return choices
 
 /datum/controller/subsystem/gamemode/proc/storyteller_vote_result(winner_name)
@@ -720,12 +724,77 @@ SUBSYSTEM_DEF(gamemode)
 	if(storyteller) // If this is true, then an admin bussed one, don't overwrite it
 		log_dynamic("Roundstart storyteller has been set by admins to [storyteller.name], the vote was not considered.")
 		return
+
 	var/datum/storyteller/storyteller_pick
 	if(!voted_storyteller)
 		storyteller_pick = pick(storytellers)
 		log_dynamic("Roundstart picked storyteller [storyteller.name] randomly due to no vote result.")
 		voted_storyteller = storyteller_pick
+
+	if(ready_only_vote)
+		var/processed_storyteller = process_storyteller_vote()
+		if(!isnull(processed_storyteller))
+			voted_storyteller = processed_storyteller
+			storyteller_vote_results = null
+		else
+			stack_trace("Processing storyteller vote results failed! That's less than ideal. Using backup non-weighted result [voted_storyteller]")
+
 	set_storyteller(voted_storyteller)
+	var/secret_percentage = CONFIG_GET(number/storyteller_secret_percentage)
+	if(prob(secret_percentage))
+		statpanel_display = "Secret"
+		to_chat(world, vote_font(fieldset_block("Storyteller: Secret", "The storyteller for this round is secret! What could it be, it is a mystery...", "boxed_message purple_box")))
+	else
+		statpanel_display = storyteller.name
+		to_chat(world, vote_font(fieldset_block("Storyteller: [storyteller.name]", "[storyteller.welcome_text]", "boxed_message purple_box")))
+
+	// Notify discord about the round's selected storyteller
+	for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
+		send2chat(
+			new /datum/tgs_message_content("The storyteller selected for this round is [statpanel_display]!"),
+			channel_tag,
+		)
+
+/datum/controller/subsystem/gamemode/proc/process_storyteller_vote()
+	var/list/players = list()
+	var/list/base_votes = LAZYLISTDUPLICATE(storyteller_vote_results)
+	var/list/processed_votes = list()
+	if(!base_votes)
+		return
+
+	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+		if(player.ready == PLAYER_READY_TO_PLAY)
+			players += player.ckey
+
+	log_dynamic("[players.len] players ready! Processing storyteller vote results.")
+
+	for(var/vote as anything in base_votes)
+		if(base_votes[vote] == 0)
+			continue
+		var/vote_string = "[vote]"
+		var/list/vote_components = splittext(vote_string, "*")
+		var/vote_ckey = vote_components[1]
+		var/vote_storyteller = vote_components[2]
+		if(LAZYFIND(players, vote_ckey))
+			log_dynamic("VALID: [vote_ckey] voted for [vote_storyteller]")
+			processed_votes[vote_storyteller]++
+		else
+			log_dynamic("INVALID: [vote_ckey] not eligible to vote for [vote_storyteller]")
+
+	log_dynamic("Storyteller processed vote tally is: [english_list_assoc(processed_votes)]")
+	var/vote_winner = pick_weight(processed_votes)
+	log_dynamic("Storyteller vote winner is [vote_winner]")
+	to_chat(GLOB.admins,
+		type = MESSAGE_TYPE_ADMINLOG,
+		html = span_vote_notice(fieldset_block("Storyteller", "Vote results: [english_list_assoc(processed_votes)]<br /><br />Selected storyteller: [vote_winner]", "boxed_message blue_box")),
+		confidential = TRUE,
+	)
+	for(var/storyteller_type in storytellers)
+		var/datum/storyteller/storyboy = storytellers[storyteller_type]
+		if(storyboy.name == vote_winner)
+			return storyteller_type
+
+	stack_trace("Storyteller [vote_winner] was declared vote winner, but couldn't locate datum in storytellers! This should never happen!")
 
 /**
  * set_storyteller
@@ -747,8 +816,6 @@ SUBSYSTEM_DEF(gamemode)
 	point_thresholds[EVENT_TRACK_CREWSET] = track_data.threshold_crewset * CONFIG_GET(number/crewset_point_threshold)
 	point_thresholds[EVENT_TRACK_GHOSTSET] = track_data.threshold_ghostset * CONFIG_GET(number/ghostset_point_threshold)
 
-	to_chat(world, span_notice("<b>Storyteller is [storyteller.name]!</b>"))
-	to_chat(world, span_notice("[storyteller.welcome_text]"))
 	log_admin_private("Storyteller switched to [storyteller.name]. [forced ? "Forced by admin ckey [force_ckey]" : ""]")
 
 /**
