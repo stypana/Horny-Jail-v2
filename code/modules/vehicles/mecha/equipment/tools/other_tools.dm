@@ -158,7 +158,7 @@
 
 	//splurt start
 	///how much integrity this armor have
-	var/armor_integrity = 150
+	var/armor_integrity = 200
 	var/armor_operational = TRUE
 
 /obj/item/mecha_parts/mecha_equipment/armor/roundstart
