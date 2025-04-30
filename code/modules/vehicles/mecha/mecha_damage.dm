@@ -28,6 +28,8 @@
 		return
 	if(!prob(internal_damage_probability))
 		return
+
+	//splurt edit start -- Mecha additions, better armor
 	var/internal_damage_able_to_deal = possible_int_damage
 	internal_damage_able_to_deal &= ~internal_damage
 	if(internal_damage_able_to_deal)
@@ -45,6 +47,7 @@
 				visible_message(span_warning("You see servos of [src] giving out sparks!"))
 			if(MECHA_INT_SHORT_CIRCUIT)
 				visible_message(span_warning("You see circuit board of [src] giving out sparks!"))
+	//splurt edit end -- Mecha additions, better armor
 
 /// tries to repair any internal damage and plays fluff for it
 /obj/vehicle/sealed/mecha/proc/try_repair_int_damage(mob/user, flag_to_heal)

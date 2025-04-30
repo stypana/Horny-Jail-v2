@@ -37,6 +37,7 @@
 		playsound(src, gear.destroy_sound, 50)
 
 /obj/vehicle/sealed/mecha/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
+	//splurt edit start -- Mecha additions, better armor
 	var/armor_damage_amount
 	if(equip_by_category[MECHA_ARMOR])
 		for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor)
@@ -57,6 +58,8 @@
 				qdel(mech_armor)
 
 	var/damage_taken = armor_damage_amount | ..()
+	//splurt edit end -- Mecha additions, better armor
+
 	if(damage_taken <= 0 || atom_integrity < 0)
 		return damage_taken
 

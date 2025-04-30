@@ -23,7 +23,7 @@
 	desc = "Exosuit"
 	icon = 'icons/mob/rideables/mecha.dmi'
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	max_integrity = 200
+	max_integrity = 300
 	armor_type = /datum/armor/sealed_mecha
 	force = 5
 	movedelay = 1 SECONDS
@@ -93,7 +93,7 @@
 	/// damage amount above which we can take internal damages
 	var/internal_damage_threshold = 15
 	/// % chance for internal damage to occur
-	var/internal_damage_probability = 30
+	var/internal_damage_probability = 20
 	/// list of possibly dealt internal damage for this mech type
 	var/possible_int_damage = MECHA_INT_FIRE|MECHA_INT_TEMP_CONTROL|MECHA_CABIN_AIR_BREACH|MECHA_INT_CONTROL_LOST|MECHA_INT_SHORT_CIRCUIT
 	/// damage threshold above which we take component damage
@@ -452,10 +452,6 @@
 
 /obj/vehicle/sealed/mecha/proc/update_part_values() ///Updates the values given by scanning module and capacitor tier, called when a part is removed or inserted.
 	update_energy_drain()
-	if(servo)
-		var/percentage_buff = (100 - (servo.rating * 4)) / 100
-		movedelay = initial(movedelay) * percentage_buff
-
 	if(capacitor)
 		var/datum/armor/stock_armor = get_armor_by_type(armor_type)
 		var/initial_energy = stock_armor.get_rating(ENERGY)
