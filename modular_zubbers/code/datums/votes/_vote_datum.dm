@@ -1,9 +1,11 @@
 /datum/vote
 	/// The threshold for a winner in ranked voting as a percentage (0-100)
 	var/ranked_winner_threshold = 50
+	/// A list of results from the elimination process.
+	var/list/elimination_results = list()
 
 /// Gets the winner using ranked choice voting.
-/proc/get_ranked_winner(list/choices, list/choices_by_ckey, ranked_winner_threshold, datum/vote/source_vote)
+/datum/vote/proc/get_ranked_winner()
 	// Total number of voters who submitted at least one ranked choice
 	var/total_voters = 0
 	// List of all voter ckeys
@@ -34,7 +36,6 @@
 		"total_voters" = total_voters,
 		"choices" = list()
 	)
-	var/list/elimination_results = list()
 	for(var/choice in choices)
 		initial_state_text += "\t[choice]: [choices[choice]] votes\n"
 		initial_state_data["choices"][choice] = choices[choice]
@@ -53,11 +54,6 @@
 		initial_state_text += sorted_rankings.Join(", ") + "\n"
 
 	log_dynamic(initial_state_text, initial_state_data)
-	if(istype(source_vote, /datum/vote/storyteller))
-		SSgamemode.vote_datum = source_vote
-		SSgamemode.vote_choices = LAZYLISTDUPLICATE(source_vote.choices)
-		SSgamemode.vote_choices_by_ckey = LAZYLISTDUPLICATE(source_vote.choices_by_ckey)
-		SSgamemode.vote_threshold = source_vote.ranked_winner_threshold
 
 	// If no one voted, return empty list
 	if(total_voters == 0)
@@ -85,14 +81,12 @@
 			else if(votes == highest_votes)
 				highest_choices += option
 
-		/*
 		// Check if any option has reached the threshold
 		if(highest_votes >= victory_threshold)
 			log_dynamic("Victory threshold ([victory_threshold]) reached! Winner(s): [highest_choices.Join(", ")] with [highest_votes] votes",
 				list("winners" = highest_choices, "votes" = highest_votes))
 			LAZYADD(elimination_results, "[highest_choices[1]] - [highest_votes]")
 			return highest_choices
-		*/
 
 		// Find lowest vote count to eliminate
 		var/lowest_votes = INFINITY
@@ -117,8 +111,8 @@
 			log_dynamic("Eliminating [option_to_eliminate] with lowest votes: [lowest_votes]",
 				list("eliminated" = option_to_eliminate, "votes" = lowest_votes))
 
-		LAZYADD(elimination_results, "[option_to_eliminate] - [lowest_votes]")
 		// Remove the eliminated option from choices
+		LAZYADD(elimination_results, "[option_to_eliminate] - [lowest_votes]")
 		choices -= option_to_eliminate
 
 		// Update rankings and redistribute votes
@@ -200,7 +194,6 @@
 	if(length(choices) == 1)
 		log_dynamic("Only one option remains: [choices[1]] is the winner!", list("winner" = choices[1]))
 		LAZYADD(elimination_results, "[choices[1]] - [highest_votes]")
-		source_vote.elimination_results = elimination_results
 		return list(choices[1])
 
 	// This should never happen but just in case

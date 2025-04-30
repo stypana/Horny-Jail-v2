@@ -1,6 +1,5 @@
 /datum/vote
 	var/has_desc = FALSE
-	var/list/elimination_results
 
 /datum/vote/proc/return_desc(vote_name)
 	return ""
@@ -68,6 +67,10 @@
 	SSgamemode.storyteller_voted = TRUE
 	if(ready_only)
 		SSgamemode.ready_only_vote = TRUE
+		SSgamemode.vote_datum = new
+		SSgamemode.vote_datum.choices = LAZYLISTDUPLICATE(choices)
+		SSgamemode.vote_datum.choices_by_ckey = LAZYLISTDUPLICATE(choices_by_ckey)
+		SSgamemode.vote_datum.ranked_winner_threshold = ranked_winner_threshold
 
 /*
 ### PERSISTENCE SUBSYSTEM TRACKING BELOW ###
