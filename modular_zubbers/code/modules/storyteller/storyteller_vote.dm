@@ -67,9 +67,8 @@
 	SSgamemode.storyteller_voted = TRUE
 	if(ready_only)
 		SSgamemode.ready_only_vote = TRUE
-		SSgamemode.vote_choices = LAZYLISTDUPLICATE(choices)
-		SSgamemode.vote_choices_by_ckey = LAZYLISTDUPLICATE(choices_by_ckey)
-		SSgamemode.vote_threshold = ranked_winner_threshold
+		SSgamemode.storyteller_vote = new
+		SSgamemode.storyteller_vote.choices_by_ckey = LAZYLISTDUPLICATE(choices_by_ckey)
 
 /*
 ### PERSISTENCE SUBSYSTEM TRACKING BELOW ###

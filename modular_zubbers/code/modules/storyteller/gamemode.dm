@@ -138,9 +138,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	var/storyteller_voted = FALSE
 	var/ready_only_vote = FALSE
-	var/list/vote_choices = list()
-	var/list/vote_choices_by_ckey = list()
-	var/vote_threshold
+	var/datum/vote/storyteller/storyteller_vote
 
 /datum/controller/subsystem/gamemode/Initialize(time, zlevel)
 	. = ..()
@@ -737,8 +735,7 @@ SUBSYSTEM_DEF(gamemode)
 		var/processed_storyteller = process_storyteller_vote()
 		if(!isnull(processed_storyteller))
 			voted_storyteller = processed_storyteller
-			vote_choices = null
-			vote_choices_by_ckey = null
+			QDEL_NULL(storyteller_vote)
 		else
 			stack_trace("Processing storyteller vote results failed! That's less than ideal. Using backup non-weighted result [voted_storyteller]")
 
@@ -760,7 +757,7 @@ SUBSYSTEM_DEF(gamemode)
 
 /datum/controller/subsystem/gamemode/proc/process_storyteller_vote()
 	var/list/players = list()
-	if(!vote_choices_by_ckey)
+	if(!storyteller_vote)
 		return
 
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
@@ -769,8 +766,8 @@ SUBSYSTEM_DEF(gamemode)
 
 	log_dynamic("[players.len] players ready! Processing storyteller vote results.")
 
-	for(var/vote as anything in vote_choices_by_ckey)
-		if(vote_choices_by_ckey[vote] == 0)
+	for(var/vote as anything in storyteller_vote.choices_by_ckey)
+		if(storyteller_vote.choices_by_ckey[vote] == 0)
 			continue
 		var/vote_string = "[vote]"
 		var/list/vote_components = splittext(vote_string, "_")
@@ -778,15 +775,18 @@ SUBSYSTEM_DEF(gamemode)
 		var/vote_storyteller = vote_components[2]
 		if(LAZYFIND(players, vote_ckey))
 			log_dynamic("VALID: [vote_ckey] voted for [vote_storyteller]")
+			storyteller_vote.choices[vote_storyteller]++
 		else
+			LAZYREMOVE(storyteller_vote.choices_by_ckey, vote)
 			log_dynamic("INVALID: [vote_ckey] not eligible to vote for [vote_storyteller]")
 			LAZYREMOVE(vote_choices_by_ckey, vote)
 
-	var/list/vote_winner = get_ranked_winner(vote_choices, vote_choices_by_ckey, vote_threshold)
-	log_dynamic("Storyteller vote winner is [vote_winner[1]]")
+	log_dynamic("Storyteller processed vote tally is: [english_list_assoc(storyteller_vote.choices)]")
+	var/vote_winner = storyteller_vote.get_vote_result()
+	log_dynamic("Storyteller vote winner is [vote_winner]")
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINLOG,
-		html = span_vote_notice(fieldset_block("Storyteller", "Selected storyteller: [vote_winner[1]]", "boxed_message blue_box")),
+		html = span_vote_notice(fieldset_block("Storyteller", "Vote results: [english_list_assoc(storyteller_vote.choices)]<br /><br />Selected storyteller: [vote_winner]", "boxed_message blue_box")),
 		confidential = TRUE,
 	)
 	for(var/storyteller_type in storytellers)
