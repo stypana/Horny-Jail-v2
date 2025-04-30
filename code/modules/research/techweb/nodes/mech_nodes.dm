@@ -16,7 +16,6 @@
 		"ripley_main",
 		"ripley_peri",
 		"mech_hydraulic_clamp",
-		"mech_armor",
 	)
 
 /datum/techweb_node/mech_equipment
