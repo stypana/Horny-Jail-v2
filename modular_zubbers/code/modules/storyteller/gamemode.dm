@@ -138,6 +138,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	var/storyteller_voted = FALSE
 	var/ready_only_vote = FALSE
+	var/datum/vote/vote_datum
 	var/list/vote_choices = list()
 	var/list/vote_choices_by_ckey = list()
 	var/vote_threshold
@@ -749,6 +750,10 @@ SUBSYSTEM_DEF(gamemode)
 		to_chat(world, vote_font(fieldset_block("Storyteller: Secret", "The storyteller for this round is secret! What could it be, it is a mystery...", "boxed_message purple_box")))
 	else
 		statpanel_display = storyteller.name
+		var/list/vote_results = vote_datum.elimination_results
+		var/serialized_vote_results = "[vote_results.Join("\n")]"
+		var/list/vote_result_message = list("Method: Ranked Vote\n\n[serialized_vote_results]")
+		to_chat(world, custom_boxed_message("purple_box", vote_font("[vote_result_message.Join("\n")]")))
 		to_chat(world, vote_font(fieldset_block("Storyteller: [storyteller.name]", "[storyteller.welcome_text]", "boxed_message purple_box")))
 
 	// Notify discord about the round's selected storyteller
@@ -781,8 +786,9 @@ SUBSYSTEM_DEF(gamemode)
 		else
 			log_dynamic("INVALID: [vote_ckey] not eligible to vote for [vote_storyteller]")
 			LAZYREMOVE(vote_choices_by_ckey, vote)
+			vote_choices[vote_storyteller]--
 
-	var/list/vote_winner = get_ranked_winner(vote_choices, vote_choices_by_ckey, vote_threshold)
+	var/list/vote_winner = get_ranked_winner(vote_choices, vote_choices_by_ckey, vote_threshold, vote_datum)
 	log_dynamic("Storyteller vote winner is [vote_winner[1]]")
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINLOG,

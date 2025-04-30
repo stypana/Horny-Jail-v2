@@ -17,35 +17,11 @@
 		send_map_vote_notice("Admin Override is in effect. Map will not be changed.", "Tallies are recorded and saved.")
 		return
 
-	var/list/message_data = list()
-	var/winner
-	var/winner_amount = 0
-	for(var/map in map_vote.choices)
-		message_data += "[map] - [map_vote_cache[map]]"
-		if(!winner_amount)
-			winner = map
-			winner_amount = map_vote_cache[map]
-			continue
-		if(map_vote_cache[map] <= winner_amount)
-			continue
-		winner = map
-		winner_amount = map_vote_cache[map]
-
-	var/filtered_vote_results = "[message_data.Join("\n")]"
-
-	ASSERT(winner, "No winner found in map vote.")
+	var/winner = map_vote.choices[1]
 	set_next_map(config.maplist[winner])
-	var/list/vote_result_message = list(filtered_vote_results)
-	vote_result_message += list("<br/ >Next Map: [span_vote_notice(span_bold(next_map_config.map_name))]")
-
-	// do not reset tallies if only one map is even possible
-	if(length(map_vote.choices) > 1)
-		map_vote_cache[winner] = CONFIG_GET(number/map_vote_minimum_tallies)
-		write_cache()
-		update_tally_printout()
-	else
-		vote_result_message += "Only one map was possible, tallies were not reset."
-
+	var/list/vote_results = map_vote.elimination_results
+	var/serialized_vote_results = "[vote_results.Join("\n")]"
+	var/list/vote_result_message = list("Method: Ranked Vote\n\n[serialized_vote_results]\n\nNext Map: [span_vote_notice(span_bold(winner))]")
 	send_map_vote_notice(arglist(vote_result_message))
 
 /datum/controller/subsystem/map_vote/send_map_vote_notice(...)
