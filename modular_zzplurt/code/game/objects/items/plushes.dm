@@ -67,3 +67,11 @@
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "ollie_plush"
 	worn_icon_state = "ollie_plush"
+
+/obj/item/toy/plush/artificer_kobold
+	name = "Artificer Kobold"
+	desc = "A plushie that seems like a fluffy mix between fox and racoon. Or perhaps racoon and fox? We may never know."
+	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
+	icon_state = "artificer_kobold"
+	worn_icon_state = "artificer_kobold"
+	squeak_override = list('modular_zubbers/code/modules/emotes/sound/voice/yip.ogg' = 1)
