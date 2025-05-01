@@ -60,3 +60,10 @@
 	icon_state = "thomas_plush"
 	worn_icon_state = "thomas_plush"
 	squeak_override	= list('modular_zzplurt/sound/misc/thomas_whistle_movie.ogg' = 1)
+
+/obj/item/toy/plush/ollie
+	name = "Ollie Plushie"
+	desc = "A plushie that seems like a fluffy mix between fox and racoon. Or perhaps racoon and fox? We may never know."
+	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
+	icon_state = "ollie_plush"
+	worn_icon_state = "ollie_plush"

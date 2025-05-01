@@ -89,3 +89,6 @@
 	name = "Thomas Plushie"
 	item_path = /obj/item/toy/plush/thomas_plush
 
+/datum/loadout_item/toys/donator/ollie_plushie
+	name = "Ollie Plushie"
+	item_path = /obj/item/toy/plush/ollie
