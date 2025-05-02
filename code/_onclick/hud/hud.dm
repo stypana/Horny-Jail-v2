@@ -284,6 +284,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	//
 	QDEL_LIST(hotkeybuttons)
 	throw_icon = null
+	resist_icon = null
 	QDEL_LIST(infodisplay)
 
 	healths = null
@@ -298,7 +299,12 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 	//SKYRAT EDIT ADDITION START - SKYRAT HUD
 	wanted_lvl = null
+	ammo_counter = null
 	// SKYRAT EDIT ADDITION END - SKYRAT HUD
+
+	// SPLURT EDIT - FIX AMMO COUNTER HUD
+	ammo_counter = null
+	//
 
 	QDEL_LIST_ASSOC_VAL(master_groups)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
@@ -452,7 +458,12 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	// Handles alerts - the things on the right side of the screen
 	reorganize_alerts(screenmob)
 	screenmob.reload_fullscreen()
-	update_parallax_pref(screenmob)
+
+	if(screenmob == mymob)
+		update_parallax_pref(screenmob)
+	else
+		viewmob.hud_used.update_parallax_pref()
+
 	update_reuse(screenmob)
 
 	// ensure observers get an accurate and up-to-date view
