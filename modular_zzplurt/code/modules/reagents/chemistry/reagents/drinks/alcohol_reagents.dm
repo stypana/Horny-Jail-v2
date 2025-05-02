@@ -272,9 +272,9 @@
 //Donator items
 /datum/reagent/consumable/ethanol/gem_grape_juice
 	name = "Gem Brand Grape Juice"
-	description = "A grape-flavored drink with restorative properties and a hint of alcohol."
+	description = "The Gem Emporium's take on grape juice, providing a very healthy alternative with a kick described as 'Energizes you like a short rest!'"
 	color = "#290029"
-	taste_description = "hot herbal brew with a hint of grape"
+	taste_description = "Cool refreshing grapes with a hint of fruit"
 	boozepwr = 15
 	quality = DRINK_FANTASTIC
 	metabolization_rate = 2 * REAGENTS_METABOLISM //0.4u per second
@@ -304,9 +304,9 @@
 //Donator items
 /datum/reagent/consumable/ethanol/gem_grape_soda
 	name = "Gem Brand Grape Soda"
-	description = "A grape-flavored soda with restorative properties and a hint of alcohol."
+	description = "The Gem Emporium's take on grape juice, providing a very healthy alternative with a kick described as 'Energizes you like a short rest!' Now carbonated!"
 	color = "#290029"
-	taste_description = "hot herbal brew with a hint of grape and carbonation"
+	taste_description = "Cool refreshing grapes with a hint of fruit"
 	boozepwr = 15
 	quality = DRINK_FANTASTIC
 	metabolization_rate = 2 * REAGENTS_METABOLISM //0.4u per second

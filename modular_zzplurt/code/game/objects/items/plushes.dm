@@ -62,15 +62,16 @@
 	squeak_override	= list('modular_zzplurt/sound/misc/thomas_whistle_movie.ogg' = 1)
 
 /obj/item/toy/plush/ollie
-	name = "Ollie Plushie"
-	desc = "A plushie that seems like a fluffy mix between fox and racoon. Or perhaps racoon and fox? We may never know."
+	name = "Foxcoon Plushie"
+	desc = "A strange foxcoon plushie with a huge, floofy tail and a strange odor..."
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "ollie_plush"
 	worn_icon_state = "ollie_plush"
+	squeak_override = list('modular_zzplurt/sound/voice/farts/fart9.ogg' = 1)
 
 /obj/item/toy/plush/artificer_kobold
 	name = "Artificer Kobold"
-	desc = "A plushie that seems like a fluffy mix between fox and racoon. Or perhaps racoon and fox? We may never know."
+	desc = "A lifesized recreation of a kobold from a popular tabletop roleplaying game, additional accessories such as hat and rifle not included. Wait, what do you mean you've seen it? It's brand new!"
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "artificer_kobold"
 	worn_icon_state = "artificer_kobold"
