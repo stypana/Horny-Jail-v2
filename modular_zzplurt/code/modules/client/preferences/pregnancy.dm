@@ -67,22 +67,6 @@
 /datum/preference/numeric/pregnancy/duration/create_default_value()
 	return PREGNANCY_DURATION_DEFAULT
 
-/**
- * How balanced the distribution of genes is between the father and mother
- * 100 = All mother
- * 50 = Half father, half mother
- * 0 = All father
- */
-/datum/preference/numeric/pregnancy/genetic_distribution
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "pregnancy_genetic_distribution"
-	minimum = PREGNANCY_GENETIC_DISTRIBUTION_MINIMUM
-	maximum = PREGNANCY_GENETIC_DISTRIBUTION_MAXIMUM
-
-/datum/preference/numeric/pregnancy/genetic_distribution/create_default_value()
-	return PREGNANCY_GENETIC_DISTRIBUTION_DEFAULT
-
 /// If enabled, health analyzers will not show that you are a pregnancy - No relation to cryptocurrencies
 /datum/preference/toggle/pregnancy/cryptic
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES

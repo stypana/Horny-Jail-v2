@@ -20,15 +20,6 @@ export const pregnancy_duration: Feature<number> = {
   component: FeatureNumberInput,
 };
 
-export const pregnancy_genetic_distribution: Feature<number> = {
-  name: 'Pregnancy: Genetic distribution',
-  description:
-    'How heavily weighed the genetic distribution of your offspring is to your genes. \
-    At 100, 100% of your genes are inherited. At 50%, 50% of your genes and 50% of the fathers genes are inherited. \
-    At 0%, all of the genes are inherited from the father.',
-  component: FeatureNumberInput,
-};
-
 export const pregnancy_cryptic: FeatureToggle = {
   name: 'Pregnancy: Cryptic',
   description:
