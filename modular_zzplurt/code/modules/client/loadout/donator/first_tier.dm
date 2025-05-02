@@ -32,10 +32,12 @@
 	donator_tier = DONATOR_TIER_1
 
 //Uniform
+/*
 /datum/loadout_item/uniform/donator/chameleon
 	name = "Chameleon Suit"
 	item_path = /obj/item/clothing/under/chameleon
 	donator_tier = DONATOR_TIER_1
+*/
 
 /datum/loadout_item/uniform/donator/victorian_purple
 	name = "Purple Victorian Suit"
@@ -55,10 +57,12 @@
 	donator_tier = DONATOR_TIER_1
 
 //Shoes
+/*
 /datum/loadout_item/shoes/donator/chameleon_suits
 	name = "Chameleon Shoes"
 	item_path = /obj/item/clothing/shoes/chameleon
 	donator_tier = DONATOR_TIER_1
+*/
 
 // Plushies
 /datum/loadout_item/toys/donator/chaotic_toaster
