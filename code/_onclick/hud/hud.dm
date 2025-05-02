@@ -302,6 +302,10 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	ammo_counter = null
 	// SKYRAT EDIT ADDITION END - SKYRAT HUD
 
+	// SPLURT EDIT - FIX AMMO COUNTER HUD
+	ammo_counter = null
+	//
+
 	QDEL_LIST_ASSOC_VAL(master_groups)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
 	QDEL_LIST(always_visible_inventory)
