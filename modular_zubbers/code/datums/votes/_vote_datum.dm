@@ -36,7 +36,7 @@
 		"total_voters" = total_voters,
 		"choices" = list()
 	)
-	elimination_results = null
+	elimination_results = list()
 	for(var/choice in choices)
 		initial_state_text += "\t[choice]: [choices[choice]] votes\n"
 		initial_state_data["choices"][choice] = choices[choice]
@@ -87,8 +87,6 @@
 			log_dynamic("Victory threshold ([victory_threshold]) reached! Winner(s): [highest_choices.Join(", ")] with [highest_votes] votes",
 				list("winners" = highest_choices, "votes" = highest_votes))
 			LAZYADD(elimination_results, "[highest_choices[1]] - [highest_votes]")
-			if(istype(src, /datum/vote/storyteller))
-				SSgamemode.vote_datum.elimination_results = LAZYLISTDUPLICATE(elimination_results)
 			return highest_choices
 
 		// Find lowest vote count to eliminate
@@ -117,7 +115,6 @@
 		// Remove the eliminated option from choices
 		LAZYADD(elimination_results, "[option_to_eliminate] - [lowest_votes]")
 		choices -= option_to_eliminate
-		LAZYADD(elimination_results, "[option_to_eliminate] - [lowest_votes]")
 
 		// Update rankings and redistribute votes
 		var/redistribution_text = "Vote redistribution after eliminating [option_to_eliminate]:\n"

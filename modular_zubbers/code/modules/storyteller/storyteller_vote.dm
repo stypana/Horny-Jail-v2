@@ -68,7 +68,6 @@
 	if(ready_only)
 		SSgamemode.ready_only_vote = TRUE
 		SSgamemode.vote_datum = new
-		SSgamemode.vote_datum.choices = LAZYLISTDUPLICATE(choices)
 		SSgamemode.vote_datum.choices_by_ckey = LAZYLISTDUPLICATE(choices_by_ckey)
 		SSgamemode.vote_datum.ranked_winner_threshold = ranked_winner_threshold
 
