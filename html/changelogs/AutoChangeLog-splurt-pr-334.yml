@@ -1,4 +1,0 @@
-author: "idrk13"
-delete-after: True
-changes:
-  - rscdel: "Removed puddle transform's door and table passthrough"
