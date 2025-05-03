@@ -198,8 +198,9 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log('Attempting to create upstream issue...');
+            console.log('=== Starting Create Upstream Issue Step ===');
             try {
+              console.log('Step 1: Getting values from previous steps');
               // Get values from previous steps
               const owner = '${{ steps.parse_command.outputs.owner }}';
               const repo = '${{ steps.parse_command.outputs.repo }}';
@@ -209,15 +210,28 @@ jobs:
               const labelsStr = '${{ steps.get_issue.outputs.labels }}';
               const target = '${{ steps.parse_command.outputs.target }}';
 
+              console.log('Step 2: Logging input values');
+              console.log(`Owner: ${owner}`);
+              console.log(`Repo: ${repo}`);
+              console.log(`Title: ${title}`);
+              console.log(`Body length: ${body ? body.length : 'undefined'}`);
+              console.log(`HTML URL: ${html_url}`);
+              console.log(`Labels string: ${labelsStr}`);
+              console.log(`Target: ${target}`);
+
+              console.log('Step 3: Parsing labels');
               // Parse labels
               let labels;
               try {
                 labels = JSON.parse(labelsStr);
+                console.log(`Parsed labels: ${JSON.stringify(labels)}`);
               } catch (e) {
                 console.error('Failed to parse labels:', e);
                 labels = [];
+                console.log('Using empty labels array as fallback');
               }
 
+              console.log('Step 4: Validating inputs');
               // Validate inputs
               if (!owner || !repo || !title || !body || !html_url) {
                 console.error('Missing required inputs:');
@@ -228,7 +242,9 @@ jobs:
                 console.error(`HTML URL: ${html_url}`);
                 throw new Error('Missing required inputs for creating upstream issue');
               }
+              console.log('Input validation passed');
 
+              console.log('Step 5: Creating issue');
               // Create the issue
               const issue = await github.rest.issues.create({
                 owner: owner,
@@ -238,7 +254,9 @@ jobs:
                 labels: labels
               });
 
+              console.log('Step 6: Validating issue creation response');
               if (!issue || !issue.data || !issue.data.html_url) {
+                console.error('Invalid issue creation response:', issue);
                 throw new Error('Failed to create issue: Invalid response from GitHub API');
               }
 
@@ -246,23 +264,31 @@ jobs:
               core.setOutput('success', 'true');
               core.setOutput('url', issue.data.html_url);
 
+              console.log('Step 7: Creating comment on original issue');
               // Add comment to original issue
               const commentBody = `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${target}: ${issue.data.html_url}`;
+              console.log('Comment body prepared');
+
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
                 body: commentBody
               });
+              console.log('Comment created successfully');
+
+              console.log('=== Create Upstream Issue Step Completed Successfully ===');
             } catch (error) {
-              console.error('Failed to create upstream issue:', error);
+              console.error('=== Create Upstream Issue Step Failed ===');
               console.error('Error details:', {
                 message: error.message,
                 status: error.status,
                 response: error.response?.data
               });
+              console.error('Stack trace:', error.stack);
               core.setOutput('success', 'false');
               core.setOutput('error', error.message);
+              console.error('=== End of Error Details ===');
             }
 
       - name: Comment on existing upstream issue
