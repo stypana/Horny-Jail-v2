@@ -17,19 +17,24 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Starting command parsing...');
             const command = context.payload.comment.body.trim();
+            console.log(`Received command: ${command}`);
             const parts = command.split(' ');
 
             // Default to bubber if no target specified
             if (parts.length === 1) {
+              console.log('No target specified, defaulting to bubber');
               return { valid: true, target: 'bubber', owner: 'Bubberstation', repo: 'Bubberstation' };
             }
 
             if (parts.length !== 2) {
+              console.log('Invalid command format detected');
               return { valid: false, error: 'Invalid command format. Use `/report_upstream` or `/report_upstream tg`' };
             }
 
             const target = parts[1].toLowerCase();
+            console.log(`Target specified: ${target}`);
             if (target === 'tg') {
               return { valid: true, target: 'tg', owner: 'tgstation', repo: 'tgstation' };
             } else if (target === 'bubber') {
@@ -37,6 +42,7 @@ jobs:
             } else if (target === 'testing') {
               return { valid: true, target: 'testing', owner: 'MosleyTheMalO', repo: 'Bubberstation' };
             } else {
+              console.log(`Invalid target specified: ${target}`);
               return { valid: false, error: 'Invalid target. Use `tg`, or omit target to report to Bubberstation' };
             }
 
@@ -45,6 +51,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Commenting on invalid command...');
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -58,11 +65,13 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Checking user permissions...');
             const response = await github.rest.repos.getCollaboratorPermissionLevel({
               owner: context.repo.owner,
               repo: context.repo.repo,
               username: context.actor
             });
+            console.log(`User permission level: ${response.data.permission}`);
             return response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
 
       - name: Get issue details
@@ -71,11 +80,14 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Fetching issue details...');
             const issue = await github.rest.issues.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number
             });
+            console.log(`Issue title: ${issue.data.title}`);
+            console.log(`Issue has ${issue.data.labels.length} labels`);
             return {
               title: issue.data.title,
               body: issue.data.body,
@@ -89,15 +101,24 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Checking for existing upstream issue...');
             const searchQuery = `repo:${steps.parse_command.outputs.owner}/${steps.parse_command.outputs.repo} in:title ${steps.get_issue.outputs.title}`;
+            console.log(`Search query: ${searchQuery}`);
             const searchResults = await github.rest.search.issuesAndPullRequests({
               q: searchQuery
             });
+            console.log(`Found ${searchResults.data.items.length} potential matches`);
 
             // Check if any of the search results match our issue title exactly
             const existingIssue = searchResults.data.items.find(item =>
               item.title.toLowerCase() === steps.get_issue.outputs.title.toLowerCase()
             );
+
+            if (existingIssue) {
+              console.log(`Found existing issue: ${existingIssue.html_url}`);
+            } else {
+              console.log('No existing issue found');
+            }
 
             return {
               exists: !!existingIssue,
@@ -110,6 +131,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Attempting to create upstream issue...');
             try {
               const issue = await github.rest.issues.create({
                 owner: steps.parse_command.outputs.owner,
@@ -118,6 +140,7 @@ jobs:
                 body: `# Original issue: ${steps.get_issue.outputs.html_url}\n\n${steps.get_issue.outputs.body}`,
                 labels: steps.get_issue.outputs.labels
               });
+              console.log(`Successfully created issue: ${issue.data.html_url}`);
 
               // Add comment to original issue
               await github.rest.issues.createComment({
@@ -130,6 +153,11 @@ jobs:
               return { success: true, url: issue.data.html_url };
             } catch (error) {
               console.error('Failed to create upstream issue:', error);
+              console.error('Error details:', {
+                message: error.message,
+                status: error.status,
+                response: error.response?.data
+              });
               return { success: false, error: error.message };
             }
 
@@ -138,6 +166,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Commenting on existing upstream issue...');
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -150,6 +179,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('Commenting on failure...');
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
