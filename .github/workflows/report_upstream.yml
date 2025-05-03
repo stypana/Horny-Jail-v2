@@ -200,12 +200,32 @@ jobs:
           script: |
             console.log('Attempting to create upstream issue...');
             try {
-              const labels = JSON.parse(steps.get_issue.outputs.labels);
+              // Get values from previous steps
+              const owner = '${{ steps.parse_command.outputs.owner }}';
+              const repo = '${{ steps.parse_command.outputs.repo }}';
+              const title = '${{ steps.get_issue.outputs.title }}';
+              const body = '${{ steps.get_issue.outputs.body }}';
+              const html_url = '${{ steps.get_issue.outputs.html_url }}';
+              const labels = JSON.parse('${{ steps.get_issue.outputs.labels }}');
+              const target = '${{ steps.parse_command.outputs.target }}';
+
+              // Validate inputs
+              if (!owner || !repo || !title || !body || !html_url || !labels) {
+                console.error('Missing required inputs:');
+                console.error(`Owner: ${owner}`);
+                console.error(`Repo: ${repo}`);
+                console.error(`Title: ${title}`);
+                console.error(`Body: ${body}`);
+                console.error(`HTML URL: ${html_url}`);
+                console.error(`Labels: ${labels}`);
+                throw new Error('Missing required inputs for creating upstream issue');
+              }
+
               const issue = await github.rest.issues.create({
-                owner: steps.parse_command.outputs.owner,
-                repo: steps.parse_command.outputs.repo,
-                title: steps.get_issue.outputs.title,
-                body: `# Original issue: ${steps.get_issue.outputs.html_url}\n\n${steps.get_issue.outputs.body}`,
+                owner: owner,
+                repo: repo,
+                title: title,
+                body: `# Original issue: ${html_url}\n\n${body}`,
                 labels: labels
               });
               console.log(`Successfully created issue: ${issue.data.html_url}`);
@@ -217,7 +237,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                body: `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${steps.parse_command.outputs.target}: ${issue.data.html_url}`
+                body: `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${target}: ${issue.data.html_url}`
               });
             } catch (error) {
               console.error('Failed to create upstream issue:', error);
