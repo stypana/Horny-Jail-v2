@@ -138,7 +138,12 @@ jobs:
         with:
           script: |
             console.log('Checking for existing upstream issue...');
-            const searchQuery = `repo:${steps.parse_command.outputs.owner}/${steps.parse_command.outputs.repo} in:title ${steps.get_issue.outputs.title}`;
+            const owner = core.getInput('owner');
+            const repo = core.getInput('repo');
+            const title = core.getInput('title');
+            console.log(`Searching in ${owner}/${repo} for title: ${title}`);
+
+            const searchQuery = `repo:${owner}/${repo} in:title ${title}`;
             console.log(`Search query: ${searchQuery}`);
             const searchResults = await github.rest.search.issuesAndPullRequests({
               q: searchQuery
@@ -147,7 +152,7 @@ jobs:
 
             // Check if any of the search results match our issue title exactly
             const existingIssue = searchResults.data.items.find(item =>
-              item.title.toLowerCase() === steps.get_issue.outputs.title.toLowerCase()
+              item.title.toLowerCase() === title.toLowerCase()
             );
 
             if (existingIssue) {
@@ -158,6 +163,10 @@ jobs:
               console.log('No existing issue found');
               core.setOutput('exists', 'false');
             }
+        env:
+          owner: ${{ steps.parse_command.outputs.owner }}
+          repo: ${{ steps.parse_command.outputs.repo }}
+          title: ${{ steps.get_issue.outputs.title }}
 
       - name: Debug upstream check
         if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
