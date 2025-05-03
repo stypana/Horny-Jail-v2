@@ -229,6 +229,7 @@ jobs:
                 throw new Error('Missing required inputs for creating upstream issue');
               }
 
+              // Create the issue
               const issue = await github.rest.issues.create({
                 owner: owner,
                 repo: repo,
@@ -236,16 +237,22 @@ jobs:
                 body: `# Original issue: ${html_url}\n\n${body}`,
                 labels: labels
               });
+
+              if (!issue || !issue.data || !issue.data.html_url) {
+                throw new Error('Failed to create issue: Invalid response from GitHub API');
+              }
+
               console.log(`Successfully created issue: ${issue.data.html_url}`);
               core.setOutput('success', 'true');
               core.setOutput('url', issue.data.html_url);
 
               // Add comment to original issue
+              const commentBody = `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${target}: ${issue.data.html_url}`;
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                body: `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${target}: ${issue.data.html_url}`
+                body: commentBody
               });
             } catch (error) {
               console.error('Failed to create upstream issue:', error);
