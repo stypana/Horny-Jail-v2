@@ -156,7 +156,7 @@
 	//how much the armor of the mech is modified by
 	var/datum/armor/armor_mod
 
-/*
+/* MOVED TO ZZZSPLURT MODULAR FILE SYSTEM
 /obj/item/mecha_parts/mecha_equipment/armor/attach(obj/vehicle/sealed/mecha/new_mecha, attach_right)
 	. = ..()
 	chassis.set_armor(chassis.get_armor().add_other_armor(armor_mod))
