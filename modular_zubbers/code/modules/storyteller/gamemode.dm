@@ -782,7 +782,7 @@ SUBSYSTEM_DEF(gamemode)
 		var/vote_storyteller = vote_components[2]
 		if(players.Find(vote_ckey))
 			log_dynamic("VALID: [vote_ckey] voted for [vote_storyteller]")
-			if(vote_datum.choices[vote_storyteller] == 1)
+			if(vote_datum.choices_by_ckey[vote] == 1)
 				vote_datum.choices[vote_storyteller]++
 		else
 			log_dynamic("INVALID: [vote_ckey] not eligible to vote for [vote_storyteller]")
