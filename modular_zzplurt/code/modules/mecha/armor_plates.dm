@@ -50,13 +50,11 @@
 
 /obj/item/mecha_parts/mecha_equipment/armor/attach(obj/vehicle/sealed/mecha/new_mecha, attach_right)
 	. = ..()
-	chassis.set_armor(chassis.get_armor().add_other_armor(armor_mod))
 	chassis.update_move_speed()
 
 /obj/item/mecha_parts/mecha_equipment/armor/detach(atom/moveto)
-	chassis.set_armor(chassis.get_armor().subtract_other_armor(armor_mod))
+	. = ..()
 	chassis.update_move_speed()
-	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/armor/roundstart
 	max_armor_integrity = 100
