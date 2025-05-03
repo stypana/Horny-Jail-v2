@@ -38,17 +38,51 @@
 
 /obj/item/mecha_parts/mecha_equipment/armor
 	///how much integrity this armor have, acts as extra hp essentially.
-	armor_integrity = 200
-	armor_operational = TRUE
+	var/armor_integrity
+	var/max_armor_integrity = 200
+	var/armor_operational = TRUE
+	// this gets multiplied by mech's movedelay, BIGGER means SLOWER. SMALLER means FASTER
+	var/move_slowdown = 1
+
+/obj/item/mecha_parts/mecha_equipment/armor/Initialize(mapload)
+	. = ..()
+	armor_integrity = max_armor_integrity
+
+/obj/item/mecha_parts/mecha_equipment/armor/attach(obj/vehicle/sealed/mecha/new_mecha, attach_right)
+	. = ..()
+	chassis.set_armor(chassis.get_armor().add_other_armor(armor_mod))
+	chassis.update_move_speed()
+
+/obj/item/mecha_parts/mecha_equipment/armor/detach(atom/moveto)
+	chassis.set_armor(chassis.get_armor().subtract_other_armor(armor_mod))
+	chassis.update_move_speed()
+	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/armor/roundstart
-	armor_integrity = 100
+	max_armor_integrity = 100
 	name = "General Purpose Metal Plates"
 	desc = "Special armoured ablative plate of metal, designed to increase survivability. Standard issue for military-grade exosuits"
 	icon = 'modular_zzplurt/icons/obj/devices/mecha_equipment.dmi'
 	icon_state = "roundstartarmor"
 	iconstate_name = "melee"
 	protect_name = "General Armor"
+
+/obj/item/mecha_parts/mecha_equipment/armor/roundstart/heavy
+	name = "Heavy Metal Plating"
+	desc = "An heavy armor configuration of general purpose metal plates, offers the same amount of protection \
+	 as the newest patented armor designs at the cost of noticable weight increase."
+	protect_name = "Heavy Armor"
+	move_slowdown = 1.65
+	max_armor_integrity = 200
+
+#define MECHA_SNOWFLAKE_ID_ARMOR "armor_snowflake"
+
+/obj/item/mecha_parts/mecha_equipment/armor/get_snowflake_data()
+	return list(
+		"snowflake_id" = MECHA_SNOWFLAKE_ID_ARMOR,
+		"armor_integrity" = armor_integrity,
+		"max_armor_integrity" = max_armor_integrity,
+	)
 
 //integrity nerf to offset the armor buff
 /obj/vehicle/sealed/mecha
@@ -64,8 +98,18 @@
 /obj/vehicle/sealed/mecha/phazon
 	max_integrity = 100
 //servos buff
-/obj/vehicle/sealed/mecha/proc/update_part_values()
+/obj/vehicle/sealed/mecha/update_part_values()
 	. = ..()
+	update_move_speed()
+
+/obj/vehicle/sealed/mecha/proc/update_move_speed()
 	if(servo)
 		var/percentage_buff = (100 - (servo.rating * 4)) / 100
 		movedelay = initial(movedelay) * percentage_buff
+	if(!equip_by_category[MECHA_ARMOR])
+		return
+	for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor)
+		if(!mech_armor.armor_operational)
+			continue
+		movedelay *= mech_armor.slowdown
+

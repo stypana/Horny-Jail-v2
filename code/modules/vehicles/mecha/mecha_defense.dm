@@ -50,7 +50,8 @@
 			if(mech_armor.armor_integrity > armor_damage_amount)
 				mech_armor.armor_integrity -= armor_damage_amount
 				armor_damage_amount = 0
-				break
+				playsound(src, 'sound/effects/bang.ogg', 10, TRUE)
+				return
 
 			else
 				armor_damage_amount -= mech_armor.armor_integrity
