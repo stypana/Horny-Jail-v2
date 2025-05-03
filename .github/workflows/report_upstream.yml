@@ -11,6 +11,8 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
+      contents: write
+      id-token: write
     steps:
       - name: Parse command
         id: parse_command
@@ -346,9 +348,31 @@ jobs:
         with:
           script: |
             console.log('Commenting on failure...');
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `> ${context.payload.comment.body}\n\n❌ Failed to report issue to ${steps.parse_command.outputs.target}: ${steps.create_upstream.outputs.error}`
-            });
+            try {
+              // Get values from previous steps
+              const target = '${{ steps.parse_command.outputs.target }}';
+              const error = '${{ steps.create_upstream.outputs.error }}';
+              const comment = '${{ github.event.comment.body }}';
+
+              console.log('Creating failure comment...');
+              const commentBody = [
+                `> ${comment}`,
+                '',
+                `❌ Failed to report issue to ${target}: ${error}`
+              ].join('\n');
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+              console.log('Failure comment created successfully');
+            } catch (error) {
+              console.error('Failed to create failure comment:', error);
+              console.error('Error details:', {
+                message: error.message,
+                status: error.status,
+                response: error.response?.data
+              });
+            }
