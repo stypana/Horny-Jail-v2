@@ -98,15 +98,16 @@ jobs:
             console.log(`User permission level: ${response.data.permission}`);
             const isMaintainer = response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
             console.log(`Is maintainer: ${isMaintainer}`);
-            core.setOutput('result', isMaintainer.toString());
+            core.setOutput('is_maintainer', isMaintainer.toString());
+            return isMaintainer;
 
       - name: Debug permissions output
         if: steps.parse_command.outputs.valid == 'true'
         run: |
-          echo "Is maintainer: ${{ steps.check_permissions.outputs.result }}"
+          echo "Is maintainer: ${{ steps.check_permissions.outputs.is_maintainer }}"
 
       - name: Get issue details
-        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
         id: get_issue
         uses: actions/github-script@v6
         with:
@@ -125,13 +126,13 @@ jobs:
             core.setOutput('html_url', issue.data.html_url);
 
       - name: Debug issue details
-        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
         run: |
           echo "Issue title: ${{ steps.get_issue.outputs.title }}"
           echo "Issue URL: ${{ steps.get_issue.outputs.html_url }}"
 
       - name: Check for existing upstream issue
-        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
         id: check_upstream
         uses: actions/github-script@v6
         with:
@@ -159,13 +160,13 @@ jobs:
             }
 
       - name: Debug upstream check
-        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
         run: |
           echo "Issue exists: ${{ steps.check_upstream.outputs.exists }}"
           echo "Issue URL: ${{ steps.check_upstream.outputs.url }}"
 
       - name: Create upstream issue
-        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'false'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true' && steps.check_upstream.outputs.exists == 'false'
         id: create_upstream
         uses: actions/github-script@v6
         with:
@@ -203,7 +204,7 @@ jobs:
             }
 
       - name: Comment on existing upstream issue
-        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true' && steps.check_upstream.outputs.exists == 'true'
         uses: actions/github-script@v6
         with:
           script: |
@@ -216,7 +217,7 @@ jobs:
             });
 
       - name: Comment on failure
-        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true' && steps.create_upstream.outputs.success == 'false'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true' && steps.create_upstream.outputs.success == 'false'
         uses: actions/github-script@v6
         with:
           script: |
