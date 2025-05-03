@@ -120,8 +120,20 @@ jobs:
             });
             console.log(`Issue title: ${issue.data.title}`);
             console.log(`Issue has ${issue.data.labels.length} labels`);
+
+            // Process the body to handle newlines and special characters
+            const processedBody = issue.data.body
+              .replace(/\r\n/g, '\\n')  // Replace Windows newlines
+              .replace(/\n/g, '\\n')    // Replace Unix newlines
+              .replace(/"/g, '\\"');    // Escape quotes
+
+            console.log('Original body:');
+            console.log(issue.data.body);
+            console.log('Processed body:');
+            console.log(processedBody);
+
             core.setOutput('title', issue.data.title);
-            core.setOutput('body', issue.data.body);
+            core.setOutput('body', processedBody);
             core.setOutput('labels', JSON.stringify(issue.data.labels.map(label => label.name)));
             core.setOutput('html_url', issue.data.html_url);
 
@@ -130,6 +142,7 @@ jobs:
         run: |
           echo "Issue title: ${{ steps.get_issue.outputs.title }}"
           echo "Issue URL: ${{ steps.get_issue.outputs.html_url }}"
+          echo "Issue body (raw): ${{ steps.get_issue.outputs.body }}"
 
       - name: Check for existing upstream issue
         if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
@@ -198,9 +211,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const core = require('@actions/core');
-            const github = require('@actions/github');
-
             console.log('=== Starting Create Upstream Issue Step ===');
             try {
               console.log('Step 1: Getting values from previous steps');
@@ -208,7 +218,7 @@ jobs:
               const owner = '${{ steps.parse_command.outputs.owner }}';
               const repo = '${{ steps.parse_command.outputs.repo }}';
               const title = '${{ steps.get_issue.outputs.title }}';
-              const body = '${{ steps.get_issue.outputs.body }}'.replace(/\n/g, '\\n');
+              const body = '${{ steps.get_issue.outputs.body }}';
               const html_url = '${{ steps.get_issue.outputs.html_url }}';
               const labelsStr = '${{ steps.get_issue.outputs.labels }}';
               const target = '${{ steps.parse_command.outputs.target }}';
@@ -221,6 +231,11 @@ jobs:
               console.log(`HTML URL: ${html_url}`);
               console.log(`Labels string: ${labelsStr}`);
               console.log(`Target: ${target}`);
+
+              // Process the body back to its original form
+              const processedBody = body.replace(/\\n/g, '\n').replace(/\\"/g, '"');
+              console.log('Processed body back to original form:');
+              console.log(processedBody);
 
               console.log('Step 3: Parsing labels');
               // Parse labels
@@ -249,7 +264,11 @@ jobs:
 
               console.log('Step 5: Creating issue');
               // Create the issue
-              const issueBody = `# Original issue: ${html_url}\n\n${body.replace(/\\n/g, '\n')}`;
+              const issueBody = [
+                `# Original issue: ${html_url}`,
+                '',
+                processedBody
+              ].join('\n');
 
               const issue = await github.rest.issues.create({
                 owner: owner,
@@ -271,7 +290,11 @@ jobs:
 
               console.log('Step 7: Creating comment on original issue');
               // Add comment to original issue
-              const commentBody = `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${target}: ${issue.data.html_url}`;
+              const commentBody = [
+                `> ${context.payload.comment.body}`,
+                '',
+                `✅ Issue successfully reported to ${target}: ${issue.data.html_url}`
+              ].join('\n');
 
               console.log('Comment body prepared');
 
