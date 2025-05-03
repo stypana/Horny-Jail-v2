@@ -86,7 +86,7 @@
 		if(highest_votes >= victory_threshold)
 			log_dynamic("Victory threshold ([victory_threshold]) reached! Winner(s): [highest_choices.Join(", ")] with [highest_votes] votes",
 				list("winners" = highest_choices, "votes" = highest_votes))
-			LAZYADD(elimination_results, "[highest_choices[1]] - [highest_votes]")
+			elimination_results += "[highest_choices[1]] - [highest_votes]"
 			return highest_choices
 
 		// Find lowest vote count to eliminate
@@ -113,8 +113,8 @@
 				list("eliminated" = option_to_eliminate, "votes" = lowest_votes))
 
 		// Remove the eliminated option from choices
-		LAZYADD(elimination_results, "[option_to_eliminate] - [lowest_votes]")
 		choices -= option_to_eliminate
+		elimination_results += "[option_to_eliminate] - [lowest_votes]"
 
 		// Update rankings and redistribute votes
 		var/redistribution_text = "Vote redistribution after eliminating [option_to_eliminate]:\n"
@@ -194,7 +194,7 @@
 	// If we're down to one option, it's the winner
 	if(length(choices) == 1)
 		log_dynamic("Only one option remains: [choices[1]] is the winner!", list("winner" = choices[1]))
-		LAZYADD(elimination_results, "[choices[1]] - [highest_votes]")
+		elimination_results += "[choices[1]] - [highest_votes]"
 		return list(choices[1])
 
 	// This should never happen but just in case

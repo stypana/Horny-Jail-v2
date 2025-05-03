@@ -780,7 +780,7 @@ SUBSYSTEM_DEF(gamemode)
 		var/list/vote_components = splittext(vote_string, "_")
 		var/vote_ckey = vote_components[1]
 		var/vote_storyteller = vote_components[2]
-		if(LAZYFIND(players, vote_ckey))
+		if(players.Find(vote_ckey))
 			log_dynamic("VALID: [vote_ckey] voted for [vote_storyteller]")
 			if(vote_datum.choices[vote_storyteller] == 1)
 				vote_datum.choices[vote_storyteller]++
