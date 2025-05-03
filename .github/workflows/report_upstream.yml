@@ -121,11 +121,13 @@ jobs:
             console.log(`Issue title: ${issue.data.title}`);
             console.log(`Issue has ${issue.data.labels.length} labels`);
 
-            // Process the body to handle newlines and special characters
+            // Process the body to handle all special characters
             const processedBody = issue.data.body
               .replace(/\r\n/g, '\\n')  // Replace Windows newlines
               .replace(/\n/g, '\\n')    // Replace Unix newlines
-              .replace(/"/g, '\\"');    // Escape quotes
+              .replace(/"/g, '\\"')     // Escape quotes
+              .replace(/'/g, "\\'")     // Escape apostrophes
+              .replace(/`/g, '\\`');    // Escape backticks
 
             console.log('Original body:');
             console.log(issue.data.body);
@@ -233,7 +235,12 @@ jobs:
               console.log(`Target: ${target}`);
 
               // Process the body back to its original form
-              const processedBody = body.replace(/\\n/g, '\n').replace(/\\"/g, '"');
+              const processedBody = body
+                .replace(/\\n/g, '\n')
+                .replace(/\\"/g, '"')
+                .replace(/\\'/g, "'")
+                .replace(/\\`/g, '`');
+
               console.log('Processed body back to original form:');
               console.log(processedBody);
 
