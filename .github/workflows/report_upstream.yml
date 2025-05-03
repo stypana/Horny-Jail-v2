@@ -1,0 +1,158 @@
+name: Report Issue to Upstream
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  report-upstream:
+    if: github.event.issue.pull_request == null && startsWith(github.event.comment.body, '/report_upstream')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Parse command
+        id: parse_command
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const command = context.payload.comment.body.trim();
+            const parts = command.split(' ');
+
+            // Default to bubber if no target specified
+            if (parts.length === 1) {
+              return { valid: true, target: 'bubber', owner: 'Bubberstation', repo: 'Bubberstation' };
+            }
+
+            if (parts.length !== 2) {
+              return { valid: false, error: 'Invalid command format. Use `/report_upstream` or `/report_upstream tg`' };
+            }
+
+            const target = parts[1].toLowerCase();
+            if (target === 'tg') {
+              return { valid: true, target: 'tg', owner: 'tgstation', repo: 'tgstation' };
+            } else if (target === 'bubber') {
+              return { valid: true, target: 'bubber', owner: 'Bubberstation', repo: 'Bubberstation' };
+            } else if (target === 'testing') {
+              return { valid: true, target: 'testing', owner: 'MosleyTheMalO', repo: 'Bubberstation' };
+            } else {
+              return { valid: false, error: 'Invalid target. Use `tg`, or omit target to report to Bubberstation' };
+            }
+
+      - name: Comment on invalid command
+        if: steps.parse_command.outputs.valid == 'false'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `> ${context.payload.comment.body}\n\n❌ ${steps.parse_command.outputs.error}`
+            });
+
+      - name: Check if user is maintainer
+        if: steps.parse_command.outputs.valid == 'true'
+        id: check_permissions
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const response = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              username: context.actor
+            });
+            return response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
+
+      - name: Get issue details
+        if: steps.check_permissions.outputs.result == 'true'
+        id: get_issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            return {
+              title: issue.data.title,
+              body: issue.data.body,
+              labels: issue.data.labels.map(label => label.name),
+              html_url: issue.data.html_url
+            };
+
+      - name: Check for existing upstream issue
+        if: steps.check_permissions.outputs.result == 'true'
+        id: check_upstream
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const searchQuery = `repo:${steps.parse_command.outputs.owner}/${steps.parse_command.outputs.repo} in:title ${steps.get_issue.outputs.title}`;
+            const searchResults = await github.rest.search.issuesAndPullRequests({
+              q: searchQuery
+            });
+
+            // Check if any of the search results match our issue title exactly
+            const existingIssue = searchResults.data.items.find(item =>
+              item.title.toLowerCase() === steps.get_issue.outputs.title.toLowerCase()
+            );
+
+            return {
+              exists: !!existingIssue,
+              url: existingIssue?.html_url
+            };
+
+      - name: Create upstream issue
+        if: steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'false'
+        id: create_upstream
+        uses: actions/github-script@v6
+        with:
+          script: |
+            try {
+              const issue = await github.rest.issues.create({
+                owner: steps.parse_command.outputs.owner,
+                repo: steps.parse_command.outputs.repo,
+                title: steps.get_issue.outputs.title,
+                body: `# Original issue: ${steps.get_issue.outputs.html_url}\n\n${steps.get_issue.outputs.body}`,
+                labels: steps.get_issue.outputs.labels
+              });
+
+              // Add comment to original issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${steps.parse_command.outputs.target}: ${issue.data.html_url}`
+              });
+
+              return { success: true, url: issue.data.html_url };
+            } catch (error) {
+              console.error('Failed to create upstream issue:', error);
+              return { success: false, error: error.message };
+            }
+
+      - name: Comment on existing upstream issue
+        if: steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'true'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `> ${context.payload.comment.body}\n\n⚠️ This issue appears to have already been reported to ${steps.parse_command.outputs.target}: ${steps.check_upstream.outputs.url}`
+            });
+
+      - name: Comment on failure
+        if: steps.check_permissions.outputs.result == 'true' && steps.create_upstream.outputs.success == 'false'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `> ${context.payload.comment.body}\n\n❌ Failed to report issue to ${steps.parse_command.outputs.target}: ${steps.create_upstream.outputs.error}`
+            });
