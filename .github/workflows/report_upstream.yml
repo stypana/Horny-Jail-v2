@@ -25,26 +25,50 @@ jobs:
             // Default to bubber if no target specified
             if (parts.length === 1) {
               console.log('No target specified, defaulting to bubber');
-              return { valid: true, target: 'bubber', owner: 'Bubberstation', repo: 'Bubberstation' };
+              core.setOutput('valid', 'true');
+              core.setOutput('target', 'bubber');
+              core.setOutput('owner', 'Bubberstation');
+              core.setOutput('repo', 'Bubberstation');
+              return;
             }
 
             if (parts.length !== 2) {
               console.log('Invalid command format detected');
-              return { valid: false, error: 'Invalid command format. Use `/report_upstream` or `/report_upstream tg`' };
+              core.setOutput('valid', 'false');
+              core.setOutput('error', 'Invalid command format. Use `/report_upstream` or `/report_upstream tg`');
+              return;
             }
 
             const target = parts[1].toLowerCase();
             console.log(`Target specified: ${target}`);
             if (target === 'tg') {
-              return { valid: true, target: 'tg', owner: 'tgstation', repo: 'tgstation' };
+              core.setOutput('valid', 'true');
+              core.setOutput('target', 'tg');
+              core.setOutput('owner', 'tgstation');
+              core.setOutput('repo', 'tgstation');
             } else if (target === 'bubber') {
-              return { valid: true, target: 'bubber', owner: 'Bubberstation', repo: 'Bubberstation' };
+              core.setOutput('valid', 'true');
+              core.setOutput('target', 'bubber');
+              core.setOutput('owner', 'Bubberstation');
+              core.setOutput('repo', 'Bubberstation');
             } else if (target === 'testing') {
-              return { valid: true, target: 'testing', owner: 'MosleyTheMalO', repo: 'Bubberstation' };
+              core.setOutput('valid', 'true');
+              core.setOutput('target', 'testing');
+              core.setOutput('owner', 'MosleyTheMalO');
+              core.setOutput('repo', 'Bubberstation');
             } else {
               console.log(`Invalid target specified: ${target}`);
-              return { valid: false, error: 'Invalid target. Use `tg`, or omit target to report to Bubberstation' };
+              core.setOutput('valid', 'false');
+              core.setOutput('error', 'Invalid target. Use `tg`, or omit target to report to Bubberstation');
             }
+
+      - name: Debug parse command output
+        run: |
+          echo "Valid: ${{ steps.parse_command.outputs.valid }}"
+          echo "Target: ${{ steps.parse_command.outputs.target }}"
+          echo "Owner: ${{ steps.parse_command.outputs.owner }}"
+          echo "Repo: ${{ steps.parse_command.outputs.repo }}"
+          echo "Error: ${{ steps.parse_command.outputs.error }}"
 
       - name: Comment on invalid command
         if: steps.parse_command.outputs.valid == 'false'
@@ -72,10 +96,17 @@ jobs:
               username: context.actor
             });
             console.log(`User permission level: ${response.data.permission}`);
-            return response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
+            const isMaintainer = response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
+            console.log(`Is maintainer: ${isMaintainer}`);
+            core.setOutput('result', isMaintainer.toString());
+
+      - name: Debug permissions output
+        if: steps.parse_command.outputs.valid == 'true'
+        run: |
+          echo "Is maintainer: ${{ steps.check_permissions.outputs.result }}"
 
       - name: Get issue details
-        if: steps.check_permissions.outputs.result == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
         id: get_issue
         uses: actions/github-script@v6
         with:
@@ -88,15 +119,19 @@ jobs:
             });
             console.log(`Issue title: ${issue.data.title}`);
             console.log(`Issue has ${issue.data.labels.length} labels`);
-            return {
-              title: issue.data.title,
-              body: issue.data.body,
-              labels: issue.data.labels.map(label => label.name),
-              html_url: issue.data.html_url
-            };
+            core.setOutput('title', issue.data.title);
+            core.setOutput('body', issue.data.body);
+            core.setOutput('labels', JSON.stringify(issue.data.labels.map(label => label.name)));
+            core.setOutput('html_url', issue.data.html_url);
+
+      - name: Debug issue details
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
+        run: |
+          echo "Issue title: ${{ steps.get_issue.outputs.title }}"
+          echo "Issue URL: ${{ steps.get_issue.outputs.html_url }}"
 
       - name: Check for existing upstream issue
-        if: steps.check_permissions.outputs.result == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
         id: check_upstream
         uses: actions/github-script@v6
         with:
@@ -116,31 +151,38 @@ jobs:
 
             if (existingIssue) {
               console.log(`Found existing issue: ${existingIssue.html_url}`);
+              core.setOutput('exists', 'true');
+              core.setOutput('url', existingIssue.html_url);
             } else {
               console.log('No existing issue found');
+              core.setOutput('exists', 'false');
             }
 
-            return {
-              exists: !!existingIssue,
-              url: existingIssue?.html_url
-            };
+      - name: Debug upstream check
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true'
+        run: |
+          echo "Issue exists: ${{ steps.check_upstream.outputs.exists }}"
+          echo "Issue URL: ${{ steps.check_upstream.outputs.url }}"
 
       - name: Create upstream issue
-        if: steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'false'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'false'
         id: create_upstream
         uses: actions/github-script@v6
         with:
           script: |
             console.log('Attempting to create upstream issue...');
             try {
+              const labels = JSON.parse(steps.get_issue.outputs.labels);
               const issue = await github.rest.issues.create({
                 owner: steps.parse_command.outputs.owner,
                 repo: steps.parse_command.outputs.repo,
                 title: steps.get_issue.outputs.title,
                 body: `# Original issue: ${steps.get_issue.outputs.html_url}\n\n${steps.get_issue.outputs.body}`,
-                labels: steps.get_issue.outputs.labels
+                labels: labels
               });
               console.log(`Successfully created issue: ${issue.data.html_url}`);
+              core.setOutput('success', 'true');
+              core.setOutput('url', issue.data.html_url);
 
               // Add comment to original issue
               await github.rest.issues.createComment({
@@ -149,8 +191,6 @@ jobs:
                 issue_number: context.issue.number,
                 body: `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${steps.parse_command.outputs.target}: ${issue.data.html_url}`
               });
-
-              return { success: true, url: issue.data.html_url };
             } catch (error) {
               console.error('Failed to create upstream issue:', error);
               console.error('Error details:', {
@@ -158,11 +198,12 @@ jobs:
                 status: error.status,
                 response: error.response?.data
               });
-              return { success: false, error: error.message };
+              core.setOutput('success', 'false');
+              core.setOutput('error', error.message);
             }
 
       - name: Comment on existing upstream issue
-        if: steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'true'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true' && steps.check_upstream.outputs.exists == 'true'
         uses: actions/github-script@v6
         with:
           script: |
@@ -175,7 +216,7 @@ jobs:
             });
 
       - name: Comment on failure
-        if: steps.check_permissions.outputs.result == 'true' && steps.create_upstream.outputs.success == 'false'
+        if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.result == 'true' && steps.create_upstream.outputs.success == 'false'
         uses: actions/github-script@v6
         with:
           script: |
