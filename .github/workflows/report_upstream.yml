@@ -138,35 +138,53 @@ jobs:
         with:
           script: |
             console.log('Checking for existing upstream issue...');
-            const owner = core.getInput('owner');
-            const repo = core.getInput('repo');
-            const title = core.getInput('title');
-            console.log(`Searching in ${owner}/${repo} for title: ${title}`);
 
+            // Get the values from previous steps
+            const owner = '${{ steps.parse_command.outputs.owner }}';
+            const repo = '${{ steps.parse_command.outputs.repo }}';
+            const title = '${{ steps.get_issue.outputs.title }}';
+
+            // Validate inputs
+            if (!owner || !repo || !title) {
+              console.error('Missing required inputs:');
+              console.error(`Owner: ${owner}`);
+              console.error(`Repo: ${repo}`);
+              console.error(`Title: ${title}`);
+              throw new Error('Missing required inputs for upstream issue check');
+            }
+
+            console.log(`Searching in ${owner}/${repo} for title: ${title}`);
             const searchQuery = `repo:${owner}/${repo} in:title ${title}`;
             console.log(`Search query: ${searchQuery}`);
-            const searchResults = await github.rest.search.issuesAndPullRequests({
-              q: searchQuery
-            });
-            console.log(`Found ${searchResults.data.items.length} potential matches`);
 
-            // Check if any of the search results match our issue title exactly
-            const existingIssue = searchResults.data.items.find(item =>
-              item.title.toLowerCase() === title.toLowerCase()
-            );
+            try {
+              const searchResults = await github.rest.search.issuesAndPullRequests({
+                q: searchQuery
+              });
+              console.log(`Found ${searchResults.data.items.length} potential matches`);
 
-            if (existingIssue) {
-              console.log(`Found existing issue: ${existingIssue.html_url}`);
-              core.setOutput('exists', 'true');
-              core.setOutput('url', existingIssue.html_url);
-            } else {
-              console.log('No existing issue found');
-              core.setOutput('exists', 'false');
+              // Check if any of the search results match our issue title exactly
+              const existingIssue = searchResults.data.items.find(item =>
+                item.title.toLowerCase() === title.toLowerCase()
+              );
+
+              if (existingIssue) {
+                console.log(`Found existing issue: ${existingIssue.html_url}`);
+                core.setOutput('exists', 'true');
+                core.setOutput('url', existingIssue.html_url);
+              } else {
+                console.log('No existing issue found');
+                core.setOutput('exists', 'false');
+              }
+            } catch (error) {
+              console.error('Error searching for existing issues:', error);
+              console.error('Error details:', {
+                message: error.message,
+                status: error.status,
+                response: error.response?.data
+              });
+              throw error;
             }
-        env:
-          owner: ${{ steps.parse_command.outputs.owner }}
-          repo: ${{ steps.parse_command.outputs.repo }}
-          title: ${{ steps.get_issue.outputs.title }}
 
       - name: Debug upstream check
         if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
