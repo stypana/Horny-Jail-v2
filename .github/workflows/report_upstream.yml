@@ -246,11 +246,17 @@ jobs:
 
               console.log('Step 5: Creating issue');
               // Create the issue
+              const issueBody = [
+                `# Original issue: ${html_url}`,
+                '',
+                body
+              ].join('\n');
+
               const issue = await github.rest.issues.create({
                 owner: owner,
                 repo: repo,
                 title: title,
-                body: `# Original issue: ${html_url}\n\n${body}`,
+                body: issueBody,
                 labels: labels
               });
 
@@ -266,7 +272,12 @@ jobs:
 
               console.log('Step 7: Creating comment on original issue');
               // Add comment to original issue
-              const commentBody = `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${target}: ${issue.data.html_url}`;
+              const commentBody = [
+                `> ${context.payload.comment.body}`,
+                '',
+                `✅ Issue successfully reported to ${target}: ${issue.data.html_url}`
+              ].join('\n');
+
               console.log('Comment body prepared');
 
               await github.rest.issues.createComment({
