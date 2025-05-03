@@ -198,6 +198,9 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const core = require('@actions/core');
+            const github = require('@actions/github');
+
             console.log('=== Starting Create Upstream Issue Step ===');
             try {
               console.log('Step 1: Getting values from previous steps');
@@ -205,7 +208,7 @@ jobs:
               const owner = '${{ steps.parse_command.outputs.owner }}';
               const repo = '${{ steps.parse_command.outputs.repo }}';
               const title = '${{ steps.get_issue.outputs.title }}';
-              const body = '${{ steps.get_issue.outputs.body }}';
+              const body = '${{ steps.get_issue.outputs.body }}'.replace(/\n/g, '\\n');
               const html_url = '${{ steps.get_issue.outputs.html_url }}';
               const labelsStr = '${{ steps.get_issue.outputs.labels }}';
               const target = '${{ steps.parse_command.outputs.target }}';
@@ -246,11 +249,7 @@ jobs:
 
               console.log('Step 5: Creating issue');
               // Create the issue
-              const issueBody = [
-                `# Original issue: ${html_url}`,
-                '',
-                body
-              ].join('\n');
+              const issueBody = `# Original issue: ${html_url}\n\n${body.replace(/\\n/g, '\n')}`;
 
               const issue = await github.rest.issues.create({
                 owner: owner,
@@ -272,11 +271,7 @@ jobs:
 
               console.log('Step 7: Creating comment on original issue');
               // Add comment to original issue
-              const commentBody = [
-                `> ${context.payload.comment.body}`,
-                '',
-                `✅ Issue successfully reported to ${target}: ${issue.data.html_url}`
-              ].join('\n');
+              const commentBody = `> ${context.payload.comment.body}\n\n✅ Issue successfully reported to ${target}: ${issue.data.html_url}`;
 
               console.log('Comment body prepared');
 
