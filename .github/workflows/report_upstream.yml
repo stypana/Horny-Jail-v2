@@ -206,18 +206,26 @@ jobs:
               const title = '${{ steps.get_issue.outputs.title }}';
               const body = '${{ steps.get_issue.outputs.body }}';
               const html_url = '${{ steps.get_issue.outputs.html_url }}';
-              const labels = JSON.parse('${{ steps.get_issue.outputs.labels }}');
+              const labelsStr = '${{ steps.get_issue.outputs.labels }}';
               const target = '${{ steps.parse_command.outputs.target }}';
 
+              // Parse labels
+              let labels;
+              try {
+                labels = JSON.parse(labelsStr);
+              } catch (e) {
+                console.error('Failed to parse labels:', e);
+                labels = [];
+              }
+
               // Validate inputs
-              if (!owner || !repo || !title || !body || !html_url || !labels) {
+              if (!owner || !repo || !title || !body || !html_url) {
                 console.error('Missing required inputs:');
                 console.error(`Owner: ${owner}`);
                 console.error(`Repo: ${repo}`);
                 console.error(`Title: ${title}`);
                 console.error(`Body: ${body}`);
                 console.error(`HTML URL: ${html_url}`);
-                console.error(`Labels: ${labels}`);
                 throw new Error('Missing required inputs for creating upstream issue');
               }
 
