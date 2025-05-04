@@ -165,7 +165,7 @@ jobs:
         id: create_upstream
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.REPORTS_TOKEN }}
           script: |
             try {
               const owner = '${{ steps.parse_command.outputs.owner }}';
@@ -202,7 +202,10 @@ jobs:
                 processedBody
               ].join('\n');
 
-              const issue = await github.rest.issues.create({
+              // Create a new Octokit instance with the REPORTS_TOKEN
+              const octokit = new github.GitHub('${{ secrets.REPORTS_TOKEN }}');
+
+              const issue = await octokit.rest.issues.create({
                 owner: owner,
                 repo: repo,
                 title: title,
