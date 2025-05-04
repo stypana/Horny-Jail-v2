@@ -96,3 +96,7 @@
 /datum/loadout_item/toys/donator/ollie_plushie
 	name = "Ollie Plushie"
 	item_path = /obj/item/toy/plush/ollie
+
+/datum/loadout_item/toys/donator/artificer_kobold
+	name = "Artificer Kobold"
+	item_path = /obj/item/toy/plush/artificer_kobold
