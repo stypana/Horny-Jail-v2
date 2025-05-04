@@ -40,7 +40,7 @@
 	//splurt edit start -- Mecha additions, better armor
 	var/armor_damage_amount
 	if(equip_by_category[MECHA_ARMOR])
-		for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor)
+		for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor in in flat_equipment)
 			if(!mech_armor.armor_operational)
 				continue
 			armor_damage_amount = run_atom_armor(damage_amount, damage_type, damage_flag, attack_dir, armour_penetration)

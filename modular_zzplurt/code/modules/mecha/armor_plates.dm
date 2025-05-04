@@ -106,7 +106,7 @@
 		movedelay = initial(movedelay) * percentage_buff
 	if(!equip_by_category[MECHA_ARMOR])
 		return
-	for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor)
+	for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor in flat_equipment)
 		if(!mech_armor.armor_operational)
 			continue
 		movedelay *= mech_armor.move_slowdown
