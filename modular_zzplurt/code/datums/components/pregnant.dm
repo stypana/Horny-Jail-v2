@@ -30,6 +30,8 @@
 	baby_boy.forceMove(parent)
 	if(baby_name)
 		tampering["name"] = baby_name
+	src.mother_name = mother_name
+	src.father_name = father_name
 	if(mother_dna)
 		src.mother_dna = new()
 		mother_dna.copy_dna(src.father_dna)
@@ -144,6 +146,22 @@
 		examine_list += span_info("It is the offspring of [parents].")
 	if(tampering["name"])
 		examine_list += span_info("The offspring's name will be \"[tampering["name"]]\".")
+	//entrails reader can get deeper information about the baby
+	if(HAS_MIND_TRAIT(user, TRAIT_ENTRAILS_READER) || isobserver(user))
+		if(tampering["genetic_distribution"])
+			examine_list += span_info("The offspring will inherit [genetic_distribution]% of their DNA from their father, [100-genetic_distribution]% from their mother.")
+		else
+			examine_list += span_info("The offspring's genetic distribution is uncertain.")
+
+		if(tampering["physique"])
+			examine_list += span_info("The offspring will be a biological [tampering["physique"]].")
+		else
+			examine_list += span_info("The offspring's biological sex is uncertain.")
+
+		if(tampering["gender"])
+			examine_list += span_info("The offspring will be referred to as a [tampering["gender"]]")
+		else
+			examine_list += span_info("The offspring's gender is uncertain.")
 
 /datum/component/pregnant/proc/still_birth(atom/source)
 	SIGNAL_HANDLER

@@ -75,6 +75,7 @@
 	mother_dna = new()
 	if(ishuman(mother))
 		var/mob/living/carbon/human/baby_momma = mother
+		baby_momma.dna.update_dna_identity()
 		baby_momma.dna.copy_dna(mother_dna)
 		mother_name = baby_momma.real_name
 	else
@@ -83,6 +84,7 @@
 	father_dna = new()
 	if(ishuman(father))
 		var/mob/living/carbon/human/baby_daddy = father
+		baby_daddy.dna.update_dna_identity()
 		baby_daddy.dna.copy_dna(father_dna)
 		father_name = baby_daddy.real_name
 	else
