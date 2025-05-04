@@ -336,12 +336,28 @@ jobs:
         with:
           script: |
             console.log('Commenting on existing upstream issue...');
+            // Get values from previous steps
+            const target = '${{ steps.parse_command.outputs.target }}';
+            const url = '${{ steps.check_upstream.outputs.url }}';
+            const comment = '${{ github.event.comment.body }}';
+
+            console.log(`Target: ${target}`);
+            console.log(`URL: ${url}`);
+            console.log(`Comment: ${comment}`);
+
+            const commentBody = [
+              `> ${comment}`,
+              '',
+              `⚠️ This issue appears to have already been reported to ${target}: ${url}`
+            ].join('\n');
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `> ${context.payload.comment.body}\n\n⚠️ This issue appears to have already been reported to ${steps.parse_command.outputs.target}: ${steps.check_upstream.outputs.url}`
+              body: commentBody
             });
+            console.log('Comment created successfully');
 
       - name: Comment on failure
         if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true' && steps.create_upstream.outputs.success == 'false'
