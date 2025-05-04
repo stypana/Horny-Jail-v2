@@ -214,6 +214,7 @@ jobs:
         id: create_upstream
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.REPORTS_TOKEN }}
           script: |
             console.log('=== Starting Create Upstream Issue Step ===');
             try {
