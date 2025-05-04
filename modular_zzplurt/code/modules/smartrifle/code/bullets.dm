@@ -14,10 +14,11 @@
 	embed_type = /datum/embedding/smartrail
 	damage = 10
 	stamina = 70
-	ricochets_max = 2 //Originally 6, definitely don't need it bouncing that many times
+	armour_penetration = 30
+	ricochets_max = 4 //Originally 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
-	ricochet_decay_damage = 0.6 // 70/10->42/6->~25/~3
+	ricochet_decay_damage = 0.75 // 70/10 -> ~53/~8 -> ~39/~6 -> ~30/~4 -> ~22/~3
 	shrapnel_type = /obj/item/shrapnel/bullet/smartrifle
 	hitsound = 'modular_zzplurt/code/modules/smartrifle/sound/rail.ogg'
 
