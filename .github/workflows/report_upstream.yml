@@ -202,10 +202,7 @@ jobs:
                 processedBody
               ].join('\n');
 
-              // Create a new GitHub client with the correct token
-              const octokit = github.getOctokit('${{ secrets.GITHUB_TOKEN }}');
-
-              const issue = await octokit.rest.issues.create({
+              const issue = await github.rest.issues.create({
                 owner: owner,
                 repo: repo,
                 title: title,
