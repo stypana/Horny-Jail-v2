@@ -19,37 +19,42 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const command = context.payload.comment.body.trim();
-            const parts = command.split(' ');
+            try {
+              const command = context.payload.comment.body.trim();
+              const parts = command.split(' ');
 
-            if (parts.length === 1) {
-              core.setOutput('valid', 'true');
-              core.setOutput('target', 'bubber');
-              core.setOutput('owner', 'Bubberstation');
-              core.setOutput('repo', 'Bubberstation');
-              return;
-            }
+              if (parts.length === 1) {
+                core.setOutput('valid', 'true');
+                core.setOutput('target', 'bubber');
+                core.setOutput('owner', 'Bubberstation');
+                core.setOutput('repo', 'Bubberstation');
+                return;
+              }
 
-            if (parts.length !== 2) {
-              core.setOutput('valid', 'false');
-              core.setOutput('error', 'Invalid command format. Use `/report_upstream` or `/report_upstream tg`');
-              return;
-            }
+              if (parts.length !== 2) {
+                core.setOutput('valid', 'false');
+                core.setOutput('error', 'Invalid command format. Use `/report_upstream` or `/report_upstream tg`');
+                return;
+              }
 
-            const target = parts[1].toLowerCase();
-            if (target === 'tg') {
-              core.setOutput('valid', 'true');
-              core.setOutput('target', 'tg');
-              core.setOutput('owner', 'tgstation');
-              core.setOutput('repo', 'tgstation');
-            } else if (target === 'bubber') {
-              core.setOutput('valid', 'true');
-              core.setOutput('target', 'bubber');
-              core.setOutput('owner', 'Bubberstation');
-              core.setOutput('repo', 'Bubberstation');
-            } else {
-              core.setOutput('valid', 'false');
-              core.setOutput('error', 'Invalid target. Use `tg`, or omit target to report to Bubberstation');
+              const target = parts[1].toLowerCase();
+              if (target === 'tg') {
+                core.setOutput('valid', 'true');
+                core.setOutput('target', 'tg');
+                core.setOutput('owner', 'tgstation');
+                core.setOutput('repo', 'tgstation');
+              } else if (target === 'bubber') {
+                core.setOutput('valid', 'true');
+                core.setOutput('target', 'bubber');
+                core.setOutput('owner', 'Bubberstation');
+                core.setOutput('repo', 'Bubberstation');
+              } else {
+                core.setOutput('valid', 'false');
+                core.setOutput('error', 'Invalid target. Use `tg`, or omit target to report to Bubberstation');
+              }
+            } catch (error) {
+              core.setFailed(`Failed to parse command: ${error.message}`);
+              throw error;
             }
 
       - name: Comment on invalid command
@@ -57,12 +62,17 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `> ${context.payload.comment.body}\n\n❌ ${steps.parse_command.outputs.error}`
-            });
+            try {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `> ${context.payload.comment.body}\n\n❌ ${steps.parse_command.outputs.error}`
+              });
+            } catch (error) {
+              core.setFailed(`Failed to comment on invalid command: ${error.message}`);
+              throw error;
+            }
 
       - name: Check if user is maintainer
         if: steps.parse_command.outputs.valid == 'true'
@@ -70,13 +80,18 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const response = await github.rest.repos.getCollaboratorPermissionLevel({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              username: context.actor
-            });
-            const isMaintainer = response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
-            core.setOutput('is_maintainer', isMaintainer.toString());
+            try {
+              const response = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                username: context.actor
+              });
+              const isMaintainer = response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
+              core.setOutput('is_maintainer', isMaintainer.toString());
+            } catch (error) {
+              core.setFailed(`Failed to check user permissions: ${error.message}`);
+              throw error;
+            }
 
       - name: Get issue details
         if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
@@ -84,23 +99,28 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const issue = await github.rest.issues.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number
-            });
+            try {
+              const issue = await github.rest.issues.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number
+              });
 
-            const processedBody = issue.data.body
-              .replace(/\r\n/g, '\\n')
-              .replace(/\n/g, '\\n')
-              .replace(/"/g, '\\"')
-              .replace(/'/g, "\\'")
-              .replace(/`/g, '\\`');
+              const processedBody = issue.data.body
+                .replace(/\r\n/g, '\\n')
+                .replace(/\n/g, '\\n')
+                .replace(/"/g, '\\"')
+                .replace(/'/g, "\\'")
+                .replace(/`/g, '\\`');
 
-            core.setOutput('title', issue.data.title);
-            core.setOutput('body', processedBody);
-            core.setOutput('labels', JSON.stringify(issue.data.labels.map(label => label.name)));
-            core.setOutput('html_url', issue.data.html_url);
+              core.setOutput('title', issue.data.title);
+              core.setOutput('body', processedBody);
+              core.setOutput('labels', JSON.stringify(issue.data.labels.map(label => label.name)));
+              core.setOutput('html_url', issue.data.html_url);
+            } catch (error) {
+              core.setFailed(`Failed to get issue details: ${error.message}`);
+              throw error;
+            }
 
       - name: Check for existing upstream issue
         if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true'
@@ -108,28 +128,33 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const owner = '${{ steps.parse_command.outputs.owner }}';
-            const repo = '${{ steps.parse_command.outputs.repo }}';
-            const title = '${{ steps.get_issue.outputs.title }}';
+            try {
+              const owner = '${{ steps.parse_command.outputs.owner }}';
+              const repo = '${{ steps.parse_command.outputs.repo }}';
+              const title = '${{ steps.get_issue.outputs.title }}';
 
-            if (!owner || !repo || !title) {
-              throw new Error('Missing required inputs for upstream issue check');
-            }
+              if (!owner || !repo || !title) {
+                throw new Error('Missing required inputs for upstream issue check');
+              }
 
-            const searchQuery = `repo:${owner}/${repo} in:title ${title}`;
-            const searchResults = await github.rest.search.issuesAndPullRequests({
-              q: searchQuery
-            });
+              const searchQuery = `repo:${owner}/${repo} in:title ${title}`;
+              const searchResults = await github.rest.search.issuesAndPullRequests({
+                q: searchQuery
+              });
 
-            const existingIssue = searchResults.data.items.find(item =>
-              item.title.toLowerCase() === title.toLowerCase()
-            );
+              const existingIssue = searchResults.data.items.find(item =>
+                item.title.toLowerCase() === title.toLowerCase()
+              );
 
-            if (existingIssue) {
-              core.setOutput('exists', 'true');
-              core.setOutput('url', existingIssue.html_url);
-            } else {
-              core.setOutput('exists', 'false');
+              if (existingIssue) {
+                core.setOutput('exists', 'true');
+                core.setOutput('url', existingIssue.html_url);
+              } else {
+                core.setOutput('exists', 'false');
+              }
+            } catch (error) {
+              core.setFailed(`Failed to check for existing upstream issue: ${error.message}`);
+              throw error;
             }
 
       - name: Create upstream issue
@@ -201,6 +226,8 @@ jobs:
             } catch (error) {
               core.setOutput('success', 'false');
               core.setOutput('error', error.message);
+              core.setFailed(`Failed to create upstream issue: ${error.message}`);
+              throw error;
             }
 
       - name: Comment on existing upstream issue
@@ -208,41 +235,53 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const target = '${{ steps.parse_command.outputs.target }}';
-            const url = '${{ steps.check_upstream.outputs.url }}';
-            const comment = '${{ github.event.comment.body }}';
+            try {
+              const target = '${{ steps.parse_command.outputs.target }}';
+              const url = '${{ steps.check_upstream.outputs.url }}';
+              const comment = '${{ github.event.comment.body }}';
 
-            const commentBody = [
-              `> ${comment}`,
-              '',
-              `⚠️ This issue appears to have already been reported to ${target}: ${url}`
-            ].join('\n');
+              const commentBody = [
+                `> ${comment}`,
+                '',
+                `⚠️ This issue appears to have already been reported to ${target}: ${url}`
+              ].join('\n');
 
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: commentBody
-            });
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+            } catch (error) {
+              core.setFailed(`Failed to comment on existing upstream issue: ${error.message}`);
+              throw error;
+            }
 
       - name: Comment on failure
         if: steps.parse_command.outputs.valid == 'true' && steps.check_permissions.outputs.is_maintainer == 'true' && steps.create_upstream.outputs.success == 'false'
         uses: actions/github-script@v6
         with:
           script: |
-            const target = '${{ steps.parse_command.outputs.target }}';
-            const error = '${{ steps.create_upstream.outputs.error }}';
-            const comment = '${{ github.event.comment.body }}';
+            try {
+              const target = '${{ steps.parse_command.outputs.target }}';
+              const error = '${{ steps.create_upstream.outputs.error }}';
+              const comment = '${{ github.event.comment.body }}';
 
-            const commentBody = [
-              `> ${comment}`,
-              '',
-              `❌ Failed to report issue to ${target}: ${error}`
-            ].join('\n');
+              const commentBody = [
+                `> ${comment}`,
+                '',
+                `❌ Failed to report issue to ${target}: ${error}`
+              ].join('\n');
 
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: commentBody
-            });
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+
+              core.setFailed(`Failed to report issue to ${target}: ${error}`);
+            } catch (error) {
+              core.setFailed(`Failed to comment on failure: ${error.message}`);
+              throw error;
+            }
