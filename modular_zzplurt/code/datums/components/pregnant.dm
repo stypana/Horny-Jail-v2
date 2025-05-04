@@ -43,6 +43,7 @@
 /datum/component/pregnant/RegisterWithParent()
 	RegisterSignal(parent, SIGNAL_ADDTRAIT(TRAIT_WAS_RENAMED), PROC_REF(on_renamed))
 	RegisterSignal(parent, SIGNAL_REMOVETRAIT(TRAIT_WAS_RENAMED), PROC_REF(on_renamed_removed))
+	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_GHOST, PROC_REF(on_attack_ghost))
 	RegisterSignal(parent, COMSIG_ATOM_BREAK, PROC_REF(still_birth))
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
@@ -66,6 +67,7 @@
 	UnregisterSignal(parent, list(\
 		SIGNAL_ADDTRAIT(TRAIT_WAS_RENAMED),\
 		SIGNAL_REMOVETRAIT(TRAIT_WAS_RENAMED),\
+		COMSIG_ATOM_ATTACKBY,
 		COMSIG_ATOM_ATTACK_GHOST,\
 		COMSIG_ATOM_BREAK,\
 		COMSIG_ATOM_EXAMINE,\
@@ -81,6 +83,29 @@
 /datum/component/pregnant/Destroy(force)
 	baby_boy = null
 	return ..()
+
+/datum/component/pregnant/proc/on_attackby(atom/source, obj/item/thing, mob/living/user, params)
+	SIGNAL_HANDLER
+
+	if(!thing.is_drawable(user) || user.combat_mode)
+		return
+
+	var/male_amount = thing.reagents.get_reagent_amount(/datum/reagent/consumable/cum)
+	var/female_amount = thing.reagents.get_reagent_amount(/datum/reagent/consumable/femcum)
+	if(!male_amount && !female_amount)
+		return
+
+	var/diff = male_amount - female_amount
+	diff = clamp(diff, -genetic_distribution, 100 - genetic_distribution)
+	if(!diff)
+		return COMPONENT_CANCEL_ATTACK_CHAIN
+
+	genetic_distribution += diff
+	thing.reagents.remove_all(/datum/reagent/consumable/cum)
+	thing.reagents.remove_all(/datum/reagent/consumable/femcum)
+	to_chat(user, span_notice("You alter the genetic distribution of [parent], it is now [genetic_distribution]%."))
+	tampering["genetic_distribution"] = genetic_distribution
+	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/component/pregnant/proc/on_attack_ghost(mob/source, mob/dead/observer/hopeful_ghost)
 	SIGNAL_HANDLER
