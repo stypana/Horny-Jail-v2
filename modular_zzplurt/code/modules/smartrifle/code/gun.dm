@@ -6,14 +6,14 @@
 	name = "\improper OP-15 'S.M.A.R.T.' rifle"
 	desc = "Suppressive Manual Action Reciprocating Taser rifle. A modified version of an Armadyne heavy machine gun fitted to fire miniature shock-bolts."
 
-	icon = 'modular_zzplurt/code/modules/smartrifle/icons/smartrifle.dmi'
+	icon = 'modular_zzplurt/icons/obj/weapons/guns/smartrifle.dmi'
 	icon_state = "smartrifle"
 
-	righthand_file = 'modular_zzplurt/code/modules/smartrifle/icons/inhands/righthand40x32.dmi'
-	lefthand_file = 'modular_zzplurt/code/modules/smartrifle/icons/inhands/lefthand40x32.dmi'
+	righthand_file = 'modular_zzplurt/icons/obj/weapons/guns/inhands/righthand40x32.dmi'
+	lefthand_file = 'modular_zzplurt/icons/obj/weapons/guns/inhands/lefthand40x32.dmi'
 	inhand_icon_state = "smartrifle_worn"
 
-	worn_icon = 'modular_zzplurt/code/modules/smartrifle/icons/smartrifle.dmi'
+	worn_icon = 'modular_zzplurt/icons/obj/weapons/guns/smartrifle.dmi'
 	worn_icon_state = "smartrifle_worn"
 
 	w_class = WEIGHT_CLASS_HUGE
@@ -68,7 +68,7 @@
 
 /obj/item/ammo_box/magazine/smartrifle
 	name = "\improper SMART-Rifle magazine"
-	icon = 'modular_zzplurt/code/modules/smartrifle/icons/smartmag.dmi'
+	icon = 'modular_zzplurt/icons/obj/weapons/guns/smartmag.dmi'
 	icon_state = "smartrifle"
 	ammo_type = /obj/item/ammo_casing/smartrifle
 	caliber = "smartrifle"

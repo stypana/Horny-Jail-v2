@@ -1,7 +1,7 @@
 //smartrifle
 /obj/item/ammo_casing/smartrifle
 	name = "smartrifle rail frame"
-	icon = 'modular_zzplurt/code/modules/smartrifle/icons/smartriflerail.dmi'
+	icon = 'modular_zzplurt/icons/obj/weapons/guns/smartriflerail.dmi'
 	icon_state = "smartrifle"
 	desc = "A rail that fits the SMARTrifle. Specially fitted to hold a taser bolt for those unruly assistants."
 	caliber = "smartrifle"
@@ -17,7 +17,7 @@
 	ricochets_max = 2 //Originally 6, definitely don't need it bouncing that many times
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
+	ricochet_decay_damage = 0.6 // 70/10->42/6->~25/~3
 	shrapnel_type = /obj/item/shrapnel/bullet/smartrifle
 	hitsound = 'modular_zzplurt/code/modules/smartrifle/sound/rail.ogg'
 
