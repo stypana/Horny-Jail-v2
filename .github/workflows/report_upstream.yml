@@ -53,8 +53,9 @@ jobs:
                 core.setOutput('error', 'Invalid target. Use `tg`, or omit target to report to Bubberstation');
               }
             } catch (error) {
-              core.setFailed(`Failed to parse command: ${error.message}`);
-              throw error;
+              core.setOutput('valid', 'false');
+              core.setOutput('error', `Failed to parse command: ${error.message}`);
+              core.error(`Failed to parse command: ${error.message}`);
             }
 
       - name: Comment on invalid command
@@ -70,8 +71,7 @@ jobs:
                 body: `> ${context.payload.comment.body}\n\n❌ ${steps.parse_command.outputs.error}`
               });
             } catch (error) {
-              core.setFailed(`Failed to comment on invalid command: ${error.message}`);
-              throw error;
+              core.error(`Failed to comment on invalid command: ${error.message}`);
             }
 
       - name: Check if user is maintainer
@@ -89,8 +89,9 @@ jobs:
               const isMaintainer = response.data.permission === 'maintain' || response.data.permission === 'admin' || response.data.permission === 'write';
               core.setOutput('is_maintainer', isMaintainer.toString());
             } catch (error) {
-              core.setFailed(`Failed to check user permissions: ${error.message}`);
-              throw error;
+              core.setOutput('is_maintainer', 'false');
+              core.setOutput('error', `Failed to check user permissions: ${error.message}`);
+              core.error(`Failed to check user permissions: ${error.message}`);
             }
 
       - name: Get issue details
@@ -118,8 +119,8 @@ jobs:
               core.setOutput('labels', JSON.stringify(issue.data.labels.map(label => label.name)));
               core.setOutput('html_url', issue.data.html_url);
             } catch (error) {
-              core.setFailed(`Failed to get issue details: ${error.message}`);
-              throw error;
+              core.setOutput('error', `Failed to get issue details: ${error.message}`);
+              core.error(`Failed to get issue details: ${error.message}`);
             }
 
       - name: Check for existing upstream issue
@@ -134,7 +135,9 @@ jobs:
               const title = '${{ steps.get_issue.outputs.title }}';
 
               if (!owner || !repo || !title) {
-                throw new Error('Missing required inputs for upstream issue check');
+                core.setOutput('error', 'Missing required inputs for upstream issue check');
+                core.error('Missing required inputs for upstream issue check');
+                return;
               }
 
               const searchQuery = `repo:${owner}/${repo} in:title ${title}`;
@@ -153,8 +156,8 @@ jobs:
                 core.setOutput('exists', 'false');
               }
             } catch (error) {
-              core.setFailed(`Failed to check for existing upstream issue: ${error.message}`);
-              throw error;
+              core.setOutput('error', `Failed to check for existing upstream issue: ${error.message}`);
+              core.error(`Failed to check for existing upstream issue: ${error.message}`);
             }
 
       - name: Create upstream issue
@@ -162,7 +165,7 @@ jobs:
         id: create_upstream
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.REPORTS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             try {
               const owner = '${{ steps.parse_command.outputs.owner }}';
@@ -187,7 +190,10 @@ jobs:
               }
 
               if (!owner || !repo || !title || !body || !html_url) {
-                throw new Error('Missing required inputs for creating upstream issue');
+                core.setOutput('success', 'false');
+                core.setOutput('error', 'Missing required inputs for creating upstream issue');
+                core.error('Missing required inputs for creating upstream issue');
+                return;
               }
 
               const issueBody = [
@@ -196,7 +202,10 @@ jobs:
                 processedBody
               ].join('\n');
 
-              const issue = await github.rest.issues.create({
+              // Create a new GitHub client with the correct token
+              const octokit = github.getOctokit('${{ secrets.GITHUB_TOKEN }}');
+
+              const issue = await octokit.rest.issues.create({
                 owner: owner,
                 repo: repo,
                 title: title,
@@ -205,7 +214,10 @@ jobs:
               });
 
               if (!issue || !issue.data || !issue.data.html_url) {
-                throw new Error('Failed to create issue: Invalid response from GitHub API');
+                core.setOutput('success', 'false');
+                core.setOutput('error', 'Failed to create issue: Invalid response from GitHub API');
+                core.error('Failed to create issue: Invalid response from GitHub API');
+                return;
               }
 
               core.setOutput('success', 'true');
@@ -225,9 +237,8 @@ jobs:
               });
             } catch (error) {
               core.setOutput('success', 'false');
-              core.setOutput('error', error.message);
-              core.setFailed(`Failed to create upstream issue: ${error.message}`);
-              throw error;
+              core.setOutput('error', `Failed to create upstream issue: ${error.message}`);
+              core.error(`Failed to create upstream issue: ${error.message}`);
             }
 
       - name: Comment on existing upstream issue
@@ -253,8 +264,7 @@ jobs:
                 body: commentBody
               });
             } catch (error) {
-              core.setFailed(`Failed to comment on existing upstream issue: ${error.message}`);
-              throw error;
+              core.error(`Failed to comment on existing upstream issue: ${error.message}`);
             }
 
       - name: Comment on failure
@@ -283,5 +293,4 @@ jobs:
               core.setFailed(`Failed to report issue to ${target}: ${error}`);
             } catch (error) {
               core.setFailed(`Failed to comment on failure: ${error.message}`);
-              throw error;
             }
