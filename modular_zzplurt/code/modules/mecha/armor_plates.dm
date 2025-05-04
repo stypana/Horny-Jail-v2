@@ -68,7 +68,7 @@
 /obj/item/mecha_parts/mecha_equipment/armor/roundstart/heavy
 	name = "Heavy Metal Plating"
 	desc = "An heavy armor configuration of general purpose metal plates, offers the same amount of protection \
-	 as the newest patented armor designs at the cost of noticable weight increase."
+		as the newest patented armor designs at the cost of noticable weight increase."
 	protect_name = "Heavy Armor"
 	move_slowdown = 1.65
 	max_armor_integrity = 200
