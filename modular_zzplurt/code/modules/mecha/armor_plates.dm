@@ -68,9 +68,9 @@
 /obj/item/mecha_parts/mecha_equipment/armor/roundstart/heavy
 	name = "Heavy Metal Plating"
 	desc = "An heavy armor configuration of general purpose metal plates, offers the same amount of protection \
-		as the newest patented armor designs at the cost of noticable weight increase."
+		as the newest patented armor designs at the cost of a noticable weight increase."
 	protect_name = "Heavy Armor"
-	move_slowdown = 1.65
+	move_slowdown = 1.15
 	max_armor_integrity = 200
 
 #define MECHA_SNOWFLAKE_ID_ARMOR "armor_snowflake"
@@ -109,5 +109,5 @@
 	for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor)
 		if(!mech_armor.armor_operational)
 			continue
-		movedelay *= mech_armor.slowdown
+		movedelay *= mech_armor.move_slowdown
 
