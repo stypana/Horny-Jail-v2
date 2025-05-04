@@ -202,10 +202,7 @@ jobs:
                 processedBody
               ].join('\n');
 
-              // Create a new Octokit instance with the REPORTS_TOKEN
-              const octokit = new github.GitHub('${{ secrets.REPORTS_TOKEN }}');
-
-              const issue = await octokit.rest.issues.create({
+              const issue = await github.rest.issues.create({
                 owner: owner,
                 repo: repo,
                 title: title,
