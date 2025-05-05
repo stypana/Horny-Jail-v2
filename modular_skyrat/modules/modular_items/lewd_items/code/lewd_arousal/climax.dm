@@ -107,7 +107,7 @@
 					span_userlove("You shoot string after string of hot cum, hitting the floor!"))
 
 			else if(penis_climax_choice == CLIMAX_OPEN_CONTAINER)
-				var/target_choice = tgui_input_list(src, "Choose a container to cum into.", "Choose target!", interactable_inrange_open_containers)
+				target_choice = tgui_input_list(src, "Choose a container to cum into.", "Choose target!", interactable_inrange_open_containers) //SPLURT EDIT CHANGE - Interactions
 				if(!target_choice)
 					create_cum_decal = TRUE
 					visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
