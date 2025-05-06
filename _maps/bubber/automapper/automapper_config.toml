@@ -361,12 +361,12 @@ coordinates = [171, 129, 1]
 trait_name = "Station"
 
 # Lavaland NE Ashwalker Fortress
-[templates.lavaland_ashwalker_fortress]
-map_files = ["lavaland_ashwalker_fortress.dmm"]
-directory = "_maps/skyrat/automapper/templates/mining/"
-required_map = "Lavaland.dmm"
-coordinates = [203, 223, 1]
-trait_name = "Mining"
+#[templates.lavaland_ashwalker_fortress]
+#map_files = ["lavaland_ashwalker_fortress.dmm"]
+#directory = "_maps/skyrat/automapper/templates/mining/"
+#required_map = "Lavaland.dmm"
+#coordinates = [203, 223, 1]
+#trait_name = "Mining"
 
 #BUBBER EDITS -------------------------------
 # ADD ALL BUBBER EDITS BENEATH THIS!
@@ -880,9 +880,9 @@ coordinates = [48, 213, 2]
 trait_name = "CentCom"
 
 # # Lavaland NE Ashwalker Fortress # Added in upstream
-# [templates.lavaland_ashwalker_fortress]
-# map_files = ["lavaland_ashwalker_fortress.dmm"]
-# directory = "_maps/splurt/automapper/templates/mining/"
-# required_map = "Lavaland.dmm"
-# coordinates = [203, 223, 1]
-# trait_name = "Mining"
+[templates.lavaland_ashwalker_fortress]
+map_files = ["lavaland_ashwalker_fortress.dmm"]
+directory = "_maps/splurt/automapper/templates/mining/"
+required_map = "Lavaland.dmm"
+coordinates = [203, 223, 1]
+trait_name = "Mining"
