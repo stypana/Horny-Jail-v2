@@ -1,0 +1,4 @@
+author: "Fabian272"
+delete-after: True
+changes:
+  - bugfix: "Raw Meatpizza now shows in the cooking menu rather than crafting."
