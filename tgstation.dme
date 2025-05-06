@@ -10124,6 +10124,8 @@
 #include "modular_zzplurt\code\modules\resize\sizegun.dm"
 #include "modular_zzplurt\code\modules\resize\smallsprite_action.dm"
 #include "modular_zzplurt\code\modules\shuttle\serenity2.dm"
+#include "modular_zzplurt\code\modules\smartrifle\code\bullets.dm"
+#include "modular_zzplurt\code\modules\smartrifle\code\gun.dm"
 #include "modular_zzplurt\code\modules\species\_species.dm"
 #include "modular_zzplurt\code\modules\species\arachnid.dm"
 #include "modular_zzplurt\code\modules\species\teshari.dm"
