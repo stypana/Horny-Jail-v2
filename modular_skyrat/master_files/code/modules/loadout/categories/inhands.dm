@@ -26,7 +26,7 @@
 /datum/loadout_item/inhand/toolbox
 	name = "Full Toolbox"
 	item_path = /obj/item/storage/toolbox/mechanical
-	blacklisted_roles = list(JOB_PRISONER)
+	blacklisted_roles = list(JOB_PRISONER, ROLE_PERSISTENCE)
 
 /datum/loadout_item/inhand/bouquet_mixed
 	name = "Mixed Bouquet"
