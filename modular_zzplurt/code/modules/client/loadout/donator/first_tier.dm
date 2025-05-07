@@ -109,7 +109,7 @@
 	item_path = /obj/item/toy/plush/thomas_plush
 
 /datum/loadout_item/toys/donator/ollie_plushie
-	name = "Ollie Plushie"
+	name = "Foxcoon Plushie"
 	item_path = /obj/item/toy/plush/ollie
 	donator_only = FALSE //requested by donator
 
