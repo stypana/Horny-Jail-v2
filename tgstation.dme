@@ -9901,6 +9901,7 @@
 #include "modular_zzplurt\code\modules\client\loadout\under.dm"
 #include "modular_zzplurt\code\modules\client\loadout\wrists.dm"
 #include "modular_zzplurt\code\modules\client\loadout\donator\_donator.dm"
+#include "modular_zzplurt\code\modules\client\loadout\donator\ckey_locked.dm"
 #include "modular_zzplurt\code\modules\client\loadout\donator\first_tier.dm"
 #include "modular_zzplurt\code\modules\client\loadout\donator\second_tier.dm"
 #include "modular_zzplurt\code\modules\client\loadout\donator\third_tier.dm"
