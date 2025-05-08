@@ -8,7 +8,7 @@
 	flavour_text = "You're enjoying everything. Comply with ANY of Ash's requests. The desire to escape to the station should be minimal."
 	outfit = /datum/outfit/ashwalker/slave
 	spawner_job_path = /datum/job/ash_walker
-	random_appearance = FALSE // SKYRAT EDIT ADDITION
+	random_appearance = FALSE
 	var/datum/team/ashwalkers/team
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walkers_slave/special(mob/living/new_spawn)
