@@ -237,7 +237,9 @@ export const InteractionsTab = ({
               {additional_details[interaction]?.map(
                 (detail: { info: string; icon: string; color: string }) => (
                   <Tooltip content={detail.info} key={detail.info}>
-                    <Icon name={detail.icon} />
+                    <Box mx={0.5} as="span">
+                      <Icon name={detail.icon} />
+                    </Box>
                   </Tooltip>
                 ),
               )}
