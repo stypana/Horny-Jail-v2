@@ -352,6 +352,24 @@
 				return FALSE
 			user.simulated_genitals[genital_name] = !user.simulated_genitals[genital_name]
 			return TRUE
+
+		if("auto_interaction")
+			var/datum/interaction/interaction = SSinteractions.interactions[splittext(params["interaction_text"], "_target_")[1]]
+			var/datum/component/interactable/user_interaction_component = user.GetComponent(/datum/component/interactable)
+			if(!interaction)
+				return FALSE
+			if(params["action"] == "stop")
+				user_interaction_component.auto_interaction_info -= params["interaction_text"]
+			else
+				var/already_processing = LAZYLEN(user_interaction_component.auto_interaction_info)
+				user_interaction_component.auto_interaction_info[params["interaction_text"]] = list(
+					"speed" = clamp(round(params["speed"], 0.5), (INTERACTION_SPEED_MIN * (1 / (1 SECONDS))), (INTERACTION_SPEED_MAX * (1 / (1 SECONDS)))),
+					"target" = params["selfref"],
+					"target_name" = self.name,
+				)
+				if(!already_processing)
+					START_PROCESSING(SSinteractions, user_interaction_component)
+			return TRUE
 	// SPLURT EDIT END
 
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")

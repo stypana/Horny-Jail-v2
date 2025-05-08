@@ -47,10 +47,21 @@
 	/// Cache of the user's preferences, used to avoid re-reading them from the client
 	var/list/cached_preferences = list()
 
-	// A list of mobs that should be genderized.
+	/// A list of mobs that should be genderized.
 	var/static/list/should_be_genderized = typecacheof(list(
 		// /mob/living/basic/pet/cat // anuything soes here
 	))
+
+	/**
+	 * A list of auto interaction data
+	 *
+	 * interaction_text - The ID of the interaction and target
+	 * * speed - The speed of the interaction
+	 * * target - The target of the interaction
+	 * * target_name - The name of the target
+	 * * next_interaction - The next time the interaction should be performed
+	 */
+	var/auto_interaction_info = list()
 
 /datum/component/interactable/Initialize(...)
 	. = ..()
@@ -72,6 +83,30 @@
 				mob.simulated_genitals[ORGAN_SLOT_VAGINA] = TRUE
 				mob.simulated_genitals[ORGAN_SLOT_BREASTS] = TRUE
 
+/datum/component/interactable/Destroy(force, silent)
+	STOP_PROCESSING(SSinteractions, src)
+	. = ..()
+
+/datum/component/interactable/process(seconds_per_tick)
+	if(!LAZYLEN(auto_interaction_info))
+		return PROCESS_KILL
+
+	for(var/interaction_text in auto_interaction_info)
+		var/datum/interaction/interaction = SSinteractions.interactions[splittext(interaction_text, "_target_")[1]]
+		var/interaction_speed = auto_interaction_info[interaction_text]["speed"] SECONDS
+		var/mob/living/target = locate(auto_interaction_info[interaction_text]["target"])
+		var/datum/component/interactable/target_interaction_component = target?.GetComponent(/datum/component/interactable)
+
+		if(!interaction || QDELETED(target) || !target_interaction_component?.can_interact(interaction, self))
+			auto_interaction_info -= interaction_text
+			continue
+
+		if(!(world.time >= auto_interaction_info[interaction_text]["next_interaction"]))
+			continue
+
+		interaction.act(self, target)
+		auto_interaction_info[interaction_text]["next_interaction"] = world.time + interaction_speed
+
 /datum/component/interactable/ui_data(mob/living/user)
 	. = ..()
 
@@ -81,6 +116,8 @@
 
 	var/mob/living/carbon/human/human_user = user
 	var/mob/living/carbon/human/human_self = self
+
+	var/datum/component/interactable/user_interaction_component = user.GetComponent(/datum/component/interactable)
 
 	// Character info - Reoriented to show from user's perspective
 	.["isTargetSelf"] = (user == self)
@@ -158,6 +195,13 @@
 			)
 			genital_list += list(genital_data)
 	.["genitals"] = genital_list
+
+	// Auto interaction stuff
+	.["auto_interaction_speed_values"] = list(
+		INTERACTION_SPEED_MIN * (1 / (1 SECONDS)),
+		INTERACTION_SPEED_MAX * (1 / (1 SECONDS))
+	)
+	.["auto_interaction_info"] = user_interaction_component.auto_interaction_info
 
 /datum/component/interactable/generate_strip_entry(name, mob/living/carbon/human/target, mob/living/carbon/human/source, obj/item/clothing/sextoy/item)
 	. = ..()

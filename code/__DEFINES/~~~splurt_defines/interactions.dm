@@ -65,3 +65,7 @@
 //Climaxing targets (use these if you're not using organ slots)
 #define CLIMAX_TARGET_MOUTH "mouth"
 #define CLIMAX_TARGET_SHEATH "sheath"
+
+// Interaction speeds
+#define INTERACTION_SPEED_MIN 0.5 SECONDS
+#define INTERACTION_SPEED_MAX 4 SECONDS
