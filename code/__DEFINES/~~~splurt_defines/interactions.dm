@@ -42,11 +42,24 @@
 #define INTERACTION_CAT_UNHOLY "unholy"
 
 // Additional details sent to the interaction menu
+/// Fills containers
 #define INTERACTION_FILLS_CONTAINERS list( \
 	"info" = "You can fill a container if you have it in your active hand or are pulling it", \
 	"icon" = "flask", \
 	"color" = "transparent" \
 	)
+/// Can drink from
+#define INTERACTION_MAY_CONTAIN_DRINK list( \
+	"info" = "May contain reagents", \
+	"icon" = "cow", \
+	"color" = "white" \
+)
+/// Causes pregnancies
+#define INTERACTION_MAY_CAUSE_PREGNANCY list( \
+	"info" = "May cause pregnancies", \
+	"icon" = "person-pregnant", \
+	"color" = "white" \
+)
 
 // Interaction flags (used for logic but normally not sent to the interaction menu)
 #define INTERACTION_OVERRIDE_FLUID_TRANSFER (1<<0)
