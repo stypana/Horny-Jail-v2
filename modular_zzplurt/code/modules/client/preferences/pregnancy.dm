@@ -88,13 +88,6 @@
 	savefile_key = "pregnancy_belly_inflation"
 	default_value = TRUE
 
-/// If enabled, you NEED a womb to get gregnant no matter what
-/datum/preference/toggle/pregnancy/womb_insemination
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "pregnancy_insemination_womb"
-	default_value = TRUE
-
 /// If enabled, the vagina is a valid organ for insemination
 /datum/preference/toggle/pregnancy/vaginal_insemination
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES

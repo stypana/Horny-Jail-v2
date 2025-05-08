@@ -169,10 +169,7 @@
 									genital_pass = preference_source.prefs.read_preference(/datum/preference/toggle/pregnancy/vaginal_insemination)
 								if(CLIMAX_TARGET_MOUTH)
 									genital_pass = preference_source.prefs.read_preference(/datum/preference/toggle/pregnancy/oral_insemination)
-							if(genital_pass && \
-								prob(preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/chance) && \
-								(!preference_source.prefs.read_preference(/datum/preference/toggle/pregnancy/womb_insemination) || target_mob.get_organ_slot(ORGAN_SLOT_WOMB))) \
-							)
+							if(genital_pass && prob(preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/chance)))
 								target_mob.apply_status_effect(/datum/status_effect/pregnancy, target_mob, src)
 						#ifdef TESTING
 						else if(!HAS_TRAIT(src, TRAIT_INFERTILE) && !HAS_TRAIT(target_mob, TRAIT_INFERTILE))

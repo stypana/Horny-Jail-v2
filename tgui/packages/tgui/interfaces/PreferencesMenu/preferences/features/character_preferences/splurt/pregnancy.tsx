@@ -41,12 +41,6 @@ export const pregnancy_belly_inflation: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const pregnancy_insemination_womb: FeatureToggle = {
-  name: 'Pregnancy: Womb insemination',
-  description: 'When toggled, you cannot get pregnant without a womb.',
-  component: CheckboxInput,
-};
-
 export const pregnancy_insemination_vagina: FeatureToggle = {
   name: 'Pregnancy: Vaginal insemination',
   description:
