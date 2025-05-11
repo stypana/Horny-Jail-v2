@@ -128,7 +128,14 @@
 
 					//SPLURT EDIT CHANGE BEGIN - Interactions
 					var/climax_into_choice
-					var/interaction_inside = partner?.get_organ_slot(climax_interaction?.cum_target[interaction_position]) || target_buttons.Find(climax_interaction?.cum_target[interaction_position])
+					var/interaction_inside = partner?.get_organ_slot(climax_interaction?.cum_target[interaction_position])
+					if(!interaction_inside)
+						interaction_inside = target_buttons.Find(climax_interaction?.cum_target[interaction_position])
+						if(interaction_inside)
+							interaction_inside = climax_interaction.cum_target[interaction_position]
+					else
+						var/obj/item/organ/genital = interaction_inside
+						interaction_inside = genital.slot
 
 					if(climax_interaction && !manual && interaction_inside)
 						climax_into_choice = climax_interaction.cum_target[interaction_position]
@@ -173,10 +180,8 @@
 									genital_pass = preference_source.prefs.read_preference(/datum/preference/toggle/pregnancy/vaginal_insemination)
 								if(CLIMAX_TARGET_MOUTH)
 									genital_pass = preference_source.prefs.read_preference(/datum/preference/toggle/pregnancy/oral_insemination)
-							if(genital_pass)
-								var/preg_chance = preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/chance)
-								if(prob(preg_chance))
-									target_mob.apply_status_effect(/datum/status_effect/pregnancy, target_mob, src)
+							if(genital_pass && prob(preference_source.prefs.read_preference(/datum/preference/numeric/pregnancy/chance)))
+								target_mob.apply_status_effect(/datum/status_effect/pregnancy, target_mob, src)
 						//SPLURT EDIT ADDITION END
 
 			var/obj/item/organ/genital/testicles/testicles = get_organ_slot(ORGAN_SLOT_TESTICLES)
@@ -282,7 +287,14 @@
 					target_buttons += "On [target_mob_them]"
 
 					var/climax_into_choice
-					var/interaction_inside = partner?.get_organ_slot(climax_interaction?.cum_target[interaction_position]) || target_buttons.Find(climax_interaction?.cum_target[interaction_position])
+					var/interaction_inside = partner?.get_organ_slot(climax_interaction?.cum_target[interaction_position])
+					if(!interaction_inside)
+						interaction_inside = target_buttons.Find(climax_interaction?.cum_target[interaction_position])
+						if(interaction_inside)
+							interaction_inside = climax_interaction.cum_target[interaction_position]
+					else
+						var/obj/item/organ/genital = interaction_inside
+						interaction_inside = genital.slot
 
 					if(climax_interaction && !manual && interaction_inside)
 						climax_into_choice = climax_interaction.cum_target[interaction_position]
