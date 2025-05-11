@@ -161,6 +161,7 @@
 							interactable.climax_inflate_genital(src, "testicles", climax_into_choice)
 						var/client/preference_source = GET_CLIENT(target_mob)
 						#ifdef TESTING
+						if(!preference_source)
 							preference_source = GET_CLIENT(src)
 						#endif
 						if(preference_source && !HAS_TRAIT(src, TRAIT_INFERTILE) && !HAS_TRAIT(target_mob, TRAIT_INFERTILE))
