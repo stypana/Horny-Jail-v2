@@ -15,7 +15,7 @@
 /obj/structure/table/shadow_wood
 	name = "shadow wood table"
 	desc = "Do not apply fire to this. Rumour says it burns easily."
-	icon = '/modular_zzplurt/icons/obj/smooth_structures/table_shadow.dmi'
+	icon = 'modular_zzplurt/icons/obj/smooth_structures/table_shadow.dmi'
 	icon_state = "table_shadow"
 	base_icon_state = "table_shadow"
 	frame = /obj/structure/table_frame/shadow_wood
