@@ -1118,8 +1118,7 @@
 				brute_blood_overlay.overlays += brute_damage_overlay
 			. += brute_blood_overlay
 		if(burnstate)
-			. += image(colored_blood_icon('icons/mob/effects/dam_mob.dmi'), "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER) // SPLURT EDIT - Colored Blood
-			color = blood_DNA_to_color(color) // SPLURT ADDITION - Colored Blood
+			. += image('icons/mob/effects/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER)
 
 	var/image/limb = image(layer = -BODYPARTS_LAYER)
 	var/image/aux

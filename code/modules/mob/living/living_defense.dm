@@ -264,10 +264,8 @@
 		hitpush = FALSE
 	return ..()
 
-/* SPLURT EDIT - Colored Blood - Moved to modular
 /mob/living/proc/create_splatter(splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(src), splatter_dir)
-*/
 
 ///The core of catching thrown items, which non-carbons cannot without the help of items or abilities yet, as they've no throw mode.
 /mob/living/proc/try_catch_item(obj/item/item, skip_throw_mode_check = FALSE, try_offhand = FALSE)

@@ -92,7 +92,7 @@
 	var/datum/blood_type/blood_type = data["blood_type"]
 	if(!blood_type)
 		return
-	var/blood_color = blood_type.get_color()
+	var/blood_color = blood_type.get_color(blood_DNA = data) // SPLURT EDIT - Custom Blood Color
 	if(blood_color != BLOOD_COLOR_RED) // If the blood is default red, just use the darker red color for the reagent.
 		color = blood_color
 

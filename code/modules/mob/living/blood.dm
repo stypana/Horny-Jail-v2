@@ -354,7 +354,7 @@
 		blood_type = blood_DNA[last_added_bloodtype_key]
 	if(!istype(blood_type))
 		blood_type = get_blood_type(blood_type) || random_human_blood_type()
-	return blood_type.get_color()
+	return blood_type.get_color(blood_DNA = blood_DNA) // SPLURT EDIT - Custom Blood Color
 
 /**
  * Returns TRUE if src is compatible with donor's blood, otherwise FALSE.

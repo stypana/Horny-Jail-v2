@@ -39,7 +39,7 @@
 		icon_state = "[picked.body_zone]_[pick(2, 3)]",
 		loc = hallucinator,
 	)
-	bleeding.color = carb_hallucinator.dna.blood_type.get_color()
+	bleeding.color = carb_hallucinator.dna.blood_type.get_color(blood_DNA = carb_hallucinator.get_blood_dna_list()) // SPLURT EDIT - Custom Blood Color
 	bleeding.layer = -WOUND_LAYER
 	hallucinator.client?.images += bleeding
 	return TRUE

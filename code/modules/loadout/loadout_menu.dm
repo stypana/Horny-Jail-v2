@@ -86,7 +86,7 @@
 	// SKYRAT EDIT END
 	// SPLURT EDIT START: Donator tier check
 	if(selected_item.donator_tier && GLOB.donator_list[preferences?.parent?.ckey] < selected_item.donator_tier)
-		to_chat(preferences.parent, span_warning("You do not have access to this item."))
+		to_chat(preferences.parent, span_warning("Tier [selected_item.donator_tier] donator access required."))
 		return
 	// SPLURT EDIT END
 

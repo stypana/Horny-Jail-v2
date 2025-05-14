@@ -299,14 +299,11 @@
 		if(!iter_part.dmg_overlay_type)
 			continue
 		if(isnull(damage_overlay) && (iter_part.brutestate || iter_part.burnstate))
-			// SPLURT EDIT - Colored Blood
-			damage_overlay = mutable_appearance(colored_blood_icon('icons/mob/effects/dam_mob.dmi'), "blank", -DAMAGE_LAYER, appearance_flags = KEEP_TOGETHER, color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend()) // SPLURT EDIT - Colored Blood
-			if(iter_part.damage_overlay_color)
-				damage_overlay.color = iter_part.damage_overlay_color
-			// SPLURT EDIT END
+			damage_overlay = mutable_appearance('icons/mob/effects/dam_mob.dmi', "blank", -DAMAGE_LAYER, appearance_flags = KEEP_TOGETHER)
+			damage_overlay.color = iter_part.damage_overlay_color
 		if(iter_part.brutestate)
 			var/mutable_appearance/blood_damage_overlay = mutable_appearance('icons/mob/effects/dam_mob.dmi', "[iter_part.dmg_overlay_type]_[iter_part.body_zone]_[iter_part.brutestate]0", appearance_flags = RESET_COLOR) //we're adding icon_states of the base image as overlays
-			blood_damage_overlay.color = dna.blood_type.get_color(blood_DNA = get_blood_dna_list())
+			blood_damage_overlay.color = dna.blood_type.get_color(blood_DNA = get_blood_dna_list()) // SPLURT EDIT - Custom Blood Color
 			var/mutable_appearance/brute_damage_overlay = mutable_appearance('icons/mob/effects/dam_mob.dmi', "[iter_part.dmg_overlay_type]_[iter_part.body_zone]_[iter_part.brutestate]0_overlay", appearance_flags = RESET_COLOR)
 			blood_damage_overlay.overlays += brute_damage_overlay
 			damage_overlay.add_overlay(blood_damage_overlay)
@@ -329,7 +326,7 @@
 	for(var/obj/item/bodypart/iter_part as anything in bodyparts)
 		if(iter_part.bleed_overlay_icon)
 			var/mutable_appearance/blood_overlay = mutable_appearance('icons/mob/effects/bleed_overlays.dmi', "blank", -WOUND_LAYER, appearance_flags = KEEP_TOGETHER)
-			blood_overlay.color = dna.blood_type.get_color(blood_DNA = get_blood_dna_list())
+			blood_overlay.color = dna.blood_type.get_color(blood_DNA = get_blood_dna_list()) // SPLURT EDIT - Custom Blood Color
 			wound_overlay ||= blood_overlay
 			wound_overlay.add_overlay(iter_part.bleed_overlay_icon)
 
