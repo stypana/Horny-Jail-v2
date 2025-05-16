@@ -172,11 +172,9 @@
 /turf/open/floor/iron/terracotta/small,
 /area/ruin/powered/seedvault)
 "fC" = (
-/obj/machinery/door/window,
-/obj/machinery/door/window{
-	dir = 1
-	},
 /obj/machinery/biogenerator,
+/obj/machinery/door/window/left/directional,
+/obj/machinery/door/window/left/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
 "fE" = (
