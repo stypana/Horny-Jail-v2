@@ -1,83 +1,69 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ab" = (
-/obj/structure/beebox,
-/obj/effect/turf_decal/siding/thinplating/dark/end,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"aR" = (
-/obj/machinery/hydroponics/constructable,
-/obj/item/seeds/seedling,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"aT" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"aU" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"bc" = (
+"ae" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/powered/seedvault)
-"br" = (
-/obj/machinery/door/airlock/external/ruin,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/access/all/away/general,
+"ao" = (
+/obj/machinery/vending/wardrobe/hydro_wardrobe/ghost_cafe{
+	all_products_free = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 9
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"bO" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/storage/bag/plants,
-/obj/item/storage/bag/plants,
-/obj/item/storage/bag/plants,
-/obj/item/storage/bag/plants,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"bX" = (
+"aU" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/warning,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/grass,
+/turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"ch" = (
-/obj/machinery/hydroponics/constructable,
+"bl" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"bt" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"cj" = (
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
-"ct" = (
-/obj/machinery/chem_master,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"cW" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/machinery/light/directional/east,
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"de" = (
-/obj/machinery/light/floor,
-/obj/structure/flora/bush/flowers_pp/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 9
+"bR" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
 	},
-/turf/open/floor/grass,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
-"dj" = (
+"ca" = (
+/obj/effect/mob_spawn/ghost_role/human/seed_vault,
+/turf/open/floor/plating/kudzu,
+/area/ruin/powered/seedvault)
+"cr" = (
+/obj/structure/table/reinforced,
+/obj/machinery/plantgenes{
+	pixel_y = 8
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"cF" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
@@ -85,126 +71,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/terracotta/herringbone,
 /area/ruin/powered/seedvault)
-"dB" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"dR" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"dV" = (
-/obj/machinery/atmospherics/components/unary/passive_vent{
-	dir = 1
-	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/ruin/powered/seedvault)
-"dY" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
-/obj/machinery/door/poddoor{
-	id = "bunkerinterior"
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"dZ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
-/turf/closed/wall/r_wall,
-/area/ruin/powered/seedvault)
-"ef" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/melee/flyswatter,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/queen_bee/bought,
-/obj/item/bee_smoker,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"eh" = (
-/obj/machinery/light/floor,
-/obj/structure/flora/bush/fullgrass/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"ep" = (
-/obj/machinery/light/floor,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"ew" = (
-/obj/structure/flora/bush/grassy/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"ez" = (
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"eN" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"eR" = (
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"eX" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"fa" = (
-/obj/machinery/light/floor,
+"dl" = (
+/obj/structure/window/spawner/directional/west,
+/obj/structure/chair/pew/left,
 /turf/open/floor/wood/tile,
 /area/ruin/powered/seedvault)
-"fE" = (
-/obj/structure/flora/bush/fullgrass/style_random,
-/obj/structure/flora/bush/flowers_br/style_random,
+"dw" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/trimline/dark_green/filled/line,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"dD" = (
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/grass,
 /area/ruin/powered/seedvault)
-"fK" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/survival_pod{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"fM" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"fW" = (
+"dM" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 9
 	},
@@ -214,22 +95,669 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"fY" = (
+"el" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/wideplating_new/corner,
+/turf/open/floor/iron/terracotta/herringbone,
+/area/ruin/powered/seedvault)
+"ev" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"ez" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"eE" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 9
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	name = "Server Vent"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"fh" = (
+/obj/machinery/vending/hydronutrients{
+	all_products_free = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"fl" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"fr" = (
+/obj/machinery/light/directional/west,
+/obj/structure/hedge,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"fy" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 5
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"fI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"fM" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
+/turf/closed/wall/r_wall,
+/area/ruin/powered/seedvault)
+"fW" = (
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"gf" = (
+/obj/structure/chair/pew/right{
+	dir = 1
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/powered/seedvault)
+"gt" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"gy" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/freezer,
+/area/ruin/powered/seedvault)
+"hb" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"hg" = (
+/obj/machinery/computer/terminal{
+	dir = 8;
+	name = "Old Terminal";
+	desc = "A dusty, nonfunctioning terminal left by your creators. The screen is on but nothing you press does anything."
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"hu" = (
+/obj/machinery/light/floor,
+/obj/structure/flora/bush/flowers_pp/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 9
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"hX" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"id" = (
+/obj/machinery/door/airlock/multi_tile/public/glass,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/freezer,
+/area/ruin/powered/seedvault)
+"ij" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"ir" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"iP" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"jv" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/warning,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"jz" = (
+/obj/structure/flora/bush/grassy/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"jK" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"jM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/sand/volcanic,
+/obj/machinery/door/poddoor{
+	id = "bunkerexterior"
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"jP" = (
+/obj/machinery/light/floor,
+/obj/effect/mist,
+/obj/effect/spawner/liquids_spawner/shoulders,
+/turf/open/floor/iron/pool/cobble/corner{
+	dir = 4
+	},
+/area/ruin/powered/seedvault)
+"jT" = (
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"kt" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/terracotta/small,
 /area/ruin/powered/seedvault)
-"gH" = (
-/obj/structure/chair/pew/right,
+"kV" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/seedvault)
+"lb" = (
+/obj/structure/chair/pew,
 /turf/open/floor/wood/tile,
 /area/ruin/powered/seedvault)
-"gJ" = (
+"ld" = (
+/obj/structure/table/wood,
+/obj/structure/towel_bin,
+/obj/machinery/light/directional/west,
 /turf/open/floor/wood,
 /area/ruin/powered/seedvault)
-"gN" = (
+"lh" = (
+/obj/structure/flora/bush/sunny/style_3,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"lL" = (
+/obj/machinery/door/poddoor{
+	id = "bunkerinterior"
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"mG" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/beaker/bluespace,
+/obj/item/reagent_containers/cup/beaker/bluespace,
+/obj/item/reagent_containers/cup/beaker/bluespace,
+/obj/item/reagent_containers/cup/beaker/bluespace,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"mN" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"mT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/terracotta/herringbone,
+/area/ruin/powered/seedvault)
+"nx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/powered/seedvault)
+"nE" = (
+/obj/structure/closet/secure_closet/personal/wall{
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"oo" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"oq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"oL" = (
+/obj/machinery/chem_dispenser/mutagensaltpeter,
+/obj/machinery/light/directional/west,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"oP" = (
+/obj/machinery/light/floor,
+/obj/effect/mist,
+/obj/effect/spawner/liquids_spawner/shoulders,
+/turf/open/floor/iron/pool/cobble/corner{
+	dir = 1
+	},
+/area/ruin/powered/seedvault)
+"oR" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"pg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"pG" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"pM" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/vending_refill/hydroseeds,
+/obj/item/vending_refill/hydroseeds,
+/obj/item/vending_refill/hydroseeds,
+/obj/item/vending_refill/hydronutrients,
+/obj/item/vending_refill/hydronutrients,
+/obj/item/vending_refill/hydronutrients,
+/obj/item/soap/homemade,
+/obj/item/soap/homemade,
+/obj/item/soap/homemade,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"pU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"pZ" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"qp" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4;
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"rp" = (
+/obj/structure/window/spawner/directional/west,
+/obj/structure/window/spawner/directional/south,
+/obj/structure/chair/pew/left{
+	dir = 1
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/powered/seedvault)
+"rW" = (
+/obj/machinery/light/floor,
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"rZ" = (
+/obj/machinery/atmospherics/components/binary/volume_pump/on,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"sy" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"sI" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"tg" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/gun/energy/floragun,
+/obj/item/gun/energy/floragun,
+/obj/item/gun/energy/floragun,
+/obj/item/gun/energy/floragun,
+/obj/item/geneshears,
+/obj/item/geneshears,
+/obj/item/geneshears,
+/obj/item/geneshears,
+/obj/item/clothing/neck/stethoscope,
+/obj/machinery/light/directional/west,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"tk" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"tv" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"tW" = (
+/obj/machinery/light/floor,
+/obj/structure/flora/bush/fullgrass/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"ud" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"ui" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "bunkershutter"
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/seedvault)
+"uq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/button/door/directional/west{
+	id = "bunkerinterior";
+	name = "interior blast door access";
+	req_access = list("away_general")
+	},
+/obj/machinery/button/door/directional/west{
+	id = "bunkershutter";
+	name = "hallway shutter toggle";
+	pixel_y = 8;
+	req_access = list("away_general")
+	},
+/obj/machinery/button/door/directional/west{
+	id = "bunkerexterior";
+	name = "exterior blast door access";
+	pixel_y = -8;
+	req_access = list("away_general")
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"uM" = (
+/obj/structure/sauna_oven,
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"wb" = (
+/obj/structure/flora/bush/grassy/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"we" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"wn" = (
+/obj/structure/water_source/puddle{
+	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi';
+	base_icon_state = "water_basin";
+	icon_state = "water_basin";
+	name = "filled water basin"
+	},
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"wp" = (
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"wx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/freezer,
+/area/ruin/powered/seedvault)
+"wD" = (
+/obj/structure/closet/secure_closet/personal/wall{
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"wX" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"wZ" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/obj/item/storage/bag/plants,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"xo" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"yo" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"yt" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"yB" = (
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"yL" = (
+/obj/structure/flora/bush/generic/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"zf" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 9
+	},
+/obj/structure/loom,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"zl" = (
+/obj/structure/sink/directional/east,
+/obj/structure/flora/bush/flowers_pp/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"zn" = (
+/obj/machinery/door/window,
+/obj/machinery/door/window{
+	dir = 1
+	},
+/obj/machinery/biogenerator,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/seedvault)
+"zr" = (
+/obj/structure/flora/bush/generic/style_random,
+/obj/structure/flora/bush/flowers_pp/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"zz" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"zB" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"zK" = (
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"zP" = (
+/obj/machinery/hydroponics/constructable,
+/obj/item/seeds/seedling,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"zS" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Bd" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Bm" = (
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"BM" = (
+/obj/machinery/light/floor,
+/obj/structure/flora/bush/fullgrass/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 5
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"CC" = (
+/obj/machinery/light/floor,
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"CI" = (
+/obj/effect/mist,
+/obj/effect/spawner/liquids_spawner/shoulders,
+/turf/open/floor/iron/pool/cobble/corner{
+	dir = 8
+	},
+/area/ruin/powered/seedvault)
+"CJ" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"DE" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/item/flatpacked_machine,
 /obj/item/stack/sheet/iron/fifty,
@@ -255,835 +783,57 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/powered/seedvault)
-"gQ" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"gU" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"hG" = (
+"DY" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"hI" = (
-/obj/machinery/smartfridge,
-/obj/machinery/door/window,
-/obj/machinery/door/window{
-	dir = 1
-	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/ruin/powered/seedvault)
-"ic" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/vending_refill/hydroseeds,
-/obj/item/vending_refill/hydroseeds,
-/obj/item/vending_refill/hydroseeds,
-/obj/item/vending_refill/hydronutrients,
-/obj/item/vending_refill/hydronutrients,
-/obj/item/vending_refill/hydronutrients,
-/obj/item/soap/homemade,
-/obj/item/soap/homemade,
-/obj/item/soap/homemade,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"ii" = (
-/obj/effect/turf_decal/siding/thinplating/dark,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"iE" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"iU" = (
-/obj/machinery/light/directional/north,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"je" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
-/obj/machinery/light/directional/north,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"jg" = (
-/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
 	},
 /turf/open/floor/grass,
 /area/ruin/powered/seedvault)
-"jN" = (
-/obj/machinery/vending/wardrobe/hydro_wardrobe/ghost_cafe{
-	all_products_free = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"jW" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"kp" = (
-/obj/structure/flora/bush/generic/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"kw" = (
+"Ea" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 1
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	name = "Server Vent"
-	},
-/turf/open/floor/iron/freezer,
-/area/ruin/powered/seedvault)
-"kG" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/effect/turf_decal/trimline/green/filled/line,
-/obj/item/seeds/surik,
-/obj/item/seeds/surik,
-/obj/item/seeds/vaporsac,
-/obj/item/seeds/vaporsac,
-/obj/item/seeds/amauri,
-/obj/item/seeds/amauri,
-/obj/item/seeds/gelthi,
-/obj/item/seeds/gelthi,
-/obj/item/seeds/jurlmah,
-/obj/item/seeds/jurlmah,
-/obj/item/seeds/nofruit,
-/obj/item/seeds/nofruit,
-/obj/item/seeds/shand,
-/obj/item/seeds/shand,
-/obj/item/seeds/telriis,
-/obj/item/seeds/telriis,
-/obj/item/seeds/thaadra,
-/obj/item/seeds/thaadra,
-/obj/item/seeds/vale,
-/obj/item/seeds/vale,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"lj" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood/tile,
-/area/ruin/powered/seedvault)
-"lm" = (
-/obj/structure/flora/bush/sunny/style_3,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"ln" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
+/obj/machinery/autolathe,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"lx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/turf/closed/wall/r_wall,
-/area/ruin/powered/seedvault)
-"lB" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "bunkershutter"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/seedvault)
-"lZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/sand/volcanic,
-/obj/machinery/door/poddoor{
-	id = "bunkerexterior"
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"mk" = (
-/obj/effect/turf_decal/siding/thinplating/dark/corner{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"mo" = (
-/obj/machinery/door/poddoor{
-	id = "bunkerinterior"
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"mp" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"ms" = (
-/obj/machinery/door/airlock/multi_tile/public/glass,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/freezer,
-/area/ruin/powered/seedvault)
-"nt" = (
-/obj/structure/flora/bush/fullgrass/style_random,
-/obj/structure/flora/bush/flowers_yw/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"nA" = (
-/obj/machinery/door/airlock/vault,
-/obj/effect/mapping_helpers/airlock/access/all/away/general,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"nF" = (
-/obj/structure/chair/pew/right{
-	dir = 1
-	},
-/turf/open/floor/wood/tile,
-/area/ruin/powered/seedvault)
-"nK" = (
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"nP" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"oo" = (
-/obj/effect/mist,
-/obj/effect/spawner/liquids_spawner/shoulders,
-/turf/open/floor/iron/pool/cobble/side{
-	dir = 8
-	},
-/area/ruin/powered/seedvault)
-"oG" = (
-/obj/effect/mob_spawn/ghost_role/human/seed_vault,
-/turf/open/floor/plating/kudzu,
-/area/ruin/powered/seedvault)
-"oI" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"oJ" = (
-/obj/structure/flora/bush/fullgrass/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"oP" = (
-/obj/effect/turf_decal/siding/thinplating/dark/corner,
-/obj/effect/turf_decal/siding/thinplating/dark/corner{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"ps" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"pT" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 1
-	},
-/obj/structure/safe/abovetilefloor,
-/obj/item/seeds/kudzu,
-/obj/item/paperwork/service,
-/obj/item/lighter/royal,
-/obj/item/clothing/neck/cowboylea,
-/obj/item/food/grown/poppy/geranium,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"pU" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"pY" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"qd" = (
+"Eu" = (
 /obj/machinery/seed_extractor,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
-"rd" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"rw" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"rR" = (
-/obj/machinery/atmospherics/components/tank/air{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"rX" = (
-/obj/machinery/light/floor,
-/obj/effect/mist,
-/obj/effect/spawner/liquids_spawner/shoulders,
-/turf/open/floor/iron/pool/cobble/corner{
-	dir = 1
-	},
-/area/ruin/powered/seedvault)
-"so" = (
-/obj/structure/water_source/puddle{
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi';
-	base_icon_state = "water_basin";
-	icon_state = "water_basin";
-	name = "filled water basin"
-	},
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"sw" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"sL" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"ti" = (
-/obj/structure/sink/directional/east,
-/obj/structure/flora/bush/flowers_pp/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"tw" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/freezer,
-/area/ruin/powered/seedvault)
-"tK" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"tQ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"tS" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"uH" = (
-/obj/effect/turf_decal/siding/thinplating/dark/corner{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"uK" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/warning,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"uM" = (
-/obj/structure/flora/bush/sparsegrass/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"uW" = (
-/obj/machinery/light/floor,
-/obj/structure/flora/bush/fullgrass/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"ve" = (
-/obj/machinery/atmospherics/components/binary/volume_pump/on,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"vf" = (
-/obj/machinery/vending/hydroseeds{
-	all_products_free = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"vg" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"vk" = (
+"EA" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"vn" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"vQ" = (
-/obj/structure/hedge,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"wl" = (
-/obj/effect/turf_decal/siding/thinplating/dark,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"wv" = (
-/obj/structure/flora/tree/jungle/style_3,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"wB" = (
-/obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/structure/disposaloutlet,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
-"wH" = (
-/obj/structure/chair/pew{
-	dir = 1
-	},
-/turf/open/floor/wood/tile,
-/area/ruin/powered/seedvault)
-"xk" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/cup/beaker/bluespace,
-/obj/item/reagent_containers/cup/beaker/bluespace,
-/obj/item/reagent_containers/cup/beaker/bluespace,
-/obj/item/reagent_containers/cup/beaker/bluespace,
+"EK" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 1
 	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"xq" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"xr" = (
-/obj/machinery/vending/hydronutrients{
-	all_products_free = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"xA" = (
-/obj/effect/turf_decal/siding/thinplating/dark/corner,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"xJ" = (
-/obj/structure/reagent_dispensers/watertank/high,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 5
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"xQ" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 9
-	},
-/obj/effect/turf_decal/siding/wideplating_new/corner,
-/turf/open/floor/iron/terracotta/herringbone,
-/area/ruin/powered/seedvault)
-"xW" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/trimline/dark_green/filled/line,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"yt" = (
-/obj/structure/table/wood,
-/obj/item/stack/sheet/mineral/wood/fifty,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"yw" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 9
-	},
-/obj/structure/loom,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"yA" = (
-/obj/machinery/chem_dispenser/mutagensaltpeter,
-/obj/machinery/light/directional/west,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"yK" = (
-/obj/structure/flora/bush/fullgrass/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"zd" = (
-/obj/machinery/computer/terminal{
-	dir = 8;
-	name = "Old Terminal";
-	desc = "A dusty, nonfunctioning terminal left by your creators. The screen is on but nothing you press does anything."
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"zg" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"zj" = (
-/obj/structure/reagent_dispensers/watertank/high,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"zx" = (
-/obj/effect/baseturf_helper/lava_land/surface,
-/turf/closed/mineral/volcanic/lava_land_surface,
-/area/lavaland/surface/outdoors)
-"Aa" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"AF" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	name = "Server Vent"
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"AG" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 4;
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 6
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"AV" = (
-/obj/structure/window/spawner/directional/west,
-/obj/structure/chair/pew/left,
-/turf/open/floor/wood/tile,
-/area/ruin/powered/seedvault)
-"Bd" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 5
-	},
-/obj/machinery/light/directional/east,
 /turf/open/floor/iron/freezer,
 /area/ruin/powered/seedvault)
-"BF" = (
-/obj/machinery/vending/clothing{
-	all_products_free = 1
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Co" = (
-/obj/effect/turf_decal/siding/thinplating/dark/corner{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"Cq" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 6
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Dr" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/trimline/dark_green/filled/line,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"DF" = (
-/obj/structure/closet/secure_closet/personal/wall{
-	pixel_y = 32
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"DY" = (
-/obj/structure/flora/bush/flowers_br/style_random,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"Ec" = (
-/obj/structure/table/wood,
-/obj/structure/towel_bin,
-/obj/machinery/light/directional/west,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"Ex" = (
-/obj/effect/mist,
-/obj/effect/spawner/liquids_spawner/shoulders,
-/turf/open/floor/iron/pool/cobble/corner{
-	dir = 8
-	},
-/area/ruin/powered/seedvault)
-"Fg" = (
+"EZ" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Fl" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
 "Fu" = (
-/obj/structure/flora/bush/sunny,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"FU" = (
-/obj/machinery/door/window,
-/obj/machinery/door/window{
-	dir = 1
-	},
-/obj/machinery/biogenerator,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/ruin/powered/seedvault)
-"Gl" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/gun/energy/floragun,
-/obj/item/gun/energy/floragun,
-/obj/item/gun/energy/floragun,
-/obj/item/gun/energy/floragun,
-/obj/item/geneshears,
-/obj/item/geneshears,
-/obj/item/geneshears,
-/obj/item/geneshears,
-/obj/item/clothing/neck/stethoscope,
-/obj/machinery/light/directional/west,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/ruin/powered/seedvault)
-"Go" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 4
-	},
-/turf/open/floor/iron/terracotta/herringbone,
-/area/ruin/powered/seedvault)
-"GP" = (
-/obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"Ha" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 9
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	name = "Server Vent"
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Hc" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"Hy" = (
-/obj/structure/window/spawner/directional/west,
-/obj/structure/window/spawner/directional/south,
-/obj/structure/chair/pew/left{
-	dir = 1
-	},
-/turf/open/floor/wood/tile,
-/area/ruin/powered/seedvault)
-"HW" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning/corner{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Is" = (
-/obj/structure/table/wood,
-/obj/item/card/id/away/deep_storage{
-	name = "Seed Vault Access ID"
-	},
-/obj/item/card/id/away/deep_storage{
-	name = "Seed Vault Access ID"
-	},
-/obj/item/card/id/away/deep_storage{
-	name = "Seed Vault Access ID"
-	},
-/obj/item/card/id/away/deep_storage{
-	name = "Seed Vault Access ID"
-	},
-/obj/item/card/id/away/deep_storage{
-	name = "Seed Vault Access ID"
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning{
-	dir = 1
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Iu" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Iv" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 8
 	},
@@ -1112,98 +862,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"IA" = (
-/obj/structure/flora/bush/flowers_pp/style_random,
-/obj/structure/flora/bush/grassy/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"IZ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"Jj" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Jv" = (
-/turf/closed/wall/r_wall,
-/area/ruin/powered/seedvault)
-"JF" = (
-/obj/machinery/light/floor,
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"Kl" = (
-/obj/structure/flora/bush/flowers_br/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"Kt" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"KG" = (
-/obj/machinery/light/directional/west,
-/obj/structure/hedge,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"KK" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"KY" = (
-/obj/structure/table/reinforced,
-/obj/machinery/reagentgrinder{
-	pixel_y = 5;
-	pixel_x = -3
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line,
-/obj/item/construction/plumbing,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"La" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/powered/seedvault)
-"Lh" = (
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"LV" = (
-/obj/machinery/smartfridge,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/ruin/powered/seedvault)
-"Md" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line,
-/obj/machinery/light/directional/south,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Mk" = (
-/obj/structure/flora/bush/grassy/style_random,
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"ME" = (
+"FT" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/vault,
@@ -1211,156 +870,80 @@
 /obj/effect/mapping_helpers/airlock/access/all/away/general,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"MJ" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/iron/freezer,
-/area/ruin/powered/seedvault)
-"MW" = (
-/obj/structure/closet/secure_closet/personal/wall{
-	pixel_y = 32
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"Og" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "bunkershutter"
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/seedvault)
-"Op" = (
-/obj/machinery/light/floor,
-/obj/effect/mist,
-/obj/effect/spawner/liquids_spawner/shoulders,
-/turf/open/floor/iron/pool/cobble/corner{
-	dir = 4
-	},
-/area/ruin/powered/seedvault)
-"OA" = (
+"FV" = (
 /obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
-"Pq" = (
-/turf/closed/mineral/volcanic/lava_land_surface,
-/area/lavaland/surface/outdoors)
-"Pv" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 5
+"Gf" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"Py" = (
+"Gx" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"GK" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"Hd" = (
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/seedvault)
+"Hh" = (
 /obj/machinery/atmospherics/components/tank/air{
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/dark_green/filled/warning/corner,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"PT" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/button/door/directional/west{
-	id = "bunkerinterior";
-	name = "interior blast door access";
-	req_access = list("away_general")
-	},
-/obj/machinery/button/door/directional/west{
-	id = "bunkershutter";
-	name = "hallway shutter toggle";
-	pixel_y = 8;
-	req_access = list("away_general")
-	},
-/obj/machinery/button/door/directional/west{
-	id = "bunkerexterior";
-	name = "exterior blast door access";
-	pixel_y = -8;
-	req_access = list("away_general")
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
+"Hl" = (
+/obj/effect/mist,
+/obj/effect/spawner/liquids_spawner/shoulders,
+/turf/open/floor/iron/pool/cobble/side{
 	dir = 8
 	},
-/turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"Qj" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/wood,
+"Id" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/melee/flyswatter,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/queen_bee/bought,
+/obj/item/bee_smoker,
+/turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/powered/seedvault)
-"Qo" = (
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/turf/closed/wall/r_wall,
-/area/ruin/powered/seedvault)
-"Qp" = (
-/obj/structure/flora/bush/grassy/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
+"Ij" = (
+/obj/structure/chair/pew{
 	dir = 1
 	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"QH" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"QQ" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"QW" = (
-/obj/structure/table/wood,
-/obj/machinery/light/directional/east,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Rf" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/machinery/light/floor,
 /turf/open/floor/wood/tile,
 /area/ruin/powered/seedvault)
-"Rz" = (
-/obj/structure/flora/bush/fullgrass/style_random,
-/obj/structure/flora/bush/flowers_yw/style_random,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+"IM" = (
+/obj/structure/flora/tree/jungle/style_3,
 /turf/open/floor/grass,
 /area/ruin/powered/seedvault)
-"SX" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 9
-	},
-/obj/machinery/light/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/freezer,
-/area/ruin/powered/seedvault)
-"TA" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/terracotta/herringbone,
-/area/ruin/powered/seedvault)
-"Ui" = (
+"Jj" = (
 /obj/machinery/door/airlock/external/ruin,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
@@ -1371,91 +954,118 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"Uk" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/warning,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"Uz" = (
-/obj/structure/flora/bush/flowers_pp/style_random,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"UP" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+"JE" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line,
 /obj/machinery/light/directional/south,
-/turf/open/floor/iron/terracotta/small,
-/area/ruin/powered/seedvault)
-"UW" = (
-/obj/effect/mist,
-/obj/effect/spawner/liquids_spawner/shoulders,
-/turf/open/floor/iron/pool/cobble/side{
-	dir = 4
-	},
-/area/ruin/powered/seedvault)
-"Vc" = (
-/obj/machinery/door/airlock/vault,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 6
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"Vk" = (
-/obj/machinery/light/floor,
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"Vp" = (
-/obj/structure/table/reinforced,
-/obj/machinery/plantgenes{
-	pixel_y = 8
+"Kb" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 10
 	},
-/obj/machinery/light/directional/east,
-/turf/open/floor/mineral/plastitanium,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"Vy" = (
+"Kk" = (
 /obj/structure/flora/bush/fullgrass/style_random,
-/obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/ruin/powered/seedvault)
-"VK" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 6
-	},
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"WU" = (
-/obj/structure/chair/pew,
-/turf/open/floor/wood/tile,
-/area/ruin/powered/seedvault)
-"WW" = (
-/obj/structure/sauna_oven,
-/obj/machinery/light/directional/west,
-/turf/open/floor/wood,
-/area/ruin/powered/seedvault)
-"Xm" = (
-/obj/structure/flora/bush/generic/style_random,
-/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/grass,
 /area/ruin/powered/seedvault)
-"Xr" = (
+"Ko" = (
 /obj/structure/disposalpipe/segment{
-	dir = 5
+	dir = 8
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/powered/seedvault)
-"Yi" = (
+"KY" = (
+/obj/structure/chair/pew/right,
+/turf/open/floor/wood/tile,
+/area/ruin/powered/seedvault)
+"Lk" = (
+/obj/structure/flora/bush/sunny,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"LB" = (
+/obj/structure/table/wood,
+/obj/machinery/light/directional/east,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/tank/internals/emergency_oxygen/double,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"LU" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"LZ" = (
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Mb" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Mz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"MF" = (
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/access/all/away/general,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"MY" = (
+/obj/effect/mist,
+/obj/effect/spawner/liquids_spawner/shoulders,
+/turf/open/floor/iron/pool/cobble/corner,
+/area/ruin/powered/seedvault)
+"Nf" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Nq" = (
+/obj/machinery/light/floor,
+/turf/open/floor/wood/tile,
+/area/ruin/powered/seedvault)
+"Nz" = (
+/obj/machinery/smartfridge,
+/obj/machinery/door/window,
+/obj/machinery/door/window{
+	dir = 1
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/powered/seedvault)
+"NS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/machinery/door/poddoor{
+	id = "bunkerinterior"
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Oe" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/tile,
+/area/ruin/powered/seedvault)
+"Oj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
@@ -1468,724 +1078,1114 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"Yu" = (
+"Ow" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"OB" = (
+/obj/machinery/light/floor,
 /obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"OE" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"OV" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/wood/tile,
+/area/ruin/powered/seedvault)
+"Pa" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Pk" = (
+/obj/effect/mist,
+/obj/effect/spawner/liquids_spawner/shoulders,
+/turf/open/floor/iron/pool/cobble/side{
 	dir = 4
+	},
+/area/ruin/powered/seedvault)
+"Pl" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Pz" = (
+/obj/machinery/smartfridge,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"PM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"PP" = (
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"PU" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/away/general,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Ql" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/turf/open/floor/iron/terracotta/herringbone,
+/area/ruin/powered/seedvault)
+"Qo" = (
+/obj/structure/flora/bush/flowers_yw/style_random,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Qq" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/terracotta/small,
 /area/ruin/powered/seedvault)
-"YB" = (
-/obj/effect/mist,
-/obj/effect/spawner/liquids_spawner/shoulders,
-/turf/open/floor/iron/pool/cobble/corner,
+"Rc" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/seedvault)
-"Zq" = (
+"RJ" = (
+/obj/machinery/chem_master,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"RP" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Sc" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"Sf" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 9
+	},
+/obj/machinery/light/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/ruin/powered/seedvault)
+"Sk" = (
+/obj/structure/beebox,
+/obj/effect/turf_decal/siding/thinplating/dark/end,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Sm" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Sv" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"SU" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Tn" = (
 /obj/structure/reagent_dispensers/watertank/high,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Tq" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"Tw" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"TF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/powered/seedvault)
+"TI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/light/directional/east,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"TP" = (
+/obj/structure/flora/bush/flowers_pp/style_random,
+/obj/structure/flora/bush/grassy/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"TS" = (
+/obj/machinery/vending/hydroseeds{
+	all_products_free = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"TX" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/effect/turf_decal/trimline/green/filled/line,
+/obj/item/seeds/surik,
+/obj/item/seeds/surik,
+/obj/item/seeds/vaporsac,
+/obj/item/seeds/vaporsac,
+/obj/item/seeds/amauri,
+/obj/item/seeds/amauri,
+/obj/item/seeds/gelthi,
+/obj/item/seeds/gelthi,
+/obj/item/seeds/jurlmah,
+/obj/item/seeds/jurlmah,
+/obj/item/seeds/nofruit,
+/obj/item/seeds/nofruit,
+/obj/item/seeds/shand,
+/obj/item/seeds/shand,
+/obj/item/seeds/telriis,
+/obj/item/seeds/telriis,
+/obj/item/seeds/thaadra,
+/obj/item/seeds/thaadra,
+/obj/item/seeds/vale,
+/obj/item/seeds/vale,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"Uf" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "bunkershutter"
+	},
+/turf/open/floor/plating,
+/area/ruin/powered/seedvault)
+"Un" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"Up" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 5
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/freezer,
+/area/ruin/powered/seedvault)
+"Ur" = (
+/obj/machinery/vending/clothing{
+	all_products_free = 1
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"UC" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/obj/structure/flora/bush/flowers_yw/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"UJ" = (
+/obj/structure/flora/bush/grassy/style_random,
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/structure/flora/bush/flowers_yw/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"UK" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"UR" = (
+/turf/closed/wall/r_wall,
+/area/ruin/powered/seedvault)
+"UY" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 4
 	},
-/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
 /area/ruin/powered/seedvault)
-"Zx" = (
+"Vc" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/effect/spawner/random/food_or_drink/seed_vault,
+/obj/machinery/light/directional/north,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"VD" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/terracotta/small,
+/area/ruin/powered/seedvault)
+"We" = (
+/obj/structure/hedge,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"WE" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"WJ" = (
+/obj/structure/sink/directional/west,
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"WW" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 1
+	},
+/obj/structure/safe/abovetilefloor,
+/obj/item/seeds/kudzu,
+/obj/item/paperwork/service,
+/obj/item/lighter/royal,
+/obj/item/clothing/neck/cowboylea,
+/obj/item/food/grown/poppy/geranium,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Xg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Xn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/powered/seedvault)
+"XK" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/grass,
+/area/ruin/powered/seedvault)
+"Yo" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	name = "Server Vent"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Yv" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_y = 5;
+	pixel_x = -3
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line,
+/obj/item/construction/plumbing,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"YZ" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/powered/seedvault)
+"Zf" = (
+/obj/structure/table/wood,
+/obj/item/card/id/away/deep_storage{
+	name = "Seed Vault Access ID"
+	},
+/obj/item/card/id/away/deep_storage{
+	name = "Seed Vault Access ID"
+	},
+/obj/item/card/id/away/deep_storage{
+	name = "Seed Vault Access ID"
+	},
+/obj/item/card/id/away/deep_storage{
+	name = "Seed Vault Access ID"
+	},
+/obj/item/card/id/away/deep_storage{
+	name = "Seed Vault Access ID"
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/warning{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/powered/seedvault)
+"Zl" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/survival_pod{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood,
+/area/ruin/powered/seedvault)
+"Zs" = (
 /obj/machinery/door/airlock/vault,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 10
+	dir = 6
 	},
 /turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"ZB" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 1
-	},
-/obj/machinery/autolathe,
-/obj/item/storage/toolbox/syndicate,
-/turf/open/floor/iron/dark,
-/area/ruin/powered/seedvault)
-"ZM" = (
-/obj/structure/sink/directional/west,
-/obj/structure/flora/bush/flowers_br/style_random,
-/turf/open/floor/grass,
 /area/ruin/powered/seedvault)
 
 (1,1,1) = {"
-zx
-Pq
-Pq
-Pq
-Pq
-cj
-Pq
-Pq
-cj
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
-cj
-cj
-Pq
-Pq
-Pq
-Pq
-Pq
+hX
+Bm
+Bm
+Bm
+Bm
+LZ
+Bm
+Bm
+LZ
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
+LZ
+LZ
+Bm
+Bm
+Bm
+Bm
+Bm
 "}
 (2,1,1) = {"
-Pq
-Pq
-Pq
-Pq
-cj
-cj
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
-cj
+Bm
+Bm
+Bm
+Bm
+LZ
+LZ
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
+LZ
 "}
 (3,1,1) = {"
-cj
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
+LZ
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+UR
+UR
+UR
+UR
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
 "}
 (4,1,1) = {"
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-rR
-Py
-Jv
-Jv
-Jv
-Jv
-Jv
-Jv
-cj
-Pq
-cj
-cj
-cj
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+UR
+UR
+UR
+UR
+wp
+Hh
+UR
+UR
+UR
+UR
+UR
+UR
+LZ
+Bm
+LZ
+LZ
+LZ
 "}
 (5,1,1) = {"
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
-Jv
-BF
-xq
-Jv
-iU
-Uk
-mo
-br
-Yi
-Jj
-Zx
-lZ
-cj
-cj
-cj
-Pq
-cj
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
+UR
+Ur
+tv
+UR
+mN
+aU
+lL
+PU
+Oj
+zB
+yB
+jM
+LZ
+LZ
+LZ
+Bm
+LZ
 "}
 (6,1,1) = {"
-Pq
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-Is
-uK
-Jv
-pU
-Uk
-dY
-Ui
-fW
-Iu
-Vc
-lZ
-cj
-cj
-Pq
-Pq
-Pq
+Bm
+Bm
+Bm
+UR
+UR
+UR
+UR
+Zf
+jv
+UR
+Bd
+aU
+NS
+Jj
+dM
+ir
+Zs
+jM
+LZ
+LZ
+Bm
+Bm
+Bm
 "}
 (7,1,1) = {"
-Pq
-Pq
-Pq
-Jv
-oG
-SX
-Jv
-jN
-vn
-Jv
-dR
-HW
-Jv
-Jv
-Og
-lB
-Jv
-Jv
-Jv
-cj
-cj
-cj
-Pq
+Bm
+Bm
+Bm
+UR
+ca
+Sf
+UR
+ao
+Gf
+UR
+we
+jK
+UR
+UR
+Uf
+ui
+UR
+UR
+UR
+LZ
+LZ
+LZ
+Bm
 "}
 (8,1,1) = {"
-cj
-Pq
-Pq
-Jv
-oG
-kw
-ms
-xA
-nP
-Hc
-Yu
-uH
-Jv
-PT
-ln
-ln
-Aa
-ve
-dZ
-dV
-cj
-cj
-cj
+LZ
+Bm
+Bm
+UR
+ca
+EK
+id
+Tq
+VD
+Un
+sy
+GK
+UR
+uq
+Xg
+Xg
+wX
+rZ
+fM
+Hd
+LZ
+LZ
+LZ
 "}
 (9,1,1) = {"
-cj
-Pq
-Pq
-Jv
-oG
-MJ
-tw
-wl
-Rz
-Vk
-hG
-ps
-ME
-Fg
-tQ
-Kt
-cW
-aT
-Jv
-Pq
-cj
-Pq
-Pq
+LZ
+Bm
+Bm
+UR
+ca
+gy
+wx
+LU
+Kk
+rW
+Qo
+xo
+FT
+pU
+ud
+EZ
+TI
+bl
+UR
+Bm
+LZ
+Bm
+Bm
 "}
 (10,1,1) = {"
-Pq
-Pq
-Pq
-Jv
-oG
-Bd
-Jv
-wl
-kp
-Kl
-yK
-mp
-Jv
-QW
-zd
-Jv
-Jv
-Jv
-Jv
-Jv
-Jv
-Pq
-Pq
+Bm
+Bm
+Bm
+UR
+ca
+Up
+UR
+LU
+yL
+XK
+zS
+oo
+UR
+LB
+hg
+UR
+UR
+UR
+UR
+UR
+UR
+Bm
+Bm
 "}
 (11,1,1) = {"
-Pq
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-wl
-uM
-ew
-lm
-mp
-Jv
-Jv
-Jv
-Jv
-ch
-La
-La
-ch
-Jv
-Jv
-Pq
+Bm
+Bm
+Bm
+UR
+UR
+UR
+UR
+LU
+gt
+jz
+lh
+oo
+UR
+UR
+UR
+UR
+EA
+Sc
+Sc
+EA
+UR
+UR
+Bm
 "}
 (12,1,1) = {"
-Pq
-Pq
-Jv
-Jv
-bO
-Gl
-Jv
-ii
-Uz
-wv
-IA
-UP
-Jv
-ct
-yA
-KY
-de
-jg
-eR
-ep
-Dr
-Jv
-Pq
+Bm
+Bm
+UR
+UR
+wZ
+tg
+UR
+iP
+dD
+IM
+TP
+Gx
+UR
+RJ
+oL
+Yv
+hu
+WE
+DY
+OB
+dw
+UR
+Bm
 "}
 (13,1,1) = {"
-Pq
-Pq
-Jv
-ic
-Ha
-pY
-Jv
-wl
-Fu
-fE
-nK
-fY
-hI
-tK
-aU
-AG
-Qp
-ZM
-ew
-oJ
-xW
-Jv
-Pq
+Bm
+Bm
+UR
+pM
+eE
+Kb
+UR
+LU
+Lk
+Pl
+zK
+Qq
+Nz
+ev
+bR
+qp
+wb
+WJ
+jz
+OE
+FV
+UR
+Bm
 "}
 (14,1,1) = {"
-Pq
-Pq
-Jv
-je
-pT
-oI
-nA
-wl
-nt
-ew
-Xm
-fY
-nA
-oI
-sL
-sL
-GP
-LV
-aR
-oP
-ab
-Jv
-Pq
+Bm
+Bm
+UR
+Vc
+WW
+Xn
+MF
+LU
+UC
+jz
+zr
+Qq
+MF
+Xn
+fI
+fI
+fW
+Pz
+zP
+pG
+Sk
+UR
+Bm
 "}
 (15,1,1) = {"
-Pq
-Pq
-Jv
-kG
-Pv
-VK
-Jv
-wl
-DY
-eh
-bX
-mp
-FU
-jW
-iE
-dB
-Lh
-ti
-Kl
-Mk
-xW
-Jv
-Pq
+Bm
+Bm
+UR
+TX
+fy
+Mb
+UR
+LU
+Pa
+tW
+Mz
+oo
+zn
+Fl
+Sv
+Rc
+Sm
+zl
+XK
+UJ
+FV
+UR
+Bm
 "}
 (16,1,1) = {"
-Pq
-Pq
-Jv
-Jv
-ef
-gN
-Jv
-Co
-fM
-eN
-eX
-mk
-Jv
-qd
-Vp
-gU
-uW
-sw
-Vy
-JF
-xW
-Jv
-Pq
+Bm
+Bm
+UR
+UR
+Id
+DE
+UR
+kt
+yo
+yt
+pZ
+UK
+UR
+Eu
+cr
+Tw
+BM
+RP
+tk
+CC
+FV
+UR
+Bm
 "}
 (17,1,1) = {"
-Pq
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-tS
-gQ
-Jv
-fK
-Jv
-Jv
-Jv
-Jv
-lx
-vk
-OA
-OA
-OA
-Jv
-Jv
-Pq
+Bm
+Bm
+Bm
+UR
+UR
+UR
+UR
+UY
+bt
+UR
+Zl
+UR
+UR
+UR
+UR
+Ko
+fl
+YZ
+YZ
+YZ
+UR
+UR
+Bm
 "}
 (18,1,1) = {"
-Pq
-Pq
-Pq
-Jv
-yw
-AF
-Iv
-zg
-QQ
-Jv
-Qj
-Ec
-so
-WW
-yt
-Qo
-bc
-bc
-Xr
-Jv
-Jv
-Pq
-Pq
+Bm
+Bm
+Bm
+UR
+zf
+Yo
+Fu
+CJ
+oR
+UR
+pg
+ld
+wn
+uM
+ij
+TF
+ae
+ae
+nx
+UR
+UR
+Bm
+Bm
 "}
 (19,1,1) = {"
-Pq
-Pq
-Pq
-Jv
-xk
-ez
-ez
-ez
-QH
-Jv
-MW
-IZ
-IZ
-gJ
-IZ
-KG
-vQ
-Jv
-wB
-cj
-cj
-cj
-Pq
+Bm
+Bm
+Bm
+UR
+mG
+PP
+PP
+PP
+zz
+UR
+nE
+Ow
+Ow
+jT
+Ow
+fr
+We
+UR
+kV
+LZ
+LZ
+LZ
+Bm
 "}
 (20,1,1) = {"
-cj
-Pq
-Pq
-Jv
-ZB
-ez
-ez
-rd
-Md
-Jv
-MW
-KK
-KK
-xQ
-Go
-TA
-Go
-Jv
-cj
-cj
-Pq
-cj
-Pq
+LZ
+Bm
+Bm
+UR
+Ea
+PP
+PP
+PM
+JE
+UR
+nE
+oq
+oq
+el
+Ql
+mT
+Ql
+UR
+LZ
+LZ
+Bm
+LZ
+Bm
 "}
 (21,1,1) = {"
-cj
-cj
-Pq
-Jv
-xJ
-Zq
-zj
-vg
-Cq
-Jv
-DF
-gJ
-rw
-dj
-rX
-oo
-Ex
-Jv
-Pq
-Pq
-Pq
-cj
-cj
+LZ
+LZ
+Bm
+UR
+Tn
+Nf
+hb
+sI
+SU
+UR
+wD
+jT
+ez
+cF
+oP
+Hl
+CI
+UR
+Bm
+Bm
+Bm
+LZ
+LZ
 "}
 (22,1,1) = {"
-cj
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-vf
-xr
-Jv
-AV
-Rf
-Hy
-dj
-YB
-UW
-Op
-Jv
-Pq
-Pq
-cj
-cj
-Pq
+LZ
+Bm
+Bm
+UR
+UR
+UR
+UR
+TS
+fh
+UR
+dl
+OV
+rp
+cF
+MY
+Pk
+jP
+UR
+Bm
+Bm
+LZ
+LZ
+Bm
 "}
 (23,1,1) = {"
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-WU
-lj
-wH
-Jv
-Jv
-Jv
-Jv
-Jv
-Pq
-Pq
-cj
-cj
-Pq
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+UR
+UR
+UR
+UR
+lb
+Oe
+Ij
+UR
+UR
+UR
+UR
+UR
+Bm
+Bm
+LZ
+LZ
+Bm
 "}
 (24,1,1) = {"
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Jv
-gH
-fa
-nF
-Jv
-Pq
-Pq
-Pq
-cj
-Pq
-Pq
-Pq
-Pq
-Pq
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+UR
+KY
+Nq
+gf
+UR
+Bm
+Bm
+Bm
+LZ
+Bm
+Bm
+Bm
+Bm
+Bm
 "}
 (25,1,1) = {"
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Jv
-Jv
-Jv
-Jv
-Jv
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
-Pq
-Pq
-Pq
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+UR
+UR
+UR
+UR
+UR
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
+Bm
+Bm
+Bm
 "}
 (26,1,1) = {"
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
-Pq
-Pq
-Pq
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
+Bm
+Bm
+Bm
 "}
 (27,1,1) = {"
-cj
-cj
-Pq
-Pq
-cj
-cj
-cj
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-Pq
-cj
-cj
-cj
-cj
-Pq
-Pq
+LZ
+LZ
+Bm
+Bm
+LZ
+LZ
+LZ
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+Bm
+LZ
+LZ
+LZ
+LZ
+Bm
+Bm
 "}
