@@ -26,7 +26,7 @@
 	mutanteyes = /obj/item/organ/eyes/pod
 	mutantheart = /obj/item/organ/heart/pod
 	mutantliver = /obj/item/organ/liver/pod
-	mutantlungs = /obj/item/organ/lungs/pod
+	mutantlungs = /obj/item/organ/lungs/lavaland
 	mutantstomach = /obj/item/organ/stomach/pod
 	mutanttongue = /obj/item/organ/tongue/pod
 
