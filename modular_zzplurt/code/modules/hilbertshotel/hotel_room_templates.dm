@@ -116,6 +116,11 @@
 	mappath = "_maps/splurt/templates/apartment_sauna.dmm"
 	category = GHC_MISC
 
+/datum/map_template/ghost_cafe_rooms/dnd_house
+	name = "Zak's D&D House"
+	mappath = "_maps/splurt/templates/donator_zak_infdorm.dmm"
+	category = GHC_SPECIAL
+
 #undef GHC_MISC
 #undef GHC_APARTMENT
 #undef GHC_BEACH
