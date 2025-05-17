@@ -86,7 +86,7 @@
 		if(highest_votes >= victory_threshold)
 			log_dynamic("Victory threshold ([victory_threshold]) reached! Winner(s): [highest_choices.Join(", ")] with [highest_votes] votes",
 				list("winners" = highest_choices, "votes" = highest_votes))
-			elimination_results += "[highest_choices[1]] - [highest_votes]"
+			elimination_results += "[highest_choices[1]] wins by threshold victory with [highest_votes]/[total_voters] votes!"
 			return highest_choices
 
 		// Find lowest vote count to eliminate
@@ -114,7 +114,7 @@
 
 		// Remove the eliminated option from choices
 		choices -= option_to_eliminate
-		elimination_results += "[option_to_eliminate] - [lowest_votes]"
+		elimination_results += "[option_to_eliminate]"
 
 		// Update rankings and redistribute votes
 		var/redistribution_text = "Vote redistribution after eliminating [option_to_eliminate]:\n"

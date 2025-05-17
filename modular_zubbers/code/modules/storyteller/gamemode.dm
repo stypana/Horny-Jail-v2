@@ -732,7 +732,7 @@ SUBSYSTEM_DEF(gamemode)
 	var/datum/storyteller/storyteller_pick
 	if(!voted_storyteller)
 		storyteller_pick = pick(storytellers)
-		log_dynamic("Roundstart picked storyteller [storyteller.name] randomly due to no vote result.")
+		log_dynamic("Roundstart picked storyteller [storyteller_pick.name] randomly due to no vote result.")
 		voted_storyteller = storyteller_pick
 
 	if(ready_only_vote)
@@ -743,7 +743,15 @@ SUBSYSTEM_DEF(gamemode)
 			stack_trace("Processing storyteller vote results failed! That's less than ideal. Using backup non-weighted result [voted_storyteller]")
 
 	set_storyteller(voted_storyteller)
-	var/secret_percentage = CONFIG_GET(number/storyteller_secret_percentage)
+	var/secret_percentage
+	switch(SSgamemode.storyteller.display_setting)
+		if(STORYTELLER_DISPLAY_NEVER_SECRET)
+			secret_percentage = 0
+		if(STORYTELLER_DISPLAY_ALWAYS_SECRET)
+			secret_percentage = 100
+		else
+			secret_percentage = CONFIG_GET(number/storyteller_secret_percentage)
+
 	if(prob(secret_percentage))
 		statpanel_display = "Secret"
 		to_chat(world, vote_font(fieldset_block("Storyteller: Secret", "The storyteller for this round is secret! What could it be, it is a mystery...", "boxed_message purple_box")))
@@ -752,7 +760,7 @@ SUBSYSTEM_DEF(gamemode)
 		if(vote_datum)
 			var/list/vote_results = vote_datum.elimination_results
 			var/serialized_vote_results = "[vote_results.Join("\n")]"
-			var/list/vote_result_message = list("Method: Ranked Vote\n\n[serialized_vote_results]")
+			var/list/vote_result_message = list("Method: Ranked Vote\n\nElimination order:\n[serialized_vote_results]")
 			to_chat(world, custom_boxed_message("purple_box", vote_font("[vote_result_message.Join("\n")]")))
 		to_chat(world, vote_font(fieldset_block("Storyteller: [storyteller.name]", "[storyteller.welcome_text]", "boxed_message purple_box")))
 
@@ -768,7 +776,7 @@ SUBSYSTEM_DEF(gamemode)
 
 /datum/controller/subsystem/gamemode/proc/process_storyteller_vote()
 	var/list/players = list()
-	if(!vote_datum?.choices_by_ckey)
+	if(!length(!vote_datum?.choices_by_ckey))
 		return
 
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
