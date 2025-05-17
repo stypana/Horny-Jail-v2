@@ -337,13 +337,6 @@
 /obj/structure/flora/bush/leavy/style_2,
 /turf/open/misc/grass/planet,
 /area/centcom/holding/cafe/park)
-"ahx" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 1
-	},
-/obj/machinery/self_actualization_device,
-/turf/open/floor/iron/white,
-/area/centcom/interlink)
 "ahA" = (
 /obj/structure/flora/bush/flowers_br,
 /obj/structure/flora/bush/fullgrass,
@@ -1976,52 +1969,6 @@
 /obj/machinery/light/directional/west,
 /turf/open/indestructible/plating,
 /area/centcom/holding/cafe/park)
-"aAq" = (
-/obj/structure/rack/wooden,
-/obj/item/perfume/amber{
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/obj/item/perfume/cologne{
-	pixel_x = -4;
-	pixel_y = 10
-	},
-/obj/item/perfume/wood{
-	pixel_y = 10
-	},
-/obj/item/perfume/mint{
-	pixel_x = 4;
-	pixel_y = 10
-	},
-/obj/item/perfume/cherry{
-	pixel_x = -8;
-	pixel_y = -5
-	},
-/obj/item/perfume/jasmine{
-	pixel_x = -4;
-	pixel_y = -5
-	},
-/obj/item/perfume/pear{
-	pixel_y = -5
-	},
-/obj/item/perfume/rose{
-	pixel_x = 4;
-	pixel_y = -5
-	},
-/obj/item/perfume/vanilla{
-	pixel_x = 8;
-	pixel_y = 10
-	},
-/obj/item/perfume/strawberry{
-	pixel_x = 8;
-	pixel_y = -5
-	},
-/obj/structure/window/spawner/directional/east,
-/obj/effect/turf_decal/siding/wood{
-	dir = 5
-	},
-/turf/open/indestructible/hotelwood,
-/area/centcom/holding/cafe)
 "aAr" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -2735,6 +2682,13 @@
 	icon_state = "floor"
 	},
 /area/centcom/holding/cafe)
+"aIq" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "aIr" = (
 /turf/open/indestructible/plating,
 /area/centcom/holding/cafe/park)
@@ -4612,19 +4566,6 @@
 /obj/structure/broken_flooring/pile,
 /turf/open/indestructible/plating,
 /area/centcom/holding/cafe)
-"bqc" = (
-/obj/structure/table/wood,
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/item/storage/fancy/candle_box/pear{
-	pixel_y = 10
-	},
-/obj/item/storage/fancy/candle_box/vanilla{
-	pixel_y = 4
-	},
-/turf/open/floor/wood,
-/area/centcom/interlink)
 "bqT" = (
 /obj/structure/wall_torch/spawns_lit/directional/north,
 /turf/open/floor/fakebasalt,
@@ -5898,15 +5839,6 @@
 	dir = 1
 	},
 /turf/open/floor/wood/tile,
-/area/centcom/interlink)
-"cTQ" = (
-/obj/machinery/photocopier,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
-/turf/open/floor/iron,
 /area/centcom/interlink)
 "cUF" = (
 /obj/effect/turf_decal/box/corners{
@@ -7497,17 +7429,6 @@
 	},
 /turf/open/floor/plating/abductor,
 /area/centcom/holding/cafe/park)
-"fzv" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/photocopier,
-/obj/structure/secure_safe/directional/east{
-	pixel_x = 26;
-	pixel_y = 5
-	},
-/turf/open/indestructible/hoteltile{
-	icon_state = "darkfull"
-	},
-/area/centcom/holding/cafe)
 "fzV" = (
 /obj/structure/rack,
 /obj/item/pushbroom,
@@ -8014,6 +7935,12 @@
 	base_icon_state = "carpet_royalblack";
 	icon = 'icons/turf/floors/carpet_royalblack.dmi'
 	},
+/area/centcom/holding/cafe)
+"gov" = (
+/obj/item/hilbertshotel/ghostdojo{
+	is_ghost_cafe = 1
+	},
+/turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "gow" = (
 /obj/effect/turf_decal/sand,
@@ -9783,6 +9710,17 @@
 /obj/structure/fireplace,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"iFm" = (
+/obj/machinery/photocopier/prebuilt,
+/obj/machinery/button/door/directional/north{
+	id = "ntrep_shutters";
+	name = "Privacy Shutter Comtrol";
+	pixel_x = 8;
+	req_access = list("command")
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "iFq" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/table,
@@ -10973,6 +10911,15 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
+"kzj" = (
+/obj/machinery/photocopier/prebuilt,
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "kzD" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
@@ -11035,6 +10982,17 @@
 /obj/machinery/vending/wardrobe/sec_wardrobe/red,
 /turf/open/misc/dirt/planet,
 /area/centcom/holding/cafe/park)
+"kIv" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/photocopier/prebuilt,
+/obj/structure/secure_safe/directional/east{
+	pixel_x = 26;
+	pixel_y = 5
+	},
+/turf/open/indestructible/hoteltile{
+	icon_state = "darkfull"
+	},
+/area/centcom/holding/cafe)
 "kID" = (
 /obj/structure/cable/layer3,
 /turf/closed/indestructible/steel,
@@ -11148,6 +11106,17 @@
 /obj/machinery/light/directional/south,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe/park)
+"kLN" = (
+/obj/machinery/photocopier/prebuilt,
+/obj/machinery/button/door/directional/south{
+	id = "bs_shutters";
+	name = "Privacy Shutter Comtrol";
+	pixel_x = 8;
+	req_access = list("command")
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "kLW" = (
 /obj/structure/railing{
 	invisibility = 100;
@@ -12821,6 +12790,18 @@
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/dark,
 /area/centcom/holding/cafe)
+"mPt" = (
+/obj/machinery/photocopier/prebuilt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/indestructible/hoteltile{
+	icon_state = "carpet_royalblack-255";
+	base_icon_state = "carpet_royalblack";
+	icon = 'icons/turf/floors/carpet_royalblack.dmi'
+	},
+/area/centcom/holding/cafe)
 "mPR" = (
 /obj/effect/turf_decal/sand,
 /obj/effect/turf_decal/weather/dirt{
@@ -13456,17 +13437,6 @@
 /obj/item/soap/deluxe,
 /turf/open/floor/sepia,
 /area/centcom/holding/cafe)
-"nHC" = (
-/obj/machinery/photocopier,
-/obj/machinery/button/door/directional/south{
-	id = "bs_shutters";
-	name = "Privacy Shutter Comtrol";
-	pixel_x = 8;
-	req_access = list("command")
-	},
-/obj/effect/turf_decal/bot,
-/turf/open/floor/wood,
-/area/centcom/interlink)
 "nHH" = (
 /obj/machinery/recharge_station,
 /obj/effect/turf_decal/stripes/line{
@@ -14294,6 +14264,13 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"oKM" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/machinery/self_actualization_device,
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "oLI" = (
 /obj/structure/chair/sofa/corp/left,
 /turf/open/floor/carpet/black,
@@ -14652,12 +14629,6 @@
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
-/area/centcom/holding/cafe)
-"pjt" = (
-/obj/item/hilbertshotel/ghostdojo{
-	is_ghost_cafe = 1
-	},
-/turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "pkJ" = (
 /obj/structure/fans/tiny/invisible,
@@ -15102,12 +15073,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/centcom/interlink)
-"pMm" = (
-/obj/machinery/photocopier,
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark,
-/area/centcom/interlink)
 "pMs" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -15150,19 +15115,6 @@
 /obj/effect/spawner/random/vending/snackvend,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
-/area/centcom/interlink)
-"pOS" = (
-/obj/structure/table/wood,
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/item/storage/fancy/candle_box{
-	pixel_y = 10
-	},
-/obj/item/storage/fancy/candle_box/amber{
-	pixel_y = 4
-	},
-/turf/open/floor/wood,
 /area/centcom/interlink)
 "pPw" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
@@ -15263,17 +15215,6 @@
 /obj/structure/flora/bush/flowers_br,
 /turf/open/misc/grass/planet,
 /area/centcom/holding/cafe/park)
-"pVh" = (
-/obj/machinery/photocopier,
-/obj/machinery/button/door/directional/north{
-	id = "ntrep_shutters";
-	name = "Privacy Shutter Comtrol";
-	pixel_x = 8;
-	req_access = list("command")
-	},
-/obj/effect/turf_decal/bot,
-/turf/open/floor/wood,
-/area/centcom/interlink)
 "pVr" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1
@@ -16552,6 +16493,12 @@
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 8
 	},
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
+"rFJ" = (
+/obj/machinery/photocopier/prebuilt,
+/obj/effect/turf_decal/tile/red/opposingcorners,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "rGI" = (
@@ -18177,18 +18124,6 @@
 	icon = 'icons/turf/floors/carpet_royalblack.dmi'
 	},
 /area/centcom/holding/cafe)
-"tAT" = (
-/obj/machinery/photocopier,
-/obj/effect/turf_decal/siding/wood{
-	dir = 5
-	},
-/obj/machinery/light/small/directional/north,
-/turf/open/indestructible/hoteltile{
-	icon_state = "carpet_royalblack-255";
-	base_icon_state = "carpet_royalblack";
-	icon = 'icons/turf/floors/carpet_royalblack.dmi'
-	},
-/area/centcom/holding/cafe)
 "tBo" = (
 /obj/structure/table,
 /obj/machinery/microwave{
@@ -19712,6 +19647,14 @@
 "vTT" = (
 /turf/closed/indestructible/steel,
 /area/centcom/holding/cafe)
+"vTU" = (
+/obj/structure/rack/wooden,
+/obj/structure/window/spawner/directional/east,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/indestructible/hotelwood,
+/area/centcom/holding/cafe)
 "vUg" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1
@@ -20529,6 +20472,16 @@
 	smoothing_flags = 0
 	},
 /area/centcom/holding/cafe/park)
+"xcq" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/storage/fancy/candle_box{
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "xct" = (
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/dark{
@@ -28490,7 +28443,7 @@ hIH
 svm
 eGf
 tvw
-cTQ
+kzj
 kqK
 qbp
 sci
@@ -28515,8 +28468,8 @@ aaa
 tvw
 axP
 izj
-bqc
-pOS
+aIq
+xcq
 tvw
 tvw
 aaa
@@ -30548,13 +30501,13 @@ aMM
 aQY
 kiU
 mpl
-nHC
+kLN
 tvw
 aDg
 lGc
 aDg
 tvw
-pVh
+iFm
 mpl
 kiU
 aQY
@@ -31804,7 +31757,7 @@ vat
 eSk
 vat
 aDg
-ahx
+oKM
 aWb
 aWb
 aWb
@@ -33890,7 +33843,7 @@ jxw
 aXG
 rDL
 aDg
-pMm
+rFJ
 xSr
 xSr
 kqs
@@ -67790,7 +67743,7 @@ vTT
 iSJ
 msM
 vTT
-tAT
+mPt
 oaR
 mrC
 vTT
@@ -69587,7 +69540,7 @@ aaa
 vTT
 vTT
 pjg
-fzv
+kIv
 vTT
 xYH
 tJR
@@ -69631,7 +69584,7 @@ ajx
 aUo
 aUo
 aUo
-pjt
+gov
 aqf
 vTT
 pqy
@@ -74768,7 +74721,7 @@ doA
 lvk
 awv
 awv
-aAq
+vTU
 vTT
 kWr
 ayI
