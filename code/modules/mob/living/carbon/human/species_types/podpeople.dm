@@ -17,6 +17,7 @@
 	payday_modifier = 1.0
 	meat = /obj/item/food/meat/slab/human/mutant/plant
 	exotic_blood = /datum/reagent/water
+	exotic_bloodtype = BLOOD_TYPE_H2O
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/plant
 
@@ -26,7 +27,7 @@
 	mutanteyes = /obj/item/organ/eyes/pod
 	mutantheart = /obj/item/organ/heart/pod
 	mutantliver = /obj/item/organ/liver/pod
-	mutantlungs = /obj/item/organ/lungs/pod
+	mutantlungs = /obj/item/organ/lungs/lavaland // splurt edit PR 377
 	mutantstomach = /obj/item/organ/stomach/pod
 	mutanttongue = /obj/item/organ/tongue/pod
 
