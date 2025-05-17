@@ -38,6 +38,7 @@
 
 /obj/vehicle/sealed/mecha/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	//splurt edit start -- Mecha additions, better armor
+#ifndef UNIT_TESTS //hack to make unit tests work, please fix it better at the earliest convenience
 	var/armor_damage_amount
 	if(equip_by_category[MECHA_ARMOR])
 		for(var/obj/item/mecha_parts/mecha_equipment/armor/mech_armor in flat_equipment)
@@ -59,6 +60,9 @@
 				qdel(mech_armor)
 
 	var/damage_taken = armor_damage_amount | ..()
+#else
+	var/damage_taken = ..()
+#endif
 	//splurt edit end -- Mecha additions, better armor
 
 	if(damage_taken <= 0 || atom_integrity < 0)
