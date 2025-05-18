@@ -1,10 +1,46 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ao" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
+"aU" = (
+/obj/structure/flora/bush/jungle/c/style_3,
+/obj/structure/flora/tree/jungle/style_6{
+	pixel_x = -27;
+	pixel_y = -54
+	},
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "aX" = (
 /obj/machinery/door/morgue,
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "bf" = (
 /turf/open/floor/grass,
+/area/misc/hilbertshotel)
+"bB" = (
+/obj/effect/turf_decal/stripes/white{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255;
+	dir = 8
+	},
+/turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "bF" = (
 /obj/effect/turf_decal/siding/thinplating_new/light{
@@ -101,6 +137,21 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/misc/hilbertshotel)
+"dC" = (
+/obj/effect/turf_decal/stripes/white{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "dN" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner,
 /turf/open/floor/carpet/black,
@@ -177,6 +228,11 @@
 /area/misc/hilbertshotel)
 "gh" = (
 /turf/open/floor/iron/dark/textured_large,
+/area/misc/hilbertshotel)
+"gC" = (
+/obj/structure/spacevine,
+/obj/structure/flora/tree/jungle/small/style_2,
+/turf/closed/indestructible/rock,
 /area/misc/hilbertshotel)
 "gU" = (
 /obj/structure/decorative{
@@ -319,6 +375,16 @@
 	},
 /turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
+"kz" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "kG" = (
 /obj/structure/hedge,
 /obj/structure/decorative{
@@ -390,6 +456,15 @@
 	},
 /turf/open/floor/carpet,
 /area/misc/hilbertshotel)
+"lA" = (
+/obj/structure/flora/bush/jungle/c,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/large/style_3{
+	pixel_x = -9;
+	pixel_y = -29
+	},
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "lS" = (
 /obj/structure/stone_tile/block/burnt{
 	pixel_x = 22;
@@ -425,6 +500,10 @@
 	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
+"mf" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "mG" = (
 /obj/effect/turf_decal/siding/thinplating_new/light{
 	color = "#713333";
@@ -457,7 +536,6 @@
 /turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
 "nt" = (
-/obj/structure/curtain/bounty,
 /obj/effect/turf_decal/siding/wideplating_new/dark,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
@@ -479,11 +557,31 @@
 	},
 /turf/open/floor/carpet,
 /area/misc/hilbertshotel)
+"oo" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255;
+	dir = 1
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "oG" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
 /turf/open/floor/carpet/black,
+/area/misc/hilbertshotel)
+"oL" = (
+/obj/structure/spacevine,
+/obj/structure/flora/tree/jungle/small/style_6{
+	pixel_x = -45;
+	pixel_y = 12
+	},
+/turf/closed/indestructible/rock,
 /area/misc/hilbertshotel)
 "oN" = (
 /obj/structure/railing/corner{
@@ -513,12 +611,16 @@
 	},
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
+"pd" = (
+/obj/structure/flora/bush/jungle/b/style_2,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "po" = (
-/obj/structure/curtain/bounty,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/wideplating_new/dark,
+/obj/structure/medieval/stone_arch,
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "pu" = (
@@ -570,6 +672,40 @@
 	pixel_y = 7
 	},
 /turf/closed/wall/mineral/stone,
+/area/misc/hilbertshotel)
+"qH" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255;
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
+"qU" = (
+/obj/structure/table/greyscale{
+	color = "#999999";
+	desc = "A square piece of stone standing on four stone legs. It can not move.";
+	name = "stone table";
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/tile/dark/half{
+	dir = 1;
+	alpha = 200
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/item/flashlight/lantern{
+	pixel_y = 21
+	},
+/obj/item/cutting_board{
+	pixel_y = 11
+	},
+/turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
 "rm" = (
 /obj/structure/table/wood,
@@ -670,6 +806,10 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
+"ue" = (
+/obj/machinery/door/morgue,
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "up" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark,
 /turf/open/floor/carpet/black,
@@ -687,6 +827,10 @@
 	dir = 8
 	},
 /turf/open/floor/wood/tile,
+/area/misc/hilbertshotel)
+"vb" = (
+/obj/structure/flora/grass/jungle/a/style_3,
+/turf/open/floor/grass,
 /area/misc/hilbertshotel)
 "vq" = (
 /obj/effect/turf_decal/siding/wood{
@@ -721,6 +865,10 @@
 	},
 /obj/structure/marker_beacon/olive,
 /turf/open/floor/wood/large,
+/area/misc/hilbertshotel)
+"vP" = (
+/obj/structure/spacevine,
+/turf/closed/indestructible/rock,
 /area/misc/hilbertshotel)
 "wl" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark,
@@ -759,6 +907,10 @@
 	pixel_x = -2
 	},
 /turf/open/floor/vault/rock,
+/area/misc/hilbertshotel)
+"xe" = (
+/obj/structure/flora/grass/jungle/a/style_2,
+/turf/open/floor/grass,
 /area/misc/hilbertshotel)
 "xO" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -875,6 +1027,29 @@
 	},
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
+"Ab" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255;
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
+"Ad" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "Ay" = (
 /obj/machinery/griddle/stone{
 	pixel_x = 2;
@@ -923,10 +1098,29 @@
 	},
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
+"BM" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255;
+	dir = 1
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "BU" = (
 /turf/open/floor/iron/chapel{
 	dir = 10
 	},
+/area/misc/hilbertshotel)
+"Cb" = (
+/obj/structure/flora/bush/jungle,
+/obj/structure/flora/bush/fullgrass,
+/turf/open/floor/grass,
 /area/misc/hilbertshotel)
 "Cm" = (
 /obj/structure/stone_tile/surrounding/cracked{
@@ -1006,6 +1200,15 @@
 	dir = 5
 	},
 /turf/open/floor/wood/large,
+/area/misc/hilbertshotel)
+"Dw" = (
+/obj/structure/flora/bush/jungle/a/style_2,
+/obj/structure/flora/bush/large/style_2{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/structure/flora/bush/fullgrass,
+/turf/open/floor/grass,
 /area/misc/hilbertshotel)
 "EK" = (
 /obj/structure/table/wood/fancy,
@@ -1088,6 +1291,13 @@
 	color = "#5d341f"
 	},
 /turf/open/floor/carpet/royalblack,
+/area/misc/hilbertshotel)
+"Gn" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "Gt" = (
 /obj/effect/turf_decal/siding/thinplating_new/light{
@@ -1239,6 +1449,20 @@
 	},
 /turf/open/floor/carpet,
 /area/misc/hilbertshotel)
+"IR" = (
+/obj/structure/flora/bush/jungle/c/style_2,
+/obj/structure/flora/tree/jungle/style_2,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
+"IV" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/tile/neutral/half{
+	alpha = 255;
+	color = "#59595a"
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "Jx" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
@@ -1280,6 +1504,22 @@
 	icon = 'icons/turf/floors/lava.dmi'
 	},
 /area/misc/hilbertshotel)
+"Km" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255;
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "Ku" = (
 /obj/structure/railing/stone,
 /obj/structure/table/greyscale{
@@ -1320,6 +1560,29 @@
 	color = "#5d341f"
 	},
 /turf/open/floor/wood/tile,
+/area/misc/hilbertshotel)
+"KH" = (
+/obj/structure/table/greyscale{
+	color = "#999999";
+	desc = "A square piece of stone standing on four stone legs. It can not move.";
+	name = "stone table";
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/tile/dark/half{
+	dir = 1;
+	alpha = 200
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/item/cutting_board{
+	pixel_y = 11
+	},
+/obj/item/flashlight/lantern{
+	pixel_y = 21
+	},
+/turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
 "Lo" = (
 /obj/structure/stone_tile/block{
@@ -1541,6 +1804,17 @@
 	},
 /turf/open/indestructible/cobble,
 /area/misc/hilbertshotel)
+"Nn" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	color = "#59595a";
+	alpha = 255;
+	dir = 1
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "NH" = (
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
@@ -1565,6 +1839,10 @@
 	pixel_y = -2
 	},
 /turf/open/floor/vault/rock,
+/area/misc/hilbertshotel)
+"Or" = (
+/obj/structure/flora/bush/jungle/a/style_3,
+/turf/open/floor/grass,
 /area/misc/hilbertshotel)
 "Ox" = (
 /turf/open/floor/iron/chapel{
@@ -1607,6 +1885,9 @@
 /area/misc/hilbertshotel)
 "Pe" = (
 /turf/open/floor/carpet/black,
+/area/misc/hilbertshotel)
+"PB" = (
+/turf/open/space/basic,
 /area/misc/hilbertshotel)
 "PD" = (
 /obj/effect/turf_decal/siding/wood,
@@ -1651,7 +1932,7 @@
 	dir = 1;
 	layer = 4.26
 	},
-/turf/open/floor/grass,
+/turf/closed/indestructible/rock,
 /area/misc/hilbertshotel)
 "PR" = (
 /obj/structure/stone_tile/block{
@@ -1682,6 +1963,14 @@
 /area/misc/hilbertshotel)
 "QF" = (
 /turf/open/floor/iron/stairs/right,
+/area/misc/hilbertshotel)
+"Ri" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/tile/neutral/half{
+	alpha = 255;
+	color = "#59595a"
+	},
+/turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "RE" = (
 /obj/structure/easel,
@@ -1758,7 +2047,7 @@
 	color = "#45464a";
 	dir = 8
 	},
-/turf/open/floor/grass,
+/turf/closed/indestructible/rock,
 /area/misc/hilbertshotel)
 "SZ" = (
 /obj/structure/railing/stone,
@@ -1974,11 +2263,23 @@
 	},
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
+"XN" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "XQ" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 4
 	},
 /turf/open/floor/carpet/black,
+/area/misc/hilbertshotel)
+"XR" = (
+/turf/closed/indestructible/hoteldoor{
+	icon_state = "door_closed";
+	icon = 'icons/obj/doors/puzzledoor/default.dmi'
+	},
 /area/misc/hilbertshotel)
 "XU" = (
 /obj/structure/table/wood,
@@ -2035,6 +2336,10 @@
 	},
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
+"Yq" = (
+/obj/structure/flora/grass/jungle/a/style_4,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "YE" = (
 /obj/structure/rack/wooden,
 /obj/item/reagent_containers/cup/soup_pot{
@@ -2057,6 +2362,17 @@
 	dir = 10
 	},
 /turf/open/floor/carpet/black,
+/area/misc/hilbertshotel)
+"Zf" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "Zn" = (
 /turf/open/floor/iron/stairs/left,
@@ -2095,7 +2411,7 @@ Ob
 Ob
 Ob
 Ob
-Ob
+XR
 Ob
 Ob
 Ob
@@ -2249,8 +2565,8 @@ CL
 RY
 bf
 cs
-lb
-lb
+lw
+lw
 cs
 Yp
 hr
@@ -2279,8 +2595,8 @@ Vz
 kG
 bf
 cs
-lb
-lb
+NP
+Gn
 cs
 zd
 mO
@@ -2309,8 +2625,8 @@ sJ
 PM
 cs
 cs
-lb
-lb
+XN
+Zf
 aX
 pC
 ku
@@ -2339,8 +2655,8 @@ uR
 fe
 vF
 cs
-lb
-lb
+kz
+ao
 cs
 LU
 MR
@@ -2369,8 +2685,8 @@ Xc
 hW
 Pa
 cs
-lb
-lb
+XN
+Ri
 cs
 hl
 oN
@@ -2399,8 +2715,8 @@ Xk
 Fg
 mK
 cs
-lb
-lb
+KH
+mf
 cs
 cs
 cs
@@ -2429,8 +2745,8 @@ JJ
 cs
 cs
 cs
-lb
-lb
+Nn
+Ab
 cs
 De
 lb
@@ -2459,8 +2775,8 @@ JJ
 lp
 wl
 cs
-lb
-lb
+XN
+IV
 cs
 lb
 lb
@@ -2479,8 +2795,8 @@ bf
 YP
 Ox
 Ie
-cs
-fM
+nt
+GA
 mG
 nU
 UQ
@@ -2489,9 +2805,9 @@ JJ
 Jx
 Og
 cs
-lb
-lb
-lb
+qH
+Zf
+ue
 lb
 lb
 lb
@@ -2519,8 +2835,8 @@ JJ
 Jx
 Ay
 cs
-lb
-lb
+XN
+oo
 cs
 lb
 lb
@@ -2549,8 +2865,8 @@ Me
 jk
 fK
 cs
-lb
-lb
+XN
+Ri
 cs
 lb
 lb
@@ -2579,8 +2895,8 @@ YE
 Cy
 sF
 cs
-lb
-lb
+qU
+mf
 cs
 cs
 cs
@@ -2609,8 +2925,8 @@ cs
 cs
 cs
 cs
-lb
-lb
+BM
+IV
 cs
 lb
 lb
@@ -2618,7 +2934,7 @@ lb
 lb
 lb
 cs
-bf
+Ob
 Ob
 "}
 (19,1,1) = {"
@@ -2639,17 +2955,17 @@ TW
 uw
 Zn
 Zn
-lb
-lb
-lb
+dC
+Km
+ue
 lb
 lb
 lb
 lb
 lb
 cs
-bf
 Ob
+PB
 "}
 (20,1,1) = {"
 Ob
@@ -2669,8 +2985,8 @@ TW
 uw
 QF
 QF
-lb
-lb
+bB
+Ad
 cs
 lb
 lb
@@ -2678,8 +2994,8 @@ lb
 lb
 lb
 cs
-bf
 Ob
+PB
 "}
 (21,1,1) = {"
 Ob
@@ -2700,6 +3016,7 @@ cs
 cs
 cs
 cs
+ue
 cs
 cs
 cs
@@ -2707,44 +3024,43 @@ cs
 cs
 cs
 cs
-cs
-bf
 Ob
+PB
 "}
 (22,1,1) = {"
 Ob
-bf
-bf
-cs
-uw
-NH
-NH
-NH
-NH
-cs
-NH
-NH
-NH
-NH
-uw
-cs
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
 Ob
+Ob
+cs
+uw
+NH
+NH
+NH
+NH
+cs
+NH
+NH
+NH
+NH
+uw
+cs
+lb
+lb
+lb
+lb
+cs
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+PB
 "}
 (23,1,1) = {"
+PB
+PB
 Ob
-bf
-bf
 cs
 XV
 NH
@@ -2758,23 +3074,23 @@ Pe
 NH
 XV
 cs
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
+lb
+lb
+lb
+lb
+cs
 Ob
+PB
+PB
+PB
+PB
+PB
+PB
 "}
 (24,1,1) = {"
+PB
+PB
 Ob
-bf
-bf
 cs
 cs
 NH
@@ -2788,24 +3104,24 @@ Pe
 NH
 cs
 cs
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
+cs
+lb
+lb
+lb
+cs
 Ob
+PB
+PB
+PB
+PB
+PB
+PB
 "}
 (25,1,1) = {"
+PB
+PB
 Ob
-bf
-bf
-bf
+Ob
 Vz
 ij
 NH
@@ -2817,25 +3133,25 @@ NH
 NH
 gU
 il
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
 Ob
+cs
+lb
+lb
+lb
+cs
+Ob
+PB
+PB
+PB
+PB
+PB
+PB
 "}
 (26,1,1) = {"
+PB
+PB
+PB
 Ob
-bf
-bf
-bf
 Sn
 PM
 cs
@@ -2847,107 +3163,107 @@ XV
 cs
 ys
 PQ
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
 Ob
+cs
+cs
+cs
+cs
+cs
+Ob
+PB
+PB
+PB
+PB
+PB
+PB
 "}
 (27,1,1) = {"
+PB
+PB
+PB
 Ob
-bf
-bf
-bf
-bf
-bf
-cs
-YP
-YP
-cs
-YP
-YP
-cs
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
 Ob
+Yq
+cs
+YP
+YP
+cs
+YP
+YP
+cs
+vb
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+PB
+PB
+PB
+PB
+PB
+PB
 "}
 (28,1,1) = {"
+PB
+PB
+PB
 Ob
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
-bf
 Ob
+vb
+IR
+Cb
+Dw
+lA
+Or
+pd
+aU
+xe
+Ob
+Ob
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
 "}
 (29,1,1) = {"
+PB
+PB
+PB
 Ob
 Ob
+vP
+vP
+gC
+vP
+vP
+oL
+vP
+vP
+vP
 Ob
 Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
-Ob
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
+PB
 "}
