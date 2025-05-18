@@ -49,3 +49,11 @@
   - bugfix: Primal Podpeople can breath on lavaland
   myraowo:
   - bugfix: Engineering, CE and Atmos winter coat back items are now allowed on tailcoats
+2025-05-18:
+  MosleyTheMalO:
+  - rscadd: adds verb to toggle the scaling mode of a character throught he IC tab
+  - bugfix: Fixes scaled appearance not applying as intended
+  Nuk5513:
+  - bugfix: rabbit (long) ears now face the correct sideways direction
+  k-testbase:
+  - bugfix: reverts primal podpeople lung change
