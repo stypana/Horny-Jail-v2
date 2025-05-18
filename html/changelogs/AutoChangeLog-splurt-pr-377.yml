@@ -1,5 +1,0 @@
-author: "k-testbase"
-delete-after: True
-changes:
-  - rscadd: "New Seedvault Map"
-  - bugfix: "Primal Podpeople can breath on lavaland"
