@@ -302,6 +302,10 @@
 	dir = 1
 	},
 /area/misc/hilbertshotel)
+"hf" = (
+/obj/machinery/room_controller/directional/west,
+/turf/open/floor/grass,
+/area/misc/hilbertshotel)
 "hl" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 5
@@ -3466,10 +3470,7 @@
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "XR" = (
-/turf/closed/indestructible/hoteldoor{
-	icon_state = "door_closed";
-	icon = 'icons/obj/doors/puzzledoor/default.dmi'
-	},
+/turf/closed/indestructible/hoteldoor,
 /area/misc/hilbertshotel)
 "XU" = (
 /obj/structure/table/wood,
@@ -3703,7 +3704,7 @@ bf
 bf
 bf
 bf
-bf
+hf
 bf
 bf
 bf
