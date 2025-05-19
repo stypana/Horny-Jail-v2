@@ -2876,8 +2876,8 @@
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
 "PB" = (
-/turf/template_noop,
-/area/template_noop)
+/turf/open/space/bluespace,
+/area/misc/hilbertshotel)
 "PD" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/table/wood,
