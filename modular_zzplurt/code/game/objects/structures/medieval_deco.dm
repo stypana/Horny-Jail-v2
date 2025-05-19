@@ -22,3 +22,23 @@
 	density = TRUE
 	max_integrity = 150
 	pixel_x = 0
+
+/obj/structure/medieval/bed_1x2
+	name = "bed"
+	desc = "A luxurious bed, inviting you to rest on it, oh traveler."
+	icon = 'modular_zzplurt/icons/obj/medieval/structures_64x64.dmi'
+	icon_state = "bed_1x2"
+	layer = 2.2
+	density = FALSE
+	max_integrity = 150
+	pixel_x = 0
+
+/obj/structure/medieval/bed_2x2
+	name = "bed"
+	desc = "A luxurious bed, inviting you to rest on it, oh traveler."
+	icon = 'modular_zzplurt/icons/obj/medieval/structures_64x64.dmi'
+	icon_state = "bed_2x2"
+	layer = 2.2
+	density = FALSE
+	max_integrity = 150
+	pixel_x = 0
