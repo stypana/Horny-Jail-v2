@@ -2514,10 +2514,6 @@
 	pixel_x = 9;
 	pixel_y = 10
 	},
-/obj/item/air_refresher{
-	pixel_x = -2;
-	pixel_y = 16
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "xe" = (
