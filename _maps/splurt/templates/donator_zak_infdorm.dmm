@@ -3192,9 +3192,6 @@
 	pixel_y = 19
 	},
 /obj/structure/marker_beacon/cerulean,
-/obj/effect/light_emitter/interlink{
-	light_color = #e8d0b0
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "CD" = (
