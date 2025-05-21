@@ -213,8 +213,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_new_corner";
 	color = "#515152";
-	dir = 1;
-	layer = 4.26
+	dir = 1
 	},
 /turf/closed/wall/mineral/stone,
 /area/misc/hilbertshotel)
@@ -1339,8 +1338,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_new_corner";
 	color = "#515152";
-	dir = 1;
-	layer = 4.26
+	dir = 1
 	},
 /turf/closed/wall/mineral/stone,
 /area/misc/hilbertshotel)
@@ -5374,8 +5372,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_new_corner";
 	color = "#515152";
-	dir = 1;
-	layer = 4.26
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -5383,8 +5380,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_new_corner";
 	color = "#515152";
-	dir = 1;
-	layer = 4.26
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
