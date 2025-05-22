@@ -57,3 +57,7 @@
   - bugfix: rabbit (long) ears now face the correct sideways direction
   k-testbase:
   - bugfix: reverts primal podpeople lung change
+2025-05-22:
+  myraowo:
+  - map: You no longer space anything sent down Metastation's Xenobio Entrance's disposals
+      bin.
