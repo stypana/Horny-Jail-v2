@@ -118,7 +118,7 @@
 
 /datum/map_template/ghost_cafe_rooms/dnd_house
 	name = "Zak's D&D House"
-	mappath = "_maps/splurt/templates/donator_zak_infdorm.dmm"
+	mappath = "_maps/splurt/templates/apartment_donator_zak_dnd_house.dmm"
 	category = GHC_SPECIAL
 
 #undef GHC_MISC
