@@ -958,3 +958,11 @@ directory = "_maps/splurt/automapper/templates/mining/"
 required_map = "Lavaland.dmm"
 coordinates = [224, 244, 1]
 trait_name = "Mining"
+
+# Metastation Xenobio Entrance Disposal Fix
+[templates.metastation_disposal_fix]
+map_files = ["metastation_disposal_fix.dmm"]
+directory = "_maps/splurt/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [145, 91, 1]
+trait_name = "Station"
