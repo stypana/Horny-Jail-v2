@@ -1389,16 +1389,6 @@
 /area/misc/hilbertshotel)
 "mU" = (
 /obj/structure/table/wood/fancy/green,
-/obj/structure/decorative{
-	anchored = 1;
-	name = "???";
-	icon = 'icons/obj/service/hand_of_god_structures.dmi';
-	icon_state = "tentacle_rune";
-	dir = 8;
-	pixel_y = 7;
-	pixel_x = 0;
-	desc = "You don't know what this is. Frankly... neither do I."
-	},
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
 	dir = 8
 	},
@@ -5684,16 +5674,6 @@
 /area/misc/hilbertshotel)
 "Vc" = (
 /obj/structure/table/wood/fancy/green,
-/obj/structure/decorative{
-	anchored = 1;
-	name = "???";
-	icon = 'icons/obj/service/hand_of_god_structures.dmi';
-	icon_state = "cosmic_rune";
-	dir = 8;
-	pixel_y = 4;
-	pixel_x = 0;
-	desc = "You don't know what this is. Frankly... neither do I."
-	},
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner,
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
@@ -6042,16 +6022,6 @@
 /area/misc/hilbertshotel)
 "Xq" = (
 /obj/structure/table/wood/fancy/green,
-/obj/structure/decorative{
-	anchored = 1;
-	name = "???";
-	icon = 'icons/obj/service/hand_of_god_structures.dmi';
-	icon_state = "alert_rune";
-	dir = 8;
-	pixel_y = 7;
-	pixel_x = 0;
-	desc = "You don't know what this is. Frankly... neither do I."
-	},
 /obj/structure/decorative{
 	anchored = 1;
 	name = "ambiguous weapon";
