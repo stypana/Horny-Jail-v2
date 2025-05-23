@@ -68,6 +68,11 @@
 
 // SPLURT's custom room templates
 
+/datum/map_template/ghost_cafe_rooms/apartment_skyscraper
+	name = "Skyscraper Apartment"
+	mappath = "_maps/splurt/templates/apartment_skyscraper.dmm"
+	category = GHC_APARTMENT
+
 /datum/map_template/ghost_cafe_rooms/apartment_city
 	name = "City Apartment"
 	mappath = "_maps/splurt/templates/apartment_city.dmm"
