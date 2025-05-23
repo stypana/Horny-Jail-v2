@@ -376,8 +376,10 @@ const RoomsTab = (props) => {
 
   const targetCategory = category.toLowerCase();
   const filteredRooms = hotel_map_list.filter(
-    (room) => room.category?.toLowerCase() === targetCategory &&
-      (!room.ckeywhitelist?.length || room.ckeywhitelist.includes(data.user_ckey))
+    (room) =>
+      room.category?.toLowerCase() === targetCategory &&
+      (!room.ckeywhitelist?.length ||
+        room.ckeywhitelist.includes(data.user_ckey)),
   );
 
   const categoryIcons = {
@@ -443,7 +445,9 @@ const RoomsTab = (props) => {
                   <Stack.Item>{room.name}</Stack.Item>
                   {room.donator_tier > data.user_donator_tier && (
                     <Stack.Item grow textAlign="right" color="red">
-                      {' | Donator tier ' + room.donator_tier + ' access required'}
+                      {' | Donator tier ' +
+                        room.donator_tier +
+                        ' access required'}
                     </Stack.Item>
                   )}
                 </Stack>
