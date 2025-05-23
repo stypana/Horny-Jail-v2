@@ -2461,6 +2461,9 @@
 	pixel_x = -2
 	},
 /obj/structure/marker_beacon/bronze,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	pixel_y = -26
+	},
 /turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
 "ww" = (
@@ -4770,6 +4773,9 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	pixel_y = -26
+	},
 /turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
 "Oo" = (
@@ -4978,6 +4984,9 @@
 /obj/structure/sign/painting/library{
 	pixel_x = 0;
 	pixel_y = -32
+	},
+/obj/machinery/jukebox{
+	base_icon_state = "an awfully mediocre jukebox"
 	},
 /turf/open/floor/carpet/green,
 /area/misc/hilbertshotel)
@@ -5619,6 +5628,7 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
+/obj/effect/spawner/random/food_or_drink/three_course_meal,
 /turf/open/floor/carpet,
 /area/misc/hilbertshotel)
 "UR" = (
