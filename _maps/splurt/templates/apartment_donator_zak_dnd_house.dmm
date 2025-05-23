@@ -3502,6 +3502,12 @@
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
 	},
+/obj/structure/sink/directional/south{
+	name = "grape juice tap";
+	desc = "Tap-tap-tap-tap.";
+	color = "#8c6e5e";
+	dispensedreagent = /datum/reagent/consumable/ethanol/gem_grape_juice
+	},
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "FT" = (
