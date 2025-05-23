@@ -314,9 +314,24 @@
 	},
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
+"fc" = (
+/obj/effect/turf_decal/siding/wideplating_new/dark/corner{
+	dir = 4;
+	color = "#515152"
+	},
+/obj/item/toy/cattoy{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/floor/wood/large,
+/area/misc/hilbertshotel)
 "fe" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/wall{
+	pixel_x = -28;
+	pixel_y = 0
 	},
 /turf/open/floor/carpet/green,
 /area/misc/hilbertshotel)
@@ -615,6 +630,10 @@
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 9
 	},
+/obj/structure/closet/secure_closet/wall{
+	pixel_x = -28;
+	pixel_y = 0
+	},
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "hQ" = (
@@ -860,22 +879,9 @@
 	dir = 9
 	},
 /obj/effect/turf_decal/siding/wood/corner,
-/obj/structure/decorative{
-	icon_state = "tile_half";
-	pixel_y = 31;
-	icon = 'icons/turf/decals.dmi';
-	base_icon_state = "tile_half";
-	color = "#1f1f1f";
-	dir = 2;
-	anchored = 1;
-	pixel_x = 1
-	},
-/obj/structure/fluff/bus/passable/seat{
-	desc = "A sturdy wooden shelf with a bunch of crates on it.";
-	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi';
-	icon_state = "shelf_1";
-	name = "shelf";
-	pixel_y = 32
+/obj/structure/grandfatherclock{
+	pixel_y = 29;
+	anchored = 1
 	},
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
@@ -1256,14 +1262,6 @@
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "lS" = (
-/obj/structure/stone_tile/block/burnt{
-	pixel_x = 22;
-	pixel_y = 1
-	},
-/obj/structure/stone_tile/block{
-	pixel_x = -8;
-	pixel_y = 2
-	},
 /obj/structure/fake_stairs/directional/south{
 	icon_state = "flattexture";
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/exploration_floor.dmi'
@@ -1361,6 +1359,19 @@
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi';
 	icon_state = "empty_shelf_1"
 	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/cup/glass/bottle/small{
+	pixel_x = -2;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/cup/glass/bottle{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/obj/effect/turf_decal/siding/wood/end,
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "mL" = (
@@ -2239,16 +2250,20 @@
 	},
 /obj/structure/table/wood/fancy/black,
 /obj/item/flashlight/flare/candle{
+	pixel_x = 13;
+	pixel_y = 2
+	},
+/obj/item/table_clock{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/flashlight/flare/candle{
 	pixel_x = 1;
 	pixel_y = 0
 	},
 /obj/item/flashlight/flare/candle{
 	pixel_x = 7;
 	pixel_y = 1
-	},
-/obj/item/flashlight/flare/candle{
-	pixel_x = 13;
-	pixel_y = 2
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
@@ -2634,8 +2649,12 @@
 	dir = 8
 	},
 /obj/item/flashlight/lantern{
-	pixel_x = 0;
-	pixel_y = 9
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/obj/item/table_clock{
+	pixel_x = -3;
+	pixel_y = 4
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
@@ -3394,32 +3413,13 @@
 	},
 /area/misc/hilbertshotel)
 "Fg" = (
-/obj/item/reagent_containers/cup/glass/bottle{
-	pixel_x = 7;
-	pixel_y = 17
-	},
-/obj/item/reagent_containers/cup/glass/bottle/small{
-	pixel_x = -2;
-	pixel_y = 14
-	},
-/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
-	pixel_x = -9;
-	pixel_y = 10
-	},
 /obj/structure/marker_beacon/jade{
 	pixel_x = 0;
 	pixel_y = -22
 	},
-/obj/structure/rack/shelf{
-	desc = "A sturdy wooden shelf to store a variety of items on.";
-	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi';
-	icon_state = "seedshelf";
-	base_icon_state = "seedshelf"
-	},
-/obj/structure/rack/shelf{
-	desc = "A sturdy wooden shelf to store a variety of items on.";
-	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi';
-	icon_state = "empty_shelf_1"
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
 	},
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
@@ -4043,6 +4043,11 @@
 	dir = 4;
 	pixel_x = -1;
 	pixel_y = -5
+	},
+/obj/structure/stone_tile/surrounding_tile/burnt{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 20
 	},
 /turf/open/lava/fake{
 	icon_state = "lava-255";
@@ -5090,6 +5095,10 @@
 	pixel_x = 2;
 	pixel_y = 1
 	},
+/obj/structure/stone_tile/block/burnt{
+	pixel_x = 0;
+	pixel_y = 1
+	},
 /turf/open/lava/fake{
 	icon_state = "lava-255";
 	icon = 'icons/turf/floors/lava.dmi'
@@ -5355,10 +5364,9 @@
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "RY" = (
-/obj/structure/railing/wooden_fencing,
-/obj/item/toy/cattoy{
-	pixel_x = 0;
-	pixel_y = 7
+/obj/structure/closet/crate/wooden,
+/obj/structure/railing{
+	color = "#5d341f"
 	},
 /turf/open/floor/wood/parquet,
 /area/misc/hilbertshotel)
@@ -6489,7 +6497,7 @@ BI
 to
 aA
 zn
-CL
+fc
 RY
 JH
 cs
