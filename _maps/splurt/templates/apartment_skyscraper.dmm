@@ -2762,15 +2762,6 @@
 	pixel_y = -1
 	},
 /obj/structure/marker_beacon/indigo,
-/obj/structure/decorative{
-	icon_state = "siding_plain";
-	pixel_y = 0;
-	icon = 'icons/turf/decals.dmi';
-	base_icon_state = "elevatorshaft";
-	layer = 1.91;
-	color = "#b9b3b3";
-	dir = 6
-	},
 /obj/structure/table/wood/fancy/blue,
 /obj/item/clothing/head/costume/maidheadband/syndicate{
 	pixel_x = 1;
@@ -3093,15 +3084,6 @@
 	},
 /obj/structure/table/wood,
 /obj/structure/marker_beacon/indigo,
-/obj/structure/decorative{
-	icon_state = "siding_plain";
-	pixel_y = 0;
-	icon = 'icons/turf/decals.dmi';
-	base_icon_state = "elevatorshaft";
-	layer = 1.91;
-	color = "#b9b3b3";
-	dir = 10
-	},
 /turf/open/floor/iron{
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi';
 	icon_state = "11,3";
@@ -6740,15 +6722,6 @@
 	dir = 8
 	},
 /obj/structure/marker_beacon/indigo,
-/obj/structure/decorative{
-	icon_state = "airlock_sensor_off";
-	pixel_y = -13;
-	icon = 'icons/obj/machines/wallmounts.dmi';
-	base_icon_state = "tile_half";
-	dir = 8;
-	pixel_x = 26;
-	anchored = 1
-	},
 /turf/open/floor/iron{
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi';
 	icon_state = "2,13";
