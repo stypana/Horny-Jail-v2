@@ -2075,8 +2075,6 @@
 	pixel_x = 4;
 	pixel_y = -4
 	},
-/obj/machinery/smartfridge/wooden/ration_shelf,
-/obj/structure/decorative/shelf,
 /obj/item/clothing/shoes/gunboots{
 	pixel_x = -1;
 	pixel_y = 12
@@ -2088,6 +2086,17 @@
 	icon_state = "siding_wideplating_new_corner";
 	color = "#515152";
 	dir = 8
+	},
+/obj/structure/rack/shelf{
+	desc = "A sturdy wooden shelf to store a variety of items on.";
+	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi';
+	icon_state = "seedshelf";
+	base_icon_state = "seedshelf"
+	},
+/obj/structure/rack/shelf{
+	desc = "A sturdy wooden shelf to store a variety of items on.";
+	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi';
+	icon_state = "empty_shelf_1"
 	},
 /turf/open/floor/carpet,
 /area/misc/hilbertshotel)
