@@ -103,7 +103,7 @@
 	else
 		qdel(src)
 
-/obj/item/clothing/attack(mob/living/target, mob/living/user, list/modifiers)
+/obj/item/clothing/attack(mob/living/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	// SPLURT EDIT - Cloth Eater quirk
 	if(user.combat_mode || ispickedupmob(src)) // Original: if(user.combat_mode || !ismoth(target) || ispickedupmob(src))
 		return ..()
