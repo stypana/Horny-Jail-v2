@@ -723,10 +723,11 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "6,11"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "6,11";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "eA" = (
@@ -1334,10 +1335,11 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "7,12"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "7,12";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "iw" = (
@@ -2239,10 +2241,11 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "3,11"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "3,11";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "nt" = (
@@ -3213,10 +3216,11 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "6,12"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "6,12";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "tG" = (
@@ -3225,10 +3229,11 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "5,12"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "5,12";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "tH" = (
@@ -3442,10 +3447,11 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "8,11"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "8,11";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "uS" = (
@@ -3710,10 +3716,11 @@
 	},
 /obj/structure/lattice/catwalk/mining,
 /obj/structure/railing,
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "7,11"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "7,11";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "wv" = (
@@ -3891,10 +3898,11 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "4,12"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "4,12";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "xx" = (
@@ -6332,10 +6340,11 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "5,11"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "5,11";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "MA" = (
@@ -6455,10 +6464,11 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "9,11"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "9,11";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "No" = (
@@ -6664,10 +6674,11 @@
 	},
 /obj/structure/lattice/catwalk/mining,
 /obj/structure/railing,
-/turf/open/chasm/true/no_smooth{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+/turf/open/indestructible/tram{
 	base_icon_state = "0,34";
-	icon_state = "4,11"
+	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
+	icon_state = "4,11";
+	name = "long way down"
 	},
 /area/misc/hilbertshotel)
 "OA" = (
