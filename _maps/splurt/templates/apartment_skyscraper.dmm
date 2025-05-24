@@ -5,7 +5,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,20"
@@ -17,7 +17,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,25"
@@ -60,7 +60,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,19"
@@ -72,7 +72,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,15"
@@ -112,7 +112,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,10"
@@ -142,7 +142,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,27"
@@ -154,7 +154,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,15"
@@ -166,7 +166,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,23"
@@ -194,7 +194,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,15"
@@ -206,7 +206,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,26"
@@ -218,7 +218,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,25"
@@ -246,7 +246,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,20"
@@ -262,7 +262,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,27"
@@ -274,7 +274,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,25"
@@ -286,7 +286,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,20"
@@ -335,7 +335,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,12"
@@ -369,7 +369,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,7"
@@ -385,7 +385,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,10"
@@ -437,7 +437,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,18"
@@ -449,7 +449,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "15,27"
@@ -485,7 +485,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,22"
@@ -497,7 +497,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,14"
@@ -529,7 +529,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,7"
@@ -541,7 +541,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,27"
@@ -553,7 +553,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,5"
@@ -565,7 +565,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,19"
@@ -592,7 +592,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,12"
@@ -624,7 +624,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,24"
@@ -663,7 +663,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,16"
@@ -743,7 +743,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,22"
@@ -775,7 +775,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,21"
@@ -787,7 +787,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,25"
@@ -803,7 +803,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,7"
@@ -815,7 +815,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,9"
@@ -857,7 +857,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,26"
@@ -869,7 +869,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,14"
@@ -881,7 +881,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,22"
@@ -904,7 +904,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "11,25"
@@ -923,7 +923,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "12,21"
@@ -935,7 +935,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,20"
@@ -1006,7 +1006,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "16,26"
@@ -1026,7 +1026,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,16"
@@ -1038,7 +1038,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,24"
@@ -1050,7 +1050,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,22"
@@ -1062,7 +1062,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "14,25"
@@ -1078,7 +1078,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,13"
@@ -1110,7 +1110,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,9"
@@ -1122,7 +1122,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,27"
@@ -1134,7 +1134,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,22"
@@ -1159,7 +1159,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,23"
@@ -1171,7 +1171,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,21"
@@ -1236,7 +1236,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "13,23"
@@ -1260,7 +1260,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,22"
@@ -1272,7 +1272,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "12,26"
@@ -1303,7 +1303,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,25"
@@ -1315,7 +1315,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,13"
@@ -1369,7 +1369,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,21"
@@ -1381,7 +1381,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,6"
@@ -1412,7 +1412,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,9"
@@ -1424,7 +1424,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,24"
@@ -1436,7 +1436,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,22"
@@ -1448,7 +1448,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,26"
@@ -1472,7 +1472,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,27"
@@ -1484,7 +1484,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "13,21"
@@ -1496,7 +1496,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,21"
@@ -1536,7 +1536,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,21"
@@ -1548,7 +1548,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,12"
@@ -1560,7 +1560,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,20"
@@ -1572,7 +1572,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,24"
@@ -1584,7 +1584,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "14,23"
@@ -1596,7 +1596,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,24"
@@ -1634,7 +1634,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,10"
@@ -1650,7 +1650,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,6"
@@ -1662,7 +1662,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,21"
@@ -1692,7 +1692,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "11,27"
@@ -1704,7 +1704,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "13,25"
@@ -1761,7 +1761,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,21"
@@ -1773,7 +1773,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,12"
@@ -1785,7 +1785,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,23"
@@ -1797,7 +1797,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,17"
@@ -1809,7 +1809,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,23"
@@ -1881,7 +1881,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,20"
@@ -1933,7 +1933,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,10"
@@ -1964,7 +1964,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,19"
@@ -1976,7 +1976,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "15,22"
@@ -1992,7 +1992,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,24"
@@ -2004,7 +2004,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,15"
@@ -2035,7 +2035,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,9"
@@ -2047,7 +2047,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,9"
@@ -2059,7 +2059,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,19"
@@ -2071,7 +2071,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "12,27"
@@ -2083,7 +2083,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,19"
@@ -2095,7 +2095,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,9"
@@ -2107,7 +2107,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "16,21"
@@ -2133,7 +2133,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,19"
@@ -2145,7 +2145,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "16,27"
@@ -2157,7 +2157,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,24"
@@ -2193,7 +2193,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,18"
@@ -2254,7 +2254,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,17"
@@ -2270,7 +2270,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,25"
@@ -2282,7 +2282,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,15"
@@ -2310,7 +2310,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,26"
@@ -2322,7 +2322,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "14,24"
@@ -2334,7 +2334,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,23"
@@ -2346,7 +2346,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,16"
@@ -2358,7 +2358,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,14"
@@ -2370,7 +2370,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,26"
@@ -2382,7 +2382,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,13"
@@ -2398,7 +2398,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "12,25"
@@ -2410,7 +2410,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,22"
@@ -2422,7 +2422,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,22"
@@ -2434,7 +2434,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,26"
@@ -2456,7 +2456,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "14,21"
@@ -2502,7 +2502,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,24"
@@ -2514,7 +2514,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,24"
@@ -2554,7 +2554,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,5"
@@ -2587,7 +2587,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,18"
@@ -2623,7 +2623,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,19"
@@ -2635,7 +2635,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,26"
@@ -2647,7 +2647,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,5"
@@ -2659,7 +2659,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,19"
@@ -2675,7 +2675,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,7"
@@ -2687,7 +2687,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,27"
@@ -2721,7 +2721,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,23"
@@ -2733,7 +2733,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,23"
@@ -2749,7 +2749,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,21"
@@ -2779,7 +2779,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,25"
@@ -2791,7 +2791,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,24"
@@ -2803,7 +2803,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,12"
@@ -2815,7 +2815,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,17"
@@ -2827,7 +2827,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,8"
@@ -2839,7 +2839,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,23"
@@ -2851,7 +2851,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,20"
@@ -2867,7 +2867,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,11"
@@ -2901,7 +2901,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,8"
@@ -2913,7 +2913,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,24"
@@ -2948,7 +2948,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,27"
@@ -2960,7 +2960,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,12"
@@ -2972,7 +2972,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,20"
@@ -2984,7 +2984,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,18"
@@ -3002,7 +3002,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,17"
@@ -3020,7 +3020,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,25"
@@ -3032,7 +3032,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,21"
@@ -3055,7 +3055,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,23"
@@ -3067,7 +3067,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,24"
@@ -3096,7 +3096,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,25"
@@ -3108,7 +3108,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,15"
@@ -3120,7 +3120,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,15"
@@ -3146,7 +3146,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,13"
@@ -3176,7 +3176,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,21"
@@ -3188,7 +3188,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,9"
@@ -3204,7 +3204,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,24"
@@ -3242,7 +3242,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,11"
@@ -3258,7 +3258,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,21"
@@ -3270,7 +3270,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,14"
@@ -3282,7 +3282,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,8"
@@ -3304,7 +3304,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,15"
@@ -3316,7 +3316,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,27"
@@ -3328,7 +3328,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,26"
@@ -3340,7 +3340,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "15,23"
@@ -3352,7 +3352,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,25"
@@ -3374,7 +3374,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "14,27"
@@ -3386,7 +3386,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,18"
@@ -3398,7 +3398,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,23"
@@ -3430,7 +3430,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,18"
@@ -3460,7 +3460,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,19"
@@ -3472,7 +3472,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,23"
@@ -3484,7 +3484,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,16"
@@ -3496,7 +3496,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,13"
@@ -3508,7 +3508,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,7"
@@ -3520,7 +3520,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,14"
@@ -3573,7 +3573,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,14"
@@ -3585,7 +3585,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,20"
@@ -3597,7 +3597,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,23"
@@ -3645,7 +3645,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,20"
@@ -3682,7 +3682,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,17"
@@ -3729,7 +3729,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,22"
@@ -3741,7 +3741,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,26"
@@ -3753,7 +3753,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,25"
@@ -3765,7 +3765,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,7"
@@ -3777,7 +3777,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,5"
@@ -3789,7 +3789,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,22"
@@ -3801,7 +3801,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,12"
@@ -3878,7 +3878,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,7"
@@ -3952,7 +3952,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,20"
@@ -3964,7 +3964,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,26"
@@ -3976,7 +3976,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,15"
@@ -3988,7 +3988,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,13"
@@ -4000,7 +4000,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,22"
@@ -4017,6 +4017,11 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/item/paper{
+	pixel_x = -7;
+	pixel_y = 11;
+	default_raw_text = "You can no longer fall to your death. Sorry."
+	},
 /turf/open/indestructible/tram{
 	base_icon_state = "0,34";
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
@@ -4030,7 +4035,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,23"
@@ -4042,7 +4047,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "13,27"
@@ -4070,7 +4075,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,14"
@@ -4082,7 +4087,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,9"
@@ -4094,7 +4099,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,20"
@@ -4126,7 +4131,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,7"
@@ -4138,7 +4143,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,14"
@@ -4150,7 +4155,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,17"
@@ -4203,7 +4208,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,19"
@@ -4215,7 +4220,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,20"
@@ -4227,7 +4232,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,27"
@@ -4239,7 +4244,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,18"
@@ -4265,7 +4270,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,16"
@@ -4285,7 +4290,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,21"
@@ -4297,7 +4302,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,14"
@@ -4309,7 +4314,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,24"
@@ -4369,7 +4374,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,23"
@@ -4381,7 +4386,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,17"
@@ -4398,7 +4403,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,22"
@@ -4410,7 +4415,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,17"
@@ -4422,7 +4427,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,22"
@@ -4476,7 +4481,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,19"
@@ -4488,7 +4493,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,8"
@@ -4521,7 +4526,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,25"
@@ -4533,7 +4538,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,6"
@@ -4545,7 +4550,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,22"
@@ -4610,7 +4615,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,27"
@@ -4664,7 +4669,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "12,23"
@@ -4676,7 +4681,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,23"
@@ -4688,7 +4693,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,19"
@@ -4752,7 +4757,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,24"
@@ -4782,7 +4787,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,10"
@@ -4794,7 +4799,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,22"
@@ -4806,7 +4811,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,25"
@@ -4829,7 +4834,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,14"
@@ -4841,7 +4846,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,23"
@@ -4870,7 +4875,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "15,25"
@@ -4923,7 +4928,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,27"
@@ -4935,7 +4940,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,27"
@@ -4947,7 +4952,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,5"
@@ -4963,7 +4968,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "13,22"
@@ -4987,7 +4992,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,14"
@@ -4999,7 +5004,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,27"
@@ -5011,7 +5016,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,18"
@@ -5023,7 +5028,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,18"
@@ -5051,7 +5056,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,11"
@@ -5063,7 +5068,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "14,22"
@@ -5107,7 +5112,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,13"
@@ -5160,7 +5165,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,16"
@@ -5192,7 +5197,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,18"
@@ -5208,7 +5213,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,26"
@@ -5220,7 +5225,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,20"
@@ -5248,7 +5253,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,10"
@@ -5282,7 +5287,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "16,25"
@@ -5294,7 +5299,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,20"
@@ -5306,7 +5311,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,26"
@@ -5340,7 +5345,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,27"
@@ -5376,7 +5381,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "11,23"
@@ -5398,7 +5403,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,19"
@@ -5410,7 +5415,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,6"
@@ -5422,7 +5427,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,23"
@@ -5434,7 +5439,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,21"
@@ -5464,7 +5469,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,23"
@@ -5476,7 +5481,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,24"
@@ -5488,7 +5493,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,6"
@@ -5500,7 +5505,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,8"
@@ -5541,7 +5546,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,8"
@@ -5553,7 +5558,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,24"
@@ -5587,7 +5592,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,17"
@@ -5599,7 +5604,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,21"
@@ -5611,7 +5616,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,24"
@@ -5623,7 +5628,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,16"
@@ -5635,7 +5640,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,18"
@@ -5671,7 +5676,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,17"
@@ -5683,7 +5688,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,11"
@@ -5717,7 +5722,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,25"
@@ -5729,7 +5734,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,27"
@@ -5741,7 +5746,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,22"
@@ -5753,7 +5758,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,25"
@@ -5765,7 +5770,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,19"
@@ -5789,7 +5794,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "20,27"
@@ -5859,7 +5864,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,21"
@@ -5916,7 +5921,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,14"
@@ -5928,7 +5933,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,17"
@@ -5940,7 +5945,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,20"
@@ -6012,7 +6017,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,14"
@@ -6086,7 +6091,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "15,26"
@@ -6098,7 +6103,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,19"
@@ -6165,7 +6170,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,22"
@@ -6177,7 +6182,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,8"
@@ -6189,7 +6194,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,24"
@@ -6248,7 +6253,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "24,27"
@@ -6260,7 +6265,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,19"
@@ -6272,7 +6277,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,26"
@@ -6299,7 +6304,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,24"
@@ -6311,7 +6316,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,8"
@@ -6323,7 +6328,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,25"
@@ -6362,7 +6367,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,21"
@@ -6374,7 +6379,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,13"
@@ -6386,7 +6391,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "10,26"
@@ -6398,7 +6403,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,6"
@@ -6410,7 +6415,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "11,22"
@@ -6422,7 +6427,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,16"
@@ -6477,7 +6482,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,25"
@@ -6493,7 +6498,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,27"
@@ -6505,7 +6510,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "16,24"
@@ -6517,7 +6522,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,23"
@@ -6560,7 +6565,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,5"
@@ -6600,7 +6605,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "11,24"
@@ -6660,7 +6665,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,17"
@@ -6716,7 +6721,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,23"
@@ -6787,7 +6792,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,15"
@@ -6816,7 +6821,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,22"
@@ -6828,7 +6833,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "13,26"
@@ -6840,7 +6845,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,24"
@@ -6852,7 +6857,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,6"
@@ -6864,7 +6869,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,11"
@@ -6891,7 +6896,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "13,24"
@@ -6903,7 +6908,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,27"
@@ -6915,7 +6920,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,19"
@@ -6963,7 +6968,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,19"
@@ -6975,7 +6980,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,26"
@@ -6987,7 +6992,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,13"
@@ -6999,7 +7004,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "15,24"
@@ -7011,7 +7016,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,19"
@@ -7043,7 +7048,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,16"
@@ -7055,7 +7060,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "15,21"
@@ -7087,7 +7092,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "11,26"
@@ -7099,7 +7104,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,8"
@@ -7115,7 +7120,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,16"
@@ -7127,7 +7132,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,5"
@@ -7139,7 +7144,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,26"
@@ -7151,7 +7156,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,18"
@@ -7172,7 +7177,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,15"
@@ -7198,7 +7203,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,26"
@@ -7226,7 +7231,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,22"
@@ -7238,7 +7243,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,6"
@@ -7268,7 +7273,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,18"
@@ -7290,7 +7295,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,11"
@@ -7321,7 +7326,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "11,21"
@@ -7333,7 +7338,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "27,5"
@@ -7345,7 +7350,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,20"
@@ -7383,7 +7388,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,9"
@@ -7434,7 +7439,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,18"
@@ -7456,7 +7461,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,6"
@@ -7482,7 +7487,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,25"
@@ -7541,7 +7546,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,20"
@@ -7553,7 +7558,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,26"
@@ -7565,7 +7570,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,25"
@@ -7589,7 +7594,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,12"
@@ -7601,7 +7606,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "14,26"
@@ -7659,7 +7664,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,21"
@@ -7687,7 +7692,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,5"
@@ -7741,7 +7746,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "9,22"
@@ -7753,7 +7758,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "22,21"
@@ -7776,7 +7781,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,27"
@@ -7820,7 +7825,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "16,22"
@@ -7885,7 +7890,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "3,21"
@@ -7923,7 +7928,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "5,21"
@@ -7939,7 +7944,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,20"
@@ -7984,7 +7989,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "26,15"
@@ -7996,7 +8001,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "7,21"
@@ -8008,7 +8013,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,23"
@@ -8020,7 +8025,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,20"
@@ -8059,7 +8064,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,24"
@@ -8071,7 +8076,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,27"
@@ -8083,7 +8088,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,25"
@@ -8117,7 +8122,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,26"
@@ -8129,7 +8134,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "12,24"
@@ -8166,7 +8171,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,16"
@@ -8178,7 +8183,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "21,26"
@@ -8202,7 +8207,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,19"
@@ -8226,7 +8231,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,15"
@@ -8238,7 +8243,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "17,20"
@@ -8250,7 +8255,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,16"
@@ -8262,7 +8267,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "4,25"
@@ -8283,7 +8288,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,26"
@@ -8295,7 +8300,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "28,19"
@@ -8307,7 +8312,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,21"
@@ -8319,7 +8324,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "29,7"
@@ -8331,7 +8336,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "30,27"
@@ -8343,7 +8348,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,26"
@@ -8371,7 +8376,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,17"
@@ -8387,7 +8392,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "16,23"
@@ -8403,7 +8408,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "6,23"
@@ -8415,7 +8420,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,16"
@@ -8447,7 +8452,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "25,25"
@@ -8459,7 +8464,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "8,18"
@@ -8471,7 +8476,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "19,22"
@@ -8483,7 +8488,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "18,19"
@@ -8505,7 +8510,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "12,22"
@@ -8517,7 +8522,7 @@
 	icon_state = "rain";
 	alpha = 100
 	},
-/turf/open/chasm/true/no_smooth{
+/turf/open/indestructible/tram{
 	icon = 'modular_zzplurt/icons/obj/skyscraper/background.dmi';
 	base_icon_state = "0,34";
 	icon_state = "23,20"
