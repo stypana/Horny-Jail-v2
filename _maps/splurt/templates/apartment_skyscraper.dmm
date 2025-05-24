@@ -1017,9 +1017,6 @@
 	pixel_x = 0;
 	pixel_y = 7
 	},
-/obj/effect/turf_decal/siding/white/end{
-	dir = 4
-	},
 /turf/open/floor/iron/freezer,
 /area/misc/hilbertshotel)
 "gq" = (
@@ -5645,9 +5642,6 @@
 	anchored = 1;
 	name = "sink"
 	},
-/obj/effect/turf_decal/siding/white/end{
-	dir = 8
-	},
 /obj/machinery/light/floor{
 	brightness = 3;
 	pixel_x = 16;
@@ -8267,7 +8261,9 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 10
 	},
-/obj/structure/medieval/bed_2x2,
+/obj/structure/medieval/bed_2x2{
+	dir = 8
+	},
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "YP" = (

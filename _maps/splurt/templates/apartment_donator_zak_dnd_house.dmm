@@ -493,6 +493,15 @@
 	},
 /turf/open/floor/wood/stairs/left,
 /area/misc/hilbertshotel)
+"fY" = (
+/obj/item/paper{
+	default_raw_text = "no secret room for you here bozo"
+	},
+/obj/structure/noticeboard/directional/west{
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/misc/hilbertshotel)
 "gh" = (
 /obj/structure/mineral_door/paperframe{
 	name = "Guest Bedroom"
@@ -728,6 +737,10 @@
 /obj/item/clothing/head/costume/maidheadband{
 	color = "#203b13"
 	},
+/obj/item/food/grown/vanillapod{
+	pixel_x = 8;
+	pixel_y = 4
+	},
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "il" = (
@@ -958,19 +971,13 @@
 	pixel_y = -3;
 	list_reagents = list(/datum/reagent/water = 30)
 	},
-/obj/structure/decorative{
-	anchored = 1;
-	name = "smithing anvil";
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi';
-	icon_state = "anvil_empty";
-	dir = 8;
-	desc = "Essentially a big block of metal that you can hammer other metals on top of, crucial for anyone working metal by hand.";
-	pixel_x = -16;
-	pixel_y = 8
-	},
 /obj/structure/broken_flooring/pile{
 	color = "#9F9F9F";
 	dir = 1
+	},
+/obj/structure/reagent_anvil{
+	pixel_x = -16;
+	pixel_y = 7
 	},
 /turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
@@ -1589,6 +1596,12 @@
 	},
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
+	},
+/obj/structure/sink/directional/south{
+	name = "grape soda tap";
+	desc = "Tap-tap-tap-tap.";
+	color = "#8c6e5e";
+	dispensedreagent = /datum/reagent/consumable/ethanol/gem_grape_soda
 	},
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
@@ -2221,6 +2234,10 @@
 /obj/effect/turf_decal/shuttle/exploration/echidna,
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
+"uj" = (
+/obj/structure/falsewall/stone,
+/turf/open/floor/iron/dark/textured_large,
+/area/misc/hilbertshotel)
 "um" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner,
 /obj/effect/light_emitter/interlink{
@@ -2812,7 +2829,9 @@
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "zn" = (
-/obj/structure/mineral_door/wood,
+/obj/structure/mineral_door/paperframe{
+	name = "Entrance"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "zu" = (
@@ -3643,19 +3662,19 @@
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "Hb" = (
-/obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood,
-/obj/item/food/grown/grapes{
-	pixel_x = -4;
-	pixel_y = 15
-	},
 /obj/item/food/grown/vanillapod{
-	pixel_x = 6;
-	pixel_y = 6
+	pixel_x = 4;
+	pixel_y = 11
 	},
 /obj/item/food/cakeslice/vanilla_slice{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/structure/table/wood/fancy/black,
+/obj/item/food/grown/grapes{
+	pixel_x = -4;
+	pixel_y = 22
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
@@ -4277,8 +4296,8 @@
 "Lg" = (
 /obj/structure/flora/bush/fullgrass/style_3,
 /obj/structure/flora/bush/fullgrass{
-	pixel_x = -3;
-	pixel_y = 10
+	pixel_x = -5;
+	pixel_y = 5
 	},
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
@@ -4482,12 +4501,12 @@
 	dir = 10
 	},
 /obj/item/photo/old{
-	pixel_x = 7;
-	pixel_y = 37
+	pixel_x = 4;
+	pixel_y = 42
 	},
 /obj/item/pen/charcoal{
-	pixel_x = 6;
-	pixel_y = 33
+	pixel_x = 3;
+	pixel_y = 40
 	},
 /obj/structure/tank_holder{
 	pixel_x = -6;
@@ -4611,7 +4630,7 @@
 	},
 /obj/item/stack/sheet/mineral/wood/fifty{
 	pixel_x = -8;
-	pixel_y = -8
+	pixel_y = -13
 	},
 /obj/structure/marker_beacon/bronze{
 	pixel_x = -15;
@@ -4659,7 +4678,6 @@
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "Nr" = (
-/obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
@@ -4671,13 +4689,16 @@
 /obj/item/reagent_containers/applicator/pill/lsd,
 /obj/item/reagent_containers/cup/glass/bottle/whiskey{
 	pixel_x = 8;
-	pixel_y = 18
+	pixel_y = 18;
+	name = "Uncle DUI's special reserve"
 	},
 /obj/item/key{
 	pixel_x = 7;
 	pixel_y = -3;
-	name = "car keys"
+	name = "car keys";
+	desc = "If only there was a way to make driving FUN..."
 	},
+/obj/structure/table/wood/fancy/black,
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "Ns" = (
@@ -5021,9 +5042,7 @@
 	pixel_x = 0;
 	pixel_y = -32
 	},
-/obj/machinery/jukebox{
-	base_icon_state = "an awfully mediocre jukebox"
-	},
+/obj/machinery/jukebox/no_access,
 /turf/open/floor/carpet/green,
 /area/misc/hilbertshotel)
 "Pe" = (
@@ -5194,16 +5213,20 @@
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
+/obj/item/toy/plush/artificer_kobold{
+	pixel_x = 16;
+	pixel_y = -3
+	},
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "QN" = (
 /obj/structure/decorative{
 	icon_state = "borgmat";
-	pixel_y = 6;
+	pixel_y = 2;
 	icon = 'modular_skyrat\master_files\icons\effects\turf_effects_64.dmi';
 	base_icon_state = "borgmat";
 	dir = 8;
-	pixel_x = 14;
+	pixel_x = 12;
 	name = "yoga mat"
 	},
 /turf/open/floor/grass,
@@ -5301,7 +5324,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "RE" = (
-/obj/structure/easel,
+/obj/structure/easel{
+	anchored = 1
+	},
 /obj/structure/decorative{
 	icon_state = "tile_half";
 	pixel_y = 31;
@@ -5401,6 +5426,41 @@
 	alpha = 0
 	},
 /turf/open/floor/carpet/black,
+/area/misc/hilbertshotel)
+"SF" = (
+/obj/structure/sign/directions/evac/directional/south{
+	pixel_x = 0;
+	pixel_y = 32;
+	desc = "mold's basement";
+	name = "womp womp";
+	dir = 2
+	},
+/obj/effect/rune,
+/obj/item/flashlight/flare/candle{
+	pixel_x = 15;
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = 8;
+	pixel_y = -11
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = -6;
+	pixel_y = -11
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = -14;
+	pixel_y = 2
+	},
+/obj/item/toy/plush/artificer_kobold{
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "SS" = (
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
@@ -5855,6 +5915,12 @@
 /obj/effect/turf_decal/siding/dark/end,
 /obj/structure/railing/corner/end/flip{
 	dir = 8
+	},
+/obj/item/coin/gold{
+	pixel_x = -4;
+	pixel_y = -1;
+	name = "(electrum) coin";
+	desc = "WE HATE THIS CURRENCY"
 	},
 /turf/open/floor/grass,
 /area/misc/hilbertshotel)
@@ -7055,8 +7121,8 @@ FT
 vR
 NH
 gU
-cs
-Ob
+uj
+fY
 cs
 vr
 Os
@@ -7065,7 +7131,7 @@ bm
 cs
 Ob
 PB
-PB
+SF
 PB
 PB
 PB
