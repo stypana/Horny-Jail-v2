@@ -5431,7 +5431,7 @@
 /obj/structure/sign/directions/evac/directional/south{
 	pixel_x = 0;
 	pixel_y = 32;
-	desc = "mold's basement";
+	desc = "moldb's hyperspace basement";
 	name = "womp womp";
 	dir = 2
 	},
@@ -5454,7 +5454,9 @@
 	},
 /obj/item/toy/plush/artificer_kobold{
 	pixel_x = 0;
-	pixel_y = 2
+	pixel_y = 2;
+	name = "la creatura";
+	desc = "ARTIST!!! YOUR RENT MONEY IS HERE!!!"
 	},
 /obj/item/flashlight/flare/candle{
 	pixel_x = 1;
