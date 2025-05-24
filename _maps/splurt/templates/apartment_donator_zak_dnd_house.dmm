@@ -502,12 +502,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
-"gh" = (
-/obj/structure/mineral_door/paperframe{
-	name = "Guest Bedroom"
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/misc/hilbertshotel)
 "gC" = (
 /obj/structure/spacevine{
 	color = "#FFFFFF";
@@ -2830,9 +2824,7 @@
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "zn" = (
-/obj/structure/mineral_door/paperframe{
-	name = "Entrance"
-	},
+/obj/structure/mineral_door/wood,
 /turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "zu" = (
@@ -3374,12 +3366,6 @@
 /obj/structure/flora/bush/jungle/b/style_2,
 /obj/structure/flora/bush/fullgrass,
 /turf/open/floor/grass,
-/area/misc/hilbertshotel)
-"DO" = (
-/obj/structure/mineral_door/paperframe{
-	name = "Master Bedroom"
-	},
-/turf/open/floor/iron/dark/textured_large,
 /area/misc/hilbertshotel)
 "EF" = (
 /obj/structure/railing/stone,
@@ -7005,11 +6991,11 @@ cs
 cs
 cs
 cs
-DO
+zn
 cs
 cs
 cs
-gh
+zn
 cs
 cs
 cs
