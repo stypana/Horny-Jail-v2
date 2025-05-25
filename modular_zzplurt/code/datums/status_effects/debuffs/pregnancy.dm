@@ -79,7 +79,7 @@
 		baby_momma.dna.copy_dna(mother_dna)
 		mother_name = baby_momma.real_name
 	else
-		mother_dna.initialize_dna(random_blood_type())
+		mother_dna.initialize_dna(random_human_blood_type())
 
 	father_dna = new()
 	if(ishuman(father))
@@ -88,7 +88,7 @@
 		baby_daddy.dna.copy_dna(father_dna)
 		father_name = baby_daddy.real_name
 	else
-		father_dna.initialize_dna(random_blood_type())
+		father_dna.initialize_dna(random_human_blood_type())
 
 	inherit_preferences(new_owner)
 	. = ..()
