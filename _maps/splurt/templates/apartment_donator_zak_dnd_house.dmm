@@ -971,7 +971,8 @@
 	},
 /obj/structure/reagent_anvil{
 	pixel_x = -16;
-	pixel_y = 7
+	pixel_y = 7;
+	density = 0
 	},
 /turf/open/floor/vault/rock,
 /area/misc/hilbertshotel)
@@ -1541,6 +1542,23 @@
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner{
 	dir = 8
 	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "ambiguous pipe";
+	icon = 'icons/obj/pipes_n_cables/pipe_item.dmi';
+	icon_state = "simple";
+	dir = 8;
+	pixel_y = 21;
+	pixel_x = 16
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "ambiguous pipe";
+	icon = 'icons/obj/pipes_n_cables/multiz.dmi';
+	icon_state = "adapter-3";
+	dir = 4;
+	pixel_y = 28
+	},
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
 "nM" = (
@@ -1666,6 +1684,14 @@
 	alpha = 255;
 	color = "#59595a";
 	dir = 4
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "ambiguous pipe";
+	icon = 'icons/obj/pipes_n_cables/multiz.dmi';
+	icon_state = "adapter-3";
+	dir = 8;
+	pixel_y = 28
 	},
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
@@ -3302,6 +3328,23 @@
 	color = "#59595a";
 	alpha = 255;
 	dir = 8
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "ambiguous pipe";
+	icon = 'icons/obj/pipes_n_cables/pipe_item.dmi';
+	icon_state = "simple";
+	dir = 8;
+	pixel_y = 21;
+	pixel_x = 16
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "ambiguous pipe";
+	icon = 'icons/obj/pipes_n_cables/multiz.dmi';
+	icon_state = "adapter-3";
+	dir = 4;
+	pixel_y = 28
 	},
 /turf/open/floor/stone,
 /area/misc/hilbertshotel)
@@ -6341,6 +6384,32 @@
 	},
 /turf/open/floor/iron/stairs/left,
 /area/misc/hilbertshotel)
+"ZI" = (
+/obj/effect/turf_decal/siding/wideplating_new{
+	color = "#777777";
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "ambiguous pipe";
+	icon = 'icons/obj/pipes_n_cables/multiz.dmi';
+	icon_state = "adapter-3";
+	dir = 8;
+	pixel_y = 28
+	},
+/turf/open/floor/stone,
+/area/misc/hilbertshotel)
 "ZN" = (
 /obj/effect/spawner/structure/window,
 /obj/structure/curtain/bounty/start_closed,
@@ -6772,7 +6841,7 @@ cs
 lJ
 FI
 cs
-nA
+ZI
 mU
 nw
 lb

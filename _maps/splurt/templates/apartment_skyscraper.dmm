@@ -1018,7 +1018,7 @@
 	pixel_x = 0;
 	pixel_y = 7
 	},
-/turf/open/floor/iron/freezer,
+/turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "gq" = (
 /obj/effect/abstract/marker{
@@ -5668,7 +5668,7 @@
 	pixel_x = 7;
 	pixel_y = 5
 	},
-/turf/open/floor/iron/freezer,
+/turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "II" = (
 /obj/effect/abstract/marker{
