@@ -215,7 +215,8 @@
 						if(!preference_source)
 							preference_source = GET_CLIENT(src)
 						#endif
-						if(preference_source && !HAS_TRAIT(src, TRAIT_INFERTILE) && !HAS_TRAIT(target_mob, TRAIT_INFERTILE))
+						if(ishuman(target_mob) && preference_source && \
+							!HAS_TRAIT(src, TRAIT_INFERTILE) && !HAS_TRAIT(target_mob, TRAIT_INFERTILE))
 							var/genital_pass = FALSE
 							switch(interaction_inside)
 								if(ORGAN_SLOT_ANUS)
