@@ -2110,10 +2110,6 @@
 	pixel_x = 4;
 	pixel_y = -4
 	},
-/obj/item/clothing/shoes/gunboots{
-	pixel_x = -1;
-	pixel_y = 12
-	},
 /obj/structure/decorative{
 	anchored = 1;
 	name = "wall segment";
@@ -2132,6 +2128,10 @@
 	desc = "A sturdy wooden shelf to store a variety of items on.";
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi';
 	icon_state = "empty_shelf_1"
+	},
+/obj/item/clothing/shoes/jackboots{
+	pixel_x = -1;
+	pixel_y = 12
 	},
 /turf/open/floor/carpet,
 /area/misc/hilbertshotel)

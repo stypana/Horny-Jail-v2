@@ -1014,10 +1014,22 @@
 /area/misc/hilbertshotel)
 "go" = (
 /obj/structure/table/greyscale,
-/obj/item/towel{
-	pixel_x = 0;
-	pixel_y = 7
+/obj/structure/decorative{
+	icon = 'modular_zzplurt/icons/obj/skyscraper/curtains_apartments.dmi';
+	icon_state = "0,5";
+	anchored = 1;
+	name = "sink";
+	pixel_x = -15
 	},
+/obj/item/reagent_containers/cup/rag{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 8;
+	pixel_y = 15
+	},
+/obj/structure/mirror/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "gq" = (
@@ -1280,15 +1292,18 @@
 /area/misc/hilbertshotel)
 "hT" = (
 /obj/structure/table/wood/fancy/blue,
-/obj/structure/decorative{
-	icon_state = "plant-21";
-	pixel_y = 15;
-	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi';
-	base_icon_state = "tile_half";
-	dir = 8;
-	pixel_x = 0;
-	anchored = 1;
-	name = "decorative plant"
+/obj/item/reagent_containers/cup/glass/bottle/amaretto{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	list_reagents = list(/datum/reagent/consumable/ethanol/long_haul = 25);
+	pixel_x = 7;
+	pixel_y = 6;
+	desc = "A perfect companion for a lonely long haul flight.";
+	name = "Long Haul";
+	icon = 'icons/obj/drinks/mixed_drinks.dmi';
+	icon_state = "long_haul"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1462,7 +1477,7 @@
 	dir = 5
 	},
 /obj/structure/chair/comfy/shuttle{
-	pixel_y = -2
+	pixel_y = 0
 	},
 /turf/open/floor/carpet/stellar,
 /area/misc/hilbertshotel)
@@ -2605,11 +2620,7 @@
 	anchored = 1;
 	name = "speaker"
 	},
-/turf/open/floor/iron{
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi';
-	icon_state = "11,3";
-	dir = 8
-	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "pT" = (
 /obj/effect/turf_decal/siding/wood{
@@ -2765,13 +2776,12 @@
 /obj/structure/table/wood/fancy/blue,
 /obj/item/clothing/head/costume/maidheadband/syndicate{
 	pixel_x = 1;
-	pixel_y = 3
+	pixel_y = 4
 	},
-/turf/open/floor/iron{
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi';
-	icon_state = "11,3";
-	dir = 8
+/obj/item/kirbyplants/organic/plant21{
+	pixel_y = 14
 	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "qE" = (
 /obj/effect/abstract/marker{
@@ -3039,13 +3049,30 @@
 	},
 /area/misc/hilbertshotel)
 "st" = (
+/obj/machinery/vending/boozeomat{
+	all_products_free = 1;
+	onstation = 0;
+	scan_id = 0;
+	name = "built-in NiCola Apartmental Vending Machine";
+	desc = "It's almost as if those housing companies intentionally leave zero space for proper kitchens to force you to buy from those built-in vendors..."
+	},
 /obj/structure/decorative{
-	icon_state = "siding_plain_end";
+	icon_state = "siding_plain_corner";
 	pixel_y = 0;
 	icon = 'icons/turf/decals.dmi';
 	base_icon_state = "elevatorshaft";
 	color = "#36373a";
-	dir = 2
+	dir = 1;
+	anchored = 1
+	},
+/obj/structure/decorative{
+	icon_state = "siding_plain_corner";
+	pixel_y = 0;
+	icon = 'icons/turf/decals.dmi';
+	base_icon_state = "elevatorshaft";
+	color = "#36373a";
+	dir = 4;
+	anchored = 1
 	},
 /turf/closed/wall,
 /area/misc/hilbertshotel)
@@ -3084,11 +3111,7 @@
 	},
 /obj/structure/table/wood,
 /obj/structure/marker_beacon/indigo,
-/turf/open/floor/iron{
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi';
-	icon_state = "11,3";
-	dir = 8
-	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "sD" = (
 /obj/effect/abstract/marker{
@@ -3638,6 +3661,26 @@
 	dir = 10
 	},
 /turf/open/floor/carpet/black,
+/area/misc/hilbertshotel)
+"vS" = (
+/obj/machinery/vending/dorms{
+	pixel_x = 1;
+	pixel_y = 3;
+	desc = "It's almost as if those housing companies intentionally leave zero space for proper kitchens to force you to buy from those built-in vendors...";
+	all_products_free = 1;
+	scan_id = 0;
+	name = "built-in LustWish"
+	},
+/obj/structure/decorative{
+	icon_state = "siding_plain_end";
+	pixel_y = 0;
+	icon = 'icons/turf/decals.dmi';
+	base_icon_state = "elevatorshaft";
+	color = "#36373a";
+	dir = 2;
+	anchored = 1
+	},
+/turf/closed/wall,
 /area/misc/hilbertshotel)
 "vT" = (
 /obj/effect/abstract/marker{
@@ -5369,11 +5412,7 @@
 	anchored = 1;
 	name = "speaker"
 	},
-/turf/open/floor/iron{
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi';
-	icon_state = "11,3";
-	dir = 8
-	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "GF" = (
 /obj/effect/abstract/marker{
@@ -5649,24 +5688,14 @@
 "ID" = (
 /obj/structure/table/greyscale,
 /obj/structure/mirror/directional/north,
-/obj/structure/decorative{
-	icon = 'modular_zzplurt/icons/obj/skyscraper/curtains_apartments.dmi';
-	icon_state = "0,5";
-	anchored = 1;
-	name = "sink"
-	},
 /obj/machinery/light/floor{
 	brightness = 3;
 	pixel_x = 16;
 	pixel_y = 1
 	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = 14;
-	pixel_y = 13
-	},
-/obj/item/reagent_containers/cup/rag{
-	pixel_x = 7;
-	pixel_y = 5
+/obj/item/towel{
+	pixel_x = 0;
+	pixel_y = 7
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -5909,9 +5938,6 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
-	},
-/obj/machinery/digital_clock/directional/north{
-	pixel_y = 32
 	},
 /turf/open/floor/circuit/red/off,
 /area/misc/hilbertshotel)
@@ -6246,6 +6272,15 @@
 	pixel_y = 30
 	},
 /turf/open/floor/iron/shuttle/exploration/blanktile,
+/area/misc/hilbertshotel)
+"LN" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/obj/machinery/digital_clock/directional/north{
+	pixel_y = 32
+	},
+/turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "LQ" = (
 /obj/effect/abstract/marker{
@@ -7187,10 +7222,6 @@
 /obj/effect/turf_decal/siding/dark/end{
 	dir = 1
 	},
-/obj/machinery/cell_charger_multi/wall_mounted/directional/west{
-	pixel_y = 0;
-	pixel_x = -33
-	},
 /turf/open/floor/carpet/black,
 /area/misc/hilbertshotel)
 "RX" = (
@@ -7250,6 +7281,11 @@
 	},
 /area/misc/hilbertshotel)
 "Si" = (
+/obj/machinery/space_heater/wall_mounted/directional/north{
+	cell = /obj/item/stock_parts/power_store/cell/high;
+	pixel_x = 32;
+	pixel_y = -1
+	},
 /obj/structure/aquarium,
 /obj/structure/decorative{
 	icon_state = "siding_plain";
@@ -7259,11 +7295,6 @@
 	color = "#36373a";
 	dir = 2;
 	anchored = 1
-	},
-/obj/machinery/space_heater/wall_mounted/directional/north{
-	cell = /obj/item/stock_parts/power_store/cell/high;
-	pixel_x = 32;
-	pixel_y = -1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -7308,16 +7339,16 @@
 	},
 /obj/machinery/smartfridge/wooden/ration_shelf,
 /obj/structure/decorative/shelf,
-/obj/item/clothing/shoes/gunboots{
-	pixel_x = -1;
-	pixel_y = 12
-	},
 /obj/item/clothing/suit/toggle/labcoat/vic_dresscoat_donator{
 	pixel_x = -7;
 	pixel_y = -35
 	},
 /obj/structure/sign/clock/directional/west,
 /obj/structure/marker_beacon/cerulean,
+/obj/item/clothing/shoes/jackboots{
+	pixel_x = -1;
+	pixel_y = 12
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
 "SE" = (
@@ -8382,6 +8413,45 @@
 	icon_state = "6,17"
 	},
 /area/misc/hilbertshotel)
+"Zv" = (
+/obj/structure/decorative{
+	icon_state = "siding_plain";
+	pixel_y = 0;
+	icon = 'icons/turf/decals.dmi';
+	dir = 8;
+	color = "#878787";
+	pixel_x = 32
+	},
+/obj/structure/decorative{
+	icon_state = "siding_plain";
+	pixel_y = 0;
+	icon = 'icons/turf/decals.dmi';
+	base_icon_state = "elevatorshaft";
+	color = "#36373a";
+	dir = 4;
+	pixel_x = 0;
+	anchored = 1
+	},
+/obj/machinery/vending/imported{
+	pixel_x = -3;
+	desc = "It's almost as if those housing companies intentionally leave zero space for proper kitchens to force you to buy from those built-in vendors...";
+	all_products_free = 1;
+	scan_id = 0;
+	name = "built-in NT Sustenance Supplier"
+	},
+/obj/structure/decorative{
+	icon_state = "tile_half";
+	pixel_y = 0;
+	icon = 'icons/turf/decals.dmi';
+	base_icon_state = "tile_half";
+	color = "#1f1f1f";
+	dir = 8;
+	anchored = 1;
+	name = "decorative panel";
+	pixel_x = 18
+	},
+/turf/closed/wall,
+/area/misc/hilbertshotel)
 "Zw" = (
 /obj/effect/light_emitter/interlink{
 	light_color = "#ffe7cf";
@@ -8812,7 +8882,7 @@ rr
 CV
 ai
 JY
-sg
+LN
 rP
 Si
 JY
@@ -8951,7 +9021,7 @@ xd
 KL
 fU
 ht
-uF
+vS
 wq
 fU
 BT
@@ -9136,7 +9206,7 @@ lC
 qo
 Fb
 zn
-zn
+Zv
 zn
 CD
 OA
