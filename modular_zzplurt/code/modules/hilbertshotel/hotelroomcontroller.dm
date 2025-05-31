@@ -60,6 +60,11 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Enjoy your stay!"), 5 SECONDS)
 	update_appearance()
 
+/obj/machinery/room_controller/Destroy(force)
+	if(bluespace_box)
+		QDEL_NULL(bluespace_box)
+	. = ..()
+
 /obj/machinery/room_controller/update_overlays()
 	. = ..()
 	var/list/to_display = list()
