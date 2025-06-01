@@ -76,3 +76,33 @@
 	icon_state = "artificer_kobold"
 	worn_icon_state = "artificer_kobold"
 	squeak_override = list('modular_zubbers/code/modules/emotes/sound/voice/yip.ogg' = 1)
+
+/obj/item/toy/plush/mossy
+	name = "Ethereal Skulldog Plushie"
+	desc = "It's a marketable plushie of our glorious leader, There seems to be some extra padding on the rear area..."
+	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
+	icon_state = "plushie_mossy"
+	worn_icon_state = "plushie_mossy"
+	squeak_override = list('modular_zzplurt/sound/voice/bork.ogg' = 1, 'modular_zzplurt/emotes/sound/voice/bark1.ogg' = 1, 'modular_zzplurt/emotes/sound/voice/bark2.ogg' = 1)
+
+/obj/item/toy/plush/panic
+	name = "Tired Raccoon Plushie"
+	desc = "He doesn't want to be here. Tired, exhausted, and hailing from maints. \
+			The plushie has a camcorder stuck in it's stuffing... You can't take it out."
+	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
+	icon_state = "plushie_panic"
+	worn_icon_state = "plushie_panic"
+	attack_verb_simple = list("records", "clips", "examines")
+	attack_verb_continuous = list("record", "clip", "examine")
+	squeak_override = list('modular_zzplurt/sound/voice/wurble.ogg' = 10, 'modular_zzplurt/emotes/sound/voice/warbles.ogg' = 1)
+
+/obj/item/toy/plush/tree_ferret
+	name = "Tree Ferret Plushie"
+	desc = "This plush will always put on a smile to make your day as bright as the sun. \
+            Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
+	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
+	icon_state = "plushie_sels"
+	worn_icon_state = "plushie_sels"
+	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
+	attack_verb_continuous = list("hug", "cackle at", "health analyze")
+	squeak_override = list('sound/effects/bush/crunchybushwhack1.ogg' = 1)
