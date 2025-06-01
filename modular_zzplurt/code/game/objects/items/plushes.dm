@@ -92,9 +92,9 @@
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_panic"
 	worn_icon_state = "plushie_panic"
-	attack_verb_simple = list("records", "clips", "examines")
-	attack_verb_continuous = list("record", "clip", "examine")
-	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 10, 'modular_skyrat/modules/emotes/sound/voice/warbles.ogg' = 1)
+	attack_verb_simple = list("record", "clip", "examine")
+	attack_verb_continuous = list("records", "clips", "examines")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/warbles.ogg' = 10)
 
 /obj/item/toy/plush/tree_ferret
 	name = "Tree Ferret Plushie"
@@ -103,6 +103,6 @@
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_sels"
 	worn_icon_state = "plushie_sels"
-	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
-	attack_verb_continuous = list("hug", "cackle at", "health analyze")
+	attack_verb_simple = list("hug", "cackle at", "health analyze")
+	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
 	squeak_override = list('sound/effects/bush/crunchybushwhack1.ogg' = 1)
