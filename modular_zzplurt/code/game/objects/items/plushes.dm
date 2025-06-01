@@ -83,12 +83,14 @@
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_mossy"
 	worn_icon_state = "plushie_mossy"
+	attack_verb_simple = list("lick", "nuzzle", "hump", "bark")
+	attack_verb_continuous = list("licks", "nuzzles", "humps", "barks")
 	squeak_override = list('modular_zzplurt/sound/voice/bork.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
 
 /obj/item/toy/plush/panic
 	name = "Tired Raccoon Plushie"
 	desc = "He doesn't want to be here. Tired, exhausted, and hailing from maints. \
-			The plushie has a camcorder stuck in it's stuffing... You can't take it out."
+		The plushie has a camcorder stuck in it's stuffing... You can't take it out."
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_panic"
 	worn_icon_state = "plushie_panic"
@@ -99,7 +101,7 @@
 /obj/item/toy/plush/tree_ferret
 	name = "Tree Ferret Plushie"
 	desc = "This plush will always put on a smile to make your day as bright as the sun. \
-            Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
+		Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_sels"
 	worn_icon_state = "plushie_sels"
