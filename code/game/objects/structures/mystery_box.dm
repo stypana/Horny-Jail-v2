@@ -294,10 +294,13 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 	valid_types = GLOB.mystery_fishing
 
 /obj/structure/mystery_box/fishing/activate(mob/living/user)
-	if(user.mind && minds_that_opened_us?[WEAKREF(user.mind)] >= 3)
-		to_chat(user, span_warning("[src] refuses to open to you anymore. Perhaps you should present it to someone else..."))
-		return
-	return ..()
+    if(isprisoner(user))
+        to_chat(user, span_warning("As a prisoner, you are not allowed to open this treasure chest."))
+        return
+    if(user.mind && minds_that_opened_us?[WEAKREF(user.mind)] >= 3)
+        to_chat(user, span_warning("[src] refuses to open to you anymore. Perhaps you should present it to someone else..."))
+        return
+    return ..()
 
 /// This represents the item that comes out of the box and is constantly changing before the box finishes deciding. Can probably be just an /atom or /movable.
 /obj/effect/abstract/mystery_box_item
