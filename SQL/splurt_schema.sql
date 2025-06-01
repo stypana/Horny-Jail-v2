@@ -19,6 +19,10 @@ CREATE TABLE `player_dob` (
   `ckey` VARCHAR(32) NOT NULL,
 	`dob_year` smallint(5) NOT NULL,
 	`dob_month` smallint(5) NOT NULL,
+	`dob_day` smallint(5) NULL DEFAULT NULL,
+	`verification_timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`save_birthday` BOOLEAN NOT NULL DEFAULT FALSE,
+	`public_birthday` BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

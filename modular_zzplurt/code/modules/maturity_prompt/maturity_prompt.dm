@@ -7,6 +7,10 @@
 	var/month
 	/// Day of birth listed by the user
 	var/day
+	/// Whether to save birthday for contests and notifications
+	var/save_birthday = FALSE
+	/// Whether to make birthday public for other players
+	var/public_birthday = FALSE
 
 	/// The time at which the tgui_alert was created, for displaying timeout progress.
 	var/start_time
@@ -54,6 +58,8 @@
 	data["current_year"] = SSmaturity_guard.current_year ? SSmaturity_guard.current_year : 2020
 	data["current_month"] = SSmaturity_guard.current_month ? SSmaturity_guard.current_month : 1
 	data["current_day"] = SSmaturity_guard.current_day ? SSmaturity_guard.current_day : 1
+	data["save_birthday"] = save_birthday
+	data["public_birthday"] = public_birthday
 
 	if(timeout)
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
@@ -67,6 +73,16 @@
 		day = params["day"]
 		month = params["month"]
 		year = params["year"]
+		save_birthday = params["save_birthday"]
+		public_birthday = params["public_birthday"]
 		closed = TRUE
 		SStgui.close_uis(src)
+		return TRUE
+	if(action == "toggle_save_birthday")
+		save_birthday = !save_birthday
+		if(!save_birthday)
+			public_birthday = FALSE // Reset public birthday if save birthday is disabled
+		return TRUE
+	if(action == "toggle_public_birthday")
+		public_birthday = !public_birthday
 		return TRUE

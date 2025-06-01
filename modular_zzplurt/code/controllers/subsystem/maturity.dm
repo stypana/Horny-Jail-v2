@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	prompt.wait()
 	prompt_cache -= user_ckey
 	if(prompt)
-		. = list(prompt.year, prompt.month, prompt.day)
+		. = list(prompt.year, prompt.month, prompt.day, prompt.save_birthday, prompt.public_birthday)
 
 		var/check_result = validate_dob(prompt.year, prompt.month, prompt.day)
 		switch(check_result)
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(maturity_guard)
 			if(AGE_CHECK_UNDERAGE)
 				create_underage_ban(user)
 			if(AGE_CHECK_PASSED)
-				add_age_to_db(user, prompt.year, prompt.month)
+				add_age_to_db(user, prompt.year, prompt.month, prompt.day, prompt.save_birthday, prompt.public_birthday)
 				user.client.maturity_prompt_whitelist = TRUE
 		qdel(prompt)
 
@@ -134,7 +134,7 @@ SUBSYSTEM_DEF(maturity_guard)
 	return FALSE
 
 
-/datum/controller/subsystem/maturity_guard/proc/add_age_to_db(mob/user, year, month)
+/datum/controller/subsystem/maturity_guard/proc/add_age_to_db(mob/user, year, month, day = null, save_birthday = FALSE, public_birthday = FALSE)
 	if(IsAdminAdvancedProcCall())
 		return FALSE
 
@@ -147,10 +147,15 @@ SUBSYSTEM_DEF(maturity_guard)
 	if(!isnum(year) || !isnum(month))
 		return FALSE
 
+	// Only save day if user chose to save birthday
+	var/day_to_save = null
+	if(save_birthday && isnum(day))
+		day_to_save = day
+
 	var/datum/db_query/add_age_to_db = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("player_dob")] (ckey, dob_year, dob_month) VALUES(:ckey, :dob_year, :dob_month) \
-		ON DUPLICATE KEY UPDATE dob_year = :dob_year, dob_month = :dob_month",
-		list("ckey" = user.ckey, "dob_year" = year, "dob_month" = month),
+		"INSERT INTO [format_table_name("player_dob")] (ckey, dob_year, dob_month, dob_day, verification_timestamp, save_birthday, public_birthday) VALUES(:ckey, :dob_year, :dob_month, :dob_day, NOW(), :save_birthday, :public_birthday) \
+		ON DUPLICATE KEY UPDATE dob_year = :dob_year, dob_month = :dob_month, dob_day = :dob_day, verification_timestamp = NOW(), save_birthday = :save_birthday, public_birthday = :public_birthday",
+		list("ckey" = user.ckey, "dob_year" = year, "dob_month" = month, "dob_day" = day_to_save, "save_birthday" = save_birthday, "public_birthday" = public_birthday),
 	)
 
 	if(!add_age_to_db.warn_execute())
