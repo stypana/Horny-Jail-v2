@@ -83,7 +83,7 @@
 	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_mossy"
 	worn_icon_state = "plushie_mossy"
-	squeak_override = list('modular_zzplurt/sound/voice/bork.ogg' = 1, 'modular_zzplurt/emotes/sound/voice/bark1.ogg' = 1, 'modular_zzplurt/emotes/sound/voice/bark2.ogg' = 1)
+	squeak_override = list('modular_zzplurt/sound/voice/bork.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
 
 /obj/item/toy/plush/panic
 	name = "Tired Raccoon Plushie"
@@ -94,7 +94,7 @@
 	worn_icon_state = "plushie_panic"
 	attack_verb_simple = list("records", "clips", "examines")
 	attack_verb_continuous = list("record", "clip", "examine")
-	squeak_override = list('modular_zzplurt/sound/voice/wurble.ogg' = 10, 'modular_zzplurt/emotes/sound/voice/warbles.ogg' = 1)
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 10, 'modular_skyrat/modules/emotes/sound/voice/warbles.ogg' = 1)
 
 /obj/item/toy/plush/tree_ferret
 	name = "Tree Ferret Plushie"
