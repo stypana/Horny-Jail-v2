@@ -1,0 +1,5 @@
+author: "Nuk5513"
+delete-after: True
+changes:
+  - rscadd: "Gem Residential House now available as new infinidorm under the \"Special\" tab."
+  - rscadd: "New skyscraper dorm under the \"Apartments\" tab."
