@@ -294,9 +294,6 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 	valid_types = GLOB.mystery_fishing
 
 /obj/structure/mystery_box/fishing/activate(mob/living/user)
-    if(isprisoner(user))
-        to_chat(user, span_warning("As a prisoner, you are not allowed to open this treasure chest."))
-        return
     if(user.mind && minds_that_opened_us?[WEAKREF(user.mind)] >= 3)
         to_chat(user, span_warning("[src] refuses to open to you anymore. Perhaps you should present it to someone else..."))
         return
