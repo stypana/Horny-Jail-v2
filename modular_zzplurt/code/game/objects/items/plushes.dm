@@ -106,3 +106,11 @@
 	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
 	attack_verb_continuous = list("hug", "cackle at", "health analyze")
 	squeak_override = list('sound/effects/bush/crunchybushwhack1.ogg' = 1)
+
+/obj/item/toy/plush/plush_bro
+	name = "Homeboy Plush"
+	desc = "A rosey-colored bro. A depiction of an absolute homeboy, This fox figurine sports massive boots, a big tail, and it's own eyepatch!"
+	icon = 'modular_zzplurt/icons/obj/plushes.dmi'
+	icon_state = "plushie_bro"
+	worn_icon_state = "plushie_bro"
+	squeak_override = list('modular_zzplurt/sound/voice/gachi/woop.ogg' = 1)

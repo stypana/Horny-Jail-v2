@@ -15,3 +15,8 @@
 	name = "Tree Ferret Plushie"
 	item_path = /obj/item/toy/plush/tree_ferret
 	ckeywhitelist = null
+
+/datum/loadout_item/toys/plush_bro
+	name = "Homeboy Plush"
+	item_path = /obj/item/toy/plush/plush_bro
+	ckeywhitelist = null
