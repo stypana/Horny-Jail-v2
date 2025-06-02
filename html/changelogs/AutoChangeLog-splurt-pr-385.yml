@@ -1,5 +1,0 @@
-author: "MosleyTheMalO"
-delete-after: True
-changes:
-  - rscadd: "adds verb to toggle the scaling mode of a character throught he IC tab"
-  - bugfix: "Fixes scaled appearance not applying as intended"
