@@ -25,6 +25,7 @@
 	icon_state = "tunic"
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_NO_VARIATION
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/lumberjack
 	name = "lumberjack outfit"
@@ -84,6 +85,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST|GROIN|LEGS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/bluedress
 	name = "Blue Royal Dress"
@@ -94,6 +96,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST|GROIN|LEGS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/performer
 	name = "Performers one piece"
@@ -104,6 +107,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/blutigen_undergarment
 	name = "Blutigen Undergarments"
@@ -114,6 +118,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/raccveralls
 	name = "form fitting overalls"
