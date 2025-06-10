@@ -1524,7 +1524,7 @@
 	icon_state = "portal";
 	pixel_y = 0;
 	layer = 2.92;
-	desc = (CLICK ON THE BLACK FLOOR BELOW THE PORTAL TO EXIT)
+	desc = "(CLICK ON THE BLACK FLOOR BELOW THE PORTAL TO EXIT)"
 	},
 /obj/structure/marker_beacon/teal,
 /turf/closed/indestructible/hoteldoor{
