@@ -174,7 +174,8 @@
 	icon = 'modular_skyrat\master_files\icons\effects\turf_effects_64.dmi';
 	base_icon_state = "borgmat";
 	dir = 8;
-	pixel_x = 5
+	pixel_x = 5;
+	name = "yoga mat"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -318,16 +319,11 @@
 /area/misc/hilbertshotel)
 "eA" = (
 /obj/structure/stone_tile/slab/cracked,
-/obj/item/clothing/head/costume/maidheadband/syndicate{
-	pixel_x = 1;
-	pixel_y = 3
-	},
 /obj/structure/decorative{
 	icon_state = "plant-21";
 	pixel_y = 15;
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi';
 	base_icon_state = "tile_half";
-	layer = 3.5;
 	dir = 8;
 	pixel_x = 0;
 	anchored = 1
@@ -1523,7 +1519,6 @@
 	icon = 'icons/obj/anomaly.dmi';
 	icon_state = "portal";
 	pixel_y = 0;
-	layer = 2.92;
 	desc = "(CLICK ON THE BLACK FLOOR BELOW THE PORTAL TO EXIT)"
 	},
 /obj/structure/marker_beacon/teal,

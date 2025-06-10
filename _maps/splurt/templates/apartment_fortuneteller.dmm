@@ -108,7 +108,10 @@
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
 	dir = 1
 	},
-/obj/structure/grandfatherclock,
+/obj/structure/grandfatherclock{
+	anchored = 1;
+	density = 1
+	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
 "cN" = (
@@ -150,8 +153,7 @@
 	icon = 'icons/obj/stack_objects.dmi';
 	icon_state = "sheet-runed";
 	pixel_y = 3;
-	dir = 4;
-	layer = 2.91
+	dir = 4
 	},
 /turf/closed/indestructible/stone,
 /area/misc/hilbertshotel)
@@ -176,8 +178,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -186,8 +187,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -417,8 +417,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/fluff/clockwork/blind_eye{
 	pixel_x = 0;
@@ -589,7 +588,6 @@
 	name = "bookshelf";
 	icon = 'icons/obj/service/library.dmi';
 	icon_state = "book-3";
-	layer = 2.88;
 	density = 1
 	},
 /obj/structure/decorative{
@@ -599,8 +597,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -609,8 +606,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -622,16 +618,6 @@
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
-	},
-/obj/structure/decorative{
-	anchored = 1;
-	desc = "A wooden ladder, presumably used to reach the higher shelves.";
-	name = "ladder";
-	icon = 'modular_skyrat/modules/primitive_structures/icons/wooden_ladder.dmi';
-	icon_state = "ladder00";
-	layer = 2.91;
-	pixel_x = -7;
-	pixel_y = 25
 	},
 /turf/open/floor/iron/stairs{
 	dir = 8;
@@ -742,8 +728,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -752,8 +737,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -798,7 +782,6 @@
 	icon = 'icons/obj/anomaly.dmi';
 	icon_state = "portal";
 	pixel_y = 0;
-	layer = 2.92;
 	desc = "(CLICK ON THE WALL BELOW THE PORTAL TO EXIT)"
 	},
 /turf/closed/indestructible/hoteldoor{
@@ -859,8 +842,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -884,24 +866,16 @@
 "uN" = (
 /obj/structure/chair/pillow_small{
 	pixel_x = -4;
-	pixel_y = 0
-	},
-/obj/structure/bed/pillow_large{
-	pixel_x = 13;
-	pixel_y = 0
-	},
-/obj/structure/chair/pillow_small{
-	pixel_x = -8;
 	pixel_y = 14
 	},
-/obj/structure/chair/pillow_small{
-	pixel_x = 11;
-	pixel_y = 12
+/obj/structure/bed/pillow_large{
+	pixel_x = 0;
+	pixel_y = -1
 	},
 /obj/structure/marker_beacon/violet,
 /obj/item/fancy_pillow{
-	pixel_x = 0;
-	pixel_y = -9
+	pixel_x = -3;
+	pixel_y = -12
 	},
 /obj/effect/light_emitter/interlink{
 	light_color = "#3e3a57";
@@ -925,8 +899,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -935,8 +908,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 4;
-	layer = 2.91
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -956,8 +928,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1008,8 +979,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -1018,8 +988,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 4;
-	layer = 2.91
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1188,7 +1157,6 @@
 	name = "bookshelf";
 	icon = 'icons/obj/service/library.dmi';
 	icon_state = "book-3";
-	layer = 2.88;
 	density = 1
 	},
 /obj/structure/decorative{
@@ -1198,8 +1166,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1210,7 +1177,7 @@
 /area/misc/hilbertshotel)
 "Ge" = (
 /obj/structure/chair/pillow_small{
-	pixel_x = 0;
+	pixel_x = -11;
 	pixel_y = 9
 	},
 /obj/structure/bed/pillow_large,
@@ -1265,6 +1232,35 @@
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
+"Is" = (
+/obj/structure/decorative{
+	anchored = 1;
+	desc = "A bookshelf containing books. All of them look nigh unreadable - perhaps, they're very old?";
+	name = "bookshelf";
+	icon = 'icons/obj/service/library.dmi';
+	icon_state = "book-5";
+	density = 1
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "decorative siding";
+	color = "#474747";
+	icon = 'icons/turf/decals.dmi';
+	icon_state = "siding_thinplating_new";
+	pixel_y = 0;
+	dir = 1
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "decorative siding";
+	color = "#474747";
+	icon = 'icons/turf/decals.dmi';
+	icon_state = "siding_wideplating_corner";
+	pixel_y = 0;
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/misc/hilbertshotel)
 "IC" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
@@ -1293,8 +1289,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1325,8 +1320,7 @@
 	icon = 'icons/obj/stack_objects.dmi';
 	icon_state = "sheet-runed";
 	pixel_y = 3;
-	dir = 4;
-	layer = 2.91
+	dir = 4
 	},
 /turf/closed/indestructible/stone,
 /area/misc/hilbertshotel)
@@ -1384,8 +1378,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -1394,8 +1387,16 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 4;
-	layer = 2.91
+	dir = 4
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	desc = "A wooden ladder, presumably used to reach the higher shelves.";
+	name = "ladder";
+	icon = 'modular_skyrat/modules/primitive_structures/icons/wooden_ladder.dmi';
+	icon_state = "ladder00";
+	pixel_x = -16;
+	pixel_y = -6
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1475,8 +1476,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -1485,8 +1485,16 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	desc = "A wooden ladder, presumably used to reach the higher shelves.";
+	name = "ladder";
+	icon = 'modular_skyrat/modules/primitive_structures/icons/wooden_ladder.dmi';
+	icon_state = "ladder00";
+	pixel_x = -6;
+	pixel_y = -6
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1506,8 +1514,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -1516,8 +1523,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1537,8 +1543,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1674,7 +1679,6 @@
 	name = "bookshelf";
 	icon = 'icons/obj/service/library.dmi';
 	icon_state = "book-3";
-	layer = 2.88;
 	density = 1
 	},
 /obj/structure/decorative{
@@ -1684,8 +1688,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -1694,8 +1697,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 4;
-	layer = 2.91
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1794,6 +1796,35 @@
 "Xa" = (
 /turf/closed/indestructible/dungeon,
 /area/misc/hilbertshotel)
+"Yh" = (
+/obj/structure/decorative{
+	anchored = 1;
+	desc = "A bookshelf containing books. All of them look nigh unreadable - perhaps, they're very old?";
+	name = "bookshelf";
+	icon = 'icons/obj/service/library.dmi';
+	icon_state = "book-4";
+	density = 1
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "decorative siding";
+	color = "#474747";
+	icon = 'icons/turf/decals.dmi';
+	icon_state = "siding_thinplating_new";
+	pixel_y = 0;
+	dir = 1
+	},
+/obj/structure/decorative{
+	anchored = 1;
+	name = "decorative siding";
+	color = "#474747";
+	icon = 'icons/turf/decals.dmi';
+	icon_state = "siding_wideplating_corner";
+	pixel_y = 0;
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/misc/hilbertshotel)
 "Yl" = (
 /obj/structure/decorative{
 	anchored = 1;
@@ -1839,16 +1870,6 @@
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
 	dir = 8
-	},
-/obj/structure/decorative{
-	anchored = 1;
-	desc = "A wooden ladder, presumably used to reach the higher shelves.";
-	name = "ladder";
-	icon = 'modular_skyrat/modules/primitive_structures/icons/wooden_ladder.dmi';
-	icon_state = "ladder00";
-	layer = 2.91;
-	pixel_x = -16;
-	pixel_y = 25
 	},
 /obj/effect/light_emitter/interlink{
 	light_color = "#3e3a57";
@@ -1923,8 +1944,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_thinplating_new";
 	pixel_y = 0;
-	dir = 1;
-	layer = 2.91
+	dir = 1
 	},
 /obj/structure/decorative{
 	anchored = 1;
@@ -1933,8 +1953,7 @@
 	icon = 'icons/turf/decals.dmi';
 	icon_state = "siding_wideplating_corner";
 	pixel_y = 0;
-	dir = 4;
-	layer = 2.91
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -1965,7 +1984,7 @@ dc
 rn
 oM
 Ot
-On
+Is
 rn
 eA
 Fr
@@ -2000,7 +2019,7 @@ On
 pL
 sA
 aH
-On
+Is
 rK
 BL
 qp
@@ -2137,7 +2156,7 @@ yV
 cY
 dS
 Up
-Ky
+Yh
 Kb
 zZ
 Xa
@@ -2168,7 +2187,7 @@ Fr
 jy
 rn
 vt
-Ky
+Yh
 ZW
 rn
 kp
