@@ -64,7 +64,6 @@
 	icon_state = "eightball";
 	pixel_y = 7;
 	dir = 4;
-	layer = 2.91;
 	desc = "A black ball with a stenciled number eight in white on the side. It seems full of dark liquid.\nThe instructions state that you should ask your question aloud, and then shake.";
 	pixel_x = 0
 	},
@@ -124,7 +123,6 @@
 	icon_state = "brimdust";
 	pixel_y = 5;
 	dir = 4;
-	layer = 2.91;
 	pixel_x = 0
 	},
 /obj/structure/decorative{
@@ -133,11 +131,9 @@
 	color = "#ffffff";
 	icon = 'icons/obj/stack_objects.dmi';
 	icon_state = "telecrystal";
-	pixel_y = 4;
+	pixel_y = 6;
 	dir = 4;
-	layer = 2.91;
-	desc = "It seems to be pulsing with suspiciously enticing energies.";
-	pixel_x = 0
+	desc = "It seems to be pulsing with suspiciously enticing energies."
 	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
@@ -256,7 +252,6 @@
 	icon_state = "brimdust";
 	pixel_y = 5;
 	dir = 4;
-	layer = 2.91;
 	pixel_x = 0
 	},
 /obj/item/stack/sheet/mineral/diamond{
@@ -1092,8 +1087,7 @@
 	icon = 'icons/obj/service/hand_of_god_structures.dmi';
 	icon_state = "cosmic_rune";
 	pixel_y = 3;
-	dir = 4;
-	layer = 2.91
+	dir = 4
 	},
 /turf/open/floor/carpet/purple,
 /area/misc/hilbertshotel)
