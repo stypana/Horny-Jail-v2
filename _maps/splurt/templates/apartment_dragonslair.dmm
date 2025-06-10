@@ -117,6 +117,16 @@
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
+"bG" = (
+/obj/effect/turf_decal/siding/wideplating_new/dark/corner{
+	dir = 4;
+	icon = 'icons/effects/96x96.dmi';
+	icon_state = "apoc";
+	color = "#03afff";
+	name = "decorative pattern"
+	},
+/turf/open/floor/fakebasalt,
+/area/misc/hilbertshotel)
 "bV" = (
 /obj/effect/turf_decal/trimline/dark/corner{
 	alpha = 255
@@ -565,7 +575,8 @@
 	color = "#683d21"
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -811,7 +822,8 @@
 /area/misc/hilbertshotel)
 "lG" = (
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/water/hot_spring,
 /area/misc/hilbertshotel)
@@ -948,7 +960,8 @@
 	pixel_y = -8
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -994,7 +1007,8 @@
 /area/misc/hilbertshotel)
 "nb" = (
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -1171,7 +1185,8 @@
 /obj/structure/fluff/drake_statue,
 /obj/structure/marker_beacon/bronze,
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -1334,7 +1349,8 @@
 	dir = 1
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -1402,14 +1418,16 @@
 	alpha = 255
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
 "vi" = (
 /obj/structure/stone_tile/block,
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -1418,7 +1436,8 @@
 	density = 0
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -1711,7 +1730,8 @@
 	},
 /obj/structure/marker_beacon/jade,
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -1902,14 +1922,16 @@
 	pixel_x = 9
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
 "BF" = (
 /obj/structure/stone_tile/slab,
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -2165,7 +2187,8 @@
 	desc = "Because conventional beds are too big for that dragon booty."
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/mineral/gold,
 /area/misc/hilbertshotel)
@@ -2237,7 +2260,8 @@
 "Gm" = (
 /obj/structure/flora/bush/sparsegrass/style_2,
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -2254,19 +2278,10 @@
 	pixel_x = -8
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/mineral/gold,
-/area/misc/hilbertshotel)
-"GL" = (
-/obj/effect/turf_decal/siding/wideplating_new/dark/corner{
-	dir = 4;
-	icon = 'icons/effects/96x96.dmi';
-	icon_state = "apoc";
-	color = "#03afff";
-	name = "decorative pattern"
-	},
-/turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
 "GP" = (
 /obj/structure/stone_tile/surrounding/cracked{
@@ -2624,7 +2639,8 @@
 	pixel_y = 5
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /obj/structure/marker_beacon/bronze,
 /turf/open/floor/fakebasalt,
@@ -3790,7 +3806,8 @@
 	dir = 1
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/fakebasalt,
 /area/misc/hilbertshotel)
@@ -4177,7 +4194,7 @@ EF
 UJ
 ua
 SQ
-GL
+bG
 fJ
 ZU
 ZU

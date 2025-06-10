@@ -450,7 +450,8 @@
 	dir = 1
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/indestructible/stone,
 /area/misc/hilbertshotel)
@@ -473,7 +474,8 @@
 	},
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/indestructible/stone,
 /area/misc/hilbertshotel)
@@ -902,7 +904,8 @@
 	pixel_y = -9
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/mineral/plasma,
 /area/misc/hilbertshotel)
@@ -1597,7 +1600,8 @@
 	dir = 1
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
@@ -1641,7 +1645,8 @@
 	},
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/indestructible/stone,
 /area/misc/hilbertshotel)
@@ -1738,7 +1743,8 @@
 	dir = 8
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/indestructible/stone,
 /area/misc/hilbertshotel)
@@ -1780,7 +1786,8 @@
 	dir = 4
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
@@ -1844,7 +1851,8 @@
 	pixel_y = 25
 	},
 /obj/effect/light_emitter/interlink{
-	light_color = #3e3a57
+	light_color = "#3e3a57";
+	color = "#3e3a57"
 	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
