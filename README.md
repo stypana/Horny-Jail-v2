@@ -7,7 +7,7 @@
 | Website                     | Link                                                                                                                                   |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | Git / GitHub cheatsheet     | [https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833](https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833) |
-| Guide to Modularization     | [./modular_skyrat/readme.md](./modular_skyrat/readme.md)                                                                               |
+| Guide to Modularization     | [./modular_zzplurt/readme.md](./modular_zzplurt/readme.md)                                                                               |
 | Website                     | [https://splurtstation.com](https://splurtstation.com)                                                                                 |
 | Code                        | [https://github.com/SPLURT-Station/S.P.L.U.R.T-tg](https://github.com/SPLURT-Station/S.P.L.U.R.T-tg)                                   |
 | Wiki                        | [https://splurtstation.com](https://splurtstation.com)                                                                                 |
