@@ -1082,15 +1082,6 @@
 		/// Name of exotic blood substitute determined by species
 		var/blood_name = "blood"
 
-		// Check if target has exotic bloodtype
-		if(bite_target.dna?.species?.exotic_bloodtype)
-			// Define blood types for owner and target
-			var/blood_type_owner = action_owner.dna?.species?.exotic_bloodtype
-			var/blood_type_target = bite_target.dna?.species?.exotic_bloodtype
-
-			// /// Define if owner and target blood types match. Used for providing a mood bonus and immunity to exotic blood mood penalties.
-			// var/blood_type_match = (blood_type_owner == blood_type_target ? TRUE : FALSE)
-
 		// Get blood type datum from target's DNA
 		var/datum/blood_type/target_blood = bite_target.dna?.blood_type
 
