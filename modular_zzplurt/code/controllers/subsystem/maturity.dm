@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(maturity_guard)
 
 	prompt_cache |= user_ckey
 
-	var/datum/maturity_prompt/prompt = new(user, 0, GLOB.always_state)
+	var/datum/maturity_prompt/prompt = new(user, INFINITY, GLOB.always_state)
 	prompt.ui_interact(user)
 	prompt.wait()
 	prompt_cache -= user_ckey
