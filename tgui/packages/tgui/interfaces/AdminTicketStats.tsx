@@ -101,7 +101,7 @@ const DatePicker = ({ value, onChange, label }) => {
         <Input
           placeholder="DD.MM.YYYY"
           value={formatDateForInput(value)}
-          readOnly
+          readonly
           style={{ flex: 1 }}
         />
         <Button
@@ -120,7 +120,7 @@ const DatePicker = ({ value, onChange, label }) => {
           backgroundColor="rgba(16, 16, 16, 0.95)"
           border="2px solid #4a90e2"
           borderRadius="6px"
-          padding="12px"
+          p={3}
           style={{
             zIndex: 1000,
             boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
