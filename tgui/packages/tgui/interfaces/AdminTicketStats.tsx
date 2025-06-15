@@ -101,7 +101,7 @@ const DatePicker = ({ value, onChange, label }) => {
         <Input
           placeholder="DD.MM.YYYY"
           value={formatDateForInput(value)}
-          readonly
+          disabled
           style={{ flex: 1 }}
         />
         <Button
@@ -118,13 +118,13 @@ const DatePicker = ({ value, onChange, label }) => {
           left="0"
           right="0"
           backgroundColor="rgba(16, 16, 16, 0.95)"
-          border="2px solid #4a90e2"
-          borderRadius="6px"
           p={3}
           style={{
             zIndex: 1000,
             boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
             minWidth: '280px',
+            border: '2px solid #4a90e2',
+            borderRadius: '6px',
           }}
         >
           <Stack vertical>
