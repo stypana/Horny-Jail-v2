@@ -36,7 +36,8 @@
 	var/month_start = "[current_year]-[add_leading(num2text(current_month), 2, "0")]-01"
 	var/days_in_month = 31
 	if(current_month == 2)
-		days_in_month = (current_year % 4 == 0) ? 29 : 28
+		// Leap year calculation: divisible by 4, but not by 100, unless also divisible by 400
+		days_in_month = ((current_year % 4 == 0 && current_year % 100 != 0) || (current_year % 400 == 0)) ? 29 : 28
 	else if(current_month == 4 || current_month == 6 || current_month == 9 || current_month == 11)
 		days_in_month = 30
 	var/month_end = "[current_year]-[add_leading(num2text(current_month), 2, "0")]-[add_leading(num2text(days_in_month), 2, "0")]"
@@ -130,77 +131,56 @@
 	if(length(end_date) <= 10)
 		end_date += " 23:59:59"
 
-	var/list/column_clauses = list()
-	var/date_condition = "timestamp BETWEEN '[start_date]' AND '[end_date]'"
-
-	if(grouping == "none")
-		for(var/column in selected_columns)
-			switch(column)
-				if("Total_tickets")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action IN ('Rejected', 'Resolved', 'Closed', 'IC Issue') AND [date_condition]) AS Total_tickets"
-				if("Ticket_replies")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Reply' AND [date_condition]) AS Ticket_replies"
-				if("Rejected_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Rejected' AND [date_condition]) AS Rejected_count"
-				if("Resolved_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Resolved' AND [date_condition]) AS Resolved_count"
-				if("Closed_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Closed' AND [date_condition]) AS Closed_count"
-				if("IC_Issue_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'IC Issue' AND [date_condition]) AS IC_Issue_count"
-				if("Interaction_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Interaction' AND [date_condition]) AS Interaction_count"
-	else
-		var/period_field = ""
-		switch(grouping)
-			if("day")
-				period_field = "DATE(ticket.timestamp)"
-			if("month")
-				period_field = "DATE_FORMAT(ticket.timestamp, '%Y-%m')"
-
-		for(var/column in selected_columns)
-			switch(column)
-				if("Total_tickets")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action IN ('Rejected', 'Resolved', 'Closed', 'IC Issue') AND [date_condition] AND [period_field] = periods.period_group) AS Total_tickets"
-				if("Ticket_replies")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Reply' AND [date_condition] AND [period_field] = periods.period_group) AS Ticket_replies"
-				if("Rejected_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Rejected' AND [date_condition] AND [period_field] = periods.period_group) AS Rejected_count"
-				if("Resolved_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Resolved' AND [date_condition] AND [period_field] = periods.period_group) AS Resolved_count"
-				if("Closed_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Closed' AND [date_condition] AND [period_field] = periods.period_group) AS Closed_count"
-				if("IC_Issue_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'IC Issue' AND [date_condition] AND [period_field] = periods.period_group) AS IC_Issue_count"
-				if("Interaction_count")
-					column_clauses += "(SELECT COUNT(*) FROM ticket WHERE CAST(sender AS CHAR) = CAST(admin.ckey AS CHAR) AND action = 'Interaction' AND [date_condition] AND [period_field] = periods.period_group) AS Interaction_count"
-
-	if(!length(column_clauses))
+	if(!length(selected_columns))
 		return list("error" = "No columns selected")
 
 	var/main_query = ""
+	var/date_condition = "t.timestamp BETWEEN '[start_date]' AND '[end_date]'"
+
 	if(grouping == "none")
-		main_query = "SELECT admin.ckey AS admin_name, admin.rank AS admin_rank, " + jointext(column_clauses, ", ")
-		main_query += " FROM admin WHERE admin.rank != 'NEW ADMIN'"
+				// Optimized query without grouping using single JOIN
+		main_query = "SELECT a.ckey AS admin_name, a.rank AS admin_rank, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action IN ('Rejected', 'Resolved', 'Closed', 'IC Issue') THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Total_tickets, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Reply' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Ticket_replies, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Rejected' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Rejected_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Resolved' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Resolved_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Closed' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Closed_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'IC Issue' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS IC_Issue_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Interaction' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Interaction_count "
+		main_query += "FROM admin a LEFT JOIN ticket t ON CAST(t.sender AS CHAR) = CAST(a.ckey AS CHAR) AND [date_condition] "
+		main_query += "WHERE a.rank != 'NEW ADMIN'"
+
+		if(admin_filter && admin_filter != "")
+			main_query += " AND a.ckey LIKE '%[admin_filter]%'"
+
+		main_query += " GROUP BY a.ckey, a.rank ORDER BY a.ckey ASC"
+
 	else
-		var/period_query = ""
+		// Optimized query with grouping using single JOIN
+		var/period_field = ""
 		switch(grouping)
 			if("day")
-				period_query = "SELECT DISTINCT DATE(timestamp) AS period_group FROM ticket WHERE [date_condition] ORDER BY period_group"
+				period_field = "DATE_FORMAT(t.timestamp, '%Y-%m-%d')"
 			if("month")
-				period_query = "SELECT DISTINCT DATE_FORMAT(timestamp, '%Y-%m') AS period_group FROM ticket WHERE [date_condition] ORDER BY period_group"
+				period_field = "DATE_FORMAT(t.timestamp, '%Y-%m')"
 
-		main_query = "SELECT periods.period_group, admin.ckey AS admin_name, admin.rank AS admin_rank, " + jointext(column_clauses, ", ")
-		main_query += " FROM admin CROSS JOIN ([period_query]) AS periods"
-		main_query += " WHERE admin.rank != 'NEW ADMIN'"
+		main_query = "SELECT [period_field] AS period_group, a.ckey AS admin_name, a.rank AS admin_rank, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action IN ('Rejected', 'Resolved', 'Closed', 'IC Issue') THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Total_tickets, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Reply' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Ticket_replies, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Rejected' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Rejected_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Resolved' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Resolved_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Closed' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Closed_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'IC Issue' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS IC_Issue_count, "
+		main_query += "CAST(COALESCE(SUM(CASE WHEN t.action = 'Interaction' THEN 1 ELSE 0 END), 0) AS UNSIGNED) AS Interaction_count "
+		main_query += "FROM admin a LEFT JOIN ticket t ON CAST(t.sender AS CHAR) = CAST(a.ckey AS CHAR) AND [date_condition] "
+		main_query += "WHERE a.rank != 'NEW ADMIN'"
 
-	if(admin_filter && admin_filter != "")
-		main_query += " AND admin.ckey LIKE '%[admin_filter]%'"
+		if(admin_filter && admin_filter != "")
+			main_query += " AND a.ckey LIKE '%[admin_filter]%'"
 
-	if(grouping != "none")
-		main_query += " ORDER BY period_group ASC, admin_name ASC"
-	else
-		main_query += " ORDER BY admin_name ASC"
+		main_query += " GROUP BY [period_field], a.ckey, a.rank"
+		main_query += " HAVING period_group IS NOT NULL"
+		main_query += " ORDER BY period_group ASC, a.ckey ASC"
 
 	var/datum/db_query/query = SSdbcore.NewQuery(main_query)
 
@@ -219,16 +199,16 @@
 		row["admin_name"] = query.item[column_index++]
 		row["admin_rank"] = query.item[column_index++]
 
-		var/has_tickets = FALSE
-		for(var/column in selected_columns)
+				// Get all columns in fixed order
+		var/list/all_columns = list("Total_tickets", "Ticket_replies", "Rejected_count", "Resolved_count", "Closed_count", "IC_Issue_count", "Interaction_count")
+
+		for(var/column in all_columns)
 			var/raw_value = query.item[column_index++]
 			var/numeric_value = text2num("[raw_value]") || 0
-			row[column] = numeric_value
-			if(numeric_value > 0)
-				has_tickets = TRUE
+			if(column in selected_columns)
+				row[column] = numeric_value
 
-		if(has_tickets)
-			results += list(row)
+		results += list(row)
 
 	qdel(query)
 	return list("success" = TRUE, "data" = results, "grouping" = grouping)

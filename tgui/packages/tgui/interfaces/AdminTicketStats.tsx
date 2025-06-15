@@ -248,6 +248,9 @@ export const AdminTicketStats = (props) => {
   });
   const [sortColumn, setSortColumn] = useState('');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  const [zeroFilter, setZeroFilter] = useState<
+    'all' | 'with_activity' | 'zero_only'
+  >('with_activity');
 
   useMemo(() => {
     if (available_columns && available_columns.length > 0) {
@@ -308,6 +311,36 @@ export const AdminTicketStats = (props) => {
     loading,
   ]);
 
+  const getDaysInMonth = (year: number, month: number) => {
+    return new Date(year, month, 0).getDate();
+  };
+
+  const handlePreviousMonth = useCallback(() => {
+    const [year, month] = startDate.split('-').map(Number);
+    const prevMonth = month === 1 ? 12 : month - 1;
+    const prevYear = month === 1 ? year - 1 : year;
+    const daysInMonth = getDaysInMonth(prevYear, prevMonth);
+
+    const newStart = `${prevYear}-${prevMonth.toString().padStart(2, '0')}-01`;
+    const newEnd = `${prevYear}-${prevMonth.toString().padStart(2, '0')}-${daysInMonth.toString().padStart(2, '0')}`;
+
+    setStartDate(newStart);
+    setEndDate(newEnd);
+  }, [startDate]);
+
+  const handleNextMonth = useCallback(() => {
+    const [year, month] = startDate.split('-').map(Number);
+    const nextMonth = month === 12 ? 1 : month + 1;
+    const nextYear = month === 12 ? year + 1 : year;
+    const daysInMonth = getDaysInMonth(nextYear, nextMonth);
+
+    const newStart = `${nextYear}-${nextMonth.toString().padStart(2, '0')}-01`;
+    const newEnd = `${nextYear}-${nextMonth.toString().padStart(2, '0')}-${daysInMonth.toString().padStart(2, '0')}`;
+
+    setStartDate(newStart);
+    setEndDate(newEnd);
+  }, [startDate]);
+
   const adminOptions = useMemo(() => {
     const options = [{ value: 'All', displayText: 'All Admins' }];
     if (admin_list && admin_list.length > 0) {
@@ -333,6 +366,25 @@ export const AdminTicketStats = (props) => {
 
     let filtered = [...stats_data];
 
+    // Apply zero filter
+    if (zeroFilter !== 'all') {
+      filtered = filtered.filter((row) => {
+        const selectedCols = Object.keys(selectedColumns).filter(
+          (key) => selectedColumns[key],
+        );
+        const totalActivity = selectedCols.reduce((sum, col) => {
+          return sum + (row[col] || 0);
+        }, 0);
+
+        if (zeroFilter === 'with_activity') {
+          return totalActivity > 0;
+        } else if (zeroFilter === 'zero_only') {
+          return totalActivity === 0;
+        }
+        return true;
+      });
+    }
+
     if (sortColumn) {
       filtered.sort((a, b) => {
         const aVal = a[sortColumn];
@@ -353,7 +405,7 @@ export const AdminTicketStats = (props) => {
     }
 
     return filtered;
-  }, [stats_data, sortColumn, sortOrder]);
+  }, [stats_data, sortColumn, sortOrder, zeroFilter, selectedColumns]);
 
   const visibleColumns = useMemo(() => {
     if (!available_columns || available_columns.length === 0) return [];
@@ -423,6 +475,21 @@ export const AdminTicketStats = (props) => {
                         label="End Date"
                       />
                     </LabeledList.Item>
+                    <LabeledList.Item label="Quick Navigation">
+                      <Button
+                        icon="chevron-left"
+                        content="Previous Month"
+                        onClick={handlePreviousMonth}
+                        tooltip="Set dates to previous month"
+                        mr={1}
+                      />
+                      <Button
+                        icon="chevron-right"
+                        content="Next Month"
+                        onClick={handleNextMonth}
+                        tooltip="Set dates to next month"
+                      />
+                    </LabeledList.Item>
                   </LabeledList>
                 </Stack.Item>
                 <Stack.Item basis="50%">
@@ -441,6 +508,42 @@ export const AdminTicketStats = (props) => {
                         options={groupingOptions}
                         onSelected={setGroupBy}
                         width="100%"
+                      />
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Activity Filter">
+                      <Button.Checkbox
+                        checked={zeroFilter === 'all'}
+                        onClick={() =>
+                          setZeroFilter(
+                            zeroFilter === 'all' ? 'with_activity' : 'all',
+                          )
+                        }
+                        content="Show All"
+                        tooltip="Show all admins regardless of activity"
+                      />
+                      <Button.Checkbox
+                        checked={zeroFilter === 'with_activity'}
+                        onClick={() =>
+                          setZeroFilter(
+                            zeroFilter === 'with_activity'
+                              ? 'all'
+                              : 'with_activity',
+                          )
+                        }
+                        content="With Activity"
+                        tooltip="Show only admins with ticket activity"
+                        ml={1}
+                      />
+                      <Button.Checkbox
+                        checked={zeroFilter === 'zero_only'}
+                        onClick={() =>
+                          setZeroFilter(
+                            zeroFilter === 'zero_only' ? 'all' : 'zero_only',
+                          )
+                        }
+                        content="Zero Only"
+                        tooltip="Show only admins with no ticket activity"
+                        ml={1}
                       />
                     </LabeledList.Item>
                   </LabeledList>
@@ -485,6 +588,7 @@ export const AdminTicketStats = (props) => {
             ) : hasData ? (
               <Section
                 fill
+                scrollable
                 title={`Statistics (${filteredAndSortedData.length} rows)`}
               >
                 <Table>
