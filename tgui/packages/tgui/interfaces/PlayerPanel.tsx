@@ -672,6 +672,7 @@ const PhysicalActions = () => {
                   width="100%"
                   placeholder="Select faction to add"
                   options={glob_factions}
+                  selected={null}
                   onSelected={(value) => act('add_faction', { faction: value })}
                 />
               </Stack.Item>
