@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		return
 
 	var/datum/db_query/discord_query = SSdbcore.NewQuery(
-		"SELECT discord_id FROM [format_table_name("discord_links")] WHERE ckey = :ckey",
+		"SELECT CAST(discord_id AS CHAR) FROM [format_table_name("discord_links")] WHERE ckey = :ckey",
 		list("ckey" = target_ckey)
 	)
 	if(discord_query.warn_execute())
