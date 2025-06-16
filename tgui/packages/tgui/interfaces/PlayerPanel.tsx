@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -435,12 +435,70 @@ const PhysicalActions = () => {
   const [delimbOption, setDelimbOption] = useState(0);
 
   // Update local speed state when server data changes
-  React.useEffect(() => {
+  useEffect(() => {
     setMobSpeed(mob_speed || 0);
   }, [mob_speed]);
 
   return (
     <Section fill>
+      <Section title="Traits">
+        <Flex>
+          <Button
+            width="100%"
+            height="100%"
+            icon="paw"
+            disabled={!mob_type.includes('/mob/living/carbon/human')}
+            onClick={() => act('species')}
+          >
+            Species
+          </Button>
+          <Button
+            width="100%"
+            height="100%"
+            icon="bolt"
+            disabled={!mob_type.includes('/mob/living/carbon/human')}
+            onClick={() => act('quirk')}
+          >
+            Quirks
+          </Button>
+          <Button
+            width="100%"
+            height="100%"
+            icon="magic"
+            onClick={() => act('spell')}
+          >
+            Spells
+          </Button>
+        </Flex>
+        <Flex mt={1}>
+          <Button
+            width="100%"
+            height="100%"
+            icon="fist-raised"
+            disabled={!mob_type.includes('/mob/living/carbon/human')}
+            onClick={() => act('martial_art')}
+          >
+            Martial Arts
+          </Button>
+          <Button
+            width="100%"
+            height="100%"
+            icon="lightbulb"
+            onClick={() => act('skill_panel')}
+          >
+            Skills
+          </Button>
+          <Button
+            width="100%"
+            height="100%"
+            icon="comment-dots"
+            onClick={() => act('languages')}
+          >
+            Languages
+          </Button>
+        </Flex>
+      </Section>
+
       <Section title="Status Flags">
         <Stack wrap>
           {Object.keys(glob_status_flags).map((flag) => {
