@@ -298,7 +298,7 @@ const GeneralActions = () => {
   return (
     <Section>
       <Section title="Damage">
-        <Stack>
+        <Flex>
           <Button
             width="100%"
             icon="heart"
@@ -310,6 +310,7 @@ const GeneralActions = () => {
           </Button>
           <Button
             width="100%"
+            height="100%"
             icon="bolt"
             color="orange"
             disabled={!mob_type.includes('/mob/living/carbon/human')}
@@ -317,11 +318,11 @@ const GeneralActions = () => {
           >
             Smite
           </Button>
-        </Stack>
+        </Flex>
       </Section>
 
       <Section title="Teleportation">
-        <Stack>
+        <Flex>
           <Button.Confirm
             width="100%"
             icon="reply"
@@ -334,16 +335,36 @@ const GeneralActions = () => {
           </Button>
           <Button.Confirm
             width="100%"
+            height="100%"
             icon="share"
             onClick={() => act('jump_to')}
           >
             Jump To
           </Button.Confirm>
-        </Stack>
+        </Flex>
       </Section>
 
       <Section title="Miscellaneous">
-        <Stack>
+        <Flex>
+          <Button
+            width="100%"
+            icon="user-tie"
+            disabled={!mob_type.includes('/mob/living/carbon/human')}
+            onClick={() => act('select_equipment')}
+          >
+            Select Equipment
+          </Button>
+          <Button.Confirm
+            icon="trash-alt"
+            width="100%"
+            height="100%"
+            disabled={!mob_type.includes('/mob/living/carbon/human')}
+            onClick={() => act('strip')}
+          >
+            Drop All Items
+          </Button.Confirm>
+        </Flex>
+        <Flex>
           <Button.Confirm
             icon="snowflake"
             width="100%"
@@ -355,6 +376,7 @@ const GeneralActions = () => {
           </Button.Confirm>
           <Button.Confirm
             width="100%"
+            height="100%"
             color="orange"
             icon="undo"
             disabled={!mob_type.includes('/mob/dead/observer')}
@@ -367,8 +389,8 @@ const GeneralActions = () => {
           >
             Send To Lobby
           </Button.Confirm>
-        </Stack>
-        <Stack>
+        </Flex>
+        <Flex>
           <Button
             width="100%"
             icon="user-cog"
@@ -377,11 +399,11 @@ const GeneralActions = () => {
           >
             Load Preferences
           </Button>
-        </Stack>
+        </Flex>
       </Section>
 
       <Section title="Control">
-        <Stack>
+        <Flex>
           <Button.Confirm
             width="100%"
             icon="ghost"
@@ -404,6 +426,7 @@ const GeneralActions = () => {
           </Button.Confirm>
           <Button.Confirm
             width="100%"
+            height="100%"
             icon="ghost"
             tooltip="Offers control to ghosts"
             disabled={!mob_type.includes('/mob/living')}
@@ -411,7 +434,7 @@ const GeneralActions = () => {
           >
             Offer Control
           </Button.Confirm>
-        </Stack>
+        </Flex>
       </Section>
     </Section>
   );
@@ -671,27 +694,6 @@ const PhysicalActions = () => {
         </Stack>
       </Section>
 
-      <Section title="Equipment">
-        <Stack>
-          <Button
-            width="100%"
-            icon="user-tie"
-            disabled={!mob_type.includes('/mob/living/carbon/human')}
-            onClick={() => act('select_equipment')}
-          >
-            Select Equipment
-          </Button>
-          <Button.Confirm
-            icon="trash-alt"
-            width="100%"
-            disabled={!mob_type.includes('/mob/living/carbon/human')}
-            onClick={() => act('strip')}
-          >
-            Drop All Items
-          </Button.Confirm>
-        </Stack>
-      </Section>
-
       <Section title="Faction">
         <Stack vertical>
           <Stack.Item>
@@ -813,7 +815,7 @@ const PunishmentActions = () => {
 
   return (
     <Section>
-      <Stack>
+      <Flex>
         <Button
           width="50%"
           py=".5rem"
@@ -827,6 +829,7 @@ const PunishmentActions = () => {
         </Button>
         <Button
           width="50%"
+          height="100%"
           py=".5rem"
           icon="clipboard-list"
           color="orange"
@@ -835,9 +838,9 @@ const PunishmentActions = () => {
         >
           Logs
         </Button>
-      </Stack>
+      </Flex>
       <Section title="Contain">
-        <Stack>
+        <Flex>
           <Button
             width="100%"
             color={is_frozen ? 'orange' : ''}
@@ -858,6 +861,7 @@ const PunishmentActions = () => {
           </Button>
           <Button.Confirm
             width="100%"
+            height="100%"
             icon="share"
             color="bad"
             disabled={!mob_type.includes('/mob/living')}
@@ -865,11 +869,11 @@ const PunishmentActions = () => {
           >
             Admin Prison
           </Button.Confirm>
-        </Stack>
+        </Flex>
       </Section>
 
       <Section title="Banishment">
-        <Stack>
+        <Flex>
           <Button.Confirm
             width="100%"
             icon="ban"
@@ -890,6 +894,7 @@ const PunishmentActions = () => {
           </Button>
           <Button.Confirm
             width="100%"
+            height="100%"
             icon="gavel"
             color="red"
             disabled={!hasAnyKey}
@@ -897,7 +902,7 @@ const PunishmentActions = () => {
           >
             Sticky Ban
           </Button.Confirm>
-        </Stack>
+        </Flex>
       </Section>
 
       <Section
@@ -923,13 +928,14 @@ const PunishmentActions = () => {
           </>
         }
       >
-        <Stack>
+        <Flex>
           {glob_mute_bits.map((bit, i) => {
             const isMuted = client_muted && client_muted & bit.bitflag;
             return (
               <Button
                 key={i}
                 width="100%"
+                height="100%"
                 icon={isMuted ? 'check-square-o' : 'square-o'}
                 color={isMuted ? 'bad' : ''}
                 disabled={!client_ckey}
@@ -945,15 +951,15 @@ const PunishmentActions = () => {
               </Button>
             );
           })}
-        </Stack>
+        </Flex>
       </Section>
       <Section
         title="Investigate"
         buttons={
-          <Stack>
-            <Stack.Item align="center" mr=".5rem" color="label">
+          <Flex>
+            <Flex.Item align="center" mr=".5rem" color="label">
               Related accounts by:
-            </Stack.Item>
+            </Flex.Item>
             <Button
               minWidth="5rem"
               color="orange"
@@ -968,12 +974,13 @@ const PunishmentActions = () => {
               minWidth="5rem"
               color="orange"
               textAlign="center"
+              height="100%"
               disabled={!data_related_ip}
               onClick={() => act('related_accounts', { related_thing: 'IP' })}
             >
               IP
             </Button>
-          </Stack>
+          </Flex>
         }
       >
         <Collapsible width="100%" color="orange" title="Details">
