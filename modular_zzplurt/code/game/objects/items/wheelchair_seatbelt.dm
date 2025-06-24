@@ -8,11 +8,11 @@
 	var/examine_more_info =	"Left-click: Remove	occupant | Right-click:	Toggle seatbelt"
 
 /obj/vehicle/ridden/wheelchair/Initialize()
-    . = ..()
-    has_seatbelt = TRUE
+	. = ..()
+	has_seatbelt = TRUE
 
 /obj/vehicle/ridden/wheelchair/examine(mob/user)
-	. =	..()
+	. = ..()
 	if(has_seatbelt)
 		. += span_notice(examine_more_info)
 
