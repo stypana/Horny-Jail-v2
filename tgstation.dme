@@ -9960,8 +9960,6 @@
 #include "modular_zzplurt\code\game\objects\structures\fauna.dm"
 #include "modular_zzplurt\code\game\objects\structures\medieval_deco.dm"
 #include "modular_zzplurt\code\game\objects\structures\mystery_box.dm"
-#include "modular_zzplurt\code\game\objects\structures\mystery_box_component.dm"
-#include "modular_zzplurt\code\game\objects\structures\mystery_box_init.dm"
 #include "modular_zzplurt\code\game\objects\structures\crates_lockers\closets.dm"
 #include "modular_zzplurt\code\game\objects\structures\crates_lockers\crates.dm"
 #include "modular_zzplurt\code\game\objects\structures\crates_lockers\closets\secure\security.dm"
