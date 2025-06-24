@@ -7,9 +7,9 @@
 	var/stamina_damage_cooldown	= 1	SECONDS
 	var/examine_more_info =	"Left-click: Remove	occupant | Right-click:	Toggle seatbelt"
 
-/obj/vehicle/ridden/wheelchair/Initialize(mapload)
-	. =	..()
-	has_seatbelt = TRUE
+/obj/vehicle/ridden/wheelchair/Initialize()
+    . = ..()
+    has_seatbelt = TRUE
 
 /obj/vehicle/ridden/wheelchair/examine(mob/user)
 	. =	..()
