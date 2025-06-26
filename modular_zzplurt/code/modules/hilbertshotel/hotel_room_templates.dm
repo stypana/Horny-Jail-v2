@@ -76,7 +76,7 @@
 /datum/map_template/ghost_cafe_rooms/apartment_mountainside
 	name = "Mountainside Apartment"
 	mappath = "_maps/splurt/templates/apartment_mountainside.dmm"
-	category = GHC_APARTMENT
+	category = GHC_SPECIAL
 
 /datum/map_template/ghost_cafe_rooms/apartment_city
 	name = "City Apartment"
