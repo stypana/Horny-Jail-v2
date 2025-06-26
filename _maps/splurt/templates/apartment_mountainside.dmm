@@ -895,10 +895,6 @@
 	color = "#914886";
 	dir = 4
 	},
-/obj/structure/fluff/paper/stack{
-	dir = 1;
-	layer = 2
-	},
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner,
 /obj/effect/turf_decal/siding/dark_blue/corner{
 	color = "#914886"
@@ -924,6 +920,11 @@
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 8;
 	color = "#914886"
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 1;
+	name = "saved server logs from 2 years ago";
+	desc = "Oh."
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -2415,18 +2416,20 @@
 	pixel_y = 25
 	},
 /obj/item/stack/sticky_tape{
-	pixel_x = -5;
-	pixel_y = 6;
+	pixel_x = -6;
+	pixel_y = 9;
 	desc = "This and hopes and dreams keeps everything together.";
 	icon_state = "/obj/item/stack/sticky_tape/surgical";
-	name = "blue insulating tape"
+	name = "blue insulating tape";
+	base_icon_state = "/obj/item/stack/sticky_tape/surgical"
 	},
 /obj/item/stack/sticky_tape{
 	pixel_x = -6;
 	pixel_y = 16;
 	desc = "Всё примотаем... На синюю изоленту! Ах-ха-ха-хах!";
 	icon_state = "/obj/item/stack/sticky_tape/surgical";
-	name = "blue insulating tape"
+	name = "blue insulating tape";
+	base_icon_state = "/obj/item/stack/sticky_tape/surgical"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/misc/hilbertshotel)
@@ -2925,7 +2928,8 @@
 /obj/item/clothing/mask/muzzle/tape{
 	pixel_x = -7;
 	pixel_y = -2;
-	icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical"
+	icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical";
+	base_icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical"
 	},
 /obj/item/stack/medical/bandage{
 	pixel_x = 0;
@@ -4629,7 +4633,8 @@
 /obj/item/clothing/mask/muzzle/tape{
 	pixel_x = -7;
 	pixel_y = -2;
-	icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical"
+	icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical";
+	base_icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical"
 	},
 /obj/item/toy/figure/janitor{
 	pixel_x = -9;
@@ -6840,16 +6845,15 @@
 	color = "#454545";
 	dir = 10
 	},
-/obj/structure/fluff/paper/stack{
-	dir = 1;
-	layer = 2
-	},
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner{
 	dir = 4;
 	icon = 'icons/effects/96x96.dmi';
 	icon_state = "apoc";
 	name = "decorative pattern";
 	color = "#111111"
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
@@ -7504,14 +7508,11 @@
 	pixel_x = -10;
 	pixel_y = 4
 	},
-/obj/structure/fluff/paper/stack{
-	dir = 1;
-	layer = 2;
-	pixel_x = -11;
-	pixel_y = -4
-	},
 /obj/effect/turf_decal/siding/dark{
 	icon_state = "siding_plain_end"
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 2
 	},
 /turf/open/floor/carpet/purple,
 /area/misc/hilbertshotel)
@@ -8615,7 +8616,8 @@
 	pixel_y = 6;
 	desc = "This and hopes and dreams keeps everything together.";
 	icon_state = "/obj/item/stack/sticky_tape/surgical";
-	name = "blue insulating tape"
+	name = "blue insulating tape";
+	base_icon_state = "/obj/item/stack/sticky_tape/surgical"
 	},
 /turf/open/floor/plating,
 /area/misc/hilbertshotel)
