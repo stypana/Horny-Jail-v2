@@ -77,6 +77,11 @@
 	dir = 4
 	},
 /obj/structure/chair/stool/bar/directional/east,
+/obj/item/toy/plush/panic{
+	pixel_x = 0;
+	pixel_y = 7;
+	desc = "gambled away everything in the gamba"
+	},
 /turf/open/floor/eighties,
 /area/misc/hilbertshotel)
 "aA" = (
@@ -847,6 +852,15 @@
 	},
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner{
 	dir = 4
+	},
+/obj/structure/decorative{
+	icon = 'icons/effects/crayondecal.dmi';
+	icon_state = "scp";
+	anchored = 1;
+	name = "that one logo";
+	pixel_x = 16;
+	pixel_y = 16;
+	color = "#000000"
 	},
 /turf/open/floor/wood/tile,
 /area/misc/hilbertshotel)
@@ -4229,6 +4243,15 @@
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner{
 	dir = 4
 	},
+/obj/structure/decorative{
+	icon = 'icons/effects/crayondecal.dmi';
+	icon_state = "scp";
+	anchored = 1;
+	name = "that one logo";
+	pixel_x = 16;
+	pixel_y = 16;
+	color = "#000000"
+	},
 /turf/open/floor/wood,
 /area/misc/hilbertshotel)
 "xC" = (
@@ -7321,6 +7344,15 @@
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner{
 	dir = 4
 	},
+/obj/structure/decorative{
+	icon = 'icons/effects/crayondecal.dmi';
+	icon_state = "scp";
+	anchored = 1;
+	name = "that one logo";
+	pixel_x = 16;
+	pixel_y = 16;
+	color = "#000000"
+	},
 /turf/open/floor/wood/parquet,
 /area/misc/hilbertshotel)
 "QB" = (
@@ -7619,6 +7651,13 @@
 	anchored = 1
 	},
 /obj/structure/marker_beacon/purple,
+/obj/structure/decorative{
+	icon = 'icons/effects/crayondecal.dmi';
+	icon_state = "scp";
+	anchored = 1;
+	name = "that one logo";
+	pixel_x = 0
+	},
 /turf/open/floor/carpet/neon/simple/purple,
 /area/misc/hilbertshotel)
 "RI" = (
