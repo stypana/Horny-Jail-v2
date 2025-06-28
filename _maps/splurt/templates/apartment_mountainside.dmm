@@ -1893,6 +1893,7 @@
 	dir = 1
 	},
 /obj/structure/marker_beacon/violet,
+/obj/item/choice_beacon/box/plushie/deluxe,
 /turf/open/floor/carpet/purple,
 /area/misc/hilbertshotel)
 "lc" = (
@@ -3791,6 +3792,13 @@
 	uses_integrity = 0
 	},
 /obj/structure/marker_beacon/indigo,
+/obj/item/toy/figure/janitor{
+	pixel_x = -9;
+	pixel_y = 15;
+	name = "maintainer";
+	desc = "end me";
+	layer = 16
+	},
 /turf/open/floor/plating,
 /area/misc/hilbertshotel)
 "vt" = (
@@ -4642,15 +4650,6 @@
 	},
 /area/misc/hilbertshotel)
 "zS" = (
-/obj/structure/fluff/bus/passable/seat{
-	desc = "stop ooming please i want to play";
-	icon = 'icons/obj/machines/telecomms.dmi';
-	icon_state = "blackbox_b";
-	name = "bubberstation server";
-	density = 1;
-	pixel_y = 0;
-	uses_integrity = 0
-	},
 /obj/structure/railing,
 /obj/structure/marker_beacon/indigo,
 /obj/item/clothing/mask/muzzle/tape{
@@ -4659,11 +4658,14 @@
 	icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical";
 	base_icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical"
 	},
-/obj/item/toy/figure/janitor{
-	pixel_x = -9;
-	pixel_y = 15;
-	name = "maintainer";
-	desc = "end me"
+/obj/structure/fluff/bus/passable/seat{
+	icon = 'icons/obj/machines/telecomms.dmi';
+	icon_state = "blackbox_b";
+	density = 1;
+	pixel_y = 0;
+	uses_integrity = 0;
+	name = "Dr. Bright's homework folder";
+	desc = "400TB of SCP porn and \[REDACTED]"
 	},
 /turf/open/floor/plating,
 /area/misc/hilbertshotel)
