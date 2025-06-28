@@ -7,6 +7,8 @@
 
 /datum/map_template/ghost_cafe_rooms
 	var/category = GHC_MISC //Room categorizing
+	var/list/landing_coords
+
 	var/donator_tier = DONATOR_TIER_NONE //For donator rooms
 	var/list/ckeywhitelist = list() //For ckey locked donator rooms
 
@@ -77,6 +79,7 @@
 	name = "Mountainside Apartment"
 	mappath = "_maps/splurt/templates/apartment_mountainside.dmm"
 	category = GHC_SPECIAL
+	landing_coords = list(15, 4)
 
 /datum/map_template/ghost_cafe_rooms/apartment_city
 	name = "City Apartment"
