@@ -3799,8 +3799,7 @@
 	pixel_x = -9;
 	pixel_y = 15;
 	name = "maintainer";
-	desc = "end me";
-	layer = 16
+	desc = "end me"
 	},
 /turf/open/floor/plating,
 /area/misc/hilbertshotel)
