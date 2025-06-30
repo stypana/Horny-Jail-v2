@@ -2685,9 +2685,6 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
-/obj/item/toy/plush/beeplushie{
-	pixel_x = 25
-	},
 /turf/open/floor/wood/large,
 /area/misc/hilbertshotel)
 "ps" = (

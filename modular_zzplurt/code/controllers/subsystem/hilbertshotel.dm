@@ -111,8 +111,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 	// Get the landing coords for the room
 	var/datum/map_template/ghost_cafe_rooms/room_template = hotel_map_list[room["template"]]
-	var/relative_x = istype(room_template) ? room_template.landing_coords[1] : hotel_room_template.landingZoneRelativeX
-	var/relative_y = istype(room_template) ? room_template.landing_coords[2] : hotel_room_template.landingZoneRelativeY
+	var/relative_x = istype(room_template) && room_template.landing_coords?[1] ? room_template.landing_coords[1] : hotel_room_template.landingZoneRelativeX
+	var/relative_y = istype(room_template) && room_template.landing_coords?[2] ? room_template.landing_coords[2] : hotel_room_template.landingZoneRelativeY
 
 	user.forceMove(locate(
 		room_bottom_left.x + relative_x,
@@ -239,8 +239,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 	// Get the landing coords for the room
 	var/datum/map_template/ghost_cafe_rooms/room_template = hotel_map_list[template_name]
-	var/relative_x = istype(room_template) ? room_template.landing_coords[1] : hotel_room_template.landingZoneRelativeX
-	var/relative_y = istype(room_template) ? room_template.landing_coords[2] : hotel_room_template.landingZoneRelativeY
+	var/relative_x = istype(room_template) && room_template.landing_coords?[1] ? room_template.landing_coords[1] : hotel_room_template.landingZoneRelativeX
+	var/relative_y = istype(room_template) && room_template.landing_coords?[2] ? room_template.landing_coords[2] : hotel_room_template.landingZoneRelativeY
 
 	user.forceMove(locate(
 		room_turf.x + relative_x,
