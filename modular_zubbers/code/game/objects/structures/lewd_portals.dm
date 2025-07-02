@@ -1,5 +1,16 @@
 #define GLORYHOLE "gloryhole"
 #define WALLSTUCK "wallstuck"
+#define PORTAL_SIGNAL_LIST list( \
+	COMSIG_MOB_POST_EQUIP, \
+	COMSIG_HUMAN_UNEQUIPPED_ITEM, \
+	COMSIG_HUMAN_TOGGLE_UNDERWEAR, \
+	COMSIG_MOB_HANDCUFFED, \
+	COMSIG_MOB_EMOTE, \
+	COMSIG_EMOTE_OVERLAY_EXPIRE, \
+	COMSIG_HUMAN_ADJUST_AROUSAL, \
+	COMSIG_HUMAN_TOGGLE_AROUSAL, \
+	COMSIG_HUMAN_TOGGLE_GENITALS \
+)
 
 /obj/structure/lewd_portal
 	name = "LustWish Portal"
@@ -32,7 +43,6 @@
 	register_context()
 
 /obj/structure/lewd_portal/Destroy()
-	unbuckle_all_mobs(TRUE)
 	visible_message("[src] vanishes!")
 	linked_portal?.linked_portal = null
 	if(linked_portal)
@@ -86,7 +96,7 @@
 			mob_scale_manager = current_mob.transform.decompose()
 			offset_algorithm()
 
-	if(istype(current_mob.dna.species))
+	if(!isnull(current_mob.dna.species))
 		relayed_body = new /obj/lewd_portal_relay(linked_portal.loc, current_mob, linked_portal)
 		relayed_body.transform = relayed_body.transform.Scale(mob_scale_manager.scale_x, mob_scale_manager.scale_y)
 		switch(linked_portal.dir)
@@ -116,7 +126,7 @@
 			var/obj/item/organ/genital/penis/penis_reference = current_mob.get_organ_slot(ORGAN_SLOT_PENIS)
 			initial_genital_visibility = penis_reference?.visibility_preference
 			hide_penis()
-			RegisterSignals(current_mob, list(COMSIG_MOB_POST_EQUIP, COMSIG_HUMAN_UNEQUIPPED_ITEM, COMSIG_HUMAN_TOGGLE_UNDERWEAR, COMSIG_MOB_HANDCUFFED, COMSIG_MOB_EMOTE, COMSIG_EMOTE_OVERLAY_EXPIRE, COMSIG_HUMAN_ADJUST_AROUSAL, COMSIG_HUMAN_TOGGLE_GENITALS), PROC_REF(hide_penis))
+			RegisterSignals(current_mob, PORTAL_SIGNAL_LIST, PROC_REF(hide_penis))
 			current_mob.dir = dir
 			switch(dir)
 				if(NORTH)
@@ -130,7 +140,7 @@
 		else
 			current_mob.dir = SOUTH
 			head_only()
-			RegisterSignals(current_mob, list(COMSIG_MOB_POST_EQUIP, COMSIG_HUMAN_UNEQUIPPED_ITEM, COMSIG_HUMAN_TOGGLE_UNDERWEAR, COMSIG_MOB_HANDCUFFED, COMSIG_MOB_EMOTE, COMSIG_EMOTE_OVERLAY_EXPIRE, COMSIG_HUMAN_ADJUST_AROUSAL, COMSIG_HUMAN_TOGGLE_GENITALS), PROC_REF(head_only))
+			RegisterSignals(current_mob, PORTAL_SIGNAL_LIST, PROC_REF(head_only))
 			switch(dir)
 				if(NORTH)
 					current_mob.pixel_y += wallstuck_offset_amount
@@ -185,7 +195,7 @@
 			current_mob.apply_overlay(BODY_LAYER)
 
 /obj/structure/lewd_portal/post_unbuckle_mob(mob/living/unbuckled_mob)
-	UnregisterSignal(current_mob, list(COMSIG_MOB_POST_EQUIP, COMSIG_HUMAN_UNEQUIPPED_ITEM, COMSIG_HUMAN_TOGGLE_UNDERWEAR, COMSIG_MOB_HANDCUFFED, COMSIG_MOB_EMOTE, COMSIG_EMOTE_OVERLAY_EXPIRE, COMSIG_HUMAN_ADJUST_AROUSAL, COMSIG_HUMAN_TOGGLE_GENITALS))
+	UnregisterSignal(current_mob, PORTAL_SIGNAL_LIST)
 	visible_message("[current_mob] exits the [src]")
 	current_mob = null
 	mob_scale_manager = null
@@ -320,28 +330,28 @@
 		name = LOWER_TEXT("[penis_type] penis")
 		desc = "Someone's penis hanging out from a portal."
 		dir = SOUTH
-		if (owning_portal.dir == EAST)
-			dir = WEST
-		if (owning_portal.dir == WEST)
-			dir = EAST
+		if (owning_portal.dir == EAST || owning_portal.dir == WEST)
+			dir = REVERSE_DIR(owning_portal.dir)
 	else
 		dir = NORTH
 		var/species_name
-		if(owner.dna?.species?.lore_protected || owner.dna?.features["custom_species"] == "")
+		if(owner.dna?.species?.lore_protected || !owner.dna?.features["custom_species"])
 			species_name = owner.dna.species.name
 		else
 			species_name = owner.dna.features["custom_species"]
 		name = LOWER_TEXT("[species_name] behind")
 
-	RegisterSignals(owner, list(COMSIG_MOB_POST_EQUIP, COMSIG_HUMAN_UNEQUIPPED_ITEM, COMSIG_HUMAN_TOGGLE_UNDERWEAR, COMSIG_MOB_HANDCUFFED, COMSIG_MOB_EMOTE, COMSIG_EMOTE_OVERLAY_EXPIRE, COMSIG_HUMAN_ADJUST_AROUSAL, COMSIG_HUMAN_TOGGLE_GENITALS), PROC_REF(update_visuals))
+	RegisterSignals(owner, PORTAL_SIGNAL_LIST, PROC_REF(update_visuals))
 	become_hearing_sensitive(ROUNDSTART_TRAIT)
 	var/datum/component/interactable/interact_component = owner.GetComponent(/datum/component/interactable)
 	interact_component?.body_relay = src
 
 /obj/lewd_portal_relay/Destroy(force)
 	if(!isnull(owner))
-		UnregisterSignal(owner, list(COMSIG_MOB_POST_EQUIP, COMSIG_HUMAN_UNEQUIPPED_ITEM, COMSIG_HUMAN_TOGGLE_UNDERWEAR, COMSIG_MOB_HANDCUFFED, COMSIG_MOB_EMOTE, COMSIG_EMOTE_OVERLAY_EXPIRE, COMSIG_HUMAN_ADJUST_AROUSAL, COMSIG_HUMAN_TOGGLE_GENITALS))
+		UnregisterSignal(owner, PORTAL_SIGNAL_LIST)
 		var/datum/component/interactable/interact_component = owner.GetComponent(/datum/component/interactable)
+		owner = null
+		owning_portal = null
 		interact_component?.body_relay = null
 	visible_message("[src] vanishes into the portal!")
 	lose_hearing_sensitivity(ROUNDSTART_TRAIT)
@@ -353,15 +363,11 @@
 		if(genital == ORGAN_SLOT_BREASTS)
 			continue
 		if(owner.dna.species.mutant_bodyparts[genital])
-			var/datum/sprite_accessory/genital/G = SSaccessories.sprite_accessories[genital][owner.dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
-			if(G)
-				if(!(G.is_hidden(owner)))
+			var/datum/sprite_accessory/genital/gential_sprite = SSaccessories.sprite_accessories[genital][owner.dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+			if(gential_sprite)
+				if(!(gential_sprite.is_hidden(owner)))
 					. += "<span class='notice'>It has exposed genitals... <a href='byond://?src=[REF(src)];lookup_info=genitals'>\[Look closer...\]</a></span>"
 					break
-	if(!CONFIG_GET(flag/check_vetted))
-		return
-	if(owner?.client && SSplayer_ranks.is_vetted(owner?.client, admin_bypass = FALSE))
-		. += span_greenannounce("This player has been vetted as 18+ by staff.")
 
 /obj/lewd_portal_relay/Topic(href, href_list)
 	. = ..()
@@ -371,15 +377,15 @@
 			for(var/genital in GLOB.possible_genitals)
 				if(!owner.dna.species.mutant_bodyparts[genital] || genital == ORGAN_SLOT_BREASTS)
 					continue
-				var/datum/sprite_accessory/genital/G = SSaccessories.sprite_accessories[genital][owner.dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
-				if(!G)
+				var/datum/sprite_accessory/genital/gential_sprite = SSaccessories.sprite_accessories[genital][owner.dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+				if(!gential_sprite)
 					continue
-				if(G.is_hidden(owner))
+				if(gential_sprite.is_hidden(owner))
 					continue
-				var/obj/item/organ/genital/ORG = owner.get_organ_slot(G.associated_organ_slot)
-				if(!ORG)
+				var/obj/item/organ/genital/organ = owner.get_organ_slot(gential_sprite.associated_organ_slot)
+				if(!organ)
 					continue
-				line += ORG.get_description_string(G)
+				line += organ.get_description_string(gential_sprite)
 			if(length(line))
 				to_chat(usr, span_notice("[jointext(line, "\n")]"))
 
@@ -404,15 +410,7 @@
 		if(istype(limb_object))
 			var/limb_icon_list = limb_object.get_limb_icon()
 			if(limb_object == owner.get_bodypart(BODY_ZONE_CHEST))
-				var/new_limb_icon_list = list()//There may be special cases where body overlays should not pass through portals, such as moth wings, this is used to removed them
-				for(var/image/limb_icon in limb_icon_list)
-					if(limb_icon.icon == 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_wings.dmi') //Moth wings are attached to the upper back so shouldn't be portalled, their weird sprite size also messes with rotations
-						continue
-					var/limb_icon_layer = limb_icon.layer * -1
-					if(limb_icon_layer != BODY_BEHIND_LAYER && limb_icon_layer != BODY_FRONT_LAYER || limb_icon.icon == 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi') //Tails need to be portaled
-						limb_icon.add_filter("upper_body_removal", 1, list("type" = "alpha", "icon" = icon('modular_zubbers/icons/obj/structures/lewd_portals.dmi', "mask")))
-					new_limb_icon_list += limb_icon
-				limb_icon_list = new_limb_icon_list
+				limb_icon_list = torso_only(limb_icon_list)
 			add_overlay(limb_icon_list)
 	if(owner.shoes)
 		add_overlay(owner.overlays_standing[SHOES_LAYER])
@@ -420,12 +418,29 @@
 		var/image/uniform_overlay = image(owner.overlays_standing[UNIFORM_LAYER])
 		uniform_overlay.add_filter("upper_body_removal", 1, list("type" = "alpha", "icon" = icon('modular_zubbers/icons/obj/structures/lewd_portals.dmi', "mask")))
 		add_overlay(uniform_overlay)
-	var/body_layer_overlays = list()
+	var/list/body_layer_overlays = list()
 	for(var/image/body_layer_overlay in owner.overlays_standing[BODY_LAYER])
 		var/image/new_body_layer_overlay = image(body_layer_overlay)
 		new_body_layer_overlay.add_filter("upper_body_removal", 1, list("type" = "alpha", "icon" = icon('modular_zubbers/icons/obj/structures/lewd_portals.dmi', "mask")))
 		body_layer_overlays += new_body_layer_overlay
 	add_overlay(body_layer_overlays)
+
+/obj/lewd_portal_relay/proc/torso_only(limb_icon_list)
+	var/list/new_limb_icon_list = list()//There may be special cases where body overlays should not pass through portals, such as moth wings, this is used to removed them
+	for(var/image/limb_icon in limb_icon_list)
+		if(compare_organ_icon(ORGAN_SLOT_EXTERNAL_WINGS, limb_icon.icon)) //Moth wings are attached to the upper back so shouldn't be portalled, their weird sprite size also messes with rotations
+			continue
+		var/limb_icon_layer = limb_icon.layer * -1
+		if(limb_icon_layer != BODY_BEHIND_LAYER && limb_icon_layer != BODY_FRONT_LAYER || compare_organ_icon(ORGAN_SLOT_BREASTS, limb_icon.icon)) //Tails need to be portaled
+			limb_icon.add_filter("upper_body_removal", 1, list("type" = "alpha", "icon" = icon('modular_zubbers/icons/obj/structures/lewd_portals.dmi', "mask")))
+		new_limb_icon_list += limb_icon
+	return new_limb_icon_list
+
+/obj/lewd_portal_relay/proc/compare_organ_icon(organ_slot, icon_to_compare)
+	var/obj/item/organ/organ_ref = owner?.get_organ_slot(organ_slot)
+	var/datum/bodypart_overlay/mutant/overlay_ref = organ_ref?.bodypart_overlay
+	var/datum/sprite_accessory/accessory_ref = overlay_ref?.sprite_datum
+	return accessory_ref?.icon == icon_to_compare
 
 /obj/lewd_portal_relay/attack_hand_secondary(mob/living/user)
 	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING))
@@ -445,3 +460,4 @@
 
 #undef GLORYHOLE
 #undef WALLSTUCK
+#undef PORTAL_SIGNAL_LIST
