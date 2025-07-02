@@ -130,6 +130,9 @@
 	data["ref_user"] = REF(user)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
+	if(body_relay)
+		if(!can_see(user, self))
+			data["self"] = body_relay.name
 	data["block_interact"] = user_interaction_component?.interact_next >= world.time // SPLURT EDIT - INTERACTIONS - Original: interact_next >= world.time
 	if(body_relay)
 		if(!can_see(user, self))
