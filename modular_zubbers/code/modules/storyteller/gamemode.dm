@@ -251,8 +251,6 @@ SUBSYSTEM_DEF(gamemode)
 	special_role_flag,
 	pick_observers,
 	pick_roundstart_players,
-	required_time,
-	inherit_required_time = TRUE,
 	no_antags = TRUE,
 	list/restricted_roles,
 	list/restricted_species,
@@ -263,7 +261,7 @@ SUBSYSTEM_DEF(gamemode)
 	var/list/candidate_candidates = list() //lol
 	if(pick_roundstart_players)
 		for(var/mob/dead/new_player/player in GLOB.new_player_list)
-			if(player.ready == PLAYER_READY_TO_PLAY && player.mind && player.check_preferences())
+			if(player.ready == PLAYER_READY_TO_PLAY && player.mind && player.check_job_preferences())
 				candidate_candidates += player
 	else if(pick_observers)
 		for(var/mob/player as anything in GLOB.dead_mob_list)
@@ -280,7 +278,7 @@ SUBSYSTEM_DEF(gamemode)
 	for(var/mob/candidate as anything in candidate_candidates)
 		if(QDELETED(candidate) || !candidate.key || !candidate.client || !candidate.mind)
 			continue
-		if(no_antags && candidate.mind.special_role)
+		if(no_antags && LAZYLEN(candidate.mind.special_roles))
 			continue
 		if(restricted_roles && (candidate.mind.assigned_role.title in restricted_roles))
 			continue
@@ -291,17 +289,11 @@ SUBSYSTEM_DEF(gamemode)
 		if(special_role_flag)
 			if(!(candidate.client.prefs) || !(special_role_flag in candidate.client.prefs.be_special))
 				continue
-			var/time_to_check
-			if(required_time)
-				time_to_check = required_time
-			else if (inherit_required_time)
-				time_to_check = GLOB.special_roles[special_role_flag]
-
-			if(time_to_check && candidate.client.get_remaining_days(time_to_check) > 0)
+			if(candidate.client.get_days_to_play_antag(special_role_flag) > 0)
+				continue
+			if(is_banned_from(candidate.ckey, list(special_role_flag, ROLE_SYNDICATE)))
 				continue
 
-		if(special_role_flag && is_banned_from(candidate.ckey, list(special_role_flag, ROLE_SYNDICATE)))
-			continue
 		if(is_banned_from(candidate.client.ckey, BAN_ANTAGONIST))
 			continue
 		if(!candidate.client?.prefs?.read_preference(/datum/preference/toggle/be_antag))
@@ -743,26 +735,12 @@ SUBSYSTEM_DEF(gamemode)
 			stack_trace("Processing storyteller vote results failed! That's less than ideal. Using backup non-weighted result [voted_storyteller]")
 
 	set_storyteller(voted_storyteller)
-	var/secret_percentage
-	switch(SSgamemode.storyteller.display_setting)
-		if(STORYTELLER_DISPLAY_NEVER_SECRET)
-			secret_percentage = 0
-		if(STORYTELLER_DISPLAY_ALWAYS_SECRET)
-			secret_percentage = 100
-		else
-			secret_percentage = CONFIG_GET(number/storyteller_secret_percentage)
-
-	if(prob(secret_percentage))
-		statpanel_display = "Secret"
-		to_chat(world, vote_font(fieldset_block("Storyteller: Secret", "The storyteller for this round is secret! What could it be, it is a mystery...", "boxed_message purple_box")))
-	else
-		statpanel_display = storyteller.name
-		if(vote_datum)
-			var/list/vote_results = vote_datum.elimination_results
-			var/serialized_vote_results = "[vote_results.Join("\n")]"
-			var/list/vote_result_message = list("Method: Ranked Vote\n\nElimination order:\n[serialized_vote_results]")
-			to_chat(world, custom_boxed_message("purple_box", vote_font("[vote_result_message.Join("\n")]")))
-		to_chat(world, vote_font(fieldset_block("Storyteller: [storyteller.name]", "[storyteller.welcome_text]", "boxed_message purple_box")))
+	if(vote_datum)
+		var/list/vote_results = vote_datum.elimination_results
+		var/serialized_vote_results = "[vote_results.Join("\n")]"
+		var/list/vote_result_message = list("Method: Ranked Vote\n\nElimination order:\n[serialized_vote_results]")
+		to_chat(world, custom_boxed_message("purple_box", vote_font("[vote_result_message.Join("\n")]")))
+	to_chat(world, vote_font(fieldset_block("Storyteller: [storyteller.name]", "[storyteller.welcome_text]", "boxed_message purple_box")))
 
 	if(vote_datum)
 		QDEL_NULL(vote_datum)
@@ -770,7 +748,7 @@ SUBSYSTEM_DEF(gamemode)
 	// Notify discord about the round's selected storyteller
 	for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
 		send2chat(
-			new /datum/tgs_message_content("The storyteller selected for this round is [statpanel_display]!"),
+			new /datum/tgs_message_content("The storyteller selected for this round is [storyteller.name]!"),
 			channel_tag,
 		)
 
@@ -794,10 +772,10 @@ SUBSYSTEM_DEF(gamemode)
 		var/vote_storyteller = vote_components[2]
 		if(players.Find(vote_ckey))
 			log_dynamic("VALID: [vote_ckey] voted for [vote_storyteller]")
-			if(vote_datum.choices_by_ckey[vote] == 1)
-				vote_datum.choices[vote_storyteller]++
 		else
 			log_dynamic("INVALID: [vote_ckey] not eligible to vote for [vote_storyteller]")
+			if(vote_datum.choices_by_ckey[vote] == 1) //only the player's 1st choice is mapped in the other table
+				vote_datum.choices[vote_storyteller]--
 			vote_datum.choices_by_ckey -= vote
 
 	var/list/vote_winner = vote_datum.get_vote_result()
