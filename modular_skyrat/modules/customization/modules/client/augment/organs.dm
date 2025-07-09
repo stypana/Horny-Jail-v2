@@ -161,8 +161,8 @@
 
 /datum/augment_item/organ/ears/normal
 	name = "Organic ears"
-	path = /obj/item/organ/internal/ears
+	path = /obj/item/organ/ears
 
 /datum/augment_item/organ/ears/cybernetic
 	name = "Cybernetic ears"
-	path = /obj/item/organ/internal/ears/cybernetic
+	path = /obj/item/organ/ears/cybernetic
