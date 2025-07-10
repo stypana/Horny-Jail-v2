@@ -1188,7 +1188,7 @@
 	cooldowns = 0.8 SECONDS
 	vary = FALSE
 
-/datum/emote/living/cattrill
+/datum/emote/living/cattrill2
 	key = "cattrill2"
 	key_third_person = "cattrills"
 	message = "trills like a cat!"
