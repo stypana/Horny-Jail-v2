@@ -131,7 +131,7 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron,
 /area/misc/hilbertshotel)
-"tU" = (
+"ub" = (
 /obj/structure/closet,
 /obj/effect/spawner/random/entertainment/coin,
 /obj/effect/spawner/random/entertainment/coin,
@@ -667,7 +667,7 @@ El
 El
 LV
 xO
-tU
+ub
 LV
 "}
 (11,1,1) = {"
