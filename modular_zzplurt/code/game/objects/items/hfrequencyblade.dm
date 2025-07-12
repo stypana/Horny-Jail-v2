@@ -3,12 +3,12 @@
 	var/slice_hitsound = 'sound/items/weapons/zapbang.ogg'
 
 /obj/item/highfrequencyblade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
-	if(..())
-		var/owner_turf = get_turf(owner)
-		new block_effect(owner_turf, COLOR_WHITE)
-		playsound(src, block_sound, BLOCK_SOUND_VOLUME, vary = TRUE)
-		return TRUE
-	return FALSE
+	. = ..()
+	if(!.)
+		return
+	var/owner_turf = get_turf(owner)
+	new block_effect(owner_turf, COLOR_WHITE)
+	playsound(src, block_sound, BLOCK_SOUND_VOLUME, vary = TRUE)
 
 /obj/item/highfrequencyblade/slash(atom/target, mob/living/user, list/modifiers) // The sound playing code is embedded deep in this proc, so I have to override it.
 	animate_attack(user, target, ATTACK_ANIMATION_SLASH)
