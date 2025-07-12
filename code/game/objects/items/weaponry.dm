@@ -1317,10 +1317,12 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	previous_target = WEAKREF(target)
 	previous_x = x_slashed
 	previous_y = y_slashed
-	//SPLURT EDIT ADDITION BEGIN - HITSOUND MODULARITY
+	//SPLURT EDIT CHANGE BEGIN - HITSOUND MODULARITY
+	//playsound(src, 'sound/items/weapons/bladeslice.ogg', 100, vary = TRUE) - SPLURT EDIT - ORIGINAL
+	//playsound(src, 'sound/items/weapons/zapbang.ogg', 50, vary = TRUE) - SPLURT EDIT - ORIGINAL
 	playsound(src, hitsound, 100, vary = TRUE)
 	playsound(src, slice_hitsound, 50, vary = TRUE)
-	//SPLURT EDIT ADDITION END
+	//SPLURT EDIT CHANGE END
 	if(isliving(target))
 		var/mob/living/living_target = target
 		living_target.apply_damage(force*damage_mod, BRUTE, sharpness = SHARP_EDGED, wound_bonus = wound_bonus, exposed_wound_bonus = exposed_wound_bonus, def_zone = user.zone_selected)
