@@ -8,7 +8,6 @@
 //OPFOR-only tags
 #define TAG_OPFOR_ONLY "OPFOR-only"
 
-
 // Storyteller types
 #undef STORYTELLER_TYPE_CALM
 #define STORYTELLER_TYPE_CALM (1<<0)
@@ -21,4 +20,3 @@
 #define STORYTELLER_TYPE_OPFOR_ONLY (1<<3)
 
 #define STORYTELLER_TYPE_ANTAGS (1<<4)
-
