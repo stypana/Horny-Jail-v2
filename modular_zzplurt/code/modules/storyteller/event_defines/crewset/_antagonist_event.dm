@@ -1,4 +1,4 @@
 /datum/round_event_control/antagonist/New()
 	. = ..()
-	if(!(tags & TAG_OPFOR_ONLY))
-		tags |= TAG_OPFOR_ONLY
+	if(!(TAG_OPFOR_ONLY in tags))
+		LAZYADD(tags, TAG_OPFOR_ONLY)

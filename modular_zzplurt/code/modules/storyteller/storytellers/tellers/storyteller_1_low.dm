@@ -23,6 +23,8 @@
 	desc = /datum/storyteller/low::desc + " (antags are OPFOR-only)"
 	welcome_text = /datum/storyteller/low::welcome_text + span_bold(" (Open an OPFOR application if you're interested in becoming an antag for this round)")
 
+	track_data = /datum/storyteller_data/tracks/chill/opfor
+
 	guarantees_roundstart_crewset = FALSE
 
 	tag_multipliers = list(
@@ -35,3 +37,6 @@
 		TAG_OPFOR_ONLY = 0
 	)
 	storyteller_type = STORYTELLER_TYPE_CALM | STORYTELLER_TYPE_OPFOR_ONLY
+
+/datum/storyteller_data/tracks/chill/opfor
+	threshold_crewset = INFINITY
