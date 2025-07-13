@@ -16,7 +16,7 @@
 		TAG_HIGH = 0
 	)
 	antag_divisor = 32
-	storyteller_type = STORYTELLER_TYPE_CALM
+	storyteller_type = STORYTELLER_TYPE_CALM | STORYTELLER_TYPE_ANTAGS
 
 /datum/storyteller/low/opfor
 	name = /datum/storyteller/low::name + " (OPFOR)"
@@ -34,3 +34,4 @@
 		TAG_HIGH = 0,
 		TAG_OPFOR_ONLY = 0
 	)
+	storyteller_type = STORYTELLER_TYPE_CALM | STORYTELLER_TYPE_OPFOR_ONLY

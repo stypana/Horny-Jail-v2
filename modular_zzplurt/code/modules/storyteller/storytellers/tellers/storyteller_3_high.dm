@@ -16,7 +16,7 @@
 	)
 
 	antag_divisor = 5
-	storyteller_type = STORYTELLER_TYPE_INTENSE
+	storyteller_type = STORYTELLER_TYPE_INTENSE | STORYTELLER_TYPE_ANTAGS
 
 /datum/storyteller/high/opfor
 	name = /datum/storyteller/high::name + " (OPFOR)"
@@ -24,6 +24,8 @@
 	welcome_text = /datum/storyteller/high::welcome_text + span_bold(" (Open an OPFOR application if you're interested in becoming an antag for this round)")
 
 	guarantees_roundstart_crewset = FALSE
+
+	storyteller_type = STORYTELLER_TYPE_INTENSE | STORYTELLER_TYPE_OPFOR_ONLY
 
 	tag_multipliers = list(
 		TAG_COMBAT = 1.5,

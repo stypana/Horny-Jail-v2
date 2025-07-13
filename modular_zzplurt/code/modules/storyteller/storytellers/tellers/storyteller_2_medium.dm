@@ -10,7 +10,7 @@
 		TAG_MEDIUM = 1,
 		TAG_HIGH = 0
 		)
-	storyteller_type = STORYTELLER_TYPE_ALWAYS_AVAILABLE
+	storyteller_type = STORYTELLER_TYPE_INTENSE | STORYTELLER_TYPE_ANTAGS
 
 /datum/storyteller/medium/opfor
 	name = /datum/storyteller/medium::name + " (OPFOR)"
@@ -25,3 +25,4 @@
 		TAG_HIGH = 0,
 		TAG_OPFOR_ONLY = 0
 	)
+	storyteller_type = STORYTELLER_TYPE_INTENSE | STORYTELLER_TYPE_OPFOR_ONLY
