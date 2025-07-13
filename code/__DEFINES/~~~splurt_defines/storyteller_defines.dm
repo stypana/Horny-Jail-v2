@@ -5,4 +5,7 @@
 //High Chaos
 #define TAG_HIGH "High Chaos"
 
+//OPFOR-only tags
+#define TAG_OPFOR_ONLY "OPFOR-only"
+
 #define STORYTELLER_TYPE_EXTENDED 3 // Extended storyteller - attempting to balance the amount of extended vs chaos
