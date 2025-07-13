@@ -9867,6 +9867,7 @@
 #include "modular_zzplurt\code\controllers\subsystem\maturity.dm"
 #include "modular_zzplurt\code\controllers\subsystem\title_screen.dm"
 #include "modular_zzplurt\code\controllers\subsystem\vote.dm"
+#include "modular_zzplurt\code\controllers\subsystem\persistence\_persistence.dm"
 #include "modular_zzplurt\code\controllers\subsystem\processing\station.dm"
 #include "modular_zzplurt\code\datums\dna.dm"
 #include "modular_zzplurt\code\datums\emotes.dm"
