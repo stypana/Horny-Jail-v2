@@ -1,5 +1,10 @@
 // THIS IS A SKYRAT UI FILE
-import { CheckboxInput, FeatureToggle } from '../../base';
+import {
+  CheckboxInput,
+  type FeatureChoiced,
+  type FeatureToggle,
+} from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
 export const master_erp_pref: FeatureToggle = {
   name: 'Show/Hide Erotic Roleplay Preferences',
