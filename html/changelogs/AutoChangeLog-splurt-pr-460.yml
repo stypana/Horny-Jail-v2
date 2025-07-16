@@ -1,0 +1,4 @@
+author: "SapphoQueer"
+delete-after: True
+changes:
+  - bugfix: "Proteans no longer get thirsty."
