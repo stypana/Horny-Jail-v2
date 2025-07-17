@@ -19,7 +19,7 @@
 	/// Used to prevent nightmare scenarios.
 	var/refractory_period
 
-/mob/living/proc/climax(manual = TRUE, mob/living/partner = null, datum/interaction/climax_interaction = null, interaction_position = null, obj/item/reagent_containers/cup/container = null) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
+/mob/living/proc/climax(manual = TRUE, mob/living/partner = null, datum/interaction/climax_interaction = null, interaction_position = null) // SPLURT EDIT - INTERACTIONS - All mobs should be interactable
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
 
@@ -127,15 +127,15 @@
 					span_userlove("You shoot string after string of hot cum, hitting the floor!"))
 				testicles?.reagents.remove_all(testicles.cumshot_size)
 
-			else if(penis_climax_choice == CLIMAX_OPEN_CONTAINER || (!partner && container)) // SPLURT EDIT - Interactions - Added target_open_container to the condition
-				target_choice = climax_interaction && !manual && container ? container.name : tgui_input_list(src, "Choose a container to cum into.", "Choose target!", interactable_inrange_open_containers) //SPLURT EDIT CHANGE - Interactions
+			else if(penis_climax_choice == CLIMAX_OPEN_CONTAINER || ((!climax_interaction.cum_target[interaction_position] || !partner) && climax_interaction.fluid_transfer_objects.Find(src))) // SPLURT EDIT - Interactions - Added support for fluid transfer objects
+				target_choice = climax_interaction?.fluid_transfer_objects.Find(src) ? climax_interaction.fluid_transfer_objects[src].name : tgui_input_list(src, "Choose a container to cum into.", "Choose target!", interactable_inrange_open_containers) //SPLURT EDIT CHANGE - Interactions
 				if(!target_choice)
 					create_cum_decal = TRUE
 					visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
 						span_userlove("You shoot string after string of hot cum, hitting the floor!"))
 					testicles?.reagents.remove_all(testicles.cumshot_size)
 				else
-					var/obj/item/reagent_containers/cup/target_open_container = interactable_inrange_open_containers[target_choice]
+					var/obj/item/reagent_containers/cup/target_open_container = interactable_inrange_open_containers[target_choice] || climax_interaction.fluid_transfer_objects[src] // SPLURT EDIT - Interactions - Added support for fluid transfer objects
 					if(target_open_container.is_refillable() && target_open_container.is_drainable())
 						// here's where we actually do the cumming(?)
 						var/cum_volume = testicles.cumshot_size
@@ -309,7 +309,7 @@
 		if(!is_bottomless() && vagina?.visibility_preference != GENITAL_ALWAYS_SHOW)
 			if(vagina?.reagents.total_volume >= MIN_VAGINA_WETNESS_THRESHOLD)
 				visible_message(
-					span_userlove("[src] cums in [self_their] underwear from [self_their] vagina!")
+					span_userlove("[src] cums in [self_their] underwear from [self_their] vagina!"),
 					span_userlove("You cum in your underwear from your vagina! Eww."))
 				self_orgasm = TRUE
 			else
@@ -347,15 +347,15 @@
 				create_cum_decal = TRUE
 				visible_message(span_userlove("[src] twitches and moans as [p_they()] squirt on the floor!"), \
 					span_userlove("You twitch and moan as you squirt on the floor!"))
-			else if(vagina_climax_choice == CLIMAX_OPEN_CONTAINER || (!partner && container)) // SPLURT EDIT - Interactions - Added container to the condition
-				target_choice = climax_interaction && !manual && container ? container.name : tgui_input_list(src, "Choose a container to squirt into.", "Choose target!", interactable_inrange_open_containers)
+			else if(vagina_climax_choice == CLIMAX_OPEN_CONTAINER || ((!climax_interaction.cum_target[interaction_position] || !partner) && climax_interaction.fluid_transfer_objects.Find(src))) // SPLURT EDIT - Interactions - Added support for fluid transfer objects
+				target_choice = climax_interaction?.fluid_transfer_objects.Find(src) ? climax_interaction.fluid_transfer_objects[src].name : tgui_input_list(src, "Choose a container to squirt into.", "Choose target!", interactable_inrange_open_containers) // SPLURT EDIT - Interactions - Added support for fluid transfer objects
 				if(!target_choice)
 					create_cum_decal = TRUE
 					visible_message(span_userlove("[src] squirts onto the floor!"), \
 						span_userlove("You squirt onto the floor!"))
 					vagina.reagents.remove_all(vagina.reagents.total_volume)
 				else
-					var/obj/item/reagent_containers/cup/target_open_container = interactable_inrange_open_containers[target_choice]
+					var/obj/item/reagent_containers/cup/target_open_container = interactable_inrange_open_containers[target_choice] || climax_interaction.fluid_transfer_objects[src] // SPLURT EDIT - Interactions - Added support for fluid transfer objects
 					if(target_open_container.is_refillable() && target_open_container.is_drainable())
 						var/squirt_volume = vagina.reagents.total_volume
 						var/total_volume_w_squirt = squirt_volume + target_open_container.reagents.total_volume
