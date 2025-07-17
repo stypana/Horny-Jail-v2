@@ -257,7 +257,6 @@
 								target_mob.apply_status_effect(/datum/status_effect/pregnancy, target_mob, src)
 						//SPLURT EDIT ADDITION END
 
-			var/obj/item/organ/genital/testicles/testicles = get_organ_slot(ORGAN_SLOT_TESTICLES)
 			//SPLURT EDIT CHANGE BEGIN - Interactions
 			if(!(climax_interaction?.interaction_modifier_flags & INTERACTION_OVERRIDE_FLUID_TRANSFER) && ishuman(src))
 				if(create_cum_decal)
