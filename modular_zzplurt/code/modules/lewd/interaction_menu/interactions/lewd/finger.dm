@@ -35,14 +35,14 @@
 			liquid_container = cached_item
 
 	if(liquid_container)
-		LAZYADD(fluid_transfer_objects, list(target = liquid_container))
+		LAZYADD(fluid_transfer_objects, list("[target.name]" = liquid_container))
 		message = list(
 			"fingers %TARGET% over \the [liquid_container]",
 			"fingers %TARGET%'s pussy above \the [liquid_container]",
 			"fingers %TARGET% hard while holding \the [liquid_container]"
 		)
 		. = ..()
-		LAZYREMOVE(fluid_transfer_objects, target)
+		LAZYREMOVE(fluid_transfer_objects, target.name)
 		message = original_messages
 	else
 		. = ..()

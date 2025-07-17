@@ -61,10 +61,10 @@
 	if(liquid_container)
 		var/list/original_messages = message.Copy()
 		var/chosen_message = pick(message)
-		LAZYADD(fluid_transfer_objects, list(target = liquid_container))
+		LAZYADD(fluid_transfer_objects, list("[target.name]" = liquid_container))
 		message = list("[chosen_message] over \the [liquid_container]")
 		. = ..()
-		LAZYREMOVE(fluid_transfer_objects, target)
+		LAZYREMOVE(fluid_transfer_objects, target.name)
 		message = original_messages
 	else
 		. = ..()
