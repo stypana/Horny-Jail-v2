@@ -9,6 +9,7 @@ Taurus Bodies
 /datum/sprite_accessory/taur/splurt/chemlight
 	name = "Chemlight (Splurt)"
 	icon_state = "chemlight"
+	taur_mode = STYLE_TAUR_PAW
 
 // /datum/sprite_accessory/taur/splurt/altchemlight // Not enough sprites. Fix that, if you are a sprite artist.
 // 	name = "Alt Chemlight (Splurt)"
@@ -17,6 +18,7 @@ Taurus Bodies
 /datum/sprite_accessory/taur/splurt/chemnaga
 	name = "Chemnaga (Splurt)"
 	icon_state = "chemnaga"
+	taur_mode = STYLE_TAUR_SNAKE
 
 /datum/sprite_accessory/taur/splurt/leopardseal
 	name = "Leopard Seal (Splurt)"
@@ -25,6 +27,7 @@ Taurus Bodies
 /datum/sprite_accessory/taur/splurt/noodledragon
 	name = "Noodle Dragon (Splurt)"
 	icon_state = "noodledragon"
+	taur_mode = STYLE_TAUR_PAW
 
 /datum/sprite_accessory/taur/splurt/spider
 	name = "Spider (Splurt)"
