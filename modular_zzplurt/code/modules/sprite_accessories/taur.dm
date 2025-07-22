@@ -19,6 +19,7 @@ Taurus Bodies
 	name = "Chemnaga (Splurt)"
 	icon_state = "chemnaga"
 	taur_mode = STYLE_TAUR_SNAKE
+	organ_type = /obj/item/organ/taur_body/serpentine
 
 /datum/sprite_accessory/taur/splurt/leopardseal
 	name = "Leopard Seal (Splurt)"
@@ -32,6 +33,7 @@ Taurus Bodies
 /datum/sprite_accessory/taur/splurt/spider
 	name = "Spider (Splurt)"
 	icon_state = "spider"
+	organ_type = /obj/item/organ/taur_body/spider
 
 /datum/sprite_accessory/taur/splurt/sloog
 	name = "Sloog (Splurt)"
