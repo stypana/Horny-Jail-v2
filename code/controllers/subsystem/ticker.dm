@@ -256,7 +256,7 @@ SUBSYSTEM_DEF(ticker)
 	//BUBBER EDIT BEGIN - STORYTELLER
        if(istype(SSvote.current_vote, /datum/vote/storyteller))
                // Force the storyteller vote to end before setting up
-               SSVote.end_vote()
+               SSvote.end_vote()
 
        SSgamemode.init_storyteller()
        can_continue = SSgamemode.pre_setup()
