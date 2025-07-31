@@ -15,5 +15,5 @@
 			CRASH("Invalid tier found in toml donator file: [tier]")
 
 		for(var/ckey in donators["donators"][tier])
-			GLOB.donator_list[ckey] = tier_num
+			GLOB.supporter_list[ckey] = tier_num
 

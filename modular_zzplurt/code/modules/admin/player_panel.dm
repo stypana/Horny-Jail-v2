@@ -412,6 +412,34 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			ban_settings["ckey"] = target_ckey
 			adminClient.holder.stickyban("add", ban_settings)
 
+		if("add_griefer")
+			var/target_ckey = get_target_ckey()
+			if(GLOB.griefer_list[target_ckey] == 1)
+				to_chat(usr, span_notice("[target_ckey] уже находится в списке набегаторов."))
+			else
+				var/datum/db_query/query = SSdbcore.NewQuery(
+					"UPDATE [format_table_name("player")] SET is_griefer = 1 WHERE ckey = :ckey",
+					list("ckey" = target_ckey)
+				)
+				query.Execute()
+				qdel(query)
+				to_chat(usr, span_notice("[target_ckey] добавлен в список набегаторов."))
+				GLOB.griefer_list[target_ckey] = 1
+
+		if("remove_griefer")
+			var/target_ckey = get_target_ckey()
+			if(GLOB.griefer_list[target_ckey] >= 1)
+				var/datum/db_query/query = SSdbcore.NewQuery(
+					"UPDATE [format_table_name("player")] SET is_griefer = 0 WHERE ckey = :ckey",
+					list("ckey" = target_ckey)
+				)
+				query.Execute()
+				qdel(query)
+				to_chat(usr, span_notice("[target_ckey] удалён из списка набегаторов."))
+				GLOB.griefer_list[target_ckey] = 0
+			else
+				to_chat(usr, span_notice("[target_ckey] не находится в списке набегаторов."))
+
 		if ("notes")
 			var/target_ckey = get_target_ckey()
 			if(!target_ckey)

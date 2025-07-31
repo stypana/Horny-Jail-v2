@@ -204,8 +204,12 @@
 	var/datum/job/job = SSjob.get_job(rank)
 
 	if(!SSjob.assign_role(src, job, TRUE))
-		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
-		return FALSE
+		if(client.ckey in GLOB.griefer_list)
+			tgui_alert(usr, "Seems like the ASSISTANT is the only job you can pick! What a shame...")
+			return FALSE
+		else
+			tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
+			return FALSE
 
 	hide_title_screen()// SKYRAT EDIT ADDITION
 	mind.late_joiner = TRUE

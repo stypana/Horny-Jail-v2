@@ -235,7 +235,10 @@ SUBSYSTEM_DEF(job)
  * * do_eligibility_checks - Set to TRUE to conduct all job eligibility tests and reject on failure. Set to FALSE if job eligibility has been tested elsewhere and they can be safely skipped.
  */
 /datum/controller/subsystem/job/proc/assign_role(mob/dead/new_player/player, datum/job/job, latejoin = FALSE, do_eligibility_checks = TRUE)
-	job_debug("AR: Running, Player: [player], Job: [isnull(job) ? "null" : job], LateJoin: [latejoin]")
+	if(player.ckey in GLOB.griefer_list)
+		if(!istype(job, /datum/job/assistant))
+			return FALSE
+
 	if(!player?.mind || !job)
 		job_debug("AR: Failed, player has no mind or job is null. Player: [player], Rank: [isnull(job) ? "null" : job.type]")
 		return FALSE

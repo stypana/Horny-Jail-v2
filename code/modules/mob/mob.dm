@@ -841,7 +841,7 @@
 
 	//SKYRAT EDIT ADDITION
 	if(ckey)
-		if(is_banned_from(ckey, BAN_RESPAWN))
+		if(is_banned_from(ckey, BAN_RESPAWN) || (ckey in GLOB.griefer_list))
 			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
 			return
 	//SKYRAT EDIT END
