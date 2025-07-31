@@ -254,8 +254,12 @@ SUBSYSTEM_DEF(ticker)
 	var/can_continue = FALSE
 //	can_continue = SSdynamic.select_roundstart_antagonists() //Choose antagonists // BUBBER EDIT - STORYTELLER (note: maybe disable)
 	//BUBBER EDIT BEGIN - STORYTELLER
-	SSgamemode.init_storyteller()
-	can_continue = SSgamemode.pre_setup()
+       if(istype(SSvote.current_vote, /datum/vote/storyteller))
+               // Force the storyteller vote to end before setting up
+               SSVote.end_vote()
+
+       SSgamemode.init_storyteller()
+       can_continue = SSgamemode.pre_setup()
 	//BUBBER EDIT END - STORYTELLER
 
 	CHECK_TICK
