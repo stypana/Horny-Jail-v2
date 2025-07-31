@@ -18,7 +18,8 @@
 
 #undef INGAME_TIME_NEEDED
 /datum/vote/transfer_vote
-	allow_ghosts = FALSE
+    /// Allow ghosts so everyone can vote on the transfer shuttle
+    allow_ghosts = TRUE
 	// Has this vote been run before?
 	var/has_ran = FALSE
 	winner_method = VOTE_WINNER_METHOD_SIMPLE
