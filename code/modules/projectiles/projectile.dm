@@ -67,7 +67,7 @@
 	/// Projectile's movement vector - this caches sine/cosine of our angle to cut down on trig calculations
 	var/datum/vector/movement_vector
 	/// We already impacted these things, do not impact them again. Used to make sure we can pierce things we want to pierce. Lazylist, typecache style (object = TRUE) for performance.
-       var/list/impacted
+	var/list/impacted
 	/// If TRUE, we can hit our firer.
 	var/ignore_source_check = FALSE
 	/// We are flagged PHASING temporarily to not stop moving when we Bump something but want to keep going anyways.
