@@ -140,7 +140,7 @@
 		.["hotel_map_list"] += list(list(
 			"name" = room_template.name,
 			"category" = room_template.category || "Misc",
-			"donator_tier" = istype(room_template) ? room_template.donator_tier : DONATOR_TIER_NONE,
+			"SUPPORTER_TIER" = istype(room_template) ? room_template.SUPPORTER_TIER : SUPPORTER_TIER_NONE,
 			"ckeywhitelist" = istype(room_template) ? room_template.ckeywhitelist : list()
 		))
 
@@ -151,12 +151,12 @@
 		SShilbertshotel.user_data[user.ckey] = list(
 			"room_number" = 1,
 			"template" = SShilbertshotel.default_template,
-			"donator_tier" = GLOB.donator_list[user.ckey] || DONATOR_TIER_NONE
+			"SUPPORTER_TIER" = GLOB.supporter_list[user.ckey] || SUPPORTER_TIER_NONE
 		)
 
 	data["current_room"] = SShilbertshotel.user_data[user.ckey]["room_number"]
 	data["selected_template"] = SShilbertshotel.user_data[user.ckey]["template"]
-	data["user_donator_tier"] = SShilbertshotel.user_data[user.ckey]["donator_tier"]
+	data["user_SUPPORTER_TIER"] = SShilbertshotel.user_data[user.ckey]["SUPPORTER_TIER"]
 	data["user_ckey"] = user.ckey
 
 	data["active_rooms"] = list()

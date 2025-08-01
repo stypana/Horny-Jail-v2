@@ -300,7 +300,7 @@ SUBSYSTEM_DEF(polling)
 			return FALSE
 
 	//SKYRAT EDIT ADDITION BEGIN
-	if(is_banned_from(potential_candidate.ckey, BAN_GHOST_TAKEOVER) || is_banned_from(potential_candidate.ckey, BAN_ANTAGONIST))
+	if(is_banned_from(potential_candidate.ckey, BAN_GHOST_TAKEOVER) || is_banned_from(potential_candidate.ckey, BAN_ANTAGONIST) || (potential_candidate.ckey in GLOB.griefer_list))
 		to_chat(potential_candidate, "There was a ghost prompt for: [role], unfortunately you are banned from ghost takeovers.")
 		return FALSE
 	//SKYRAT EDIT END

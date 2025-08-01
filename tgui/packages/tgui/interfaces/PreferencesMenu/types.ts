@@ -237,7 +237,7 @@ export type PreferencesMenuData = {
   ckey: string;
   // SKYRAT EDIT END
   // SPLURT EDIT START
-  donator_tier: number;
+  SUPPORTER_TIER: number;
   // SPLURT EDIT END
 
   keybindings: Record<string, string[]>;

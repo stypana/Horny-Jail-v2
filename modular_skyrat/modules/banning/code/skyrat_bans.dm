@@ -1,13 +1,13 @@
 /mob/living/Login()
 	. = ..()
 	if(ckey)
-		if(is_banned_from(ckey, BAN_PACIFICATION))
+		if(is_banned_from(ckey, BAN_PACIFICATION) || (ckey in GLOB.griefer_list))
 			ADD_TRAIT(src, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
 
 /mob/dead/observer/Login()
 	. = ..()
 	if(ckey)
-		if(is_banned_from(ckey, BAN_DONOTREVIVE))
+		if(is_banned_from(ckey, BAN_DONOTREVIVE) || (ckey in GLOB.griefer_list))
 			to_chat(src, span_notice("As you are revival banned, you cannot reenter your body."))
 			can_reenter_corpse = FALSE
 

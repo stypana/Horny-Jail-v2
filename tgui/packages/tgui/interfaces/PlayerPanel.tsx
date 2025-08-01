@@ -902,6 +902,51 @@ const PunishmentActions = () => {
           >
             Sticky Ban
           </Button.Confirm>
+          <Button.Confirm
+            width="100%"
+            height="100%"
+            icon="heart"
+            color="red"
+            disabled={!hasAnyKey}
+            onClick={() => act('add_griefer')}
+          >
+            Add to griefers
+          </Button.Confirm>
+          <Button.Confirm
+            width="100%"
+            height="100%"
+            icon="heart"
+            color="red"
+            disabled={!hasAnyKey}
+            onClick={() => act('remove_griefer')}
+          >
+            Remove from griefers
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section title="Griefing">
+        <Flex>
+          <Button.Confirm
+            width="100%"
+            height="100%"
+            icon="heart"
+            color="red"
+            disabled={!hasAnyKey}
+            onClick={() => act('add_griefer')}
+          >
+            Add to griefers DB
+          </Button.Confirm>
+          <Button.Confirm
+            width="100%"
+            height="100%"
+            icon="heart"
+            color="red"
+            disabled={!hasAnyKey}
+            onClick={() => act('remove_griefer')}
+          >
+            Remove from griefers DB
+          </Button.Confirm>
         </Flex>
       </Section>
 

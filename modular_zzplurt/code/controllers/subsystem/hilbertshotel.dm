@@ -259,8 +259,8 @@ SUBSYSTEM_DEF(hilbertshotel)
 		var/datum/map_template/ghost_cafe_rooms/room_template = hotel_map_list[template]
 		if(!istype(room_template)) // Default hilbert's hotel room
 			load_from = room_template
-		else if(GLOB.donator_list[user.ckey] < room_template.donator_tier)
-			to_chat(user, span_warning("Tier [room_template.donator_tier] donator access required to use [room_template.name]."))
+		else if(GLOB.supporter_list[user.ckey] < room_template.SUPPORTER_TIER)
+			to_chat(user, span_warning("Tier [room_template.SUPPORTER_TIER] donator access required to use [room_template.name]."))
 			return
 		else if(LAZYLEN(room_template.ckeywhitelist) && !(room_template.ckeywhitelist.Find(user.ckey)))
 			to_chat(user, span_warning("You are not whitelisted to use [room_template.name]."))
