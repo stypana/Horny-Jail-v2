@@ -17,13 +17,14 @@
 	var/ready_only = TRUE
 
 /datum/vote/storyteller/New()
-	. = ..()
-	default_choices = list()
-	default_choices = SSgamemode.storyteller_vote_choices()
+       . = ..()
+       default_choices = list()
+       default_choices = SSgamemode.storyteller_vote_choices(FALSE)
 
 /datum/vote/storyteller/initiate_vote(initiator, duration)
-	. = ..()
-	to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[span_vote_notice("Only players who are ready and joining the game round start will be calculated in voting results.")]", "boxed_message purple_box")))
+       . = ..()
+       SSgamemode.storyteller_vote_choices(TRUE)
+       to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[span_vote_notice("Only players who are ready and joining the game round start will be calculated in voting results.")]", "boxed_message purple_box")))
 
 /datum/vote/storyteller/return_desc(vote_name)
 	return SSgamemode.storyteller_desc(vote_name)
