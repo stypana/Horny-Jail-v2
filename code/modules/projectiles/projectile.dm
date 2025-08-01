@@ -1100,10 +1100,9 @@
 /obj/projectile/proc/process_homing()
 	if(!homing_target)
 		return
-	var/datum/point/new_point = RETURN_PRECISE_POINT(homing_target)
-	new_point.pixel_x += homing_offset_x
-	new_point.pixel_y += homing_offset_y
-	var/new_angle = closer_angle_difference(angle, angle_between_points(RETURN_PRECISE_POINT(src), new_point))
+	var/dx = ((homing_target.x - x) * ICON_SIZE_X) + (homing_target.pixel_x - pixel_x) + homing_offset_x
+	var/dy = ((homing_target.y - y) * ICON_SIZE_Y) + (homing_target.pixel_y - pixel_y) + homing_offset_y
+	var/new_angle = closer_angle_difference(angle, ATAN2(dy, dx))
 	set_angle(angle + clamp(new_angle, -homing_turn_speed, homing_turn_speed))
 
 /// Attempts to force the projectile to move until the subsystem runs out of processing time, the projectile impacts something or gets frozen by timestop
