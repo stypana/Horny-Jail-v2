@@ -188,19 +188,21 @@ function JobRow(props: JobRowProps) {
   const { data, act } = useBackend<PreferencesMenuData>(); // SKYRAT EDIT CHANGE - Adds act param
   const { className, job, name } = props;
 
+  // ⚠ страховка: после миграции job может быть null/undefined
+  if (!job) {
+    return null;
+  }
+
   const isOverflow = data.overflow_role === name;
-  const priority = data.job_preferences[name];
+  const priority = data.job_preferences?.[name];
 
   const createSetPriority = createCreateSetPriorityFromName(name);
 
   const experienceNeeded = data.job_required_experience?.[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
-  // SKYRAT EDIT ADDITION
-  const alt_title_selected = data.job_alt_titles[name]
-    ? data.job_alt_titles[name]
-    : name;
-  // SKYRAT EDIT END
+  // Текущий альтернативный титул (может отсутствовать после миграции)
+  const alt_title_selected = data.job_alt_titles?.[name] ?? null;
 
   let rightSide: ReactNode;
 
@@ -254,6 +256,17 @@ function JobRow(props: JobRowProps) {
     );
   }
 
+  const rawOptions = Array.isArray(job.alt_titles) ? job.alt_titles : [];
+  const options = rawOptions
+    .filter(Boolean)
+    .map((opt: any) =>
+      typeof opt === 'string' ? { value: opt, displayText: opt } : opt,
+    );
+
+  // выбранное значение может быть строкой из префов; найдём объект-опцию
+  const selectedOption =
+    options.find((o: any) => o?.value === alt_title_selected) ?? null;
+
   return (
     <Stack.Item className={className} height="100%" mt={0}>
       <Stack fill align="center">
@@ -265,22 +278,39 @@ function JobRow(props: JobRowProps) {
               paddingLeft: '0.3em',
             }}
           >
-            {
-              // SKYRAT EDIT CHANGE START - ORIGINAL: {name}
-              !job.alt_titles ? (
-                name
-              ) : (
-                <Dropdown
-                  width="100%"
-                  options={job.alt_titles}
-                  selected={alt_title_selected}
-                  onSelected={(value) =>
-                    act('set_job_title', { job: name, new_title: value })
-                  }
-                />
-              )
-              // SKYRAT EDIT CHANGE END
-            }
+            {/*
+              Безопасная отрисовка названия/альт-титулов:
+              - фильтруем null/undefined;
+              - приводим строки к {value, displayText};
+              - не передаём selected, если его нет в options.
+            */}
+            {Array.isArray(job.alt_titles) && job.alt_titles.length > 0
+              ? (() => {
+                  const options = job.alt_titles
+                    .filter(Boolean)
+                    .map((opt: any) =>
+                      typeof opt === 'string'
+                        ? { value: opt, displayText: opt }
+                        : opt,
+                    );
+                  const selectedInOptions = options.some(
+                    (o: any) => o?.value === alt_title_selected,
+                  );
+                  return (
+                    <Dropdown
+                      width="100%"
+                      options={options}
+                      selected={selectedOption} // ⬅ объект или null — как требует тип
+                      onSelected={(opt: any) =>
+                        act('set_job_title', {
+                          job: name,
+                          new_title: opt?.value ?? opt ?? '',
+                        })
+                      }
+                    />
+                  );
+                })()
+              : name}
           </Stack.Item>
         </Tooltip>
 
@@ -315,7 +345,7 @@ function Department(props: DepartmentProps) {
   }
 
   const jobsForDepartment = sortJobs(
-    Object.entries(jobs).filter(([_, job]) => job.department === name),
+    Object.entries(jobs).filter(([_, job]) => job && job.department === name), // ⚠ фильтруем null
     department.head,
   );
 
