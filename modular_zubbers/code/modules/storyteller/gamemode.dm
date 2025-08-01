@@ -681,7 +681,7 @@ SUBSYSTEM_DEF(gamemode)
 	min_pop_thresholds[EVENT_TRACK_CREWSET] = CONFIG_GET(number/crewset_min_pop)
 	min_pop_thresholds[EVENT_TRACK_GHOSTSET] = CONFIG_GET(number/ghostset_min_pop)
 
-/datum/controller/subsystem/gamemode/proc/storyteller_vote_choices()
+/datum/controller/subsystem/gamemode/proc/storyteller_vote_choices(announce = FALSE)
 	var/client_amount = GLOB.clients.len
 	var/list/choices = list()
 	var/list/vote_message = list()
@@ -699,20 +699,21 @@ SUBSYSTEM_DEF(gamemode)
 		vote_message += "<b>[storyboy.name]</b>"
 		vote_message += "[storyboy.desc]"
 		vote_message += ""
-	var/finalized_message = "[vote_message.Join("\n")]"
-	to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[finalized_message]", "boxed_message purple_box")))
+	if(announce)
+		var/finalized_message = "[vote_message.Join("\n")]"
+		to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[finalized_message]", "boxed_message purple_box")))
 	return choices
 
 /datum/controller/subsystem/gamemode/proc/storyteller_vote_result(winner_name)
-	/// Find the winner
+       /// Find the winner
 	voted_storyteller = winner_name
-	if(storyteller)
-		return
 	for(var/storyteller_type in storytellers)
 		var/datum/storyteller/storyboy = storytellers[storyteller_type]
 		if(storyboy.name == winner_name)
 			voted_storyteller = storyteller_type
 			break
+	if(storyteller)
+		return
 
 /datum/controller/subsystem/gamemode/proc/init_storyteller()
 	if(storyteller) // If this is true, then an admin bussed one, don't overwrite it
@@ -723,6 +724,13 @@ SUBSYSTEM_DEF(gamemode)
 		storyteller_pick = pick(storytellers)
 		log_dynamic("Roundstart picked storyteller [storyteller_pick.name] randomly due to no vote result.")
 		voted_storyteller = storyteller_pick
+
+	if(istext(voted_storyteller))
+		for(var/storyteller_type in storytellers)
+			var/datum/storyteller/storyboy = storytellers[storyteller_type]
+			if(storyboy.name == voted_storyteller)
+				voted_storyteller = storyteller_type
+				break
 
 	if(ready_only_vote)
 		var/processed_storyteller = process_storyteller_vote()
