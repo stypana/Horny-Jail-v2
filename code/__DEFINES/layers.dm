@@ -313,13 +313,8 @@
 
 ///Layer for screentips
 #define SCREENTIP_LAYER 4
-
-/// Layer for tutorial instructions
-#define TUTORIAL_INSTRUCTIONS_LAYER 5
-
 /// Layer for light overlays
 #define LIGHT_DEBUG_LAYER 6
-
 /// Layer for pathfinding arrows
 #define PATH_ARROW_DEBUG_LAYER 7
 /// Layer for pathfinding overlays
