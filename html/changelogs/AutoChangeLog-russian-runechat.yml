@@ -1,0 +1,4 @@
+author: "OpenAI"
+delete-after: True
+changes:
+  - qol: "Runechat now shows Cyrillic text larger and clearer"
