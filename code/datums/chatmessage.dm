@@ -191,24 +191,24 @@
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
 
 	// Approximate text height
-       var/complete_text = "<span style='color: [tgt_color]'><span class='center [extra_classes.Join(" ")]'>[owner.apply_message_emphasis(text)]</span></span>"
+	var/complete_text = "<span style='color: [tgt_color]'><span class='center [extra_classes.Join(" ")]'>[owner.apply_message_emphasis(text)]</span></span>"
 
-       var/uses_unicode = FALSE
-       for(var/i in 1 to length_char(text))
-               if(text2ascii(text, i) > 127)
-                       uses_unicode = TRUE
-                       break
+	var/uses_unicode = FALSE
+	for(var/i in 1 to length_char(text))
+		if(text2ascii(text, i) > 127)
+			uses_unicode = TRUE
+			break
 
-       var/wrapped_text = uses_unicode ? MAPTEXT_TINY_UNICODE(complete_text) : MAPTEXT(complete_text)
+	var/wrapped_text = uses_unicode ? MAPTEXT_TINY_UNICODE(complete_text) : MAPTEXT(complete_text)
 
-       var/mheight
-       WXH_TO_HEIGHT(owned_by.MeasureText(wrapped_text, null, CHAT_MESSAGE_WIDTH), mheight)
+	var/mheight
+	WXH_TO_HEIGHT(owned_by.MeasureText(wrapped_text, null, CHAT_MESSAGE_WIDTH), mheight)
 
 
-       if(!VERB_SHOULD_YIELD)
-               return finish_image_generation(mheight, target, owner, wrapped_text, lifespan)
+	if(!VERB_SHOULD_YIELD)
+		return finish_image_generation(mheight, target, owner, wrapped_text, lifespan)
 
-       finish_callback = CALLBACK(src, PROC_REF(finish_image_generation), mheight, target, owner, wrapped_text, lifespan)
+	finish_callback = CALLBACK(src, PROC_REF(finish_image_generation), mheight, target, owner, wrapped_text, lifespan)
 	SSrunechat.message_queue += finish_callback
 	return
 
@@ -288,7 +288,7 @@
 	message.maptext_width = CHAT_MESSAGE_WIDTH
 	message.maptext_height = mheight * 1.25 // We add extra because some characters are superscript, like actions
 	message.maptext_x = (CHAT_MESSAGE_WIDTH - owner.bound_width) * -0.5
-       message.maptext = maptext_text
+	message.maptext = maptext_text
 
 	animate_start = rough_time
 	animate_lifespan = lifespan
