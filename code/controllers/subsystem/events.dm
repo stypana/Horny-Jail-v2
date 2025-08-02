@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(events)
 	else if(result == EVENT_READY)
 		try
 			event_to_trigger.run_event(random = TRUE)
-		catch(var/exception/e)
+		catch(e)
 			stack_trace("Failed to run event [event_to_trigger.type]: [e]")
 			return EVENT_INTERRUPTED
 	return result
