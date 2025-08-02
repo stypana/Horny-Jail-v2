@@ -1406,15 +1406,15 @@
 	bullet.starting = startloc
 	LAZYINITLIST(bullet.impacted)
 	for (var/atom/thing as anything in ignore_targets)
-	bullet.impacted[WEAKREF(thing)] = TRUE
-	bullet.firer = firer || src
-	bullet.fired_from = src
-	bullet.yo = target.y - startloc.y
-	bullet.xo = target.x - startloc.x
-	bullet.original = target
-	bullet.aim_projectile(target, src)
-	bullet.fire()
-	return bullet
+		bullet.impacted[WEAKREF(thing)] = TRUE
+		bullet.firer = firer || src
+		bullet.fired_from = src
+		bullet.yo = target.y - startloc.y
+		bullet.xo = target.x - startloc.x
+		bullet.original = target
+		bullet.aim_projectile(target, src)
+		bullet.fire()
+		return bullet
 
 #undef MOVES_HITSCAN
 #undef MUZZLE_EFFECT_PIXEL_INCREMENT
