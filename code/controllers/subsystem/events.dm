@@ -25,9 +25,14 @@ SUBSYSTEM_DEF(events)
 
 /datum/controller/subsystem/events/Initialize()
 	for(var/type in typesof(/datum/round_event_control))
-		var/datum/round_event_control/event = new type()
-		if(!event.typepath || !event.valid_for_map())
-			continue //don't want this one! leave it for the garbage collector
+		var/datum/round_event_control/event
+		try
+			event = new type()
+			if(!event.typepath || !event.valid_for_map())
+				continue //don't want this one! leave it for the garbage collector
+		catch(var/exception/e)
+			stack_trace("Failed to load round event [type]: [e]")
+			continue
 		control += event //add it to the list of all events (controls)
 		events_by_name[event.name] = event
 
