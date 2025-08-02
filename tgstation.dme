@@ -10343,4 +10343,6 @@
 #include "modular_zzplurt\code\modules\vending\vending.dm"
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
 #include "modular_zzplurt\maps\offstation\seedvault.dm"
+#include "modules\code\controllers\topic.dm"
+#include "modules\code\datums\world_topic.dm"
 // END_INCLUDE

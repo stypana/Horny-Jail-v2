@@ -40,16 +40,6 @@
 	else if(islist(.))
 		. = list2params(.)
 
-/datum/world_topic/proc/Run(list/input)
-	CRASH("Run() not implemented for [type]!")
-
-/** TOPICS
- * These are the handlers for world.Export() -> World.Topic() server communication.
- * Double check to ensure any calls are correct and the query is legit.
- * World.Topic() exploits can be very devastating since these can be called via a normal player connection without a client.
- * https://secure.byond.com/docs/ref/index.html#/world/proc/Topic
-*/
-
 // If you modify the protocol for this, update tools/Tgstation.PRAnnouncer
 /datum/world_topic/ping
 	keyword = "ping"
@@ -317,3 +307,4 @@
 
 	message_admins(span_adminnotice("Incoming cross-sector newscaster article by [author_key] in channel [channel_name]."))
 	GLOB.news_network.submit_article(msg, author, channel_name)
+

@@ -1,6 +1,3 @@
-/// The name of the table on the database containing the player ranks.
-/// See `skyrat_schema.sql` for the schema of the table.
-#define PLAYER_RANK_TABLE_NAME "player_rank"
 /// The index of the ckey in the items of a given row in a query for player ranks.
 #define INDEX_CKEY 1
 /// The name entered in the database for the admin_ckey for legacy migrations.
