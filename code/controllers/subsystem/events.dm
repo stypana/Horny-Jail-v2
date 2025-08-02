@@ -25,9 +25,14 @@ SUBSYSTEM_DEF(events)
 
 /datum/controller/subsystem/events/Initialize()
 	for(var/type in typesof(/datum/round_event_control))
-		var/datum/round_event_control/event = new type()
-		if(!event.typepath || !event.valid_for_map())
-			continue //don't want this one! leave it for the garbage collector
+		var/datum/round_event_control/event
+		try
+			event = new type()
+			if(!event.typepath || !event.valid_for_map())
+				continue //don't want this one! leave it for the garbage collector
+		catch(var/exception/e)
+			stack_trace("Failed to load round event [type]: [e]")
+			continue
 		control += event //add it to the list of all events (controls)
 		events_by_name[event.name] = event
 
@@ -128,11 +133,22 @@ SUBSYSTEM_DEF(events)
 
 ///Does the last pre-flight checks for the passed event, and runs it if the event is ready.
 /datum/controller/subsystem/events/proc/TriggerEvent(datum/round_event_control/event_to_trigger)
-	. = event_to_trigger.preRunEvent()
-	if(. == EVENT_CANT_RUN)//we couldn't run this event for some reason, set its max_occurrences to 0
-		event_to_trigger.max_occurrences = 0
-	else if(. == EVENT_READY)
-		event_to_trigger.run_event(random = TRUE)
+       var/result
+       try
+               result = event_to_trigger.preRunEvent()
+       catch(var/exception/e)
+               stack_trace("Failed to pre-run event [event_to_trigger.type]: [e]")
+               return EVENT_INTERRUPTED
+
+       if(result == EVENT_CANT_RUN)//we couldn't run this event for some reason, set its max_occurrences to 0
+               event_to_trigger.max_occurrences = 0
+       else if(result == EVENT_READY)
+               try
+                       event_to_trigger.run_event(random = TRUE)
+               catch(var/exception/e)
+                       stack_trace("Failed to run event [event_to_trigger.type]: [e]")
+                       return EVENT_INTERRUPTED
+       return result
 
 ///Toggles whether or not wizard events will be in the event pool, and sends a notification to the admins.
 /datum/controller/subsystem/events/proc/toggleWizardmode()
