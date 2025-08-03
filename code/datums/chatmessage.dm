@@ -195,9 +195,9 @@
 
        var/uses_unicode = FALSE
        for(var/i in 1 to length_char(text))
-               if(text2ascii(text, i) > 127)
-                       uses_unicode = TRUE
-                       break
+         if(text2ascii(text, i) > 127)
+          uses_unicode = TRUE
+          break
 
        var/wrapped_text = uses_unicode ? MAPTEXT_TINY_UNICODE_SMALL(complete_text) : MAPTEXT(complete_text)
 
@@ -288,7 +288,8 @@
 	message.maptext_width = CHAT_MESSAGE_WIDTH
 	message.maptext_height = mheight * 1.25 // We add extra because some characters are superscript, like actions
 	message.maptext_x = (CHAT_MESSAGE_WIDTH - owner.bound_width) * -0.5
-       message.maptext = maptext_text
+	message.maptext = maptext_text
+
 
 	animate_start = rough_time
 	animate_lifespan = lifespan
