@@ -254,6 +254,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		for(var/channel_tag in CONFIG_GET(str_list/channel_announce_end_game))
 			send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended. [CONFIG_GET(string/roundend_ping_role) ? "" : ""]"), channel_tag)
 	send2adminchat("Server", "Round just ended.")
+	SSredbot.round_end_ping()
 
 	/* //SKYRAT EDIT - START (DISCORD Updates)
 	MOVED CHECK INTO TICKER.DM
