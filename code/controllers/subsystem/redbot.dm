@@ -3,14 +3,15 @@ SUBSYSTEM_DEF(redbot)
 	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/redbot/Initialize(timeofday)
-	var/comms_key = CONFIG_GET(string/comms_key)
-	var/bot_ip = CONFIG_GET(string/bot_ip)
-	var/round_id = GLOB.round_id
-	if(bot_ip)
-		var/query = "http://[bot_ip]/?serverStart=1&roundID=[round_id]&key=[comms_key]"
-		world.Export(query)
+        return SS_INIT_SUCCESS
 
-	return SS_INIT_SUCCESS
+/datum/controller/subsystem/redbot/proc/round_end_ping()
+        var/comms_key = CONFIG_GET(string/comms_key)
+        var/bot_ip = CONFIG_GET(string/bot_ip)
+        var/round_id = GLOB.round_id
+        if(bot_ip)
+                var/query = "http://[bot_ip]/?roundEnd=1&roundID=[round_id]&key=[comms_key]"
+                world.Export(query)
 
 /datum/controller/subsystem/redbot/proc/send_discord_message(var/channel, var/message, var/priority_type)
 	var/bot_ip = CONFIG_GET(string/bot_ip)
