@@ -1,0 +1,4 @@
+author: "OpenAI"
+delete-after: True
+changes:
+  - qol: "Runechat now renders Cyrillic text with a crisp pixel-perfect font"
