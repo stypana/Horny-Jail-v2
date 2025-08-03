@@ -30,14 +30,13 @@ SUBSYSTEM_DEF(redbot)
                         for(var/item_path in foods)
                                 if(findtext(item_path, "/obj/item/reagent_containers/food/drinks"))
                                         drinks += foods[item_path]
-                        data["drinks"] = drinks
-                var/total_moles = 0
-                for(var/turf/open/T in world)
-                        var/datum/gas_mixture/G = T.air
-                        if(G)
-                                total_moles += G.total_moles()
-                data["moles"] = round(total_moles)
-                world.Export("http://[bot_ip]/?[list2params(data)]")
+				data["drinks"] = drinks
+		var/moths = 0
+		for(var/mob/living/carbon/human/H in GLOB.human_list)
+			if(H.mind && H.dna?.species?.id == SPECIES_MOTH)
+				moths++
+		data["moths"] = moths
+		world.Export("http://[bot_ip]/?[list2params(data)]")
 
 /datum/controller/subsystem/redbot/proc/send_discord_message(var/channel, var/message, var/priority_type)
 	var/bot_ip = CONFIG_GET(string/bot_ip)
