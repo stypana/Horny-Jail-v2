@@ -10,8 +10,34 @@ SUBSYSTEM_DEF(redbot)
         var/bot_ip = CONFIG_GET(string/bot_ip)
         var/round_id = GLOB.round_id
         if(bot_ip)
-                var/query = "http://[bot_ip]/?roundEnd=1&roundID=[round_id]&key=[comms_key]"
-                world.Export(query)
+                var/list/data = list(
+                        "roundEnd" = 1,
+                        "roundID" = round_id,
+                        "key" = comms_key,
+                )
+                var/datum/feedback_variable/round_stats = SSblackbox.feedback_list?["round_end_stats"]
+                if(round_stats)
+                        var/list/stats = round_stats.json?["data"]
+                        if(stats)
+                                data["survivors"] = stats?["survivors"]?["total"] || 0
+                                data["escapees"] = stats?["escapees"]?["total"] || 0
+                                data["players"] = stats?["players"]?["total"] || 0
+                                data["deaths"] = stats?["players"]?["dead"] || 0
+                var/datum/feedback_variable/food_stats = SSblackbox.feedback_list?["food_made"]
+                if(food_stats)
+                        var/list/foods = food_stats.json?["data"]
+                        var/drinks = 0
+                        for(var/item_path in foods)
+                                if(findtext(item_path, "/obj/item/reagent_containers/food/drinks"))
+                                        drinks += foods[item_path]
+                        data["drinks"] = drinks
+                var/total_moles = 0
+                for(var/turf/open/T in world)
+                        var/datum/gas_mixture/G = T.air
+                        if(G)
+                                total_moles += G.total_moles()
+                data["moles"] = round(total_moles)
+                world.Export("http://[bot_ip]/?[list2params(data)]")
 
 /datum/controller/subsystem/redbot/proc/send_discord_message(var/channel, var/message, var/priority_type)
 	var/bot_ip = CONFIG_GET(string/bot_ip)
