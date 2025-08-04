@@ -155,11 +155,12 @@
 	)
 
 /obj/item/clothing/glasses/hud/security
-	name = "security HUD"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records."
-	icon_state = "securityhud"
-	clothing_traits = list(TRAIT_SECURITY_HUD)
-	glass_colour_type = /datum/client_colour/glass_colour/red
+       name = "security HUD"
+       desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. Protects eyes from flashbangs."
+       icon_state = "securityhud"
+       flash_protect = FLASH_PROTECTION_FLASH
+       clothing_traits = list(TRAIT_SECURITY_HUD)
+       glass_colour_type = /datum/client_colour/glass_colour/red
 
 /obj/item/clothing/glasses/hud/security/chameleon
 	name = "chameleon security HUD"

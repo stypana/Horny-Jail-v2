@@ -136,41 +136,41 @@
 			ooc_notes += "Round Removal Opt-In Status: [rr_prefs ? "Yes" : "No"]\n"
 			ooc_notes += "\n"
 
-        if(holder_human)
-                obscured = !holder_human.is_face_visible()
+    if(holder_human)
+      obscured = !holder_human.is_face_visible()
 
-                var/datum/dna/holder_dna = holder_human.has_dna()
+      var/datum/dna/holder_dna = holder_human.has_dna()
 
-                //Check if the mob is obscured, then continue to headshot and species lore
-                ooc_notes += holder_dna?.features["ooc_notes"]
-                if((obscured || !holder_dna) && !isobserver(user))
-                        custom_species = "Obscured"
-                        custom_species_lore = "Obscured"
-                        flavor_text = "Obscured"
-                        name = "Unknown"
-                else
-                        headshot = holder_dna.features["headshot"]
-                        flavor_text = holder_dna.features["flavor_text"]
-                        art_ref = holder_dna.features["art_ref"]
-                        name = holder.name
-                        if(show_nsfw_flavor_text == "Always On" || (show_nsfw_flavor_text == "Nude Only" && !(holder_human.w_uniform)))
-                                flavor_text_nsfw = holder_dna.features["flavor_text_nsfw"]
-                                headshot_nsfw = holder_dna.features["headshot_nsfw"]
+      //Check if the mob is obscured, then continue to headshot and species lore
+      ooc_notes += holder_dna?.features["ooc_notes"]
+      if((obscured || !holder_dna) && !isobserver(user))
+        custom_species = "Obscured"
+        custom_species_lore = "Obscured"
+        flavor_text = "Obscured"
+        name = "Unknown"
+      else
+        headshot = holder_dna.features["headshot"]
+        flavor_text = holder_dna.features["flavor_text"]
+        art_ref = holder_dna.features["art_ref"]
+        name = holder.name
+        if(show_nsfw_flavor_text == "Always On" || (show_nsfw_flavor_text == "Nude Only" && !(holder_human.w_uniform)))
+          flavor_text_nsfw = holder_dna.features["flavor_text_nsfw"]
+          headshot_nsfw = holder_dna.features["headshot_nsfw"]
 
-                //Custom species handling. Reports the normal custom species if there is not one set.
-                        if(holder_dna.species.lore_protected || holder_dna.features["custom_species"] == "")
-                                custom_species = holder_dna.species.name
-                        else
-                                custom_species = holder_dna.features["custom_species"]
-                //Custom species lore handling. Reports the species lore with summary if there is not one set. Does this separately so you can name your subrace without the lore changing.
-                        if(holder_dna.species.lore_protected || !holder_dna.features["custom_species_lore"] || holder_dna.features["custom_species_lore"] == "")
-                                var/list/desc = holder_dna.species.get_species_description()
-                                var/list/lore = holder_dna.species.get_species_lore()
-                                custom_species_lore += desc.Join("\n\n")
-                                custom_species_lore += "\n\n\n"
-                                custom_species_lore += lore.Join("\n\n")
-                        else
-                                custom_species_lore = holder_dna.features["custom_species_lore"]
+      //Custom species handling. Reports the normal custom species if there is not one set.
+      if(holder_dna.species.lore_protected || holder_dna.features["custom_species"] == "")
+        custom_species = holder_dna.species.name
+      else
+        custom_species = holder_dna.features["custom_species"]
+      //Custom species lore handling. Reports the species lore with summary if there is not one set. Does this separately so you can name your subrace without the lore changing.
+      if(holder_dna.species.lore_protected || !holder_dna.features["custom_species_lore"] || holder_dna.features["custom_species_lore"] == "")
+        var/list/desc = holder_dna.species.get_species_description()
+        var/list/lore = holder_dna.species.get_species_lore()
+        custom_species_lore += desc.Join("\n\n")
+        custom_species_lore += "\n\n\n"
+        custom_species_lore += lore.Join("\n\n")
+      else
+        custom_species_lore = holder_dna.features["custom_species_lore"]
 
 	data["obscured"] = obscured ? TRUE : FALSE
 	data["character_name"] = name
