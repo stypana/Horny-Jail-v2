@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(mobs)
 	priority = FIRE_PRIORITY_MOBS
 	flags = SS_KEEP_TIMING | SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-        wait = 3 SECONDS
+	wait = 3 SECONDS
 
 	var/list/currentrun = list()
 	///only contains living players for some reason
