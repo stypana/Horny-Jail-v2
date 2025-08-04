@@ -193,11 +193,15 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	keyslot = /obj/item/encryptionkey/binary
 
 /obj/item/radio/headset/headset_sec
-	name = "security radio headset"
-	desc = "This is used by your elite security force."
-	icon_state = "sec_headset"
-	worn_icon_state = "sec_headset"
-	keyslot = /obj/item/encryptionkey/headset_sec
+       name = "security radio headset"
+       desc = "This is used by your elite security force. Protects ears from flashbangs."
+       icon_state = "sec_headset"
+       worn_icon_state = "sec_headset"
+       keyslot = /obj/item/encryptionkey/headset_sec
+
+/obj/item/radio/headset/headset_sec/Initialize(mapload)
+       . = ..()
+       AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/headset_sec/alt
 	name = "security bowman headset"
@@ -300,19 +304,23 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	keyslot = /obj/item/encryptionkey/heads/rd
 
 /obj/item/radio/headset/heads/hos
-	name = "\proper the head of security's headset"
-	desc = "The headset of the man in charge of keeping order and protecting the station."
-	icon_state = "com_headset"
-	worn_icon_state = "com_headset"
-	keyslot = /obj/item/encryptionkey/heads/hos
+       name = "\proper the head of security's headset"
+       desc = "The headset of the man in charge of keeping order and protecting the station. Protects ears from flashbangs."
+       icon_state = "com_headset"
+       worn_icon_state = "com_headset"
+       keyslot = /obj/item/encryptionkey/heads/hos
+
+/obj/item/radio/headset/heads/hos/Initialize(mapload)
+       . = ..()
+       AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/heads/hos/advisor
-	name = "\proper the veteran security advisor headset"
-	desc = "The headset of the man who was in charge of keeping order and protecting the station..."
-	icon_state = "com_headset"
-	worn_icon_state = "com_headset"
-	keyslot = /obj/item/encryptionkey/heads/hos
-	command = FALSE
+       name = "\proper the veteran security advisor headset"
+       desc = "The headset of the man who was in charge of keeping order and protecting the station... Protects ears from flashbangs."
+       icon_state = "com_headset"
+       worn_icon_state = "com_headset"
+       keyslot = /obj/item/encryptionkey/heads/hos
+        command = FALSE
 
 /obj/item/radio/headset/heads/hos/alt
 	name = "\proper the head of security's bowman headset"
