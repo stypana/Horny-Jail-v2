@@ -283,7 +283,6 @@ GLOBAL_VAR(restart_counter)
 	var/list/params = json_decode(topic_decoded)
 	params["addr"] = addr
 	var/query = params["query"]
-	var/auth = params["auth"]
 	var/source = params["source"]
 
 	if(logging)

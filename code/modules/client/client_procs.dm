@@ -595,7 +595,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return FALSE
 
 	var/fiftyfifty = prob(50) ? FEMALE : MALE
-	var/hashtext = "[ckey][rand(0,9999)][world.realtime][rand(0,9999)][get_random_unique_name(fiftyfifty)][rand(0,9999)][address][rand(0,9999)][computer_id][rand(0,9999)][GLOB.round_id]"
+	var/hashtext = "[ckey][rand(0,9999)][world.realtime][rand(0,9999)][generate_random_name(fiftyfifty)][rand(0,9999)][address][rand(0,9999)][computer_id][rand(0,9999)][GLOB.round_id]"
 	var/uuid = "[rustg_hash_string(RUSTG_HASH_SHA256, hashtext)]"
 
 	if(!SSdbcore.Connect())
