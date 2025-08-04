@@ -135,9 +135,9 @@
 			ooc_notes += "Round Removal Opt-In Status: [rr_prefs ? "Yes" : "No"]\n"
 			ooc_notes += "\n"
 
-		if(ishuman(holder))
-			var/mob/living/carbon/human/holder_human = holder
-			obscured = !holder_human.is_face_visible()
+	if(ishuman(holder))
+		var/mob/living/carbon/human/holder_human = holder
+		obscured = !holder_human.is_face_visible()
 
 		//Check if the mob is obscured, then continue to headshot and species lore
 		ooc_notes += holder_human.dna?.features["ooc_notes"]

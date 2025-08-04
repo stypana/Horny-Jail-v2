@@ -574,6 +574,7 @@
 #include "code\__DEFINES\~~~splurt_defines\traits\declarations.dm"
 #include "code\__DEFINES\~~~splurt_defines\traits\defines.dm"
 #include "code\__DEFINES\~~~splurt_defines\traits\sources.dm"
+#include "code\__DEFINES\~~~~107_defines\click.dm"
 #include "code\__HELPERS\_auxtools_api.dm"
 #include "code\__HELPERS\_dreamluau.dm"
 #include "code\__HELPERS\_lists.dm"

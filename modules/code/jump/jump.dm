@@ -16,13 +16,6 @@
 			user.emote("cry")
 			return
 
-	if(prob(0.05))
-		user.send_to_void()
-		user.emote("agony")
-		user.overlay_fullscreen("flash_void", /atom/movable/screen/fullscreen/flash/black)
-		sleep(6 SECONDS)
-		user.clear_fullscreen("flash_void", rand(15, 60))
-		return
 
 	if(user.legcuffed)
 		if(user.handcuffed)
@@ -64,13 +57,10 @@
 		user.adjustStaminaLoss(10)
 
 	if(!HAS_TRAIT(user, TRAIT_MIMING))
-		playsound(user, user.gender == MALE ? 'modular_zzz/sounds/jump/jump_male.ogg' : 'modular_zzz/sounds/jump/jump_female.ogg', 25, 0, 1)
+		playsound(user, user.gender == MALE ? 'modules/code/jump/jump_male.ogg' : 'modules/code/jump/jump_female.ogg', 25, 0, 1)
 	user.visible_message("<span class='danger'>[user] jumps.</span>", \
 					"<span class='warning'> I jump at the [loc]!</span>")
-	if(HAS_TRAIT(user, TRAIT_JUMPER))
-		user.adjustStaminaLoss(10)
-	else
-		user.adjustStaminaLoss(rand(30,50))
+	user.adjustStaminaLoss(rand(30,50))
 	user.throw_at(target, 3, 1, user, spin = (HAS_TRAIT(user, TRAIT_CLUMSY) ? TRUE : FALSE))
 
 #undef JUMP_MESSAGE_NOSE
