@@ -41,6 +41,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	drop_sound = 'sound/items/handling/headset/headset_drop1.ogg'
 	sound_vary = TRUE
 	var/obj/item/encryptionkey/keyslot2 = null
+	var/bowman = FALSE
 
 	// headset is too small to display overlays
 	overlay_speaker_idle = null
@@ -81,6 +82,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(command)
 		. += span_info("<b>Alt-click</b> to toggle the high-volume mode.")
 
+
 /obj/item/radio/headset/Initialize(mapload)
 	. = ..()
 	if(ispath(keyslot2))
@@ -89,6 +91,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	set_broadcasting(TRUE)
 	recalculateChannels()
 	possibly_deactivate_in_loc()
+	if (bowman)
+		AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS_LEFT, ITEM_SLOT_EARS_RIGHT))
 
 /obj/item/radio/headset/proc/possibly_deactivate_in_loc()
 	if(ismob(loc))
@@ -180,10 +184,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	desc = "A syndicate headset that can be used to hear all radio frequencies. Protects ears from flashbangs."
 	icon_state = "syndie_headset"
 	worn_icon_state = "syndie_headset"
-
-/obj/item/radio/headset/syndicate/alt/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+	bowman = TRUE
 
 /obj/item/radio/headset/syndicate/alt/leader
 	name = "team leader headset"
@@ -199,19 +200,13 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	worn_icon_state = "sec_headset"
 	keyslot = /obj/item/encryptionkey/headset_sec
 
-/obj/item/radio/headset/headset_sec/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/headset_sec/alt
 	name = "security bowman headset"
 	desc = "This is used by your elite security force. Protects ears from flashbangs."
 	icon_state = "sec_headset_alt"
 	worn_icon_state = "sec_headset_alt"
-
-/obj/item/radio/headset/headset_sec/alt/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+	bowman = TRUE
 
 /obj/item/radio/headset/headset_eng
 	name = "engineering radio headset"
@@ -291,10 +286,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	desc = "The headset of the boss. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
 	worn_icon_state = "com_headset_alt"
-
-/obj/item/radio/headset/heads/captain/alt/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+	bowman = TRUE
 
 /obj/item/radio/headset/heads/rd
 	name = "\proper the research director's headset"
@@ -310,10 +302,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/hos
 
-/obj/item/radio/headset/heads/hos/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
-
 /obj/item/radio/headset/heads/hos/advisor
 	name = "\proper the veteran security advisor headset"
 	desc = "The headset of the man who was in charge of keeping order and protecting the station... Protects ears from flashbangs."
@@ -327,10 +315,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	desc = "The headset of the man in charge of keeping order and protecting the station. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
 	worn_icon_state = "com_headset_alt"
-
-/obj/item/radio/headset/heads/hos/alt/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+	bowman = TRUE
 
 /obj/item/radio/headset/heads/ce
 	name = "\proper the chief engineer's headset"
