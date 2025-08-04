@@ -1,5 +1,5 @@
 /// Does 4 spaces. Used as a makeshift tabulator.
-#define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
+#define FOURSPACES "    "
 
 /// Standard maptext
 /// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
@@ -26,9 +26,6 @@
 
 /// Small size. (ie: context subtooltips, spell delays) - Size options: 12pt 24pt.
 #define MAPTEXT_TINY_UNICODE(text) {"<span style='font-family: \"TinyUnicode\"; font-size: 12pt; line-height: 0.75; -dm-text-outline: 1px black'>[##text]</span>"}
-
-/// TinyUnicode scaled to normal runechat size for crisp Cyrillic text
-#define MAPTEXT_TINY_UNICODE_SMALL(text) {"<span style='font-family: \"TinyUnicode\"; font-size: 6pt; line-height: 1.4; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /// Smallest size. (ie: whisper runechat) - Size options: 6pt 12pt 18pt.
 #define MAPTEXT_SPESSFONT(text) {"<span style='font-family: \"Spess Font\"; font-size: 6pt; line-height: 1.4; -dm-text-outline: 1px black'>[##text]</span>"}
