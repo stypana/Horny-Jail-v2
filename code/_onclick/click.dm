@@ -91,6 +91,8 @@
 	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
 		if(LAZYACCESS(modifiers, CTRL_CLICK))
 			CtrlMiddleClickOn(A)
+		else if(LAZYACCESS(modifiers, ALT_CLICK))  // 107edit
+			AltMiddleClickOn(A) 		 		   // 107edit
 		else
 			MiddleClickOn(A, params)
 		return
