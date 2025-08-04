@@ -80,8 +80,8 @@
 	var/others = preferences?.read_preference(/datum/preference/choiced/directory_character_prefs/other_pref)
 	var/demihumans = preferences?.read_preference(/datum/preference/choiced/directory_character_prefs/demihuman_pref)
 	var/humans = preferences?.read_preference(/datum/preference/choiced/directory_character_prefs/human_pref)
-        var/show_nsfw_flavor_text = preferences?.read_preference(/datum/preference/choiced/show_nsfw_flavor_text)
-        var/mob/living/carbon/human/holder_human = holder
+	var/show_nsfw_flavor_text = preferences?.read_preference(/datum/preference/choiced/show_nsfw_flavor_text)
+	var/mob/living/carbon/human/holder_human = holder
 
 	//  Handle OOC notes first
 	if(preferences)
@@ -138,7 +138,6 @@
 
 
 	if(ishuman(holder))
-		var/mob/living/carbon/human/holder_human = holder
 		obscured = !holder_human.is_face_visible()
 
 		//Check if the mob is obscured, then continue to headshot and species lore
