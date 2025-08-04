@@ -56,10 +56,13 @@
 		user.adjustStaminaLoss(10)
 
 	if(!HAS_TRAIT(user, TRAIT_MIMING))
-		playsound(user, user.gender == MALE ? 'modules/code/jump/sounds/jump_male.ogg' : 'modules/code/jump/sounds/jump_female.ogg', 25, 0, 1)
+		playsound(user, user.gender == MALE ? 'modular_zzz/sounds/jump/jump_male.ogg' : 'modular_zzz/sounds/jump/jump_female.ogg', 25, 0, 1)
 	user.visible_message("<span class='danger'>[user] jumps.</span>", \
 					"<span class='warning'> I jump at the [loc]!</span>")
-	user.adjustStaminaLoss(rand(30,50))
+	if(HAS_TRAIT(user, TRAIT_JUMPER))
+		user.adjustStaminaLoss(10)
+	else
+		user.adjustStaminaLoss(rand(30,50))
 	user.throw_at(target, 3, 1, user, spin = (HAS_TRAIT(user, TRAIT_CLUMSY) ? TRUE : FALSE))
 
 #undef JUMP_MESSAGE_NOSE
