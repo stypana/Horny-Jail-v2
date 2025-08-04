@@ -1,0 +1,4 @@
+author: "Codex"
+delete-after: True
+changes:
+  - bugfix: "Face-covering clothing now hides character descriptions and temporary flavor text."

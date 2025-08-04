@@ -321,9 +321,8 @@
 	var/flavor_text_link
 	/// The first 1-FLAVOR_PREVIEW_LIMIT characters in the mob's "flavor_text" DNA feature. FLAVOR_PREVIEW_LIMIT is defined in flavor_defines.dm.
 	var/preview_text = copytext_char((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT)
-	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
-	var/obscurity_examine_pref = (client?.prefs?.read_preference(/datum/preference/toggle/obscurity_examine)) //BUBBERSTATION EDIT
-	var/face_obscured = (wear_mask && (wear_mask.flags_inv & HIDEFACE) && obscurity_examine_pref) || (head && (head.flags_inv & HIDEFACE) && obscurity_examine_pref) // BUBBERSTATION EDIT
+        // What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
+        var/face_obscured = !is_face_visible()
 
 	if (!(face_obscured))
 		flavor_text_link = span_notice("[preview_text]... <a href='byond://?src=[REF(src)];lookup_info=open_examine_panel'>\[Look closer?\]</a>")
@@ -341,12 +340,12 @@
 			. += "<a href='byond://?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
 	//BUBBER EDIT END
 
-	//Temporary flavor text addition:
-	if(temporary_flavor_text)
-		if(length_char(temporary_flavor_text) < TEMPORARY_FLAVOR_PREVIEW_LIMIT)
-			. += span_revennotice("<br>They look different than usual: [temporary_flavor_text]")
-		else
-			. += span_revennotice("<br>They look different than usual: [copytext_char(temporary_flavor_text, 1, TEMPORARY_FLAVOR_PREVIEW_LIMIT)]... <a href='byond://?src=[REF(src)];temporary_flavor=1'>More...</a>")
+        //Temporary flavor text addition:
+        if(temporary_flavor_text && !face_obscured)
+                if(length_char(temporary_flavor_text) < TEMPORARY_FLAVOR_PREVIEW_LIMIT)
+                        . += span_revennotice("<br>They look different than usual: [temporary_flavor_text]")
+                else
+                        . += span_revennotice("<br>They look different than usual: [copytext_char(temporary_flavor_text, 1, TEMPORARY_FLAVOR_PREVIEW_LIMIT)]... <a href='byond://?src=[REF(src)];temporary_flavor=1'>More...</a>")
 
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
