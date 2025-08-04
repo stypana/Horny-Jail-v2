@@ -66,7 +66,6 @@
 	var/custom_species_lore
 	var/obscured
 	var/name = ""
-	var/obscurity_examine_pref = preferences?.read_preference(/datum/preference/toggle/obscurity_examine)
 	var/ooc_notes = ""
 	var/headshot = ""
 	var/headshot_nsfw = ""
@@ -136,11 +135,9 @@
 			ooc_notes += "Round Removal Opt-In Status: [rr_prefs ? "Yes" : "No"]\n"
 			ooc_notes += "\n"
 
-	if(ishuman(holder))
-		var/mob/living/carbon/human/holder_human = holder
-		obscured = (holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) && \
-		obscurity_examine_pref || \
-		(holder_human.head && (holder_human.head.flags_inv & HIDEFACE) && obscurity_examine_pref)
+        if(ishuman(holder))
+                var/mob/living/carbon/human/holder_human = holder
+                obscured = !holder_human.is_face_visible()
 
 		//Check if the mob is obscured, then continue to headshot and species lore
 		ooc_notes += holder_human.dna?.features["ooc_notes"]
