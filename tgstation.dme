@@ -10344,5 +10344,13 @@
 #include "modular_zzplurt\code\modules\wiremod\core\integrated_circuit.dm"
 #include "modular_zzplurt\maps\offstation\seedvault.dm"
 #include "modules\code\controllers\topic.dm"
+#include "modules\code\customization\ears.dm"
+#include "modules\code\customization\hair.dm"
+#include "modules\code\customization\neck.dm"
+#include "modules\code\customization\plain.dm"
+#include "modules\code\customization\snouts.dm"
+#include "modules\code\customization\tails.dm"
+#include "modules\code\customization\taur_types.dm"
 #include "modules\code\datums\world_topic.dm"
+#include "modules\code\jump\jump.dm"
 // END_INCLUDE

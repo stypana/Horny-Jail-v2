@@ -1,5 +1,5 @@
 /datum/body_marking/plain
-	icon = 'modular_zzz/icons/mob/markings/plain.dmi'
+	icon = 'modules/customization/icons/plain.dmi'
 
 /*
  * HEAD
