@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(lighting)
 		/datum/controller/subsystem/atoms,
 		/datum/controller/subsystem/mapping,
 	)
-	wait = 2
+	wait = 3
 	flags = SS_TICKER
 	var/static/list/sources_queue = list() // List of lighting sources queued for update.
 	var/static/list/corners_queue = list() // List of lighting corners queued for update.

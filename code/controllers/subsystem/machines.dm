@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(machines)
 		/datum/controller/subsystem/atoms,
 	)
 	flags = SS_KEEP_TIMING
-	wait = 2 SECONDS
+	wait = 3 SECONDS
 
 	/// Assosciative list of all machines that exist.
 	VAR_PRIVATE/list/machines_by_type = list()
