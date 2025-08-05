@@ -449,12 +449,13 @@
 		ui.open()
 
 /datum/component/personal_crafting/ui_data(mob/user)
-        ensure_crafting_recipes()
-        var/list/data = list()
-        data["busy"] = busy
-        data["mode"] = mode
-        data["display_craftable_only"] = display_craftable_only
-        data["display_compact"] = display_compact
+	ensure_crafting_recipes()
+	var/list/data = list()
+
+	data["busy"] = busy
+	data["mode"] = mode
+	data["display_craftable_only"] = display_craftable_only
+	data["display_compact"] = display_compact
 
 	var/list/surroundings = get_surroundings(user)
 	var/list/craftability = list()
