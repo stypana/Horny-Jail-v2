@@ -12,9 +12,9 @@
 
 // Not static data since user could rebind keys.
 /datum/hotkeys_help/ui_data(mob/user)
-       ensure_keybinding_lists()
-       // List every keybind to chat.
-       var/list/keys_list = list()
+	ensure_keybinding_lists()
+	// List every keybind to chat.
+	var/list/keys_list = list()
 
 	// Show them in alphabetical order by key
 	var/list/key_bindings_by_key = user.client.prefs.key_bindings_by_key.Copy()

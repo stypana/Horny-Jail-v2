@@ -122,17 +122,17 @@
 		if(DEAD)
 			data["patient"]["stat"] = "Dead"
 			data["patient"]["statstate"] = "bad"
-	data["patient"]["health"] = patient.health
-	data["patient"]["blood_type"] = patient.get_bloodtype()?.name || "UNKNOWN"
-	data["patient"]["maxHealth"] = patient.maxHealth
-	data["patient"]["minHealth"] = HEALTH_THRESHOLD_DEAD
-	data["patient"]["bruteLoss"] = patient.getBruteLoss()
-	data["patient"]["fireLoss"] = patient.getFireLoss()
-	data["patient"]["toxLoss"] = patient.getToxLoss()
-	data["patient"]["oxyLoss"] = patient.getOxyLoss()
-       if(patient.surgeries.len)
-               ensure_surgery_steps()
-               for(var/datum/surgery/procedure in patient.surgeries)
+			data["patient"]["health"] = patient.health
+			data["patient"]["blood_type"] = patient.get_bloodtype()?.name || "UNKNOWN"
+			data["patient"]["maxHealth"] = patient.maxHealth
+			data["patient"]["minHealth"] = HEALTH_THRESHOLD_DEAD
+			data["patient"]["bruteLoss"] = patient.getBruteLoss()
+			data["patient"]["fireLoss"] = patient.getFireLoss()
+			data["patient"]["toxLoss"] = patient.getToxLoss()
+			data["patient"]["oxyLoss"] = patient.getOxyLoss()
+		if(patient.surgeries.len)
+			ensure_surgery_steps()
+			for(var/datum/surgery/procedure in patient.surgeries)
 			var/datum/surgery_step/surgery_step = GLOB.surgery_steps[procedure.steps[procedure.status]]
 			var/chems_needed = surgery_step.get_chem_list()
 			var/alternative_step

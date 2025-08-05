@@ -69,9 +69,9 @@
 	INVOKE_ASYNC(src, PROC_REF(slapcraft_async), parent_item, valid_recipes, user, craft_sheet)
 
 /datum/element/slapcrafting/proc/slapcraft_async(obj/parent_item, list/valid_recipes, mob/user, datum/component/personal_crafting/craft_sheet)
-       ensure_crafting_recipes()
+	ensure_crafting_recipes()
 
-       var/list/recipe_choices = list()
+	var/list/recipe_choices = list()
 
 	var/list/result_to_recipe = list()
 

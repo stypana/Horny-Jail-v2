@@ -85,8 +85,8 @@
 			return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/door/poddoor/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-       ensure_crafting_recipes()
-       if(deconstruction == BLASTDOOR_NEEDS_WIRES && istype(tool, /obj/item/stack/cable_coil))
+	ensure_crafting_recipes()
+	if(deconstruction == BLASTDOOR_NEEDS_WIRES && istype(tool, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = tool
 		var/datum/crafting_recipe/recipe = locate(recipe_type) in GLOB.crafting_recipes
 		var/amount_needed = recipe.reqs[/obj/item/stack/cable_coil]
@@ -172,8 +172,8 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/door/poddoor/wirecutter_act(mob/living/user, obj/item/tool)
-       ensure_crafting_recipes()
-       . = ..()
+	ensure_crafting_recipes()
+	. = ..()
 	if (density)
 		balloon_alert(user, "open the door first!")
 		return ITEM_INTERACT_SUCCESS
@@ -192,8 +192,8 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/door/poddoor/welder_act(mob/living/user, obj/item/tool)
-       ensure_crafting_recipes()
-       . = ..()
+	ensure_crafting_recipes()
+	. = ..()
 	if (density)
 		balloon_alert(user, "open the door first!")
 		return ITEM_INTERACT_SUCCESS
