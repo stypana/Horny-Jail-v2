@@ -19,6 +19,7 @@
 		var/random_type = pick(subtypesof(/obj/item/organ) - GLOB.prototype_organs)
 		return new random_type(spawn_location)
 
+
 	var/mob/living/carbon/carbon = fishing_spot
 	var/list/possible_organs = list()
 	ensure_surgery_steps()
