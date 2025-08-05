@@ -65,6 +65,4 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 		if(end_tick - start_tick)
 			warning("Global [replacetext("[I]", "InitGlobal", "")] slept during initialization!")
 
-	// Someone make it so this call isn't necessary
-	make_datum_reference_lists()
 

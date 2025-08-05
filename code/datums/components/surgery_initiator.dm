@@ -81,7 +81,8 @@
 	ui_interact(user)
 
 /datum/component/surgery_initiator/proc/get_available_surgeries(mob/user, mob/living/target)
-	var/list/available_surgeries = list()
+       ensure_surgeries_list()
+       var/list/available_surgeries = list()
 
 	var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(user.zone_selected))
 

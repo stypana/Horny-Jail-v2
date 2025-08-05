@@ -21,8 +21,7 @@ GLOBAL_VAR(restart_counter)
  *     - Master =>
  *       - config *unloaded
  *       - (all subsystems) PreInit()
- *       - GLOB =>
- *         - make_datum_reference_lists()
+*       - GLOB => (lazy datum reference lists initialize on access)
  *   - (/static variable inits, reverse declaration order)
  * - (all pre-mapped atoms) /atom/New()
  * - world.New() =>
@@ -33,7 +32,6 @@ GLOBAL_VAR(restart_counter)
  *   - world.ConfigLoaded() =>
  *     - SSdbcore.InitializeRound()
  *     - world.SetupLogs()
- *     - load_admins()
  *     - ...
  *   - Master.Initialize() =>
  *     - (all subsystems) Initialize()
@@ -157,9 +155,8 @@ GLOBAL_VAR(restart_counter)
 
 /// Runs after config is loaded but before Master is initialized
 /world/proc/ConfigLoaded()
-	// Everything in here is prioritized in a very specific way.
-	// If you need to add to it, ask yourself hard if what your adding is in the right spot
-	// (i.e. basically nothing should be added before load_admins() in here)
+        // Everything in here is prioritized in a very specific way.
+        // If you need to add to it, ask yourself hard if what you're adding is in the right spot
 
 	// Try to set round ID
 	SSdbcore.InitializeRound()
@@ -168,7 +165,7 @@ GLOBAL_VAR(restart_counter)
 
 	load_admins(initial = TRUE)
 
-
+	LoadVerbCache()
 	LoadVerbs(/datum/verbs/menu)
 
 	if(fexists(RESTART_COUNTER_PATH))
@@ -379,6 +376,7 @@ GLOBAL_VAR(restart_counter)
 				return FALSE
 
 /world/Reboot(reason = 0, fast_track = FALSE)
+	SaveVerbCache()
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")

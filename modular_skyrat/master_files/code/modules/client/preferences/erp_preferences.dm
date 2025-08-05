@@ -7,9 +7,10 @@
 /datum/config_entry/str_list/erp_emotes_to_disable
 
 /datum/config_entry/str_list/erp_emotes_to_disable/ValidateAndSet(str_val)
-	. = ..()
-	if (CONFIG_GET(flag/disable_erp_preferences) && (str_val in GLOB.keybindings_by_name))
-		GLOB.keybindings_by_name -= str_val
+       . = ..()
+       ensure_keybinding_lists()
+       if (CONFIG_GET(flag/disable_erp_preferences) && (str_val in GLOB.keybindings_by_name))
+               GLOB.keybindings_by_name -= str_val
 
 /datum/preference/toggle/master_erp_preferences
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
