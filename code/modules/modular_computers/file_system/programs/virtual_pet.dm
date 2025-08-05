@@ -337,7 +337,7 @@ GLOBAL_LIST_EMPTY(virtual_pets_list)
 		return
 	var/list/message_to_announce = list(
 		"name" = pet.name,
-		"pet_picture" =  icon2base64(profile_picture),
+		"pet_picture" =	 icon2base64(profile_picture),
 		"message" = message,
 		"likers" = list(REF(src))
 	)
@@ -556,12 +556,12 @@ GLOBAL_LIST_EMPTY(virtual_pets_list)
 			else
 				update_message["likers"] += our_reference
 
-               if("teach_tricks")
-                       ensure_emote_list()
-                       var/trick_name = params["trick_name"]
-                       var/list/trick_sequence = params["tricks"]
-                       if(isnull(pet.ai_controller))
-                               return TRUE
+			if("teach_tricks")
+					ensure_emote_list()
+					var/trick_name = params["trick_name"]
+					var/list/trick_sequence = params["tricks"]
+					if(isnull(pet.ai_controller))
+							return TRUE
 			if(!isnull(trick_name))
 				pet.ai_controller.set_blackboard_key(BB_TRICK_NAME, trick_name)
 			for (var/trick_move in trick_sequence)

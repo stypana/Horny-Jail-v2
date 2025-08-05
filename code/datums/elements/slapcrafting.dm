@@ -5,15 +5,15 @@
 	var/list/slapcraft_recipes = list()
 
 /**
- * Slapcraft element
- *
- * Slap it onto a item to be able to slapcraft with it
- *
- * args:
- * * slapcraft_recipes (required) = The recipe to attempt crafting.
- * Hit it with an ingredient of the recipe to attempt crafting.
- * It will check the area near the user for the rest of the ingredients and tools.
- * *
+* Slapcraft element
+*
+* Slap it onto a item to be able to slapcraft with it
+*
+* args:
+* * slapcraft_recipes (required) = The recipe to attempt crafting.
+* Hit it with an ingredient of the recipe to attempt crafting.
+* It will check the area near the user for the rest of the ingredients and tools.
+* *
 **/
 /datum/element/slapcrafting/Attach(datum/target, slapcraft_recipes = null)
 	..()

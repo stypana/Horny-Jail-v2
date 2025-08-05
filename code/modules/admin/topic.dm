@@ -1438,9 +1438,9 @@
 	else if(href_list["beakerpanel"])
 		beaker_panel_act(href_list)
 
-       else if(href_list["reloadpolls"])
-               SSpolls.reload()
-               poll_list_panel()
+	else if(href_list["reloadpolls"])
+			SSpolls.reload()
+			poll_list_panel()
 
 	else if(href_list["newpoll"])
 		poll_management_panel()
