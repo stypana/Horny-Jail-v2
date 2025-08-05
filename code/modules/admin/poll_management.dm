@@ -71,6 +71,9 @@
  *
  */
 /datum/admins/proc/poll_list_panel()
+	if(SSpolls.loading || !SSpolls.ready)
+	to_chat(usr, span_warning("Poll data is still loading."), confidential = TRUE)
+	return
 	var/list/output = list("Current and future polls<br>Note when editing polls or their options changes are not saved until you press Submit Poll.<br><a href='byond://?_src_=holder;[HrefToken()];newpoll=1'>New Poll</a><a href='byond://?_src_=holder;[HrefToken()];reloadpolls=1'>Reload Polls</a><hr>")
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
@@ -693,30 +696,3 @@
  * Loads all current and future server polls and their options to store both as datums.
  *
  */
-/proc/load_poll_data()
-	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
-		return
-	var/datum/db_query/query_load_polls = SSdbcore.NewQuery("SELECT id, polltype, starttime, endtime, question, subtitle, adminonly, multiplechoiceoptions, dontshow, allow_revoting, IF(polltype='TEXT',(SELECT COUNT(ckey) FROM [format_table_name("poll_textreply")] AS t WHERE t.pollid = q.id AND deleted = 0), (SELECT COUNT(DISTINCT ckey) FROM [format_table_name("poll_vote")] AS v WHERE v.pollid = q.id AND deleted = 0)), IFNULL((SELECT byond_key FROM [format_table_name("player")] AS p WHERE p.ckey = q.createdby_ckey), createdby_ckey), IF(starttime > NOW(), 1, 0) FROM [format_table_name("poll_question")] AS q WHERE NOW() < endtime AND deleted = 0")
-	if(!query_load_polls.Execute())
-		qdel(query_load_polls)
-		return
-	var/list/poll_ids = list()
-	while(query_load_polls.NextRow())
-		new /datum/poll_question(query_load_polls.item[1], query_load_polls.item[2], query_load_polls.item[3], query_load_polls.item[4], query_load_polls.item[5], query_load_polls.item[6], query_load_polls.item[7], query_load_polls.item[8], query_load_polls.item[9], query_load_polls.item[10], query_load_polls.item[11], query_load_polls.item[12], query_load_polls.item[13], TRUE)
-		poll_ids += query_load_polls.item[1]
-	qdel(query_load_polls)
-	if(length(poll_ids))
-		var/datum/db_query/query_load_poll_options = SSdbcore.NewQuery("SELECT id, text, minval, maxval, descmin, descmid, descmax, default_percentage_calc, pollid FROM [format_table_name("poll_option")] WHERE pollid IN ([jointext(poll_ids, ",")])")
-		if(!query_load_poll_options.Execute())
-			qdel(query_load_poll_options)
-			return
-		while(query_load_poll_options.NextRow())
-			var/datum/poll_option/option = new(query_load_poll_options.item[1], query_load_poll_options.item[2], query_load_poll_options.item[3], query_load_poll_options.item[4], query_load_poll_options.item[5], query_load_poll_options.item[6], query_load_poll_options.item[7], query_load_poll_options.item[8])
-			var/option_poll_id = text2num(query_load_poll_options.item[9])
-			for(var/q in GLOB.polls)
-				var/datum/poll_question/poll = q
-				if(poll.poll_id == option_poll_id)
-					poll.options += option
-					option.parent_poll = poll
-		qdel(query_load_poll_options)
