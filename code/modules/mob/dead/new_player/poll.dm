@@ -12,6 +12,8 @@ GLOBAL_PROTECT(poll_options)
  *
  */
 /mob/dead/new_player/proc/handle_player_polling()
+	if(SSpolls.loading || !SSpolls.ready)
+	return
 	var/list/output = list("<div align='center'><B>Player polls</B><hr><table>")
 	var/rs = REF(src)
 	for(var/p in GLOB.polls)

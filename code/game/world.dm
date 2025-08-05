@@ -145,7 +145,8 @@ GLOBAL_VAR(restart_counter)
 
 	RunUnattendedFunctions()
 
-	SSredbot.Initialize()
+       SSredbot.Initialize()
+       SSpolls.Initialize()
 
 /// Initializes TGS and loads the returned revising info into GLOB.revdata
 /world/proc/InitTgs()
@@ -162,7 +163,7 @@ GLOBAL_VAR(restart_counter)
 
 	SetupLogs()
 
-        load_poll_data()
+	load_admins(initial = TRUE)
 
 	LoadVerbCache()
 	LoadVerbs(/datum/verbs/menu)
