@@ -3,9 +3,9 @@
 	name = "crafting"
 
 /datum/asset/spritesheet_batched/crafting/create_spritesheets()
-       ensure_crafting_recipes()
-       var/id = 1
-       for(var/atom in GLOB.crafting_recipes_atoms)
+	ensure_crafting_recipes()
+	var/id = 1
+	for(var/atom in GLOB.crafting_recipes_atoms)
 		add_atom_icon(atom, id++)
 	add_tool_icons()
 
@@ -13,19 +13,19 @@
 	name = "cooking"
 
 /datum/asset/spritesheet_batched/crafting/cooking/create_spritesheets()
-       ensure_crafting_recipes()
-       var/id = 1
-       for(var/atom in GLOB.cooking_recipes_atoms)
+	ensure_crafting_recipes()
+	var/id = 1
+	for(var/atom in GLOB.cooking_recipes_atoms)
 		add_atom_icon(atom, id++)
 
 /**
- * Adds the ingredient icon to the spritesheet with given ID
- *
- * ingredient_typepath can be an obj typepath OR a reagent typepath
- *
- * If it a reagent, it will use the default container's icon state,
- * OR if it has a glass style associated, it will use that
- */
+* Adds the ingredient icon to the spritesheet with given ID
+*
+* ingredient_typepath can be an obj typepath OR a reagent typepath
+*
+* If it a reagent, it will use the default container's icon state,
+* OR if it has a glass style associated, it will use that
+*/
 /datum/asset/spritesheet_batched/crafting/proc/add_atom_icon(ingredient_typepath, id)
 	var/icon_file
 	var/icon_state

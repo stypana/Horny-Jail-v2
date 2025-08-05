@@ -18,11 +18,11 @@
 	var/cooking = FALSE
 
 /obj/machinery/power/manufacturing/crafter/Initialize(mapload)
-       . = ..()
-       craftsman = AddComponent(/datum/component/personal_crafting/machine)
-       ensure_crafting_recipes()
-       if(ispath(recipe))
-               recipe = locate(recipe) in (cooking ? GLOB.cooking_recipes : GLOB.crafting_recipes)
+	. = ..()
+	craftsman = AddComponent(/datum/component/personal_crafting/machine)
+	ensure_crafting_recipes()
+	if(ispath(recipe))
+			recipe = locate(recipe) in (cooking ? GLOB.cooking_recipes : GLOB.crafting_recipes)
 	START_PROCESSING(SSmanufacturing, src)
 
 /obj/machinery/power/manufacturing/crafter/examine(mob/user)
@@ -51,10 +51,10 @@
 	return MANUFACTURING_SUCCESS
 
 /obj/machinery/power/manufacturing/crafter/multitool_act(mob/living/user, obj/item/tool)
-       ensure_crafting_recipes()
-       . = NONE
-       var/list/unavailable = list()
-       for(var/datum/crafting_recipe/potential_recipe as anything in cooking ? GLOB.cooking_recipes : GLOB.crafting_recipes)
+	ensure_crafting_recipes()
+	. = NONE
+	var/list/unavailable = list()
+	for(var/datum/crafting_recipe/potential_recipe as anything in cooking ? GLOB.cooking_recipes : GLOB.crafting_recipes)
 		var/obj/as_obj = potential_recipe.result
 		if(!(ispath(as_obj, /obj) && !ispath(as_obj, /obj/effect) && initial(as_obj.anchored)) && craftsman.is_recipe_available(potential_recipe, user))
 			continue

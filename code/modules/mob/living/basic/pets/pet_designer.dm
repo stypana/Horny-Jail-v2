@@ -134,8 +134,8 @@ GLOBAL_LIST_INIT(pet_options, list(
 	return pet_options
 
 /datum/pet_customization/ui_act(action, params, datum/tgui/ui)
-       ensure_emote_list()
-       . = ..()
+	ensure_emote_list()
+	. = ..()
 	switch(action)
 		if("finalize_pet")
 
@@ -150,7 +150,7 @@ GLOBAL_LIST_INIT(pet_options, list(
 			if(trick_name && sanitize_name(trick_name))
 				pet_trick_name = trick_name
 
-			var/pet_name =  params["selected_pet_name"]
+			var/pet_name =	params["selected_pet_name"]
 			if(pet_name && sanitize_name(pet_name))
 				custom_name = pet_name
 

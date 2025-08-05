@@ -110,8 +110,8 @@
 	return .
 
 /datum/surgery/proc/next_step(mob/living/user, modifiers)
-       if(location != user.zone_selected)
-               return FALSE
+	if(location != user.zone_selected)
+			return FALSE
 	if(user.combat_mode)
 		return FALSE
 	if(step_in_progress)
@@ -121,8 +121,8 @@
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		try_to_fail = TRUE
 
-       ensure_surgery_steps()
-       var/datum/surgery_step/surgery_step = GLOB.surgery_steps[steps[status]]
+	ensure_surgery_steps()
+	var/datum/surgery_step/surgery_step = GLOB.surgery_steps[steps[status]]
 	if(isnull(surgery_step))
 		return FALSE
 	var/obj/item/tool = user.get_active_held_item()
