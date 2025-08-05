@@ -71,10 +71,10 @@
  *
  */
 /datum/admins/proc/poll_list_panel()
-	if(SSpolls.loading || !SSpolls.ready)
-	to_chat(usr, span_warning("Poll data is still loading."), confidential = TRUE)
-	return
-	var/list/output = list("Current and future polls<br>Note when editing polls or their options changes are not saved until you press Submit Poll.<br><a href='byond://?_src_=holder;[HrefToken()];newpoll=1'>New Poll</a><a href='byond://?_src_=holder;[HrefToken()];reloadpolls=1'>Reload Polls</a><hr>")
+        if(SSpolls.loading || !SSpolls.ready)
+                to_chat(usr, span_warning("Poll data is still loading."), confidential = TRUE)
+                return
+        var/list/output = list("Current and future polls<br>Note when editing polls or their options changes are not saved until you press Submit Poll.<br><a href='byond://?_src_=holder;[HrefToken()];newpoll=1'>New Poll</a><a href='byond://?_src_=holder;[HrefToken()];reloadpolls=1'>Reload Polls</a><hr>")
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
 		output += {"[poll.question]
