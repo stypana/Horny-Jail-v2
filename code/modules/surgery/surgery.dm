@@ -111,7 +111,7 @@
 
 /datum/surgery/proc/next_step(mob/living/user, modifiers)
 	if(location != user.zone_selected)
-			return FALSE
+		return FALSE
 	if(user.combat_mode)
 		return FALSE
 	if(step_in_progress)

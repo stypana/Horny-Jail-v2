@@ -10,7 +10,7 @@
 	. = ..()
 	ensure_keybinding_lists()
 	if (CONFIG_GET(flag/disable_erp_preferences) && (str_val in GLOB.keybindings_by_name))
-			GLOB.keybindings_by_name -= str_val
+		GLOB.keybindings_by_name -= str_val
 
 /datum/preference/toggle/master_erp_preferences
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES

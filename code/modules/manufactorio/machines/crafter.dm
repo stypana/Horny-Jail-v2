@@ -22,7 +22,7 @@
 	craftsman = AddComponent(/datum/component/personal_crafting/machine)
 	ensure_crafting_recipes()
 	if(ispath(recipe))
-			recipe = locate(recipe) in (cooking ? GLOB.cooking_recipes : GLOB.crafting_recipes)
+		recipe = locate(recipe) in (cooking ? GLOB.cooking_recipes : GLOB.crafting_recipes)
 	START_PROCESSING(SSmanufacturing, src)
 
 /obj/machinery/power/manufacturing/crafter/examine(mob/user)
