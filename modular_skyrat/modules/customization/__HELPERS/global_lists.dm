@@ -92,20 +92,7 @@
 	for(var/stack in additional_stack_recipes)
 		for(var/material_list in additional_stack_recipes[stack])
 			for(var/stack_recipe in material_list)
-				if(istype(stack_recipe, /datum/stack_recipe_list))
-					var/datum/stack_recipe_list/stack_recipe_list = stack_recipe
-					for(var/nested_recipe in stack_recipe_list.recipes)
-						if(!nested_recipe)
-							continue
-						var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, nested_recipe)
-						if(recipe.name != "" && recipe.result)
-							GLOB.crafting_recipes += recipe
-				else
-					if(!stack_recipe)
-						continue
-					var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, stack_recipe)
-					if(recipe.name != "" && recipe.result)
-						GLOB.crafting_recipes += recipe
+				add_stack_crafting_recipes(stack, stack_recipe)
 
 /proc/make_augment_references()
 	// Here we build the global loadout lists

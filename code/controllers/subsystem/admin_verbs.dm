@@ -46,8 +46,9 @@ SUBSYSTEM_DEF(admin_verbs)
 			admin_verbs_by_visibility_flag[verb_singleton.visibility_flag] |= list(verb_singleton)
 
 /datum/controller/subsystem/admin_verbs/proc/get_valid_verbs_for_admin(client/admin)
-	if(isnull(admin.holder))
-		CRASH("Why are we checking a non-admin for their valid... ahem... admin verbs?")
+	if(isnull(admin?.holder))
+		stack_trace("get_valid_verbs_for_admin() called on non-admin [admin]")
+		return list()
 
 	var/list/has_permission = list()
 	for(var/permission_flag in GLOB.bitflags)

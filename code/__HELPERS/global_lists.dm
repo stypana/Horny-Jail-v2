@@ -48,6 +48,20 @@
 		return
 	GLOB.surgery_steps = init_subtypes_w_path_keys(/datum/surgery_step, list())
 
+/// Recursively registers stack crafting recipes and their sublists
+/proc/add_stack_crafting_recipes(obj/item/stack/stack, stack_recipe)
+	if(!stack_recipe)
+		return
+	if(istype(stack_recipe, /datum/stack_recipe_list))
+		var/datum/stack_recipe_list/stack_recipe_list = stack_recipe
+		for(var/nested_recipe in stack_recipe_list.recipes)
+			add_stack_crafting_recipes(stack, nested_recipe)
+		return
+
+	var/datum/crafting_recipe/stack/recipe = new /datum/crafting_recipe/stack(stack, stack_recipe)
+	if(recipe.name != "" && recipe.result)
+		GLOB.crafting_recipes += recipe
+
 /// Inits crafting recipe lists
 /proc/init_crafting_recipes(list/crafting_recipes)
 	for(var/path in subtypesof(/datum/crafting_recipe))
@@ -103,20 +117,7 @@
 
 	for(var/stack in global_stack_recipes)
 		for(var/stack_recipe in global_stack_recipes[stack])
-			if(istype(stack_recipe, /datum/stack_recipe_list))
-				var/datum/stack_recipe_list/stack_recipe_list = stack_recipe
-				for(var/nested_recipe in stack_recipe_list.recipes)
-					if(!nested_recipe)
-						continue
-					var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, nested_recipe)
-					if(recipe.name != "" && recipe.result)
-						GLOB.crafting_recipes += recipe
-			else
-				if(!stack_recipe)
-					continue
-				var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, stack_recipe)
-				if(recipe.name != "" && recipe.result)
-					GLOB.crafting_recipes += recipe
+			add_stack_crafting_recipes(stack, stack_recipe)
 
 	var/list/material_stack_recipes = list(
 		SSmaterials.base_stack_recipes,
