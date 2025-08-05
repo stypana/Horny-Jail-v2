@@ -3,8 +3,9 @@
 	name = "crafting"
 
 /datum/asset/spritesheet_batched/crafting/create_spritesheets()
-	var/id = 1
-	for(var/atom in GLOB.crafting_recipes_atoms)
+       ensure_crafting_recipes()
+       var/id = 1
+       for(var/atom in GLOB.crafting_recipes_atoms)
 		add_atom_icon(atom, id++)
 	add_tool_icons()
 
@@ -12,8 +13,9 @@
 	name = "cooking"
 
 /datum/asset/spritesheet_batched/crafting/cooking/create_spritesheets()
-	var/id = 1
-	for(var/atom in GLOB.cooking_recipes_atoms)
+       ensure_crafting_recipes()
+       var/id = 1
+       for(var/atom in GLOB.cooking_recipes_atoms)
 		add_atom_icon(atom, id++)
 
 /**

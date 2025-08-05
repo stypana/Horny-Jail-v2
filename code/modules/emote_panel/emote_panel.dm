@@ -2,7 +2,8 @@
 	var/list/blacklisted_emotes = list("me", "help")
 
 /datum/emote_panel/ui_static_data(mob/user)
-	var/list/data = list()
+       ensure_emote_list()
+       var/list/data = list()
 
 	var/list/emotes = list()
 	var/list/keys = list()
@@ -30,7 +31,8 @@
 	return data
 
 /datum/emote_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
+       ensure_emote_list()
+       . = ..()
 	if(.)
 		return
 	switch(action)
