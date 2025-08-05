@@ -45,7 +45,16 @@ SUBSYSTEM_DEF(polls)
 		if(user)
 			to_chat(user, span_danger("Failed to establish database connection."), confidential = TRUE)
 		return FALSE
-	var/datum/db_query/query_load_polls = SSdbcore.NewQuery("SELECT id, polltype, starttime, endtime, question, subtitle, adminonly, multiplechoiceoptions, dontshow, allow_revoting, IF(polltype='TEXT',(SELECT COUNT(ckey) FROM [format_table_name(\"poll_textreply\")] AS t WHERE t.pollid = q.id AND deleted = 0), (SELECT COUNT(DISTINCT ckey) FROM [format_table_name(\"poll_vote\")] AS v WHERE v.pollid = q.id AND deleted = 0)), IFNULL((SELECT byond_key FROM [format_table_name(\"player\")] AS p WHERE p.ckey = q.createdby_ckey), createdby_ckey), IF(starttime > NOW(), 1, 0) FROM [format_table_name(\"poll_question\")] AS q WHERE NOW() < endtime AND deleted = 0")
+        var/datum/db_query/query_load_polls = SSdbcore.NewQuery({"
+                SELECT id, polltype, starttime, endtime, question, subtitle, adminonly, multiplechoiceoptions, dontshow, allow_revoting,
+                        IF(polltype='TEXT',
+                                (SELECT COUNT(ckey) FROM [format_table_name(\"poll_textreply\")] AS t WHERE t.pollid = q.id AND deleted = 0),
+                                (SELECT COUNT(DISTINCT ckey) FROM [format_table_name(\"poll_vote\")] AS v WHERE v.pollid = q.id AND deleted = 0)
+                        ),
+                        IFNULL((SELECT byond_key FROM [format_table_name(\"player\")] AS p WHERE p.ckey = q.createdby_ckey), createdby_ckey),
+                        IF(starttime > NOW(), 1, 0)
+                FROM [format_table_name(\"poll_question\")] AS q
+                WHERE NOW() < endtime AND deleted = 0"})
 	if(!query_load_polls.Execute())
 		qdel(query_load_polls)
 		return FALSE
@@ -55,7 +64,9 @@ SUBSYSTEM_DEF(polls)
 		poll_ids += query_load_polls.item[1]
 	qdel(query_load_polls)
 	if(length(poll_ids))
-		var/datum/db_query/query_load_poll_options = SSdbcore.NewQuery("SELECT id, text, minval, maxval, descmin, descmid, descmax, default_percentage_calc, pollid FROM [format_table_name(\"poll_option\")] WHERE pollid IN ([jointext(poll_ids, \",\")])")
+                var/datum/db_query/query_load_poll_options = SSdbcore.NewQuery({"
+                        SELECT id, text, minval, maxval, descmin, descmid, descmax, default_percentage_calc, pollid
+                        FROM [format_table_name(\"poll_option\")] WHERE pollid IN ([jointext(poll_ids, ',')])"})
 		if(!query_load_poll_options.Execute())
 			qdel(query_load_poll_options)
 			return FALSE
