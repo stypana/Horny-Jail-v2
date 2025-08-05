@@ -1,3 +1,32 @@
+#define VERB_CACHE_FILE "data/verbs_cache.json"
+
+var/static/list/cached_verbs = list()
+
+/world/proc/LoadVerbCache()
+	if(rustg_file_exists(VERB_CACHE_FILE))
+		var/list/raw = json_decode(rustg_file_read(VERB_CACHE_FILE))
+		if(islist(raw))
+			for(var/verb_type_str in raw)
+				var/list/stored = raw[verb_type_str]
+				var/path_type = text2path(verb_type_str)
+				if(!path_type || !islist(stored))
+					continue
+				var/list/path_list = list()
+				for(var/verb_path_str in stored)
+					var/verb_path = text2path(verb_path_str)
+					if(verb_path)
+						path_list += verb_path
+				cached_verbs[path_type] = path_list
+
+/world/proc/SaveVerbCache()
+	var/list/output = list()
+	for(var/verb_type in cached_verbs)
+		var/list/path_list = list()
+		for(var/path in cached_verbs[verb_type])
+			path_list += "[path]"
+		output["[verb_type]"] = path_list
+	rustg_file_write(json_encode(output), VERB_CACHE_FILE)
+
 /datum/verbs
 	var/name
 	var/list/children
@@ -96,7 +125,13 @@
 		.[verbpath] = HandleVerb(arglist(list(entry, verbpath) + args))
 
 /world/proc/LoadVerbs(verb_type)
-	if(!ispath(verb_type, /datum/verbs) || verb_type == /datum/verbs)
-		CRASH("Invalid verb_type: [verb_type]")
-	for (var/typepath in subtypesof(verb_type))
-		new typepath()
+		if(!ispath(verb_type, /datum/verbs) || verb_type == /datum/verbs)
+				CRASH("Invalid verb_type: [verb_type]")
+
+		var/list/list_paths = cached_verbs[verb_type]
+		if(!list_paths)
+				list_paths = subtypesof(verb_type)
+				cached_verbs[verb_type] = list_paths
+
+		for(var/typepath in list_paths)
+				new typepath()

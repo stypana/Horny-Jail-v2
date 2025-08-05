@@ -164,6 +164,7 @@ GLOBAL_VAR(restart_counter)
 
         load_poll_data()
 
+	LoadVerbCache()
 	LoadVerbs(/datum/verbs/menu)
 
 	if(fexists(RESTART_COUNTER_PATH))
@@ -374,6 +375,7 @@ GLOBAL_VAR(restart_counter)
 				return FALSE
 
 /world/Reboot(reason = 0, fast_track = FALSE)
+	SaveVerbCache()
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
