@@ -9,13 +9,13 @@
 	var/category = GHC_MISC //Room categorizing
 	var/list/landing_coords = list(5, 5)
 
-	var/SUPPORTER_TIER = SUPPORTER_TIER_1 //For donator rooms
+	var/SUPPORTER_TIER = SUPPORTER_TIER_NONE //For donator rooms
 	var/list/ckeywhitelist = list() //For ckey locked donator rooms
 
 /datum/map_template/ghost_cafe_rooms/New(path, rename, cache)
 	. = ..()
 	if(LAZYLEN(ckeywhitelist) && !SUPPORTER_TIER)
-		SUPPORTER_TIER = SUPPORTER_TIER_1
+		SUPPORTER_TIER = SUPPORTER_TIER_NONE
 
 /datum/map_template/ghost_cafe_rooms/apartment
 	category = GHC_APARTMENT
