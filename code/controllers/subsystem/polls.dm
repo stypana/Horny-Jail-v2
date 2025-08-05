@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(polls)
 	if(length(poll_ids))
 		var/datum/db_query/query_load_poll_options = SSdbcore.NewQuery({"
 			SELECT id, text, minval, maxval, descmin, descmid, descmax, default_percentage_calc, pollid
-			FROM [format_table_name("poll_option")] WHERE pollid IN ([jointext(poll_ids, ',')])"})
+			FROM [format_table_name("poll_option")] WHERE pollid IN ([jointext(poll_ids, ",")])"})
 		if(!query_load_poll_options.Execute())
 			qdel(query_load_poll_options)
 			return FALSE
