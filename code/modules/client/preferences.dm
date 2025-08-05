@@ -115,12 +115,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		refresh_membership()
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
-       load_savefile()
-       ensure_keybinding_lists()
-       ensure_customization_lists()
+	load_savefile()
+	ensure_keybinding_lists()
+	ensure_customization_lists()
 
-       // give them default keybinds and update their movement keys
-       key_bindings = deep_copy_list(GLOB.default_hotkeys)
+	// give them default keybinds and update their movement keys
+	key_bindings = deep_copy_list(GLOB.default_hotkeys)
 	key_bindings_by_key = get_key_bindings_by_key(key_bindings)
 	randomise = get_default_randomization()
 
@@ -599,18 +599,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 
 /**
- * Safely read a given preference datum from a given client.
- *
- * Reads the given preference datum from the given client, and guards against null client and null prefs.
- * The client object is fickle and can go null at times, so use this instead of read_preference() if you
- * want to ensure no runtimes.
- *
- * returns client.prefs.read_preference(prefs_to_read) or FALSE if something went wrong.
- *
- * Arguments:
- * * client/prefs_holder - the client to read the pref from
- * * datum/preference/pref_to_read - the type of preference datum to read.
- */
+* Safely read a given preference datum from a given client.
+*
+* Reads the given preference datum from the given client, and guards against null client and null prefs.
+* The client object is fickle and can go null at times, so use this instead of read_preference() if you
+* want to ensure no runtimes.
+*
+* returns client.prefs.read_preference(prefs_to_read) or FALSE if something went wrong.
+*
+* Arguments:
+* * client/prefs_holder - the client to read the pref from
+* * datum/preference/pref_to_read - the type of preference datum to read.
+*/
 /proc/safe_read_pref(client/prefs_holder, datum/preference/pref_to_read)
 	if(!prefs_holder)
 		return FALSE
@@ -621,17 +621,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	return prefs_holder?.prefs.read_preference(pref_to_read)
 
 /**
- * Get the given client's chat toggle prefs.
- *
- * Getter function for prefs.chat_toggles which guards against null client and null prefs.
- * The client object is fickle and can go null at times, so use this instead of directly accessing the var
- * if you want to ensure no runtimes.
- *
- * returns client.prefs.chat_toggles or FALSE if something went wrong.
- *
- * Arguments:
- * * client/prefs_holder - the client to get the chat_toggles pref from.
- */
+* Get the given client's chat toggle prefs.
+*
+* Getter function for prefs.chat_toggles which guards against null client and null prefs.
+* The client object is fickle and can go null at times, so use this instead of directly accessing the var
+* if you want to ensure no runtimes.
+*
+* returns client.prefs.chat_toggles or FALSE if something went wrong.
+*
+* Arguments:
+* * client/prefs_holder - the client to get the chat_toggles pref from.
+*/
 /proc/get_chat_toggles(client/target)
 	if(ismob(target))
 		var/mob/target_mob = target

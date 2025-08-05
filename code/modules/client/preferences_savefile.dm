@@ -141,9 +141,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
-       ensure_keybinding_lists()
-       if(!parent)
-               return
+	ensure_keybinding_lists()
+	if(!parent)
+			return
 	var/list/binds_by_key = get_key_bindings_by_key(key_bindings)
 	var/list/notadded = list()
 	for (var/name in GLOB.keybindings_by_name)
@@ -457,8 +457,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	return output.len == input_be_special.len ? input_be_special : output
 
 /proc/sanitize_keybindings(value)
-       ensure_keybinding_lists()
-       var/list/base_bindings = sanitize_islist(value,list())
+	ensure_keybinding_lists()
+	var/list/base_bindings = sanitize_islist(value,list())
 	for(var/keybind_name in base_bindings)
 		if (!(keybind_name in GLOB.keybindings_by_name))
 			base_bindings -= keybind_name

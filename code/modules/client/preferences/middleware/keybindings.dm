@@ -24,8 +24,8 @@
 	)
 
 /datum/preference_middleware/keybindings/proc/reset_all_keybinds(list/params, mob/user)
-       ensure_keybinding_lists()
-       preferences.key_bindings = deep_copy_list(GLOB.default_hotkeys)
+	ensure_keybinding_lists()
+	preferences.key_bindings = deep_copy_list(GLOB.default_hotkeys)
 	preferences.key_bindings_by_key = preferences.get_key_bindings_by_key(preferences.key_bindings)
 	preferences.update_static_data(user)
 	user.client.update_special_keybinds()
@@ -33,9 +33,9 @@
 	return TRUE
 
 /datum/preference_middleware/keybindings/proc/reset_keybinds_to_defaults(list/params, mob/user)
-       ensure_keybinding_lists()
-       var/keybind_name = params["keybind_name"]
-       var/datum/keybinding/keybinding = GLOB.keybindings_by_name[keybind_name]
+	ensure_keybinding_lists()
+	var/keybind_name = params["keybind_name"]
+	var/datum/keybinding/keybinding = GLOB.keybindings_by_name[keybind_name]
 
 	if (isnull(keybinding))
 		return FALSE
@@ -49,8 +49,8 @@
 	return TRUE
 
 /datum/preference_middleware/keybindings/proc/set_keybindings(list/params, mob/user)
-       ensure_keybinding_lists()
-       var/keybind_name = params["keybind_name"]
+	ensure_keybinding_lists()
+	var/keybind_name = params["keybind_name"]
 
 	if (isnull(GLOB.keybindings_by_name[keybind_name]))
 		return FALSE
@@ -86,8 +86,8 @@
 	name = "keybindings"
 
 /datum/asset/json/keybindings/generate()
-       ensure_keybinding_lists()
-       var/list/keybindings = list()
+	ensure_keybinding_lists()
+	var/list/keybindings = list()
 
 	for (var/name in GLOB.keybindings_by_name)
 		var/datum/keybinding/keybinding = GLOB.keybindings_by_name[name]
