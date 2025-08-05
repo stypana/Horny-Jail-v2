@@ -10,15 +10,43 @@
 	sort_list(surgeries, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	return surgeries
 
-/// Legacy procs that really should be replaced with proper _INIT macros
-/proc/make_datum_reference_lists()
-	// I tried to eliminate this proc but I couldn't untangle their init-order interdependencies -Dominion/Cyberboss
-	init_keybindings()
-	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
-	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
-	init_skyrat_stack_recipes() //SKYRAT EDIT ADDITION - More sheet recipes
-	init_crafting_recipes()
-	init_crafting_recipes_atoms()
+/// Initializes keybinding datums on first use
+/proc/ensure_keybinding_lists()
+       if(length(GLOB.keybindings_by_name))
+               return
+       init_keybindings()
+
+/// Initializes customization related datums on first use
+/proc/ensure_customization_lists()
+       if(length(GLOB.scream_types))
+               return
+       make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
+
+/// Initializes emote datums on first use
+/proc/ensure_emote_list()
+       if(length(GLOB.emote_list))
+               return
+       GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
+
+/// Initializes crafting recipes on first use
+/proc/ensure_crafting_recipes()
+       if(length(GLOB.crafting_recipes) || length(GLOB.cooking_recipes))
+               return
+       init_skyrat_stack_recipes() //SKYRAT EDIT ADDITION - More sheet recipes
+       init_crafting_recipes()
+       init_crafting_recipes_atoms()
+
+/// Initializes surgeries list on first use
+/proc/ensure_surgeries_list()
+       if(length(GLOB.surgeries_list))
+               return
+       GLOB.surgeries_list = init_surgeries()
+
+/// Initializes surgery steps on first use
+/proc/ensure_surgery_steps()
+       if(length(GLOB.surgery_steps))
+               return
+       GLOB.surgery_steps = init_subtypes_w_path_keys(/datum/surgery_step, list())
 
 /// Inits crafting recipe lists
 /proc/init_crafting_recipes(list/crafting_recipes)

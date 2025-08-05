@@ -449,7 +449,8 @@
 		ui.open()
 
 /datum/component/personal_crafting/ui_data(mob/user)
-	var/list/data = list()
+       ensure_crafting_recipes()
+       var/list/data = list()
 	data["busy"] = busy
 	data["mode"] = mode
 	data["display_craftable_only"] = display_craftable_only
@@ -467,7 +468,8 @@
 	return data
 
 /datum/component/personal_crafting/ui_static_data(mob/user)
-	var/list/data = list()
+       ensure_crafting_recipes()
+       var/list/data = list()
 	var/list/material_occurences = list()
 
 	data["forced_mode"] = forced_mode
@@ -545,7 +547,8 @@
 
 
 /datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
+       ensure_crafting_recipes()
+       . = ..()
 	if(.)
 		return
 	switch(action)
@@ -584,8 +587,9 @@
 	)
 
 /datum/component/personal_crafting/proc/build_crafting_data(datum/crafting_recipe/recipe)
-	var/list/data = list()
-	var/list/atoms = mode ? GLOB.cooking_recipes_atoms : GLOB.crafting_recipes_atoms
+       ensure_crafting_recipes()
+       var/list/data = list()
+       var/list/atoms = mode ? GLOB.cooking_recipes_atoms : GLOB.crafting_recipes_atoms
 
 	data["ref"] = "[REF(recipe)]"
 	var/atom/atom = recipe.result

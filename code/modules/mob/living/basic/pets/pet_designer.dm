@@ -134,7 +134,8 @@ GLOBAL_LIST_INIT(pet_options, list(
 	return pet_options
 
 /datum/pet_customization/ui_act(action, params, datum/tgui/ui)
-	. = ..()
+       ensure_emote_list()
+       . = ..()
 	switch(action)
 		if("finalize_pet")
 

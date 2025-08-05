@@ -13,14 +13,15 @@
 
 //The code execution of the emote datum is located at code/datums/emotes.dm
 /mob/proc/emote(act, m_type = null, message = null, intentional = FALSE, force_silence = FALSE)
-	var/param = message
+       var/param = message
 	var/custom_param = findchar(act, " ")
 	if(custom_param)
 		param = copytext(act, custom_param + length(act[custom_param]))
 		act = copytext(act, 1, custom_param)
 
-	act = LOWER_TEXT(act)
-	var/list/key_emotes = GLOB.emote_list[act]
+       act = LOWER_TEXT(act)
+       ensure_emote_list()
+       var/list/key_emotes = GLOB.emote_list[act]
 
 	if(!length(key_emotes))
 		if(intentional && !force_silence)
@@ -49,7 +50,8 @@
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer, /mob/living/silicon/ai, /mob/eye/imaginary_friend)
 
 /datum/emote/help/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
+       ensure_emote_list()
+       . = ..()
 	var/list/keys = list()
 	var/list/message = list("Available emotes, you can use them with say [span_bold("\"*emote\"")]: \n")
 	message += span_smallnoticeital("Note - emotes highlighted in blue play a sound \n\n")

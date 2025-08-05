@@ -21,8 +21,7 @@ GLOBAL_VAR(restart_counter)
  *     - Master =>
  *       - config *unloaded
  *       - (all subsystems) PreInit()
- *       - GLOB =>
- *         - make_datum_reference_lists()
+*       - GLOB => (lazy datum reference lists initialize on access)
  *   - (/static variable inits, reverse declaration order)
  * - (all pre-mapped atoms) /atom/New()
  * - world.New() =>
