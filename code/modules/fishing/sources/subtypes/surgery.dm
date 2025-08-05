@@ -13,17 +13,18 @@
 
 /datum/fish_source/surgery/spawn_reward(reward_path, atom/spawn_location, atom/fishing_spot, obj/item/fishing_rod/used_rod)
 	if(istype(fishing_spot, /obj/machinery/fishing_portal_generator))
-			var/obj/machinery/fishing_portal_generator/portal = fishing_spot
-			fishing_spot = portal.current_linked_atom
+		var/obj/machinery/fishing_portal_generator/portal = fishing_spot
+		fishing_spot = portal.current_linked_atom
 	if(!iscarbon(fishing_spot))
-			var/random_type = pick(subtypesof(/obj/item/organ) - GLOB.prototype_organs)
-			return new random_type(spawn_location)
+		var/random_type = pick(subtypesof(/obj/item/organ) - GLOB.prototype_organs)
+		return new random_type(spawn_location)
+
 
 	var/mob/living/carbon/carbon = fishing_spot
 	var/list/possible_organs = list()
 	ensure_surgery_steps()
 	for(var/datum/surgery/organ_manipulation/operation in carbon.surgeries)
-			var/datum/surgery_step/manipulate_organs/manip_step = GLOB.surgery_steps[operation.steps[operation.status]]
+		var/datum/surgery_step/manipulate_organs/manip_step = GLOB.surgery_steps[operation.steps[operation.status]]
 		if(!istype(manip_step))
 			continue
 		for(var/obj/item/organ/organ in operation.operated_bodypart)
