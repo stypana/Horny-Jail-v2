@@ -325,7 +325,41 @@ GLOBAL_PROTECT(protected_ranks)
 		msg += "\t[ckey] - [D.rank_names()]\n"
 	testing(msg)
 	#endif
-	return dbfail
+        return dbfail
+
+/proc/load_admins_from_json()
+        var/list/backup_file_json = load_admin_ranks(TRUE)
+        if(!backup_file_json)
+                return
+
+        GLOB.admin_datums.Cut()
+        for(var/client/C in GLOB.admins)
+                C.remove_admin_verbs()
+                C.holder = null
+        GLOB.admins.Cut()
+        GLOB.protected_admins.Cut()
+        GLOB.deadmins.Cut()
+
+        for(var/A in world.GetConfig("admin"))
+                world.SetConfig("APP/admin", A, null)
+
+        var/admins_text = file2text("[global.config.directory]/admins.txt")
+        var/regex/admins_regex = new(@"^(?!#)(.+?)\s+=\s+(.+)", "gm")
+
+        while(admins_regex.Find(admins_text))
+                var/admin_key = admins_regex.group[1]
+                var/admin_rank = admins_regex.group[2]
+                new /datum/admins(ranks_from_rank_name(admin_rank), ckey(admin_key), force_active = FALSE, protected = TRUE)
+
+        for(var/backup_admin_ckey in backup_file_json["admins"])
+                var/skip
+                for(var/admin_ckey in GLOB.admin_datums + GLOB.deadmins)
+                        if(ckey(admin_ckey) == ckey("[backup_admin_ckey]"))
+                                skip = TRUE
+                                break
+                if(skip)
+                        continue
+                new /datum/admins(ranks_from_rank_name(backup_file_json["admins"]["[backup_admin_ckey]"]), ckey("[backup_admin_ckey]"))
 
 
 /proc/sync_ranks_with_db()

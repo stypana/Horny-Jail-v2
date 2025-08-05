@@ -33,7 +33,6 @@ GLOBAL_VAR(restart_counter)
  *   - world.ConfigLoaded() =>
  *     - SSdbcore.InitializeRound()
  *     - world.SetupLogs()
- *     - load_admins()
  *     - ...
  *   - Master.Initialize() =>
  *     - (all subsystems) Initialize()
@@ -156,18 +155,15 @@ GLOBAL_VAR(restart_counter)
 
 /// Runs after config is loaded but before Master is initialized
 /world/proc/ConfigLoaded()
-	// Everything in here is prioritized in a very specific way.
-	// If you need to add to it, ask yourself hard if what your adding is in the right spot
-	// (i.e. basically nothing should be added before load_admins() in here)
+        // Everything in here is prioritized in a very specific way.
+        // If you need to add to it, ask yourself hard if what you're adding is in the right spot
 
 	// Try to set round ID
 	SSdbcore.InitializeRound()
 
 	SetupLogs()
 
-	load_admins(initial = TRUE)
-
-	load_poll_data()
+        load_poll_data()
 
 	LoadVerbs(/datum/verbs/menu)
 
