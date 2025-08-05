@@ -635,6 +635,35 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else
 		return uuid
 
+/client/proc/show_account_identifier()
+	set name = "Show Account Identifier"
+	set category = "OOC"
+	set desc ="Get your ID for account verification."
+
+	verbs -= /client/proc/show_account_identifier
+	addtimer(CALLBACK(src, .proc/restore_account_identifier), 20) //Don't DoS DB queries, asshole
+
+	var/confirm = alert("Do NOT share the verification ID in the following popup. Understand?", "Important Warning", "Yes", "Cancel")
+	if(confirm == "Cancel")
+		return
+	if(confirm == "Yes")
+		var/uuid = fetch_uuid()
+		if(!uuid)
+			alert("Failed to fetch your verification ID. Try again later. If problems persist, tell an admin.", "Account Verification", "Okay")
+			log_sql("Failed to fetch UUID for [key_name(src)]")
+		else
+			var/dat
+			dat += "Account Identifier"
+			dat += ""
+			dat += "Do NOT share this id:"
+			dat += ""
+			dat += "[uuid]"
+
+			src << browse(dat, "window=accountidentifier;size=600x320")
+			onclose(src, "accountidentifier")
+
+/client/proc/restore_account_identifier()
+	verbs += /client/proc/show_account_identifier
 
 //////////////
 //DISCONNECT//
@@ -1364,36 +1393,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /// This grabs the DPI of the user per their skin
 /client/proc/acquire_dpi()
 	window_scaling = text2num(winget(src, null, "dpi"))
-
-/client/proc/show_account_identifier()
-	set name = "Show Account Identifier"
-	set category = "OOC"
-	set desc ="Get your ID for account verification."
-
-	verbs -= /client/proc/show_account_identifier
-	addtimer(CALLBACK(src, .proc/restore_account_identifier), 20) //Don't DoS DB queries, asshole
-
-	var/confirm = alert("Do NOT share the verification ID in the following popup. Understand?", "Important Warning", "Yes", "Cancel")
-	if(confirm == "Cancel")
-		return
-	if(confirm == "Yes")
-		var/uuid = fetch_uuid()
-		if(!uuid)
-			alert("Failed to fetch your verification ID. Try again later. If problems persist, tell an admin.", "Account Verification", "Okay")
-			log_sql("Failed to fetch UUID for [key_name(src)]")
-		else
-			var/dat
-			dat += "<h3>Account Identifier</h3>"
-			dat += "<br>"
-			dat += "<h3>Do NOT share this id:</h3>"
-			dat += "<br>"
-			dat += "[uuid]"
-
-			src << browse(dat, "window=accountidentifier;size=600x320")
-			onclose(src, "accountidentifier")
-
-/client/proc/restore_account_identifier()
-	verbs += /client/proc/show_account_identifier
 
 #undef ADMINSWARNED_AT
 #undef CURRENT_MINUTE

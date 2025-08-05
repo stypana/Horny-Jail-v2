@@ -186,6 +186,32 @@
 	keyword = "status"
 	require_comms_key = FALSE
 
+/datum/world_topic/identify_uuid
+	keyword = "identify_uuid"
+	require_comms_key = TRUE
+	log = FALSE
+
+/datum/world_topic/identify_uuid/Run(list/input, addr)
+	var/uuid = input["uuid"]
+	. = list()
+
+	if(!SSdbcore.Connect())
+		return null
+
+	var/datum/db_query/query_ckey_lookup = SSdbcore.NewQuery(
+		"SELECT ckey FROM [format_table_name("player")] WHERE uuid = :uuid",
+		list("uuid" = uuid)
+	)
+	if(!query_ckey_lookup.Execute())
+		qdel(query_ckey_lookup)
+		return null
+
+	.["identified_ckey"] = null
+	if(query_ckey_lookup.NextRow())
+		.["identified_ckey"] = query_ckey_lookup.item[1]
+	qdel(query_ckey_lookup)
+	return .
+
 /datum/world_topic/status/Run(list/input)
 	. = list()
 	.["version"] = GLOB.game_version
@@ -308,29 +334,4 @@
 	message_admins(span_adminnotice("Incoming cross-sector newscaster article by [author_key] in channel [channel_name]."))
 	GLOB.news_network.submit_article(msg, author, channel_name)
 
-/datum/world_topic/identify_uuid
-	keyword = "identify_uuid"
-	require_comms_key = TRUE
-	log = FALSE
-
-/datum/world_topic/identify_uuid/Run(list/input, addr)
-	var/uuid = input["uuid"]
-	. = list()
-
-	if(!SSdbcore.Connect())
-		return null
-
-	var/datum/db_query/query_ckey_lookup = SSdbcore.NewQuery(
-		"SELECT ckey FROM [format_table_name("player")] WHERE uuid = :uuid",
-		list("uuid" = uuid)
-	)
-	if(!query_ckey_lookup.Execute())
-		qdel(query_ckey_lookup)
-		return null
-
-	.["identified_ckey"] = null
-	if(query_ckey_lookup.NextRow())
-		.["identified_ckey"] = query_ckey_lookup.item[1]
-	qdel(query_ckey_lookup)
-	return .
 
