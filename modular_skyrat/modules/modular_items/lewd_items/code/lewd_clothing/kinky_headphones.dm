@@ -17,7 +17,7 @@
 	/// List of designs used when picking a color in the radial menu
 	var/static/list/kinkphones_designs
 	actions_types = list(/datum/action/item_action/toggle_kinky_headphones)
-	slot_flags = ITEM_SLOT_EARS | ITEM_SLOT_HEAD | ITEM_SLOT_NECK
+	slot_flags = ITEM_SLOT_EARS | ITEM_SLOT_HEAD
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 
@@ -52,13 +52,13 @@
 	. = ..()
 	if(!(istype(user) && (slot & ITEM_SLOT_EARS)))
 		return
-	to_chat(user, span_purple("[!kinky_headphones_on ? "You can barely hear anything! Your other senses have become more apparent..." : "Strange but relaxing music fills your mind. You feel so... Calm."]"))
 	ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
+	to_chat(user, span_purple("[!kinky_headphones_on ? "You can barely hear anything! Your other senses have become more apparent..." : "Strange but relaxing music fills your mind. You feel so... Calm."]"))
 
 //we dropping item so we not deaf now. hurray.
-/obj/item/clothing/ears/kinky_headphones/dropped(mob/living/carbon/human/user)
+/obj/item/clothing/ears/kinky_headphones/dropped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(!(src == user.ears))
+	if(!(src == ITEM_SLOT_EARS_LEFT || ITEM_SLOT_EARS_RIGHT))
 		return
 	REMOVE_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
 	to_chat(user, span_purple("You can finally hear the world around you once more."))
