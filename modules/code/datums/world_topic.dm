@@ -55,24 +55,33 @@
 
 /datum/world_topic/identify_uuid/Run(list/input, addr)
 	var/uuid = input["uuid"]
-	. = list()
 
 	if(!SSdbcore.Connect())
-		return null
+		statuscode = 500
+		response = "DB connection failed"
+		data = null
+		return
 
 	var/datum/db_query/query_ckey_lookup = SSdbcore.NewQuery(
 		"SELECT ckey FROM [format_table_name("player")] WHERE uuid = :uuid",
 		list("uuid" = uuid)
 	)
+
 	if(!query_ckey_lookup.Execute())
 		qdel(query_ckey_lookup)
-		return null
+		statuscode = 500
+		response = "Query execution failed"
+		data = null
+		return
 
-	.["identified_ckey"] = null
+	var/ckey = null
 	if(query_ckey_lookup.NextRow())
-		.["identified_ckey"] = query_ckey_lookup.item[1]
+		ckey = query_ckey_lookup.item[1]
 	qdel(query_ckey_lookup)
-	return .
+
+	statuscode = 200
+	response = ckey ? "Ckey found" : "Ckey not found"
+	data = list("identified_ckey" = ckey)
 
 /datum/world_topic/ping
 	key = "ping"
