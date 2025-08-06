@@ -556,19 +556,19 @@ GLOBAL_LIST_EMPTY(virtual_pets_list)
 			else
 				update_message["likers"] += our_reference
 
-			if("teach_tricks")
-				ensure_emote_list()
-				var/trick_name = params["trick_name"]
-				var/list/trick_sequence = params["tricks"]
-				if(isnull(pet.ai_controller))
-					return TRUE
-				if(!isnull(trick_name))
-					pet.ai_controller.set_blackboard_key(BB_TRICK_NAME, trick_name)
-				for (var/trick_move in trick_sequence)
-					if (!length(GLOB.emote_list[LOWER_TEXT(trick_move)]))
-						trick_sequence -= trick_move
-				pet.ai_controller.override_blackboard_key(BB_TRICK_SEQUENCE, trick_sequence)
-				playsound(computer.loc, 'sound/mobs/non-humanoids/orbie/orbie_trick_learned.ogg', 50)
+		if("teach_tricks")
+			ensure_emote_list()
+			var/trick_name = params["trick_name"]
+			var/list/trick_sequence = params["tricks"]
+			if(isnull(pet.ai_controller))
+				return TRUE
+			if(!isnull(trick_name))
+				pet.ai_controller.set_blackboard_key(BB_TRICK_NAME, trick_name)
+			for (var/trick_move in trick_sequence)
+				if (!length(GLOB.emote_list[LOWER_TEXT(trick_move)]))
+					trick_sequence -= trick_move
+			pet.ai_controller.override_blackboard_key(BB_TRICK_SEQUENCE, trick_sequence)
+			playsound(computer.loc, 'sound/mobs/non-humanoids/orbie/orbie_trick_learned.ogg', 50)
 
 	return TRUE
 
