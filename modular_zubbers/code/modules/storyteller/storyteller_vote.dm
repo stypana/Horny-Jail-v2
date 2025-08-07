@@ -17,23 +17,17 @@
 	var/ready_only = TRUE
 
 /datum/vote/storyteller/New()
-       . = ..()
-       default_choices = list()
-       default_choices = SSgamemode.storyteller_vote_choices(FALSE)
+	. = ..()
+	default_choices = list()
+	default_choices = SSgamemode.storyteller_vote_choices(FALSE)
 
 /datum/vote/storyteller/initiate_vote(initiator, duration)
-       . = ..()
-       SSgamemode.storyteller_vote_choices(TRUE)
-       to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[span_vote_notice("Only players who are ready and joining the game round start will be calculated in voting results.")]", "boxed_message purple_box")))
+	. = ..()
+	SSgamemode.storyteller_vote_choices(TRUE)
+	to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[span_vote_notice("В голосовании засчитываются ТОЛЬКО игроки, прожавшие READY. Результаты голосования будут видны только после начала текущего раунда.")]", "boxed_message purple_box")))
 
 /datum/vote/storyteller/return_desc(vote_name)
 	return SSgamemode.storyteller_desc(vote_name)
-
-/datum/vote/storyteller/get_result_text(winners, final_winner, non_voters)
-	if(!ready_only)
-		return ..()
-
-	return fieldset_block("Storyteller Vote", "Storyteller voting is now closed! Storyteller will be determined when the round starts.", "boxed_message purple_box")
 
 /datum/vote/storyteller/create_vote()
 	. = ..()
