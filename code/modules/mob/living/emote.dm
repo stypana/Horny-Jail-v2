@@ -51,6 +51,7 @@
 	message = "chokes!"
 	message_mime = "chokes silently!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	trait_forbidden = TRAIT_NOBREATH
 
 /datum/emote/living/cross
 	key = "cross"

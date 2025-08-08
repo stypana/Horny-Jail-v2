@@ -46,6 +46,8 @@
 	var/list/mob_type_ignore_stat_typecache
 	/// Trait that is required to use this emote.
 	var/trait_required
+	/// Trait that forbid using emote
+	var/trait_forbidden
 	/// In which state can you use this emote? (Check stat.dm for a full list of them)
 	var/stat_allowed = CONSCIOUS
 	/// Sound to play when emote is called.
@@ -381,6 +383,8 @@
  */
 /datum/emote/proc/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE, params)
 	if(trait_required && !HAS_TRAIT(user, trait_required))
+		return FALSE
+	if(trait_forbidden && HAS_TRAIT(user, trait_forbidden))
 		return FALSE
 	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
 		return FALSE
