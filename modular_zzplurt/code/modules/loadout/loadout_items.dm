@@ -4,9 +4,9 @@
 
 /datum/loadout_item/New(category)
 	. = ..()
-	if((SUPPORTER_TIER || LAZYLEN(ckeywhitelist)) && !donator_only)
+	if((SUPPORTER_TIER) && !donator_only)
 		donator_only = TRUE
-	if((donator_only || LAZYLEN(ckeywhitelist)) && !SUPPORTER_TIER)
+	if((donator_only) && !SUPPORTER_TIER)
 		SUPPORTER_TIER = SUPPORTER_TIER_1
 
 /datum/loadout_item/to_ui_data()
