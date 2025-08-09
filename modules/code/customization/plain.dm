@@ -1,5 +1,5 @@
 /datum/body_marking/plain
-	icon = 'modules/icons/customization/plain.dmi'
+	icon = 'modules/code/icons/customization/plain.dmi'
 
 /*
  * HEAD
