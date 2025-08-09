@@ -165,7 +165,7 @@
 			last_legion = FALSE
 			break
 	if(last_legion)
-		loot = list(/obj/item/storm_staff)
+		loot = list(/obj/item/storm_staff, /obj/item/keycard/legion)
 		elimination = FALSE
 	else if(prob(20)) //20% chance for sick lootz.
 		loot = list(/obj/structure/closet/crate/necropolis/tendril)
