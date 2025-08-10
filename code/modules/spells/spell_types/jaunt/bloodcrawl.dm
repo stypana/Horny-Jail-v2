@@ -17,9 +17,9 @@
 	jaunt_type = /obj/effect/dummy/phased_mob/blood
 
 	/// The time it takes to enter blood
-	var/enter_blood_time = 0 SECONDS
+	var/enter_blood_time = 1 SECONDS
 	/// The time it takes to exit blood
-	var/exit_blood_time = 2 SECONDS
+	var/exit_blood_time = 1 SECONDS
 	/// The radius around us that we look for blood in
 	var/blood_radius = 1
 	/// If TRUE, we equip "blood crawl" hands to the jaunter to prevent using items

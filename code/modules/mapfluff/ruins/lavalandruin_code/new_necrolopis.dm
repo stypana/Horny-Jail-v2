@@ -28,11 +28,15 @@
 	planetary_atmos = FALSE
 
 /area/lavaland/surface/necropolis
-	area_flags = NOTELEPORT | FLORA_ALLOWED | EVENT_PROTECTED
+	area_flags = NOTELEPORT | FLORA_ALLOWED | EVENT_PROTECTED | QUIET_LOGS
 	requires_power = FALSE
+	ambience_index = AMBIENCE_SPOOKY
+	ambient_buzz = 'sound/music/antag/heretic/VoidsEmbrace.ogg'
 
 /area/lavaland/surface/necropolis/cult
-	area_flags = FLORA_ALLOWED | EVENT_PROTECTED | CULT_PERMITTED
+	area_flags = FLORA_ALLOWED | EVENT_PROTECTED | CULT_PERMITTED | QUIET_LOGS
+	ambience_index = AMBIENCE_SPOOKY
+	ambient_buzz = 'sound/music/antag/heretic/heretic_sacrifice.ogg'
 
 /obj/machinery/door/puzzle/keycard/gates
 	gender = PLURAL
@@ -173,8 +177,8 @@
 /mob/living/simple_animal/hostile/megafauna/cult_templar
 	name = "cult templar"
 	desc = "Forever a servant of the Nar'sie, this cultist has gone more insane than what is considered the normal insanity for cultist. They forever seek battle, waiting for sacrifices to battle them."
-	health = 1000
-	maxHealth = 1000
+	health = 2000
+	maxHealth = 2000
 	icon_state = "cult_templar"
 	icon_living = "cult_templar"
 	icon = 'modules/icons/new_necropolis.dmi'
@@ -188,7 +192,9 @@
 	light_range = 6
 	projectiletype = /obj/projectile/bullet/chaos_bomb
 	ranged = TRUE
-	ranged_cooldown_time = 20
+	retreat_distance = 2
+	minimum_distance = 1
+	ranged_cooldown_time = 5
 	vision_range = 10
 	damage_coeff = list(BRUTE = 1, BURN = 0.5, TOX = 0.5, CLONE = 0.5, STAMINA = 0, OXY = 0.5)
 	loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/clothing/suit/hooded/cultrobes/hardened, /obj/item/keycard/cultist)
@@ -209,7 +215,7 @@
 	var/obj/item/claymore/weapon
 	var/turf/starting
 	var/charging = FALSE
-	var/dash_cooldown = 6 SECONDS
+	var/dash_cooldown = 3 SECONDS
 	var/runic_blast_cooldown = 14 SECONDS
 	var/teleport_cooldown = 6 SECONDS
 	var/infernal_summon_cooldown = 30 SECONDS
@@ -283,7 +289,7 @@
 			visible_message(span_danger("[src] butchers [L]!"),
 			span_userdanger("You butcher [L], restoring your health!"))
 			adjustHealth(-(L.maxHealth * 0.5))
-			L.gib()
+			L.gib(DROP_ALL_REMAINS)
 			if(ishuman(L)) // If target is a human - yell some funny shit.
 				telegraph()
 				say("Mah'weyh pleggh at e'ntrath!!")
@@ -358,7 +364,7 @@
 		infernal_summon()
 
 /obj/projectile/bullet/chaos_bomb
-	name ="bolter bullet"
+	name ="blood missile"
 	desc = "Oh god oh fu..."
 	icon_state = "blood_bolt"
 	damage = 20
