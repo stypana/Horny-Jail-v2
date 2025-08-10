@@ -1,5 +1,5 @@
 /obj/item/toy/plush/hornyjail
-	icon = 'modules/code/icons/flavor/plushes.dmi'
+	icon = 'modules/icons/flavor/plushes.dmi'
 	inhand_icon_state = null
 
 /obj/item/toy/plush/hornyjail/plush_gaston

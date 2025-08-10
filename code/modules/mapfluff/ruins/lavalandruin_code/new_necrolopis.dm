@@ -1,5 +1,5 @@
 /turf/open/indestructible/boss/necropolis
-	icon = 'modules/code/icons/new_necropolis.dmi'
+	icon = 'modules/icons/new_necropolis.dmi'
 	name = "necropolis floor"
 
 /turf/open/indestructible/boss/necropolis/tile1
@@ -177,7 +177,7 @@
 	maxHealth = 1000
 	icon_state = "cult_templar"
 	icon_living = "cult_templar"
-	icon = 'modules/code/icons/new_necropolis.dmi'
+	icon = 'modules/icons/new_necropolis.dmi'
 	faction = list("cult","boss")
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
 	light_color = "#FFFFFF"
