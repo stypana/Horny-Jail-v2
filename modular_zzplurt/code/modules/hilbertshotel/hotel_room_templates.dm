@@ -7,7 +7,7 @@
 
 /datum/map_template/ghost_cafe_rooms
 	var/category = GHC_MISC //Room categorizing
-	var/list/landing_coords = list(5, 5)
+	var/list/landing_coords = list()
 
 	var/SUPPORTER_TIER = SUPPORTER_TIER_NONE //For donator rooms
 	var/list/ckeywhitelist = list() //For ckey locked donator rooms
