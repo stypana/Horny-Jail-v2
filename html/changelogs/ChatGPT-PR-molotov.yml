@@ -1,0 +1,5 @@
+author: "ChatGPT"
+delete-after: True
+changes:
+  - rscadd: "Molotov cocktails now ignite surrounding tiles, leaving behind spreading flames."
+  - balance: "Molotov cocktail fire radius increased."
