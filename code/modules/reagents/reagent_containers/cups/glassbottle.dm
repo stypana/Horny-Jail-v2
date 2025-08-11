@@ -897,16 +897,18 @@
 
 ////////////////////////// MOLOTOV ///////////////////////
 /obj/item/reagent_containers/cup/glass/bottle/molotov
-	name = "molotov cocktail"
-	desc = "A throwing weapon used to ignite things, typically filled with an accelerant. Recommended highly by rioters and revolutionaries. Light and toss."
-	icon_state = "vodkabottle"
-	list_reagents = list()
-	var/active = FALSE
-	var/list/accelerants = list(
-		/datum/reagent/consumable/ethanol,
-		/datum/reagent/fuel,
-		/datum/reagent/clf3,
-		/datum/reagent/phlogiston,
+        name = "molotov cocktail"
+        desc = "A throwing weapon used to ignite things, typically filled with an accelerant. Recommended highly by rioters and revolutionaries. Light and toss."
+        icon_state = "vodkabottle"
+        list_reagents = list()
+        var/active = FALSE
+       /// how far the resulting fire spreads
+       var/fire_radius = 2
+        var/list/accelerants = list(
+                /datum/reagent/consumable/ethanol,
+                /datum/reagent/fuel,
+                /datum/reagent/clf3,
+                /datum/reagent/phlogiston,
 		/datum/reagent/napalm,
 		/datum/reagent/hellwater,
 		/datum/reagent/toxin/plasma,
@@ -917,27 +919,32 @@
 	var/obj/item/reagent_containers/cup/glass/bottle/bottle = locate() in components
 	if(!bottle)
 		return ..()
-	icon_state = bottle.icon_state
-	bottle.reagents.copy_to(src, 100)
-	if(istype(bottle, /obj/item/reagent_containers/cup/glass/bottle/juice))
-		desc += " You're not sure if making this out of a carton was the brightest idea."
-		isGlass = FALSE
-	return ..()
+        icon_state = bottle.icon_state
+        bottle.reagents.copy_to(src, 100)
+        if(istype(bottle, /obj/item/reagent_containers/cup/glass/bottle/juice))
+                desc += " You're not sure if making this out of a carton was the brightest idea."
+                isGlass = FALSE
+        return ..()
+
+/obj/item/reagent_containers/cup/glass/bottle/molotov/proc/spread_fire(atom/center)
+       for(var/turf/nearby_turf as anything in RANGE_TURFS(fire_radius, center))
+               for(var/atom/thing in nearby_turf)
+                       thing.fire_act()
+               new /obj/effect/hotspot(nearby_turf)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = FALSE)
 	..(hit_atom, throwingdatum, do_splash = FALSE)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/smash(atom/target, mob/thrower, datum/thrownthing/throwingdatum, break_top)
-	var/firestarter = 0
-	for(var/datum/reagent/contained_reagent in reagents.reagent_list)
-		for(var/accelerant_type in accelerants)
-			if(istype(contained_reagent, accelerant_type))
-				firestarter = 1
-				break
-	..()
-	if(firestarter && active)
-		target.fire_act()
-		new /obj/effect/hotspot(get_turf(target))
+        var/firestarter = 0
+        for(var/datum/reagent/contained_reagent in reagents.reagent_list)
+                for(var/accelerant_type in accelerants)
+                        if(istype(contained_reagent, accelerant_type))
+                                firestarter = 1
+                                break
+        ..()
+       if(firestarter && active)
+               spread_fire(target)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(I.get_temperature() && !active)
@@ -950,16 +957,16 @@
 			addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/explode()
-	if(!active)
-		return
-	if(get_turf(src))
-		var/atom/target = loc
-		for(var/i in 1 to 2)
-			if(istype(target, /obj/item/storage))
-				target = target.loc
-		SplashReagents(target, override_spillable = TRUE)
-		target.fire_act()
-	qdel(src)
+        if(!active)
+                return
+        if(get_turf(src))
+                var/atom/target = loc
+                for(var/i in 1 to 2)
+                        if(istype(target, /obj/item/storage))
+                                target = target.loc
+               SplashReagents(target, override_spillable = TRUE)
+               spread_fire(target)
+        qdel(src)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attack_self(mob/user)
 	if(active)
