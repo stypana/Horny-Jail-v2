@@ -307,27 +307,27 @@
 
 
 /datum/controller/configuration/proc/Get(entry_type)
-       if(initial(entry_type, "abstract_type") == entry_type)
-               CRASH("Tried to retrieve an abstract config_entry: [entry_type]")
-       var/datum/config_entry/E = entries_by_type[entry_type]
-       if(!E)
-               CRASH("Missing config entry for [entry_type]!")
-       if((E.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
-               log_admin_private("Config access of [entry_type] attempted by [key_name(usr)]")
-               return
-       return E.config_entry_value
+	if(initial(entry_type, "abstract_type") == entry_type)
+		CRASH("Tried to retrieve an abstract config_entry: [entry_type]")
+	var/datum/config_entry/E = entries_by_type[entry_type]
+	if(!E)
+		CRASH("Missing config entry for [entry_type]!")
+	if((E.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
+		log_admin_private("Config access of [entry_type] attempted by [key_name(usr)]")
+		return
+	return E.config_entry_value
 
 
 /datum/controller/configuration/proc/Set(entry_type, new_val)
-       if(initial(entry_type, "abstract_type") == entry_type)
-               CRASH("Tried to set an abstract config_entry: [entry_type]")
-       var/datum/config_entry/E = entries_by_type[entry_type]
-       if(!E)
-               CRASH("Missing config entry for [entry_type]!")
-       if((E.protection & CONFIG_ENTRY_LOCKED) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Set" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
-               log_admin_private("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
-               return
-       return E.ValidateAndSet("[new_val]")
+	if(initial(entry_type, "abstract_type") == entry_type)
+		CRASH("Tried to set an abstract config_entry: [entry_type]")
+	var/datum/config_entry/E = entries_by_type[entry_type]
+	if(!E)
+		CRASH("Missing config entry for [entry_type]!")
+	if((E.protection & CONFIG_ENTRY_LOCKED) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Set" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
+		log_admin_private("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
+		return
+	return E.ValidateAndSet("[new_val]")
 
 /datum/controller/configuration/proc/LoadMOTD()
 	var/list/motd_contents = list()
