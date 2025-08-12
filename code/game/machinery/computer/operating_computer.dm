@@ -103,34 +103,34 @@
 		return data
 
 	data["table"] = table
-	data["patient"] = list()
-	data["procedures"] = list()
-	if(!table.patient)
-		return data
-	var/mob/living/carbon/patient = table.patient
+        data["patient"] = list()
+        data["procedures"] = list()
+        if(!table.patient)
+                return data
+        var/mob/living/carbon/patient = table.patient
 
-	switch(patient.stat)
-		if(CONSCIOUS)
-			data["patient"]["stat"] = "Conscious"
-			data["patient"]["statstate"] = "good"
-		if(SOFT_CRIT)
-			data["patient"]["stat"] = "Conscious"
-			data["patient"]["statstate"] = "average"
-		if(UNCONSCIOUS, HARD_CRIT)
-			data["patient"]["stat"] = "Unconscious"
-			data["patient"]["statstate"] = "average"
-		if(DEAD) {
-			data["patient"]["stat"] = "Dead"
-			data["patient"]["statstate"] = "bad"
-			data["patient"]["health"] = patient.health
-			data["patient"]["blood_type"] = patient.get_bloodtype()?.name || "UNKNOWN"
-			data["patient"]["maxHealth"] = patient.maxHealth
-			data["patient"]["minHealth"] = HEALTH_THRESHOLD_DEAD
-			data["patient"]["bruteLoss"] = patient.getBruteLoss()
-			data["patient"]["fireLoss"] = patient.getFireLoss()
-			data["patient"]["toxLoss"] = patient.getToxLoss()
-			data["patient"]["oxyLoss"] = patient.getOxyLoss()
-		}
+        data["patient"]["health"] = patient.health
+        data["patient"]["blood_type"] = patient.get_bloodtype()?.name || "UNKNOWN"
+        data["patient"]["maxHealth"] = patient.maxHealth
+        data["patient"]["minHealth"] = HEALTH_THRESHOLD_DEAD
+        data["patient"]["bruteLoss"] = patient.getBruteLoss()
+        data["patient"]["fireLoss"] = patient.getFireLoss()
+        data["patient"]["toxLoss"] = patient.getToxLoss()
+        data["patient"]["oxyLoss"] = patient.getOxyLoss()
+
+        switch(patient.stat)
+                if(CONSCIOUS)
+                        data["patient"]["stat"] = "Conscious"
+                        data["patient"]["statstate"] = "good"
+                if(SOFT_CRIT)
+                        data["patient"]["stat"] = "Conscious"
+                        data["patient"]["statstate"] = "average"
+                if(UNCONSCIOUS, HARD_CRIT)
+                        data["patient"]["stat"] = "Unconscious"
+                        data["patient"]["statstate"] = "average"
+                if(DEAD)
+                        data["patient"]["stat"] = "Dead"
+                        data["patient"]["statstate"] = "bad"
 
 	if(length(patient.surgeries))
 		ensure_surgery_steps()
