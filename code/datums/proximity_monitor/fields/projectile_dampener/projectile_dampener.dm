@@ -39,7 +39,8 @@
 
 /datum/proximity_monitor/advanced/projectile_dampener/on_moved(atom/movable/source, atom/old_loc)
 	. = ..()
-	my_movable.Move(source.loc, get_dir(my_movable.loc, source.loc), source.glide_size)
+	// Avoid inertia by moving our holder without applying momentum
+	my_movable.abstract_move(source.loc)
 
 /datum/proximity_monitor/advanced/projectile_dampener/on_z_change(datum/source)
 	recalculate_field(full_recalc = TRUE)
