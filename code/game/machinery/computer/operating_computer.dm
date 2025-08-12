@@ -103,11 +103,11 @@
 		return data
 
 	data["table"] = table
-        data["patient"] = list()
-        data["procedures"] = list()
-        if(!table.patient)
-                return data
-        var/mob/living/carbon/patient = table.patient
+	data["patient"] = list()
+	data["procedures"] = list()
+	if(!table.patient)
+		return data
+	var/mob/living/carbon/patient = table.patient
 
 	data["patient"]["health"] = patient.health
 	data["patient"]["blood_type"] = patient.get_bloodtype()?.name || "UNKNOWN"
