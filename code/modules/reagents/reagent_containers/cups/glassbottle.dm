@@ -919,12 +919,12 @@
 	var/obj/item/reagent_containers/cup/glass/bottle/bottle = locate() in components
 	if(!bottle)
 		return ..()
-        icon_state = bottle.icon_state
-        bottle.reagents.copy_to(src, 100)
-        if(istype(bottle, /obj/item/reagent_containers/cup/glass/bottle/juice))
-                desc += " You're not sure if making this out of a carton was the brightest idea."
-                isGlass = FALSE
-        return ..()
+	icon_state = bottle.icon_state
+	bottle.reagents.copy_to(src, 100)
+	if(istype(bottle, /obj/item/reagent_containers/cup/glass/bottle/juice))
+		desc += " You're not sure if making this out of a carton was the brightest idea."
+		isGlass = FALSE
+	return ..()
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/spread_fire(atom/center)
 	for(var/turf/nearby_turf as anything in RANGE_TURFS(fire_radius, center))

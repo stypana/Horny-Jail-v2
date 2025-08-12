@@ -55,13 +55,13 @@ It has also been further modified by Rashcat & other Fluffyfrontier contributors
 			total_delay += rand(DS2TICKS(blooper_speed / BLOOPER_SPEED_BASELINE), DS2TICKS(blooper_speed / BLOOPER_SPEED_BASELINE) + DS2TICKS(blooper_speed / BLOOPER_SPEED_BASELINE)) TICKS
 
 /mob/living/carbon/human/Initialize(mapload)
-       . = ..()
-       // This gives a random vocal bark to a random created person
-       if(!client && LAZYLEN(GLOB.blooper_list))
-               set_blooper(pick(GLOB.blooper_list))
-               blooper_pitch = BLOOPER_PITCH_RAND(gender)
-               blooper_pitch_range = BLOOPER_VARIANCE_RAND
-               blooper_speed = rand(BLOOPER_DEFAULT_MINSPEED, BLOOPER_DEFAULT_MAXSPEED)
+	. = ..()
+	// This gives a random vocal bark to a random created person
+	if(!client && LAZYLEN(GLOB.blooper_list))
+		set_blooper(pick(GLOB.blooper_list))
+		blooper_pitch = BLOOPER_PITCH_RAND(gender)
+		blooper_pitch_range = BLOOPER_VARIANCE_RAND
+		blooper_speed = rand(BLOOPER_DEFAULT_MINSPEED, BLOOPER_DEFAULT_MAXSPEED)
 
 /mob/living/send_speech(message_raw, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language = null, list/message_mods = list(), forced = null, tts_message, list/tts_filter)
 	. = ..()

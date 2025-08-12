@@ -82,19 +82,19 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		data += sanitize_hexcolor(features["skin_color"], include_crunch = FALSE)
 	else
 		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
-       for(var/key in SSaccessories.genetic_accessories)
-               var/list/part = mutant_bodyparts[key]
-               if(part && (part[MUTANT_INDEX_NAME] in SSaccessories.genetic_accessories[key]))
-                       var/list/accessories_for_key = SSaccessories.genetic_accessories[key]
-                       data += construct_block(accessories_for_key.Find(part[MUTANT_INDEX_NAME]), accessories_for_key.len)
-                       var/colors_to_randomize = DNA_BLOCKS_PER_FEATURE - 1
-                       for(var/color in part[MUTANT_INDEX_COLOR_LIST])
-                               colors_to_randomize--
-                               data += sanitize_hexcolor(color, include_crunch = FALSE)
-                       if(colors_to_randomize)
-                               data += random_string(DNA_BLOCK_SIZE_COLOR * colors_to_randomize, GLOB.hex_characters)
-               else
-                       data += random_string(DNA_FEATURE_BLOCKS_TOTAL_SIZE_PER_FEATURE, GLOB.hex_characters)
+	for(var/key in SSaccessories.genetic_accessories)
+		var/list/part = mutant_bodyparts[key]
+		if(part && (part[MUTANT_INDEX_NAME] in SSaccessories.genetic_accessories[key]))
+			var/list/accessories_for_key = SSaccessories.genetic_accessories[key]
+			data += construct_block(accessories_for_key.Find(part[MUTANT_INDEX_NAME]), accessories_for_key.len)
+			var/colors_to_randomize = DNA_BLOCKS_PER_FEATURE - 1
+			for(var/color in part[MUTANT_INDEX_COLOR_LIST])
+				colors_to_randomize--
+				data += sanitize_hexcolor(color, include_crunch = FALSE)
+			if(colors_to_randomize)
+				data += random_string(DNA_BLOCK_SIZE_COLOR * colors_to_randomize, GLOB.hex_characters)
+		else
+			data += random_string(DNA_FEATURE_BLOCKS_TOTAL_SIZE_PER_FEATURE, GLOB.hex_characters)
 	for(var/zone in GLOB.marking_zones)
 		if(body_markings[zone])
 			data += construct_block(body_markings[zone].len+1, MAXIMUM_MARKINGS_PER_LIMB+1)
@@ -182,8 +182,8 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 /mob/living/carbon/proc/apply_customizable_dna_features_to_species()
 	if(!has_dna())
 		CRASH("[src] does not have DNA")
-       dna.species.body_markings = dna.body_markings.Copy()
-       var/list/bodyparts_to_add = LAZYLEN(dna.mutant_bodyparts) ? dna.mutant_bodyparts.Copy() : list()
+	dna.species.body_markings = dna.body_markings.Copy()
+	var/list/bodyparts_to_add = LAZYLEN(dna.mutant_bodyparts) ? dna.mutant_bodyparts.Copy() : list()
 	for(var/key in bodyparts_to_add)
 		if(SSaccessories.sprite_accessories[key] && bodyparts_to_add[key] && bodyparts_to_add[key][MUTANT_INDEX_NAME])
 			var/datum/sprite_accessory/SP = SSaccessories.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
