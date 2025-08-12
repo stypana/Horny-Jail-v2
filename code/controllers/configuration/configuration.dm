@@ -306,7 +306,7 @@
 	return msg
 
 
-/datum/controller/configuration/proc/Get(entry_type)
+/datum/controller/configuration/proc/Get(datum/config_entry/entry_type)
 	if(initial(entry_type.abstract_type) == entry_type)
 		CRASH("Tried to retrieve an abstract config_entry: [entry_type]")
 	var/datum/config_entry/E = entries_by_type[entry_type]
@@ -318,7 +318,7 @@
 	return E.config_entry_value
 
 
-/datum/controller/configuration/proc/Set(entry_type, new_val)
+/datum/controller/configuration/proc/Set(datum/config_entry/entry_type, new_val)
 	if(initial(entry_type.abstract_type) == entry_type)
 		CRASH("Tried to set an abstract config_entry: [entry_type]")
 	var/datum/config_entry/E = entries_by_type[entry_type]
