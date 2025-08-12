@@ -4,7 +4,17 @@
 	savefile_key = "character_scream"
 
 /datum/preference/choiced/scream/init_possible_values()
-	return assoc_to_keys(GLOB.scream_types)
+        return assoc_to_keys(GLOB.scream_types)
+
+/datum/preference/choiced/scream/create_default_value()
+        if(!length(GLOB.scream_types))
+                return null
+        return pick(assoc_to_keys(GLOB.scream_types))
+
+/datum/preference/choiced/scream/is_valid(value)
+        if(!length(GLOB.scream_types))
+                return TRUE
+        return ..()
 
 /datum/preference/choiced/scream/apply_to_human(mob/living/carbon/human/target, value)
 	var/scream_id = GLOB.scream_types[value]
