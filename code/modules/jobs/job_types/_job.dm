@@ -153,6 +153,10 @@
 	if(isnum(new_total_positions))
 		total_positions = new_total_positions
 
+	if(length(alt_titles))
+		alt_titles -= title
+		unique_list_in_place(alt_titles)
+
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
 	SHOULD_CALL_PARENT(TRUE)
