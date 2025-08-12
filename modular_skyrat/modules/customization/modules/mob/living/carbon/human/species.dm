@@ -96,8 +96,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/mutantpart_list = list()
 	if(LAZYLEN(existing_mutant_bodyparts))
 		mutantpart_list = existing_mutant_bodyparts.Copy()
-	var/list/default_bodypart_data = GLOB.default_mutant_bodyparts[name]
-	var/list/bodyparts_to_add = default_bodypart_data.Copy()
+       var/list/default_bodypart_data = GLOB.default_mutant_bodyparts[name]
+       if(!LAZYLEN(default_bodypart_data))
+               return mutantpart_list
+       var/list/bodyparts_to_add = default_bodypart_data.Copy()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		for(var/genital in GLOB.possible_genitals)
 			bodyparts_to_add.Remove(genital)
