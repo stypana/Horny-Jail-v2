@@ -3,8 +3,13 @@
 	////////////
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
-	"1622" = "Bug breaking rendering can lead to wallhacks.",
-	))
+"1622" = "Bug breaking rendering can lead to wallhacks.",
+))
+
+GLOBAL_LIST_INIT(allowed_connection_types, list(
+"seeker",
+"web",
+))
 
 #define LIMITER_SIZE 5
 #define CURRENT_SECOND 1
@@ -257,11 +262,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	///////////
 
 /client/New(TopicData)
-	var/tdata = TopicData //save this for later use
-	TopicData = null //Prevent calls to client.Topic from connect
+        var/tdata = TopicData //save this for later use
+        TopicData = null //Prevent calls to client.Topic from connect
 
-	if(connection != "seeker" && connection != "web")//Invalid connection type.
-		return null
+        if(!(connection in GLOB.allowed_connection_types))//Invalid connection type
+                log_access("Client [ckey] attempted to connect with unsupported connection type '[connection]'")
+                return null
 
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
