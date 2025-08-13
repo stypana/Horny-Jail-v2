@@ -67,11 +67,12 @@
 		return
 	COOLDOWN_START(src, next_process, process_interval)
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/deleted = QDELETED(reagent_instance)
+	var/deleted = isnull(reagent_instance) || QDELETED(reagent_instance)
 	var/missing_addiction = FALSE
-	for(var/addiction_type in reagent_instance.addiction_types)
-		if(!LAZYACCESS(human_holder.last_mind?.active_addictions, addiction_type))
-			missing_addiction = TRUE
+	if(!deleted)
+		for(var/addiction_type in reagent_instance.addiction_types)
+			if(!LAZYACCESS(human_holder.last_mind?.active_addictions, addiction_type))
+				missing_addiction = TRUE
 	if(deleted || missing_addiction)
 		if(deleted)
 			reagent_instance = new reagent_type()
