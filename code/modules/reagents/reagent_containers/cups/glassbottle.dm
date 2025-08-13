@@ -902,8 +902,8 @@
 	icon_state = "vodkabottle"
 	list_reagents = list()
 	var/active = FALSE
-    /// how far the resulting fire spreads
-    var/fire_radius = 4
+	/// how far the resulting fire spreads
+	var/fire_radius = 4
 	var/list/accelerants = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/fuel,
@@ -950,14 +950,14 @@
 		spread_fire(target)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
-        if(I.get_temperature() && !active)
-                active = TRUE
-                log_bomber(user, "has primed a", src, "for detonation")
+	if(I.get_temperature() && !active)
+		active = TRUE
+		log_bomber(user, "has primed a", src, "for detonation")
 
-        to_chat(user, span_info("You light [src] on fire."))
-        add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
-        if(!isGlass)
-            addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
+	to_chat(user, span_info("You light [src] on fire."))
+	add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
+	if(!isGlass)
+		addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/explode()
 	if(!active)
