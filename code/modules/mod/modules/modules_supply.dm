@@ -203,8 +203,11 @@
 	ores += ore
 
 /obj/item/mod/module/orebag/on_use()
-	for(var/obj/item/ore as anything in ores)
-		ore.forceMove(drop_location())
+	var/atom/drop_loc = mod?.wearer?.drop_location() || drop_location()
+	if(!drop_loc)
+		return
+	for(var/obj/item/stack/ore/ore as anything in ores)
+		ore.forceMove(drop_loc)
 		ores -= ore
 	drain_power(use_energy_cost)
 

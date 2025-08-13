@@ -56,7 +56,17 @@ GLOBAL_VAR_INIT(blooper_allowed, TRUE) // For administrators
 	savefile_key = "blooper_speech"
 
 /datum/preference/choiced/blooper/init_possible_values()
-	return assoc_to_keys(GLOB.blooper_list)
+        return assoc_to_keys(GLOB.blooper_list)
+
+/datum/preference/choiced/blooper/create_default_value()
+        if(!length(GLOB.blooper_list))
+                return null
+        return pick(assoc_to_keys(GLOB.blooper_list))
+
+/datum/preference/choiced/blooper/is_valid(value)
+        if(!length(GLOB.blooper_list))
+                return TRUE
+        return ..()
 
 /datum/preference/choiced/blooper/apply_to_human(mob/living/carbon/human/target, value)
 	target.set_blooper(value)

@@ -6,7 +6,7 @@
 	organ_type = /obj/item/organ/antennae
 
 /datum/sprite_accessory/moth_antennae/is_hidden(mob/living/carbon/human/wearer)
-	if(!wearer.head)
+	if(!wearer.head && !wearer.wear_mask)
 		return FALSE
 
 	// Can hide if wearing hat

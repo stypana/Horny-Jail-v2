@@ -4,7 +4,17 @@
 	savefile_key = "character_laugh"
 
 /datum/preference/choiced/laugh/init_possible_values()
-	return assoc_to_keys(GLOB.laugh_types)
+        return assoc_to_keys(GLOB.laugh_types)
+
+/datum/preference/choiced/laugh/create_default_value()
+        if(!length(GLOB.laugh_types))
+                return null
+        return pick(assoc_to_keys(GLOB.laugh_types))
+
+/datum/preference/choiced/laugh/is_valid(value)
+        if(!length(GLOB.laugh_types))
+                return TRUE
+        return ..()
 
 /datum/preference/choiced/laugh/apply_to_human(mob/living/carbon/human/target, value)
 	var/laugh_id = GLOB.laugh_types[value]

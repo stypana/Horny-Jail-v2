@@ -96,26 +96,28 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/mutantpart_list = list()
 	if(LAZYLEN(existing_mutant_bodyparts))
 		mutantpart_list = existing_mutant_bodyparts.Copy()
-	var/list/default_bodypart_data = GLOB.default_mutant_bodyparts[name]
-	var/list/bodyparts_to_add = default_bodypart_data.Copy()
-	if(CONFIG_GET(flag/disable_erp_preferences))
-		for(var/genital in GLOB.possible_genitals)
-			bodyparts_to_add.Remove(genital)
-	for(var/key in bodyparts_to_add)
-		if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key])
-			continue
-		var/datum/sprite_accessory/SP
-		if(default_bodypart_data[key][MUTANTPART_CAN_RANDOMIZE])
-			SP = random_accessory_of_key_for_species(key, src)
-		else
-			SP = SSaccessories.sprite_accessories[key][bodyparts_to_add[key][MUTANTPART_NAME]]
-			if(!SP)
-				CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
-		var/list/color_list = SP.get_default_color(features, src)
-		var/list/final_list = list()
-		final_list[MUTANT_INDEX_NAME] = SP.name
-		final_list[MUTANT_INDEX_COLOR_LIST] = color_list
-		mutantpart_list[key] = final_list
+		var/list/default_bodypart_data = GLOB.default_mutant_bodyparts[name]
+		if(!LAZYLEN(default_bodypart_data))
+			return mutantpart_list
+		var/list/bodyparts_to_add = default_bodypart_data.Copy()
+		if(CONFIG_GET(flag/disable_erp_preferences))
+			for(var/genital in GLOB.possible_genitals)
+				bodyparts_to_add.Remove(genital)
+		for(var/key in bodyparts_to_add)
+			if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key])
+				continue
+			var/datum/sprite_accessory/SP
+			if(default_bodypart_data[key][MUTANTPART_CAN_RANDOMIZE])
+				SP = random_accessory_of_key_for_species(key, src)
+			else
+				SP = SSaccessories.sprite_accessories[key][bodyparts_to_add[key][MUTANTPART_NAME]]
+				if(!SP)
+					CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
+				var/list/color_list = SP.get_default_color(features, src)
+				var/list/final_list = list()
+				final_list[MUTANT_INDEX_NAME] = SP.name
+				final_list[MUTANT_INDEX_COLOR_LIST] = color_list
+				mutantpart_list[key] = final_list
 
 	return mutantpart_list
 

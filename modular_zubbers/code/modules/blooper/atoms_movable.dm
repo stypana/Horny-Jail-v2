@@ -57,7 +57,7 @@ It has also been further modified by Rashcat & other Fluffyfrontier contributors
 /mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	// This gives a random vocal bark to a random created person
-	if(!client)
+	if(!client && LAZYLEN(GLOB.blooper_list))
 		set_blooper(pick(GLOB.blooper_list))
 		blooper_pitch = BLOOPER_PITCH_RAND(gender)
 		blooper_pitch_range = BLOOPER_VARIANCE_RAND

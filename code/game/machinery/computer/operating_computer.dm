@@ -109,6 +109,15 @@
 		return data
 	var/mob/living/carbon/patient = table.patient
 
+	data["patient"]["health"] = patient.health
+	data["patient"]["blood_type"] = patient.get_bloodtype()?.name || "UNKNOWN"
+	data["patient"]["maxHealth"] = patient.maxHealth
+	data["patient"]["minHealth"] = HEALTH_THRESHOLD_DEAD
+	data["patient"]["bruteLoss"] = patient.getBruteLoss()
+	data["patient"]["fireLoss"] = patient.getFireLoss()
+	data["patient"]["toxLoss"] = patient.getToxLoss()
+	data["patient"]["oxyLoss"] = patient.getOxyLoss()
+
 	switch(patient.stat)
 		if(CONSCIOUS)
 			data["patient"]["stat"] = "Conscious"
@@ -119,18 +128,9 @@
 		if(UNCONSCIOUS, HARD_CRIT)
 			data["patient"]["stat"] = "Unconscious"
 			data["patient"]["statstate"] = "average"
-		if(DEAD) {
+		if(DEAD)
 			data["patient"]["stat"] = "Dead"
 			data["patient"]["statstate"] = "bad"
-			data["patient"]["health"] = patient.health
-			data["patient"]["blood_type"] = patient.get_bloodtype()?.name || "UNKNOWN"
-			data["patient"]["maxHealth"] = patient.maxHealth
-			data["patient"]["minHealth"] = HEALTH_THRESHOLD_DEAD
-			data["patient"]["bruteLoss"] = patient.getBruteLoss()
-			data["patient"]["fireLoss"] = patient.getFireLoss()
-			data["patient"]["toxLoss"] = patient.getToxLoss()
-			data["patient"]["oxyLoss"] = patient.getOxyLoss()
-		}
 
 	if(length(patient.surgeries))
 		ensure_surgery_steps()

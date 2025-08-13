@@ -1,0 +1,4 @@
+author: "ChatGPT"
+delete-after: True
+changes:
+  - bugfix: "MOD ore bag module now drops stored ore when activated."

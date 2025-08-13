@@ -83,11 +83,12 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	else
 		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	for(var/key in SSaccessories.genetic_accessories)
-		if(mutant_bodyparts[key] && (mutant_bodyparts[key][MUTANT_INDEX_NAME] in SSaccessories.genetic_accessories[key]))
+		var/list/part = mutant_bodyparts[key]
+		if(part && (part[MUTANT_INDEX_NAME] in SSaccessories.genetic_accessories[key]))
 			var/list/accessories_for_key = SSaccessories.genetic_accessories[key]
-			data += construct_block(accessories_for_key.Find(mutant_bodyparts[key][MUTANT_INDEX_NAME]), accessories_for_key.len)
-			var/colors_to_randomize = DNA_BLOCKS_PER_FEATURE-1
-			for(var/color in mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST])
+			data += construct_block(accessories_for_key.Find(part[MUTANT_INDEX_NAME]), accessories_for_key.len)
+			var/colors_to_randomize = DNA_BLOCKS_PER_FEATURE - 1
+			for(var/color in part[MUTANT_INDEX_COLOR_LIST])
 				colors_to_randomize--
 				data += sanitize_hexcolor(color, include_crunch = FALSE)
 			if(colors_to_randomize)
@@ -182,7 +183,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	if(!has_dna())
 		CRASH("[src] does not have DNA")
 	dna.species.body_markings = dna.body_markings.Copy()
-	var/list/bodyparts_to_add = dna.mutant_bodyparts.Copy()
+	var/list/bodyparts_to_add = LAZYLEN(dna.mutant_bodyparts) ? dna.mutant_bodyparts.Copy() : list()
 	for(var/key in bodyparts_to_add)
 		if(SSaccessories.sprite_accessories[key] && bodyparts_to_add[key] && bodyparts_to_add[key][MUTANT_INDEX_NAME])
 			var/datum/sprite_accessory/SP = SSaccessories.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
