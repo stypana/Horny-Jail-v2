@@ -575,7 +575,17 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
                 ignite()
 
 /obj/effect/hotspot/molotov
-        volume = 250
+    volume = 250
+
+/obj/effect/hotspot/molotov/Initialize(mapload, starting_volume, starting_temperature)
+    . = ..()
+    particles = new /particles/embers/spark()
+    add_shared_particles(/particles/smoke/burning)
+    return .
+
+/obj/effect/hotspot/molotov/Destroy()
+    remove_shared_particles(/particles/smoke/burning)
+    return ..()
 
 /obj/effect/decal/cleanable/fuel_pool/molotov
         burn_amount = 8
@@ -588,8 +598,9 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
         return .
 
 /obj/effect/decal/cleanable/fuel_pool/molotov/Destroy()
-        new /obj/effect/temp_visual/small_smoke/long(get_turf(src))
-        return ..()
+    var/obj/effect/particle_effect/fluid/smoke/smoke = new(get_turf(src))
+    smoke.lifetime = 20 SECONDS
+    return ..()
 
 /obj/effect/decal/cleanable/fuel_pool/hivis
 icon_state = "fuel_pool_hivis"
