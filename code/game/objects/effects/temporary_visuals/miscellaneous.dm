@@ -259,11 +259,14 @@
 	duration = 5
 
 /obj/effect/temp_visual/small_smoke
-	icon_state = "smoke"
-	duration = 50
+        icon_state = "smoke"
+        duration = 50
 
 /obj/effect/temp_visual/small_smoke/halfsecond
-	duration = 5
+        duration = 5
+
+/obj/effect/temp_visual/small_smoke/long
+        duration = 200
 
 /obj/effect/temp_visual/fire
 	icon = 'icons/effects/fire.dmi'
