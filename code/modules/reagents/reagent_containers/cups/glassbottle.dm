@@ -927,10 +927,10 @@
 	return ..()
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/spread_fire(atom/center)
-	for(var/turf/nearby_turf as anything in RANGE_TURFS(fire_radius, center))
-		for(var/atom/thing in nearby_turf)
-			thing.fire_act()
-		new /obj/effect/hotspot(nearby_turf)
+        for(var/turf/nearby_turf as anything in RANGE_TURFS(fire_radius, center))
+                for(var/atom/thing in nearby_turf)
+                        thing.fire_act()
+                new /obj/effect/decal/cleanable/fuel_pool/molotov(nearby_turf)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = FALSE)
 	..(hit_atom, throwingdatum, do_splash = FALSE)
@@ -947,14 +947,15 @@
 		spread_fire(target)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
-	if(I.get_temperature() && !active)
-		active = TRUE
-		log_bomber(user, "has primed a", src, "for detonation")
+        if(I.get_temperature() && !active)
+                active = TRUE
+                log_bomber(user, "has primed a", src, "for detonation")
 
-		to_chat(user, span_info("You light [src] on fire."))
-		add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
-		if(!isGlass)
-			addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
+                to_chat(user, span_info("You light [src] on fire."))
+                add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
+                AddElement(/datum/element/effect_trail, /obj/effect/decal/cleanable/fuel_pool/molotov)
+                if(!isGlass)
+                        addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/explode()
 	if(!active)

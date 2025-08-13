@@ -571,12 +571,28 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 		var/mob/living/enflamed_liver = enflammable_atom
 		if(enflamed_liver.on_fire)
 			ignite()
-	else if(istype(enflammable_atom, /obj/effect/particle_effect/sparks))
-		ignite()
+        else if(istype(enflammable_atom, /obj/effect/particle_effect/sparks))
+                ignite()
 
+/obj/effect/hotspot/molotov
+        volume = 250
+
+/obj/effect/decal/cleanable/fuel_pool/molotov
+        burn_amount = 8
+        hotspot_type = /obj/effect/hotspot/molotov
+
+/obj/effect/decal/cleanable/fuel_pool/molotov/Initialize(mapload, burn_stacks)
+        . = ..(mapload, burn_stacks)
+        if(. != INITIALIZE_HINT_QDEL)
+                ignite()
+        return .
+
+/obj/effect/decal/cleanable/fuel_pool/molotov/Destroy()
+        new /obj/effect/temp_visual/small_smoke/long(get_turf(src))
+        return ..()
 
 /obj/effect/decal/cleanable/fuel_pool/hivis
-	icon_state = "fuel_pool_hivis"
+icon_state = "fuel_pool_hivis"
 
 /obj/effect/decal/cleanable/rubble
 	name = "rubble"
