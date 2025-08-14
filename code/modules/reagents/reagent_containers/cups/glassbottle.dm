@@ -924,6 +924,9 @@
 	if(istype(bottle, /obj/item/reagent_containers/cup/glass/bottle/juice))
 		desc += " You're not sure if making this out of a carton was the brightest idea."
 		isGlass = FALSE
+	if(isliving(crafter))
+		var/mob/living/living_crafter = crafter
+		living_crafter.adjust_fire_stacks(-living_crafter.fire_stacks)
 	return ..()
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/spread_fire(atom/center)
