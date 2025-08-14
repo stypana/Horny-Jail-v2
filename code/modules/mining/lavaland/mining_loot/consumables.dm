@@ -213,31 +213,42 @@
 	exposed_human.emote("scream")
 
 /datum/reagent/flightpotion/proc/get_wing_choice(mob/living/carbon/human/needs_wings, obj/item/bodypart/chest/chest)
-	var/list/wing_types = chest.wing_types.Copy()
-	if (wing_types.len == 1 || !needs_wings.client)
-		return wing_types[1]
-	var/list/radial_wings = list()
-	var/list/name2type = list()
-	for(var/obj/item/organ/wings/functional/possible_type as anything in wing_types)
-		var/datum/sprite_accessory/accessory = initial(possible_type.sprite_accessory_override) //get the type
-		accessory = SSaccessories.sprite_accessories[initial(accessory.key)][initial(accessory.name)] //SKYRAT EDIT CHANGE - ORIGINAL: accessory = SSaccessories.wings_list[initial(accessory.name)] //get the singleton instance
-		var/image/img = image(icon = accessory.icon, icon_state = "m_wingsopen_[accessory.icon_state]_BEHIND") //Process the HUD elements
-		img.transform *= 0.5
-		img.pixel_w = -32
-		if(radial_wings[accessory.name])
-			stack_trace("Different wing types with repeated names. Please fix as this may cause issues.")
-		else
-			radial_wings[accessory.name] = img
-			name2type[accessory.name] = possible_type
-	var/wing_name = show_radial_menu(needs_wings, needs_wings, radial_wings, tooltips = TRUE)
-	var/wing_type = name2type[wing_name]
-	// If our chest gets replaced in the meanwile this can end up breaking, so we need to re-fetch it just to make sure
-	var/obj/item/bodypart/chest/new_chest = needs_wings.get_bodypart(BODY_ZONE_CHEST)
-	if(new_chest != chest)
-		chest = new_chest
-		wing_type = null
-	if(!wing_type)
-		if(!length(chest.wing_types))
-			return
-		wing_type = pick(chest.wing_types)
-	return wing_type
+        var/list/wing_types = chest.wing_types?.Copy() || list()
+        var/list/all_wings = list(
+                /obj/item/organ/wings/functional/angel,
+                /obj/item/organ/wings/functional/dragon,
+                /obj/item/organ/wings/functional/robotic,
+                /obj/item/organ/wings/functional/skeleton,
+                /obj/item/organ/wings/functional/moth/mothra,
+                /obj/item/organ/wings/functional/moth/megamoth,
+                /obj/item/organ/wings/functional/fly,
+                /obj/item/organ/wings/functional/slime,
+        )
+        for(var/path in all_wings)
+                if(!(path in wing_types))
+                        wing_types += path
+        if(!needs_wings.client)
+                return pick(wing_types)
+        var/list/radial_wings = list()
+        var/list/name2type = list()
+        for(var/obj/item/organ/wings/functional/possible_type as anything in wing_types)
+                var/datum/sprite_accessory/accessory = initial(possible_type.sprite_accessory_override) //get the type
+                accessory = SSaccessories.sprite_accessories[initial(accessory.key)][initial(accessory.name)] //SKYRAT EDIT CHANGE - ORIGINAL: accessory = SSaccessories.wings_list[initial(accessory.name)] //get the singleton instance
+                var/image/img = image(icon = accessory.icon, icon_state = "m_wingsopen_[accessory.icon_state]_BEHIND") //Process the HUD elements
+                img.transform *= 0.5
+                img.pixel_w = -32
+                if(radial_wings[accessory.name])
+                        stack_trace("Different wing types with repeated names. Please fix as this may cause issues.")
+                else
+                        radial_wings[accessory.name] = img
+                        name2type[accessory.name] = possible_type
+        var/wing_name = show_radial_menu(needs_wings, needs_wings, radial_wings, tooltips = TRUE)
+        var/wing_type = name2type[wing_name]
+        // If our chest gets replaced in the meanwile this can end up breaking, so we need to re-fetch it just to make sure
+        var/obj/item/bodypart/chest/new_chest = needs_wings.get_bodypart(BODY_ZONE_CHEST)
+        if(new_chest != chest)
+                chest = new_chest
+                wing_type = null
+        if(!wing_type)
+                wing_type = pick(wing_types)
+        return wing_type
