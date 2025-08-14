@@ -135,12 +135,7 @@
 		title_screen_is_ready = TRUE
 		return
 
-	if(href_list["polls_menu"])
-		play_lobby_button_sound()
-		handle_player_polling()
-		return
-
-	. = ..()
+       . = ..()
 
 /mob/dead/new_player/Login()
 	. = ..()
@@ -233,47 +228,5 @@
 		return
 
 	clicked_trait.on_lobby_button_click(src)
-
-/**
- * Shows the player a list of current polls, if any.
- */
-/mob/dead/new_player/proc/playerpolls()
-	if(!usr || !client)
-		return
-
-	var/output
-	if (!SSdbcore.Connect())
-		return
-	var/isadmin = FALSE
-	if(client?.holder)
-		isadmin = TRUE
-	var/datum/db_query/query_get_new_polls = SSdbcore.NewQuery({"
-		SELECT id FROM [format_table_name("poll_question")]
-		WHERE (adminonly = 0 OR :isadmin = 1)
-		AND Now() BETWEEN starttime AND endtime
-		AND deleted = 0
-		AND id NOT IN (
-			SELECT pollid FROM [format_table_name("poll_vote")]
-			WHERE ckey = :ckey
-			AND deleted = 0
-		)
-		AND id NOT IN (
-			SELECT pollid FROM [format_table_name("poll_textreply")]
-			WHERE ckey = :ckey
-			AND deleted = 0
-		)
-	"}, list("isadmin" = isadmin, "ckey" = ckey))
-
-	if(!query_get_new_polls.Execute())
-		qdel(query_get_new_polls)
-		return
-	if(query_get_new_polls.NextRow())
-		output +={"<a class="menu_button menu_newpoll" href='byond://?src=[text_ref(src)];polls_menu=1'>POLLS (NEW)</a>"}
-	else
-		output +={"<a class="menu_button" href='byond://?src=[text_ref(src)];polls_menu=1'>POLLS</a>"}
-	qdel(query_get_new_polls)
-	if(QDELETED(src))
-		return
-	return output
 
 #undef DEADLINE_TIMESTAMP

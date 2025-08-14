@@ -176,22 +176,6 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.
 			owner.AttemptLateSpawn(params["job"])
-		if("viewpoll")
-			var/datum/poll_question/poll = locate(params["viewpoll"]) in GLOB.polls
-			if(!poll)
-				return TRUE
-
-			owner.poll_player(poll)
-			return TRUE
-
-		if("votepollref")
-			var/datum/poll_question/poll = locate(params["votepollref"]) in GLOB.polls
-			if(!poll)
-				return TRUE
-
-			owner.vote_on_poll_handler(poll, params)
-			return TRUE
-
 /// Gives the user a random job that they can join as, and prompts them if they'd actually like to keep it, rerolling if not. Cancellable by the user.
 /// WARNING: BLOCKS THREAD!
 /datum/latejoin_menu/proc/get_random_job(mob/dead/new_player/owner)
