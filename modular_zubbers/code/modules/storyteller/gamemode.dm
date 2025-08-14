@@ -784,18 +784,21 @@ SUBSYSTEM_DEF(gamemode)
 			vote_datum.choices_by_ckey -= vote
 
 	var/list/vote_winner = vote_datum.get_vote_result()
-	log_dynamic("Storyteller vote winner is [vote_winner[1]]")
+	if(!length(vote_winner))
+		return
+	var/selected_winner = vote_winner[1]
+	log_dynamic("Storyteller vote winner is [selected_winner]")
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINLOG,
-		html = span_vote_notice(fieldset_block("Storyteller", "Selected storyteller: [vote_winner[1]]", "boxed_message blue_box")),
+		html = span_vote_notice(fieldset_block("Storyteller", "Selected storyteller: [selected_winner]", "boxed_message blue_box")),
 		confidential = TRUE,
 	)
 	for(var/storyteller_type in storytellers)
 		var/datum/storyteller/storyboy = storytellers[storyteller_type]
-		if(storyboy.name == vote_winner[1])
+		if(storyboy.name == selected_winner)
 			return storyteller_type
 
-	stack_trace("Storyteller [vote_winner[1]] was declared vote winner, but couldn't locate datum in storytellers! This should never happen!")
+	stack_trace("Storyteller [selected_winner] was declared vote winner, but couldn't locate datum in storytellers! This should never happen!")
 
 /**
  * set_storyteller
