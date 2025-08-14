@@ -145,7 +145,7 @@ GLOBAL_VAR(restart_counter)
 
 	RunUnattendedFunctions()
 
-       SSredbot.Initialize()
+	SSredbot.Initialize()
 
 /// Initializes TGS and loads the returned revising info into GLOB.revdata
 /world/proc/InitTgs()
