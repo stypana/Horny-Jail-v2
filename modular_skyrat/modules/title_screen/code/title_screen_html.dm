@@ -123,10 +123,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		if(length(GLOB.lobby_station_traits))
 			dat += {"<a class="menu_button" href='byond://?src=[text_ref(src)];job_traits=1'>JOB TRAITS</a>"}
 
-		if(!is_guest_key(src.key))
-			dat += playerpolls()
-
-		dat += "</div>"
+               dat += "</div>"
 		dat += {"
 		<script language="JavaScript">
 			var ready_int = 0;

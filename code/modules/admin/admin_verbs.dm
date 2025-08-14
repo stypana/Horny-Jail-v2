@@ -96,10 +96,6 @@ ADMIN_VERB(game_panel, R_ADMIN, "Game Panel", "Look at the state of the game.", 
 	user.holder.Game()
 	BLACKBOX_LOG_ADMIN_VERB("Game Panel")
 
-ADMIN_VERB(poll_panel, R_POLL, "Server Poll Management", "View and manage polls.", ADMIN_CATEGORY_MAIN)
-	user.holder.poll_list_panel()
-	BLACKBOX_LOG_ADMIN_VERB("Server Poll Management")
-
 /// Returns this client's stealthed ckey
 /client/proc/getStealthKey()
 	return GLOB.stealthminID[ckey]
