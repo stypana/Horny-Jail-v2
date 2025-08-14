@@ -902,8 +902,8 @@
 	icon_state = "vodkabottle"
 	list_reagents = list()
 	var/active = FALSE
-    /// how far the resulting fire spreads
-    var/fire_radius = 4
+	/// how far the resulting fire spreads
+	var/fire_radius = 4
 	var/list/accelerants = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/fuel,
