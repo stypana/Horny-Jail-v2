@@ -936,7 +936,10 @@
             new /obj/effect/decal/cleanable/fuel_pool/molotov(nearby_turf)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = FALSE)
-	..(hit_atom, throwingdatum, do_splash = FALSE)
+    var/caught = ..(hit_atom, throwingdatum, do_splash = FALSE)
+    if(!caught)
+        var/mob/thrower = throwingdatum?.get_thrower()
+        smash(hit_atom, thrower, throwingdatum)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/smash(atom/target, mob/thrower, datum/thrownthing/throwingdatum, break_top)
 	var/firestarter = 0
@@ -950,14 +953,15 @@
 		spread_fire(target)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
-	if(I.get_temperature() && !active)
-		active = TRUE
-		log_bomber(user, "has primed a", src, "for detonation")
-
-	to_chat(user, span_info("You light [src] on fire."))
-	add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
-	if(!isGlass)
-		addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
+    if(active || I.get_temperature() < FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
+        return ..()
+    active = TRUE
+    log_bomber(user, "has primed a", src, "for detonation")
+    to_chat(user, span_info("You light [src] on fire."))
+    add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
+    if(!isGlass)
+        addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
+    return
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/explode()
 	if(!active)

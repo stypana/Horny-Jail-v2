@@ -571,39 +571,39 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 		var/mob/living/enflamed_liver = enflammable_atom
 		if(enflamed_liver.on_fire)
 			ignite()
-		else if(istype(enflammable_atom, /obj/effect/particle_effect/sparks))
-			ignite()
+    else if(istype(enflammable_atom, /obj/effect/particle_effect/sparks))
+      ignite()
 
 /obj/effect/hotspot/molotov
-	volume = 250
+    volume = 250
 
 /obj/effect/hotspot/molotov/Initialize(mapload, starting_volume, starting_temperature)
-	. = ..()
-	particles = new /particles/embers/spark()
-	add_shared_particles(/particles/smoke/burning)
-	return .
+    . = ..()
+    particles = new /particles/embers/spark()
+    add_shared_particles(/particles/smoke/burning)
+    return .
 
 /obj/effect/hotspot/molotov/Destroy()
-	remove_shared_particles(/particles/smoke/burning)
-	return ..()
+    remove_shared_particles(/particles/smoke/burning)
+    return ..()
 
 /obj/effect/decal/cleanable/fuel_pool/molotov
-	burn_amount = 8
-	hotspot_type = /obj/effect/hotspot/molotov
+     burn_amount = 8
+     hotspot_type = /obj/effect/hotspot/molotov
 
 /obj/effect/decal/cleanable/fuel_pool/molotov/Initialize(mapload, burn_stacks)
-	. = ..(mapload, burn_stacks)
-	if(. != INITIALIZE_HINT_QDEL)
-		ignite()
-	return .
+     . = ..(mapload, burn_stacks)
+     if(. != INITIALIZE_HINT_QDEL)
+       ignite()
+     return .
 
 /obj/effect/decal/cleanable/fuel_pool/molotov/Destroy()
-	var/obj/effect/particle_effect/fluid/smoke/smoke = new(get_turf(src))
-	smoke.lifetime = 20 SECONDS
-	return ..()
+  var/obj/effect/particle_effect/fluid/smoke/smoke = new(get_turf(src))
+  smoke.lifetime = 20 SECONDS
+  return ..()
 
 /obj/effect/decal/cleanable/fuel_pool/hivis
-	icon_state = "fuel_pool_hivis"
+  icon_state = "fuel_pool_hivis"
 
 /obj/effect/decal/cleanable/rubble
 	name = "rubble"
