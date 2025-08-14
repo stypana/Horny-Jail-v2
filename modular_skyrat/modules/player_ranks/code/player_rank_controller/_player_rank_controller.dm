@@ -220,7 +220,6 @@
 /datum/player_rank_controller/proc/clear_existing_rank_data()
 	SHOULD_CALL_PARENT(FALSE)
 	PROTECTED_PROC(TRUE)
-
 	CRASH("[src] did not implement clear_existing_rank_data()! Fix this ASAP!")
 
 
