@@ -64,7 +64,10 @@ const BASEICONS = {
   'Telecomms Specialist': 'tower-cell',
   Barber: 'scissors',
   Blueshield: 'shield-dog',
-  Bouncer: 'shield-heart',
+   Bouncer: 'shield-heart',
+  'Club Security': 'shield-halved',
+  Escort: 'female',
+  Souteneur: 'user-tie',
   'Corrections Officer': 'hands-bound',
   'Customs Agent': 'shield-heart',
   'Engineering Guard': 'shield-heart',
@@ -118,6 +121,22 @@ const ALTTITLES = {
   Florist: BASEICONS.Botanist,
   // Bouncer - shield-heart
   'Service Guard': BASEICONS.Bouncer,
+  // Club Security - shield-halved
+  Houseman: BASEICONS['Club Security'],
+  'Crowd controller': BASEICONS['Club Security'],
+  'Face control': BASEICONS['Club Security'],
+  Cooler: BASEICONS['Club Security'],
+  Doorman: BASEICONS['Club Security'],
+  // Escort - female
+  Prostitute: BASEICONS.Escort,
+  Courtesan: BASEICONS.Escort,
+  'Call girl': BASEICONS.Escort,
+  Hooker: BASEICONS.Escort,
+  // Souteneur - user-tie
+  Pimp: BASEICONS.Souteneur,
+  'Flesh peddler': BASEICONS.Souteneur,
+  Mack: BASEICONS.Souteneur,
+  Whoremonger: BASEICONS.Souteneur,
   // Captain - crown
   'Station Commander': BASEICONS.Captain,
   'Commanding Officer': BASEICONS.Captain,

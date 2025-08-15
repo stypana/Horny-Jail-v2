@@ -174,12 +174,22 @@
 	head_of_staff_access = ACCESS_HOP
 	department_access = list(ACCESS_SERVICE)
 
+/datum/job_department/entertainment
+        department_name = DEPARTMENT_ENTERTAINMENT
+        department_bitflags = DEPARTMENT_BITFLAG_ENTERTAINMENT
+        department_head = /datum/job/souteneur
+        department_experience_type = EXP_TYPE_SERVICE
+        display_order = 8
+        label_class = "entertainment"
+        ui_color = COLOR_ENTERTAINMENT_TEAL
+        department_access = list(ACCESS_ENTERTAINMENT)
+
 /datum/job_department/silicon
 	department_name = DEPARTMENT_SILICON
 	department_bitflags = DEPARTMENT_BITFLAG_SILICON
 	department_head = /datum/job/ai
 	department_experience_type = EXP_TYPE_SILICON
-	display_order = 8
+display_order = 9
 	label_class = "silicon"
 	ui_color = "#5dbda0"
 
@@ -188,4 +198,4 @@
 
 /// Catch-all department for undefined jobs.
 /datum/job_department/undefined
-	display_order = 10
+display_order = 10

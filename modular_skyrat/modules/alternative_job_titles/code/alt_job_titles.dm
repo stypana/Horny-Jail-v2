@@ -120,6 +120,34 @@
 		"Doorman",
 		"Doorwoman",
 	)
+/datum/job/club_security
+        alt_titles = list(
+                "Club Security",
+                "Houseman",
+                "Crowd controller",
+                "Face control",
+                "Cooler",
+                "Doorman",
+        )
+
+/datum/job/escort
+        alt_titles = list(
+                "Escort",
+                "Prostitute",
+                "Courtesan",
+                "Call girl",
+                "Hooker",
+        )
+
+/datum/job/souteneur
+        alt_titles = list(
+                "Souteneur",
+                "Pimp",
+                "Flesh peddler",
+                "Mack",
+                "Whoremonger",
+        )
+
 
 /datum/job/corrections_officer
 	alt_titles = list(

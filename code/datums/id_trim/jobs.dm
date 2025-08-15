@@ -1369,3 +1369,51 @@
 	job = /datum/job/human_ai
 	big_pointer = TRUE
 	pointer_color = COLOR_MODERATE_BLUE
+
+/datum/id_trim/job/souteneur
+	assignment = JOB_SOUTENEUR
+	trim_state = "trim_pimp"
+	department_color = COLOR_ENTERTAINMENT_TEAL
+	subdepartment_color = COLOR_ENTERTAINMENT_TEAL
+	sechud_icon_state = SECHUD_PIMP
+	minimal_access = list(
+		ACCESS_ENTERTAINMENT,
+	)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_HOP,
+	)
+	job = /datum/job/souteneur
+
+/datum/id_trim/job/escort
+	assignment = JOB_ESCORT
+	trim_state = "trim_escort"
+	department_color = COLOR_ENTERTAINMENT_TEAL
+	subdepartment_color = COLOR_ENTERTAINMENT_TEAL
+	sechud_icon_state = SECHUD_ESCORT
+	minimal_access = list(
+		ACCESS_ENTERTAINMENT,
+	)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_HOP,
+	)
+	job = /datum/job/escort
+
+/datum/id_trim/job/club_security
+	assignment = JOB_CLUB_SECURITY
+	trim_state = "trim_clubsec"
+	department_color = COLOR_ENTERTAINMENT_TEAL
+	subdepartment_color = COLOR_ENTERTAINMENT_TEAL
+	sechud_icon_state = SECHUD_CLUB_SECURITY
+	minimal_access = list(
+		ACCESS_ENTERTAINMENT,
+	)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_HOP,
+	)
+	job = /datum/job/club_security

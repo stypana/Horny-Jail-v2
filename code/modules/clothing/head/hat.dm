@@ -371,3 +371,9 @@
 	icon_state = "paper"
 	worn_icon_state = "paper"
 	dog_fashion = /datum/dog_fashion/head
+
+/obj/item/clothing/head/hats/pimp
+	name = "pimp hat"
+	desc = "A gaudy hat fit for the smoothest operators."
+	icon_state = "pimp"
+	inhand_icon_state = null

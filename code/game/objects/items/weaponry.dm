@@ -755,6 +755,24 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	playsound(src, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
+/obj/item/cane/golden
+        name = "golden cane"
+        desc = "An ostentatious cane plated in gold."
+        icon = 'icons/obj/canes.dmi'
+        icon_state = "golden"
+        inhand_icon_state = "golden"
+        lefthand_file = 'icons/mob/inhands/items/canes_lefthand.dmi'
+        righthand_file = 'icons/mob/inhands/items/canes_righthand.dmi'
+
+/obj/item/cane/luminous
+        name = "luminous cane"
+        desc = "This cane emits a subtle glow."
+        icon = 'icons/obj/canes.dmi'
+        icon_state = "luminous"
+        inhand_icon_state = "luminous"
+        lefthand_file = 'icons/mob/inhands/items/canes_lefthand.dmi'
+        righthand_file = 'icons/mob/inhands/items/canes_righthand.dmi'
+
 /obj/item/staff
 	name = "wizard staff"
 	desc = "Apparently a staff used by the wizard."
