@@ -345,12 +345,9 @@ function MainFeature(props: MainFeatureProps) {
                 position: 'absolute',
                 right: '1px',
               },
-
-              onOpen: (event) => {
+              onMouseDown: (event) => {
                 // We're a button inside a button.
-                // Did you know that's against the W3C standard? :)
-                // FIXME: Button unclickable!
-                event.cancelBubble = true;
+                // Stop the event so the outer button doesn't handle it.
                 event.stopPropagation();
               },
             }}

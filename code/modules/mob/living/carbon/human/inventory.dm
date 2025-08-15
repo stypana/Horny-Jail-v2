@@ -1,10 +1,10 @@
 
 /**
- * Used to return a list of equipped items on a human mob; does not by default include held items, see include_flags
- *
- * Argument(s):
- * * Optional - include_flags, (see obj.flags.dm) describes which optional things to include or not (pockets, accessories, held items)
- */
+	* Used to return a list of equipped items on a human mob; does not by default include held items, see include_flags
+	*
+	* Argument(s):
+	* * Optional - include_flags, (see obj.flags.dm) describes which optional things to include or not (pockets, accessories, held items)
+	*/
 
 /mob/living/carbon/human/get_equipped_items(include_flags = NONE)
 	var/list/items = ..()
@@ -13,6 +13,9 @@
 	if((include_flags & INCLUDE_ACCESSORIES) && w_uniform)
 		var/obj/item/clothing/under/worn_under = w_uniform
 		items += worn_under.attached_accessories
+	if((include_flags & INCLUDE_ACCESSORIES) && gloves)
+		var/obj/item/clothing/gloves/worn_gloves = gloves
+		items += worn_gloves.attached_accessories
 	return items
 
 /mob/living/carbon/human/can_equip(obj/item/equip_target, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
@@ -133,6 +136,9 @@
 	var/obj/item/clothing/under/under = w_uniform
 	if(istype(under) && length(under.attached_accessories) && (under in visible_items))
 		visible_items += under.attached_accessories
+	var/obj/item/clothing/gloves/worn_gloves = gloves
+	if(istype(worn_gloves) && length(worn_gloves.attached_accessories) && (worn_gloves in visible_items))
+		visible_items += worn_gloves.attached_accessories
 	return visible_items
 
 //This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible() or advanced_equip_to_slot_if_possible()

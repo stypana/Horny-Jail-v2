@@ -1,4 +1,5 @@
 /obj/item/clothing/gloves/ring
+	parent_type = /obj/item/clothing/accessory
 	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	name = "gold ring"
@@ -11,7 +12,10 @@
 	body_parts_covered = 0
 	strip_delay = 4 SECONDS
 	clothing_traits = list(TRAIT_FINGERPRINT_PASSTHROUGH)
-
+	slot_flags = ITEM_SLOT_GLOVES
+	attachment_slot = HANDS
+	minimize_when_attached = TRUE
+	
 /obj/item/clothing/gloves/ring/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!"))
 	return OXYLOSS
@@ -31,3 +35,8 @@
 	desc = "A tiny silver ring, sized to wrap around a finger."
 	icon_state = "ringsilver"
 	worn_icon_state = "sring"
+
+/obj/item/clothing/gloves/ring/examine(mob/user)
+	. = ..()
+	. += "It can be attached to gloves."
+	return .

@@ -38,12 +38,7 @@
 
 	// Accessory handling (Can be componentized eventually)
 	/// The max number of accessories we can have on this suit.
-	var/max_number_of_accessories = 5
-	/// A list of all accessories attached to us.
-	var/list/obj/item/clothing/accessory/attached_accessories
-	/// The overlay of the accessory we're demonstrating. Only index 1 will show up.
-	/// This is the overlay on the MOB, not the item itself.
-	var/mutable_appearance/accessory_overlay
+	max_number_of_accessories = 5
 
 /datum/armor/clothing_under
 	bio = 10
@@ -320,7 +315,7 @@ BUBBERSTATION CHANGE END */
 		popped_accessory.balloon_alert(user, "accessory removed")
 
 /// Removes the passed accesory from our accessories list
-/obj/item/clothing/under/proc/remove_accessory(obj/item/clothing/accessory/removed)
+/obj/item/clothing/under/remove_accessory(obj/item/clothing/accessory/removed)
 	if(removed == attached_accessories[1])
 		accessory_overlay = null
 
@@ -337,12 +332,13 @@ BUBBERSTATION CHANGE END */
 /// Only the first accessory attached is displayed (currently)
 /obj/item/clothing/under/proc/create_accessory_overlay()
 	var/obj/item/clothing/accessory/prime_accessory = attached_accessories[1]
-	accessory_overlay = mutable_appearance(prime_accessory.worn_icon, prime_accessory.icon_state)
+	var/overlay_state = prime_accessory.worn_icon_state ? prime_accessory.worn_icon_state : prime_accessory.icon_state
+	accessory_overlay = mutable_appearance(prime_accessory.worn_icon, overlay_state)
 	accessory_overlay.alpha = prime_accessory.alpha
 	accessory_overlay.color = prime_accessory.color
 
 /// Updates the accessory's worn overlay mutable appearance
-/obj/item/clothing/under/proc/update_accessory_overlay()
+/obj/item/clothing/under/update_accessory_overlay()
 	if(isnull(accessory_overlay))
 		return
 
