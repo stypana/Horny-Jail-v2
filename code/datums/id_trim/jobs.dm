@@ -1373,8 +1373,8 @@
 /datum/id_trim/job/souteneur
 	assignment = JOB_SOUTENEUR
 	trim_state = "trim_pimp"
-	department_color = COLOR_ENTERTAINMENT_TEAL
-	subdepartment_color = COLOR_ENTERTAINMENT_TEAL
+	department_color = COLOR_ENTERTAINMENT_PURPLE
+	subdepartment_color = COLOR_ENTERTAINMENT_PURPLE
 	sechud_icon_state = SECHUD_PIMP
 	minimal_access = list(
 		ACCESS_ENTERTAINMENT,
@@ -1389,8 +1389,8 @@
 /datum/id_trim/job/escort
 	assignment = JOB_ESCORT
 	trim_state = "trim_escort"
-	department_color = COLOR_ENTERTAINMENT_TEAL
-	subdepartment_color = COLOR_ENTERTAINMENT_TEAL
+	department_color = COLOR_ENTERTAINMENT_PURPLE
+	subdepartment_color = COLOR_ENTERTAINMENT_PURPLE
 	sechud_icon_state = SECHUD_ESCORT
 	minimal_access = list(
 		ACCESS_ENTERTAINMENT,
@@ -1405,8 +1405,8 @@
 /datum/id_trim/job/club_security
 	assignment = JOB_CLUB_SECURITY
 	trim_state = "trim_clubsec"
-	department_color = COLOR_ENTERTAINMENT_TEAL
-	subdepartment_color = COLOR_ENTERTAINMENT_TEAL
+	department_color = COLOR_ENTERTAINMENT_PURPLE
+	subdepartment_color = COLOR_ENTERTAINMENT_PURPLE
 	sechud_icon_state = SECHUD_CLUB_SECURITY
 	minimal_access = list(
 		ACCESS_ENTERTAINMENT,

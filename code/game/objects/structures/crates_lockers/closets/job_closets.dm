@@ -327,11 +327,12 @@
 	new /obj/item/storage/backpack/satchel/explorer(src)
 	new /obj/item/storage/backpack/messenger/explorer(src)
 
-/obj/structure/closet/wardrobe/entertainment
+/obj/structure/closet/secure_closet/entertainment
 	name = "entertainment wardrobe"
-	icon_door = "entertainment"
+	req_access = list(ACCESS_ENTERTAINMENT)
+	icon_state = "entertainment"
 
-/obj/structure/closet/wardrobe/entertainment/PopulateContents()
+/obj/structure/closet/secure_closet/entertainment/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/clothing/under/suit/pimp = 2,
 		/obj/item/clothing/under/dress/midnight = 2,
@@ -343,11 +344,12 @@
 	)
 	generate_items_inside(items_inside,src)
 
-/obj/structure/closet/wardrobe/entertainment_light
+/obj/structure/closet/secure_closet/entertainment_light
 	name = "entertainment wardrobe"
-	icon_door = "entertainment_light"
+	req_access = list(ACCESS_ENTERTAINMENT)
+	icon_state = "entertainment_light"
 
-/obj/structure/closet/wardrobe/entertainment_light/PopulateContents()
+/obj/structure/closet/secure_closet/entertainment_light/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/clothing/under/dress/midnight = 2,
 		/obj/item/clothing/gloves/silk = 2,
