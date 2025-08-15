@@ -10,3 +10,4 @@
 
 // Used for custom item descriptions
 #define INFO_DESCRIBED "description"
+#define INFO_HEIRLOOM "heirloom"
