@@ -28,6 +28,15 @@
 	///Prevents the article of clothing from gaining the mood boost from washing. Used for the tacticool turtleneck.
 	var/stubborn_stains = FALSE
 
+	// Accessory handling
+	/// The max number of accessories we can have on this clothing.
+	var/max_number_of_accessories = 0
+	/// A list of all accessories attached to us.
+	var/list/obj/item/clothing/accessory/attached_accessories
+	/// The overlay of the accessory we're demonstrating. Only index 1 will show up.
+	/// This is the overlay on the MOB, not the item itself.
+	var/mutable_appearance/accessory_overlay
+
 	/// What items can be consumed to repair this clothing (must by an /obj/item/stack)
 	var/repairable_by = /obj/item/stack/sheet/cloth
 
@@ -282,6 +291,13 @@
 		return
 
 	wearer.update_clothing(slot_flags)
+
+/obj/item/clothing/proc/remove_accessory(obj/item/clothing/accessory/removed)
+		return
+
+/obj/item/clothing/proc/update_accessory_overlay()
+		return
+
 
 /**
  * Inserts a trait (or multiple traits) into the clothing traits list

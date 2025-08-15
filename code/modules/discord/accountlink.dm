@@ -4,7 +4,7 @@
 	set desc ="Get your ID for account verification."
 
 	verbs -= /client/verb/show_account_identifier
-	addtimer(CALLBACK(src, .proc/restore_account_identifier), 20) //Don't DoS DB queries, asshole
+	addtimer(CALLBACK(src, PROC_REF(restore_account_identifier)), 20) //Don't DoS DB queries, asshole
 
 	var/confirm = alert("Do NOT share the verification ID in the following popup. Understand?", "Important Warning", "Yes", "Cancel")
 	var/message = ""

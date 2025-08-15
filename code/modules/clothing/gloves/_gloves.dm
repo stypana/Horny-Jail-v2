@@ -24,6 +24,24 @@
 	var/cut_type = null
 	/// Used for handling bloody gloves leaving behind bloodstains on objects. Will be decremented whenever a bloodstain is left behind, and be incremented when the gloves become bloody.
 	var/transfer_blood = 0
+	/// The max number of accessories we can have on these gloves.
+	max_number_of_accessories = 5
+
+/obj/item/clothing/gloves/Initialize(mapload)
+       . = ..()
+       flags_1 |= HAS_CONTEXTUAL_SCREENTIPS_1
+       AddElement(/datum/element/update_icon_updates_onmob, flags = ITEM_SLOT_GLOVES, body = TRUE)
+
+/obj/item/clothing/gloves/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	. = ..()
+	var/changed = FALSE
+	if(istype(held_item, /obj/item/clothing/accessory) && length(attached_accessories) < max_number_of_accessories)
+		context[SCREENTIP_CONTEXT_LMB] = "Attach accessory"
+		changed = TRUE
+	if(LAZYLEN(attached_accessories))
+		context[SCREENTIP_CONTEXT_ALT_RMB] = "Remove accessory"
+		changed = TRUE
+	return changed ? CONTEXTUAL_SCREENTIP_SET : .
 
 /obj/item/clothing/gloves/apply_fantasy_bonuses(bonus)
 	. = ..()
@@ -49,6 +67,8 @@
 		return
 	if(damaged_clothes)
 		. += mutable_appearance('icons/effects/item_damage.dmi', "damagedgloves")
+	if(accessory_overlay)
+		. += accessory_overlay
 
 /obj/item/clothing/gloves/separate_worn_overlays(mutable_appearance/standing, mutable_appearance/draw_target, isinhands, icon_file)
 	. = ..()
@@ -71,19 +91,112 @@
 		return FALSE // We don't want to cut dyed gloves.
 	return TRUE
 
-/obj/item/clothing/gloves/attackby(obj/item/tool, mob/user, list/modifiers, list/attack_modifiers)
+/obj/item/clothing/gloves/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
+	if(istype(attacking_item, /obj/item/clothing/accessory))
+		return attach_accessory(attacking_item, user)
 	. = ..()
 	if(.)
 		return
-	if(tool.tool_behaviour != TOOL_WIRECUTTER && !tool.get_sharpness())
+	if(attacking_item.tool_behaviour != TOOL_WIRECUTTER && !attacking_item.get_sharpness())
 		return
-	if (!can_cut_with(tool))
+	if (!can_cut_with(attacking_item))
 		return
 	balloon_alert(user, "cutting off fingertips...")
 
-	if(!do_after(user, 3 SECONDS, target=src, extra_checks = CALLBACK(src, PROC_REF(can_cut_with), tool)))
+	if(!do_after(user, 3 SECONDS, target=src, extra_checks = CALLBACK(src, PROC_REF(can_cut_with), attacking_item)))
 		return
 	balloon_alert(user, "cut fingertips off")
 	qdel(src)
 	user.put_in_hands(new cut_type)
 	return TRUE
+
+/obj/item/clothing/gloves/proc/attach_accessory(obj/item/clothing/accessory/accessory, mob/living/user, attach_message = TRUE)
+	if(!istype(accessory))
+		return
+	if(!accessory.can_attach_accessory(src, user))
+		return
+	if(user && !user.temporarilyRemoveItemFromInventory(accessory))
+		return
+	if(!accessory.attach(src, user))
+		return
+
+	LAZYADD(attached_accessories, accessory)
+	accessory.forceMove(src)
+	accessory.successful_attach(src)
+
+	if(user && attach_message)
+		balloon_alert(user, "accessory attached")
+
+	if(isnull(accessory_overlay))
+		create_accessory_overlay()
+
+	update_appearance()
+	return TRUE
+
+/obj/item/clothing/gloves/proc/pop_accessory(mob/living/user, attach_message = TRUE)
+	var/obj/item/clothing/accessory/popped_accessory = attached_accessories[1]
+	remove_accessory(popped_accessory)
+
+	if(!user)
+		return
+
+	user.put_in_hands(popped_accessory)
+	if(attach_message)
+		popped_accessory.balloon_alert(user, "accessory removed")
+
+/obj/item/clothing/gloves/remove_accessory(obj/item/clothing/accessory/removed)
+	if(removed == attached_accessories[1])
+		accessory_overlay = null
+
+	LAZYREMOVE(attached_accessories, removed)
+	removed.detach(src)
+
+	if(isnull(accessory_overlay) && LAZYLEN(attached_accessories))
+		create_accessory_overlay()
+
+	update_appearance()
+
+/obj/item/clothing/gloves/proc/create_accessory_overlay()
+	var/obj/item/clothing/accessory/prime_accessory = attached_accessories[1]
+	var/overlay_state = prime_accessory.worn_icon_state ? prime_accessory.worn_icon_state : prime_accessory.icon_state
+	accessory_overlay = mutable_appearance(prime_accessory.worn_icon, overlay_state)
+	accessory_overlay.alpha = prime_accessory.alpha
+	accessory_overlay.color = prime_accessory.color
+
+/obj/item/clothing/gloves/update_accessory_overlay()
+	if(isnull(accessory_overlay))
+		return
+
+	cut_overlay(accessory_overlay)
+	create_accessory_overlay()
+	update_appearance()
+
+/obj/item/clothing/gloves/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone in attached_accessories)
+		remove_accessory(gone)
+
+/obj/item/clothing/gloves/proc/dump_attachments(atom/drop_to = drop_location())
+	for(var/obj/item/clothing/accessory/worn_accessory as anything in attached_accessories)
+		remove_accessory(worn_accessory)
+		worn_accessory.forceMove(drop_to)
+
+/obj/item/clothing/gloves/atom_destruction(damage_flag)
+	dump_attachments()
+	return ..()
+
+/obj/item/clothing/gloves/Destroy()
+	QDEL_LAZYLIST(attached_accessories)
+	return ..()
+
+/obj/item/clothing/gloves/click_alt_secondary(mob/user)
+	if(!LAZYLEN(attached_accessories))
+		balloon_alert(user, "no accessories to remove!")
+		return
+	pop_accessory(user)
+
+/obj/item/clothing/gloves/examine(mob/user)
+	. = ..()
+	if(LAZYLEN(attached_accessories))
+		. += "Alt-Right-Click to remove [attached_accessories[1]]."
+	return .

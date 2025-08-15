@@ -223,7 +223,7 @@
 	var/dash_num = 3
 	var/newcolor = rgb(149, 10, 10)
 
-/mob/living/simple_animal/hostile/megafauna/cult_templar/Initialize()
+/mob/living/simple_animal/hostile/megafauna/cult_templar/Initialize(mapload)
 	. = ..()
 	starting = get_turf(src)
 	weapon = new(src)

@@ -40,7 +40,7 @@
 /**
  * Can we be attached to the passed clothing article?
  */
-/obj/item/clothing/accessory/proc/can_attach_accessory(obj/item/clothing/under/attach_to, mob/living/user)
+/obj/item/clothing/accessory/proc/can_attach_accessory(obj/item/clothing/attach_to, mob/living/user)
 	if(!istype(attach_to))
 		CRASH("[type] - can_attach_accessory called with an invalid item to attach to. (got: [attach_to])")
 
@@ -62,10 +62,11 @@
 	return TRUE
 
 // If accessory is being worn, make sure it updates on the player
+
 /obj/item/clothing/accessory/update_greyscale()
 	. = ..()
 
-	var/obj/item/clothing/under/attached_to = loc
+	var/obj/item/clothing/attached_to = loc
 
 	if(!istype(attached_to))
 		return
@@ -82,7 +83,7 @@
  *
  * The accessory is not yet within the clothing's loc at this point, this hapens after success.
  */
-/obj/item/clothing/accessory/proc/attach(obj/item/clothing/under/attach_to, mob/living/attacher)
+/obj/item/clothing/accessory/proc/attach(obj/item/clothing/attach_to, mob/living/attacher)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(atom_storage)
@@ -108,7 +109,7 @@
 	return TRUE
 
 /// Called after attach is completely successful and the accessory is in the clothing's loc
-/obj/item/clothing/accessory/proc/successful_attach(obj/item/clothing/under/attached_to)
+/obj/item/clothing/accessory/proc/successful_attach(obj/item/clothing/attached_to)
 	SHOULD_CALL_PARENT(TRUE)
 
 	// Do on-equip effects if we're already equipped
@@ -124,7 +125,7 @@
  *
  * We may have exited the clothing's loc at this point
  */
-/obj/item/clothing/accessory/proc/detach(obj/item/clothing/under/detach_from)
+/obj/item/clothing/accessory/proc/detach(obj/item/clothing/detach_from)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(detach_from.atom_storage?.real_location == src)
@@ -155,33 +156,34 @@
 	return TRUE
 
 /// Signal proc for [COMSIG_ITEM_EQUIPPED] on the uniform we're pinned to
-/obj/item/clothing/accessory/proc/on_uniform_equipped(obj/item/clothing/under/source, mob/living/user, slot)
+/obj/item/clothing/accessory/proc/on_uniform_equipped(obj/item/clothing/source, mob/living/user, slot)
 	SIGNAL_HANDLER
 
 	if(slot & source.slot_flags)
 		accessory_equipped(source, user)
 
 /// Signal proc for [COMSIG_ITEM_DROPPED] on the uniform we're pinned to
-/obj/item/clothing/accessory/proc/on_uniform_dropped(obj/item/clothing/under/source, mob/living/user)
+/obj/item/clothing/accessory/proc/on_uniform_dropped(obj/item/clothing/source, mob/living/user)
 	SIGNAL_HANDLER
 
 	accessory_dropped(source, user)
-	user.update_clothing(ITEM_SLOT_ICLOTHING|ITEM_SLOT_OCLOTHING|ITEM_SLOT_NECK)
+	user.update_clothing(user.get_slot_by_item(source))
 
 /// Called when the uniform this accessory is pinned to is equipped in a valid slot
-/obj/item/clothing/accessory/proc/accessory_equipped(obj/item/clothing/under/clothes, mob/living/user)
-	equipped(user, user.get_slot_by_item(clothes)) // so we get any actions, item_flags get set, etc
-	user.update_clothing(ITEM_SLOT_OCLOTHING|ITEM_SLOT_NECK)
+/obj/item/clothing/accessory/proc/accessory_equipped(obj/item/clothing/clothes, mob/living/user)
+	var/slot = user.get_slot_by_item(clothes)
+	equipped(user, slot) // so we get any actions, item_flags get set, etc
+	user.update_clothing(slot)
 	return
 
 /// Called when the uniform this accessory is pinned to is dropped
-/obj/item/clothing/accessory/proc/accessory_dropped(obj/item/clothing/under/clothes, mob/living/user)
+/obj/item/clothing/accessory/proc/accessory_dropped(obj/item/clothing/clothes, mob/living/user)
 	dropped(user)
 	return
 
 /// Signal proc for [COMSIG_CLOTHING_UNDER_ADJUSTED] on the uniform we're pinned to
 /// Checks if we can no longer be attached to the uniform, and if so, drops us
-/obj/item/clothing/accessory/proc/on_uniform_adjusted(obj/item/clothing/under/source)
+/obj/item/clothing/accessory/proc/on_uniform_adjusted(obj/item/clothing/source)
 	SIGNAL_HANDLER
 
 	if(can_attach_accessory(source))
@@ -208,7 +210,7 @@
 
 /obj/item/clothing/accessory/examine(mob/user)
 	. = ..()
-	. += "It can be attached to a uniform."
+	. += "It can be attached to certain clothing."
 	. += "It can be worn above or below your suit. Right-click to toggle."
 
 /obj/item/clothing/accessory/add_context(atom/source, list/context, obj/item/held_item, mob/user)
