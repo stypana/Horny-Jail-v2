@@ -126,6 +126,10 @@
 
 /// General access for Service, allows for entry to the Service Hallway.
 #define ACCESS_SERVICE "service"
+/// Access to the entertainment venues.
+#define ACCESS_ENTERTAINMENT "entertainment"
+
+
 /// Access to the Theatre, as well as other vending machines related to the theatre. Sometimes also used as the "clown's" access in code.
 #define ACCESS_THEATRE "theatre"
 /// Access to the Chaplain's office.
@@ -331,6 +335,7 @@
 	ACCESS_SCIENCE, \
 	ACCESS_SECURITY, \
 	ACCESS_SERVICE, \
+        ACCESS_ENTERTAINMENT, \
 	ACCESS_SHIPPING, \
 	ACCESS_SURGERY, \
 	ACCESS_THEATRE, \
@@ -435,6 +440,7 @@
 	ACCESS_LIBRARY, \
 	ACCESS_SERVICE, \
 	ACCESS_THEATRE, \
+        ACCESS_ENTERTAINMENT, \
 )
 /// Name for the Security region.
 #define REGION_SECURITY "Security"

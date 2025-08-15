@@ -222,3 +222,9 @@
 	icon_state = "letterman_n"
 	inhand_icon_state = null
 	species_exception = list(/datum/species/golem)
+
+/obj/item/clothing/suit/jacket/pimp
+	name = "pimp jacket"
+	desc = "A flashy fur-lined jacket."
+	icon_state = "pimp_jacket"
+	inhand_icon_state = "pimp_jacket"
