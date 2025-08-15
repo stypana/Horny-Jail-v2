@@ -256,16 +256,23 @@ function JobRow(props: JobRowProps) {
     );
   }
 
-  const rawOptions = Array.isArray(job.alt_titles) ? job.alt_titles : [];
-  const options = rawOptions
-    .filter(Boolean)
-    .map((opt: any) =>
-      typeof opt === 'string' ? { value: opt, displayText: opt } : opt,
-    );
+  const hasAltTitles = Array.isArray(job.alt_titles) && job.alt_titles.length > 0;
 
-  // выбранное значение может быть строкой из префов; найдём объект-опцию
+  const options = hasAltTitles
+    ? [
+        { value: '', displayText: name },
+        ...job.alt_titles
+          .filter(Boolean)
+          .map((opt: any) =>
+            typeof opt === 'string' ? { value: opt, displayText: opt } : opt,
+          ),
+      ]
+    : [];
+
+  const selectedValue = alt_title_selected ?? '';
+
   const selectedOption =
-    options.find((o: any) => o?.value === alt_title_selected) ?? null;
+    options.find((o: any) => o?.value === selectedValue) ?? options[0] ?? null;
 
   return (
     <Stack.Item className={className} height="100%" mt={0}>
@@ -284,33 +291,21 @@ function JobRow(props: JobRowProps) {
               - приводим строки к {value, displayText};
               - не передаём selected, если его нет в options.
             */}
-            {Array.isArray(job.alt_titles) && job.alt_titles.length > 0
-              ? (() => {
-                  const options = job.alt_titles
-                    .filter(Boolean)
-                    .map((opt: any) =>
-                      typeof opt === 'string'
-                        ? { value: opt, displayText: opt }
-                        : opt,
-                    );
-                  const selectedInOptions = options.some(
-                    (o: any) => o?.value === alt_title_selected,
-                  );
-                  return (
-                    <Dropdown
-                      width="100%"
-                      options={options}
-                      selected={selectedOption} // ⬅ объект или null — как требует тип
-                      onSelected={(opt: any) =>
-                        act('set_job_title', {
-                          job: name,
-                          new_title: opt?.value ?? opt ?? '',
-                        })
-                      }
-                    />
-                  );
-                })()
-              : name}
+            {hasAltTitles ? (
+              <Dropdown
+                width="100%"
+                options={options}
+                selected={selectedOption}
+                onSelected={(opt: any) =>
+                  act('set_job_title', {
+                    job: name,
+                    new_title: opt?.value ?? '',
+                  })
+                }
+              />
+            ) : (
+              name
+            )}
           </Stack.Item>
         </Tooltip>
 
