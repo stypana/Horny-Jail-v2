@@ -25,7 +25,7 @@
 	/// Used for handling bloody gloves leaving behind bloodstains on objects. Will be decremented whenever a bloodstain is left behind, and be incremented when the gloves become bloody.
 	var/transfer_blood = 0
 	/// The max number of accessories we can have on these gloves.
-	max_number_of_accessories = 5
+	max_number_of_accessories = 2
 
 /obj/item/clothing/gloves/Initialize(mapload)
        . = ..()
