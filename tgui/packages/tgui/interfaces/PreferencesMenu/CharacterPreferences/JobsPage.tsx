@@ -256,12 +256,13 @@ function JobRow(props: JobRowProps) {
     );
   }
 
-  const hasAltTitles = Array.isArray(job.alt_titles) && job.alt_titles.length > 0;
+  const altTitles = Array.isArray(job.alt_titles) ? job.alt_titles : [];
+  const hasAltTitles = altTitles.length > 0;
 
   const options = hasAltTitles
     ? [
         { value: '', displayText: name },
-        ...job.alt_titles
+        ...altTitles
           .filter(Boolean)
           .map((opt: any) =>
             typeof opt === 'string' ? { value: opt, displayText: opt } : opt,
