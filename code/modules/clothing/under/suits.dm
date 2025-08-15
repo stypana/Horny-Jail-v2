@@ -120,3 +120,9 @@
 /obj/item/clothing/under/suit/carpskin/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/adjust_fishing_difficulty, -4)
+
+/obj/item/clothing/under/suit/pimp
+	name = "pimp suit"
+	desc = "A flamboyant suit dripping with style."
+	icon_state = "pimp"
+	inhand_icon_state = "pimp"

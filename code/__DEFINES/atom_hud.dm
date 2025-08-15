@@ -131,6 +131,9 @@
 #define SECHUD_VETERAN_ADVISOR "hudveteranadvisor"
 #define SECHUD_WARDEN "hudwarden"
 #define SECHUD_CHEF "hudchef"
+#define SECHUD_CLUB_SECURITY "hudclubsec"
+#define SECHUD_ESCORT "hudescort"
+#define SECHUD_PIMP "hudpimp"
 
 #define SECHUD_DEATH_COMMANDO "huddeathcommando"
 
