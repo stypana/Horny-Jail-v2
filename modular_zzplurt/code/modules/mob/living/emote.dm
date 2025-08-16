@@ -355,6 +355,15 @@
 	specific_emote_audio_cooldown = 4.45 SECONDS
 	emote_type = EMOTE_AUDIBLE
 
+/datum/emote/living/aftonlaugh
+	key = "alaugh"
+	key_third_person = "alaughs"
+	message = "laughs maniacly!"
+	message_mime = "acts out laughing like a maniac."
+	sound = 'modules/sound/emotes/afton_laugh.ogg'
+	specific_emote_audio_cooldown = 6 SECONDS
+	emote_type = EMOTE_AUDIBLE
+
 /datum/emote/living/breakbad
 	key = "breakbad"
 	key_third_person = "breakbads"
