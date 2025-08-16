@@ -151,3 +151,34 @@
 /datum/loadout_item/suit/galfed_jacket
 	name = "Galactic Federation Jacket"
 	item_path = /obj/item/clothing/suit/jacket/galfed
+
+// Teshari
+
+
+/datum/loadout_item/suit/teshari_furcoat
+	name = "Tenka Fabric Coat"
+	item_path= /obj/item/clothing/suit/teshari/furcoat
+
+/datum/loadout_item/suit/teshari_labcoat
+	name = "Lab Coat"
+	item_path= /obj/item/clothing/suit/teshari/labcoat
+
+/datum/loadout_item/suit/teshari_graycoat
+	name = "Grey Coat"
+	item_path= /obj/item/clothing/suit/teshari/graycoat
+
+/datum/loadout_item/suit/teshari_jacket
+	name = "Black Jacket FZ"
+	item_path= /obj/item/clothing/suit/teshari/jacket
+
+/datum/loadout_item/suit/teshari_jacket/noblue
+	name = "Black Jacket FZ"
+	item_path = /obj/item/clothing/suit/teshari/jacket/noblue
+
+/datum/loadout_item/suit/teshari_russian_jacket
+	name = "Russian Raptor Coat"
+	item_path= /obj/item/clothing/suit/teshari/russian_jacket
+
+/datum/loadout_item/suit/teshari_aqua_cloak
+	name = "Short Shirt FZ"
+	item_path= /obj/item/clothing/suit/teshari/aqua_cloak
