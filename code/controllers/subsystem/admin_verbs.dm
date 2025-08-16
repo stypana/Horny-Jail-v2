@@ -124,6 +124,8 @@ SUBSYSTEM_DEF(admin_verbs)
 /datum/controller/subsystem/admin_verbs/proc/assosciate_admin(client/admin)
 	if(IsAdminAdvancedProcCall())
 		return
+	if(isnull(admin?.holder))
+		return
 
 	if(!isnull(admins_pending_subsytem_init)) // if the list exists we are still initializing
 		to_chat(admin, span_big(span_green("Admin Verbs are still initializing. Please wait and you will be automatically assigned your verbs when it is complete.")))
