@@ -102,6 +102,10 @@
 			if(isnull(event))
 				continue
 			if(event.can_spawn_event(player_pop))
+				if(event.calculated_weight <= 0)
+					if(event.roundstart)
+						log_dynamic("[event] did not meet inclusion criteria, skipped.")
+					continue
 				valid_events[event] = event.calculated_weight
 				if(event.roundstart)
 					log_dynamic("[event] added to roundstart event pool with calculated weight [event.calculated_weight] and tags [english_list(event.tags)].")
