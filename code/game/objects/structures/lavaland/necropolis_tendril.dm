@@ -33,14 +33,17 @@
 
 GLOBAL_LIST_INIT(tendrils, list())
 /obj/structure/spawner/lavaland/Initialize(mapload)
-	. = ..()
-	emitted_light = new(loc)
-	for(var/F in RANGE_TURFS(1, src))
-		if(ismineralturf(F))
-			var/turf/closed/mineral/M = F
-			M.ScrapeAway(null, CHANGETURF_IGNORE_AIR)
-	AddComponent(/datum/component/gps, "Eerie Signal")
-	GLOB.tendrils += src
+       . = ..()
+       return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/spawner/lavaland/LateInitialize()
+       emitted_light = new(loc)
+       for(var/F in RANGE_TURFS(1, src))
+               if(ismineralturf(F))
+                       var/turf/closed/mineral/M = F
+                       M.ScrapeAway(null, CHANGETURF_IGNORE_AIR)
+       AddComponent(/datum/component/gps, "Eerie Signal")
+       GLOB.tendrils += src
 
 /obj/structure/spawner/lavaland/atom_deconstruct(disassembled)
 	new /obj/effect/collapse(loc)
