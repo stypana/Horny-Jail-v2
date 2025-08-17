@@ -158,8 +158,8 @@ GLOBAL_VAR(restart_counter)
 	// Everything in here is prioritized in a very specific way.
 	// If you need to add to it, ask yourself hard if what you're adding is in the right spot
 
-	// Try to set round ID
-	SSdbcore.InitializeRound()
+	// Try to set round ID without blocking the main thread
+	spawn() SSdbcore.InitializeRound()
 
 	spawn() SetupLogs()
 
@@ -169,9 +169,9 @@ GLOBAL_VAR(restart_counter)
 	spawn() LoadVerbs(/datum/verbs/menu)
 
 	spawn()
-	if(fexists(RESTART_COUNTER_PATH))
-		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
-		fdel(RESTART_COUNTER_PATH)
+		if(fexists(RESTART_COUNTER_PATH))
+			GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
+			fdel(RESTART_COUNTER_PATH)
 
 /// Runs after the call to Master.Initialize, but before the delay kicks in. Used to turn the world execution into some single function then exit
 /world/proc/RunUnattendedFunctions()
