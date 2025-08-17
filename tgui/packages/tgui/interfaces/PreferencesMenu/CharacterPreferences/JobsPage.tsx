@@ -202,7 +202,7 @@ function JobRow(props: JobRowProps) {
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
   // Текущий альтернативный титул (может отсутствовать после миграции)
-  const alt_title_selected = data.job_alt_titles?.[name] ?? null;
+  const alt_title_selected = data.job_alt_titles?.[name] ?? '';
 
   let rightSide: ReactNode;
 
@@ -256,16 +256,27 @@ function JobRow(props: JobRowProps) {
     );
   }
 
-  const rawOptions = Array.isArray(job.alt_titles) ? job.alt_titles : [];
-  const options = rawOptions
-    .filter(Boolean)
-    .map((opt: any) =>
-      typeof opt === 'string' ? { value: opt, displayText: opt } : opt,
-    );
+  const altTitles = Array.isArray(job.alt_titles) ? job.alt_titles : [];
+  const hasAltTitles = altTitles.length > 0;
 
-  // выбранное значение может быть строкой из префов; найдём объект-опцию
-  const selectedOption =
-    options.find((o: any) => o?.value === alt_title_selected) ?? null;
+  const options = hasAltTitles
+    ? [
+        { value: '', displayText: name },
+        ...altTitles
+          .filter(Boolean)
+          .map((opt: any) =>
+            typeof opt === 'string' ? { value: opt, displayText: opt } : opt,
+          ),
+      ]
+    : [];
+
+  const selectedValue =
+    options.find((o: any) => o?.value === alt_title_selected)
+      ? alt_title_selected
+      : '';
+
+  const selectedDisplayText =
+    options.find((o: any) => o?.value === selectedValue)?.displayText || name;
 
   return (
     <Stack.Item className={className} height="100%" mt={0}>
@@ -284,33 +295,22 @@ function JobRow(props: JobRowProps) {
               - приводим строки к {value, displayText};
               - не передаём selected, если его нет в options.
             */}
-            {Array.isArray(job.alt_titles) && job.alt_titles.length > 0
-              ? (() => {
-                  const options = job.alt_titles
-                    .filter(Boolean)
-                    .map((opt: any) =>
-                      typeof opt === 'string'
-                        ? { value: opt, displayText: opt }
-                        : opt,
-                    );
-                  const selectedInOptions = options.some(
-                    (o: any) => o?.value === alt_title_selected,
-                  );
-                  return (
-                    <Dropdown
-                      width="100%"
-                      options={options}
-                      selected={selectedOption} // ⬅ объект или null — как требует тип
-                      onSelected={(opt: any) =>
-                        act('set_job_title', {
-                          job: name,
-                          new_title: opt?.value ?? opt ?? '',
-                        })
-                      }
-                    />
-                  );
-                })()
-              : name}
+            {hasAltTitles ? (
+              <Dropdown
+                width="100%"
+                options={options}
+                selected={selectedValue}
+                displayText={selectedDisplayText}
+                onSelected={(value: string) =>
+                  act('set_job_title', {
+                    job: name,
+                    new_title: value,
+                  })
+                }
+              />
+            ) : (
+              name
+            )}
           </Stack.Item>
         </Tooltip>
 
