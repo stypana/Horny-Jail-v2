@@ -60,12 +60,14 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 
 /obj/machinery/computer/libraryconsole/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
+	SSlibrary.lazy_load_shelves()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, interface_type)
 		ui.open()
 
 /obj/machinery/computer/libraryconsole/ui_data(mob/user)
+	SSlibrary.lazy_load_shelves()
 	var/list/data = list()
 	data["can_db_request"] = can_db_request()
 	data["search_categories"] = SSlibrary.search_categories
@@ -82,6 +84,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 
 /obj/machinery/computer/libraryconsole/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	SSlibrary.lazy_load_shelves()
 	if(.)
 		return
 	switch(action)
@@ -409,6 +412,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	return list(get_asset_datum(/datum/asset/spritesheet_batched/bibles))
 
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/load_nearby_books()
+	SSlibrary.lazy_load_shelves()
 	for(var/datum/book_info/book as anything in SSlibrary.get_area_books(get_area(src)))
 		inventory[ref(book)] = book
 	inventory_update()
