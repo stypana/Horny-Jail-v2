@@ -195,6 +195,7 @@
 	return ..()
 
 /obj/structure/bookcase/attack_hand(mob/living/user, list/modifiers)
+	SSlibrary.lazy_load_shelves()
 	. = ..()
 	if(.)
 		return
