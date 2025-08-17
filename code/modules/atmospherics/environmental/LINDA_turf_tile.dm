@@ -266,6 +266,9 @@
 
 	var/datum/gas_mixture/our_air = air
 
+	if(!our_air)
+		return
+
 	var/list/share_end
 
 	#ifdef TRACK_MAX_SHARE
@@ -277,6 +280,9 @@
 			#ifdef UNIT_TESTS
 			stack_trace("closed turf inside of adjacent turfs")
 			#endif
+			continue
+
+		if(!enemy_tile.air)
 			continue
 
 		// This var is only rarely set, exists so turfs can request to share at the end of our sharing
@@ -348,6 +354,8 @@
 
 	for(var/turf/open/enemy_tile as anything in share_end)
 		var/datum/gas_mixture/enemy_mix = enemy_tile.air
+		if(!enemy_mix)
+			continue
 		archive()
 		// We share 100% of our mix in this step. Let's jive
 		var/difference = our_air.share(enemy_mix, 1, 1)
