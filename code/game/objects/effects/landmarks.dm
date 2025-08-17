@@ -205,6 +205,18 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Chaplain"
 	icon_state = "Chaplain"
 
+/obj/effect/landmark/start/souteneur
+	name = "Souteneur"
+	icon_state = "Detective"
+
+/obj/effect/landmark/start/escort
+	name = "Escort"
+	icon_state = "Barber"
+
+/obj/effect/landmark/start/club_security
+	name = "Club Security"
+	icon_state = "Corrections Officer"
+
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
 	icon_state = "Cyborg"
