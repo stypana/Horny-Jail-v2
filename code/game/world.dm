@@ -133,9 +133,9 @@ GLOBAL_VAR(restart_counter)
 
 	// First possible sleep()
 	spawn() InitTgs()
-	
+
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
-	
+
 	ConfigLoaded()
 
 	if(NO_INIT_PARAMETER in params)
@@ -148,28 +148,28 @@ GLOBAL_VAR(restart_counter)
 	SSredbot.Initialize()
 
 /// Initializes TGS and loads the returned revising info into GLOB.revdata
-	/world/proc/InitTgs()
+/world/proc/InitTgs()
 	set waitfor = 0
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
 
 /// Runs after config is loaded but before Master is initialized
-	/world/proc/ConfigLoaded()
+/world/proc/ConfigLoaded()
 	// Everything in here is prioritized in a very specific way.
 	// If you need to add to it, ask yourself hard if what you're adding is in the right spot
-	
+
 	// Try to set round ID
 	SSdbcore.InitializeRound()
-	
+
 	spawn() SetupLogs()
-	
+
 	spawn() load_admins(initial = TRUE)
-	
+
 	spawn() LoadVerbCache()
 	spawn() LoadVerbs(/datum/verbs/menu)
-	
+
 	spawn()
-		if(fexists(RESTART_COUNTER_PATH))
+	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
 		fdel(RESTART_COUNTER_PATH)
 
