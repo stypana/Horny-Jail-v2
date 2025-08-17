@@ -202,7 +202,7 @@ function JobRow(props: JobRowProps) {
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
   // Текущий альтернативный титул (может отсутствовать после миграции)
-  const alt_title_selected = data.job_alt_titles?.[name] ?? null;
+  const alt_title_selected = data.job_alt_titles?.[name] ?? '';
 
   let rightSide: ReactNode;
 
@@ -270,10 +270,13 @@ function JobRow(props: JobRowProps) {
       ]
     : [];
 
-  const selectedValue = alt_title_selected ?? '';
+  const selectedValue =
+    options.find((o: any) => o?.value === alt_title_selected)
+      ? alt_title_selected
+      : '';
 
-  const selectedOption =
-    options.find((o: any) => o?.value === selectedValue) ?? options[0] ?? null;
+  const selectedDisplayText =
+    options.find((o: any) => o?.value === selectedValue)?.displayText || name;
 
   return (
     <Stack.Item className={className} height="100%" mt={0}>
@@ -296,11 +299,12 @@ function JobRow(props: JobRowProps) {
               <Dropdown
                 width="100%"
                 options={options}
-                selected={selectedOption}
-                onSelected={(opt: any) =>
+                selected={selectedValue}
+                displayText={selectedDisplayText}
+                onSelected={(value: string) =>
                   act('set_job_title', {
                     job: name,
-                    new_title: opt?.value ?? '',
+                    new_title: value,
                   })
                 }
               />
