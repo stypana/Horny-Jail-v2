@@ -326,3 +326,34 @@
 	new /obj/item/clothing/shoes/workboots/mining(src)
 	new /obj/item/storage/backpack/satchel/explorer(src)
 	new /obj/item/storage/backpack/messenger/explorer(src)
+
+/obj/structure/closet/secure_closet/entertainment
+	name = "entertainment wardrobe"
+	req_access = list(ACCESS_ENTERTAINMENT)
+	icon_state = "entertainment"
+
+/obj/structure/closet/secure_closet/entertainment/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/clothing/under/suit/pimp = 2,
+		/obj/item/clothing/under/dress/midnight = 2,
+		/obj/item/clothing/suit/jacket/pimp = 2,
+		/obj/item/clothing/head/hats/pimp = 2,
+		/obj/item/clothing/gloves/silk = 2,
+		/obj/item/cane/golden = 1,
+		/obj/item/cane/luminous = 1,
+	)
+	generate_items_inside(items_inside,src)
+
+/obj/structure/closet/secure_closet/entertainment_light
+	name = "entertainment wardrobe"
+	req_access = list(ACCESS_ENTERTAINMENT)
+	icon_state = "entertainment_light"
+
+/obj/structure/closet/secure_closet/entertainment_light/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/clothing/under/dress/midnight = 2,
+		/obj/item/clothing/gloves/silk = 2,
+		/obj/item/clothing/head/hats/pimp = 1,
+		/obj/item/cane/luminous = 1,
+	)
+	generate_items_inside(items_inside,src)

@@ -129,3 +129,9 @@
 	greyscale_config = /datum/greyscale_config/sundress
 	greyscale_config_worn = /datum/greyscale_config/sundress/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/dress/midnight
+	name = "midnight dress"
+	desc = "A sleek dress for late-night outings."
+	icon_state = "midnight_dress"
+	inhand_icon_state = null

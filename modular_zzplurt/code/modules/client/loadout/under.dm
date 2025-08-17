@@ -211,3 +211,37 @@
 	name = "Bathrobe"
 	item_path = /obj/item/clothing/under/costume/skyrat/bathrobe
 	can_be_greyscale = TRUE
+
+// Teshari
+
+/datum/loadout_item/uniform/miscellaneous/teshari_consultant
+	name = "Crocs Suit"
+	item_path= /obj/item/clothing/under/teshari/consultant
+
+/datum/loadout_item/uniform/miscellaneous/teshari_consultant/female
+	name = "Crocs Skirt"
+	item_path= /obj/item/clothing/under/teshari/consultant/female
+
+/datum/loadout_item/uniform/miscellaneous/teshari_nt_combineso
+	name = "Combeniso NT"
+	item_path= /obj/item/clothing/under/teshari/nt_combineso
+
+/datum/loadout_item/uniform/miscellaneous/teshari_meme
+	name = "Shirt and Shorts"
+	item_path= /obj/item/clothing/under/teshari/meme
+
+/datum/loadout_item/uniform/miscellaneous/teshari_elite_suit
+	name = "Elite Feathered"
+	item_path= /obj/item/clothing/under/teshari/elite_suit
+
+/datum/loadout_item/uniform/miscellaneous/teshari_elite_suit/plus
+	name = "Elite Feathered+"
+	item_path= /obj/item/clothing/under/teshari/elite_suit/plus
+
+/datum/loadout_item/uniform/miscellaneous/teshari_waistcoat
+	name = "Delicate Suit"
+	item_path= /obj/item/clothing/under/teshari/waistcoat
+
+/datum/loadout_item/uniform/miscellaneous/teshari_mechsuit
+	name = "Rivka"
+	item_path= /obj/item/clothing/under/teshari/mechsuit

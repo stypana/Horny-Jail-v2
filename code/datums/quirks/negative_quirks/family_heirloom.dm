@@ -14,6 +14,19 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/heirloom_type
 
+	if(client_source)
+		var/list/loadout_list = client_source.prefs?.read_preference(/datum/preference/loadout)
+		loadout_list = loadout_list?[client_source.prefs?.read_preference(/datum/preference/loadout_index)]
+		if(loadout_list)
+			for(var/path in loadout_list)
+				if(loadout_list[path][INFO_HEIRLOOM])
+					var/obj/item/existing = locate(path) in human_holder.get_all_contents()
+					if(existing)
+						heirloom = WEAKREF(existing)
+						to_chat(quirk_holder, span_boldnotice("This is a precious family heirloom, passed down from generation to generation. Keep it safe!"))
+						return
+					break
+
 	// The quirk holder's species - we have a 50% chance, if we have a species with a set heirloom, to choose a species heirloom.
 	var/datum/species/holder_species = human_holder.dna?.species
 	if(holder_species && LAZYLEN(holder_species.family_heirlooms) && prob(50))

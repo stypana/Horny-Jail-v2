@@ -25,10 +25,10 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	return cmp_numeric_asc(a_order, b_order)
 
 /**
- * # Loadout item datum
- *
- * Singleton that holds all the information about each loadout items, and how to equip them.
- */
+	* # Loadout item datum
+	*
+	* Singleton that holds all the information about each loadout items, and how to equip them.
+	*/
 /datum/loadout_item
 	/// The category of the loadout item. Set automatically in New
 	VAR_FINAL/datum/loadout_category/category
@@ -119,12 +119,12 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	return ..()
 
 /**
- * Takes in an action from a loadout manager and applies it
- *
- * Useful for subtypes of loadout items with unique actions
- *
- * Return TRUE to force an update to the UI / character preview
- */
+	* Takes in an action from a loadout manager and applies it
+	*
+	* Useful for subtypes of loadout items with unique actions
+	*
+	* Return TRUE to force an update to the UI / character preview
+	*/
 /datum/loadout_item/proc/handle_loadout_action(datum/preference_middleware/loadout/manager, mob/user, action, params)
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -145,6 +145,9 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 
 		if("set_skin")
 			return set_skin(manager, user, params)
+
+		if("set_heirloom")
+			return set_heirloom(manager, user)
 
 	return TRUE
 
@@ -241,33 +244,49 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	manager.save_current_loadout(loadout) // BUBBER EDIT: Multiple loadout presets: ORIGINAL: manager.preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
 	return TRUE // always update UI
 
+/// Marks this item as the player's family heirloom.
+/datum/loadout_item/proc/set_heirloom(datum/preference_middleware/loadout/manager, mob/user)
+	var/list/loadout = manager.get_current_loadout() // BUBBER EDIT: Multiple loadout presets: ORIGINAL: var/list/loadout = manager.preferences.read_preference(/datum/preference/loadout)
+	if(!loadout?[item_path])
+		return FALSE
+
+	var/is_active = loadout[item_path][INFO_HEIRLOOM]
+	for(var/path in loadout)
+		loadout[path] -= INFO_HEIRLOOM
+
+	if(!is_active)
+		loadout[item_path][INFO_HEIRLOOM] = TRUE
+
+	manager.save_current_loadout(loadout) // BUBBER EDIT: Multiple loadout presets: ORIGINAL: manager.preferences.update_preference(GLOB.preference_entries[/datum/preference/loadout], loadout)
+	return TRUE // update UI
+
 /**
- * Place our [item_path] into the passed [outfit].
- *
- * By default, just adds the item into the outfit's backpack contents, if non-visual.
- *
- * Arguments:
- * * outfit - The outfit we're equipping our items into.
- * * equipper - If we're equipping out outfit onto a mob at the time, this is the mob it is equipped on. Can be null.
- * * visual - If TRUE, then our outfit is only for visual use (for example, a preview).
- */
+	* Place our [item_path] into the passed [outfit].
+	*
+	* By default, just adds the item into the outfit's backpack contents, if non-visual.
+	*
+	* Arguments:
+	* * outfit - The outfit we're equipping our items into.
+	* * equipper - If we're equipping out outfit onto a mob at the time, this is the mob it is equipped on. Can be null.
+	* * visual - If TRUE, then our outfit is only for visual use (for example, a preview).
+	*/
 /datum/loadout_item/proc/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, loadout_placement_preference) // SKYRAT EDIT CHANGE - Added loadout_placement_preference
 	if(!visuals_only)
 		LAZYADD(outfit.backpack_contents, item_path)
 
 /**
- * Called When the item is equipped on [equipper].
- *
- * At this point the item is in the mob's contents
- *
- * Arguments:
- * * preference_source - the datum/preferences our loadout item originated from - cannot be null
- * * equipper - the mob we're equipping this item onto
- * * visuals_only - whether or not this is only concerned with visual things (not backpack, not renaming, etc)
- * * preference_list - what the raw loadout list looks like in the preferences
- *
- * Return a bitflag of slot flags to update
- */
+	* Called When the item is equipped on [equipper].
+	*
+	* At this point the item is in the mob's contents
+	*
+	* Arguments:
+	* * preference_source - the datum/preferences our loadout item originated from - cannot be null
+	* * equipper - the mob we're equipping this item onto
+	* * visuals_only - whether or not this is only concerned with visual things (not backpack, not renaming, etc)
+	* * preference_list - what the raw loadout list looks like in the preferences
+	*
+	* Return a bitflag of slot flags to update
+	*/
 /datum/loadout_item/proc/on_equip_item(
 	obj/item/equipped_item,
 	datum/preferences/preference_source,
@@ -325,8 +344,8 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	return update_flag
 
 /**
- * Returns a formatted list of data for this loadout item.
- */
+	* Returns a formatted list of data for this loadout item.
+	*/
 /datum/loadout_item/proc/to_ui_data() as /list
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -352,9 +371,9 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	return formatted_item
 
 /**
- * Returns a list of information to display about this item in the loadout UI.
- * Icon -> tooltip displayed when its hovered over
- */
+	* Returns a list of information to display about this item in the loadout UI.
+	* Icon -> tooltip displayed when its hovered over
+	*/
 /datum/loadout_item/proc/get_item_information() as /list
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -387,18 +406,18 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 	return displayed_text
 
 /**
- * Returns a list of buttons that are shown in the loadout UI for customizing this item.
- *
- * Buttons contain
- * - 'L'abel: The text displayed beside the button
- * - act_key: The key that is sent to the loadout manager when the button is clicked,
- * for use in handle_loadout_action
- * - button_icon: The FontAwesome icon to display on the button
- * - active_key: In the loadout UI, this key is checked  in the user's loadout list for this item
- * to determine if the button is 'active' (green) or not (blue).
- * - active_text: Optional, if provided, the button appears to be a checkbox and this text is shown when 'active'
- * - inactive_text: Optional, if provided, the button appears to be a checkbox and this text is shown when not 'active'
- */
+	* Returns a list of buttons that are shown in the loadout UI for customizing this item.
+	*
+	* Buttons contain
+	* - 'L'abel: The text displayed beside the button
+	* - act_key: The key that is sent to the loadout manager when the button is clicked,
+	* for use in handle_loadout_action
+	* - button_icon: The FontAwesome icon to display on the button
+	* - active_key: In the loadout UI, this key is checked  in the user's loadout list for this item
+	* to determine if the button is 'active' (green) or not (blue).
+	* - active_text: Optional, if provided, the button appears to be a checkbox and this text is shown when 'active'
+	* - inactive_text: Optional, if provided, the button appears to be a checkbox and this text is shown when not 'active'
+	*/
 /datum/loadout_item/proc/get_ui_buttons() as /list
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -427,11 +446,17 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 			"active_key" = INFO_NAMED,
 		))
 		// SKYRAT EDIT END
+	UNTYPED_LIST_ADD(button_list, list(
+		"label" = "Heirloom",
+		"act_key" = "set_heirloom",
+		"button_icon" = FA_ICON_GEM,
+		"active_key" = INFO_HEIRLOOM,
+	))
 	return button_list
 
 /**
- * Returns a list of options this item can be reskinned into.
- */
+	* Returns a list of options this item can be reskinned into.
+	*/
 /datum/loadout_item/proc/get_reskin_options() as /list
 	if(!can_be_reskinned)
 		return null
