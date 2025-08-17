@@ -267,6 +267,10 @@
 	},
 /turf/open/floor/iron/checker,
 /area/mine/laborcamp)
+"bz" = (
+/obj/effect/rune/summon,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "bB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/sofa/bench/right{
@@ -1658,7 +1662,7 @@
 	},
 /area/mine/living_quarters)
 "iy" = (
-/obj/effect/heretic_rune/big,
+/obj/effect/grand_rune/finale,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
 "iB" = (
@@ -2130,7 +2134,7 @@
 /turf/open/floor/plating,
 /area/mine/maintenance/service)
 "kX" = (
-/obj/item/clothing/suit/hooded/cultrobes/eldritch,
+/obj/item/clothing/suit/hooded/cultrobes/cult_shield,
 /turf/open/floor/cult,
 /area/lavaland/surface/necropolis/cult)
 "kY" = (
@@ -2870,8 +2874,8 @@
 /turf/open/floor/cult,
 /area/lavaland/surface/necropolis/cult)
 "nG" = (
-/obj/structure/spawner/tarkon_xenos/minor,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/structure/bonfire/prelit,
+/turf/open/indestructible/boss/necropolis/tile3,
 /area/lavaland/surface/necropolis)
 "nI" = (
 /obj/structure/sink/kitchen/directional/south{
@@ -2951,6 +2955,10 @@
 	dir = 1
 	},
 /area/mine/laborcamp/security)
+"oa" = (
+/mob/living/carbon/alien/adult/skyrat/runner,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "oc" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -3167,6 +3175,10 @@
 /mob/living/simple_animal/hostile/cult/spear,
 /turf/open/floor/cult,
 /area/lavaland/surface/necropolis/cult)
+"pl" = (
+/obj/item/restraints/legcuffs/bola/cult,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "pm" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 8
@@ -3472,6 +3484,11 @@
 /obj/item/food/cheese/firm_cheese,
 /turf/open/floor/wood/parquet,
 /area/mine/lobby/raptor)
+"qE" = (
+/obj/structure/stone_tile/surrounding,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/indestructible/boss/necropolis/tile2,
+/area/lavaland/surface/necropolis)
 "qH" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningbathroomprivate";
@@ -3784,8 +3801,8 @@
 /turf/open/floor/iron/smooth_edge,
 /area/mine/laborcamp/production)
 "sB" = (
-/obj/structure/spawner/tarkon_xenos/common,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/mob/living/carbon/alien/adult/skyrat/ravager,
+/turf/open/misc/asteroid/basalt/wasteland,
 /area/lavaland/surface/necropolis)
 "sH" = (
 /obj/structure/fluff/drake_statue,
@@ -3993,8 +4010,8 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
 "tP" = (
-/obj/structure/spawner/tarkon_xenos/minor,
-/turf/open/misc/asteroid/basalt/wasteland,
+/obj/structure/legionnaire_bonfire,
+/turf/open/indestructible/boss/necropolis/tile2,
 /area/lavaland/surface/necropolis)
 "tV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4016,6 +4033,14 @@
 	dir = 8
 	},
 /area/mine/laborcamp)
+"ua" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
+"ue" = (
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern,
+/turf/open/floor/bronze,
+/area/lavaland/surface/necropolis)
 "ui" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4484,6 +4509,10 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"wy" = (
+/mob/living/carbon/alien/adult/skyrat/sentinel,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "wA" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4594,6 +4623,10 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /turf/open/floor/iron/dark,
 /area/mine/hydroponics)
+"xs" = (
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern,
+/turf/open/misc/asteroid/basalt/wasteland,
+/area/lavaland/surface/necropolis)
 "xt" = (
 /obj/structure/railing{
 	dir = 4
@@ -4712,6 +4745,10 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"xZ" = (
+/mob/living/carbon/alien/adult/skyrat/spitter,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "ya" = (
 /obj/structure/closet/crate/necropolis_open,
 /turf/open/indestructible/boss/necropolis/fakechasm,
@@ -4879,6 +4916,10 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/mine/hydroponics)
+"zb" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/indestructible/boss/necropolis/tile2,
+/area/lavaland/surface/necropolis)
 "zc" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance"
@@ -4937,6 +4978,10 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
+"zo" = (
+/obj/effect/rune/wall,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "zq" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -5230,6 +5275,10 @@
 /obj/structure/railing/corner,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Bh" = (
+/mob/living/carbon/alien/adult/skyrat/praetorian,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "Bk" = (
 /obj/item/card/id/away/dangerous_research/head_occultist,
 /turf/open/floor/cult,
@@ -5457,6 +5506,10 @@
 "CF" = (
 /obj/effect/mob_spawn/corpse/human/miner/mod,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
+"CH" = (
+/obj/item/melee/cultblade/dagger,
+/turf/open/misc/asteroid/basalt/wasteland,
 /area/lavaland/surface/necropolis)
 "CI" = (
 /obj/structure/sign/directions/supply/directional/east{
@@ -5885,6 +5938,10 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
+"Fu" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/misc/asteroid/basalt/wasteland,
+/area/lavaland/surface/necropolis)
 "Fv" = (
 /turf/open/floor/iron/smooth_edge,
 /area/mine/laborcamp/production)
@@ -6149,11 +6206,7 @@
 /area/mine/maintenance/public/north)
 "Hi" = (
 /obj/structure/stone_tile/surrounding,
-/mob/living/simple_animal/hostile/megafauna/gladiator{
-	crusher_loot = list(/obj/structure/closet/crate/necropolis_open/major);
-	loot = null;
-	health = 1500
-	},
+/mob/living/simple_animal/hostile/megafauna/clock_gladiator,
 /turf/open/indestructible/boss/necropolis/tile2,
 /area/lavaland/surface/necropolis)
 "Hj" = (
@@ -6318,6 +6371,14 @@
 	},
 /turf/open/floor/carpet/neon/simple/red/nodots,
 /area/mine/cafeteria)
+"HU" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/boss/necropolis/tile2,
+/area/lavaland/surface/necropolis)
+"HW" = (
+/obj/effect/decal/cleanable/blood/gibs/bubblegum,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "HX" = (
 /obj/structure/stone_tile/cracked,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
@@ -7083,6 +7144,10 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
 /area/mine/storage)
+"LC" = (
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "LE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -7565,6 +7630,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/eva)
+"Od" = (
+/obj/item/melee/cultblade/halberd,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "Og" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
@@ -7994,6 +8063,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
+"Qn" = (
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern,
+/turf/open/indestructible/boss/necropolis/tile2,
+/area/lavaland/surface/necropolis)
 "Qq" = (
 /obj/structure/ore_vent/starter_resources{
 	icon_state = "ore_vent_active"
@@ -8219,7 +8292,7 @@
 /turf/open/floor/plating,
 /area/mine/maintenance/service)
 "Rx" = (
-/obj/machinery/door/puzzle/keycard/gates/necropolis/gladiator,
+/obj/machinery/door/puzzle/keycard/gates/necropolis/clockwork,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
 "Ry" = (
@@ -8396,6 +8469,10 @@
 	dir = 1
 	},
 /area/mine/laborcamp/security)
+"Su" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/indestructible/boss/necropolis/tile2,
+/area/lavaland/surface/necropolis)
 "Sz" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/light/small/directional/west,
@@ -8836,6 +8913,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/mine/laborcamp/security/maintenance)
+"UX" = (
+/mob/living/carbon/alien/adult/skyrat/warrior,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "UZ" = (
 /obj/structure/chair/stool/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -8964,6 +9045,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/mine/production)
+"Vy" = (
+/obj/effect/rune/narsie,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis/cult)
 "Vz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet/executive,
@@ -9296,6 +9381,10 @@
 	},
 /turf/open/floor/iron/edge,
 /area/mine/lounge)
+"Xq" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "Xs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -9314,6 +9403,10 @@
 /obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /turf/open/floor/plating,
 /area/mine/laborcamp/security)
+"Xu" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "Xw" = (
 /obj/structure/railing{
 	dir = 1
@@ -9768,6 +9861,10 @@
 	},
 /turf/open/misc/hay/lavaland,
 /area/mine/lobby/raptor)
+"ZV" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
 "ZX" = (
 /obj/structure/table/wood,
 /obj/item/knife,
@@ -12868,7 +12965,7 @@ VA
 Px
 Px
 pk
-Px
+Vy
 Px
 Px
 Pq
@@ -19296,7 +19393,7 @@ Hc
 Hc
 Kb
 Hc
-Hc
+wy
 Hc
 aa
 aa
@@ -19809,8 +19906,8 @@ uz
 wQ
 uz
 Kb
-sB
 Hc
+Bh
 Hc
 aa
 aa
@@ -21091,7 +21188,7 @@ aa
 aa
 cg
 Kb
-sB
+Hc
 Hc
 Hc
 Ig
@@ -21353,7 +21450,7 @@ Kb
 Kb
 Kb
 uz
-Hc
+xZ
 aa
 aa
 Hc
@@ -21603,13 +21700,13 @@ aj
 aa
 aa
 aa
-Hc
+oa
 Kb
 Ik
 uz
 Hc
 Kb
-nG
+Hc
 uz
 aa
 aa
@@ -21863,7 +21960,7 @@ aa
 wQ
 Kb
 Hc
-Hc
+UX
 wQ
 Kb
 Hc
@@ -22633,7 +22730,7 @@ aa
 aa
 Du
 Hc
-tP
+uz
 Hc
 Hc
 Kb
@@ -22890,7 +22987,7 @@ aa
 aa
 tO
 Hc
-uz
+sB
 wQ
 YT
 Kb
@@ -25461,7 +25558,7 @@ PF
 Hc
 Hc
 Hc
-Hc
+Xu
 Hc
 Fz
 uz
@@ -25717,12 +25814,12 @@ aa
 PF
 Hc
 Hc
-Hc
+ue
 ZE
-Hc
+YT
 uz
-VT
-VT
+HU
+Qn
 Hc
 Hc
 PF
@@ -25973,13 +26070,13 @@ aa
 aa
 PF
 Hc
-uz
+Fu
 ZE
-Hc
-Hc
+ua
+pl
 yw
-VT
-Hc
+Su
+bz
 Hc
 Hc
 PF
@@ -26230,11 +26327,11 @@ aa
 aa
 PF
 Hc
-Hc
+zo
 ZE
-Hc
+Od
 VT
-VT
+zb
 Hc
 Hc
 Hc
@@ -26488,12 +26585,12 @@ aa
 PF
 Hc
 Fz
-Hc
+HW
 uz
 Hc
+Xu
 Hc
-Hc
-Hc
+ZV
 dT
 Hc
 PF
@@ -26748,8 +26845,8 @@ Hc
 Hc
 Hc
 Hc
-Hc
-Hc
+HW
+ua
 Hc
 wT
 Hc
@@ -27001,9 +27098,9 @@ aa
 aa
 PF
 Hc
-Hc
-VT
-yw
+ua
+zb
+qE
 Hi
 ZE
 Hc
@@ -27265,7 +27362,7 @@ Hc
 VT
 Hc
 uz
-Hc
+zo
 Hc
 PF
 aa
@@ -27516,9 +27613,9 @@ aa
 PF
 VT
 VT
-Hc
-Hc
-VT
+bz
+YT
+zb
 ZE
 VT
 uz
@@ -27774,11 +27871,11 @@ PF
 Hc
 VT
 KK
-Hc
+pl
 VT
 ZE
-VT
-uz
+HU
+CH
 Hc
 Hc
 PF
@@ -28031,8 +28128,8 @@ PF
 Hc
 VT
 uz
-Hc
-VT
+Xq
+zb
 VT
 VT
 Hc
@@ -28287,12 +28384,12 @@ aa
 PF
 Hc
 Hc
-VT
+xs
 Hc
 Hc
 Fz
 yw
-VT
+LC
 Hc
 Hc
 PF
@@ -30086,9 +30183,9 @@ aa
 VT
 Hc
 wT
-VT
+tP
 uz
-VT
+tP
 uz
 VT
 Hc
@@ -39599,7 +39696,7 @@ KX
 ZE
 tv
 ex
-xp
+nG
 KZ
 aa
 aa
