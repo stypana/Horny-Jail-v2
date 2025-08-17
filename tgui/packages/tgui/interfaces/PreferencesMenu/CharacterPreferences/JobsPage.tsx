@@ -270,10 +270,11 @@ function JobRow(props: JobRowProps) {
       ]
     : [];
 
-  const selectedValue =
-    options.find((o: any) => o?.value === alt_title_selected)
-      ? alt_title_selected
-      : '';
+  const selectedValue = options.find(
+    (o: any) => o?.value === alt_title_selected,
+  )
+    ? alt_title_selected
+    : '';
 
   const selectedDisplayText =
     options.find((o: any) => o?.value === selectedValue)?.displayText || name;
