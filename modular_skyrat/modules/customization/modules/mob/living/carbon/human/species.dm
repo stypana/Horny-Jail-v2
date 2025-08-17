@@ -196,10 +196,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	*/
 	//SPLURT EDIT END
 	//SPLURT ADDITION START - Nails
-	if(species_human.nail_style)
-		var/mutable_appearance/nail_overlay = mutable_appearance('modular_zzplurt/icons/mobs/nails.dmi', "nails", -BODY_LAYER)
-		nail_overlay.color = species_human.nail_color
-		standing += nail_overlay
+       if(species_human.nail_style)
+               var/mutable_appearance/nail_overlay = SSaccessories.get_cached_appearance('modular_zzplurt/icons/mobs/nails.dmi', "nails", "nail_overlay", -BODY_LAYER)
+               nail_overlay.color = species_human.nail_color
+               standing += nail_overlay
 	//SPLURT ADDITION END - Nails
 
 	if(standing.len)

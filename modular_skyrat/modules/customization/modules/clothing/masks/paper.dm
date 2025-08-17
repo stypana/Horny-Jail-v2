@@ -62,9 +62,9 @@
 		alternate_worn_layer = BACK_LAYER
 
 /obj/item/clothing/mask/paper/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
-	. = ..()
-	if(!strap_hidden)
-		. += mutable_appearance(icon_file, "mask_paper_strap")
+       . = ..()
+       if(!strap_hidden)
+               . += SSaccessories.get_cached_appearance(icon_file, "mask_paper_strap", "paper_mask_strap")
 
 /obj/item/clothing/mask/paper/click_alt_secondary(mob/user)
 		adjust_mask(user)
