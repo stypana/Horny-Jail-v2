@@ -842,6 +842,15 @@
 	access_list += ACCESS_VAULT
 	return access_list
 
+// -------------------- Entertainment access helpers
+/obj/effect/mapping_helpers/airlock/access/all/entertainment
+	icon_state = "access_helper_awy"
+
+/obj/effect/mapping_helpers/airlock/access/all/sentertainment/general/get_access()
+	var/list/access_list = ..()
+	access_list += ACCESS_ENTERTAINMENT
+	return access_list
+
 // -------------------- Syndicate access helpers
 /obj/effect/mapping_helpers/airlock/access/all/syndicate
 	icon_state = "access_helper_syn"
