@@ -50,7 +50,7 @@
 			refit_path = "modular_skyrat/master_files/icons/mob/clothing/species/[cur_species]/[item_slot].dmi"
 			if(!fexists(refit_path))
 				break
-			icons_in_refit_path = icon_states(refit_path)
+			icons_in_refit_path = SSvending_icon_cache.get_icon_states(refit_path)
 			if(icons_in_refit_path.Find(icon_state))
 				available_refits += cur_species
 		else
