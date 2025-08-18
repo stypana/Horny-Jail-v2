@@ -49,6 +49,8 @@
 	var/erp_accessory = FALSE
 
 /datum/sprite_accessory/New()
+	if(SSaccessories && key)
+		SSaccessories.invalidate_accessory_cache(key)
 	if(!default_color)
 		switch(color_src)
 			if(USE_ONE_COLOR)
