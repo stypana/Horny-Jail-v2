@@ -73,13 +73,13 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/caps_list
 	var/list/moth_wings_list
 
-        var/list/sprite_accessories = list()
-        var/list/genetic_accessories = list()
-        var/list/generic_accessories = list()
+	var/list/sprite_accessories = list()
+	var/list/genetic_accessories = list()
+	var/list/generic_accessories = list()
 
-       var/list/cached_mutant_icon_files = list()
-       /// Cached mutable appearances keyed by accessory information
-       var/list/accessory_icon_cache = list()
+	var/list/cached_mutant_icon_files = list()
+	/// Cached mutable appearances keyed by accessory information
+	var/list/accessory_icon_cache = list()
 
 	// we are loading them along with sprite_accessories, so they can't be GLOB :(
 	var/dna_total_feature_blocks = DNA_MANDATORY_COLOR_BLOCKS
@@ -211,26 +211,26 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 				returnable_list[MALE_SPRITE_LIST] += accessory.name
 				returnable_list[FEMALE_SPRITE_LIST] += accessory.name
 
-        if(add_blank)
-                returnable_list[DEFAULT_SPRITE_LIST][SPRITE_ACCESSORY_NONE] = new /datum/sprite_accessory/blank
+	if(add_blank)
+		returnable_list[DEFAULT_SPRITE_LIST][SPRITE_ACCESSORY_NONE] = new /datum/sprite_accessory/blank
 
-        return returnable_list
+		return returnable_list
 
 /datum/controller/subsystem/accessories/proc/get_cached_appearance(icon, icon_state, key, layer = null)
-       var/cache_key = "[key]-[icon]-[icon_state]-[layer]"
-       var/mutable_appearance/appearance = accessory_icon_cache[cache_key]
-       if(!appearance)
-               appearance = mutable_appearance(icon, icon_state, layer)
-               accessory_icon_cache[cache_key] = appearance
-       return appearance
+	var/cache_key = "[key]-[icon]-[icon_state]-[layer]"
+	var/mutable_appearance/appearance = accessory_icon_cache[cache_key]
+	if(!appearance)
+		appearance = mutable_appearance(icon, icon_state, layer)
+		accessory_icon_cache[cache_key] = appearance
+	return appearance
 
 /datum/controller/subsystem/accessories/proc/invalidate_accessory_cache(key)
-       for(var/cache_key in accessory_icon_cache)
-               if(findtext(cache_key, "[key]-") == 1)
-                       accessory_icon_cache -= cache_key
+	for(var/cache_key in accessory_icon_cache)
+		if(findtext(cache_key, "[key]-") == 1)
+			accessory_icon_cache -= cache_key
 
 /datum/controller/subsystem/accessories/proc/reset_accessory_cache()
-       accessory_icon_cache.Cut()
+	accessory_icon_cache.Cut()
 
 #undef DEFAULT_SPRITE_LIST
 #undef MALE_SPRITE_LIST
