@@ -907,6 +907,7 @@
 #include "code\controllers\subsystem\tts.dm"
 #include "code\controllers\subsystem\unplanned_ai_idle_controllers.dm"
 #include "code\controllers\subsystem\unplanned_controllers.dm"
+#include "code\controllers\subsystem\vending_icon_cache.dm"
 #include "code\controllers\subsystem\verb_manager.dm"
 #include "code\controllers\subsystem\vis_overlays.dm"
 #include "code\controllers\subsystem\vote.dm"

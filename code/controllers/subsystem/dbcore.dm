@@ -47,6 +47,8 @@ SUBSYSTEM_DEF(dbcore)
 	var/connection  // Arbitrary handle returned from rust_g.
 
 	var/db_daemon_started = FALSE
+	/// Simple cache for frequent query results
+	var/list/query_cache = list()
 
 /datum/controller/subsystem/dbcore/Initialize()
 	Connect()
@@ -306,25 +308,34 @@ SUBSYSTEM_DEF(dbcore)
 			failed_connection_timeout = world.time + ((2 ** failed_connection_timeout_count) SECONDS)
 
 /datum/controller/subsystem/dbcore/proc/CheckSchemaVersion()
-	if(CONFIG_GET(flag/sql_enabled))
-		if(Connect())
-			log_world("Database connection established.")
-			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1")
-			query_db_version.Execute()
-			if(query_db_version.NextRow())
-				db_major = text2num(query_db_version.item[1])
-				db_minor = text2num(query_db_version.item[2])
-				if(db_major != DB_MAJOR_VERSION || db_minor != DB_MINOR_VERSION)
-					schema_mismatch = 1 // flag admin message about mismatch
-					log_sql("Database schema ([db_major].[db_minor]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION]), this may lead to undefined behaviour or errors")
-			else
-				schema_mismatch = 2 //flag admin message about no schema version
-				log_sql("Could not get schema version from database")
-			qdel(query_db_version)
-		else
-			log_sql("Your server failed to establish a connection with the database.")
-	else
+	if(!CONFIG_GET(flag/sql_enabled))
 		log_sql("Database is not enabled in configuration.")
+		return
+	var/cache = GetCache("schema_version")
+	if(cache)
+		db_major = cache["major"]
+		db_minor = cache["minor"]
+		return
+	INVOKE_ASYNC(src, PROC_REF(check_schema_worker))
+
+/datum/controller/subsystem/dbcore/proc/check_schema_worker()
+	if(Connect())
+		log_world("Database connection established.")
+		var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1")
+		query_db_version.Execute()
+		if(query_db_version.NextRow())
+			db_major = text2num(query_db_version.item[1])
+			db_minor = text2num(query_db_version.item[2])
+			SetCache("schema_version", list("major" = db_major, "minor" = db_minor))
+			if(db_major != DB_MAJOR_VERSION || db_minor != DB_MINOR_VERSION)
+				schema_mismatch = 1
+				log_sql("Database schema ([db_major].[db_minor]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION]), this may lead to undefined behaviour or errors")
+		else
+			schema_mismatch = 2
+			log_sql("Could not get schema version from database")
+		qdel(query_db_version)
+	else
+		log_sql("Your server failed to establish a connection with the database.")
 
 /datum/controller/subsystem/dbcore/proc/InitializeRound()
 	CheckSchemaVersion()
@@ -335,7 +346,11 @@ SUBSYSTEM_DEF(dbcore)
 		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
 		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]") // SKYRAT EDIT CHANGE - MULTISERVER
 	)
-	query_round_initialize.Execute(async = FALSE)
+	INVOKE_ASYNC(query_round_initialize, TYPE_PROC_REF(/datum/db_query, Execute))
+	INVOKE_ASYNC(src, PROC_REF(set_round_id), query_round_initialize)
+
+/datum/controller/subsystem/dbcore/proc/set_round_id(datum/db_query/query_round_initialize)
+	query_round_initialize.sync()
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
 	qdel(query_round_initialize)
 
@@ -364,6 +379,7 @@ SUBSYSTEM_DEF(dbcore)
 	if (connection)
 		rustg_sql_disconnect_pool(connection)
 	connection = null
+	query_cache.Cut()
 
 /datum/controller/subsystem/dbcore/proc/IsConnected()
 	if (!CONFIG_GET(flag/sql_enabled))
@@ -400,6 +416,20 @@ SUBSYSTEM_DEF(dbcore)
  * * arguments - List of arguments to pass to the query for parameter binding
  * * allow_during_shutdown - If TRUE, allows query to be created during subsystem shutdown. Generally, only cleanup queries should set this.
  */
+/datum/controller/subsystem/dbcore/proc/GetCache(key)
+	var/entry = query_cache[key]
+	if(entry && entry["expires"] > world.time)
+		return entry["result"]
+	if(entry)
+		query_cache -= key
+	return null
+
+/datum/controller/subsystem/dbcore/proc/SetCache(key, result, ttl = 10 MINUTES)
+	query_cache[key] = list(result = result, expires = world.time + ttl)
+
+/datum/controller/subsystem/dbcore/proc/InvalidateCache(key)
+	query_cache -= key
+
 /datum/controller/subsystem/dbcore/proc/FireAndForget(sql_query, arguments, allow_during_shutdown = FALSE)
 	var/datum/db_query/query = NewQuery(sql_query, arguments, allow_during_shutdown)
 	if(!query)

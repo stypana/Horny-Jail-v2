@@ -25,8 +25,11 @@ SUBSYSTEM_DEF(library)
 /datum/controller/subsystem/library/Initialize()
 	prepare_official_posters()
 	prepare_library_areas()
-	load_shelves()
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/library/proc/lazy_load_shelves()
+	if(shelves_to_load)
+		load_shelves()
 
 /datum/controller/subsystem/library/proc/load_shelves()
 	var/list/datum/callback/load_callbacks = list()
@@ -43,6 +46,7 @@ SUBSYSTEM_DEF(library)
 
 /// Returns a list of copied book datums that we consider to be "in" the passed in area at roundstart
 /datum/controller/subsystem/library/proc/get_area_books(area/book_parent)
+	lazy_load_shelves()
 	var/list/areas = list(book_parent.type)
 	// If we have an area that's in the global libraries list, we want all the others too
 	if(length(areas & library_areas))

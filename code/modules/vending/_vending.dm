@@ -184,6 +184,8 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	var/age_restrictions = TRUE
 	/// How many credits does this vending machine have? 20% of all sales go to this pool, and are given freely when the machine is restocked, or successfully tilted. Lost on deconstruction.
 	var/credits_contained = 0
+	var/stock_initialized = FALSE
+	var/inventory_start_empty = FALSE
 	/**
 	  * Is this item on station or not
 	  *
@@ -235,10 +237,8 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
  * * TRUE - all other cases
  */
 /obj/machinery/vending/Initialize(mapload)
-	var/build_inv = FALSE
 	if(!refill_canister)
 		circuit = null
-		build_inv = TRUE
 	. = ..()
 	set_wires(new /datum/wires/vending(src))
 
@@ -248,14 +248,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 			vendor_voice_by_type[type] = pick(SStts.available_speakers)
 		voice = vendor_voice_by_type[type]
 
-	if(build_inv) //non-constructable vending machine
-		///Non-constructible vending machines do not have a refill canister to populate its products list from,
-		///Which apparently is still needed in the case we use product categories instead.
-		if(product_categories)
-			for(var/list/category as anything in product_categories)
-				products |= category["products"]
-		build_inventories()
-
+	
 	slogan_list = splittext(product_slogans, ";")
 	// So not all machines speak at the exact same time.
 	// The first time this machine says something will be at slogantime + this random value,
@@ -320,7 +313,8 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	hidden_records = list()
 	coin_records = list()
 
-	build_inventories(start_empty = TRUE)
+	stock_initialized = FALSE
+	inventory_start_empty = TRUE
 
 	for(var/obj/item/vending_refill/installed_refill in component_parts)
 		restock(installed_refill)
@@ -489,6 +483,13 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 		for (var/product_key in category_products)
 			products[product_key] += category_products[product_key]
 
+/obj/machinery/vending/proc/ensure_inventory()
+	if(stock_initialized)
+		return
+	stock_initialized = TRUE
+	build_products_from_categories()
+	build_inventories(inventory_start_empty)
+
 /**
  * Reassign the prices of the vending machine as a result of the inflation value, as provided by SSeconomy
  *
@@ -524,6 +525,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
  * * canister - the vending canister we are refilling from
  */
 /obj/machinery/vending/proc/restock(obj/item/vending_refill/canister)
+	ensure_inventory()
 	if (!canister.products)
 		canister.products = products.Copy()
 	if (!canister.contraband)
@@ -596,6 +598,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
  * This is used when the machine is deconstructed, so the items aren't "lost"
  */
 /obj/machinery/vending/proc/update_canister()
+	ensure_inventory()
 	if (!component_parts)
 		return
 
@@ -1202,6 +1205,10 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 
 	return ..()
 
+/obj/machinery/vending/attack_hand(mob/user, list/modifiers)
+	ensure_inventory()
+	return ..()
+
 /obj/machinery/vending/attack_robot_secondary(mob/user, list/modifiers)
 	. = ..()
 	if (!Adjacent(user, src))
@@ -1213,6 +1220,7 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	)
 
 /obj/machinery/vending/ui_interact(mob/user, datum/tgui/ui)
+	ensure_inventory()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Vending", name)

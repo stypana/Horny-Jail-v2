@@ -6,6 +6,7 @@
 	var/target_items = list()
 	for(var/obj/machinery/vending/vendor as anything in subtypesof(/obj/machinery/vending))
 		vendor = new vendor() // It seems `initial(list var)` has nothing. need to make a type.
+		vendor.build_products_from_categories()
 		target_items |= vendor.products
 		target_items |= vendor.premium
 		target_items |= vendor.contraband
@@ -32,7 +33,7 @@
 			if (!has_gags && !icon_exists(initial(item.icon), icon_state))
 				var/icon_file = initial(item.icon)
 				var/icon_states_string
-				for (var/an_icon_state in icon_states(icon_file))
+				for (var/an_icon_state in SSvending_icon_cache.get_icon_states(icon_file))
 					if (!icon_states_string)
 						icon_states_string = "[json_encode(an_icon_state)]([text_ref(an_icon_state)])"
 					else
