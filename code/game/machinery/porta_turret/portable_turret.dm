@@ -118,33 +118,33 @@ DEFINE_BITFIELD(turret_flags, list(
 // Initialization is kept light to avoid expensive work during map load.
 // Heavy setup is deferred to LateInitialize.
 /obj/machinery/porta_turret/Initialize(mapload)
-       . = ..()
-       if(!base)
-               base = src
+	. = ..()
+	if(!base)
+		base = src
 
-       AddElement(/datum/element/hostile_machine)
+	AddElement(/datum/element/hostile_machine)
 
-       return .
+	return .
 
 /obj/machinery/porta_turret/LateInitialize()
-       . = ..()
+	. = ..()
 
-       //Sets up a spark system
-       spark_system = new /datum/effect_system/spark_spread
-       spark_system.set_up(5, 0, src)
-       spark_system.attach(src)
+	//Sets up a spark system
+	spark_system = new /datum/effect_system/spark_spread
+	spark_system.set_up(5, 0, src)
+	spark_system.attach(src)
 
-       if(!stored_gun)
-               setup()
+	if(!stored_gun)
+		setup()
 
-       if(has_cover)
-               cover = new /obj/machinery/porta_turret_cover(loc)
-               cover.parent_turret = src
-               var/mutable_appearance/base = mutable_appearance('icons/obj/weapons/turrets.dmi', "basedark")
-               base.layer = NOT_HIGH_OBJ_LAYER
-               underlays += base
+	if(has_cover)
+		cover = new /obj/machinery/porta_turret_cover(loc)
+		cover.parent_turret = src
+		var/mutable_appearance/base = mutable_appearance('icons/obj/weapons/turrets.dmi', "basedark")
+		base.layer = NOT_HIGH_OBJ_LAYER
+		underlays += base
 
-       update_appearance()
+	update_appearance()
 
 ///Toggles the turret on or off depending on the value of the turn_on arg.
 /obj/machinery/porta_turret/proc/toggle_on(turn_on = TRUE)
@@ -885,13 +885,13 @@ DEFINE_BITFIELD(turret_flags, list(
 	return
 
 /obj/machinery/porta_turret/aux_base/Initialize(mapload)
-       return ..()
+	return ..()
 
 /obj/machinery/porta_turret/aux_base/LateInitialize()
-       . = ..()
-       if(cover)
-               cover.name = name
-               cover.desc = desc
+	. = ..()
+	if(cover)
+		cover.name = name
+		cover.desc = desc
 
 /obj/machinery/porta_turret/centcom_shuttle
 	installation = null
