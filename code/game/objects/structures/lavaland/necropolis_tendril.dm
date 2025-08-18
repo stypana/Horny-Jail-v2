@@ -34,6 +34,9 @@
 GLOBAL_LIST_INIT(tendrils, list())
 /obj/structure/spawner/lavaland/Initialize(mapload)
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/spawner/lavaland/LateInitialize()
 	emitted_light = new(loc)
 	for(var/F in RANGE_TURFS(1, src))
 		if(ismineralturf(F))
