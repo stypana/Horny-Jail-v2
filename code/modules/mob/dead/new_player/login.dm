@@ -44,12 +44,14 @@
 
 	add_sight(SEE_TURFS)
 
-	client.playtitlemusic()
-
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
-	asset_datum.send(client)
+	var/needs_flush = asset_datum.send(client)
 	if(!client) // client disconnected during asset transit
 		return FALSE
+	if(needs_flush)
+		addtimer(CALLBACK(src, PROC_REF(play_lobby_music)), 0)
+	else if(client)
+		client.playtitlemusic()
 
 	// The parent call for Login() may do a bunch of stuff, like add verbs.
 	// Delaying the register_for_interview until the very end makes sure it can clean everything up
@@ -61,4 +63,11 @@
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
 		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
+
+/mob/dead/new_player/proc/play_lobby_music()
+	if(!client)
+		return
+	client.browse_queue_flush()
+	if(client)
+		client.playtitlemusic()
 
