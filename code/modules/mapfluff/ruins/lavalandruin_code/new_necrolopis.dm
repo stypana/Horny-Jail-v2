@@ -168,11 +168,12 @@
 		if(1)
 			new /obj/item/cain_and_abel(src)
 		if(2)
-			new /obj/item/clothing/suit/hooded/cloak/drake(src)
+			new /obj/item/clothing/suit/hooded/hostile_environment(src)
+			new /obj/item/clothing/head/hooded/hostile_environment (src)
 		if(3)
 			new /obj/item/dice/d20/fate(src)
 		if(4)
-			new /obj/item/melee/energy/sword/bananium(src)
+			new /obj/item/melee/baton/nunchaku(src)
 		if(5)
 			new /obj/item/gun/magic/staff/spellblade(src)
 		if(6)
@@ -197,8 +198,8 @@
 	light_color = "#FFFFFF"
 	movement_type = GROUND
 	speak_emote = list("echoes")
-	speed = 3
-	move_to_delay = 3
+	speed = 5
+	move_to_delay = 2
 	light_range = 6
 	projectiletype = /obj/projectile/bullet/chaos_bomb
 	ranged = TRUE
@@ -207,7 +208,8 @@
 	ranged_cooldown_time = 5
 	vision_range = 10
 	damage_coeff = list(BRUTE = 1, BURN = 0.5, TOX = 0.5, CLONE = 0.5, STAMINA = 0, OXY = 0.5)
-	loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/clothing/suit/hooded/cultrobes/hardened, /obj/item/keycard/cultist)
+	loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/keycard/cultist)
+	crusher_loot = loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/clothing/suit/hooded/cultrobes/hardened, /obj/item/keycard/cultist)
 	wander = FALSE
 	del_on_death = TRUE
 	blood_volume = BLOOD_VOLUME_NORMAL
@@ -216,7 +218,6 @@
 	death_sound = 'sound/effects/magic/curse.ogg'
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	attack_action_types = list(/datum/action/innate/megafauna_attack/blood_dash,
-								/datum/action/innate/megafauna_attack/teleport_b,
 								/datum/action/innate/megafauna_attack/runic_blast,
 								/datum/action/innate/megafauna_attack/infernal_summon,
 								/datum/action/innate/megafauna_attack/blast,
@@ -225,10 +226,10 @@
 	var/obj/item/claymore/weapon
 	var/turf/starting
 	var/charging = FALSE
-	var/dash_cooldown = 3 SECONDS
-	var/runic_blast_cooldown = 14 SECONDS
+	var/dash_cooldown = 5 SECONDS
+	var/runic_blast_cooldown = 10 SECONDS
 	var/teleport_cooldown = 6 SECONDS
-	var/infernal_summon_cooldown = 30 SECONDS
+	var/infernal_summon_cooldown = 15 SECONDS
 	var/dash_mod = 0.9
 	var/dash_num = 3
 	var/newcolor = rgb(149, 10, 10)
@@ -314,17 +315,17 @@
 
 /mob/living/simple_animal/hostile/megafauna/cult_templar/proc/adjustCMspeed()
 	if(health <= maxHealth*0.25)
-		speed = 4
+		speed = 2.5
 		dash_mod = 0.4
-		dash_num = 5
+		dash_num = 6
 		rapid_melee = 3.5
 	else if(health <= maxHealth*0.5)
-		speed = 4.8
+		speed = 3.5
 		dash_mod = 0.6
-		dash_num = 4
+		dash_num = 5
 		rapid_melee = 2.5
 	else if(health <= maxHealth*0.75)
-		speed = 5.4
+		speed = 4
 		dash_mod = 1.5
 		dash_num = initial(dash_num)
 		rapid_melee = 2
@@ -352,9 +353,9 @@
 				blast()
 			if(4)
 				infernal_summon()
+			// if(5)
+			// 	teleport_b(target)
 			if(5)
-				teleport_b(target)
-			if(6)
 				rapid_fire()
 		return
 
@@ -570,33 +571,46 @@
 	remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, newcolor)
 	new /obj/effect/temp_visual/cult/sparks(get_turf(src))
 
-/datum/armor/hooded_cultrobes/hardened
+/datum/armor/hooded_cultrobes/templar
 	melee = 75
 	bullet = 50
-	laser = 30
+	laser = 50
 	energy = 50
-	bomb = 100
+	bomb = 85
 	bio = 100
 	fire = 100
 	acid = 100
 
-/obj/item/clothing/suit/hooded/cultrobes/hardened
+/obj/item/clothing/suit/hooded/cultrobes/templar
 	name = "\improper Cursed Nar'Sien hardened armor"
 	desc = "A heavily-armored exosuit worn by warriors of the Nar'Sien cult. This one is cursed, screaming voices into the mind of the wearer."
 	allowed = list(/obj/item/gun, /obj/item/tank/internals)
-	armor_type = /datum/armor/hooded_cultrobes/hardened
+	icon_state = "cult_armor"
+	armor_type = /datum/armor/hooded_cultrobes/templar
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	resistance_flags = FIRE_PROOF | LAVA_PROOF
-	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/hardened
+	resistance_flags = FIRE_PROOF | ACID_PROOF | LAVA_PROOF
+	transparent_protection = HIDEGLOVES|HIDESUITSTORAGE|HIDEJUMPSUIT|HIDESHOES
+	clothing_flags = THICKMATERIAL|HEADINTERNALS
+	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/templar
 
-/obj/item/clothing/head/hooded/cult_hoodie/hardened
+/obj/item/clothing/head/hooded/cult_hoodie/templar
 	name = "\improper Cursed Nar'Sien hardened helmet"
 	desc = "A heavily-armored helmet worn by warriors of the Nar'Sien cult. This one is cursed, screaming voices into the mind of the wearer."
-	armor_type = /datum/armor/hooded_cultrobes/hardened
+	armor_type = /datum/armor/hooded_cultrobes/templar
+	icon_state = "cult_helmet"
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	resistance_flags = FIRE_PROOF | LAVA_PROOF
+	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS|HIDESNOUT
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	clothing_flags = SNUG_FIT|THICKMATERIAL
 
-/obj/item/clothing/suit/hooded/cultrobes/hardened/process(seconds_per_tick)
+/obj/item/clothing/suit/hooded/cultrobes/templar/process(seconds_per_tick)
 	. = ..()
 	var/mob/living/carbon/C = loc
 	if(istype(C) && prob(4))
@@ -627,13 +641,13 @@
 	attack_sound = 'sound/effects/magic/demon_attack1.ogg'
 	atmos_requirements = null
 	faction = list("cult")
-	maxHealth = 60
-	health = 60
+	maxHealth = 200
+	health = 200
 	vision_range = 16
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	mob_size = MOB_SIZE_HUGE
-	melee_damage_lower = 6
-	melee_damage_upper = 8
+	melee_damage_lower = 8
+	melee_damage_upper = 16
 	see_in_dark = 8
 	light_color = "#FF0000"
 	light_range = 2
@@ -647,11 +661,11 @@
 	icon_state = "slaughter_demon"
 	icon_living = "slaughter_demon"
 	desc = "A powerful creature that was brought here straight from a hellish realm."
-	melee_damage_lower = 10
-	melee_damage_upper = 14
+	melee_damage_lower = 16
+	melee_damage_upper = 24
 	light_range = 4
-	maxHealth = 125
-	health = 125
+	maxHealth = 250
+	health = 250
 
 /mob/living/simple_animal/hostile/cult_demon/ex_act(severity, target)
 	return //Resistant to explosions
@@ -669,7 +683,7 @@
 #define FIFTY_PERCENT 50
 #define SHOWDOWN_PERCENT 25
 #define CHARGE_MODIFIER 0.4
-#define TELE_QUIP_CHANCE 20
+#define TELE_QUIP_CHANCE 5
 
 /**
  * A mean-ass single-combat sword-wielding nigh-demigod that is nothing but a walking, talking, breathing Berserk reference. He do kill shit doe!
@@ -688,20 +702,20 @@
 	gender = MALE
 	rapid_melee = 1
 	melee_queue_distance = 2
-	melee_damage_lower = 40
+	melee_damage_lower = 20
 	melee_damage_upper = 40
-	speed = 1
-	move_to_delay = 2.25
+	speed = 3
+	move_to_delay = 5
 	wander = FALSE
 	ranged = 1
 	ranged_cooldown_time = 30
 	minimum_distance = 1
-	health = 2500
-	maxHealth = 2500 //for contrast, bubblegum and the colossus both have 2500 health
+	health = 1500
+	maxHealth = 1500 //for contrast, bubblegum and the colossus both have 2500 health
 	movement_type = FLOATING
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/keycard/cloclwork)
-	crusher_loot = VV_NULL
+	crusher_loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/keycard/cloclwork)
 	del_on_death = TRUE
 	/// Boss phase, from 1 to 3
 	var/phase = MARKED_ONE_FIRST_PHASE
@@ -716,11 +730,11 @@
 	/// If we are charging, this is a counter for how many tiles we have ran past
 	var/chargetiles = 0
 	/// Maximum range for charging, in case we don't ram any closed turf
-	var/chargerange = 21
+	var/chargerange = 16
 	/// We get stunned whenever we ram into a closed turf
 	var/stunned = FALSE
 	/// Chance to block damage entirely on phases 1 and 4
-	var/block_chance = 50
+	var/block_chance = 30
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
 	var/anger_timer_id = null
 
