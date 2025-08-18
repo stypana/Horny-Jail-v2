@@ -47,8 +47,8 @@ SUBSYSTEM_DEF(dbcore)
 	var/connection  // Arbitrary handle returned from rust_g.
 
 	var/db_daemon_started = FALSE
-        /// Simple cache for frequent query results
-        var/list/query_cache = list()
+	/// Simple cache for frequent query results
+	var/list/query_cache = list()
 
 /datum/controller/subsystem/dbcore/Initialize()
 	Connect()
@@ -317,6 +317,7 @@ SUBSYSTEM_DEF(dbcore)
 		db_minor = cache["minor"]
 		return
 	INVOKE_ASYNC(src, PROC_REF(check_schema_worker))
+
 /datum/controller/subsystem/dbcore/proc/check_schema_worker()
 	if(Connect())
 		log_world("Database connection established.")
@@ -347,6 +348,7 @@ SUBSYSTEM_DEF(dbcore)
 	)
 	INVOKE_ASYNC(query_round_initialize, TYPE_PROC_REF(/datum/db_query, Execute))
 	INVOKE_ASYNC(src, PROC_REF(set_round_id), query_round_initialize)
+
 /datum/controller/subsystem/dbcore/proc/set_round_id(datum/db_query/query_round_initialize)
 	query_round_initialize.sync()
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
@@ -416,8 +418,8 @@ SUBSYSTEM_DEF(dbcore)
  */
 /datum/controller/subsystem/dbcore/proc/GetCache(key)
 	var/entry = query_cache[key]
-	if(entry && entry.expires > world.time)
-		return entry.result
+	if(entry && entry["expires"] > world.time)
+		return entry["result"]
 	if(entry)
 		query_cache -= key
 	return null
