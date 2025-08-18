@@ -64,7 +64,7 @@
 /obj/item/clothing/mask/paper/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!strap_hidden)
-		. += mutable_appearance(icon_file, "mask_paper_strap")
+		. += SSaccessories.get_cached_appearance(icon_file, "mask_paper_strap", "paper_mask_strap")
 
 /obj/item/clothing/mask/paper/click_alt_secondary(mob/user)
 		adjust_mask(user)
