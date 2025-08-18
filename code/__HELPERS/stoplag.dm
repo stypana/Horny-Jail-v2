@@ -19,12 +19,12 @@
 	return CEILING(DS2TICKS(initial_delay), 1)
 #else
 	. = 0
-        var/i = DS2TICKS(initial_delay)
-        do
-                . += CEILING(i * DELTA_CALC, 1)
-                sleep(i * world.tick_lag * DELTA_CALC)
-                i = min(i * 2, MAX_STOPLAG_TICKS)
-        while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+	var/i = DS2TICKS(initial_delay)
+	do
+		. += CEILING(i * DELTA_CALC, 1)
+		sleep(i * world.tick_lag * DELTA_CALC)
+		i = min(i * 2, MAX_STOPLAG_TICKS)
+	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
 #endif
 
 #undef MAX_STOPLAG_TICKS
