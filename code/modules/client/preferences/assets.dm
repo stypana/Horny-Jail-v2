@@ -44,6 +44,12 @@
 	ensure_customization_lists()
 	var/list/preference_data = list()
 
+       // Ensure customization-related globals, such as blooper lists,
+       // are initialized before compiling preference data. Without this,
+       // choiced preferences that rely on these globals can crash when
+       // generating their constant data.
+	ensure_customization_lists()
+
 	for (var/middleware_type in subtypesof(/datum/preference_middleware))
 		var/datum/preference_middleware/middleware = new middleware_type
 		var/data = middleware.get_constant_data()

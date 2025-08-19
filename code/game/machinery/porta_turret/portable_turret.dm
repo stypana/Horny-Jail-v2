@@ -126,7 +126,7 @@ DEFINE_BITFIELD(turret_flags, list(
 
 	return .
 
-/obj/machinery/porta_turret/LateInitialize()
+/obj/machinery/porta_turret/post_machine_initialize()
 	. = ..()
 	if(cover)
 		cover.name = name
