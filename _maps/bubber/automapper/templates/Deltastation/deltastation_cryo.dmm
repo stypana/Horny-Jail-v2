@@ -15,6 +15,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/commons/fitness/recreation)
+"i" = (
+/obj/structure/sign/poster/timeclock_psa,
+/turf/closed/wall,
+/area/space)
 "k" = (
 /obj/machinery/cryopod{
 	dir = 1
@@ -30,8 +34,11 @@
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation)
 "l" = (
-/obj/structure/sign/poster/timeclock_psa,
-/turf/closed/wall,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/space)
+"m" = (
+/turf/closed/wall/r_wall,
 /area/station/commons/fitness/recreation)
 "v" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -69,6 +76,9 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/commons/fitness/recreation)
+"T" = (
+/turf/closed/wall/r_wall,
+/area/space)
 "Z" = (
 /obj/machinery/cryopod,
 /obj/effect/turf_decal/siding/white,
@@ -76,37 +86,37 @@
 /area/station/commons/fitness/recreation)
 
 (1,1,1) = {"
-l
+i
 I
 G
 I
 a
 "}
 (2,1,1) = {"
-I
+l
 Z
 P
 F
-I
+a
 "}
 (3,1,1) = {"
-I
+l
 Z
 v
 F
-I
+a
 "}
 (4,1,1) = {"
-I
+l
 d
 e
 k
-I
+a
 "}
 (5,1,1) = {"
-a
-a
-a
-a
+T
+m
+m
+m
 a
 "}

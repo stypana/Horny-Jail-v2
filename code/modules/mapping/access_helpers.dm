@@ -846,7 +846,7 @@
 /obj/effect/mapping_helpers/airlock/access/all/entertainment
 	icon_state = "access_helper_awy"
 
-/obj/effect/mapping_helpers/airlock/access/all/sentertainment/general/get_access()
+/obj/effect/mapping_helpers/airlock/access/all/entertainment/general/get_access()
 	var/list/access_list = ..()
 	access_list += ACCESS_ENTERTAINMENT
 	return access_list
