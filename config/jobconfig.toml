@@ -134,6 +134,13 @@
 "Spawn Positions" = 1
 "Total Positions" = 1
 
+[CLUBSEC]
+"Playtime Requirements" = 0
+"Required Account Age" = 0
+"# Required Character Age" = 0
+"Spawn Positions" = 2
+"Total Positions" = 2
+
 [COOK]
 "Playtime Requirements" = 0
 "Required Account Age" = 0
@@ -185,6 +192,13 @@
 
 [ENGINEERING_GUARD]
 "Playtime Requirements" = 180
+"Required Account Age" = 0
+"# Required Character Age" = 0
+"Spawn Positions" = 2
+"Total Positions" = 2
+
+[ESCORT]
+"Playtime Requirements" = 0
 "Required Account Age" = 0
 "# Required Character Age" = 0
 "Spawn Positions" = 2
@@ -326,6 +340,13 @@
 "# Required Character Age" = 0
 "Spawn Positions" = 6
 "Total Positions" = 6
+
+[SOUTENEUR]
+"Playtime Requirements" = 0
+"Required Account Age" = 0
+"# Required Character Age" = 0
+"Spawn Positions" = 1
+"Total Positions" = 1
 
 [SHAFT_MINER]
 "Playtime Requirements" = 0

@@ -12,12 +12,14 @@
 	outfit = /datum/outfit/job/souteneur
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SRV
-	display_order = JOB_DISPLAY_ORDER_SOUTENEUR
-	departments_list = list(
-/datum/job_department/entertainment,
-	)
+       display_order = JOB_DISPLAY_ORDER_SOUTENEUR
+       department_for_prefs = /datum/job_department/entertainment
+       departments_list = list(
+               /datum/job_department/entertainment,
+       )
 
-	job_flags = STATION_JOB_FLAGS
+       job_flags = STATION_JOB_FLAGS
+       job_flags |= JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/souteneur
 	name = "Souteneur"
