@@ -36,16 +36,7 @@
 	head = initial(head)
 	gloves = initial(gloves)
 	shoes = initial(shoes)
-	var/choice = pick(
-		"default",
-		"bunny",
-		"executive",
-		"black_skirt",
-		"buttondown",
-		"pentagram",
-		"strapless",
-		"short_dress"
-	)
+	var/choice = pick("default", "bunny", "executive", "black_skirt", "buttondown", "pentagram", "strapless", "short_dress")
 	switch(choice)
 		if("bunny")
 			uniform = /obj/item/clothing/under/costume/bunnylewd
