@@ -565,6 +565,7 @@ export function JobsPage() {
                 <PriorityHeaders />
                 <Department department="Security" />
                 <Department department="Medical" />
+                <Department department="Entertainment" />
               </Stack>
             </Stack.Item>
           </Stack>

@@ -29,7 +29,7 @@ export const COLORS = {
     engineering: '#f1c40f',
     cargo: '#f39c12',
     service: '#6ca729',
-    entertainment: '#79c5a8',
+    entertainment: '#99397c',
     centcom: '#00c100',
     assistant: '#c1c1c1', // BUBBERS EDIT - Crew Monitor Updates
     prisoner: '#e2a200', // BUBBERS EDIT - Crew Monitor Updates
