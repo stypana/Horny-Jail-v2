@@ -128,6 +128,9 @@ DEFINE_BITFIELD(turret_flags, list(
 
 /obj/machinery/porta_turret/LateInitialize()
 	. = ..()
+	if(cover)
+		cover.name = name
+		cover.desc = desc
 
 	//Sets up a spark system
 	spark_system = new /datum/effect_system/spark_spread
@@ -886,12 +889,6 @@ DEFINE_BITFIELD(turret_flags, list(
 
 /obj/machinery/porta_turret/aux_base/Initialize(mapload)
 	return ..()
-
-/obj/machinery/porta_turret/aux_base/LateInitialize()
-	. = ..()
-	if(cover)
-		cover.name = name
-		cover.desc = desc
 
 /obj/machinery/porta_turret/centcom_shuttle
 	installation = null

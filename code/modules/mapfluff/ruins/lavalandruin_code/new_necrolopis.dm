@@ -209,7 +209,7 @@
 	vision_range = 10
 	damage_coeff = list(BRUTE = 1, BURN = 0.5, TOX = 0.5, CLONE = 0.5, STAMINA = 0, OXY = 0.5)
 	loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/keycard/cultist)
-	crusher_loot = loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/clothing/suit/hooded/cultrobes/hardened, /obj/item/keycard/cultist)
+	crusher_loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/clothing/suit/hooded/cultrobes/hardened, /obj/item/keycard/cultist)
 	wander = FALSE
 	del_on_death = TRUE
 	blood_volume = BLOOD_VOLUME_NORMAL

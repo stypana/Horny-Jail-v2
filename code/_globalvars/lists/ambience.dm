@@ -72,7 +72,11 @@ GLOBAL_LIST_INIT(mining_ambience, list(
 	'sound/ambience/ruin/ambiruin5.ogg',
 	'sound/ambience/ruin/ambiruin6.ogg',
 	'sound/ambience/ruin/ambiruin7.ogg',
-	'modular_zubbers/sound/ambiance/bangle-graveyard-of-time.ogg' // Bubber Edit - Credit: Bangle
+	'modular_zubbers/sound/ambiance/bangle-graveyard-of-time.ogg', // Bubber Edit - Credit: Bangle
+	'modules/sound/ambience/new_lavaland_ost_1.ogg',
+	'modules/sound/ambience/new_lavaland_ost_2.ogg',
+	'modules/sound/ambience/new_lavaland_ost_3.ogg',
+	'modules/sound/ambience/new_lavaland_ost_4.ogg'
 ))
 
 GLOBAL_LIST_INIT(icemoon_ambience,list(
