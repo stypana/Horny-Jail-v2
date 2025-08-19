@@ -12,14 +12,13 @@
 	outfit = /datum/outfit/job/escort
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SRV
-       display_order = JOB_DISPLAY_ORDER_ESCORT
-       department_for_prefs = /datum/job_department/entertainment
-       departments_list = list(
-               /datum/job_department/entertainment,
-       )
+	display_order = JOB_DISPLAY_ORDER_ESCORT
+	department_for_prefs = /datum/job_department/entertainment
+	departments_list = list(
+	/datum/job_department/entertainment,
+	)
 
-       job_flags = STATION_JOB_FLAGS
-       job_flags |= JOB_NEW_PLAYER_JOINABLE
+	job_flags = STATION_JOB_FLAGS|JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/escort
 	name = "Escort"
@@ -54,7 +53,7 @@
 			gloves = /obj/item/clothing/gloves/evening
 			shoes = /obj/item/clothing/shoes/high_heels
 		if("executive")
-			uniform = /obj/item/clothing/under/suit/black_really_collared/skirt
+			uniform = /obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
 			shoes = /obj/item/clothing/shoes/high_heels
 		if("black_skirt")
 			uniform = /obj/item/clothing/under/dress/skirt
@@ -63,7 +62,7 @@
 			uniform = /obj/item/clothing/under/costume/buttondown/skirt
 			shoes = /obj/item/clothing/shoes/high_heels
 		if("pentagram")
-			/obj/item/clothing/under/dress/skyrat/pentagram
+			uniform = /obj/item/clothing/under/dress/skyrat/pentagram
 			shoes = /obj/item/clothing/shoes/high_heels
 		if("strapless")
 			uniform = /obj/item/clothing/under/dress/skyrat/strapless
@@ -79,12 +78,11 @@
 		/obj/item/clothing/head/playbunnyears,
 		/obj/item/clothing/gloves/evening,
 		/obj/item/clothing/shoes/high_heels,
-		/obj/item/clothing/under/suit/black_really_collared/skirt,
-
+		/obj/item/clothing/under/suit/skyrat/black_really_collared/skirt,
 		// === Новые ===
-		/obj/item/clothing/under/dress/skirt
-		/obj/item/clothing/under/costume/buttondown/skirt
-		/obj/item/clothing/under/dress/skyrat/pentagram
-		/obj/item/clothing/under/dress/skyrat/strapless
+		/obj/item/clothing/under/dress/skirt,
+		/obj/item/clothing/under/costume/buttondown/skirt,
+		/obj/item/clothing/under/dress/skyrat/pentagram,
+		/obj/item/clothing/under/dress/skyrat/strapless,
 		/obj/item/clothing/under/dress/skyrat/short_dress
 	)

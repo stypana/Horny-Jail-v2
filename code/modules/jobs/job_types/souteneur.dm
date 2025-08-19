@@ -12,14 +12,13 @@
 	outfit = /datum/outfit/job/souteneur
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SRV
-       display_order = JOB_DISPLAY_ORDER_SOUTENEUR
-       department_for_prefs = /datum/job_department/entertainment
-       departments_list = list(
-               /datum/job_department/entertainment,
-       )
+	display_order = JOB_DISPLAY_ORDER_SOUTENEUR
+	department_for_prefs = /datum/job_department/entertainment
+	departments_list = list(
+	/datum/job_department/entertainment,
+	)
 
-       job_flags = STATION_JOB_FLAGS
-       job_flags |= JOB_NEW_PLAYER_JOINABLE
+	job_flags = STATION_JOB_FLAGS|JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/souteneur
 	name = "Souteneur"
@@ -41,7 +40,7 @@
 		uniform = /obj/item/clothing/under/dress/midnight
 		suit = null
 		gloves = /obj/item/clothing/gloves/silk
-		shoes = /obj/item/clothing/shoes/highheels
+		shoes = /obj/item/clothing/shoes/high_heels
 		r_hand = /obj/item/cane/luminous
 	else
 		head = /obj/item/clothing/head/hats/pimp

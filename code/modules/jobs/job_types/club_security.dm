@@ -12,14 +12,13 @@
 	outfit = /datum/outfit/job/club_security
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SRV
-       display_order = JOB_DISPLAY_ORDER_CLUB_SECURITY
-       department_for_prefs = /datum/job_department/entertainment
-       departments_list = list(
-               /datum/job_department/entertainment,
-       )
+	display_order = JOB_DISPLAY_ORDER_CLUB_SECURITY
+	department_for_prefs = /datum/job_department/entertainment
+	departments_list = list(
+	/datum/job_department/entertainment,
+	)
 
-       job_flags = STATION_JOB_FLAGS
-       job_flags |= JOB_NEW_PLAYER_JOINABLE
+	job_flags = STATION_JOB_FLAGS|JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/club_security
 	name = "Club Security"
