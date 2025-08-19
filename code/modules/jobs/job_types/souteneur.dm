@@ -32,3 +32,20 @@
 	belt = /obj/item/modular_computer/pda
 	ears = /obj/item/radio/headset/headset_srv
 	shoes = /obj/item/clothing/shoes/laceup
+
+/datum/outfit/job/souteneur/pre_equip(mob/living/carbon/human/H, visuals_only = FALSE)
+	if(H.gender == FEMALE)
+		head = null
+		uniform = /obj/item/clothing/under/dress/midnight
+		suit = null
+		gloves = /obj/item/clothing/gloves/silk
+		shoes = /obj/item/clothing/shoes/highheels
+		r_hand = /obj/item/cane/luminous
+	else
+		head = /obj/item/clothing/head/hats/pimp
+		uniform = /obj/item/clothing/under/suit/pimp
+		suit = /obj/item/clothing/suit/jacket/pimp
+		gloves = /obj/item/clothing/gloves/silk
+		shoes = /obj/item/clothing/shoes/laceup
+		r_hand = /obj/item/cane/golden
+	. = ..()

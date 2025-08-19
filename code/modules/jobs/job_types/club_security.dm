@@ -24,9 +24,8 @@
 	jobtype = /datum/job/club_security
 
 	id_trim = /datum/id_trim/job/club_security
-	uniform = /obj/item/clothing/under/suit/pimp
-	suit = /obj/item/clothing/suit/jacket/pimp
-	gloves = /obj/item/clothing/gloves/silk
-	r_hand = /obj/item/cane/luminous
+	uniform = /obj/item/clothing/under/pants/jeans
+	suit = /obj/item/clothing/suit/jacket/leather
+	head = /obj/item/clothing/head/beanie/black
 	ears = /obj/item/radio/headset/headset_srv
 	shoes = /obj/item/clothing/shoes/jackboots
