@@ -4,6 +4,8 @@
 	early = TRUE
 
 /datum/asset/spritesheet_batched/preferences/create_spritesheets()
+	ensure_customization_lists()
+
 	for (var/preference_key in GLOB.preference_entries_by_key)
 		var/datum/preference/choiced/preference = GLOB.preference_entries_by_key[preference_key]
 		if (!istype(preference))
@@ -39,6 +41,7 @@
 	name = "preferences"
 
 /datum/asset/json/preferences/generate()
+	ensure_customization_lists()
 	var/list/preference_data = list()
 
 	for (var/middleware_type in subtypesof(/datum/preference_middleware))
