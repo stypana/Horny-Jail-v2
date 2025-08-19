@@ -107,10 +107,11 @@
 #define JOB_PSYCHOLOGIST "Psychologist"
 #define JOB_BARBER "Barber" // SKYRAT EDIT ADDITION
 #define JOB_BOUNCER "Bouncer" // SKYRAT EDIT ADDITION
+#define JOB_PUN_PUN "Pun Pun"
+//Entertainment
 #define JOB_SOUTENEUR "Souteneur"
 #define JOB_ESCORT "Escort"
 #define JOB_CLUB_SECURITY "Club Security"
-#define JOB_PUN_PUN "Pun Pun"
 //ERTs
 #define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"
@@ -258,7 +259,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 	"SILICON" = DEPARTMENT_BITFLAG_SILICON,
 	"ASSISTANT" = DEPARTMENT_BITFLAG_ASSISTANT,
 	"CAPTAIN" = DEPARTMENT_BITFLAG_CAPTAIN,
-        "ENTERTAINMENT" = DEPARTMENT_BITFLAG_ENTERTAINMENT,
+	"ENTERTAINMENT" = DEPARTMENT_BITFLAG_ENTERTAINMENT,
 ))
 
 /* Job datum job_flags */
