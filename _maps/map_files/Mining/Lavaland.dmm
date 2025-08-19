@@ -260,6 +260,16 @@
 	},
 /turf/open/floor/iron/edge,
 /area/mine/lounge)
+"bx" = (
+/turf/open/space/basic,
+/turf/open/floor/cult,
+/turf/closed/wall/mineral/cult{
+	max_integrity = 2000
+	},
+/turf/closed/wall/mineral/cult{
+	max_integrity = 2000
+	},
+/area/lavaland/surface/necropolis)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -336,8 +346,9 @@
 /turf/open/indestructible/boss/necropolis/tile4,
 /area/lavaland/surface/necropolis)
 "bV" = (
-/obj/effect/mob_spawn/corpse/human/syndicatecommando/soft_suit,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/effect/gibspawner/human,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "bW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -373,8 +384,10 @@
 /turf/open/floor/plating,
 /area/mine/maintenance/living/north)
 "cg" = (
-/obj/structure/alien/gelpod,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/floor/cult,
+/turf/closed/wall/mineral/cult{
+	max_integrity = 2000
+	},
 /area/lavaland/surface/necropolis)
 "ch" = (
 /obj/machinery/power/apc/auto_name/directional/west,
@@ -695,6 +708,11 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/mine/lobby/raptor)
+"dG" = (
+/obj/structure/destructible/cult/item_dispenser/archives,
+/turf/open/space/basic,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis)
 "dH" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -786,6 +804,11 @@
 	dir = 8
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/necropolis)
+"ev" = (
+/obj/structure/destructible/cult/item_dispenser/forge,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "ex" = (
 /obj/structure/stone_tile/surrounding,
@@ -1482,8 +1505,9 @@
 /turf/open/floor/plating,
 /area/mine/maintenance/living/south)
 "hG" = (
-/mob/living/carbon/alien/adult/skyrat/queen,
-/turf/open/misc/asteroid/basalt/wasteland,
+/obj/effect/mob_spawn/corpse/human/clock_cultist,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "hJ" = (
 /obj/structure/stone_tile/block{
@@ -1965,8 +1989,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
 "km" = (
-/obj/effect/gibspawner/xeno,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "kn" = (
 /obj/effect/turf_decal/delivery,
@@ -2956,8 +2981,9 @@
 	},
 /area/mine/laborcamp/security)
 "oa" = (
-/mob/living/carbon/alien/adult/skyrat/runner,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/mob/living/simple_animal/hostile/cult/horror,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "oc" = (
 /obj/machinery/power/terminal{
@@ -2977,6 +3003,11 @@
 	},
 /turf/open/floor/iron/checker,
 /area/mine/cafeteria)
+"og" = (
+/obj/structure/destructible/cult/item_dispenser/altar,
+/turf/open/space/basic,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis)
 "oh" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -3581,6 +3612,12 @@
 	},
 /turf/open/misc/hay/lavaland,
 /area/mine/lobby/raptor)
+"rk" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/turf/open/space/basic,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis)
 "rm" = (
 /obj/structure/sign/warning/gas_mask/directional/west,
 /obj/effect/decal/cleanable/dirt,
@@ -3801,8 +3838,9 @@
 /turf/open/floor/iron/smooth_edge,
 /area/mine/laborcamp/production)
 "sB" = (
-/mob/living/carbon/alien/adult/skyrat/ravager,
-/turf/open/misc/asteroid/basalt/wasteland,
+/mob/living/simple_animal/hostile/cult/ghost,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "sH" = (
 /obj/structure/fluff/drake_statue,
@@ -4006,8 +4044,9 @@
 /turf/open/floor/plating,
 /area/mine/storage)
 "tO" = (
-/obj/structure/bed/nest,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/mob/living/simple_animal/hostile/cult/magic,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "tP" = (
 /obj/structure/legionnaire_bonfire,
@@ -4041,6 +4080,10 @@
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern,
 /turf/open/floor/bronze,
 /area/lavaland/surface/necropolis)
+"uf" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis/cult)
 "ui" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4253,6 +4296,12 @@
 	dir = 8
 	},
 /area/mine/lounge)
+"vj" = (
+/obj/structure/destructible/cult/pants_altar,
+/obj/effect/mob_spawn/corpse/human/clock_cultist/armored,
+/turf/open/space/basic,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis)
 "vk" = (
 /obj/effect/spawner/random/trash/garbage{
 	spawn_loot_count = 3;
@@ -4290,6 +4339,10 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/mine/medical)
+"vw" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis/cult)
 "vA" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/rack,
@@ -4510,8 +4563,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "wy" = (
-/mob/living/carbon/alien/adult/skyrat/sentinel,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/mob/living/simple_animal/hostile/cult/assassin,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "wA" = (
 /obj/structure/cable,
@@ -4563,8 +4617,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "wQ" = (
-/obj/structure/alien/weeds/node,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/structure/destructible/cult/pylon,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "wT" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -4746,9 +4801,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "xZ" = (
-/mob/living/carbon/alien/adult/skyrat/spitter,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/necropolis)
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis/cult)
 "ya" = (
 /obj/structure/closet/crate/necropolis_open,
 /turf/open/indestructible/boss/necropolis/fakechasm,
@@ -5258,9 +5313,9 @@
 /turf/open/floor/plating,
 /area/mine/laborcamp/security/maintenance)
 "AY" = (
-/obj/structure/bed/nest,
-/obj/effect/mob_spawn/corpse/human/syndicatecommando/soft_suit,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/effect/rune/wall,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "Bb" = (
 /obj/machinery/camera/autoname/directional/east{
@@ -5276,8 +5331,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Bh" = (
-/mob/living/carbon/alien/adult/skyrat/praetorian,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "Bk" = (
 /obj/item/card/id/away/dangerous_research/head_occultist,
@@ -5504,8 +5560,9 @@
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
 "CF" = (
-/obj/effect/mob_spawn/corpse/human/miner/mod,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/mob/living/simple_animal/hostile/cult/spear,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "CH" = (
 /obj/item/melee/cultblade/dagger,
@@ -5627,10 +5684,9 @@
 /turf/closed/indestructible/riveted/boss,
 /area/lavaland/surface/necropolis)
 "Du" = (
-/obj/structure/bed/nest,
-/obj/effect/mob_spawn/corpse/human/clock_cultist/armored,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/necropolis)
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis/cult)
 "Dx" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -6019,8 +6075,9 @@
 	},
 /area/mine/lounge)
 "FU" = (
-/obj/structure/alien/resin/wall,
-/turf/open/misc/asteroid/basalt/wasteland,
+/mob/living/simple_animal/hostile/cult/warrior,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "FW" = (
 /obj/structure/stone_tile{
@@ -6407,9 +6464,9 @@
 /turf/open/floor/plating,
 /area/mine/maintenance/labor)
 "Ig" = (
-/obj/structure/alien/resin/wall,
-/obj/structure/alien/resin/wall,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/machinery/door/airlock/cult/glass/friendly,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "Ij" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -6420,8 +6477,9 @@
 /turf/open/floor/plating,
 /area/mine/maintenance/service)
 "Ik" = (
-/obj/structure/alien/egg/burst,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/effect/mob_spawn/corpse/human/clock_cultist/support,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "Im" = (
 /obj/structure/stone_tile{
@@ -6805,8 +6863,11 @@
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
 "Kb" = (
-/obj/structure/alien/resin/wall,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/space/basic,
+/turf/open/floor/cult,
+/turf/closed/wall/mineral/cult{
+	max_integrity = 2000
+	},
 /area/lavaland/surface/necropolis)
 "Kc" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7148,6 +7209,11 @@
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
+"LD" = (
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/turf/open/space/basic,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis)
 "LE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -7298,6 +7364,11 @@
 /area/mine/lobby/raptor)
 "Mk" = (
 /turf/open/indestructible/boss/necropolis/tile1,
+/area/lavaland/surface/necropolis)
+"Ml" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "Mn" = (
 /obj/structure/stone_tile/cracked{
@@ -7719,8 +7790,8 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
 "Os" = (
-/obj/effect/gibspawner/larva,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "Ot" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -8334,8 +8405,9 @@
 /turf/open/floor/iron/smooth,
 /area/mine/laborcamp)
 "RK" = (
-/obj/structure/mineral_door/xen,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/structure/closet/crate/necropolis_open,
+/turf/open/space/basic,
+/turf/open/floor/cult,
 /area/lavaland/surface/necropolis)
 "RL" = (
 /obj/structure/disposalpipe/segment,
@@ -8914,8 +8986,9 @@
 /turf/open/floor/plating,
 /area/mine/laborcamp/security/maintenance)
 "UX" = (
-/mob/living/carbon/alien/adult/skyrat/warrior,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/closed/wall/mineral/cult{
+	max_integrity = 2000
+	},
 /area/lavaland/surface/necropolis)
 "UZ" = (
 /obj/structure/chair/stool/directional/west,
@@ -9047,6 +9120,9 @@
 /area/mine/production)
 "Vy" = (
 /obj/effect/rune/narsie,
+/obj/effect/gibspawner/human,
+/obj/effect/gibspawner/human,
+/obj/effect/gibspawner/human,
 /turf/open/floor/cult,
 /area/lavaland/surface/necropolis/cult)
 "Vz" = (
@@ -9488,6 +9564,10 @@
 /mob/living/basic/mining/goliath,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"XS" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/cult,
+/area/lavaland/surface/necropolis/cult)
 "XT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -12193,9 +12273,9 @@ aa
 gX
 Px
 IQ
+uf
 Px
-Px
-Px
+vw
 Px
 Px
 Cr
@@ -12452,7 +12532,7 @@ Px
 Fm
 Px
 kX
-Px
+vw
 BU
 Px
 Wa
@@ -12705,11 +12785,11 @@ aj
 aa
 aa
 Px
+xZ
+xZ
 Px
 Px
-Px
-Px
-Px
+vw
 YX
 Px
 Px
@@ -12967,7 +13047,7 @@ Px
 pk
 Vy
 Px
-Px
+Du
 Pq
 VA
 aa
@@ -13220,7 +13300,7 @@ aa
 aa
 Px
 Uo
-Px
+uf
 Px
 FS
 ZG
@@ -13479,10 +13559,10 @@ dM
 Px
 Bk
 Px
+xZ
+xZ
 Px
-Px
-Px
-Px
+Du
 Px
 aa
 aa
@@ -15276,7 +15356,7 @@ aa
 aa
 VA
 Px
-Px
+XS
 Px
 wn
 SX
@@ -16052,7 +16132,7 @@ SX
 Px
 Us
 Px
-Px
+XS
 Px
 aa
 aa
@@ -17846,7 +17926,7 @@ aa
 aa
 Px
 Us
-Px
+XS
 Px
 SX
 Px
@@ -19387,14 +19467,14 @@ aj
 aa
 aa
 aa
-Ik
-Hc
-Hc
-Hc
-Kb
-Hc
-wy
-Hc
+Os
+CF
+Os
+AY
+Os
+Ig
+Os
+wQ
 aa
 aa
 aa
@@ -19644,14 +19724,14 @@ aj
 aa
 aa
 aa
-Ik
-hG
-uz
-Hc
-Kb
-Hc
-wQ
-Hc
+Os
+Os
+bV
+km
+Os
+UX
+Os
+Os
 aa
 aa
 aa
@@ -19901,14 +19981,14 @@ aj
 aa
 aa
 aa
-Ik
-uz
-wQ
-uz
 Kb
-Hc
-Bh
-Hc
+Kb
+tO
+Os
+Ml
+UX
+Os
+km
 aa
 aa
 aa
@@ -20158,14 +20238,14 @@ aj
 aa
 aa
 aa
-Ik
-uz
-Hc
-Hc
-RK
-Hc
-Hc
-Hc
+Os
+Os
+hG
+Kb
+Os
+Kb
+tO
+Os
 aa
 aa
 aa
@@ -20415,13 +20495,13 @@ aj
 aa
 aa
 aa
+UX
+Ig
 Kb
 Kb
 Kb
 Kb
-Kb
-Kb
-Kb
+Os
 RK
 aa
 aa
@@ -20672,14 +20752,14 @@ aj
 aa
 aa
 aa
-Ww
-Kb
-wQ
+Os
+Ml
+Os
 bV
-YT
-Hc
-uz
-Hc
+km
+Kb
+vj
+ev
 aa
 aa
 Hc
@@ -20929,14 +21009,14 @@ aj
 aa
 aa
 aa
-Hc
+Os
+FU
+Os
+oa
+Os
 Kb
-Hc
-Hc
-uz
-wQ
-Hc
-uz
+Kb
+Kb
 aa
 aa
 Hc
@@ -21187,13 +21267,13 @@ aa
 aa
 aa
 cg
-Kb
-Hc
-Hc
-Hc
 Ig
-FU
 Kb
+UX
+AY
+Ig
+Os
+LD
 aa
 aa
 Hc
@@ -21443,14 +21523,14 @@ aj
 aa
 aa
 aa
-cg
+Os
+Os
+wQ
 Kb
-RK
 Kb
 Kb
-Kb
-uz
-xZ
+FU
+Os
 aa
 aa
 Hc
@@ -21701,13 +21781,13 @@ aa
 aa
 aa
 oa
+Bh
+Os
 Kb
+Os
+Os
+Os
 Ik
-uz
-Hc
-Kb
-Hc
-uz
 aa
 aa
 Hc
@@ -21957,14 +22037,14 @@ aj
 aa
 aa
 aa
-wQ
+Os
+Os
+Os
 Kb
-Hc
-UX
-wQ
-Kb
-Hc
-Hc
+CF
+Os
+Ml
+Os
 aa
 aa
 Hc
@@ -22214,13 +22294,13 @@ aj
 aa
 aa
 aa
-Hc
 RK
-Hc
-Hc
-uz
-RK
-Hc
+Os
+wy
+Kb
+Os
+bV
+sB
 wQ
 aa
 aa
@@ -22473,12 +22553,12 @@ aa
 aa
 Kb
 Kb
-RK
 Kb
 Kb
-Kb
-YT
-Hc
+bx
+Os
+Os
+Os
 aa
 aa
 Hc
@@ -22728,14 +22808,14 @@ aj
 aa
 aa
 aa
-Du
-Hc
-uz
-Hc
-Hc
-Kb
-Hc
-CF
+Os
+Os
+rk
+AY
+Ig
+Os
+Os
+Os
 aa
 aa
 Hc
@@ -22985,14 +23065,14 @@ aj
 aa
 aa
 aa
-tO
-Hc
-sB
 wQ
-YT
+Os
+sB
+Os
 Kb
-Hc
-Hc
+Os
+Kb
+Kb
 aa
 aa
 Hc
@@ -23242,14 +23322,14 @@ aj
 aa
 aa
 aa
-AY
+Os
 Ik
-uz
-Ik
-Hc
+Os
 Kb
-wQ
-Hc
+Kb
+Os
+Kb
+wy
 aa
 aa
 Hc
@@ -23500,13 +23580,13 @@ aa
 aa
 aa
 Kb
+Ig
 Kb
 Kb
+AY
+Bh
 Kb
-Kb
-Kb
-RK
-Kb
+Os
 aa
 aa
 Hc
@@ -23756,14 +23836,14 @@ aj
 aa
 aa
 aa
-Hc
-Hc
-VT
-YT
-Hc
-km
-VT
-Hc
+dG
+LD
+RK
+Kb
+Ig
+Kb
+Kb
+Bh
 aa
 aa
 dH
@@ -24013,13 +24093,13 @@ aj
 aa
 aa
 aa
-bn
-Hc
-Hc
-uz
-VT
-Hc
-Hc
+og
+Os
+wy
+Kb
+Os
+Os
+Os
 Os
 aa
 aa
