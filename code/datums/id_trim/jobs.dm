@@ -1410,6 +1410,7 @@
 	sechud_icon_state = SECHUD_CLUB_SECURITY
 	minimal_access = list(
 		ACCESS_ENTERTAINMENT,
+		ACCESS_BRIG_ENTRANCE,
 	)
 	template_access = list(
 		ACCESS_CAPTAIN,
