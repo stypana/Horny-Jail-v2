@@ -1,3 +1,3 @@
 @echo off
-call "%~dp0\tools\build\build.bat" build --skip-icon-cutter
+call "%~dp0\tools\build\build.bat" build
 pause

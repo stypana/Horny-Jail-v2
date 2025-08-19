@@ -51,25 +51,25 @@
 			uniform = /obj/item/clothing/under/costume/bunnylewd
 			head = /obj/item/clothing/head/playbunnyears
 			gloves = /obj/item/clothing/gloves/evening
-			shoes = /obj/item/clothing/shoes/high_heels
+			shoes = /obj/item/clothing/shoes/latex_heels
 		if("executive")
 			uniform = /obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
 			shoes = /obj/item/clothing/shoes/high_heels
 		if("black_skirt")
 			uniform = /obj/item/clothing/under/dress/skirt
-			shoes = /obj/item/clothing/shoes/high_heels
+			shoes = /obj/item/clothing/shoes/highheel_sandals
 		if("buttondown")
 			uniform = /obj/item/clothing/under/costume/buttondown/skirt
-			shoes = /obj/item/clothing/shoes/high_heels
+			shoes = /obj/item/clothing/shoes/highheel_sandals
 		if("pentagram")
 			uniform = /obj/item/clothing/under/dress/skyrat/pentagram
-			shoes = /obj/item/clothing/shoes/high_heels
+			shoes = /obj/item/clothing/shoes/highheel_sandals
 		if("strapless")
 			uniform = /obj/item/clothing/under/dress/skyrat/strapless
-			shoes = /obj/item/clothing/shoes/high_heels
+			shoes = /obj/item/clothing/shoes/highheel_sandals
 		if("short_dress")
 			uniform = /obj/item/clothing/under/dress/skyrat/short_dress
-			shoes = /obj/item/clothing/shoes/high_heels
+			shoes = /obj/item/clothing/shoes/highheel_sandals
 
 /datum/outfit/job/escort/get_types_to_preload()
 	. = ..()
@@ -77,9 +77,10 @@
 		/obj/item/clothing/under/costume/bunnylewd,
 		/obj/item/clothing/head/playbunnyears,
 		/obj/item/clothing/gloves/evening,
+		/obj/item/clothing/shoes/latex_heels,
 		/obj/item/clothing/shoes/high_heels,
+		/obj/item/clothing/shoes/highheel_sandals,
 		/obj/item/clothing/under/suit/skyrat/black_really_collared/skirt,
-		// === Новые ===
 		/obj/item/clothing/under/dress/skirt,
 		/obj/item/clothing/under/costume/buttondown/skirt,
 		/obj/item/clothing/under/dress/skyrat/pentagram,
