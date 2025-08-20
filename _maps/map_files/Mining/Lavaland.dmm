@@ -846,6 +846,10 @@
 	},
 /turf/open/floor/iron/white/smooth_edge,
 /area/mine/cafeteria)
+"eF" = (
+/obj/item/paper/crumpled/bloody/ruins/the_outlet/concerned_note,
+/turf/open/indestructible/boss/necropolis/tile2,
+/area/lavaland/surface/necropolis)
 "eH" = (
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 1
@@ -2124,6 +2128,12 @@
 	},
 /turf/open/floor/iron/checker,
 /area/mine/cafeteria)
+"kQ" = (
+/obj/effect/decal/cleanable/blood/trail_holder{
+	dir = 9
+	},
+/turf/open/indestructible/boss/necropolis/fakechasm,
+/area/lavaland/surface/necropolis)
 "kR" = (
 /obj/structure/chair{
 	dir = 4
@@ -4054,6 +4064,10 @@
 /obj/effect/decal/cleanable/blood/gibs/old,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/necropolis)
+"ud" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/indestructible/boss/necropolis/fakechasm,
+/area/lavaland/surface/necropolis)
 "ue" = (
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern,
 /turf/open/floor/bronze,
@@ -4435,6 +4449,10 @@
 /obj/structure/ore_box,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"vW" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/boss/necropolis/fakechasm,
+/area/lavaland/surface/necropolis)
 "vZ" = (
 /obj/structure/chair/stool/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -5053,6 +5071,10 @@
 	dir = 1
 	},
 /area/mine/laborcamp)
+"zz" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/indestructible/boss/necropolis/fakechasm,
+/area/lavaland/surface/necropolis)
 "zA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -5372,6 +5394,10 @@
 /obj/effect/turf_decal/sand/plating/volcanic,
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
+"BQ" = (
+/obj/effect/decal/cleanable/blood/trail_holder,
+/turf/open/indestructible/boss/necropolis/fakechasm,
+/area/lavaland/surface/necropolis)
 "BR" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
@@ -8101,6 +8127,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
+"Qm" = (
+/obj/effect/decal/cleanable/blood/trail_holder{
+	dir = 4
+	},
+/turf/open/indestructible/boss/necropolis/fakechasm,
+/area/lavaland/surface/necropolis)
 "Qn" = (
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern,
 /turf/open/indestructible/boss/necropolis/tile2,
@@ -9013,6 +9045,10 @@
 	dir = 1
 	},
 /area/mine/laborcamp)
+"Vl" = (
+/obj/effect/decal/cleanable/blood/trail,
+/turf/open/indestructible/boss/necropolis/fakechasm,
+/area/lavaland/surface/necropolis)
 "Vm" = (
 /obj/machinery/hydroponics/constructable,
 /obj/structure/window/spawner/directional/west,
@@ -31251,7 +31287,7 @@ aj
 aa
 aa
 fC
-fC
+vW
 fC
 fC
 fC
@@ -31512,7 +31548,7 @@ rL
 rL
 rL
 fC
-fC
+BQ
 fC
 fC
 rL
@@ -31772,7 +31808,7 @@ fC
 rL
 rL
 rL
-fC
+vW
 aa
 aa
 Hc
@@ -32538,7 +32574,7 @@ aa
 fC
 rL
 rL
-fC
+ud
 fC
 fC
 rL
@@ -32792,7 +32828,7 @@ aj
 (90,1,1) = {"
 aa
 aa
-fC
+Qm
 rL
 fC
 ya
@@ -33565,11 +33601,11 @@ aa
 aa
 fC
 fC
-fC
+Vl
 rL
 rL
-fC
-fC
+kQ
+zz
 fC
 rL
 aa
@@ -34081,7 +34117,7 @@ fC
 wh
 rL
 fC
-fC
+zz
 fC
 rL
 rL
@@ -34855,7 +34891,7 @@ fC
 rL
 fC
 fC
-fC
+zz
 rL
 aa
 aa
@@ -35107,7 +35143,7 @@ aa
 aa
 rL
 rL
-fC
+lr
 rL
 rL
 fC
@@ -35624,7 +35660,7 @@ fC
 fC
 fC
 fC
-fC
+vW
 rL
 rL
 rL
@@ -36397,7 +36433,7 @@ rL
 rL
 fC
 rL
-fC
+zz
 rL
 aa
 aa
@@ -37936,7 +37972,7 @@ aa
 aa
 aa
 aa
-VT
+eF
 aa
 aa
 aa
