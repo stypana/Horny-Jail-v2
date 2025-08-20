@@ -434,7 +434,13 @@ There are several things that need to be remembered:
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// SKYRAT EDIT END
 
-		var/mutable_appearance/shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
+		var/shoes_layer = SHOES_LAYER
+		if(istype(w_uniform, /obj/item/clothing/under))
+			var/obj/item/clothing/under/uniform = w_uniform
+			if(uniform.force_shoes_under)
+				var/uniform_layer = uniform.alternate_worn_layer || UNIFORM_LAYER
+				shoes_layer = uniform_layer + 0.1
+		var/mutable_appearance/shoes_overlay = shoes.build_worn_icon(default_layer = shoes_layer, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null)
 
 		if(!shoes_overlay)
 			return

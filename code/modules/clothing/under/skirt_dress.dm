@@ -135,3 +135,4 @@
 	desc = "A sleek dress for late-night outings."
 	icon_state = "midnight_dress"
 	inhand_icon_state = null
+	force_shoes_under = TRUE

@@ -27,6 +27,8 @@
 	var/alt_covers_chest = FALSE
 	/// The variable containing the flags for how the woman uniform cropping is supposed to interact with the sprite.
 	var/female_sprite_flags = FEMALE_UNIFORM_FULL
+	/// When TRUE, shoes will render beneath this uniform instead of above it
+	var/force_shoes_under = FALSE
 
 	// Sensor handling
 	/// Does this undersuit have suit sensors in general

@@ -211,7 +211,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 
 	if(add_blank)
 		returnable_list[DEFAULT_SPRITE_LIST][SPRITE_ACCESSORY_NONE] = new /datum/sprite_accessory/blank
-
 	return returnable_list
 
 #undef DEFAULT_SPRITE_LIST
