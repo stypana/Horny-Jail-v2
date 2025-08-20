@@ -1654,6 +1654,9 @@
 /area/station/commons/dorms)
 "amw" = (
 /obj/structure/table/glass/plasmaglass,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/carpet/neon/simple/red,
 /area/station/common/night_club)
 "amx" = (
@@ -2934,6 +2937,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/carpet/neon/simple/purple,
 /area/station/common/night_club/changing_room{
 	name = "Night Club Sec"
@@ -4269,7 +4273,7 @@
 	dir = 1
 	},
 /obj/machinery/button/door/directional/south{
-	pixel_x = 24;
+	pixel_x = 36;
 	id = "SecClubPost1";
 	name = "North Doors";
 	normaldoorcontrol = 1;
@@ -4282,6 +4286,20 @@
 	normaldoorcontrol = 1;
 	pixel_y = 9;
 	pixel_x = 24
+	},
+/obj/machinery/button/door/directional/south{
+	id = "SecClubPost2";
+	name = "South doors";
+	normaldoorcontrol = 1;
+	pixel_y = 9;
+	pixel_x = 36
+	},
+/obj/machinery/button/door/directional/south{
+	pixel_x = 24;
+	id = "SecClubPost1";
+	name = "North Doors";
+	normaldoorcontrol = 1;
+	pixel_y = -2
 	},
 /turf/open/floor/iron/dark/diagonal,
 /area/station/commons/dorms)
@@ -5825,7 +5843,6 @@
 	pixel_x = -27;
 	id = "Souteneur Curtains"
 	},
-/obj/machinery/light_switch/directional/west,
 /obj/machinery/light/blacklight/directional/west,
 /turf/open/floor/wood,
 /area/station/common/night_club/changing_room{
@@ -6450,7 +6467,7 @@
 "aGc" = (
 /obj/structure/table/reinforced/plasmarglass,
 /obj/structure/table/reinforced/plasmarglass,
-/obj/structure/displaycase/forsale,
+/obj/machinery/microwave,
 /turf/open/floor/carpet/neon/simple/purple,
 /area/station/common/night_club)
 "aGd" = (
@@ -6831,7 +6848,22 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "aHs" = (
-/obj/structure/closet/secure_closet/bar,
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/food/bread/meat,
+/obj/item/food/bread/meat,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/item/food/burger/cheese,
+/obj/effect/spawner/random/food_or_drink/snack,
+/obj/effect/spawner/random/food_or_drink/snack,
+/obj/effect/spawner/random/food_or_drink/snack,
 /turf/open/floor/carpet/neon/simple/red,
 /area/station/common/night_club)
 "aHu" = (
@@ -39900,6 +39932,9 @@
 /obj/structure/closet/secure_closet/entertainment,
 /obj/item/storage/box/milking_kit,
 /obj/item/storage/box/bdsmbed_kit,
+/obj/item/storage/fancy/cigarettes/cigars,
+/obj/item/storage/fancy/cigarettes/cigars,
+/obj/item/lighter,
 /turf/open/floor/wood,
 /area/station/common/night_club/changing_room{
 	name = "Night Club Sec"
@@ -45199,25 +45234,12 @@
 /turf/open/floor/engine/vacuum,
 /area/station/engineering/atmos)
 "kaE" = (
-<<<<<<< Updated upstream
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
 /obj/structure/railing/corner/end/flip{
 	dir = 4
 	},
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/fore)
-=======
 /obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/structure/closet/crate/bin,
 /turf/open/floor/iron/dark,
-/area/station/common/night_club/back_stage)
->>>>>>> Stashed changes
+/area/station/maintenance/starboard/fore)
 "kbk" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -45895,7 +45917,8 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/storage/eva)
 "kto" = (
-/obj/structure/cable,
+/obj/structure/table/reinforced/plasmarglass,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/carpet/neon/simple/purple,
 /area/station/common/night_club)
 "ktt" = (
@@ -56154,6 +56177,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
+"qXC" = (
+/obj/machinery/vending/cigarette,
+/turf/open/floor/carpet/neon/simple/purple,
+/area/station/common/night_club)
 "qXD" = (
 /turf/closed/wall,
 /area/station/maintenance/central/lesser)
@@ -56578,9 +56605,6 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "rjx" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Service Hall Maintenance"
-	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Service Hall Maintenance"
 	},
@@ -57796,6 +57820,10 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/mineral/titanium/blue,
 /area/station/commons/toilet)
+"rVm" = (
+/obj/effect/landmark/start/security_officer,
+/turf/open/floor/iron/dark/diagonal,
+/area/station/commons/dorms)
 "rVn" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 4
@@ -59400,6 +59428,7 @@
 	pixel_x = -1;
 	pixel_y = 5
 	},
+/obj/machinery/light_switch/directional/west,
 /turf/open/floor/wood,
 /area/station/common/night_club/changing_room{
 	name = "Night Club Sec"
@@ -61393,6 +61422,7 @@
 "ukg" = (
 /obj/structure/table/reinforced/plasmarglass,
 /obj/effect/spawner/random/food_or_drink/booze,
+/obj/item/food/sandwich/cheese/grilled,
 /turf/open/floor/carpet/neon/simple/purple,
 /area/station/common/night_club)
 "uku" = (
@@ -64720,6 +64750,13 @@
 /obj/structure/rack,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
+"wmj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/east,
+/turf/open/floor/carpet/neon/simple/purple,
+/area/station/common/night_club)
 "wmp" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -108893,7 +108930,7 @@ cpW
 hns
 gyl
 axt
-pHP
+rVm
 gvU
 arf
 alP
@@ -109663,7 +109700,7 @@ oBk
 oBk
 vsV
 dQe
-fhy
+kto
 srU
 amw
 cLK
@@ -110173,7 +110210,7 @@ aCD
 aKe
 qLu
 oBk
-kto
+wgt
 oBk
 wgt
 dQe
@@ -110690,7 +110727,7 @@ mtn
 uFn
 aAt
 oBk
-wgt
+qXC
 awK
 aED
 awK
@@ -111712,7 +111749,7 @@ pgD
 caW
 awK
 hhu
-aru
+wmj
 asy
 vvP
 iQG
