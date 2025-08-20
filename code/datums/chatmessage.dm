@@ -213,6 +213,9 @@
 	var/starting_height = target.maptext_height
 	// Translate any existing messages upwards, apply exponential decay factors to timers
 	message_loc = isturf(target) ? target : get_atom_on_turf(target)
+	if (!owned_by)
+		qdel(src)
+		return
 	if (owned_by.seen_messages)
 		var/idx = 1
 		var/combined_height = approx_lines

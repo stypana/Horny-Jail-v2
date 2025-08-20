@@ -109,10 +109,16 @@ SUBSYSTEM_DEF(hilbertshotel)
 		if(user?.mind && parentSphere)
 			door.entry_points[user.mind] = parentSphere
 
-	// Get the landing coords for the room
+       // Get the landing coords for the room
 	var/datum/map_template/ghost_cafe_rooms/room_template = hotel_map_list[room["template"]]
-	var/relative_x = istype(room_template) && room_template.landing_coords?[1] ? room_template.landing_coords[1] : hotel_room_template.landingZoneRelativeX
-	var/relative_y = istype(room_template) && room_template.landing_coords?[2] ? room_template.landing_coords[2] : hotel_room_template.landingZoneRelativeY
+	var/relative_x = hotel_room_template.landingZoneRelativeX
+	var/relative_y = hotel_room_template.landingZoneRelativeY
+	if(istype(room_template) && islist(room_template.landing_coords))
+		var/list/coords = room_template.landing_coords
+		if(coords.len >= 1)
+			relative_x = coords[1]
+		if(coords.len >= 2)
+			relative_y = coords[2]
 
 	user.forceMove(locate(
 		room_bottom_left.x + relative_x,
@@ -237,10 +243,16 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 	do_sparks(3, FALSE, get_turf(user))
 
-	// Get the landing coords for the room
+       // Get the landing coords for the room
 	var/datum/map_template/ghost_cafe_rooms/room_template = hotel_map_list[template_name]
-	var/relative_x = istype(room_template) && room_template.landing_coords?[1] ? room_template.landing_coords[1] : hotel_room_template.landingZoneRelativeX
-	var/relative_y = istype(room_template) && room_template.landing_coords?[2] ? room_template.landing_coords[2] : hotel_room_template.landingZoneRelativeY
+	var/relative_x = hotel_room_template.landingZoneRelativeX
+	var/relative_y = hotel_room_template.landingZoneRelativeY
+	if(istype(room_template) && islist(room_template.landing_coords))
+		var/list/coords = room_template.landing_coords
+		if(coords.len >= 1)
+			relative_x = coords[1]
+		if(coords.len >= 2)
+			relative_y = coords[2]
 
 	user.forceMove(locate(
 		room_turf.x + relative_x,
@@ -318,10 +330,16 @@ SUBSYSTEM_DEF(hilbertshotel)
 
 	do_sparks(3, FALSE, get_turf(user))
 
-	// Get the landing coords for the room
+       // Get the landing coords for the room
 	var/datum/map_template/ghost_cafe_rooms/room_template = hotel_map_list[template]
-	var/relative_x = istype(room_template) && room_template.landing_coords?[1] ? room_template.landing_coords[1] : hotel_room_template.landingZoneRelativeX
-	var/relative_y = istype(room_template) && room_template.landing_coords?[2] ? room_template.landing_coords[2] : hotel_room_template.landingZoneRelativeY
+	var/relative_x = hotel_room_template.landingZoneRelativeX
+	var/relative_y = hotel_room_template.landingZoneRelativeY
+	if(istype(room_template) && islist(room_template.landing_coords))
+		var/list/coords = room_template.landing_coords
+		if(coords.len >= 1)
+			relative_x = coords[1]
+		if(coords.len >= 2)
+			relative_y = coords[2]
 
 	user.forceMove(locate(
 		bottom_left.x + relative_x,
