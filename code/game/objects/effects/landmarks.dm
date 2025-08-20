@@ -210,10 +210,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "Detective"
 
 /obj/effect/landmark/start/escort
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 	name = "Escort"
 	icon_state = "Barber"
 
 /obj/effect/landmark/start/club_security
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 	name = "Club Security"
 	icon_state = "Corrections Officer"
 

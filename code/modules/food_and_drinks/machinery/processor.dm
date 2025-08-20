@@ -155,6 +155,8 @@
 	use_energy(active_power_usage)
 	var/total_time = 0
 	for(var/atom/movable/movable_input as anything in processor_contents)
+		if(!movable_input)
+			continue
 		var/datum/food_processor_process/recipe = PROCESSOR_SELECT_RECIPE(movable_input)
 		if (!recipe)
 			log_admin("DEBUG: [movable_input] in processor doesn't have a suitable recipe. How did it get in there? Please report it immediately!!!")
@@ -167,6 +169,8 @@
 
 /obj/machinery/processor/proc/complete_processing()
 	for(var/atom/movable/content_item in processor_contents)
+		if(!content_item)
+			continue
 		var/datum/food_processor_process/recipe = PROCESSOR_SELECT_RECIPE(content_item)
 		if (!recipe)
 			log_admin("DEBUG: [content_item] in processor doesn't have a suitable recipe. How do you put it in?")

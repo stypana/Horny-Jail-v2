@@ -59,10 +59,13 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 0
-	turns_per_move = 5
+	turns_per_move = 3
 	speed = 0
 	stat_attack = HARD_CRIT
-	robust_searching = 0
+	robust_searching = TRUE
+	vision_range = 9
+	aggro_vision_range = 9
+	see_in_dark = 9
 	maxHealth = 75
 	health = 75
 	harm_intent_damage = 5
@@ -80,6 +83,7 @@
 	del_on_death = 1
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
+	ai_controller = /datum/ai_controller/basic_controller/simple/simple_hostile_obstacles
 
 /mob/living/simple_animal/hostile/cult/ghost
 	name = "Blood Ghost"
@@ -189,7 +193,7 @@
 	speak_emote = list("chants")
 	attack_sound = 'sound/effects/magic/magic_missile.ogg'
 	aggro_vision_range = 9
-	turns_per_move = 5
+	turns_per_move = 3
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	faction = list(FACTION_HOSTILE, FACTION_CULT)
@@ -200,6 +204,7 @@
 	atmos_requirements = null
 	loot = list(/obj/effect/decal/remains/human)
 	del_on_death = TRUE
+	ai_controller = /datum/ai_controller/basic_controller/simple/simple_ability_ranged
 
 /obj/projectile/magic/spell/magic_missile/lesser
 	color = "red"
