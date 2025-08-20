@@ -701,9 +701,10 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	SIGNAL_HANDLER
 
 	for(var/mob/user as anything in is_using)
-		if(user.client)
-			var/client/cuser = user.client
-			cuser.screen -= gone
+		if(!user || !user.client)
+			continue
+		var/client/cuser = user.client
+		cuser.screen -= gone
 
 	reset_item(gone)
 	refresh_views()

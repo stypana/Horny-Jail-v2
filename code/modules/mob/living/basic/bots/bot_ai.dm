@@ -59,6 +59,9 @@
 		source.update_bot_mode(new_mode = BOT_PATROL)
 
 /datum/ai_controller/basic_controller/bot/proc/add_to_blacklist(atom/target, duration)
+	// Ensure we don't track qdeleted targets
+	if(QDELETED(target))
+		return
 	var/final_duration = duration || blackboard[BB_UNREACHABLE_LIST_COOLDOWN]
 	set_blackboard_key_assoc_lazylist(BB_TEMPORARY_IGNORE_LIST, target, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(remove_from_blacklist), target), final_duration)

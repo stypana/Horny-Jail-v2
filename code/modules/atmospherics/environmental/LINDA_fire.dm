@@ -103,6 +103,9 @@
 
 /obj/effect/hotspot/Initialize(mapload, starting_volume, starting_temperature)
 	. = ..()
+	var/turf/open/our_turf = loc
+	if(!our_turf)
+		return INITIALIZE_HINT_QDEL
 	SSair.hotspots += src
 	if(!isnull(starting_volume))
 		volume = starting_volume
@@ -111,8 +114,7 @@
 		if(temperature <= FREON_MAXIMUM_BURN_TEMPERATURE)
 			cold_fire = TRUE
 
-	var/turf/open/our_turf = loc
-	//on creation we check adjacent turfs for hot spot to start grouping, if surrounding do not have hot spots we create our own
+        //on creation we check adjacent turfs for hot spot to start grouping, if surrounding do not have hot spots we create our own
 	for(var/turf/open/to_check as anything in our_turf.atmos_adjacent_turfs)
 		if(!to_check.active_hotspot)
 			continue
