@@ -73,8 +73,9 @@
 
 /obj/machinery/computer/camera_advanced/xenobio/Destroy()
 	QDEL_NULL(current_potion)
-	for(var/thing in stored_slimes)
-		var/mob/living/basic/slime/stored_slime = thing
+	for(var/mob/living/basic/slime/stored_slime in stored_slimes)
+		if(QDELETED(stored_slime))
+			continue
 		stored_slime.forceMove(drop_location())
 	stored_slimes.Cut()
 	QDEL_NULL(xeno_hud)
@@ -570,7 +571,10 @@
 	if(!LAZYLEN(mobs_to_spit))
 		return
 	new /obj/effect/abstract/xenosuction(target_turf)
-	for(var/mob/living/shot_mob in mobs_to_spit)
+	for(var/mob/living/shot_mob in mobs_to_spit.Copy())
+		if(QDELETED(shot_mob))
+			mobs_to_spit -= shot_mob
+			continue
 		new /obj/effect/abstract/sucked_atom(target_turf, shot_mob, FALSE)
 		shot_mob.SetInvisibility(INVISIBILITY_MAXIMUM, id=XENOBIO_CONSOLE_TRAIT)
 		addtimer(CALLBACK(shot_mob, TYPE_PROC_REF(/atom,RemoveInvisibility), XENOBIO_CONSOLE_TRAIT), SUCTION_DELAY + SUCTION_TIME)

@@ -22,10 +22,56 @@
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	planetary_atmos = FALSE
 
+/turf/open/indestructible/boss/necropolis/fakechasm/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	return FALSE
+
+/turf/open/indestructible/boss/necropolis/fakechasm/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	return FALSE
+
 /turf/open/chasm/jungle/necropolis
 	smoothing_flags = NONE
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	planetary_atmos = FALSE
+
+/turf/open/chasm/jungle/necropolis/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	return FALSE
+
+/turf/open/chasm/jungle/necropolis/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	return FALSE
+
+/turf/open/chasm/jungle/necropolis/can_cross_safely(atom/movable/crossing)
+        return HAS_TRAIT(src, TRAIT_CHASM_STOPPED)
+
+/turf/open/chasm/jungle/necropolis/Entered(atom/movable/arrived, atom/old_loc)
+	if(HAS_TRAIT(src, TRAIT_CHASM_STOPPED) || !isliving(arrived) || !HAS_TRAIT(arrived, TRAIT_MOVE_FLOATING))
+		return ..()
+	var/mob/living/M = arrived
+	ADD_TRAIT(M, TRAIT_CHASM_STOPPER, REF(src))
+	M.Paralyze(3 SECONDS)
+	QDEL_NULL(M.drift_handler)
+	var/message
+	if(ishuman(M) && M.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS))
+		message = "You feel that your wings are trembling and than.. Treacherously stops waving, after what, you see that celling under your head is moving away and it's starting to become very dark.."
+	else
+		message = "You feel that your stop flying for some reason, after what, you see that celling under your head is moving away and it's starting to become very dark.."
+	to_chat(M, span_danger(message))
+	addtimer(CALLBACK(src, PROC_REF(drop_floater), M), 3 SECONDS)
+	return ..()
+
+/turf/open/chasm/jungle/necropolis/proc/drop_floater(mob/living/M)
+	if(!M)
+		return
+	REMOVE_TRAIT(M, TRAIT_CHASM_STOPPER, REF(src))
+	drop(M)
+
+/turf/closed/indestructible/cult
+	icon = 'icons/turf/walls/cult_wall.dmi'
+	icon_state = "cult_wall-255"
+
+/turf/open/indestructible/cult
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "cult"
+	initial_gas_mix = OPENTURF_LOW_PRESSURE
 
 /area/lavaland/surface/necropolis
 	area_flags = NOTELEPORT | FLORA_ALLOWED | EVENT_PROTECTED | QUIET_LOGS
@@ -52,17 +98,13 @@
 	open_message = "You bring key to gates and it opens."
 	var/animation_sound = 'sound/machines/airlock/gate.ogg'
 
+
+
 /obj/machinery/door/puzzle/keycard/gates/animation_effects(animation)
 	switch(animation)
 		if(DOOR_OPENING_ANIMATION)
 			playsound(src, animation_sound, 50, TRUE)
 
-/obj/machinery/door/puzzle/keycard/gates/animation_segment_delay(animation)
-	switch(animation)
-		if(DOOR_OPENING_PASSABLE)
-			return 2 SECONDS
-		if(DOOR_OPENING_FINISHED)
-			return 2.4 SECONDS
 
 
 /obj/machinery/door/puzzle/keycard/gates/necropolis
@@ -239,15 +281,6 @@
 	starting = get_turf(src)
 	weapon = new(src)
 
-/turf/closed/indestructible/cult
-	icon = 'icons/turf/walls/cult_wall.dmi'
-	icon_state = "cult_wall-255"
-
-/turf/open/indestructible/cult
-	icon = 'icons/turf/floors.dmi'
-	icon_state = "cult"
-	initial_gas_mix = OPENTURF_LOW_PRESSURE
-
 /datum/action/innate/megafauna_attack/blood_dash
 	name = "Blood Dash"
 	button_icon = 'icons/effects/effects.dmi'
@@ -290,12 +323,13 @@
 	chosen_message = span_colossus("You are now rapidly shooting at your enemy with explosive bullets (5).")
 	chosen_attack_num = 6
 
-/mob/living/simple_animal/hostile/megafauna/cult_templar/AttackingTarget()
-	if(charging)
+/mob/living/simple_animal/hostile/megafauna/cult_templar/AttackingTarget(atom/attacked_target)
+	if(charging || QDELETED(attacked_target))
 		return
-	face_atom(target)
-	if(isliving(target))
-		var/mob/living/L = target
+
+	face_atom(attacked_target)
+	if(isliving(attacked_target))
+		var/mob/living/L = attacked_target
 		if(L.health <= HEALTH_THRESHOLD_DEAD || L.stat == DEAD) //To prevent memento mori limbo
 			visible_message(span_danger("[src] butchers [L]!"),
 			span_userdanger("You butcher [L], restoring your health!"))
@@ -304,8 +338,10 @@
 			if(ishuman(L)) // If target is a human - yell some funny shit.
 				telegraph()
 				say("Mah'weyh pleggh at e'ntrath!!")
+			changeNext_move(CLICK_CD_MELEE)
 			return TRUE
-	weapon.melee_attack_chain(src, target)
+	changeNext_move(CLICK_CD_MELEE)
+	weapon.melee_attack_chain(src, attacked_target)
 	return TRUE
 
 /mob/living/simple_animal/hostile/megafauna/cult_templar/Move()
@@ -456,18 +492,15 @@
 	SLEEP_CHECK_DEATH(2, src)
 	forceMove(T)
 	playsound(T,'sound/effects/magic/exit_blood.ogg', 200, 1)
-	if(health <= maxHealth*0.5)
-		layer = initial(layer)
-		cmdepower()
-		teleport_cooldown = world.time + (initial(teleport_cooldown) * dash_mod)
-		charging = FALSE
-		blood_dash(target)
-	else
+	var/next_cooldown = world.time + (initial(teleport_cooldown) * dash_mod)
+	if(health > maxHealth*0.5)
 		SLEEP_CHECK_DEATH(5, src)
-		layer = initial(layer)
-		cmdepower()
-		teleport_cooldown = world.time + (initial(teleport_cooldown) * dash_mod)
-		charging = FALSE
+	layer = initial(layer)
+	cmdepower()
+	teleport_cooldown = next_cooldown
+	charging = FALSE
+	if(health <= maxHealth*0.5)
+		blood_dash(target)
 
 /mob/living/simple_animal/hostile/megafauna/cult_templar/proc/blast()
 	if(ranged_cooldown <= world.time && !Adjacent(target) && !charging)
@@ -655,6 +688,18 @@
 	del_on_death = TRUE
 	death_message = "screams in agony as it sublimates into a sulfurous smoke."
 	death_sound = 'sound/effects/magic/demon_dies.ogg'
+	/// How long this daemon exists before fading away
+	var/lifespan = 15 SECONDS
+	ai_controller = /datum/ai_controller/basic_controller/simple/simple_hostile
+
+/mob/living/simple_animal/hostile/cult_demon/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(death)), lifespan)
+
+/mob/living/simple_animal/hostile/cult_demon/death(gibbed)
+	if(!gibbed)
+		new /obj/effect/temp_visual/despawn_effect(get_turf(src), /* copy_from = */ src)
+	return ..()
 
 /mob/living/simple_animal/hostile/cult_demon/greater
 	name = "daemon"
@@ -666,6 +711,7 @@
 	light_range = 4
 	maxHealth = 250
 	health = 250
+	lifespan = 10 SECONDS
 
 /mob/living/simple_animal/hostile/cult_demon/ex_act(severity, target)
 	return //Resistant to explosions

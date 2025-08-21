@@ -379,6 +379,15 @@
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/lava/smooth/lava_land_surface
 
+/turf/open/lava/smooth/lava_land_surface/rcd_proof
+/// A lavaland lava surface that cannot be modified with an RCD.
+
+/turf/open/lava/smooth/lava_land_surface/rcd_proof/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	return FALSE
+
+/turf/open/lava/smooth/lava_land_surface/rcd_proof/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	return FALSE
+
 /turf/open/lava/smooth/airless
 	initial_gas_mix = AIRLESS_ATMOS
 
