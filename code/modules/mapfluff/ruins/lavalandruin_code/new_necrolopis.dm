@@ -98,17 +98,13 @@
 	open_message = "You bring key to gates and it opens."
 	var/animation_sound = 'sound/machines/airlock/gate.ogg'
 
+
+
 /obj/machinery/door/puzzle/keycard/gates/animation_effects(animation)
 	switch(animation)
 		if(DOOR_OPENING_ANIMATION)
 			playsound(src, animation_sound, 50, TRUE)
 
-/obj/machinery/door/puzzle/keycard/gates/animation_segment_delay(animation)
-	switch(animation)
-		if(DOOR_OPENING_PASSABLE)
-			return 2 SECONDS
-		if(DOOR_OPENING_FINISHED)
-			return 2.4 SECONDS
 
 
 /obj/machinery/door/puzzle/keycard/gates/necropolis
