@@ -255,6 +255,8 @@
 	name = "coil"
 	desc = "A simple coil, comprised of coiled iron rods."
 	icon_state = "coil"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/forging/incomplete_bow
 	name = "incomplete longbow"
@@ -317,6 +319,8 @@
 	desc = "This is a circuit that is close to being finished; it just requires some forethought and gold."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "circuit"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 	var/static/recycleable_circuits = typecacheof(list(
 		/obj/item/electronics/airalarm,
 		/obj/item/electronics/firealarm,

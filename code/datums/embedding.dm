@@ -146,6 +146,10 @@
 		failed_embed(hit, hit_zone)
 		return
 
+	if(!ispath(source.shrapnel_type))
+		failed_embed(hit, hit_zone)
+		return
+
 	var/mob/living/carbon/victim = hit
 	var/obj/item/payload = setup_shrapnel(source, victim)
 
@@ -160,6 +164,9 @@
 /// Used for custom logic while setting up shrapnel payload
 /datum/embedding/proc/setup_shrapnel(obj/projectile/source, mob/living/carbon/victim)
 	var/shrapnel_type = source.shrapnel_type
+	if(!ispath(shrapnel_type))
+		return null
+
 	var/obj/item/payload = new shrapnel_type(get_turf(victim))
 	// Detach from parent, we don't want em to delete us
 	source.set_embed(null, dont_delete = TRUE)
@@ -169,20 +176,21 @@
 	if(istype(payload, /obj/item/shrapnel/bullet))
 		payload.name = source.name
 	SEND_SIGNAL(source, COMSIG_PROJECTILE_ON_SPAWN_EMBEDDED, payload, victim)
+	return payload
 
 /// Calculates the actual chance to embed based on armour penetration and throwing speed, then returns true if we pass that probability check
 /datum/embedding/proc/roll_embed_chance(mob/living/carbon/victim, hit_zone, datum/thrownthing/throwingdatum)
 	var/chance = embed_chance
 
 	// Something threw us really, really fast
-	if (throwingdatum?.speed > parent.throw_speed)
+	if(parent && throwingdatum?.speed > parent.throw_speed)
 		chance += (throwingdatum.speed - parent.throw_speed) * EMBED_CHANCE_SPEED_BONUS
 
 	if (is_harmless())
 		return prob(embed_chance)
 
 	// We'll be nice and take the better of bullet and bomb armor, halved
-	var/armor = max(victim.run_armor_check(hit_zone, BULLET, armour_penetration = parent.armour_penetration, silent = TRUE), victim.run_armor_check(hit_zone, BOMB, armour_penetration = parent.armour_penetration,  silent = TRUE)) * 0.5
+	var/armor = max(victim.run_armor_check(hit_zone, BULLET, armour_penetration = parent.armour_penetration, silent = TRUE), victim.run_armor_check(hit_zone, BOMB, armour_penetration = parent.armour_penetration,	 silent = TRUE)) * 0.5
 	// We only care about armor penetration if there's actually armor to penetrate
 	if(!armor)
 		return prob(chance)

@@ -3,6 +3,8 @@
 	desc = "A harmless cage that is intended to capture cortical borers."
 	icon = 'modular_skyrat/modules/cortical_borer/icons/items.dmi'
 	icon_state = "cage"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 	///If true, the trap is "open" and can trigger.
 	var/opened = FALSE

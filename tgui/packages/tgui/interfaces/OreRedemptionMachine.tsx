@@ -85,6 +85,7 @@ function MaterialRow(props: MaterialRowProps) {
   const sheet_amounts = Math.floor(material.amount);
   const print_amount = 5;
   const max_sheets = 50;
+  const bulk_amount = 50;
 
   return (
     <Table.Row className="candystripe">
@@ -122,6 +123,15 @@ function MaterialRow(props: MaterialRowProps) {
           onClick={() => onRelease(print_amount)}
         >
           x{print_amount}
+        </Button>
+        <Button
+          color="transparent"
+          tooltip={
+            material.value ? `${material.value * bulk_amount} cr` : 'No cost'
+          }
+          onClick={() => onRelease(bulk_amount)}
+        >
+          x{bulk_amount}
         </Button>
         <Button.Input
           buttonText={`[Max: ${

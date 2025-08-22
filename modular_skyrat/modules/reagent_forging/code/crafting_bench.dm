@@ -351,13 +351,19 @@
 				break
 
 			var/obj/item/stack/requirement_stack = requirement_item
+			var/amount_needed = recipe_to_follow.recipe_requirements[stack_type]
+			var/amount_to_use = min(requirement_stack.amount, amount_needed)
 
-			if(requirement_stack.amount < recipe_to_follow.recipe_requirements[stack_type])
-				recipe_to_follow.recipe_requirements[stack_type] -= requirement_stack.amount
-				requirement_stack.use(requirement_stack.amount)
+			if(requirement_stack.material_type)
+				materials_to_transfer[GET_MATERIAL_REF(requirement_stack.material_type)] += SHEET_MATERIAL_AMOUNT * amount_to_use
+			else if(length(requirement_stack.custom_materials))
+				for(var/material as anything in requirement_stack.custom_materials)
+					materials_to_transfer[material] += requirement_stack.custom_materials[material] * amount_to_use
+
+			requirement_stack.use(amount_to_use)
+			if(amount_to_use < amount_needed)
+				recipe_to_follow.recipe_requirements[stack_type] -= amount_to_use
 				continue
-
-			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
 
 		else if(istype(requirement_item, /obj/item/forging/complete))
 			if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
@@ -365,7 +371,7 @@
 				continue
 
 			for(var/custom_material as anything in requirement_item.custom_materials)
-				materials_to_transfer += custom_material
+				materials_to_transfer[custom_material] += requirement_item.custom_materials[custom_material]
 			qdel(requirement_item)
 
 		else
