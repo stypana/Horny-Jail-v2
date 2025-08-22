@@ -348,6 +348,15 @@
 	if(our_area?.powered(power_channel) && user.electrocute_act(75, src))
 		do_sparks(5, TRUE, src)
 
+/obj/structure/fluff/lava_lamp/megalamp
+	name = "large lava lamp"
+	desc = "A huge lava lamp. Its hypnotic glow is mesmerizing."
+	icon = 'icons/obj/lavalamp/megalamp.dmi'
+	icon_state = "megalamp"
+	bound_height = 32
+	density = TRUE
+	layer = ABOVE_MOB_LAYER
+
 /obj/structure/fluff/broken_canister_frame
 	name = "broken canister frame"
 	desc = "A torn apart canister. It looks like some metal can be salvaged with a wrench."
