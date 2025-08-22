@@ -5,6 +5,7 @@
 	toolspeed = 1 SECONDS
 	///whether the item is in use or not
 	var/in_use = FALSE
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/forging/tongs
 	name = "forging tongs"
