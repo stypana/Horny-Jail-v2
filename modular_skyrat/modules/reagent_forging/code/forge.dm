@@ -801,9 +801,14 @@
 		balloon_alert(user, "successfully heated [search_incomplete]")
 		return ITEM_INTERACT_SUCCESS
 
-	// Here we check the item used on us (tongs) for a stack of some kind to create an object from
-	var/obj/item/stack/search_stack = locate(/obj/item/stack) in forge_item.contents
+       // Here we check the item used on us (tongs) for a stack of sheet material to create an object from
+	var/obj/item/stack/sheet/search_stack = locate(/obj/item/stack/sheet) in forge_item.contents
 	if(search_stack)
+		if(!search_stack.material_type && !length(search_stack.custom_materials))
+			fail_message(user, "cannot forge [search_stack]")
+			forge_item.in_use = FALSE
+			return ITEM_INTERACT_SUCCESS
+
 		var/user_choice = show_radial_menu(user, src, radial_choice_list, radius = 38, require_near = TRUE, tooltips = TRUE)
 		if(!user_choice)
 			fail_message(user, "nothing chosen")
@@ -841,8 +846,8 @@
 		COOLDOWN_START(incomplete_item, heating_remainder, FORGE_HEATING_DURATION)
 		in_use = FALSE
 		forge_item.in_use = FALSE
-		balloon_alert(user, "prepared [search_incomplete] into [user_choice]")
-		search_stack = locate(/obj/item/stack) in forge_item.contents
+		balloon_alert(user, "prepared [search_stack] into [user_choice]")
+		search_stack = locate(/obj/item/stack/sheet) in forge_item.contents
 
 		if(!search_stack)
 			forge_item.icon_state = "tong_empty"

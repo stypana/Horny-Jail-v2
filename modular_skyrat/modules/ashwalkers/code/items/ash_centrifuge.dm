@@ -5,6 +5,7 @@
 	icon_state = "primitive_centrifuge"
 	volume = 100
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/reagent_containers/cup/primitive_centrifuge/examine()
 	. = ..()

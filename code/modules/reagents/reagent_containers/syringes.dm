@@ -238,6 +238,7 @@
 	source.set_embed(null, dont_delete = TRUE)
 	register_on(syringe)
 	syringe.set_embed(src)
+	return syringe
 
 /datum/embedding/syringe/fall_out()
 	. = ..()

@@ -1,6 +1,7 @@
 /area/station/maintenance
 	name = "Generic Maintenance"
 	ambience_index = AMBIENCE_MAINT
+	ambientsounds = list('sound/ambience/misc/ambimystery.ogg', 'sound/effects/creak/creak2.ogg', 'sound/effects/creak/creak3.ogg', 'sound/effects/creak/creak1.ogg', 'sound/effects/explosion/explosion_distant.ogg')
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA | CULT_PERMITTED | PERSISTENT_ENGRAVINGS
 	airlock_wires = /datum/wires/airlock/maint
 	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED

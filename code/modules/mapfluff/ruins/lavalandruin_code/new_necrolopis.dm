@@ -47,7 +47,7 @@
 		return ..()
 	var/mob/living/M = arrived
 	ADD_TRAIT(M, TRAIT_CHASM_STOPPER, REF(src))
-	M.Paralyze(3 SECONDS)
+	M.Stun(3 SECONDS, ignore_canstun = TRUE)
 	QDEL_NULL(M.drift_handler)
 	var/message
 	if(ishuman(M) && M.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS))
@@ -98,14 +98,15 @@
 	open_message = "You bring key to gates and it opens."
 	var/animation_sound = 'sound/machines/airlock/gate.ogg'
 
-
+/obj/machinery/door/puzzle/keycard/gates/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 6 SECONDS
 
 /obj/machinery/door/puzzle/keycard/gates/animation_effects(animation)
 	switch(animation)
 		if(DOOR_OPENING_ANIMATION)
 			playsound(src, animation_sound, 50, TRUE)
-
-
 
 /obj/machinery/door/puzzle/keycard/gates/necropolis
 	name = "locked gates"

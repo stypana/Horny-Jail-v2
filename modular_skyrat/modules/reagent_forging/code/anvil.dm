@@ -117,6 +117,27 @@
 
 		return ITEM_INTERACT_SUCCESS
 
+	//okay, so we didn't find an incomplete item to hammer, can we forge something simple like sheets?
+	var/obj/item/stack/rods/rod_stack = locate() in contents
+	if(rod_stack)
+		if(rod_stack.get_amount() < 8)
+			balloon_alert(user, "need 8 rods")
+			return ITEM_INTERACT_SUCCESS
+		if(!do_after(user, 2 SECONDS, src))
+			balloon_alert(user, "stopped forging")
+			return ITEM_INTERACT_SUCCESS
+		user.visible_message(
+			span_notice("[user.name] forges an iron sheet from [rod_stack] with [tool]."),
+			blind_message = span_hear("You hear hammering."),
+			vision_distance = COMBAT_MESSAGE_RANGE,
+			ignored_mobs = user,
+		)
+		rod_stack.use(8)
+		new /obj/item/stack/sheet/iron(get_turf(src))
+		update_appearance()
+		user.mind.adjust_experience(/datum/skill/smithing, 5)
+		return ITEM_INTERACT_SUCCESS
+
 	//okay, so we didn't find an incomplete item to hammer, do we have a hammerable item?
 	var/obj/locate_obj = locate() in contents
 	if(locate_obj && (locate_obj.skyrat_obj_flags & ANVIL_REPAIR))

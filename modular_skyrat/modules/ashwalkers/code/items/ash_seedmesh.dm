@@ -3,6 +3,8 @@
 	desc = "A little mesh that, when paired with sand, has the possibility of filtering out large seeds."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
 	icon_state = "mesh"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 	var/static/list/seeds_blacklist = list(
 		/obj/item/seeds/lavaland,
 	)
