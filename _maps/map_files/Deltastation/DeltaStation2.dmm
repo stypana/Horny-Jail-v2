@@ -6905,7 +6905,6 @@
 /area/station/engineering/main)
 "bHA" = (
 /obj/structure/window/spawner/directional/north,
-/obj/structure/flora/bush/large/style_random,
 /turf/open/misc/grass,
 /area/station/common/night_club)
 "bHB" = (
@@ -44041,7 +44040,9 @@
 /area/station/hallway/primary/central/fore)
 "kOb" = (
 /obj/structure/window/spawner/directional/west,
-/obj/structure/flora/bush/large/style_random,
+/obj/structure/flora/bush/large/style_random{
+	layer = 10
+	},
 /turf/open/misc/grass,
 /area/station/common/night_club)
 "kOf" = (
@@ -70413,7 +70414,9 @@
 /area/station/maintenance/solars/port/fore)
 "rqv" = (
 /obj/structure/window/spawner/directional/south,
-/obj/structure/flora/bush/large/style_random,
+/obj/structure/flora/bush/large/style_random{
+	layer = 10
+	},
 /turf/open/misc/grass,
 /area/station/common/night_club)
 "rqy" = (
@@ -70465,7 +70468,9 @@
 /area/station/science/xenobiology)
 "rrb" = (
 /obj/structure/window/spawner/directional/east,
-/obj/structure/flora/bush/large/style_2,
+/obj/structure/flora/bush/large/style_2{
+	layer = 10
+	},
 /turf/open/misc/grass,
 /area/station/common/night_club)
 "rrq" = (
@@ -85362,7 +85367,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/engineering/atmos/hfr_room)
 "uSN" = (
-/obj/structure/flora/bush/large/style_random,
+/obj/structure/fluff/lava_lamp/megalamp{
+	layer = 15
+	},
 /turf/open/misc/grass,
 /area/station/common/night_club)
 "uSR" = (

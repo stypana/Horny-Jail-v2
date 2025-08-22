@@ -355,7 +355,10 @@
 	icon_state = "megalamp"
 	bound_height = 32
 	density = TRUE
-	layer = ABOVE_MOB_LAYER
+	layer = 15
+	light_color = LIGHT_COLOR_ORANGE
+	light_power = 1.5
+	light_range = 3
 
 /obj/structure/fluff/broken_canister_frame
 	name = "broken canister frame"

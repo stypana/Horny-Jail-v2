@@ -6173,6 +6173,10 @@
 /obj/structure/sign/departments/xenobio/directional/south,
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
+"bGL" = (
+/obj/structure/fluff/lava_lamp/megalamp,
+/turf/open/openspace,
+/area/station/service/chapel)
 "bGP" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/effect/turf_decal/tile/brown/half/contrasted{
@@ -263123,7 +263127,7 @@ ikW
 gEE
 gEE
 jbG
-gEE
+bGL
 gEE
 gEE
 gEE

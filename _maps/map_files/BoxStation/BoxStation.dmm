@@ -39855,6 +39855,17 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/construction)
+"gWg" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/fluff/lava_lamp/megalamp,
+/turf/open/floor/carpet/neon/simple/purple,
+/area/station/common/night_club)
 "gWy" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
@@ -109954,7 +109965,7 @@ tHv
 tHv
 asz
 hIl
-oBk
+gWg
 wgt
 dQe
 kGR

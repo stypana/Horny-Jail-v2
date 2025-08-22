@@ -39310,6 +39310,7 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/duct,
 /obj/effect/turf_decal/tile/red/opposingcorners,
+/obj/structure/fluff/lava_lamp/megalamp,
 /turf/open/floor/iron/showroomfloor,
 /area/station/service/bar/atrium)
 "mCt" = (
