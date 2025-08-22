@@ -268,6 +268,7 @@
 
 /obj/item/pickaxe/reagent_weapon
 	name = "reagent pickaxe"
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/pickaxe/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -275,6 +276,7 @@
 
 /obj/item/shovel/reagent_weapon
 	name = "reagent shovel"
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/shovel/reagent_weapon/Initialize(mapload)
 	. = ..()
