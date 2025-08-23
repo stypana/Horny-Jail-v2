@@ -41,6 +41,7 @@
 	resistance_flags = FIRE_PROOF
 	skyrat_obj_flags = ANVIL_REPAIR
 
+
 	body_parts_covered = parent_type::body_parts_covered | ARMS
 	armor_type = /datum/armor/gloves_forging_plate_gloves
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR

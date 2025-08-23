@@ -189,6 +189,8 @@
 	if(ex_dev || ex_heavy || ex_light || ex_flame)
 		explosion(src, ex_dev, ex_heavy, ex_light, ex_flame)
 
+	update_mob()
+	qdel(src)
 	return TRUE
 
 /obj/item/grenade/proc/update_mob()

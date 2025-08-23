@@ -223,6 +223,8 @@
 
 /obj/machinery/recycler/proc/recycle_item(obj/item/weapon)
 	. = FALSE
+	if(weapon.skyrat_obj_flags & ANVIL_REPAIR)
+		return FALSE
 	var/obj/item/grown/log/wood = weapon
 	if(istype(wood))
 		var/seed_modifier = 0
