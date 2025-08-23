@@ -1100,8 +1100,9 @@
 	icon_state = "car_budget" //saving up for a new tesla
 
 /obj/item/card/id/departmental_budget/click_alt(mob/living/user)
-	registered_account.bank_card_talk(span_warning("Withdrawing is not compatible with this card design."), TRUE) //prevents the vault bank machine being useless and putting money from the budget to your card to go over personal crates
-	return CLICK_ACTION_BLOCKING
+	// registered_account.bank_card_talk(span_warning("Withdrawing is not compatible with this card design."), TRUE) //prevents the vault bank machine being useless and putting money from the budget to your card to go over personal crates
+	// return CLICK_ACTION_BLOCKING
+	return ..()
 
 /obj/item/card/id/advanced
 	name = "identification card"

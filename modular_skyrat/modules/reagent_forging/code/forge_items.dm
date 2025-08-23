@@ -2,6 +2,7 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
+	item_flags = NO_MAT_REDEMPTION
 	toolspeed = 1 SECONDS
 	///whether the item is in use or not
 	var/in_use = FALSE
@@ -72,6 +73,7 @@
 	var/spawn_item
 	//because who doesn't want to have a plasma sword?
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/forging/incomplete/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -169,6 +171,7 @@
 	var/current_perfects = 0
 	//because who doesn't want to have a plasma sword?
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/forging/complete/examine(mob/user)
 	. = ..()
@@ -277,6 +280,7 @@
 	desc = "You shouldn't see this."
 	/// the amount of arrows that are spawned from the spawner
 	var/spawning_amount = 4
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/arrow_spawner/Initialize(mapload)
 	. = ..()
@@ -322,6 +326,7 @@
 	icon_state = "circuit"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
 	skyrat_obj_flags = ANVIL_REPAIR
+	item_flags = NO_MAT_REDEMPTION
 	var/static/recycleable_circuits = typecacheof(list(
 		/obj/item/electronics/airalarm,
 		/obj/item/electronics/firealarm,

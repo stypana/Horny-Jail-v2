@@ -58,6 +58,13 @@
 	item = /obj/item/clothing/gloves/rapid
 	cost = 8
 
+/datum/uplink_item/dangerous/nunchaku
+	name = "Syndie Fitness Nunchuks"
+	desc = "Heavyweight titanium nunchucks, quickly knocking opponents to the ground, then just as easily smashing the opponent afterward."
+	item = /obj/item/melee/baton/nunchaku
+	cost = 8
+	purchasable_from = ~UPLINK_ALL_SYNDIE_OPS
+
 /datum/uplink_item/dangerous/doublesword
 	name = "Double-Bladed Energy Sword"
 	desc = "The double-bladed energy sword does slightly more damage than a standard energy sword and will deflect \

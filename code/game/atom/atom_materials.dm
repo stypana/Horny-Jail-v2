@@ -394,3 +394,8 @@
  */
 /atom/proc/get_custom_material_amount()
 	return isnull(custom_materials) ? 0 : counterlist_sum(custom_materials)
+
+/obj/get_material_composition(flags)
+	if(skyrat_obj_flags & ANVIL_REPAIR)
+		return list()
+	return ..()
