@@ -12,6 +12,7 @@
 	var/list/squeak_override //Weighted list; If you want your plush to have different squeak sounds use this
 	var/stuffed = TRUE //If the plushie has stuffing in it
 	var/obj/item/grenade/grenade //You can remove the stuffing from a plushie and add a grenade to it for *nefarious uses*
+	var/static/plush_love = TRUE //Toggles whether plushies can engage in love interactions
 	//--love ~<3--
 	gender = NEUTER
 	var/obj/item/toy/plush/lover
@@ -171,6 +172,8 @@
 	return ..()
 
 /obj/item/toy/plush/proc/love(obj/item/toy/plush/Kisser, mob/living/user) //~<3
+	if(!plush_love || CONFIG_GET(flag/disable_plush_love))
+		return
 	var/chance = 100 //to steal a kiss, surely there's a 100% chance no-one would reject a plush such as I?
 	var/concern = 20 //perhaps something might cloud true love with doubt
 	var/loyalty = 30 //why should another get between us?

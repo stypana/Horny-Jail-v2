@@ -6,6 +6,8 @@
 	name = "Gaston"
 	desc = "A cute synth toy, colored in red and black, with mini armor west and tiny bage on it. You found this plush very familiar."
 	icon_state = "gaston"
+	gender = MALE
+	plush_love = FALSE
 	attack_verb_continuous = list("cuddles", "hugs", "boops")
 	attack_verb_simple = list("cuddle", "hug", "boop")
 	squeak_override = list('sound/machines/uplink/uplinkerror.ogg' = 1, 'sound/machines/synth/synth_no.ogg' = 1, 'sound/machines/synth/synth_yes.ogg' = 1)
@@ -14,6 +16,18 @@
 	name = "Rozgo"
 	desc = "A cute vulp toy, colored in black and white.. On touch it feels very soft."
 	icon_state = "rozgo"
+	gender = FEMALE
+	plush_love = FALSE
 	attack_verb_continuous = list("cuddles", "hugs", "boops")
 	attack_verb_simple = list("cuddle", "hug", "boop")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/woof.ogg' = 1)
+
+/obj/item/toy/plush/hornyjail/plush_sol
+	name = "Sol"
+	desc = "A plush of a sand shark.. Legends told that there was a similar shark, who died so many times, that he got reincarnated as a plush toy.."
+	icon_state = "sol"
+	gender = MALE
+	plush_love = FALSE
+	attack_verb_continuous = list("whanks", "racks", "bomps")
+	attack_verb_simple = list("whank", "rack", "bomp")
+	squeak_override = list('modular_skyrat/modules/modular_weapons/sounds/shotgun_rack.ogg' = 1)
