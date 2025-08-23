@@ -1437,7 +1437,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  *	Handles exposure to the skin of various gases.
  */
 /datum/species/proc/handle_gas_interaction(mob/living/carbon/human/human, datum/gas_mixture/environment, seconds_per_tick, times_fired)
-	if((human?.wear_suit?.clothing_flags & STOPSPRESSUREDAMAGE) && (human?.head?.clothing_flags & STOPSPRESSUREDAMAGE))
+	if(isclothing(human.wear_suit) && isclothing(human.head) && (human.wear_suit.clothing_flags & STOPSPRESSUREDAMAGE) && (human.head.clothing_flags & STOPSPRESSUREDAMAGE))
 		return
 
 	for(var/gas_id in environment.gases)

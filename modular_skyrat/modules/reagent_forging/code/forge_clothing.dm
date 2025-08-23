@@ -13,6 +13,7 @@
 	skyrat_obj_flags = ANVIL_REPAIR
 	armor_type = /datum/armor/armor_forging_plate_armor
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /datum/armor/armor_forging_plate_armor
 	melee = 40
@@ -40,9 +41,11 @@
 	resistance_flags = FIRE_PROOF
 	skyrat_obj_flags = ANVIL_REPAIR
 
+
 	body_parts_covered = parent_type::body_parts_covered | ARMS
 	armor_type = /datum/armor/gloves_forging_plate_gloves
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /datum/armor/gloves_forging_plate_gloves
 	melee = 40
@@ -71,6 +74,7 @@
 	skyrat_obj_flags = ANVIL_REPAIR
 	armor_type = /datum/armor/helmet_forging_plate_helmet
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /datum/armor/helmet_forging_plate_helmet
 	melee = 40
@@ -102,6 +106,7 @@
 	resistance_flags = FIRE_PROOF
 	skyrat_obj_flags = ANVIL_REPAIR
 	fastening_type = SHOES_SLIPON
+	item_flags = NO_MAT_REDEMPTION
 
 /datum/armor/shoes_forging_plate_boots
 	melee = 20
@@ -119,6 +124,7 @@
 	armor_type = /datum/armor/shoes_horseshoe
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
 	skyrat_obj_flags = ANVIL_REPAIR
+	item_flags = NO_MAT_REDEMPTION
 
 /datum/armor/shoes_horseshoe
 	melee = 20
@@ -138,6 +144,7 @@
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
 	skyrat_obj_flags = ANVIL_REPAIR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -155,6 +162,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
 	skyrat_obj_flags = ANVIL_REPAIR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -165,6 +173,7 @@
 	desc = "A pair of handcuffs that are ready to keep someone captive."
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
 	skyrat_obj_flags = ANVIL_REPAIR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
 	. = ..()

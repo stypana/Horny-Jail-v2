@@ -7,6 +7,7 @@
 
 /obj/item/glassblowing
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/glassblowing/glass_globe
 	name = "glass globe"
@@ -18,7 +19,7 @@
 	)
 
 /datum/export/glassblowing
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 0.25
 	unit_name = "glassblowing product"
 	export_types = list(
 		/obj/item/glassblowing/glass_lens,
@@ -43,6 +44,7 @@
 	icon_state = "glass_bowl"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/reagent_containers/cup/beaker/large/blowing_glass
 	name = "glass cup"
@@ -50,6 +52,7 @@
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "glass_cup"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/plate/blowing_glass
 	name = "glass plate"
@@ -58,6 +61,7 @@
 	icon_state = "glass_plate"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/glassblowing/molten_glass
 	name = "molten glass"

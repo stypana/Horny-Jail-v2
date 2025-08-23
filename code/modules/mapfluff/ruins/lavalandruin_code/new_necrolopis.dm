@@ -43,7 +43,8 @@
         return HAS_TRAIT(src, TRAIT_CHASM_STOPPED)
 
 /turf/open/chasm/jungle/necropolis/Entered(atom/movable/arrived, atom/old_loc)
-	if(HAS_TRAIT(src, TRAIT_CHASM_STOPPED) || !isliving(arrived) || !HAS_TRAIT(arrived, TRAIT_MOVE_FLOATING))
+	var/mob/living/carbon/human/H = ishuman(arrived) ? arrived : null
+	if(HAS_TRAIT(src, TRAIT_CHASM_STOPPED) || !isliving(arrived) || !HAS_TRAIT(arrived, TRAIT_MOVE_FLOATING) || !H || !istype(H.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS), /obj/item/organ/wings/functional))
 		return ..()
 	var/mob/living/M = arrived
 	ADD_TRAIT(M, TRAIT_CHASM_STOPPER, REF(src))
@@ -168,10 +169,11 @@
 	integrity_failure = 0
 
 /obj/structure/closet/crate/necropolis_open/PopulateContents()
-	var/loot = rand(1,16)
+	var/loot = rand(1,14)
 	switch(loot)
 		if(1)
-			new /obj/item/shared_storage/red(src)
+			new /obj/item/clothing/gloves/fingerless/punch_mitts(src)
+			new /obj/item/clothing/head/cowboy(src)
 		if(2)
 			new /obj/item/soulstone/anybody/mining(src)
 		if(3)
@@ -198,15 +200,12 @@
 			new /obj/item/book_of_babel(src)
 		if(14)
 			new /obj/item/clothing/neck/necklace/memento_mori(src)
-		if(15)
-			new /obj/item/clothing/gloves/fingerless/punch_mitts(src)
-			new /obj/item/clothing/head/cowboy(src)
 
 
 /obj/structure/closet/crate/necropolis_open/major
 
 /obj/structure/closet/crate/necropolis_open/major/PopulateContents()
-	var/loot = rand(1,9)
+	var/loot = rand(1,8)
 	switch(loot)
 		if(1)
 			new /obj/item/cain_and_abel(src)
@@ -216,7 +215,7 @@
 		if(3)
 			new /obj/item/dice/d20/fate(src)
 		if(4)
-			new /obj/item/melee/baton/nunchaku(src)
+			new /obj/item/crusher_trophy/wendigo_horn(src)
 		if(5)
 			new /obj/item/gun/magic/staff/spellblade(src)
 		if(6)
@@ -225,8 +224,8 @@
 			new /obj/item/gun/magic/hook(src)
 		if(8)
 			new /obj/item/crusher_trophy/demon_claws(src)
-		if(9)
-			new /obj/item/crusher_trophy/wendigo_horn(src)
+
+
 
 /mob/living/simple_animal/hostile/megafauna/cult_templar
 	name = "cult templar"
@@ -252,7 +251,7 @@
 	vision_range = 10
 	damage_coeff = list(BRUTE = 1, BURN = 0.5, TOX = 0.5, CLONE = 0.5, STAMINA = 0, OXY = 0.5)
 	loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/keycard/cultist)
-	crusher_loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/clothing/suit/hooded/cultrobes/hardened, /obj/item/keycard/cultist)
+	crusher_loot = list(/obj/structure/closet/crate/necropolis_open/major, /obj/item/clothing/suit/hooded/cultrobes/templar, /obj/item/keycard/cultist)
 	wander = FALSE
 	del_on_death = TRUE
 	blood_volume = BLOOD_VOLUME_NORMAL
@@ -618,7 +617,7 @@
 /obj/item/clothing/suit/hooded/cultrobes/templar
 	name = "\improper Cursed Nar'Sien hardened armor"
 	desc = "A heavily-armored exosuit worn by warriors of the Nar'Sien cult. This one is cursed, screaming voices into the mind of the wearer."
-	allowed = list(/obj/item/gun, /obj/item/tank/internals)
+	allowed = list(/obj/item/gun, /obj/item/tank/internals, /obj/item/kinetic_crusher)
 	icon_state = "cult_armor"
 	armor_type = /datum/armor/hooded_cultrobes/templar
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -647,10 +646,9 @@
 /obj/item/clothing/suit/hooded/cultrobes/templar/process(seconds_per_tick)
 	. = ..()
 	var/mob/living/carbon/C = loc
-	if(istype(C) && prob(4))
-		if(prob(25))
-			C.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 60)
-			to_chat(C, span_danger("[pick("Voices... Voices everywhere", "Your mind shatters.", "Voices echo inside your head.")]."))
+	if(istype(C) && prob(25))
+		C.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 60)
+		to_chat(C, span_danger("[pick("Voices... Voices everywhere", "Your mind shatters.", "Voices echo inside your head.")]."))
 		SEND_SOUND(C, sound(pick('sound/effects/hallucinations/over_here3.ogg', 'sound/effects/hallucinations/behind_you2.ogg', 'sound/effects/magic/exit_blood.ogg', 'sound/effects/hallucinations/im_here1.ogg', 'sound/effects/hallucinations/turn_around1.ogg', 'sound/effects/hallucinations/turn_around2.ogg')))
 
 //DEMONS

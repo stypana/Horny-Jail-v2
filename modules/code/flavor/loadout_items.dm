@@ -9,3 +9,10 @@
 	item_path = /obj/item/toy/plush/hornyjail/plush_rozgo
 	donator_only = FALSE
 	ckeywhitelist = list("gastonix", "ralseidreemuurr")
+
+/datum/loadout_item/toys/sol_plush
+	name = "Saul De-Moines Plush"
+	item_path = /obj/item/toy/plush/hornyjail/plush_sol
+	donator_only = FALSE
+	ckeywhitelist = list("Victor_poplavsy")
+
