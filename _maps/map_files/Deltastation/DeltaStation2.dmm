@@ -13462,11 +13462,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
-"dnw" = (
-/obj/structure/table/glass/plasmaglass,
-/obj/machinery/microwave,
-/turf/open/floor/carpet/neon/simple/red,
-/area/station/common/night_club)
 "dnC" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -21302,11 +21297,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/hallway/secondary/entry)
-"flY" = (
-/obj/structure/table/glass/plasmaglass,
-/obj/machinery/microwave,
-/turf/open/floor/carpet/neon/simple/red,
-/area/station/common/night_club)
 "fmh" = (
 /obj/machinery/newscaster/directional/north,
 /obj/machinery/camera/directional/north{
@@ -28584,11 +28574,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
-"gWy" = (
-/obj/structure/table/glass/plasmaglass,
-/obj/effect/spawner/random/food_or_drink/donkpockets,
-/turf/open/floor/carpet/neon/simple/red,
-/area/station/common/night_club)
 "gWz" = (
 /obj/structure/closet/secure_closet/chief_medical,
 /obj/item/clothing/head/costume/nursehat,
@@ -32569,6 +32554,11 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
+"hZy" = (
+/obj/structure/table/glass/plasmaglass,
+/obj/machinery/microwave,
+/turf/open/floor/carpet/neon/simple/red,
+/area/station/common/night_club)
 "hZz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -58124,6 +58114,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/aft)
+"opg" = (
+/obj/structure/table/glass/plasmaglass,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/turf/open/floor/carpet/neon/simple/red,
+/area/station/common/night_club)
 "opl" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -154834,11 +154829,7 @@ tEq
 awi
 kSc
 mUL
-<<<<<<< Updated upstream
-dnw
-=======
-flY
->>>>>>> Stashed changes
+hZy
 aUN
 qYo
 sKy
@@ -155095,11 +155086,7 @@ smG
 awi
 rrL
 rrL
-<<<<<<< Updated upstream
-rrL
-=======
-gWy
->>>>>>> Stashed changes
+opg
 aUN
 qYo
 sKy
