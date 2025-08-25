@@ -69218,9 +69218,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "rbj" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
+/turf/closed/wall,
 /area/station/hallway/secondary/construction)
 "rbC" = (
 /obj/machinery/light/small/directional/west,
@@ -89795,7 +89793,9 @@
 /turf/open/space/basic,
 /area/station/solars/port/fore)
 "waI" = (
-/turf/closed/wall,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
 /area/station/hallway/secondary/construction)
 "waK" = (
 /obj/structure/table/wood,
@@ -149420,13 +149420,13 @@ dxe
 dxe
 xir
 dxe
-waI
+rbj
 dzl
+waI
+waI
 rbj
 rbj
-waI
-waI
-waI
+rbj
 rev
 wvH
 qMf
@@ -149684,7 +149684,7 @@ jiR
 vYi
 jyS
 lEv
-waI
+rbj
 wvz
 nXH
 iLr
@@ -149941,7 +149941,7 @@ fol
 kvx
 rJJ
 jbm
-waI
+rbj
 yiT
 tCV
 cOA
@@ -150198,7 +150198,7 @@ uPq
 rOE
 mIc
 sAH
-rbj
+waI
 dLG
 xzB
 iLr
@@ -150455,7 +150455,7 @@ mEp
 dbY
 oQh
 hPM
-rbj
+waI
 baT
 xzB
 nzD
@@ -150712,7 +150712,7 @@ oRA
 mzX
 xin
 fTs
-waI
+rbj
 nFV
 uhB
 iLr
@@ -150962,14 +150962,14 @@ gRG
 nXj
 dyw
 awi
-waI
-waI
-waI
-waI
-waI
-waI
-waI
-waI
+rbj
+rbj
+rbj
+rbj
+rbj
+rbj
+rbj
+rbj
 eEH
 vxp
 iLr

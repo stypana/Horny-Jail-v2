@@ -2132,6 +2132,12 @@
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "aoM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "aoO" = (
@@ -2671,6 +2677,12 @@
 /area/station/common/pool/sauna)
 "arr" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "art" = (
@@ -3742,8 +3754,10 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/light/blacklight/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/common/night_club/back_stage)
 "avF" = (
@@ -43076,6 +43090,9 @@
 /obj/structure/chair/stool{
 	pixel_y = 8
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "iOY" = (
@@ -44402,6 +44419,7 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/airalarm/directional/south,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "jzb" = (
@@ -46950,7 +46968,6 @@
 /area/station/hallway/secondary/service)
 "kWW" = (
 /obj/effect/mapping_helpers/broken_floor,
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
@@ -52555,6 +52572,12 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "oEV" = (
@@ -55871,6 +55894,9 @@
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/machinery/light/small/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "qLx" = (
@@ -58691,7 +58717,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "srd" = (
-/obj/structure/cable,
 /obj/item/radio/intercom/directional/north,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -59236,8 +59261,14 @@
 /area/station/maintenance/solars/starboard/fore)
 "sKK" = (
 /obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/commons/fitness/recreation/entertainment)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/solars/starboard/fore)
 "sKS" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
@@ -104257,7 +104288,7 @@ axQ
 axQ
 qwZ
 srd
-sKK
+aAd
 uRa
 uRa
 beZ
@@ -111963,7 +111994,7 @@ qgu
 mvN
 qgu
 aoM
-qgu
+sKK
 oEA
 arr
 izV
