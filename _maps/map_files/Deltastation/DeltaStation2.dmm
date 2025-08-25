@@ -13462,6 +13462,11 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
+"dnw" = (
+/obj/structure/table/glass/plasmaglass,
+/obj/machinery/microwave,
+/turf/open/floor/carpet/neon/simple/red,
+/area/station/common/night_club)
 "dnC" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -154822,7 +154827,7 @@ tEq
 awi
 kSc
 mUL
-rrL
+dnw
 aUN
 qYo
 sKy
