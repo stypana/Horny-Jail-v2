@@ -23820,7 +23820,7 @@
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/spawner/random/engineering/flashlight,
 /turf/open/floor/plating,
-/area/station/maintenance/starboard/aft)
+/area/station/hallway/secondary/construction)
 "fTw" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/turf_decal/bot,
@@ -31827,7 +31827,7 @@
 	},
 /obj/machinery/pipedispenser/disposal,
 /turf/open/floor/iron,
-/area/station/maintenance/starboard/aft)
+/area/station/hallway/secondary/construction)
 "hPN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -36870,7 +36870,7 @@
 	},
 /obj/machinery/pipedispenser/disposal/transit_tube,
 /turf/open/floor/plating,
-/area/station/maintenance/starboard/aft)
+/area/station/hallway/secondary/construction)
 "jbr" = (
 /obj/structure/curtain/cloth/fancy/mechanical/start_closed{
 	desc = "A set of curtains serving as a fancy theater backdrop. They can only be opened by a button.";
@@ -41469,7 +41469,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/service/maintenance,
 /obj/structure/sign/departments/psychology/directional/east,
 /turf/open/floor/iron,
-/area/station/maintenance/department/chapel)
+/area/station/medical/abandoned)
 "kfa" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -47377,7 +47377,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/station/maintenance/starboard/aft)
+/area/station/hallway/secondary/construction)
 "lEH" = (
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -69221,7 +69221,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
-/area/station/maintenance/department/chapel)
+/area/station/hallway/secondary/construction)
 "rbC" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/engine/air,
@@ -69402,7 +69402,7 @@
 "rev" = (
 /obj/effect/spawner/random/structure/girder,
 /turf/open/floor/plating,
-/area/station/maintenance/department/chapel)
+/area/station/hallway/secondary/construction)
 "rex" = (
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced/tinted,
@@ -75438,7 +75438,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/station/maintenance/starboard/aft)
+/area/station/hallway/secondary/construction)
 "sAL" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/disposalpipe/trunk{
@@ -89795,10 +89795,8 @@
 /turf/open/space/basic,
 /area/station/solars/port/fore)
 "waI" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/aft)
+/turf/closed/wall,
+/area/station/hallway/secondary/construction)
 "waK" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/cigpack_uplift{
@@ -94555,7 +94553,7 @@
 "xir" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/closed/wall,
-/area/station/maintenance/department/chapel)
+/area/station/medical/abandoned)
 "xiu" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -146592,7 +146590,7 @@ gDV
 gDV
 gDV
 gDV
-qMf
+gDV
 gkx
 kIf
 wZE
@@ -146849,7 +146847,7 @@ dVD
 jJD
 ifp
 sNC
-qMf
+gDV
 eOS
 cAs
 wZE
@@ -147106,7 +147104,7 @@ xFW
 lSo
 lSo
 geX
-qMf
+gDV
 oci
 aCJ
 wZE
@@ -147363,7 +147361,7 @@ nDN
 kHb
 rwM
 ppH
-qMf
+gDV
 oci
 pOT
 wZE
@@ -147620,7 +147618,7 @@ dwE
 kJO
 vqH
 vrk
-qMf
+gDV
 rPf
 bqS
 rlw
@@ -148134,7 +148132,7 @@ ogO
 drG
 nuH
 vtx
-qMf
+gDV
 lrr
 qTb
 wZE
@@ -148391,7 +148389,7 @@ xfi
 eNP
 jso
 fZS
-qMf
+gDV
 uDB
 feV
 wZE
@@ -148647,8 +148645,8 @@ gDV
 gDV
 gDV
 gDV
-qMf
-qMf
+gDV
+gDV
 jaz
 eMU
 wZE
@@ -149419,16 +149417,16 @@ dxe
 dxe
 dxe
 dxe
-qMf
+dxe
 xir
-qMf
-qMf
+dxe
+waI
 dzl
 rbj
 rbj
-qMf
-qMf
-qMf
+waI
+waI
+waI
 rev
 wvH
 qMf
@@ -149686,7 +149684,7 @@ jiR
 vYi
 jyS
 lEv
-nXH
+waI
 wvz
 nXH
 iLr
@@ -149943,7 +149941,7 @@ fol
 kvx
 rJJ
 jbm
-nXH
+waI
 yiT
 tCV
 cOA
@@ -150200,7 +150198,7 @@ uPq
 rOE
 mIc
 sAH
-waI
+rbj
 dLG
 xzB
 iLr
@@ -150457,7 +150455,7 @@ mEp
 dbY
 oQh
 hPM
-waI
+rbj
 baT
 xzB
 nzD
@@ -150714,7 +150712,7 @@ oRA
 mzX
 xin
 fTs
-nXH
+waI
 nFV
 uhB
 iLr
@@ -150964,14 +150962,14 @@ gRG
 nXj
 dyw
 awi
-qOK
-qOK
-qOK
-qOK
-qOK
-qOK
-nXH
-nXH
+waI
+waI
+waI
+waI
+waI
+waI
+waI
+waI
 eEH
 vxp
 iLr
