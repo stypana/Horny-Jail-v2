@@ -28260,12 +28260,8 @@
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "gRY" = (
-/obj/structure/chair/stool/bar/directional/south,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/carpet/neon/simple/purple,
 /area/station/common/night_club)
@@ -33263,15 +33259,6 @@
 /obj/structure/flora/rock/pile/style_random,
 /turf/open/misc/grass,
 /area/station/hallway/primary/fore)
-"ihM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/station/common/night_club)
 "ihN" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
@@ -58926,9 +58913,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/station/common/night_club)
 "oBq" = (
@@ -69184,6 +69168,12 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/station/maintenance/department/science)
+"ray" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/carpet/neon/simple/purple,
+/area/station/common/night_club)
 "raz" = (
 /obj/machinery/shower/directional/south{
 	name = "emergency shower"
@@ -83612,6 +83602,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay)
+"uyT" = (
+/obj/structure/chair/stool/bar/directional/south,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/carpet/neon/simple/purple,
+/area/station/common/night_club)
 "uyU" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -153533,7 +153533,7 @@ jsx
 kOb
 kGy
 cgf
-gRY
+uyT
 xxK
 hkr
 kkj
@@ -155584,7 +155584,7 @@ mCa
 qYo
 ybr
 uFH
-ihM
+lYi
 uFH
 kUH
 ltw
@@ -156099,7 +156099,7 @@ aUN
 krL
 uFH
 lYi
-uFH
+ray
 uFH
 uFH
 uZA
@@ -156612,7 +156612,7 @@ efQ
 aUN
 hUi
 eJE
-uFH
+gRY
 okj
 uFH
 eJE
