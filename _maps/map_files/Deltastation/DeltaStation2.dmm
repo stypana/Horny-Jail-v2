@@ -8822,6 +8822,11 @@
 	icon_state = "foam_plating"
 	},
 /area/station/maintenance/department/science/xenobiology)
+"cfk" = (
+/obj/structure/table/glass/plasmaglass,
+/obj/machinery/microwave,
+/turf/open/floor/carpet/neon/simple/red,
+/area/station/common/night_club)
 "cfp" = (
 /obj/structure/table/wood,
 /obj/item/storage/box/rubbershot{
@@ -23575,6 +23580,7 @@
 	dir = 10
 	},
 /obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/aft)
 "fQc" = (
@@ -32554,11 +32560,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
-"hZy" = (
-/obj/structure/table/glass/plasmaglass,
-/obj/machinery/microwave,
-/turf/open/floor/carpet/neon/simple/red,
-/area/station/common/night_club)
 "hZz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -58114,11 +58115,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/aft)
-"opg" = (
-/obj/structure/table/glass/plasmaglass,
-/obj/effect/spawner/random/food_or_drink/donkpockets,
-/turf/open/floor/carpet/neon/simple/red,
-/area/station/common/night_club)
 "opl" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -97210,6 +97206,11 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
+"xPq" = (
+/obj/structure/table/glass/plasmaglass,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/turf/open/floor/carpet/neon/simple/red,
+/area/station/common/night_club)
 "xPt" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -154829,7 +154830,7 @@ tEq
 awi
 kSc
 mUL
-hZy
+cfk
 aUN
 qYo
 sKy
@@ -155086,7 +155087,7 @@ smG
 awi
 rrL
 rrL
-opg
+xPq
 aUN
 qYo
 sKy
