@@ -29497,6 +29497,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
+"hjB" = (
+/obj/structure/table/glass/plasmaglass,
+/obj/machinery/chem_dispenser/drinks{
+	dir = 8
+	},
+/turf/open/floor/carpet/neon/simple/red,
+/area/station/common/night_club)
 "hjF" = (
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/floor/iron,
@@ -44341,7 +44348,6 @@
 /area/station/hallway/secondary/entry)
 "kSc" = (
 /obj/machinery/light/blacklight/directional/north,
-/obj/item/kirbyplants/random,
 /turf/open/floor/carpet/neon/simple/red,
 /area/station/common/night_club)
 "kSt" = (
@@ -70514,6 +70520,9 @@
 /area/station/security/courtroom)
 "rrL" = (
 /obj/structure/table/glass/plasmaglass,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 8
+	},
 /turf/open/floor/carpet/neon/simple/red,
 /area/station/common/night_club)
 "rrU" = (
@@ -154564,7 +154573,7 @@ kUH
 awi
 mva
 mUL
-hDU
+wpH
 ybr
 qYo
 sKy
@@ -154821,7 +154830,7 @@ tEq
 awi
 kSc
 mUL
-cfk
+xPq
 aUN
 qYo
 sKy
@@ -155076,9 +155085,9 @@ hhP
 ljm
 smG
 awi
+hjB
 rrL
-rrL
-xPq
+cfk
 aUN
 qYo
 sKy
